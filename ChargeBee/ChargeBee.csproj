@@ -69,10 +69,10 @@
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Internal\ResultBase.cs" />
     <Compile Include="Internal\Resource.cs" />
-    <Compile Include="Internal\JBaseObject.cs" />
     <Compile Include="Models\Enums\EventTypeEnum.cs" />
     <Compile Include="Models\Enums\GatewayEnum.cs" />
     <Compile Include="Models\Enums\SubscriptionStatusEnum.cs" />
+    <Compile Include="Internal\JSONSupport.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
