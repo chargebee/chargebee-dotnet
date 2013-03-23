@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
-        <id>chargebee-dotnet</id>
+        <id>ChargeBee</id>
         <version>1.0.1</version>
         <title>ChargeBee DotNet Library</title>
-        <authors>ChargeBee</authors>
+        <authors>rr@chargebee.com</authors>
         <owners>ChargeBee</owners>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Client library for easily inegrating with the ChargeBee service</description>
