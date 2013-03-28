@@ -21,12 +21,12 @@ namespace ChargeBee.Models
         public static UpdateRequest Update()
         {
             string url = ApiUtil.BuildUrl("addresses");
-            return new UpdateRequest(url);
+            return new UpdateRequest(url, HttpMethod.POST);
         }
         public static RetrieveRequest Retrieve()
         {
             string url = ApiUtil.BuildUrl("addresses");
-            return new RetrieveRequest(url);
+            return new RetrieveRequest(url, HttpMethod.GET);
         }
         #endregion
         
@@ -85,11 +85,9 @@ namespace ChargeBee.Models
         #region Requests
         public class UpdateRequest : EntityRequest 
         {
-
-            public UpdateRequest(string url) 
-                    : base(url)
+            public UpdateRequest(string url, HttpMethod method) 
+                    : base(url, method)
             {
-                m_method = HttpMethod.POST;
             }
 
             public UpdateRequest SubscriptionId(string subscriptionId) 
@@ -155,11 +153,9 @@ namespace ChargeBee.Models
         }
         public class RetrieveRequest : EntityRequest 
         {
-
-            public RetrieveRequest(string url) 
-                    : base(url)
+            public RetrieveRequest(string url, HttpMethod method) 
+                    : base(url, method)
             {
-                m_method = HttpMethod.GET;
             }
 
             public RetrieveRequest SubscriptionId(string subscriptionId) 

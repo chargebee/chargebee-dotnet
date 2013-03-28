@@ -40,7 +40,7 @@ namespace ChargeBee.Models
         public static EntityRequest Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("events", CheckNull(id));
-            return new EntityRequest(url);
+            return new EntityRequest(url, HttpMethod.GET);
         }
         #endregion
         
@@ -75,11 +75,9 @@ namespace ChargeBee.Models
         #region Requests
         public class EventListRequest : ListRequest 
         {
-
             public EventListRequest(string url) 
                     : base(url)
             {
-                m_method = HttpMethod.GET;
             }
 
             public EventListRequest Limit(int limit) 
@@ -92,12 +90,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("offset", offset);
                 return this;
             }
-            public EventListRequest StartTime(DateTime startTime) 
+            public EventListRequest StartTime(long startTime) 
             {
                 m_params.AddOpt("start_time", startTime);
                 return this;
             }
-            public EventListRequest EndTime(DateTime endTime) 
+            public EventListRequest EndTime(long endTime) 
             {
                 m_params.AddOpt("end_time", endTime);
                 return this;

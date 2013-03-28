@@ -21,32 +21,32 @@ namespace ChargeBee.Models
         public static CheckoutNewRequest CheckoutNew()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "checkout_new");
-            return new CheckoutNewRequest(url);
+            return new CheckoutNewRequest(url, HttpMethod.POST);
         }
         public static CheckoutExistingRequest CheckoutExisting()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "checkout_existing");
-            return new CheckoutExistingRequest(url);
+            return new CheckoutExistingRequest(url, HttpMethod.POST);
         }
         public static UpdateCardRequest UpdateCard()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "update_card");
-            return new UpdateCardRequest(url);
+            return new UpdateCardRequest(url, HttpMethod.POST);
         }
         public static CheckoutOnetimeChargeRequest CheckoutOnetimeCharge()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "checkout_onetime_charge");
-            return new CheckoutOnetimeChargeRequest(url);
+            return new CheckoutOnetimeChargeRequest(url, HttpMethod.POST);
         }
         public static CheckoutOnetimeAddonsRequest CheckoutOnetimeAddons()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "checkout_onetime_addons");
-            return new CheckoutOnetimeAddonsRequest(url);
+            return new CheckoutOnetimeAddonsRequest(url, HttpMethod.POST);
         }
         public static EntityRequest Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("hosted_pages", CheckNull(id));
-            return new EntityRequest(url);
+            return new EntityRequest(url, HttpMethod.GET);
         }
         #endregion
         
@@ -97,11 +97,9 @@ namespace ChargeBee.Models
         #region Requests
         public class CheckoutNewRequest : EntityRequest 
         {
-
-            public CheckoutNewRequest(string url) 
-                    : base(url)
+            public CheckoutNewRequest(string url, HttpMethod method) 
+                    : base(url, method)
             {
-                m_method = HttpMethod.POST;
             }
 
             public CheckoutNewRequest BillingCycles(int billingCycles) 
@@ -154,7 +152,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
                 return this;
             }
-            public CheckoutNewRequest SubscriptionTrialEnd(DateTime subscriptionTrialEnd) 
+            public CheckoutNewRequest SubscriptionTrialEnd(long subscriptionTrialEnd) 
             {
                 m_params.AddOpt("subscription[trial_end]", subscriptionTrialEnd);
                 return this;
@@ -188,11 +186,9 @@ namespace ChargeBee.Models
         }
         public class CheckoutExistingRequest : EntityRequest 
         {
-
-            public CheckoutExistingRequest(string url) 
-                    : base(url)
+            public CheckoutExistingRequest(string url, HttpMethod method) 
+                    : base(url, method)
             {
-                m_method = HttpMethod.POST;
             }
 
             public CheckoutExistingRequest BillingCycles(int billingCycles) 
@@ -230,7 +226,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
                 return this;
             }
-            public CheckoutExistingRequest SubscriptionTrialEnd(DateTime subscriptionTrialEnd) 
+            public CheckoutExistingRequest SubscriptionTrialEnd(long subscriptionTrialEnd) 
             {
                 m_params.AddOpt("subscription[trial_end]", subscriptionTrialEnd);
                 return this;
@@ -264,11 +260,9 @@ namespace ChargeBee.Models
         }
         public class UpdateCardRequest : EntityRequest 
         {
-
-            public UpdateCardRequest(string url) 
-                    : base(url)
+            public UpdateCardRequest(string url, HttpMethod method) 
+                    : base(url, method)
             {
-                m_method = HttpMethod.POST;
             }
 
             public UpdateCardRequest Embed(bool embed) 
@@ -295,11 +289,9 @@ namespace ChargeBee.Models
         }
         public class CheckoutOnetimeChargeRequest : EntityRequest 
         {
-
-            public CheckoutOnetimeChargeRequest(string url) 
-                    : base(url)
+            public CheckoutOnetimeChargeRequest(string url, HttpMethod method) 
+                    : base(url, method)
             {
-                m_method = HttpMethod.POST;
             }
 
             public CheckoutOnetimeChargeRequest Amount(int amount) 
@@ -330,11 +322,9 @@ namespace ChargeBee.Models
         }
         public class CheckoutOnetimeAddonsRequest : EntityRequest 
         {
-
-            public CheckoutOnetimeAddonsRequest(string url) 
-                    : base(url)
+            public CheckoutOnetimeAddonsRequest(string url, HttpMethod method) 
+                    : base(url, method)
             {
-                m_method = HttpMethod.POST;
             }
 
             public CheckoutOnetimeAddonsRequest Coupon(string coupon) 

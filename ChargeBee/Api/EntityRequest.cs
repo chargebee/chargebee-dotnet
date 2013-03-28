@@ -5,13 +5,14 @@ namespace ChargeBee.Api
     public class EntityRequest
     {
         string m_url;
-        protected HttpMethod m_method = HttpMethod.GET;
+        protected HttpMethod m_method;
         protected Params m_params = new Params();
 
-        public EntityRequest(string url)
-        {
-            m_url = url;
-        }
+		public EntityRequest(string url, HttpMethod method)
+		{
+			m_url = url;
+			m_method = method;
+		}
 
         public EntityResult Request()
         {

@@ -26,7 +26,7 @@ namespace ChargeBee.Models
         public static EntityRequest Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("plans", CheckNull(id));
-            return new EntityRequest(url);
+            return new EntityRequest(url, HttpMethod.GET);
         }
         #endregion
         

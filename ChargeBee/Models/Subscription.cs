@@ -21,7 +21,7 @@ namespace ChargeBee.Models
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("subscriptions");
-            return new CreateRequest(url);
+            return new CreateRequest(url, HttpMethod.POST);
         }
         public static ListRequest List()
         {
@@ -31,22 +31,22 @@ namespace ChargeBee.Models
         public static EntityRequest Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id));
-            return new EntityRequest(url);
+            return new EntityRequest(url, HttpMethod.GET);
         }
         public static UpdateRequest Update(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id));
-            return new UpdateRequest(url);
+            return new UpdateRequest(url, HttpMethod.POST);
         }
         public static CancelRequest Cancel(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "cancel");
-            return new CancelRequest(url);
+            return new CancelRequest(url, HttpMethod.POST);
         }
         public static ReactivateRequest Reactivate(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "reactivate");
-            return new ReactivateRequest(url);
+            return new ReactivateRequest(url, HttpMethod.POST);
         }
         #endregion
         
@@ -133,11 +133,9 @@ namespace ChargeBee.Models
         #region Requests
         public class CreateRequest : EntityRequest 
         {
-
-            public CreateRequest(string url) 
-                    : base(url)
+            public CreateRequest(string url, HttpMethod method) 
+                    : base(url, method)
             {
-                m_method = HttpMethod.POST;
             }
 
             public CreateRequest Id(string id) 
@@ -155,7 +153,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("plan_quantity", planQuantity);
                 return this;
             }
-            public CreateRequest TrialEnd(DateTime trialEnd) 
+            public CreateRequest TrialEnd(long trialEnd) 
             {
                 m_params.AddOpt("trial_end", trialEnd);
                 return this;
@@ -278,11 +276,9 @@ namespace ChargeBee.Models
         }
         public class UpdateRequest : EntityRequest 
         {
-
-            public UpdateRequest(string url) 
-                    : base(url)
+            public UpdateRequest(string url, HttpMethod method) 
+                    : base(url, method)
             {
-                m_method = HttpMethod.POST;
             }
 
             public UpdateRequest PlanId(string planId) 
@@ -295,7 +291,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("plan_quantity", planQuantity);
                 return this;
             }
-            public UpdateRequest TrialEnd(DateTime trialEnd) 
+            public UpdateRequest TrialEnd(long trialEnd) 
             {
                 m_params.AddOpt("trial_end", trialEnd);
                 return this;
@@ -413,11 +409,9 @@ namespace ChargeBee.Models
         }
         public class CancelRequest : EntityRequest 
         {
-
-            public CancelRequest(string url) 
-                    : base(url)
+            public CancelRequest(string url, HttpMethod method) 
+                    : base(url, method)
             {
-                m_method = HttpMethod.POST;
             }
 
             public CancelRequest EndOfTerm(bool endOfTerm) 
@@ -428,14 +422,12 @@ namespace ChargeBee.Models
         }
         public class ReactivateRequest : EntityRequest 
         {
-
-            public ReactivateRequest(string url) 
-                    : base(url)
+            public ReactivateRequest(string url, HttpMethod method) 
+                    : base(url, method)
             {
-                m_method = HttpMethod.POST;
             }
 
-            public ReactivateRequest TrialEnd(DateTime trialEnd) 
+            public ReactivateRequest TrialEnd(long trialEnd) 
             {
                 m_params.AddOpt("trial_end", trialEnd);
                 return this;

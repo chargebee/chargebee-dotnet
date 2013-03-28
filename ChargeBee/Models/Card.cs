@@ -21,12 +21,12 @@ namespace ChargeBee.Models
         public static EntityRequest Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("cards", CheckNull(id));
-            return new EntityRequest(url);
+            return new EntityRequest(url, HttpMethod.GET);
         }
         public static UpdateCardForCustomerRequest UpdateCardForCustomer(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "credit_card");
-            return new UpdateCardForCustomerRequest(url);
+            return new UpdateCardForCustomerRequest(url, HttpMethod.POST);
         }
         #endregion
         
@@ -105,11 +105,9 @@ namespace ChargeBee.Models
         #region Requests
         public class UpdateCardForCustomerRequest : EntityRequest 
         {
-
-            public UpdateCardForCustomerRequest(string url) 
-                    : base(url)
+            public UpdateCardForCustomerRequest(string url, HttpMethod method) 
+                    : base(url, method)
             {
-                m_method = HttpMethod.POST;
             }
 
             public UpdateCardForCustomerRequest Gateway(GatewayEnum gateway) 

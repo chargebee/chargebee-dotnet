@@ -26,7 +26,7 @@ namespace ChargeBee.Models
         public static EntityRequest Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("transactions", CheckNull(id));
-            return new EntityRequest(url);
+            return new EntityRequest(url, HttpMethod.GET);
         }
         public static ListRequest TransactionsForSubscription(string id)
         {

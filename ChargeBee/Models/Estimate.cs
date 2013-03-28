@@ -21,12 +21,12 @@ namespace ChargeBee.Models
         public static CreateSubscriptionRequest CreateSubscription()
         {
             string url = ApiUtil.BuildUrl("estimates", "create_subscription");
-            return new CreateSubscriptionRequest(url);
+            return new CreateSubscriptionRequest(url, HttpMethod.POST);
         }
         public static UpdateSubscriptionRequest UpdateSubscription()
         {
             string url = ApiUtil.BuildUrl("estimates", "update_subscription");
-            return new UpdateSubscriptionRequest(url);
+            return new UpdateSubscriptionRequest(url, HttpMethod.POST);
         }
         #endregion
         
@@ -81,11 +81,9 @@ namespace ChargeBee.Models
         #region Requests
         public class CreateSubscriptionRequest : EntityRequest 
         {
-
-            public CreateSubscriptionRequest(string url) 
-                    : base(url)
+            public CreateSubscriptionRequest(string url, HttpMethod method) 
+                    : base(url, method)
             {
-                m_method = HttpMethod.POST;
             }
 
             public CreateSubscriptionRequest BillingCycles(int billingCycles) 
@@ -108,7 +106,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
                 return this;
             }
-            public CreateSubscriptionRequest SubscriptionTrialEnd(DateTime subscriptionTrialEnd) 
+            public CreateSubscriptionRequest SubscriptionTrialEnd(long subscriptionTrialEnd) 
             {
                 m_params.AddOpt("subscription[trial_end]", subscriptionTrialEnd);
                 return this;
@@ -131,11 +129,9 @@ namespace ChargeBee.Models
         }
         public class UpdateSubscriptionRequest : EntityRequest 
         {
-
-            public UpdateSubscriptionRequest(string url) 
-                    : base(url)
+            public UpdateSubscriptionRequest(string url, HttpMethod method) 
+                    : base(url, method)
             {
-                m_method = HttpMethod.POST;
             }
 
             public UpdateSubscriptionRequest BillingCycles(int billingCycles) 
@@ -173,7 +169,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
                 return this;
             }
-            public UpdateSubscriptionRequest SubscriptionTrialEnd(DateTime subscriptionTrialEnd) 
+            public UpdateSubscriptionRequest SubscriptionTrialEnd(long subscriptionTrialEnd) 
             {
                 m_params.AddOpt("subscription[trial_end]", subscriptionTrialEnd);
                 return this;

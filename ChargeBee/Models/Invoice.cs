@@ -21,12 +21,12 @@ namespace ChargeBee.Models
         public static AddChargeRequest AddCharge(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "add_charge");
-            return new AddChargeRequest(url);
+            return new AddChargeRequest(url, HttpMethod.POST);
         }
         public static AddAddonChargeRequest AddAddonCharge(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "add_addon_charge");
-            return new AddAddonChargeRequest(url);
+            return new AddAddonChargeRequest(url, HttpMethod.POST);
         }
         public static ListRequest List()
         {
@@ -41,22 +41,22 @@ namespace ChargeBee.Models
         public static EntityRequest Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id));
-            return new EntityRequest(url);
+            return new EntityRequest(url, HttpMethod.GET);
         }
         public static EntityRequest Collect(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "collect");
-            return new EntityRequest(url);
+            return new EntityRequest(url, HttpMethod.POST);
         }
         public static ChargeRequest Charge()
         {
             string url = ApiUtil.BuildUrl("invoices", "charge");
-            return new ChargeRequest(url);
+            return new ChargeRequest(url, HttpMethod.POST);
         }
         public static ChargeAddonRequest ChargeAddon()
         {
             string url = ApiUtil.BuildUrl("invoices", "charge_addon");
-            return new ChargeAddonRequest(url);
+            return new ChargeAddonRequest(url, HttpMethod.POST);
         }
         #endregion
         
@@ -127,11 +127,9 @@ namespace ChargeBee.Models
         #region Requests
         public class AddChargeRequest : EntityRequest 
         {
-
-            public AddChargeRequest(string url) 
-                    : base(url)
+            public AddChargeRequest(string url, HttpMethod method) 
+                    : base(url, method)
             {
-                m_method = HttpMethod.POST;
             }
 
             public AddChargeRequest Amount(int amount) 
@@ -147,11 +145,9 @@ namespace ChargeBee.Models
         }
         public class AddAddonChargeRequest : EntityRequest 
         {
-
-            public AddAddonChargeRequest(string url) 
-                    : base(url)
+            public AddAddonChargeRequest(string url, HttpMethod method) 
+                    : base(url, method)
             {
-                m_method = HttpMethod.POST;
             }
 
             public AddAddonChargeRequest AddonId(string addonId) 
@@ -167,11 +163,9 @@ namespace ChargeBee.Models
         }
         public class ChargeRequest : EntityRequest 
         {
-
-            public ChargeRequest(string url) 
-                    : base(url)
+            public ChargeRequest(string url, HttpMethod method) 
+                    : base(url, method)
             {
-                m_method = HttpMethod.POST;
             }
 
             public ChargeRequest SubscriptionId(string subscriptionId) 
@@ -192,11 +186,9 @@ namespace ChargeBee.Models
         }
         public class ChargeAddonRequest : EntityRequest 
         {
-
-            public ChargeAddonRequest(string url) 
-                    : base(url)
+            public ChargeAddonRequest(string url, HttpMethod method) 
+                    : base(url, method)
             {
-                m_method = HttpMethod.POST;
             }
 
             public ChargeAddonRequest SubscriptionId(string subscriptionId) 

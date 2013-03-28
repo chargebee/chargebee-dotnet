@@ -26,12 +26,12 @@ namespace ChargeBee.Models
         public static EntityRequest Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id));
-            return new EntityRequest(url);
+            return new EntityRequest(url, HttpMethod.GET);
         }
         public static UpdateRequest Update(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id));
-            return new UpdateRequest(url);
+            return new UpdateRequest(url, HttpMethod.POST);
         }
         #endregion
         
@@ -74,11 +74,9 @@ namespace ChargeBee.Models
         #region Requests
         public class UpdateRequest : EntityRequest 
         {
-
-            public UpdateRequest(string url) 
-                    : base(url)
+            public UpdateRequest(string url, HttpMethod method) 
+                    : base(url, method)
             {
-                m_method = HttpMethod.POST;
             }
 
             public UpdateRequest FirstName(string firstName) 

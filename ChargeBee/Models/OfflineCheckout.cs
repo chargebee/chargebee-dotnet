@@ -21,17 +21,17 @@ namespace ChargeBee.Models
         public static EntityRequest Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("offline_checkouts", CheckNull(id));
-            return new EntityRequest(url);
+            return new EntityRequest(url, HttpMethod.GET);
         }
         public static PreRegisterRequest PreRegister()
         {
             string url = ApiUtil.BuildUrl("offline_checkouts", "pre_register");
-            return new PreRegisterRequest(url);
+            return new PreRegisterRequest(url, HttpMethod.POST);
         }
         public static PostRegisterRequest PostRegister(string id)
         {
             string url = ApiUtil.BuildUrl("offline_checkouts", CheckNull(id), "post_register");
-            return new PostRegisterRequest(url);
+            return new PostRegisterRequest(url, HttpMethod.POST);
         }
         #endregion
         
@@ -66,11 +66,9 @@ namespace ChargeBee.Models
         #region Requests
         public class PreRegisterRequest : EntityRequest 
         {
-
-            public PreRegisterRequest(string url) 
-                    : base(url)
+            public PreRegisterRequest(string url, HttpMethod method) 
+                    : base(url, method)
             {
-                m_method = HttpMethod.POST;
             }
 
             public PreRegisterRequest BillingCycles(int billingCycles) 
@@ -126,11 +124,9 @@ namespace ChargeBee.Models
         }
         public class PostRegisterRequest : EntityRequest 
         {
-
-            public PostRegisterRequest(string url) 
-                    : base(url)
+            public PostRegisterRequest(string url, HttpMethod method) 
+                    : base(url, method)
             {
-                m_method = HttpMethod.POST;
             }
 
             public PostRegisterRequest Succeeded(bool succeeded) 
