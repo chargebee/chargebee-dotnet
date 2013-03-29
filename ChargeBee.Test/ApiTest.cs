@@ -187,7 +187,8 @@ namespace ChargeBee.Test
             Subscription subs = result.Subscription;
             result = Subscription.Cancel(subs.Id).Request();
             result = Subscription.Reactivate(subs.Id).
-                TrialEnd(DateTime.Now.AddDays(5)).Request();
+				TrialEnd((long)(DateTime.Now.AddDays(5)-new DateTime(1970, 1, 1)).TotalSeconds)
+					.Request();
         }
 
         [Test]
