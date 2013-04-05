@@ -60,6 +60,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("vat_number", false); }
         }
+        public AutoCollectionEnum AutoCollection 
+        {
+            get { return GetEnum<AutoCollectionEnum>("auto_collection", true); }
+        }
         public DateTime CreatedAt 
         {
             get { return (DateTime)GetDateTime("created_at", true); }

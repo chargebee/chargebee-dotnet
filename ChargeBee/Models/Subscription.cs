@@ -188,6 +188,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[company]", customerCompany);
                 return this;
             }
+            public CreateRequest CustomerAutoCollection(AutoCollectionEnum customerAutoCollection) 
+            {
+                m_params.AddOpt("customer[auto_collection]", customerAutoCollection);
+                return this;
+            }
             public CreateRequest CardGateway(GatewayEnum cardGateway) 
             {
                 m_params.AddOpt("card[gateway]", cardGateway);

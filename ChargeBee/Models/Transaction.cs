@@ -107,8 +107,14 @@ namespace ChargeBee.Models
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
             [Description("card")]
             Card,
-            [Description("offline")]
-            Offline,
+            [Description("cash")]
+            Cash,
+            [Description("check")]
+            Check,
+            [Description("bank_transfer")]
+            BankTransfer,
+            [Description("other")]
+            Other,
 
         }
         public enum TypeEnum
