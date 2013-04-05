@@ -24,7 +24,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\ChargeBee.xml</DocumentationFile>
-    <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -70,6 +69,7 @@
     <Compile Include="Models\Enums\GatewayEnum.cs" />
     <Compile Include="Models\Enums\SubscriptionStatusEnum.cs" />
     <Compile Include="Internal\JSONSupport.cs" />
+    <Compile Include="Models\Enums\AutoCollectionEnum.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
