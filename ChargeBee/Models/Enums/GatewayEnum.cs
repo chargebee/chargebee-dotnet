@@ -33,6 +33,9 @@ namespace ChargeBee.Models.Enums
         [Description("paypal_pro")]
         PaypalPro,
 
+        [Description("paymill")]
+        Paymill,
+
         [Description("pin")]
         Pin,
 
