@@ -51,6 +51,9 @@ namespace ChargeBee.Models.Enums
         [Description("eway")]
         Eway,
 
+        [Description("migs")]
+        Migs,
+
         [Description("hdfc")]
         Hdfc,
 

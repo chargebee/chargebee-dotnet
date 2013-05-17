@@ -60,8 +60,5 @@ namespace ChargeBee.Models.Enums
         [Description("card_expired")]
         CardExpired,
 
-        [Description("ping")]
-        Ping,
-
     }
 }

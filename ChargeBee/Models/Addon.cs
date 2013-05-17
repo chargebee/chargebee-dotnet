@@ -55,6 +55,14 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int>("price", true); }
         }
+        public int? Period 
+        {
+            get { return GetValue<int?>("period", false); }
+        }
+        public PeriodUnitEnum PeriodUnit 
+        {
+            get { return GetEnum<PeriodUnitEnum>("period_unit", true); }
+        }
         public string Unit 
         {
             get { return GetValue<string>("unit", false); }
@@ -91,6 +99,21 @@ namespace ChargeBee.Models
             Recurring,
             [Description("non_recurring")]
             NonRecurring,
+
+        }
+        public enum PeriodUnitEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [Description("week")]
+            Week,
+            [Description("month")]
+            Month,
+            [Description("year")]
+            Year,
+            [Description("not_applicable")]
+            NotApplicable,
 
         }
         public enum StatusEnum

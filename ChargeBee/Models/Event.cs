@@ -115,6 +115,8 @@ namespace ChargeBee.Models
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
             [Description("not_configured")]
             NotConfigured,
+            [Description("not_applicable")]
+            NotApplicable,
             [Description("scheduled")]
             Scheduled,
             [Description("succeeded")]
