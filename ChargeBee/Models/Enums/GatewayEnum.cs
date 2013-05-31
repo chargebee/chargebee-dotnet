@@ -12,17 +12,53 @@ namespace ChargeBee.Models.Enums
         [Description("chargebee")]
         Chargebee,
 
-        [Description("braintree")]
-        Braintree,
-
         [Description("authorize_net")]
         AuthorizeNet,
 
-        [Description("stripe")]
-        Stripe,
-
         [Description("balanced_payments")]
         BalancedPayments,
+
+        [Description("beanstream")]
+        Beanstream,
+
+        [Description("braintree")]
+        Braintree,
+
+        [Description("elavon")]
+        Elavon,
+
+        [Description("eway")]
+        Eway,
+
+        [Description("hdfc")]
+        Hdfc,
+
+        [Description("migs")]
+        Migs,
+
+        [Description("nmi")]
+        Nmi,
+
+        [Description("ogone")]
+        Ogone,
+
+        [Description("paymill")]
+        Paymill,
+
+        [Description("paypal_pro")]
+        PaypalPro,
+
+        [Description("paypal_payflow_pro")]
+        PaypalPayflowPro,
+
+        [Description("pin")]
+        Pin,
+
+        [Description("sage_pay")]
+        SagePay,
+
+        [Description("stripe")]
+        Stripe,
 
         [Description("tco")]
         Tco,
@@ -30,32 +66,8 @@ namespace ChargeBee.Models.Enums
         [Description("worldpay")]
         Worldpay,
 
-        [Description("paypal_pro")]
-        PaypalPro,
-
-        [Description("paymill")]
-        Paymill,
-
-        [Description("pin")]
-        Pin,
-
         [Description("wirecard")]
         Wirecard,
-
-        [Description("ogone")]
-        Ogone,
-
-        [Description("beanstream")]
-        Beanstream,
-
-        [Description("eway")]
-        Eway,
-
-        [Description("migs")]
-        Migs,
-
-        [Description("hdfc")]
-        Hdfc,
 
         [Description("not_applicable")]
         NotApplicable,
