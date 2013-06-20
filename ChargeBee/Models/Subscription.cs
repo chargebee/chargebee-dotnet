@@ -38,6 +38,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id));
             return new UpdateRequest(url, HttpMethod.POST);
         }
+        public static ChangeTermEndRequest ChangeTermEnd(string id)
+        {
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "change_term_end");
+            return new ChangeTermEndRequest(url, HttpMethod.POST);
+        }
         public static CancelRequest Cancel(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "cancel");
@@ -119,6 +124,7 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<SubscriptionAddon>("addons"); }
         }
+        [Obsolete]
         public string Coupon 
         {
             get { return GetValue<string>("coupon", false); }
@@ -409,6 +415,19 @@ namespace ChargeBee.Models
             public UpdateRequest AddonQuantity(int index, int addonQuantity) 
             {
                 m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
+                return this;
+            }
+        }
+        public class ChangeTermEndRequest : EntityRequest 
+        {
+            public ChangeTermEndRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public ChangeTermEndRequest TermEndsAt(long termEndsAt) 
+            {
+                m_params.Add("term_ends_at", termEndsAt);
                 return this;
             }
         }

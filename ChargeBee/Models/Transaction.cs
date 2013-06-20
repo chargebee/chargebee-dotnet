@@ -72,6 +72,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("id_at_gateway", false); }
         }
+        public StatusEnum? Status 
+        {
+            get { return GetEnum<StatusEnum>("status", false); }
+        }
         public string ErrorCode 
         {
             get { return GetValue<string>("error_code", false); }
@@ -83,10 +87,6 @@ namespace ChargeBee.Models
         public DateTime? VoidedAt 
         {
             get { return GetDateTime("voided_at", false); }
-        }
-        public StatusEnum Status 
-        {
-            get { return GetEnum<StatusEnum>("status", true); }
         }
         public string MaskedCardNumber 
         {
@@ -141,6 +141,10 @@ namespace ChargeBee.Models
             Voided,
             [Description("failure")]
             Failure,
+            [Description("timeout")]
+            Timeout,
+            [Description("needs_attention")]
+            NeedsAttention,
 
         }
 

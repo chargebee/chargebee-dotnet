@@ -79,9 +79,14 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int?>("redemptions", false); }
         }
+        [Obsolete]
         public ApplyDiscountOnEnum ApplyDiscountOn 
         {
             get { return GetEnum<ApplyDiscountOnEnum>("apply_discount_on", true); }
+        }
+        public ApplyOnEnum ApplyOn 
+        {
+            get { return GetEnum<ApplyOnEnum>("apply_on", true); }
         }
         public DateTime CreatedAt 
         {
@@ -149,6 +154,23 @@ namespace ChargeBee.Models
             PlansAndAddons,
             [Description("plans_with_quantity")]
             PlansWithQuantity,
+            [Description("not_applicable")]
+            NotApplicable,
+
+        }
+        public enum ApplyOnEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [Description("invoice_amount")]
+            InvoiceAmount,
+            [Description("specified_items_total")]
+            SpecifiedItemsTotal,
+            [Description("each_specified_item")]
+            EachSpecifiedItem,
+            [Description("each_unit_of_specified_items")]
+            EachUnitOfSpecifiedItems,
 
         }
 
