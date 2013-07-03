@@ -30,6 +30,9 @@ namespace ChargeBee.Models.Enums
         [Description("eway")]
         Eway,
 
+        [Description("first_data_global")]
+        FirstDataGlobal,
+
         [Description("hdfc")]
         Hdfc,
 
