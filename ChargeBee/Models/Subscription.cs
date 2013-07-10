@@ -23,6 +23,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("subscriptions");
             return new CreateRequest(url, HttpMethod.POST);
         }
+        public static CreateForCustomerRequest CreateForCustomer(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "subscriptions");
+            return new CreateForCustomerRequest(url, HttpMethod.POST);
+        }
         public static ListRequest List()
         {
             string url = ApiUtil.BuildUrl("subscriptions");
@@ -174,6 +179,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("coupon", coupon);
                 return this;
             }
+            public CreateRequest CustomerId(string customerId) 
+            {
+                m_params.AddOpt("customer[id]", customerId);
+                return this;
+            }
             public CreateRequest CustomerEmail(string customerEmail) 
             {
                 m_params.AddOpt("customer[email]", customerEmail);
@@ -280,6 +290,54 @@ namespace ChargeBee.Models
                 return this;
             }
             public CreateRequest AddonQuantity(int index, int addonQuantity) 
+            {
+                m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
+                return this;
+            }
+        }
+        public class CreateForCustomerRequest : EntityRequest 
+        {
+            public CreateForCustomerRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CreateForCustomerRequest Id(string id) 
+            {
+                m_params.AddOpt("id", id);
+                return this;
+            }
+            public CreateForCustomerRequest PlanId(string planId) 
+            {
+                m_params.Add("plan_id", planId);
+                return this;
+            }
+            public CreateForCustomerRequest PlanQuantity(int planQuantity) 
+            {
+                m_params.AddOpt("plan_quantity", planQuantity);
+                return this;
+            }
+            public CreateForCustomerRequest TrialEnd(long trialEnd) 
+            {
+                m_params.AddOpt("trial_end", trialEnd);
+                return this;
+            }
+            public CreateForCustomerRequest BillingCycles(int billingCycles) 
+            {
+                m_params.AddOpt("billing_cycles", billingCycles);
+                return this;
+            }
+            public CreateForCustomerRequest Coupon(string coupon) 
+            {
+                m_params.AddOpt("coupon", coupon);
+                return this;
+            }
+            public CreateForCustomerRequest AddonId(int index, string addonId) 
+            {
+                m_params.AddOpt("addons[id][" + index + "]", addonId);
+                return this;
+            }
+            public CreateForCustomerRequest AddonQuantity(int index, int addonQuantity) 
             {
                 m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
                 return this;
