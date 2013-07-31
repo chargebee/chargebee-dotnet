@@ -18,15 +18,15 @@ namespace ChargeBee.Models
     
 
         #region Methods
-        public static UpdateRequest Update()
-        {
-            string url = ApiUtil.BuildUrl("addresses");
-            return new UpdateRequest(url, HttpMethod.POST);
-        }
         public static RetrieveRequest Retrieve()
         {
             string url = ApiUtil.BuildUrl("addresses");
             return new RetrieveRequest(url, HttpMethod.GET);
+        }
+        public static UpdateRequest Update()
+        {
+            string url = ApiUtil.BuildUrl("addresses");
+            return new UpdateRequest(url, HttpMethod.POST);
         }
         #endregion
         
@@ -83,6 +83,24 @@ namespace ChargeBee.Models
         #endregion
         
         #region Requests
+        public class RetrieveRequest : EntityRequest 
+        {
+            public RetrieveRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public RetrieveRequest SubscriptionId(string subscriptionId) 
+            {
+                m_params.Add("subscription_id", subscriptionId);
+                return this;
+            }
+            public RetrieveRequest Label(string label) 
+            {
+                m_params.Add("label", label);
+                return this;
+            }
+        }
         public class UpdateRequest : EntityRequest 
         {
             public UpdateRequest(string url, HttpMethod method) 
@@ -148,24 +166,6 @@ namespace ChargeBee.Models
             public UpdateRequest Country(string country) 
             {
                 m_params.AddOpt("country", country);
-                return this;
-            }
-        }
-        public class RetrieveRequest : EntityRequest 
-        {
-            public RetrieveRequest(string url, HttpMethod method) 
-                    : base(url, method)
-            {
-            }
-
-            public RetrieveRequest SubscriptionId(string subscriptionId) 
-            {
-                m_params.Add("subscription_id", subscriptionId);
-                return this;
-            }
-            public RetrieveRequest Label(string label) 
-            {
-                m_params.Add("label", label);
                 return this;
             }
         }

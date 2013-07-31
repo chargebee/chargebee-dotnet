@@ -18,15 +18,15 @@ namespace ChargeBee.Models
     
 
         #region Methods
-        public static AddChargeRequest AddCharge(string id)
+        public static ChargeRequest Charge()
         {
-            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "add_charge");
-            return new AddChargeRequest(url, HttpMethod.POST);
+            string url = ApiUtil.BuildUrl("invoices", "charge");
+            return new ChargeRequest(url, HttpMethod.POST);
         }
-        public static AddAddonChargeRequest AddAddonCharge(string id)
+        public static ChargeAddonRequest ChargeAddon()
         {
-            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "add_addon_charge");
-            return new AddAddonChargeRequest(url, HttpMethod.POST);
+            string url = ApiUtil.BuildUrl("invoices", "charge_addon");
+            return new ChargeAddonRequest(url, HttpMethod.POST);
         }
         public static ListRequest List()
         {
@@ -43,20 +43,20 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id));
             return new EntityRequest(url, HttpMethod.GET);
         }
+        public static AddChargeRequest AddCharge(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "add_charge");
+            return new AddChargeRequest(url, HttpMethod.POST);
+        }
+        public static AddAddonChargeRequest AddAddonCharge(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "add_addon_charge");
+            return new AddAddonChargeRequest(url, HttpMethod.POST);
+        }
         public static EntityRequest Collect(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "collect");
             return new EntityRequest(url, HttpMethod.POST);
-        }
-        public static ChargeRequest Charge()
-        {
-            string url = ApiUtil.BuildUrl("invoices", "charge");
-            return new ChargeRequest(url, HttpMethod.POST);
-        }
-        public static ChargeAddonRequest ChargeAddon()
-        {
-            string url = ApiUtil.BuildUrl("invoices", "charge_addon");
-            return new ChargeAddonRequest(url, HttpMethod.POST);
         }
         #endregion
         
@@ -125,42 +125,6 @@ namespace ChargeBee.Models
         #endregion
         
         #region Requests
-        public class AddChargeRequest : EntityRequest 
-        {
-            public AddChargeRequest(string url, HttpMethod method) 
-                    : base(url, method)
-            {
-            }
-
-            public AddChargeRequest Amount(int amount) 
-            {
-                m_params.Add("amount", amount);
-                return this;
-            }
-            public AddChargeRequest Description(string description) 
-            {
-                m_params.Add("description", description);
-                return this;
-            }
-        }
-        public class AddAddonChargeRequest : EntityRequest 
-        {
-            public AddAddonChargeRequest(string url, HttpMethod method) 
-                    : base(url, method)
-            {
-            }
-
-            public AddAddonChargeRequest AddonId(string addonId) 
-            {
-                m_params.Add("addon_id", addonId);
-                return this;
-            }
-            public AddAddonChargeRequest AddonQuantity(int addonQuantity) 
-            {
-                m_params.AddOpt("addon_quantity", addonQuantity);
-                return this;
-            }
-        }
         public class ChargeRequest : EntityRequest 
         {
             public ChargeRequest(string url, HttpMethod method) 
@@ -202,6 +166,42 @@ namespace ChargeBee.Models
                 return this;
             }
             public ChargeAddonRequest AddonQuantity(int addonQuantity) 
+            {
+                m_params.AddOpt("addon_quantity", addonQuantity);
+                return this;
+            }
+        }
+        public class AddChargeRequest : EntityRequest 
+        {
+            public AddChargeRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public AddChargeRequest Amount(int amount) 
+            {
+                m_params.Add("amount", amount);
+                return this;
+            }
+            public AddChargeRequest Description(string description) 
+            {
+                m_params.Add("description", description);
+                return this;
+            }
+        }
+        public class AddAddonChargeRequest : EntityRequest 
+        {
+            public AddAddonChargeRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public AddAddonChargeRequest AddonId(string addonId) 
+            {
+                m_params.Add("addon_id", addonId);
+                return this;
+            }
+            public AddAddonChargeRequest AddonQuantity(int addonQuantity) 
             {
                 m_params.AddOpt("addon_quantity", addonQuantity);
                 return this;

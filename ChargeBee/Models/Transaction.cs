@@ -23,15 +23,15 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("transactions");
             return new ListRequest(url);
         }
-        public static EntityRequest Retrieve(string id)
-        {
-            string url = ApiUtil.BuildUrl("transactions", CheckNull(id));
-            return new EntityRequest(url, HttpMethod.GET);
-        }
         public static ListRequest TransactionsForSubscription(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "transactions");
             return new ListRequest(url);
+        }
+        public static EntityRequest Retrieve(string id)
+        {
+            string url = ApiUtil.BuildUrl("transactions", CheckNull(id));
+            return new EntityRequest(url, HttpMethod.GET);
         }
         #endregion
         
