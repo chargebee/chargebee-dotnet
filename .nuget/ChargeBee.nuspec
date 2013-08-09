@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>ChargeBee</id>
-        <version>1.0.7</version>
+        <version>1.0.8</version>
         <title>ChargeBee DotNet Library</title>
         <authors>rr@chargebee.com</authors>
         <owners>ChargeBee</owners>
