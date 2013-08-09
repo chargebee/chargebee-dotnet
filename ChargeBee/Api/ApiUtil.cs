@@ -74,7 +74,8 @@ namespace ChargeBee.Api
 
         private static string GetJson(string url, Params parameters, ApiConfig env, out HttpStatusCode code)
         {
-            url = String.Format("{0}?{1}", url, parameters.GetQuery());            HttpWebRequest request = GetRequest(url, HttpMethod.GET, env);
+            url = String.Format("{0}?{1}", url, parameters.GetQuery());            
+			HttpWebRequest request = GetRequest(url, HttpMethod.GET, env);
             return SendRequest(request, out code);
         }
 

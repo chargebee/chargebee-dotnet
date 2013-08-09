@@ -23,7 +23,7 @@ namespace ChargeBee.Internal
 			m_jobj = jobj;
 		}
 
-		protected T GetValue<T>(string key, bool required = true)
+		public T GetValue<T>(string key, bool required = true)
 		{
 			if (required)
 				ThrowIfKeyMissed(key);
@@ -33,14 +33,14 @@ namespace ChargeBee.Internal
 			return m_jobj[key].ToObject<T>();
 		}
 
-		protected DateTime? GetDateTime(string key, bool required = true)
+		public DateTime? GetDateTime(string key, bool required = true)
 		{
 			long? ts = GetValue<long?>(key, required);
 			if (ts == null) return null;
 			return ApiUtil.ConvertFromTimestamp((long)ts);
 		}
 		
-		protected T GetEnum<T>(string key, bool required = true)
+		public T GetEnum<T>(string key, bool required = true)
 		{
 			string value = GetValue<string>(key, required);
 			if (String.IsNullOrEmpty(value)) return default(T);
