@@ -74,7 +74,7 @@ namespace ChargeBee.Api
 
         private static string GetJson(string url, Params parameters, ApiConfig env, out HttpStatusCode code)
         {
-            url = String.Format("{0}?{1}", url, parameters.GetQuery());            
+            url = String.Format("{0}?{1}", url, parameters.GetQuery());
 			HttpWebRequest request = GetRequest(url, HttpMethod.GET, env);
             return SendRequest(request, out code);
         }
@@ -86,10 +86,8 @@ namespace ChargeBee.Api
                 Encoding.GetEncoding(env.Charset).GetBytes(parameters.GetQuery());
 
             request.ContentLength = paramsBytes.Length;
-            request.ContentType = String.Format(
-                "application/x-www-form-urlencoded;charset={0}",
-                env.Charset);
-
+            request.ContentType = 
+				String.Format("application/x-www-form-urlencoded;charset={0}",env.Charset);
             using (Stream stream = request.GetRequestStream())
             {
                 stream.Write(paramsBytes, 0, paramsBytes.Length);
@@ -118,38 +116,6 @@ namespace ChargeBee.Api
 
             ListResult result = new ListResult(code, json);
             return result;
-        }
-
-        public static string Encode(string input)
-        {
-            StringBuilder resultStr = new StringBuilder();
-            foreach (char ch in input)
-            {
-                if (IsUnsafe(ch))
-                {
-                    resultStr.Append('%');
-                    resultStr.Append(ToHex(ch / 16));
-                    resultStr.Append(ToHex(ch % 16));
-                }
-                else
-                {
-                    resultStr.Append(ch);
-                }
-            }
-            return resultStr.ToString();
-        }
-
-        private static char ToHex(int ch)
-        {
-            return (char)(ch < 10 ? '0' + ch : 'A' + ch - 10);
-        }
-
-        private static bool IsUnsafe(char ch)
-        {
-            if (ch > 128 || ch < 0)
-                return true;
-
-            return " %$&+,;=?@<>#%".IndexOf(ch) >= 0;
         }
 
         public static DateTime ConvertFromTimestamp(long timestamp)

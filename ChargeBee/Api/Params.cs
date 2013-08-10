@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
+using System.Web;
 
 namespace ChargeBee.Api
 {
@@ -46,9 +47,8 @@ namespace ChargeBee.Api
 
             foreach (var pair in m_dict)
             {
-                pairs.Add(String.Format("{0}={1}", ApiUtil.Encode(pair.Key), ApiUtil.Encode(pair.Value)));
+				pairs.Add(String.Format("{0}={1}", HttpUtility.UrlPathEncode(pair.Key), HttpUtility.UrlPathEncode(pair.Value)));
             }
-
             return pairs.ToArray();
         }
     }
