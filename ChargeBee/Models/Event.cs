@@ -53,6 +53,10 @@ namespace ChargeBee.Models
         {
             get { return (DateTime)GetDateTime("occurred_at", true); }
         }
+        public SourceEnum Source 
+        {
+            get { return GetEnum<SourceEnum>("source", true); }
+        }
         public WebhookStatusEnum WebhookStatus 
         {
             get { return GetEnum<WebhookStatusEnum>("webhook_status", true); }

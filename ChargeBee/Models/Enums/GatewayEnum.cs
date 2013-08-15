@@ -21,6 +21,9 @@ namespace ChargeBee.Models.Enums
         [Description("beanstream")]
         Beanstream,
 
+        [Description("bluepay")]
+        Bluepay,
+
         [Description("braintree")]
         Braintree,
 
