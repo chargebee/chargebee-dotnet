@@ -2,9 +2,9 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>1.0.9</version>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
+    <version>$version$</version>
+    <authors>ChargeBee</authors>
+    <owners>ChargeBee</owners>
     <licenseUrl>https://raw.github.com/chargebee/chargebee-dotnet/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/chargebee/chargebee-dotnet</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
