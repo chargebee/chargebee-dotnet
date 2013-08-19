@@ -47,6 +47,7 @@
     <Compile Include="Api\ApiUtil.cs" />
     <Compile Include="Api\ListRequest.cs" />
     <Compile Include="Api\ListResult.cs" />
+    <Compile Include="Models\Enums\SourceEnum.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\HostedPage.cs" />
     <Compile Include="Models\Subscription.cs" />
@@ -85,7 +86,6 @@
   </Target>
   -->
   <ItemGroup>
-    <Folder Include="Internal\" />
-    <Folder Include="Models\Enums\" />
+    <Folder Include="lib\" />
   </ItemGroup>
 </Project>

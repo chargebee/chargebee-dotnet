@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>1.0.9</version>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://raw.github.com/chargebee/chargebee-dotnet/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/chargebee/chargebee-dotnet</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="4.5.11" />
+    </dependencies>
+  </metadata>
+</package>
