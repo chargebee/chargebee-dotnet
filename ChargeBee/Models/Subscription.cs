@@ -58,6 +58,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "reactivate");
             return new ReactivateRequest(url, HttpMethod.POST);
         }
+        public static AddCreditRequest AddCredit(string id)
+        {
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "add_credit");
+            return new AddCreditRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -518,6 +523,24 @@ namespace ChargeBee.Models
             public ReactivateRequest TrialPeriodDays(int trialPeriodDays) 
             {
                 m_params.AddOpt("trial_period_days", trialPeriodDays);
+                return this;
+            }
+        }
+        public class AddCreditRequest : EntityRequest 
+        {
+            public AddCreditRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public AddCreditRequest Amount(int amount) 
+            {
+                m_params.Add("amount", amount);
+                return this;
+            }
+            public AddCreditRequest Description(string description) 
+            {
+                m_params.Add("description", description);
                 return this;
             }
         }
