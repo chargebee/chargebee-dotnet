@@ -33,6 +33,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers", CheckNull(id));
             return new UpdateRequest(url, HttpMethod.POST);
         }
+        public static UpdateBillingInfoRequest UpdateBillingInfo(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "update_billing_info");
+            return new UpdateBillingInfoRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -51,6 +56,10 @@ namespace ChargeBee.Models
         public string Email 
         {
             get { return GetValue<string>("email", false); }
+        }
+        public string Phone 
+        {
+            get { return GetValue<string>("phone", false); }
         }
         public string Company 
         {
@@ -71,6 +80,10 @@ namespace ChargeBee.Models
         public CardStatusEnum? CardStatus 
         {
             get { return GetEnum<CardStatusEnum>("card_status", false); }
+        }
+        public CustomerBillingAddress? BillingAddress 
+        {
+            get { return GetSubResource<CustomerBillingAddress>("billing_address"); }
         }
 
         #endregion
@@ -98,9 +111,57 @@ namespace ChargeBee.Models
                 m_params.AddOpt("email", email);
                 return this;
             }
+            public UpdateRequest Phone(string phone) 
+            {
+                m_params.AddOpt("phone", phone);
+                return this;
+            }
             public UpdateRequest Company(string company) 
             {
                 m_params.AddOpt("company", company);
+                return this;
+            }
+        }
+        public class UpdateBillingInfoRequest : EntityRequest 
+        {
+            public UpdateBillingInfoRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public UpdateBillingInfoRequest VatNumber(string vatNumber) 
+            {
+                m_params.AddOpt("vat_number", vatNumber);
+                return this;
+            }
+            public UpdateBillingInfoRequest BillingAddressLine1(string billingAddressLine1) 
+            {
+                m_params.AddOpt("billing_address[line1]", billingAddressLine1);
+                return this;
+            }
+            public UpdateBillingInfoRequest BillingAddressLine2(string billingAddressLine2) 
+            {
+                m_params.AddOpt("billing_address[line2]", billingAddressLine2);
+                return this;
+            }
+            public UpdateBillingInfoRequest BillingAddressCity(string billingAddressCity) 
+            {
+                m_params.AddOpt("billing_address[city]", billingAddressCity);
+                return this;
+            }
+            public UpdateBillingInfoRequest BillingAddressState(string billingAddressState) 
+            {
+                m_params.AddOpt("billing_address[state]", billingAddressState);
+                return this;
+            }
+            public UpdateBillingInfoRequest BillingAddressZip(string billingAddressZip) 
+            {
+                m_params.AddOpt("billing_address[zip]", billingAddressZip);
+                return this;
+            }
+            public UpdateBillingInfoRequest BillingAddressCountry(string billingAddressCountry) 
+            {
+                m_params.AddOpt("billing_address[country]", billingAddressCountry);
                 return this;
             }
         }
@@ -123,6 +184,34 @@ namespace ChargeBee.Models
         }
 
         #region Subclasses
+        public class CustomerBillingAddress : Resource
+        {
+
+            public string Line1() {
+                return GetValue<string>("line1", false);
+            }
+
+            public string Line2() {
+                return GetValue<string>("line2", false);
+            }
+
+            public string City() {
+                return GetValue<string>("city", false);
+            }
+
+            public string State() {
+                return GetValue<string>("state", false);
+            }
+
+            public string Country() {
+                return GetValue<string>("country", false);
+            }
+
+            public string Zip() {
+                return GetValue<string>("zip", false);
+            }
+
+        }
 
         #endregion
     }
