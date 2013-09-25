@@ -209,6 +209,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[company]", customerCompany);
                 return this;
             }
+            public CreateRequest CustomerPhone(string customerPhone) 
+            {
+                m_params.AddOpt("customer[phone]", customerPhone);
+                return this;
+            }
             public CreateRequest CustomerAutoCollection(AutoCollectionEnum customerAutoCollection) 
             {
                 m_params.AddOpt("customer[auto_collection]", customerAutoCollection);
@@ -282,6 +287,36 @@ namespace ChargeBee.Models
             public CreateRequest CardBillingCountry(string cardBillingCountry) 
             {
                 m_params.AddOpt("card[billing_country]", cardBillingCountry);
+                return this;
+            }
+            public CreateRequest BillingAddressLine1(string billingAddressLine1) 
+            {
+                m_params.AddOpt("billing_address[line1]", billingAddressLine1);
+                return this;
+            }
+            public CreateRequest BillingAddressLine2(string billingAddressLine2) 
+            {
+                m_params.AddOpt("billing_address[line2]", billingAddressLine2);
+                return this;
+            }
+            public CreateRequest BillingAddressCity(string billingAddressCity) 
+            {
+                m_params.AddOpt("billing_address[city]", billingAddressCity);
+                return this;
+            }
+            public CreateRequest BillingAddressState(string billingAddressState) 
+            {
+                m_params.AddOpt("billing_address[state]", billingAddressState);
+                return this;
+            }
+            public CreateRequest BillingAddressZip(string billingAddressZip) 
+            {
+                m_params.AddOpt("billing_address[zip]", billingAddressZip);
+                return this;
+            }
+            public CreateRequest BillingAddressCountry(string billingAddressCountry) 
+            {
+                m_params.AddOpt("billing_address[country]", billingAddressCountry);
                 return this;
             }
             public CreateRequest CustomerVatNumber(string customerVatNumber) 

@@ -142,6 +142,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[company]", customerCompany);
                 return this;
             }
+            public CheckoutNewRequest CustomerPhone(string customerPhone) 
+            {
+                m_params.AddOpt("customer[phone]", customerPhone);
+                return this;
+            }
             public CheckoutNewRequest SubscriptionPlanId(string subscriptionPlanId) 
             {
                 m_params.Add("subscription[plan_id]", subscriptionPlanId);
