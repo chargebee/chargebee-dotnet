@@ -60,5 +60,8 @@ namespace ChargeBee.Models.Enums
         [Description("card_expired")]
         CardExpired,
 
+        [Description("card_deleted")]
+        CardDeleted,
+
     }
 }
