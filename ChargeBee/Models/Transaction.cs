@@ -28,6 +28,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "transactions");
             return new ListRequest(url);
         }
+        public static ListRequest TransactionsForInvoice(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "transactions");
+            return new ListRequest(url);
+        }
         public static EntityRequest Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("transactions", CheckNull(id));

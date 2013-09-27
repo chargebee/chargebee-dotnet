@@ -28,6 +28,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "credit_card");
             return new UpdateCardForCustomerRequest(url, HttpMethod.POST);
         }
+        public static EntityRequest DeleteCardForCustomer(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "delete_card");
+            return new EntityRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties

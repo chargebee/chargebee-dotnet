@@ -638,6 +638,10 @@ namespace ChargeBee.Models
                 return GetValue<int>("applied_count", true);
             }
 
+            public string CouponCode() {
+                return GetValue<string>("coupon_code", false);
+            }
+
         }
 
         #endregion

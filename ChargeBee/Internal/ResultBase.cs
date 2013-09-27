@@ -67,6 +67,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<Coupon>("coupon"); }
         }
+        public CouponCode CouponCode
+        {
+            get {  return GetResource<CouponCode>("coupon_code"); }
+        }
         public Address Address
         {
             get {  return GetResource<Address>("address"); }
