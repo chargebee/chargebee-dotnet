@@ -8,9 +8,6 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("ChargeBee")]
 [assembly: AssemblyDescription("Client library for easily integrating with the ChargeBee service")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("BubblePath Inc")]
-[assembly: AssemblyProduct("ChargeBee")]
-[assembly: AssemblyCopyright("Copyright © ChargeBee 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

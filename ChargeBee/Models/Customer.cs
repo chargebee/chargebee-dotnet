@@ -81,7 +81,7 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<CardStatusEnum>("card_status", false); }
         }
-        public CustomerBillingAddress? BillingAddress 
+        public CustomerBillingAddress BillingAddress 
         {
             get { return GetSubResource<CustomerBillingAddress>("billing_address"); }
         }

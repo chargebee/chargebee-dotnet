@@ -99,6 +99,19 @@ namespace ChargeBee.Internal
 			
 			return list;
 		}
+
+		protected T GetSubResource<T>(string property) where T : Resource, new()
+		{
+			if (m_jobj == null)
+				return null;
+			
+			JToken jobj = m_jobj[property];
+			if (jobj == null)
+				return null;
+			T t = new T();
+			t.JObj = jobj;
+			return t;
+		}
 	}
 }
 
