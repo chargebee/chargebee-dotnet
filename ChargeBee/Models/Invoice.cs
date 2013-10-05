@@ -228,6 +228,28 @@ namespace ChargeBee.Models
         #region Subclasses
         public class InvoiceLineItem : Resource
         {
+            public enum TypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [Description("charge")]
+                Charge,
+                [Description("prorated_charge")]
+                ProratedCharge,
+                [Description("setup_charge")]
+                SetupCharge,
+            }
+            public enum EntityTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [Description("plan")]
+                Plan,
+                [Description("addon")]
+                Addon,
+                [Description("adhoc")]
+                Adhoc,
+            }
 
             public DateTime DateFrom() {
                 return (DateTime)GetDateTime("date_from", true);
@@ -261,9 +283,30 @@ namespace ChargeBee.Models
                 return GetValue<string>("description", true);
             }
 
+            public TypeEnum LineItemType() {
+                return GetEnum<TypeEnum>("type", true);
+            }
+
+            public EntityTypeEnum EntityType() {
+                return GetEnum<EntityTypeEnum>("entity_type", true);
+            }
+
+            public string EntityId() {
+                return GetValue<string>("entity_id", false);
+            }
+
         }
         public class InvoiceDiscount : Resource
         {
+            public enum TypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [Description("coupon")]
+                Coupon,
+                [Description("credit_adjustment")]
+                CreditAdjustment,
+            }
 
             public int Amount() {
                 return GetValue<int>("amount", true);
@@ -271,6 +314,14 @@ namespace ChargeBee.Models
 
             public string Description() {
                 return GetValue<string>("description", false);
+            }
+
+            public TypeEnum DiscountType() {
+                return GetEnum<TypeEnum>("type", true);
+            }
+
+            public string EntityId() {
+                return GetValue<string>("entity_id", false);
             }
 
         }
