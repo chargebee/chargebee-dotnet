@@ -157,6 +157,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
                 return this;
             }
+            public CheckoutNewRequest SubscriptionStartDate(long subscriptionStartDate) 
+            {
+                m_params.AddOpt("subscription[start_date]", subscriptionStartDate);
+                return this;
+            }
             public CheckoutNewRequest SubscriptionTrialEnd(long subscriptionTrialEnd) 
             {
                 m_params.AddOpt("subscription[trial_end]", subscriptionTrialEnd);
@@ -229,6 +234,11 @@ namespace ChargeBee.Models
             public CheckoutExistingRequest SubscriptionPlanQuantity(int subscriptionPlanQuantity) 
             {
                 m_params.AddOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
+                return this;
+            }
+            public CheckoutExistingRequest SubscriptionStartDate(long subscriptionStartDate) 
+            {
+                m_params.AddOpt("subscription[start_date]", subscriptionStartDate);
                 return this;
             }
             public CheckoutExistingRequest SubscriptionTrialEnd(long subscriptionTrialEnd) 

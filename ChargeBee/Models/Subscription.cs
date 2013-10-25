@@ -82,6 +82,10 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<StatusEnum>("status", true); }
         }
+        public DateTime? StartDate 
+        {
+            get { return GetDateTime("start_date", false); }
+        }
         public DateTime? TrialStart 
         {
             get { return GetDateTime("trial_start", false); }
@@ -105,6 +109,10 @@ namespace ChargeBee.Models
         public DateTime? CreatedAt 
         {
             get { return GetDateTime("created_at", false); }
+        }
+        public DateTime? StartedAt 
+        {
+            get { return GetDateTime("started_at", false); }
         }
         public DateTime? ActivatedAt 
         {
@@ -167,6 +175,11 @@ namespace ChargeBee.Models
             public CreateRequest PlanQuantity(int planQuantity) 
             {
                 m_params.AddOpt("plan_quantity", planQuantity);
+                return this;
+            }
+            public CreateRequest StartDate(long startDate) 
+            {
+                m_params.AddOpt("start_date", startDate);
                 return this;
             }
             public CreateRequest TrialEnd(long trialEnd) 
@@ -357,6 +370,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("plan_quantity", planQuantity);
                 return this;
             }
+            public CreateForCustomerRequest StartDate(long startDate) 
+            {
+                m_params.AddOpt("start_date", startDate);
+                return this;
+            }
             public CreateForCustomerRequest TrialEnd(long trialEnd) 
             {
                 m_params.AddOpt("trial_end", trialEnd);
@@ -398,6 +416,11 @@ namespace ChargeBee.Models
             public UpdateRequest PlanQuantity(int planQuantity) 
             {
                 m_params.AddOpt("plan_quantity", planQuantity);
+                return this;
+            }
+            public UpdateRequest StartDate(long startDate) 
+            {
+                m_params.AddOpt("start_date", startDate);
                 return this;
             }
             public UpdateRequest TrialEnd(long trialEnd) 
@@ -586,6 +609,8 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [Description("future")]
+            Future,
             [Description("in_trial")]
             InTrial,
             [Description("active")]

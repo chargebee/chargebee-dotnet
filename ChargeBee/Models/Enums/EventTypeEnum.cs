@@ -12,6 +12,9 @@ namespace ChargeBee.Models.Enums
         [Description("subscription_created")]
         SubscriptionCreated,
 
+        [Description("subscription_started")]
+        SubscriptionStarted,
+
         [Description("subscription_trial_ending")]
         SubscriptionTrialEnding,
 
