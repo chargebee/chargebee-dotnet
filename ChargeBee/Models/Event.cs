@@ -31,6 +31,11 @@ namespace ChargeBee.Models
             JObj = JToken.Parse(reader.ReadToEnd());
         }
 
+		public Event(String jsonString)
+		{
+			JObj = JToken.Parse(jsonString);
+		}
+
         #region Methods
         public static EventListRequest List()
         {
