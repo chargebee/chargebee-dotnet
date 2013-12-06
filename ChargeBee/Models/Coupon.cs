@@ -100,7 +100,7 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("valid_till", false); }
         }
-
+        
         #endregion
         
 

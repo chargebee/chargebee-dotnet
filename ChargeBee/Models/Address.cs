@@ -79,7 +79,7 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("subscription_id", true); }
         }
-
+        
         #endregion
         
         #region Requests

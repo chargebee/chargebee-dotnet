@@ -91,7 +91,7 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("redirect_url", false); }
         }
-
+        
         #endregion
         
 

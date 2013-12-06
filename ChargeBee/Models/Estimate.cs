@@ -75,7 +75,7 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<EstimateTax>("taxes"); }
         }
-
+        
         #endregion
         
         #region Requests

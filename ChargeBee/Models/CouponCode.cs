@@ -43,7 +43,7 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("coupon_set_name", true); }
         }
-
+        
         #endregion
         
         #region Requests

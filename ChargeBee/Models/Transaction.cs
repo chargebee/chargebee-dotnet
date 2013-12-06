@@ -101,7 +101,7 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("refunded_txn_id", false); }
         }
-
+        
         #endregion
         
 

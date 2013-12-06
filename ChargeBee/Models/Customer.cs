@@ -85,7 +85,7 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<CustomerBillingAddress>("billing_address"); }
         }
-
+        
         #endregion
         
         #region Requests

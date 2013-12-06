@@ -104,7 +104,7 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("masked_number", false); }
         }
-
+        
         #endregion
         
         #region Requests

@@ -31,10 +31,10 @@ namespace ChargeBee.Models
             JObj = JToken.Parse(reader.ReadToEnd());
         }
 
-		public Event(String jsonString)
-		{
-			JObj = JToken.Parse(jsonString);
-		}
+        public Event(String jsonString)
+        {
+            JObj = JToken.Parse(jsonString);
+        }
 
         #region Methods
         public static EventListRequest List()
@@ -74,7 +74,7 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<EventTypeEnum>("event_type", false); }
         }
-
+        
         public EventContent Content
         {
             get { return new EventContent(GetValue<JToken>("content")); }

@@ -121,7 +121,7 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<InvoiceTax>("taxes"); }
         }
-
+        
         #endregion
         
         #region Requests

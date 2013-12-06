@@ -75,7 +75,7 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("archived_at", false); }
         }
-
+        
         #endregion
         
 

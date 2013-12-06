@@ -151,7 +151,7 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<SubscriptionCoupon>("coupons"); }
         }
-
+        
         #endregion
         
         #region Requests

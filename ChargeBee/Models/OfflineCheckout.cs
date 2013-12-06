@@ -60,7 +60,7 @@ namespace ChargeBee.Models
         {
             get { return (DateTime)GetDateTime("updated_at", true); }
         }
-
+        
         #endregion
         
         #region Requests
