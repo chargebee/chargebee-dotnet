@@ -23,10 +23,6 @@ namespace ChargeBee.Internal
             m_jobj = jobj;
         }
         
-        public OfflineCheckout OfflineCheckout
-        {
-            get {  return GetResource<OfflineCheckout>("offline_checkout"); }
-        }
         public Subscription Subscription
         {
             get {  return GetResource<Subscription>("subscription"); }

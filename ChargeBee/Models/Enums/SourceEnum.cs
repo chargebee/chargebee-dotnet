@@ -27,5 +27,8 @@ namespace ChargeBee.Models.Enums
         [Description("none")]
         None,
 
+        [Description("js_api")]
+        JsApi,
+
     }
 }

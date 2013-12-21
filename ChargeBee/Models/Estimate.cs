@@ -121,6 +121,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[coupon]", subscriptionCoupon);
                 return this;
             }
+            public CreateSubscriptionRequest BillingAddressCountry(string billingAddressCountry) 
+            {
+                m_params.AddOpt("billing_address[country]", billingAddressCountry);
+                return this;
+            }
+            public CreateSubscriptionRequest CustomerVatNumber(string customerVatNumber) 
+            {
+                m_params.AddOpt("customer[vat_number]", customerVatNumber);
+                return this;
+            }
             public CreateSubscriptionRequest AddonId(int index, string addonId) 
             {
                 m_params.AddOpt("addons[id][" + index + "]", addonId);
@@ -187,6 +197,16 @@ namespace ChargeBee.Models
             public UpdateSubscriptionRequest SubscriptionCoupon(string subscriptionCoupon) 
             {
                 m_params.AddOpt("subscription[coupon]", subscriptionCoupon);
+                return this;
+            }
+            public UpdateSubscriptionRequest BillingAddressCountry(string billingAddressCountry) 
+            {
+                m_params.AddOpt("billing_address[country]", billingAddressCountry);
+                return this;
+            }
+            public UpdateSubscriptionRequest CustomerVatNumber(string customerVatNumber) 
+            {
+                m_params.AddOpt("customer[vat_number]", customerVatNumber);
                 return this;
             }
             public UpdateSubscriptionRequest AddonId(int index, string addonId) 
