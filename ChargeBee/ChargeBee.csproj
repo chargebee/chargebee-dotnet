@@ -64,7 +64,6 @@
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Estimate.cs" />
     <Compile Include="Models\Invoice.cs" />
-    <Compile Include="Models\OfflineCheckout.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Internal\ResultBase.cs" />
     <Compile Include="Internal\Resource.cs" />
