@@ -87,17 +87,17 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("expires_at", false); }
         }
-            public HostedPageContent Content
-    {
-        get
-        {
-            if(GetValue<JToken>("content", false) == null)
-            {
-                return null;
-            }
-            return new HostedPageContent(GetValue<JToken>("content"));
-        }
-    }
+        public HostedPageContent Content
+    	{
+	        get
+	        {
+	            if(GetValue<JToken>("content", false) == null)
+	            {
+	                return null;
+	            }
+	            return new HostedPageContent(GetValue<JToken>("content"));
+	        }
+    	}
         #endregion
         
         #region Requests
@@ -428,7 +428,16 @@ namespace ChargeBee.Models
         }
 
         #region Subclasses
-
+		public class HostedPageContent : ResultBase
+		{
+			
+			public HostedPageContent () { }
+			
+			internal HostedPageContent(JToken jobj)
+			{
+				m_jobj = jobj;
+			}
+		}
         #endregion
     }
 }
