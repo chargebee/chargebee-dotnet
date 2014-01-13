@@ -73,6 +73,7 @@
     <Compile Include="Internal\JSONSupport.cs" />
     <Compile Include="Models\Enums\AutoCollectionEnum.cs" />
     <Compile Include="Models\CouponCode.cs" />
+    <Compile Include="Models\Comment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
