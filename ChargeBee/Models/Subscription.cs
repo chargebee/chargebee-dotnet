@@ -33,6 +33,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("subscriptions");
             return new ListRequest(url);
         }
+        public static ListRequest SubscriptionsForCustomer(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "subscriptions");
+            return new ListRequest(url);
+        }
         public static EntityRequest Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id));
@@ -521,6 +526,36 @@ namespace ChargeBee.Models
             public UpdateRequest CardBillingCountry(string cardBillingCountry) 
             {
                 m_params.AddOpt("card[billing_country]", cardBillingCountry);
+                return this;
+            }
+            public UpdateRequest BillingAddressLine1(string billingAddressLine1) 
+            {
+                m_params.AddOpt("billing_address[line1]", billingAddressLine1);
+                return this;
+            }
+            public UpdateRequest BillingAddressLine2(string billingAddressLine2) 
+            {
+                m_params.AddOpt("billing_address[line2]", billingAddressLine2);
+                return this;
+            }
+            public UpdateRequest BillingAddressCity(string billingAddressCity) 
+            {
+                m_params.AddOpt("billing_address[city]", billingAddressCity);
+                return this;
+            }
+            public UpdateRequest BillingAddressState(string billingAddressState) 
+            {
+                m_params.AddOpt("billing_address[state]", billingAddressState);
+                return this;
+            }
+            public UpdateRequest BillingAddressZip(string billingAddressZip) 
+            {
+                m_params.AddOpt("billing_address[zip]", billingAddressZip);
+                return this;
+            }
+            public UpdateRequest BillingAddressCountry(string billingAddressCountry) 
+            {
+                m_params.AddOpt("billing_address[country]", billingAddressCountry);
                 return this;
             }
             public UpdateRequest CustomerVatNumber(string customerVatNumber) 

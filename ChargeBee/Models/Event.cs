@@ -74,7 +74,6 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<EventTypeEnum>("event_type", false); }
         }
-        
         public EventContent Content
         {
             get { return new EventContent(GetValue<JToken>("content")); }
@@ -112,6 +111,11 @@ namespace ChargeBee.Models
             public EventListRequest WebhookStatus(WebhookStatusEnum webhookStatus) 
             {
                 m_params.AddOpt("webhook_status", webhookStatus);
+                return this;
+            }
+            public EventListRequest EventType(EventTypeEnum eventType) 
+            {
+                m_params.AddOpt("event_type", eventType);
                 return this;
             }
         }

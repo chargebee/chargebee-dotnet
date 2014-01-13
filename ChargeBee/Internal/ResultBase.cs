@@ -75,6 +75,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<Event>("event"); }
         }
+        public Comment Comment
+        {
+            get {  return GetResource<Comment>("comment"); }
+        }
 
         private T GetResource<T>(string property) where T : Resource, new()
         {
