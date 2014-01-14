@@ -95,11 +95,6 @@ namespace ChargeBee.Models
                 m_params.Add("notes", notes);
                 return this;
             }
-            public CreateRequest AddedBy(string addedBy) 
-            {
-                m_params.AddOpt("added_by", addedBy);
-                return this;
-            }
         }
         public class CommentListRequest : ListRequest 
         {
