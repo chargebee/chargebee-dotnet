@@ -74,6 +74,7 @@
     <Compile Include="Models\Enums\AutoCollectionEnum.cs" />
     <Compile Include="Models\CouponCode.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Enums\EntityTypeEnum.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
