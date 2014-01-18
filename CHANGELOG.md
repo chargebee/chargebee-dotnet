@@ -1,4 +1,4 @@
-### v1.1.29  (2014-01-18)  
+### v1.1.5  (2014-01-18)  
 * * *    
 * Adding object that represent comments resource. Now comments can be added to the entities - Subscription, Invoice, Transaction, Plan, Addon & Coupon. 
 
