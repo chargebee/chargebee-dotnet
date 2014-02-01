@@ -23,8 +23,8 @@ See our [.Net API Reference](http://apidocs.chargebee.com/docs/api?lang=dotnet "
 
 To create a new subscription:
   
-    using Chargebee.Api;
-	using Chargebee.Models;
+    using ChargeBee.Api;
+	using ChargeBee.Models;
 	ApiConfig.Configure("site","api_key");
 	EntityResult result = Subscription.Create()
                   .PlanId("basic")
