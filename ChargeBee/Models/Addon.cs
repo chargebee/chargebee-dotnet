@@ -18,6 +18,11 @@ namespace ChargeBee.Models
     
 
         #region Methods
+        public static CreateRequest Create()
+        {
+            string url = ApiUtil.BuildUrl("addons");
+            return new CreateRequest(url, HttpMethod.POST);
+        }
         public static ListRequest List()
         {
             string url = ApiUtil.BuildUrl("addons");
@@ -78,6 +83,61 @@ namespace ChargeBee.Models
         
         #endregion
         
+        #region Requests
+        public class CreateRequest : EntityRequest 
+        {
+            public CreateRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CreateRequest Name(string name) 
+            {
+                m_params.Add("name", name);
+                return this;
+            }
+            public CreateRequest Id(string id) 
+            {
+                m_params.Add("id", id);
+                return this;
+            }
+            public CreateRequest InvoiceName(string invoiceName) 
+            {
+                m_params.AddOpt("invoice_name", invoiceName);
+                return this;
+            }
+            public CreateRequest ChargeType(ChargeTypeEnum chargeType) 
+            {
+                m_params.Add("charge_type", chargeType);
+                return this;
+            }
+            public CreateRequest Price(int price) 
+            {
+                m_params.AddOpt("price", price);
+                return this;
+            }
+            public CreateRequest Period(int period) 
+            {
+                m_params.AddOpt("period", period);
+                return this;
+            }
+            public CreateRequest PeriodUnit(PeriodUnitEnum periodUnit) 
+            {
+                m_params.AddOpt("period_unit", periodUnit);
+                return this;
+            }
+            public CreateRequest Type(TypeEnum type) 
+            {
+                m_params.Add("type", type);
+                return this;
+            }
+            public CreateRequest Unit(string unit) 
+            {
+                m_params.AddOpt("unit", unit);
+                return this;
+            }
+        }
+        #endregion
 
         public enum TypeEnum
         {

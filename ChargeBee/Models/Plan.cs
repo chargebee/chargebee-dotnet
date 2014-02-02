@@ -18,6 +18,11 @@ namespace ChargeBee.Models
     
 
         #region Methods
+        public static CreateRequest Create()
+        {
+            string url = ApiUtil.BuildUrl("plans");
+            return new CreateRequest(url, HttpMethod.POST);
+        }
         public static ListRequest List()
         {
             string url = ApiUtil.BuildUrl("plans");
@@ -94,6 +99,81 @@ namespace ChargeBee.Models
         
         #endregion
         
+        #region Requests
+        public class CreateRequest : EntityRequest 
+        {
+            public CreateRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CreateRequest Id(string id) 
+            {
+                m_params.Add("id", id);
+                return this;
+            }
+            public CreateRequest Name(string name) 
+            {
+                m_params.Add("name", name);
+                return this;
+            }
+            public CreateRequest InvoiceName(string invoiceName) 
+            {
+                m_params.AddOpt("invoice_name", invoiceName);
+                return this;
+            }
+            public CreateRequest TrialPeriod(int trialPeriod) 
+            {
+                m_params.AddOpt("trial_period", trialPeriod);
+                return this;
+            }
+            public CreateRequest TrialPeriodUnit(TrialPeriodUnitEnum trialPeriodUnit) 
+            {
+                m_params.AddOpt("trial_period_unit", trialPeriodUnit);
+                return this;
+            }
+            public CreateRequest Period(int period) 
+            {
+                m_params.AddOpt("period", period);
+                return this;
+            }
+            public CreateRequest PeriodUnit(PeriodUnitEnum periodUnit) 
+            {
+                m_params.AddOpt("period_unit", periodUnit);
+                return this;
+            }
+            public CreateRequest SetupCost(int setupCost) 
+            {
+                m_params.AddOpt("setup_cost", setupCost);
+                return this;
+            }
+            public CreateRequest Price(int price) 
+            {
+                m_params.AddOpt("price", price);
+                return this;
+            }
+            public CreateRequest BillingCycles(int billingCycles) 
+            {
+                m_params.AddOpt("billing_cycles", billingCycles);
+                return this;
+            }
+            public CreateRequest FreeQuantity(int freeQuantity) 
+            {
+                m_params.AddOpt("free_quantity", freeQuantity);
+                return this;
+            }
+            public CreateRequest DowngradePenalty(double downgradePenalty) 
+            {
+                m_params.AddOpt("downgrade_penalty", downgradePenalty);
+                return this;
+            }
+            public CreateRequest RedirectUrl(string redirectUrl) 
+            {
+                m_params.AddOpt("redirect_url", redirectUrl);
+                return this;
+            }
+        }
+        #endregion
 
         public enum PeriodUnitEnum
         {

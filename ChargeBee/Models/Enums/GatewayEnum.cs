@@ -12,8 +12,26 @@ namespace ChargeBee.Models.Enums
         [Description("chargebee")]
         Chargebee,
 
+        [Description("stripe")]
+        Stripe,
+
+        [Description("braintree")]
+        Braintree,
+
         [Description("authorize_net")]
         AuthorizeNet,
+
+        [Description("paypal_pro")]
+        PaypalPro,
+
+        [Description("pin")]
+        Pin,
+
+        [Description("eway")]
+        Eway,
+
+        [Description("worldpay")]
+        Worldpay,
 
         [Description("balanced_payments")]
         BalancedPayments,
@@ -24,14 +42,8 @@ namespace ChargeBee.Models.Enums
         [Description("bluepay")]
         Bluepay,
 
-        [Description("braintree")]
-        Braintree,
-
         [Description("elavon")]
         Elavon,
-
-        [Description("eway")]
-        Eway,
 
         [Description("first_data_global")]
         FirstDataGlobal,
@@ -51,26 +63,14 @@ namespace ChargeBee.Models.Enums
         [Description("paymill")]
         Paymill,
 
-        [Description("paypal_pro")]
-        PaypalPro,
-
         [Description("paypal_payflow_pro")]
         PaypalPayflowPro,
-
-        [Description("pin")]
-        Pin,
 
         [Description("sage_pay")]
         SagePay,
 
-        [Description("stripe")]
-        Stripe,
-
         [Description("tco")]
         Tco,
-
-        [Description("worldpay")]
-        Worldpay,
 
         [Description("wirecard")]
         Wirecard,
