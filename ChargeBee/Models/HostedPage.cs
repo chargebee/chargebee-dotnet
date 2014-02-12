@@ -286,6 +286,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public UpdateCardRequest PassThruContent(string passThruContent) 
+            {
+                m_params.AddOpt("pass_thru_content", passThruContent);
+                return this;
+            }
             public UpdateCardRequest Embed(bool embed) 
             {
                 m_params.AddOpt("embed", embed);

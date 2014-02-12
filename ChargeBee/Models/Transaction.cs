@@ -98,6 +98,10 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("voided_at", false); }
         }
+        public string VoidDescription 
+        {
+            get { return GetValue<string>("void_description", false); }
+        }
         public string MaskedCardNumber 
         {
             get { return GetValue<string>("masked_card_number", true); }

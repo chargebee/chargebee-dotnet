@@ -53,6 +53,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "add_addon_charge");
             return new AddAddonChargeRequest(url, HttpMethod.POST);
         }
+        public static EntityRequest Pdf(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "pdf");
+            return new EntityRequest(url, HttpMethod.POST);
+        }
         public static EntityRequest Collect(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "collect");

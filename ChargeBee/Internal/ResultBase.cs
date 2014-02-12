@@ -79,6 +79,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<Comment>("comment"); }
         }
+        public Download Download
+        {
+            get {  return GetResource<Download>("download"); }
+        }
 
         private T GetResource<T>(string property) where T : Resource, new()
         {

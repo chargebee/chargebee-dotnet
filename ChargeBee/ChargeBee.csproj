@@ -75,6 +75,7 @@
     <Compile Include="Models\CouponCode.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Enums\EntityTypeEnum.cs" />
+    <Compile Include="Models\Download.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
