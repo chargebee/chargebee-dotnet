@@ -43,9 +43,17 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("last_name", false); }
         }
+        public string Email 
+        {
+            get { return GetValue<string>("email", false); }
+        }
         public string Company 
         {
             get { return GetValue<string>("company", false); }
+        }
+        public string Phone 
+        {
+            get { return GetValue<string>("phone", false); }
         }
         public string Addr 
         {

@@ -134,6 +134,31 @@ namespace ChargeBee.Models
                 m_params.AddOpt("vat_number", vatNumber);
                 return this;
             }
+            public UpdateBillingInfoRequest BillingAddressFirstName(string billingAddressFirstName) 
+            {
+                m_params.AddOpt("billing_address[first_name]", billingAddressFirstName);
+                return this;
+            }
+            public UpdateBillingInfoRequest BillingAddressLastName(string billingAddressLastName) 
+            {
+                m_params.AddOpt("billing_address[last_name]", billingAddressLastName);
+                return this;
+            }
+            public UpdateBillingInfoRequest BillingAddressEmail(string billingAddressEmail) 
+            {
+                m_params.AddOpt("billing_address[email]", billingAddressEmail);
+                return this;
+            }
+            public UpdateBillingInfoRequest BillingAddressCompany(string billingAddressCompany) 
+            {
+                m_params.AddOpt("billing_address[company]", billingAddressCompany);
+                return this;
+            }
+            public UpdateBillingInfoRequest BillingAddressPhone(string billingAddressPhone) 
+            {
+                m_params.AddOpt("billing_address[phone]", billingAddressPhone);
+                return this;
+            }
             public UpdateBillingInfoRequest BillingAddressLine1(string billingAddressLine1) 
             {
                 m_params.AddOpt("billing_address[line1]", billingAddressLine1);
@@ -142,6 +167,11 @@ namespace ChargeBee.Models
             public UpdateBillingInfoRequest BillingAddressLine2(string billingAddressLine2) 
             {
                 m_params.AddOpt("billing_address[line2]", billingAddressLine2);
+                return this;
+            }
+            public UpdateBillingInfoRequest BillingAddressLine3(string billingAddressLine3) 
+            {
+                m_params.AddOpt("billing_address[line3]", billingAddressLine3);
                 return this;
             }
             public UpdateBillingInfoRequest BillingAddressCity(string billingAddressCity) 
@@ -187,12 +217,36 @@ namespace ChargeBee.Models
         public class CustomerBillingAddress : Resource
         {
 
+            public string FirstName() {
+                return GetValue<string>("first_name", false);
+            }
+
+            public string LastName() {
+                return GetValue<string>("last_name", false);
+            }
+
+            public string Email() {
+                return GetValue<string>("email", false);
+            }
+
+            public string Company() {
+                return GetValue<string>("company", false);
+            }
+
+            public string Phone() {
+                return GetValue<string>("phone", false);
+            }
+
             public string Line1() {
                 return GetValue<string>("line1", false);
             }
 
             public string Line2() {
                 return GetValue<string>("line2", false);
+            }
+
+            public string Line3() {
+                return GetValue<string>("line3", false);
             }
 
             public string City() {

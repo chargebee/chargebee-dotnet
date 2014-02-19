@@ -47,7 +47,7 @@ namespace ChargeBee.Api
 
             foreach (var pair in m_dict)
             {
-				pairs.Add(String.Format("{0}={1}", HttpUtility.UrlPathEncode(pair.Key), HttpUtility.UrlPathEncode(pair.Value)));
+				pairs.Add(String.Format("{0}={1}", HttpUtility.UrlEncode(pair.Key), HttpUtility.UrlEncode(pair.Value)));
             }
             return pairs.ToArray();
         }

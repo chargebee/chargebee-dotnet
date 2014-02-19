@@ -307,6 +307,31 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[billing_country]", cardBillingCountry);
                 return this;
             }
+            public CreateRequest BillingAddressFirstName(string billingAddressFirstName) 
+            {
+                m_params.AddOpt("billing_address[first_name]", billingAddressFirstName);
+                return this;
+            }
+            public CreateRequest BillingAddressLastName(string billingAddressLastName) 
+            {
+                m_params.AddOpt("billing_address[last_name]", billingAddressLastName);
+                return this;
+            }
+            public CreateRequest BillingAddressEmail(string billingAddressEmail) 
+            {
+                m_params.AddOpt("billing_address[email]", billingAddressEmail);
+                return this;
+            }
+            public CreateRequest BillingAddressCompany(string billingAddressCompany) 
+            {
+                m_params.AddOpt("billing_address[company]", billingAddressCompany);
+                return this;
+            }
+            public CreateRequest BillingAddressPhone(string billingAddressPhone) 
+            {
+                m_params.AddOpt("billing_address[phone]", billingAddressPhone);
+                return this;
+            }
             public CreateRequest BillingAddressLine1(string billingAddressLine1) 
             {
                 m_params.AddOpt("billing_address[line1]", billingAddressLine1);
@@ -315,6 +340,11 @@ namespace ChargeBee.Models
             public CreateRequest BillingAddressLine2(string billingAddressLine2) 
             {
                 m_params.AddOpt("billing_address[line2]", billingAddressLine2);
+                return this;
+            }
+            public CreateRequest BillingAddressLine3(string billingAddressLine3) 
+            {
+                m_params.AddOpt("billing_address[line3]", billingAddressLine3);
                 return this;
             }
             public CreateRequest BillingAddressCity(string billingAddressCity) 
@@ -335,6 +365,66 @@ namespace ChargeBee.Models
             public CreateRequest BillingAddressCountry(string billingAddressCountry) 
             {
                 m_params.AddOpt("billing_address[country]", billingAddressCountry);
+                return this;
+            }
+            public CreateRequest ShippingAddressFirstName(string shippingAddressFirstName) 
+            {
+                m_params.AddOpt("shipping_address[first_name]", shippingAddressFirstName);
+                return this;
+            }
+            public CreateRequest ShippingAddressLastName(string shippingAddressLastName) 
+            {
+                m_params.AddOpt("shipping_address[last_name]", shippingAddressLastName);
+                return this;
+            }
+            public CreateRequest ShippingAddressEmail(string shippingAddressEmail) 
+            {
+                m_params.AddOpt("shipping_address[email]", shippingAddressEmail);
+                return this;
+            }
+            public CreateRequest ShippingAddressCompany(string shippingAddressCompany) 
+            {
+                m_params.AddOpt("shipping_address[company]", shippingAddressCompany);
+                return this;
+            }
+            public CreateRequest ShippingAddressPhone(string shippingAddressPhone) 
+            {
+                m_params.AddOpt("shipping_address[phone]", shippingAddressPhone);
+                return this;
+            }
+            public CreateRequest ShippingAddressLine1(string shippingAddressLine1) 
+            {
+                m_params.AddOpt("shipping_address[line1]", shippingAddressLine1);
+                return this;
+            }
+            public CreateRequest ShippingAddressLine2(string shippingAddressLine2) 
+            {
+                m_params.AddOpt("shipping_address[line2]", shippingAddressLine2);
+                return this;
+            }
+            public CreateRequest ShippingAddressLine3(string shippingAddressLine3) 
+            {
+                m_params.AddOpt("shipping_address[line3]", shippingAddressLine3);
+                return this;
+            }
+            public CreateRequest ShippingAddressCity(string shippingAddressCity) 
+            {
+                m_params.AddOpt("shipping_address[city]", shippingAddressCity);
+                return this;
+            }
+            public CreateRequest ShippingAddressState(string shippingAddressState) 
+            {
+                m_params.AddOpt("shipping_address[state]", shippingAddressState);
+                return this;
+            }
+            public CreateRequest ShippingAddressZip(string shippingAddressZip) 
+            {
+                m_params.AddOpt("shipping_address[zip]", shippingAddressZip);
+                return this;
+            }
+            public CreateRequest ShippingAddressCountry(string shippingAddressCountry) 
+            {
+                m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
                 return this;
             }
             public CreateRequest CustomerVatNumber(string customerVatNumber) 
@@ -528,6 +618,31 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[billing_country]", cardBillingCountry);
                 return this;
             }
+            public UpdateRequest BillingAddressFirstName(string billingAddressFirstName) 
+            {
+                m_params.AddOpt("billing_address[first_name]", billingAddressFirstName);
+                return this;
+            }
+            public UpdateRequest BillingAddressLastName(string billingAddressLastName) 
+            {
+                m_params.AddOpt("billing_address[last_name]", billingAddressLastName);
+                return this;
+            }
+            public UpdateRequest BillingAddressEmail(string billingAddressEmail) 
+            {
+                m_params.AddOpt("billing_address[email]", billingAddressEmail);
+                return this;
+            }
+            public UpdateRequest BillingAddressCompany(string billingAddressCompany) 
+            {
+                m_params.AddOpt("billing_address[company]", billingAddressCompany);
+                return this;
+            }
+            public UpdateRequest BillingAddressPhone(string billingAddressPhone) 
+            {
+                m_params.AddOpt("billing_address[phone]", billingAddressPhone);
+                return this;
+            }
             public UpdateRequest BillingAddressLine1(string billingAddressLine1) 
             {
                 m_params.AddOpt("billing_address[line1]", billingAddressLine1);
@@ -536,6 +651,11 @@ namespace ChargeBee.Models
             public UpdateRequest BillingAddressLine2(string billingAddressLine2) 
             {
                 m_params.AddOpt("billing_address[line2]", billingAddressLine2);
+                return this;
+            }
+            public UpdateRequest BillingAddressLine3(string billingAddressLine3) 
+            {
+                m_params.AddOpt("billing_address[line3]", billingAddressLine3);
                 return this;
             }
             public UpdateRequest BillingAddressCity(string billingAddressCity) 
@@ -556,6 +676,66 @@ namespace ChargeBee.Models
             public UpdateRequest BillingAddressCountry(string billingAddressCountry) 
             {
                 m_params.AddOpt("billing_address[country]", billingAddressCountry);
+                return this;
+            }
+            public UpdateRequest ShippingAddressFirstName(string shippingAddressFirstName) 
+            {
+                m_params.AddOpt("shipping_address[first_name]", shippingAddressFirstName);
+                return this;
+            }
+            public UpdateRequest ShippingAddressLastName(string shippingAddressLastName) 
+            {
+                m_params.AddOpt("shipping_address[last_name]", shippingAddressLastName);
+                return this;
+            }
+            public UpdateRequest ShippingAddressEmail(string shippingAddressEmail) 
+            {
+                m_params.AddOpt("shipping_address[email]", shippingAddressEmail);
+                return this;
+            }
+            public UpdateRequest ShippingAddressCompany(string shippingAddressCompany) 
+            {
+                m_params.AddOpt("shipping_address[company]", shippingAddressCompany);
+                return this;
+            }
+            public UpdateRequest ShippingAddressPhone(string shippingAddressPhone) 
+            {
+                m_params.AddOpt("shipping_address[phone]", shippingAddressPhone);
+                return this;
+            }
+            public UpdateRequest ShippingAddressLine1(string shippingAddressLine1) 
+            {
+                m_params.AddOpt("shipping_address[line1]", shippingAddressLine1);
+                return this;
+            }
+            public UpdateRequest ShippingAddressLine2(string shippingAddressLine2) 
+            {
+                m_params.AddOpt("shipping_address[line2]", shippingAddressLine2);
+                return this;
+            }
+            public UpdateRequest ShippingAddressLine3(string shippingAddressLine3) 
+            {
+                m_params.AddOpt("shipping_address[line3]", shippingAddressLine3);
+                return this;
+            }
+            public UpdateRequest ShippingAddressCity(string shippingAddressCity) 
+            {
+                m_params.AddOpt("shipping_address[city]", shippingAddressCity);
+                return this;
+            }
+            public UpdateRequest ShippingAddressState(string shippingAddressState) 
+            {
+                m_params.AddOpt("shipping_address[state]", shippingAddressState);
+                return this;
+            }
+            public UpdateRequest ShippingAddressZip(string shippingAddressZip) 
+            {
+                m_params.AddOpt("shipping_address[zip]", shippingAddressZip);
+                return this;
+            }
+            public UpdateRequest ShippingAddressCountry(string shippingAddressCountry) 
+            {
+                m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
                 return this;
             }
             public UpdateRequest CustomerVatNumber(string customerVatNumber) 
