@@ -91,7 +91,7 @@ namespace ChargeBee.Models
         #endregion
         
         #region Requests
-        public class RetrieveRequest : EntityRequest 
+        public class RetrieveRequest : EntityRequest<RetrieveRequest> 
         {
             public RetrieveRequest(string url, HttpMethod method) 
                     : base(url, method)
@@ -109,7 +109,7 @@ namespace ChargeBee.Models
                 return this;
             }
         }
-        public class UpdateRequest : EntityRequest 
+        public class UpdateRequest : EntityRequest<UpdateRequest> 
         {
             public UpdateRequest(string url, HttpMethod method) 
                     : base(url, method)

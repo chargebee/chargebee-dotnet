@@ -18,20 +18,20 @@ namespace ChargeBee.Models
     
 
         #region Methods
-        public static EntityRequest Retrieve(string id)
+        public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("cards", CheckNull(id));
-            return new EntityRequest(url, HttpMethod.GET);
+            return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         public static UpdateCardForCustomerRequest UpdateCardForCustomer(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "credit_card");
             return new UpdateCardForCustomerRequest(url, HttpMethod.POST);
         }
-        public static EntityRequest DeleteCardForCustomer(string id)
+        public static EntityRequest<Type> DeleteCardForCustomer(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "delete_card");
-            return new EntityRequest(url, HttpMethod.POST);
+            return new EntityRequest<Type>(url, HttpMethod.POST);
         }
         #endregion
         
@@ -108,7 +108,7 @@ namespace ChargeBee.Models
         #endregion
         
         #region Requests
-        public class UpdateCardForCustomerRequest : EntityRequest 
+        public class UpdateCardForCustomerRequest : EntityRequest<UpdateCardForCustomerRequest> 
         {
             public UpdateCardForCustomerRequest(string url, HttpMethod method) 
                     : base(url, method)
@@ -185,6 +185,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_country", billingCountry);
                 return this;
             }
+            [Obsolete]
             public UpdateCardForCustomerRequest CustomerVatNumber(string customerVatNumber) 
             {
                 m_params.AddOpt("customer[vat_number]", customerVatNumber);

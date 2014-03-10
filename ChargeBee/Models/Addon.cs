@@ -23,15 +23,20 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("addons");
             return new CreateRequest(url, HttpMethod.POST);
         }
+        public static UpdateRequest Update(string id)
+        {
+            string url = ApiUtil.BuildUrl("addons", CheckNull(id));
+            return new UpdateRequest(url, HttpMethod.POST);
+        }
         public static ListRequest List()
         {
             string url = ApiUtil.BuildUrl("addons");
             return new ListRequest(url);
         }
-        public static EntityRequest Retrieve(string id)
+        public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("addons", CheckNull(id));
-            return new EntityRequest(url, HttpMethod.GET);
+            return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         #endregion
         
@@ -84,21 +89,21 @@ namespace ChargeBee.Models
         #endregion
         
         #region Requests
-        public class CreateRequest : EntityRequest 
+        public class CreateRequest : EntityRequest<CreateRequest> 
         {
             public CreateRequest(string url, HttpMethod method) 
                     : base(url, method)
             {
             }
 
-            public CreateRequest Name(string name) 
-            {
-                m_params.Add("name", name);
-                return this;
-            }
             public CreateRequest Id(string id) 
             {
                 m_params.Add("id", id);
+                return this;
+            }
+            public CreateRequest Name(string name) 
+            {
+                m_params.Add("name", name);
                 return this;
             }
             public CreateRequest InvoiceName(string invoiceName) 
@@ -132,6 +137,59 @@ namespace ChargeBee.Models
                 return this;
             }
             public CreateRequest Unit(string unit) 
+            {
+                m_params.AddOpt("unit", unit);
+                return this;
+            }
+        }
+        public class UpdateRequest : EntityRequest<UpdateRequest> 
+        {
+            public UpdateRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public UpdateRequest Id(string id) 
+            {
+                m_params.AddOpt("id", id);
+                return this;
+            }
+            public UpdateRequest Name(string name) 
+            {
+                m_params.AddOpt("name", name);
+                return this;
+            }
+            public UpdateRequest InvoiceName(string invoiceName) 
+            {
+                m_params.AddOpt("invoice_name", invoiceName);
+                return this;
+            }
+            public UpdateRequest ChargeType(ChargeTypeEnum chargeType) 
+            {
+                m_params.AddOpt("charge_type", chargeType);
+                return this;
+            }
+            public UpdateRequest Price(int price) 
+            {
+                m_params.AddOpt("price", price);
+                return this;
+            }
+            public UpdateRequest Period(int period) 
+            {
+                m_params.AddOpt("period", period);
+                return this;
+            }
+            public UpdateRequest PeriodUnit(PeriodUnitEnum periodUnit) 
+            {
+                m_params.AddOpt("period_unit", periodUnit);
+                return this;
+            }
+            public UpdateRequest Type(TypeEnum type) 
+            {
+                m_params.AddOpt("type", type);
+                return this;
+            }
+            public UpdateRequest Unit(string unit) 
             {
                 m_params.AddOpt("unit", unit);
                 return this;

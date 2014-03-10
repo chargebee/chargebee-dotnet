@@ -38,10 +38,10 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "invoices");
             return new ListRequest(url);
         }
-        public static EntityRequest Retrieve(string id)
+        public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id));
-            return new EntityRequest(url, HttpMethod.GET);
+            return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         public static AddChargeRequest AddCharge(string id)
         {
@@ -53,15 +53,15 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "add_addon_charge");
             return new AddAddonChargeRequest(url, HttpMethod.POST);
         }
-        public static EntityRequest Pdf(string id)
+        public static EntityRequest<Type> Pdf(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "pdf");
-            return new EntityRequest(url, HttpMethod.POST);
+            return new EntityRequest<Type>(url, HttpMethod.POST);
         }
-        public static EntityRequest Collect(string id)
+        public static EntityRequest<Type> Collect(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "collect");
-            return new EntityRequest(url, HttpMethod.POST);
+            return new EntityRequest<Type>(url, HttpMethod.POST);
         }
         public static RefundRequest Refund(string id)
         {
@@ -135,7 +135,7 @@ namespace ChargeBee.Models
         #endregion
         
         #region Requests
-        public class ChargeRequest : EntityRequest 
+        public class ChargeRequest : EntityRequest<ChargeRequest> 
         {
             public ChargeRequest(string url, HttpMethod method) 
                     : base(url, method)
@@ -158,7 +158,7 @@ namespace ChargeBee.Models
                 return this;
             }
         }
-        public class ChargeAddonRequest : EntityRequest 
+        public class ChargeAddonRequest : EntityRequest<ChargeAddonRequest> 
         {
             public ChargeAddonRequest(string url, HttpMethod method) 
                     : base(url, method)
@@ -181,7 +181,7 @@ namespace ChargeBee.Models
                 return this;
             }
         }
-        public class AddChargeRequest : EntityRequest 
+        public class AddChargeRequest : EntityRequest<AddChargeRequest> 
         {
             public AddChargeRequest(string url, HttpMethod method) 
                     : base(url, method)
@@ -199,7 +199,7 @@ namespace ChargeBee.Models
                 return this;
             }
         }
-        public class AddAddonChargeRequest : EntityRequest 
+        public class AddAddonChargeRequest : EntityRequest<AddAddonChargeRequest> 
         {
             public AddAddonChargeRequest(string url, HttpMethod method) 
                     : base(url, method)
@@ -217,7 +217,7 @@ namespace ChargeBee.Models
                 return this;
             }
         }
-        public class RefundRequest : EntityRequest 
+        public class RefundRequest : EntityRequest<RefundRequest> 
         {
             public RefundRequest(string url, HttpMethod method) 
                     : base(url, method)

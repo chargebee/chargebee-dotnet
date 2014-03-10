@@ -100,6 +100,25 @@ namespace ChargeBee.Internal
 			return list;
 		}
 
+
+		protected List<T> GetList<T>(string property) 
+		{
+			if (m_jobj == null)
+				return null;
+			
+			JToken jobj = m_jobj[property];
+			if (jobj == null)
+				return null;
+			
+			List<T> list = new List<T>();
+			foreach (var item in jobj.Children())
+			{
+				list.Add(item.ToObject<T>());
+			}
+			
+			return list;
+		}
+
 		protected T GetSubResource<T>(string property) where T : Resource, new()
 		{
 			if (m_jobj == null)

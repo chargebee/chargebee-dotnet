@@ -43,10 +43,10 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("hosted_pages", "checkout_onetime_addons");
             return new CheckoutOnetimeAddonsRequest(url, HttpMethod.POST);
         }
-        public static EntityRequest Retrieve(string id)
+        public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("hosted_pages", CheckNull(id));
-            return new EntityRequest(url, HttpMethod.GET);
+            return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         #endregion
         
@@ -87,6 +87,10 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("expires_at", false); }
         }
+        public bool IframeMessaging 
+        {
+            get { return GetValue<bool>("iframe_messaging", true); }
+        }
         public HostedPageContent Content
         {
             get
@@ -101,7 +105,7 @@ namespace ChargeBee.Models
         #endregion
         
         #region Requests
-        public class CheckoutNewRequest : EntityRequest 
+        public class CheckoutNewRequest : EntityRequest<CheckoutNewRequest> 
         {
             public CheckoutNewRequest(string url, HttpMethod method) 
                     : base(url, method)
@@ -121,6 +125,11 @@ namespace ChargeBee.Models
             public CheckoutNewRequest Embed(bool embed) 
             {
                 m_params.AddOpt("embed", embed);
+                return this;
+            }
+            public CheckoutNewRequest IframeMessaging(bool iframeMessaging) 
+            {
+                m_params.AddOpt("iframe_messaging", iframeMessaging);
                 return this;
             }
             public CheckoutNewRequest SubscriptionId(string subscriptionId) 
@@ -200,7 +209,7 @@ namespace ChargeBee.Models
                 return this;
             }
         }
-        public class CheckoutExistingRequest : EntityRequest 
+        public class CheckoutExistingRequest : EntityRequest<CheckoutExistingRequest> 
         {
             public CheckoutExistingRequest(string url, HttpMethod method) 
                     : base(url, method)
@@ -225,6 +234,11 @@ namespace ChargeBee.Models
             public CheckoutExistingRequest Embed(bool embed) 
             {
                 m_params.AddOpt("embed", embed);
+                return this;
+            }
+            public CheckoutExistingRequest IframeMessaging(bool iframeMessaging) 
+            {
+                m_params.AddOpt("iframe_messaging", iframeMessaging);
                 return this;
             }
             public CheckoutExistingRequest SubscriptionId(string subscriptionId) 
@@ -279,7 +293,7 @@ namespace ChargeBee.Models
                 return this;
             }
         }
-        public class UpdateCardRequest : EntityRequest 
+        public class UpdateCardRequest : EntityRequest<UpdateCardRequest> 
         {
             public UpdateCardRequest(string url, HttpMethod method) 
                     : base(url, method)
@@ -294,6 +308,11 @@ namespace ChargeBee.Models
             public UpdateCardRequest Embed(bool embed) 
             {
                 m_params.AddOpt("embed", embed);
+                return this;
+            }
+            public UpdateCardRequest IframeMessaging(bool iframeMessaging) 
+            {
+                m_params.AddOpt("iframe_messaging", iframeMessaging);
                 return this;
             }
             public UpdateCardRequest CustomerId(string customerId) 
@@ -313,7 +332,7 @@ namespace ChargeBee.Models
                 return this;
             }
         }
-        public class CheckoutOnetimeChargeRequest : EntityRequest 
+        public class CheckoutOnetimeChargeRequest : EntityRequest<CheckoutOnetimeChargeRequest> 
         {
             public CheckoutOnetimeChargeRequest(string url, HttpMethod method) 
                     : base(url, method)
@@ -346,7 +365,7 @@ namespace ChargeBee.Models
                 return this;
             }
         }
-        public class CheckoutOnetimeAddonsRequest : EntityRequest 
+        public class CheckoutOnetimeAddonsRequest : EntityRequest<CheckoutOnetimeAddonsRequest> 
         {
             public CheckoutOnetimeAddonsRequest(string url, HttpMethod method) 
                     : base(url, method)

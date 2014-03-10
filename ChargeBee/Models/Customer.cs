@@ -23,10 +23,10 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers");
             return new ListRequest(url);
         }
-        public static EntityRequest Retrieve(string id)
+        public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id));
-            return new EntityRequest(url, HttpMethod.GET);
+            return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         public static UpdateRequest Update(string id)
         {
@@ -89,7 +89,7 @@ namespace ChargeBee.Models
         #endregion
         
         #region Requests
-        public class UpdateRequest : EntityRequest 
+        public class UpdateRequest : EntityRequest<UpdateRequest> 
         {
             public UpdateRequest(string url, HttpMethod method) 
                     : base(url, method)
@@ -122,7 +122,7 @@ namespace ChargeBee.Models
                 return this;
             }
         }
-        public class UpdateBillingInfoRequest : EntityRequest 
+        public class UpdateBillingInfoRequest : EntityRequest<UpdateBillingInfoRequest> 
         {
             public UpdateBillingInfoRequest(string url, HttpMethod method) 
                     : base(url, method)

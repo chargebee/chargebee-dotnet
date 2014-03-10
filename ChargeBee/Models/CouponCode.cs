@@ -23,10 +23,10 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("coupon_codes");
             return new CreateRequest(url, HttpMethod.POST);
         }
-        public static EntityRequest Retrieve(string id)
+        public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("coupon_codes", CheckNull(id));
-            return new EntityRequest(url, HttpMethod.GET);
+            return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         #endregion
         
@@ -47,7 +47,7 @@ namespace ChargeBee.Models
         #endregion
         
         #region Requests
-        public class CreateRequest : EntityRequest 
+        public class CreateRequest : EntityRequest<CreateRequest> 
         {
             public CreateRequest(string url, HttpMethod method) 
                     : base(url, method)

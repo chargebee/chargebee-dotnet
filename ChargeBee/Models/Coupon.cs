@@ -18,15 +18,20 @@ namespace ChargeBee.Models
     
 
         #region Methods
+        public static CreateRequest Create()
+        {
+            string url = ApiUtil.BuildUrl("coupons");
+            return new CreateRequest(url, HttpMethod.POST);
+        }
         public static ListRequest List()
         {
             string url = ApiUtil.BuildUrl("coupons");
             return new ListRequest(url);
         }
-        public static EntityRequest Retrieve(string id)
+        public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("coupons", CheckNull(id));
-            return new EntityRequest(url, HttpMethod.GET);
+            return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         #endregion
         
@@ -67,6 +72,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int?>("duration_month", false); }
         }
+        public DateTime? ValidTill 
+        {
+            get { return GetDateTime("valid_till", false); }
+        }
         public int? MaxRedemptions 
         {
             get { return GetValue<int?>("max_redemptions", false); }
@@ -88,6 +97,14 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<ApplyOnEnum>("apply_on", true); }
         }
+        public PlanConstraintEnum PlanConstraint 
+        {
+            get { return GetEnum<PlanConstraintEnum>("plan_constraint", true); }
+        }
+        public AddonConstraintEnum AddonConstraint 
+        {
+            get { return GetEnum<AddonConstraintEnum>("addon_constraint", true); }
+        }
         public DateTime CreatedAt 
         {
             get { return (DateTime)GetDateTime("created_at", true); }
@@ -96,13 +113,107 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("archived_at", false); }
         }
-        public DateTime? ValidTill 
+        public List<string> PlanIds 
         {
-            get { return GetDateTime("valid_till", false); }
+            get { return GetList<string>("plan_ids"); }
+        }
+        public List<string> AddonIds 
+        {
+            get { return GetList<string>("addon_ids"); }
         }
         
         #endregion
         
+        #region Requests
+        public class CreateRequest : EntityRequest<CreateRequest> 
+        {
+            public CreateRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CreateRequest Id(string id) 
+            {
+                m_params.Add("id", id);
+                return this;
+            }
+            public CreateRequest Name(string name) 
+            {
+                m_params.Add("name", name);
+                return this;
+            }
+            public CreateRequest InvoiceName(string invoiceName) 
+            {
+                m_params.AddOpt("invoice_name", invoiceName);
+                return this;
+            }
+            public CreateRequest DiscountType(DiscountTypeEnum discountType) 
+            {
+                m_params.Add("discount_type", discountType);
+                return this;
+            }
+            public CreateRequest DiscountAmount(int discountAmount) 
+            {
+                m_params.AddOpt("discount_amount", discountAmount);
+                return this;
+            }
+            public CreateRequest DiscountPercentage(double discountPercentage) 
+            {
+                m_params.AddOpt("discount_percentage", discountPercentage);
+                return this;
+            }
+            public CreateRequest DiscountQuantity(int discountQuantity) 
+            {
+                m_params.AddOpt("discount_quantity", discountQuantity);
+                return this;
+            }
+            public CreateRequest ApplyOn(ApplyOnEnum applyOn) 
+            {
+                m_params.Add("apply_on", applyOn);
+                return this;
+            }
+            public CreateRequest PlanConstraint(PlanConstraintEnum planConstraint) 
+            {
+                m_params.AddOpt("plan_constraint", planConstraint);
+                return this;
+            }
+            public CreateRequest AddonConstraint(AddonConstraintEnum addonConstraint) 
+            {
+                m_params.AddOpt("addon_constraint", addonConstraint);
+                return this;
+            }
+            public CreateRequest PlanIds(List<string> planIds) 
+            {
+                m_params.AddOpt("plan_ids", planIds);
+                return this;
+            }
+            public CreateRequest AddonIds(List<string> addonIds) 
+            {
+                m_params.AddOpt("addon_ids", addonIds);
+                return this;
+            }
+            public CreateRequest DurationType(DurationTypeEnum durationType) 
+            {
+                m_params.Add("duration_type", durationType);
+                return this;
+            }
+            public CreateRequest DurationMonth(int durationMonth) 
+            {
+                m_params.AddOpt("duration_month", durationMonth);
+                return this;
+            }
+            public CreateRequest ValidTill(long validTill) 
+            {
+                m_params.AddOpt("valid_till", validTill);
+                return this;
+            }
+            public CreateRequest MaxRedemptions(int maxRedemptions) 
+            {
+                m_params.AddOpt("max_redemptions", maxRedemptions);
+                return this;
+            }
+        }
+        #endregion
 
         public enum DiscountTypeEnum
         {
@@ -171,6 +282,36 @@ namespace ChargeBee.Models
             EachSpecifiedItem,
             [Description("each_unit_of_specified_items")]
             EachUnitOfSpecifiedItems,
+
+        }
+        public enum PlanConstraintEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [Description("none")]
+            None,
+            [Description("all")]
+            All,
+            [Description("specific")]
+            Specific,
+            [Description("not_applicable")]
+            NotApplicable,
+
+        }
+        public enum AddonConstraintEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [Description("none")]
+            None,
+            [Description("all")]
+            All,
+            [Description("specific")]
+            Specific,
+            [Description("not_applicable")]
+            NotApplicable,
 
         }
 

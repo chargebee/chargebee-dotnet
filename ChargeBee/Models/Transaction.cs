@@ -33,10 +33,10 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "transactions");
             return new ListRequest(url);
         }
-        public static EntityRequest Retrieve(string id)
+        public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("transactions", CheckNull(id));
-            return new EntityRequest(url, HttpMethod.GET);
+            return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         public static RefundRequest Refund(string id)
         {
@@ -114,7 +114,7 @@ namespace ChargeBee.Models
         #endregion
         
         #region Requests
-        public class RefundRequest : EntityRequest 
+        public class RefundRequest : EntityRequest<RefundRequest> 
         {
             public RefundRequest(string url, HttpMethod method) 
                     : base(url, method)

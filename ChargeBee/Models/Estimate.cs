@@ -79,7 +79,7 @@ namespace ChargeBee.Models
         #endregion
         
         #region Requests
-        public class CreateSubscriptionRequest : EntityRequest 
+        public class CreateSubscriptionRequest : EntityRequest<CreateSubscriptionRequest> 
         {
             public CreateSubscriptionRequest(string url, HttpMethod method) 
                     : base(url, method)
@@ -142,7 +142,7 @@ namespace ChargeBee.Models
                 return this;
             }
         }
-        public class UpdateSubscriptionRequest : EntityRequest 
+        public class UpdateSubscriptionRequest : EntityRequest<UpdateSubscriptionRequest> 
         {
             public UpdateSubscriptionRequest(string url, HttpMethod method) 
                     : base(url, method)

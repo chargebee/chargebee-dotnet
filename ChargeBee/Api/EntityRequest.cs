@@ -2,7 +2,7 @@
 
 namespace ChargeBee.Api
 {
-    public class EntityRequest
+	public class EntityRequest<T>
     {
         string m_url;
         protected HttpMethod m_method;
@@ -14,7 +14,12 @@ namespace ChargeBee.Api
 			m_method = method;
 		}
 
-        public EntityResult Request()
+		public T Param(String paramName, Object value){
+			m_params.Add(paramName, value);
+			return (T)Convert.ChangeType (this, typeof(T));
+		}
+
+		public EntityResult Request()
         {
             return Request(ApiConfig.Instance);
         }

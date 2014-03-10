@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
@@ -8,7 +9,7 @@ namespace ChargeBee.Api
 {
     public class Params
     {
-        Dictionary<string, string> m_dict = new Dictionary<string, string>();
+		Dictionary<string, object> m_dict = new Dictionary<string, object>();
 
         public void Add(string key, object value)
         {
@@ -19,21 +20,8 @@ namespace ChargeBee.Api
         }
 
         public void AddOpt(string key, object value)
-        {
-            if (value is Enum)
-            {
-                Type eType = value.GetType();
-                FieldInfo fi = eType.GetField(value.ToString());
-                DescriptionAttribute[] attrs = (DescriptionAttribute[])fi.GetCustomAttributes(
-                    typeof(DescriptionAttribute), false);
-
-                if (attrs.Length == 0)
-                    throw new ArgumentException("Enum fields must be decorated with DescriptionAttribute!");
-
-                value = attrs[0].Description;
-            }
-
-            m_dict.Add(key, value == null ? String.Empty : value.ToString());
+		{	
+			m_dict.Add(key, value == null ? String.Empty : ConvertValue(value));
         }
 
         public string GetQuery()
@@ -47,9 +35,46 @@ namespace ChargeBee.Api
 
             foreach (var pair in m_dict)
             {
-				pairs.Add(String.Format("{0}={1}", HttpUtility.UrlEncode(pair.Key), HttpUtility.UrlEncode(pair.Value)));
+				if (pair.Value is IList) {
+					int idx = 0;
+					foreach (object item in (IList)pair.Value) {
+						pairs.Add (String.Format ("{0}[{1}]={2}",
+							HttpUtility.UrlEncode (pair.Key),
+							idx++,
+							HttpUtility.UrlEncode (item.ToString ()))
+						);
+					}
+				} else {
+					pairs.Add (String.Format ("{0}={1}", HttpUtility.UrlEncode (pair.Key), HttpUtility.UrlEncode (pair.Value.ToString ())));
+				}
             }
+			Console.Write (String.Join(",", pairs.ToArray()));
             return pairs.ToArray();
         }
-    }
+
+		private static object ConvertValue(object value) {
+			if (value is string || value is int || value is long
+			    || value is bool || value is double) {
+				return value.ToString ();
+			} else if (value is Enum) {
+				Type eType = value.GetType ();
+				FieldInfo fi = eType.GetField (value.ToString ());
+				DescriptionAttribute[] attrs = (DescriptionAttribute[])fi.GetCustomAttributes (
+					                               typeof(DescriptionAttribute), false);
+				if (attrs.Length == 0) {
+					throw new ArgumentException ("Enum fields must be decorated with DescriptionAttribute!");
+				}
+				return attrs [0].Description;
+			}else if(value is IList) {
+				IList origList = (IList)value;
+				List<string> l = new List<string>();
+				foreach (object item in origList) {
+					l.Add((string)ConvertValue(item));
+				}
+				return l;
+			} else {
+				throw new SystemException("Type [" + value.GetType().ToString() + "] not handled");
+			}
+    	}
+	}
 }

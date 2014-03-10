@@ -23,15 +23,20 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("plans");
             return new CreateRequest(url, HttpMethod.POST);
         }
+        public static UpdateRequest Update(string id)
+        {
+            string url = ApiUtil.BuildUrl("plans", CheckNull(id));
+            return new UpdateRequest(url, HttpMethod.POST);
+        }
         public static ListRequest List()
         {
             string url = ApiUtil.BuildUrl("plans");
             return new ListRequest(url);
         }
-        public static EntityRequest Retrieve(string id)
+        public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("plans", CheckNull(id));
-            return new EntityRequest(url, HttpMethod.GET);
+            return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         #endregion
         
@@ -100,7 +105,7 @@ namespace ChargeBee.Models
         #endregion
         
         #region Requests
-        public class CreateRequest : EntityRequest 
+        public class CreateRequest : EntityRequest<CreateRequest> 
         {
             public CreateRequest(string url, HttpMethod method) 
                     : base(url, method)
@@ -168,6 +173,79 @@ namespace ChargeBee.Models
                 return this;
             }
             public CreateRequest RedirectUrl(string redirectUrl) 
+            {
+                m_params.AddOpt("redirect_url", redirectUrl);
+                return this;
+            }
+        }
+        public class UpdateRequest : EntityRequest<UpdateRequest> 
+        {
+            public UpdateRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public UpdateRequest Id(string id) 
+            {
+                m_params.AddOpt("id", id);
+                return this;
+            }
+            public UpdateRequest Name(string name) 
+            {
+                m_params.AddOpt("name", name);
+                return this;
+            }
+            public UpdateRequest InvoiceName(string invoiceName) 
+            {
+                m_params.AddOpt("invoice_name", invoiceName);
+                return this;
+            }
+            public UpdateRequest TrialPeriod(int trialPeriod) 
+            {
+                m_params.AddOpt("trial_period", trialPeriod);
+                return this;
+            }
+            public UpdateRequest TrialPeriodUnit(TrialPeriodUnitEnum trialPeriodUnit) 
+            {
+                m_params.AddOpt("trial_period_unit", trialPeriodUnit);
+                return this;
+            }
+            public UpdateRequest Period(int period) 
+            {
+                m_params.AddOpt("period", period);
+                return this;
+            }
+            public UpdateRequest PeriodUnit(PeriodUnitEnum periodUnit) 
+            {
+                m_params.AddOpt("period_unit", periodUnit);
+                return this;
+            }
+            public UpdateRequest SetupCost(int setupCost) 
+            {
+                m_params.AddOpt("setup_cost", setupCost);
+                return this;
+            }
+            public UpdateRequest Price(int price) 
+            {
+                m_params.AddOpt("price", price);
+                return this;
+            }
+            public UpdateRequest BillingCycles(int billingCycles) 
+            {
+                m_params.AddOpt("billing_cycles", billingCycles);
+                return this;
+            }
+            public UpdateRequest FreeQuantity(int freeQuantity) 
+            {
+                m_params.AddOpt("free_quantity", freeQuantity);
+                return this;
+            }
+            public UpdateRequest DowngradePenalty(double downgradePenalty) 
+            {
+                m_params.AddOpt("downgrade_penalty", downgradePenalty);
+                return this;
+            }
+            public UpdateRequest RedirectUrl(string redirectUrl) 
             {
                 m_params.AddOpt("redirect_url", redirectUrl);
                 return this;

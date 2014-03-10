@@ -38,10 +38,10 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "subscriptions");
             return new ListRequest(url);
         }
-        public static EntityRequest Retrieve(string id)
+        public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id));
-            return new EntityRequest(url, HttpMethod.GET);
+            return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         public static UpdateRequest Update(string id)
         {
@@ -160,7 +160,7 @@ namespace ChargeBee.Models
         #endregion
         
         #region Requests
-        public class CreateRequest : EntityRequest 
+        public class CreateRequest : EntityRequest<CreateRequest> 
         {
             public CreateRequest(string url, HttpMethod method) 
                     : base(url, method)
@@ -443,7 +443,7 @@ namespace ChargeBee.Models
                 return this;
             }
         }
-        public class CreateForCustomerRequest : EntityRequest 
+        public class CreateForCustomerRequest : EntityRequest<CreateForCustomerRequest> 
         {
             public CreateForCustomerRequest(string url, HttpMethod method) 
                     : base(url, method)
@@ -496,7 +496,7 @@ namespace ChargeBee.Models
                 return this;
             }
         }
-        public class UpdateRequest : EntityRequest 
+        public class UpdateRequest : EntityRequest<UpdateRequest> 
         {
             public UpdateRequest(string url, HttpMethod method) 
                     : base(url, method)
@@ -754,7 +754,7 @@ namespace ChargeBee.Models
                 return this;
             }
         }
-        public class ChangeTermEndRequest : EntityRequest 
+        public class ChangeTermEndRequest : EntityRequest<ChangeTermEndRequest> 
         {
             public ChangeTermEndRequest(string url, HttpMethod method) 
                     : base(url, method)
@@ -767,7 +767,7 @@ namespace ChargeBee.Models
                 return this;
             }
         }
-        public class CancelRequest : EntityRequest 
+        public class CancelRequest : EntityRequest<CancelRequest> 
         {
             public CancelRequest(string url, HttpMethod method) 
                     : base(url, method)
@@ -780,7 +780,7 @@ namespace ChargeBee.Models
                 return this;
             }
         }
-        public class ReactivateRequest : EntityRequest 
+        public class ReactivateRequest : EntityRequest<ReactivateRequest> 
         {
             public ReactivateRequest(string url, HttpMethod method) 
                     : base(url, method)
@@ -799,7 +799,7 @@ namespace ChargeBee.Models
                 return this;
             }
         }
-        public class AddCreditRequest : EntityRequest 
+        public class AddCreditRequest : EntityRequest<AddCreditRequest> 
         {
             public AddCreditRequest(string url, HttpMethod method) 
                     : base(url, method)
