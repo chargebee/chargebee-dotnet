@@ -54,8 +54,10 @@ namespace ChargeBee.Api
 
 		private static object ConvertValue(object value) {
 			if (value is string || value is int || value is long
-			    || value is bool || value is double) {
+			    || value is double) {
 				return value.ToString ();
+			} else if (value is bool) {
+				return value.ToString ().ToLower ();
 			} else if (value is Enum) {
 				Type eType = value.GetType ();
 				FieldInfo fi = eType.GetField (value.ToString ());

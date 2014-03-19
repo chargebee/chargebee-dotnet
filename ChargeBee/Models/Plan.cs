@@ -38,6 +38,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("plans", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
+        public static EntityRequest<Type> Delete(string id)
+        {
+            string url = ApiUtil.BuildUrl("plans", CheckNull(id), "delete");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -286,6 +291,8 @@ namespace ChargeBee.Models
             Active,
             [Description("archived")]
             Archived,
+            [Description("deleted")]
+            Deleted,
 
         }
 

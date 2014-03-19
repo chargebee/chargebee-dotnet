@@ -87,10 +87,6 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("expires_at", false); }
         }
-        public bool IframeMessaging 
-        {
-            get { return GetValue<bool>("iframe_messaging", true); }
-        }
         public HostedPageContent Content
         {
             get
