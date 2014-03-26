@@ -38,6 +38,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("transactions", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
+        public static RecordPaymentRequest RecordPayment(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "record_payment");
+            return new RecordPaymentRequest(url, HttpMethod.POST);
+        }
         public static RefundRequest Refund(string id)
         {
             string url = ApiUtil.BuildUrl("transactions", CheckNull(id), "refund");
@@ -57,6 +62,10 @@ namespace ChargeBee.Models
         public PaymentMethodEnum PaymentMethod 
         {
             get { return GetEnum<PaymentMethodEnum>("payment_method", true); }
+        }
+        public string ReferenceNumber 
+        {
+            get { return GetValue<string>("reference_number", false); }
         }
         public GatewayEnum Gateway 
         {
@@ -110,10 +119,42 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("refunded_txn_id", false); }
         }
+        public List<TransactionLinkedInvoice> LinkedInvoices 
+        {
+            get { return GetResourceList<TransactionLinkedInvoice>("linked_invoices"); }
+        }
         
         #endregion
         
         #region Requests
+        public class RecordPaymentRequest : EntityRequest<RecordPaymentRequest> 
+        {
+            public RecordPaymentRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public RecordPaymentRequest PaymentMethod(PaymentMethodEnum paymentMethod) 
+            {
+                m_params.Add("payment_method", paymentMethod);
+                return this;
+            }
+            public RecordPaymentRequest PaidAt(long paidAt) 
+            {
+                m_params.Add("paid_at", paidAt);
+                return this;
+            }
+            public RecordPaymentRequest ReferenceNumber(string referenceNumber) 
+            {
+                m_params.AddOpt("reference_number", referenceNumber);
+                return this;
+            }
+            public RecordPaymentRequest Memo(string memo) 
+            {
+                m_params.AddOpt("memo", memo);
+                return this;
+            }
+        }
         public class RefundRequest : EntityRequest<RefundRequest> 
         {
             public RefundRequest(string url, HttpMethod method) 
@@ -183,6 +224,52 @@ namespace ChargeBee.Models
         }
 
         #region Subclasses
+        public class TransactionLinkedInvoice : Resource
+        {
+            public enum TxnTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [Description("authorization")]
+                Authorization,
+                [Description("payment")]
+                Payment,
+                [Description("refund")]
+                Refund,
+            }
+            public enum TxnStatusEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [Description("success")]
+                Success,
+                [Description("voided")]
+                Voided,
+                [Description("failure")]
+                Failure,
+                [Description("timeout")]
+                Timeout,
+                [Description("needs_attention")]
+                NeedsAttention,
+            }
+
+            public string InvoiceId() {
+                return GetValue<string>("invoice_id", true);
+            }
+
+            public int AppliedAmount() {
+                return GetValue<int>("applied_amount", true);
+            }
+
+            public DateTime? InvoiceDate() {
+                return GetDateTime("invoice_date", false);
+            }
+
+            public int? InvoiceAmount() {
+                return GetValue<int?>("invoice_amount", false);
+            }
+
+        }
 
         #endregion
     }

@@ -43,6 +43,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
+        public static EntityRequest<Type> Pdf(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "pdf");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
         public static AddChargeRequest AddCharge(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "add_charge");
@@ -52,11 +57,6 @@ namespace ChargeBee.Models
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "add_addon_charge");
             return new AddAddonChargeRequest(url, HttpMethod.POST);
-        }
-        public static EntityRequest<Type> Pdf(string id)
-        {
-            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "pdf");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
         }
         public static EntityRequest<Type> Collect(string id)
         {
@@ -130,6 +130,10 @@ namespace ChargeBee.Models
         public List<InvoiceTax> Taxes 
         {
             get { return GetResourceList<InvoiceTax>("taxes"); }
+        }
+        public List<InvoiceLinkedTransaction> LinkedTransactions 
+        {
+            get { return GetResourceList<InvoiceLinkedTransaction>("linked_transactions"); }
         }
         
         #endregion
@@ -362,6 +366,60 @@ namespace ChargeBee.Models
 
             public string Description() {
                 return GetValue<string>("description", false);
+            }
+
+        }
+        public class InvoiceLinkedTransaction : Resource
+        {
+            public enum TxnTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [Description("authorization")]
+                Authorization,
+                [Description("payment")]
+                Payment,
+                [Description("refund")]
+                Refund,
+            }
+            public enum TxnStatusEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [Description("success")]
+                Success,
+                [Description("voided")]
+                Voided,
+                [Description("failure")]
+                Failure,
+                [Description("timeout")]
+                Timeout,
+                [Description("needs_attention")]
+                NeedsAttention,
+            }
+
+            public string TxnId() {
+                return GetValue<string>("txn_id", true);
+            }
+
+            public int AppliedAmount() {
+                return GetValue<int>("applied_amount", true);
+            }
+
+            public TxnTypeEnum TxnType() {
+                return GetEnum<TxnTypeEnum>("txn_type", true);
+            }
+
+            public TxnStatusEnum? TxnStatus() {
+                return GetEnum<TxnStatusEnum>("txn_status", false);
+            }
+
+            public DateTime? TxnDate() {
+                return GetDateTime("txn_date", false);
+            }
+
+            public int? TxnAmount() {
+                return GetValue<int?>("txn_amount", false);
             }
 
         }
