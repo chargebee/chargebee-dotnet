@@ -371,32 +371,6 @@ namespace ChargeBee.Models
         }
         public class InvoiceLinkedTransaction : Resource
         {
-            public enum TxnTypeEnum
-            {
-                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
-                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [Description("authorization")]
-                Authorization,
-                [Description("payment")]
-                Payment,
-                [Description("refund")]
-                Refund,
-            }
-            public enum TxnStatusEnum
-            {
-                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
-                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [Description("success")]
-                Success,
-                [Description("voided")]
-                Voided,
-                [Description("failure")]
-                Failure,
-                [Description("timeout")]
-                Timeout,
-                [Description("needs_attention")]
-                NeedsAttention,
-            }
 
             public string TxnId() {
                 return GetValue<string>("txn_id", true);
@@ -406,12 +380,12 @@ namespace ChargeBee.Models
                 return GetValue<int>("applied_amount", true);
             }
 
-            public TxnTypeEnum TxnType() {
-                return GetEnum<TxnTypeEnum>("txn_type", true);
+            public Transaction.TypeEnum TxnType() {
+                return GetEnum<Transaction.TypeEnum>("txn_type", true);
             }
 
-            public TxnStatusEnum? TxnStatus() {
-                return GetEnum<TxnStatusEnum>("txn_status", false);
+            public Transaction.StatusEnum? TxnStatus() {
+                return GetEnum<Transaction.StatusEnum>("txn_status", false);
             }
 
             public DateTime? TxnDate() {
