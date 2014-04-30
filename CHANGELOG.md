@@ -1,7 +1,10 @@
+### v1.2.4  (2014-04-30)
+* * *
+Adding missing fields that were not returned for address resource.
+
 ### v1.2.3  (2014-04-22)
 * * *
 Support for returning shipping address as part of create/update subscription API.
-
 
 ### v1.2.2  (2014-04-17)
 * * *

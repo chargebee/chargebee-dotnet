@@ -136,9 +136,19 @@ namespace ChargeBee.Models
                 m_params.AddOpt("last_name", lastName);
                 return this;
             }
+            public UpdateRequest Email(string email) 
+            {
+                m_params.AddOpt("email", email);
+                return this;
+            }
             public UpdateRequest Company(string company) 
             {
                 m_params.AddOpt("company", company);
+                return this;
+            }
+            public UpdateRequest Phone(string phone) 
+            {
+                m_params.AddOpt("phone", phone);
                 return this;
             }
             public UpdateRequest Addr(string addr) 
