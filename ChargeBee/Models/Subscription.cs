@@ -156,6 +156,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<SubscriptionCoupon>("coupons"); }
         }
+        public SubscriptionShippingAddress ShippingAddress 
+        {
+            get { return GetSubResource<SubscriptionShippingAddress>("shipping_address"); }
+        }
         
         #endregion
         
@@ -880,6 +884,58 @@ namespace ChargeBee.Models
 
             public string CouponCode() {
                 return GetValue<string>("coupon_code", false);
+            }
+
+        }
+        public class SubscriptionShippingAddress : Resource
+        {
+
+            public string FirstName() {
+                return GetValue<string>("first_name", false);
+            }
+
+            public string LastName() {
+                return GetValue<string>("last_name", false);
+            }
+
+            public string Email() {
+                return GetValue<string>("email", false);
+            }
+
+            public string Company() {
+                return GetValue<string>("company", false);
+            }
+
+            public string Phone() {
+                return GetValue<string>("phone", false);
+            }
+
+            public string Line1() {
+                return GetValue<string>("line1", false);
+            }
+
+            public string Line2() {
+                return GetValue<string>("line2", false);
+            }
+
+            public string Line3() {
+                return GetValue<string>("line3", false);
+            }
+
+            public string City() {
+                return GetValue<string>("city", false);
+            }
+
+            public string State() {
+                return GetValue<string>("state", false);
+            }
+
+            public string Country() {
+                return GetValue<string>("country", false);
+            }
+
+            public string Zip() {
+                return GetValue<string>("zip", false);
             }
 
         }

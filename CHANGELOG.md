@@ -1,3 +1,8 @@
+### v1.2.3  (2014-04-22)
+* * *
+Support for returning shipping address as part of create/update subscription API.
+
+
 ### v1.2.2  (2014-04-17)
 * * *
 Issue fix. For linked invoices and transactions, the enum values are used directly from Invoice & Transaction resource to represent type & status attributes.
