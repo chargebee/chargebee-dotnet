@@ -12,8 +12,6 @@
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <ProductVersion>12.0.0</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -76,6 +74,7 @@
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Enums\EntityTypeEnum.cs" />
     <Compile Include="Models\Download.cs" />
+    <Compile Include="Models\PortalSession.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

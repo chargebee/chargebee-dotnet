@@ -83,6 +83,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<Download>("download"); }
         }
+        public PortalSession PortalSession
+        {
+            get {  return GetResource<PortalSession>("portal_session"); }
+        }
 
         private T GetResource<T>(string property) where T : Resource, new()
         {
