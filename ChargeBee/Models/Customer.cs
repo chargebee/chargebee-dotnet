@@ -18,6 +18,11 @@ namespace ChargeBee.Models
     
 
         #region Methods
+        public static CreateRequest Create()
+        {
+            string url = ApiUtil.BuildUrl("customers");
+            return new CreateRequest(url, HttpMethod.POST);
+        }
         public static ListRequest List()
         {
             string url = ApiUtil.BuildUrl("customers");
@@ -89,6 +94,184 @@ namespace ChargeBee.Models
         #endregion
         
         #region Requests
+        public class CreateRequest : EntityRequest<CreateRequest> 
+        {
+            public CreateRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CreateRequest Id(string id) 
+            {
+                m_params.AddOpt("id", id);
+                return this;
+            }
+            public CreateRequest FirstName(string firstName) 
+            {
+                m_params.AddOpt("first_name", firstName);
+                return this;
+            }
+            public CreateRequest LastName(string lastName) 
+            {
+                m_params.AddOpt("last_name", lastName);
+                return this;
+            }
+            public CreateRequest Email(string email) 
+            {
+                m_params.AddOpt("email", email);
+                return this;
+            }
+            public CreateRequest Phone(string phone) 
+            {
+                m_params.AddOpt("phone", phone);
+                return this;
+            }
+            public CreateRequest Company(string company) 
+            {
+                m_params.AddOpt("company", company);
+                return this;
+            }
+            public CreateRequest AutoCollection(AutoCollectionEnum autoCollection) 
+            {
+                m_params.AddOpt("auto_collection", autoCollection);
+                return this;
+            }
+            public CreateRequest VatNumber(string vatNumber) 
+            {
+                m_params.AddOpt("vat_number", vatNumber);
+                return this;
+            }
+            public CreateRequest CardGateway(GatewayEnum cardGateway) 
+            {
+                m_params.AddOpt("card[gateway]", cardGateway);
+                return this;
+            }
+            public CreateRequest CardTmpToken(string cardTmpToken) 
+            {
+                m_params.AddOpt("card[tmp_token]", cardTmpToken);
+                return this;
+            }
+            public CreateRequest CardFirstName(string cardFirstName) 
+            {
+                m_params.AddOpt("card[first_name]", cardFirstName);
+                return this;
+            }
+            public CreateRequest CardLastName(string cardLastName) 
+            {
+                m_params.AddOpt("card[last_name]", cardLastName);
+                return this;
+            }
+            public CreateRequest CardNumber(string cardNumber) 
+            {
+                m_params.AddOpt("card[number]", cardNumber);
+                return this;
+            }
+            public CreateRequest CardExpiryMonth(int cardExpiryMonth) 
+            {
+                m_params.AddOpt("card[expiry_month]", cardExpiryMonth);
+                return this;
+            }
+            public CreateRequest CardExpiryYear(int cardExpiryYear) 
+            {
+                m_params.AddOpt("card[expiry_year]", cardExpiryYear);
+                return this;
+            }
+            public CreateRequest CardCvv(string cardCvv) 
+            {
+                m_params.AddOpt("card[cvv]", cardCvv);
+                return this;
+            }
+            public CreateRequest CardBillingAddr1(string cardBillingAddr1) 
+            {
+                m_params.AddOpt("card[billing_addr1]", cardBillingAddr1);
+                return this;
+            }
+            public CreateRequest CardBillingAddr2(string cardBillingAddr2) 
+            {
+                m_params.AddOpt("card[billing_addr2]", cardBillingAddr2);
+                return this;
+            }
+            public CreateRequest CardBillingCity(string cardBillingCity) 
+            {
+                m_params.AddOpt("card[billing_city]", cardBillingCity);
+                return this;
+            }
+            public CreateRequest CardBillingState(string cardBillingState) 
+            {
+                m_params.AddOpt("card[billing_state]", cardBillingState);
+                return this;
+            }
+            public CreateRequest CardBillingZip(string cardBillingZip) 
+            {
+                m_params.AddOpt("card[billing_zip]", cardBillingZip);
+                return this;
+            }
+            public CreateRequest CardBillingCountry(string cardBillingCountry) 
+            {
+                m_params.AddOpt("card[billing_country]", cardBillingCountry);
+                return this;
+            }
+            public CreateRequest BillingAddressFirstName(string billingAddressFirstName) 
+            {
+                m_params.AddOpt("billing_address[first_name]", billingAddressFirstName);
+                return this;
+            }
+            public CreateRequest BillingAddressLastName(string billingAddressLastName) 
+            {
+                m_params.AddOpt("billing_address[last_name]", billingAddressLastName);
+                return this;
+            }
+            public CreateRequest BillingAddressEmail(string billingAddressEmail) 
+            {
+                m_params.AddOpt("billing_address[email]", billingAddressEmail);
+                return this;
+            }
+            public CreateRequest BillingAddressCompany(string billingAddressCompany) 
+            {
+                m_params.AddOpt("billing_address[company]", billingAddressCompany);
+                return this;
+            }
+            public CreateRequest BillingAddressPhone(string billingAddressPhone) 
+            {
+                m_params.AddOpt("billing_address[phone]", billingAddressPhone);
+                return this;
+            }
+            public CreateRequest BillingAddressLine1(string billingAddressLine1) 
+            {
+                m_params.AddOpt("billing_address[line1]", billingAddressLine1);
+                return this;
+            }
+            public CreateRequest BillingAddressLine2(string billingAddressLine2) 
+            {
+                m_params.AddOpt("billing_address[line2]", billingAddressLine2);
+                return this;
+            }
+            public CreateRequest BillingAddressLine3(string billingAddressLine3) 
+            {
+                m_params.AddOpt("billing_address[line3]", billingAddressLine3);
+                return this;
+            }
+            public CreateRequest BillingAddressCity(string billingAddressCity) 
+            {
+                m_params.AddOpt("billing_address[city]", billingAddressCity);
+                return this;
+            }
+            public CreateRequest BillingAddressState(string billingAddressState) 
+            {
+                m_params.AddOpt("billing_address[state]", billingAddressState);
+                return this;
+            }
+            public CreateRequest BillingAddressZip(string billingAddressZip) 
+            {
+                m_params.AddOpt("billing_address[zip]", billingAddressZip);
+                return this;
+            }
+            public CreateRequest BillingAddressCountry(string billingAddressCountry) 
+            {
+                m_params.AddOpt("billing_address[country]", billingAddressCountry);
+                return this;
+            }
+        }
         public class UpdateRequest : EntityRequest<UpdateRequest> 
         {
             public UpdateRequest(string url, HttpMethod method) 

@@ -30,6 +30,9 @@ namespace ChargeBee.Models.Enums
         [Description("eway")]
         Eway,
 
+        [Description("eway_rapid")]
+        EwayRapid,
+
         [Description("worldpay")]
         Worldpay,
 

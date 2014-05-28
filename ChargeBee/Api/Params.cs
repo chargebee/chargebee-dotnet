@@ -48,7 +48,6 @@ namespace ChargeBee.Api
 					pairs.Add (String.Format ("{0}={1}", HttpUtility.UrlEncode (pair.Key), HttpUtility.UrlEncode (pair.Value.ToString ())));
 				}
             }
-			Console.Write (String.Join(",", pairs.ToArray()));
             return pairs.ToArray();
         }
 

@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.IO;
 using System.Net;
+using System.Web;
 using System.Reflection;
 using System.Text;
 
@@ -19,7 +20,7 @@ namespace ChargeBee.Api
 
             foreach (var path in paths)
             {
-                sb.Append('/').Append(path);
+				sb.Append('/').Append(HttpUtility.UrlEncode(path));
             }
 
             return sb.ToString();
@@ -64,7 +65,6 @@ namespace ChargeBee.Api
                 {
                     code = response.StatusCode;
                     string json = reader.ReadToEnd();
-					Console.WriteLine(json);
                     ApiException apiEx = JsonConvert.DeserializeObject<ApiException>(json);
                     apiEx.HttpCode = response.StatusCode;
                     throw apiEx;

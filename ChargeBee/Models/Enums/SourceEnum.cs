@@ -30,5 +30,8 @@ namespace ChargeBee.Models.Enums
         [Description("js_api")]
         JsApi,
 
+        [Description("portal")]
+        Portal,
+
     }
 }
