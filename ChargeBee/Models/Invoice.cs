@@ -33,14 +33,14 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices");
             return new ListRequest(url);
         }
-        public static ListRequest InvoicesForSubscription(string id)
-        {
-            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "invoices");
-            return new ListRequest(url);
-        }
         public static ListRequest InvoicesForCustomer(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "invoices");
+            return new ListRequest(url);
+        }
+        public static ListRequest InvoicesForSubscription(string id)
+        {
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "invoices");
             return new ListRequest(url);
         }
         public static EntityRequest<Type> Retrieve(string id)
@@ -86,7 +86,7 @@ namespace ChargeBee.Models
         }
         public string SubscriptionId 
         {
-            get { return GetValue<string>("subscription_id", true); }
+            get { return GetValue<string>("subscription_id", false); }
         }
         public bool Recurring 
         {
@@ -155,9 +155,14 @@ namespace ChargeBee.Models
             {
             }
 
+            public ChargeRequest CustomerId(string customerId) 
+            {
+                m_params.AddOpt("customer_id", customerId);
+                return this;
+            }
             public ChargeRequest SubscriptionId(string subscriptionId) 
             {
-                m_params.Add("subscription_id", subscriptionId);
+                m_params.AddOpt("subscription_id", subscriptionId);
                 return this;
             }
             public ChargeRequest Amount(int amount) 
@@ -170,6 +175,11 @@ namespace ChargeBee.Models
                 m_params.Add("description", description);
                 return this;
             }
+            public ChargeRequest Coupon(string coupon) 
+            {
+                m_params.AddOpt("coupon", coupon);
+                return this;
+            }
         }
         public class ChargeAddonRequest : EntityRequest<ChargeAddonRequest> 
         {
@@ -178,9 +188,14 @@ namespace ChargeBee.Models
             {
             }
 
+            public ChargeAddonRequest CustomerId(string customerId) 
+            {
+                m_params.AddOpt("customer_id", customerId);
+                return this;
+            }
             public ChargeAddonRequest SubscriptionId(string subscriptionId) 
             {
-                m_params.Add("subscription_id", subscriptionId);
+                m_params.AddOpt("subscription_id", subscriptionId);
                 return this;
             }
             public ChargeAddonRequest AddonId(string addonId) 
@@ -191,6 +206,11 @@ namespace ChargeBee.Models
             public ChargeAddonRequest AddonQuantity(int addonQuantity) 
             {
                 m_params.AddOpt("addon_quantity", addonQuantity);
+                return this;
+            }
+            public ChargeAddonRequest Coupon(string coupon) 
+            {
+                m_params.AddOpt("coupon", coupon);
                 return this;
             }
         }

@@ -23,6 +23,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("transactions");
             return new ListRequest(url);
         }
+        public static ListRequest TransactionsForCustomer(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "transactions");
+            return new ListRequest(url);
+        }
         public static ListRequest TransactionsForSubscription(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "transactions");
@@ -54,6 +59,10 @@ namespace ChargeBee.Models
         public string Id 
         {
             get { return GetValue<string>("id", true); }
+        }
+        public string CustomerId 
+        {
+            get { return GetValue<string>("customer_id", false); }
         }
         public string SubscriptionId 
         {
