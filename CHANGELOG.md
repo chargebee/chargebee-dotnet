@@ -1,4 +1,4 @@
-### v1.2.7 (2014-06-19)
+### v1.2.8 (2014-06-27)
 APIs added:
 * Retrieve invoices for a customer. See https://apidocs.chargebee.com/docs/api/invoices?lang=dotnet#list_invoices_for_a_customer.
 * Retrieve transactions for a customer. See https://apidocs.chargebee.com/docs/api/transactions?lang=dotnet#list_transactions_for_a_customer.
