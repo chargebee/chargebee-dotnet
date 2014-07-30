@@ -58,6 +58,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("invoice_name", false); }
         }
+        public string Description 
+        {
+            get { return GetValue<string>("description", false); }
+        }
         public int Price 
         {
             get { return GetValue<int>("price", true); }
@@ -77,6 +81,10 @@ namespace ChargeBee.Models
         public TrialPeriodUnitEnum? TrialPeriodUnit 
         {
             get { return GetEnum<TrialPeriodUnitEnum>("trial_period_unit", false); }
+        }
+        public ChargeModelEnum ChargeModel 
+        {
+            get { return GetEnum<ChargeModelEnum>("charge_model", true); }
         }
         public int FreeQuantity 
         {
@@ -105,6 +113,10 @@ namespace ChargeBee.Models
         public string RedirectUrl 
         {
             get { return GetValue<string>("redirect_url", false); }
+        }
+        public bool EnabledInHostedPages 
+        {
+            get { return GetValue<bool>("enabled_in_hosted_pages", true); }
         }
         
         #endregion
@@ -167,6 +179,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
+            public CreateRequest ChargeModel(ChargeModelEnum chargeModel) 
+            {
+                m_params.AddOpt("charge_model", chargeModel);
+                return this;
+            }
             public CreateRequest FreeQuantity(int freeQuantity) 
             {
                 m_params.AddOpt("free_quantity", freeQuantity);
@@ -180,6 +197,11 @@ namespace ChargeBee.Models
             public CreateRequest RedirectUrl(string redirectUrl) 
             {
                 m_params.AddOpt("redirect_url", redirectUrl);
+                return this;
+            }
+            public CreateRequest EnabledInHostedPages(bool enabledInHostedPages) 
+            {
+                m_params.AddOpt("enabled_in_hosted_pages", enabledInHostedPages);
                 return this;
             }
         }
@@ -240,6 +262,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
+            public UpdateRequest ChargeModel(ChargeModelEnum chargeModel) 
+            {
+                m_params.AddOpt("charge_model", chargeModel);
+                return this;
+            }
             public UpdateRequest FreeQuantity(int freeQuantity) 
             {
                 m_params.AddOpt("free_quantity", freeQuantity);
@@ -253,6 +280,11 @@ namespace ChargeBee.Models
             public UpdateRequest RedirectUrl(string redirectUrl) 
             {
                 m_params.AddOpt("redirect_url", redirectUrl);
+                return this;
+            }
+            public UpdateRequest EnabledInHostedPages(bool enabledInHostedPages) 
+            {
+                m_params.AddOpt("enabled_in_hosted_pages", enabledInHostedPages);
                 return this;
             }
         }
@@ -280,6 +312,17 @@ namespace ChargeBee.Models
             Day,
             [Description("month")]
             Month,
+
+        }
+        public enum ChargeModelEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [Description("flat_fee")]
+            FlatFee,
+            [Description("per_unit")]
+            PerUnit,
 
         }
         public enum StatusEnum

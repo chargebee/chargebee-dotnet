@@ -28,6 +28,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("estimates", "update_subscription");
             return new UpdateSubscriptionRequest(url, HttpMethod.POST);
         }
+        public static RenewalEstimateRequest RenewalEstimate(string id)
+        {
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "renewal_estimate");
+            return new RenewalEstimateRequest(url, HttpMethod.GET);
+        }
         #endregion
         
         #region Properties
@@ -169,6 +174,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("end_of_term", endOfTerm);
                 return this;
             }
+            public UpdateSubscriptionRequest IncludeDelayedCharges(bool includeDelayedCharges) 
+            {
+                m_params.AddOpt("include_delayed_charges", includeDelayedCharges);
+                return this;
+            }
             public UpdateSubscriptionRequest SubscriptionId(string subscriptionId) 
             {
                 m_params.Add("subscription[id]", subscriptionId);
@@ -217,6 +227,19 @@ namespace ChargeBee.Models
             public UpdateSubscriptionRequest AddonQuantity(int index, int addonQuantity) 
             {
                 m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
+                return this;
+            }
+        }
+        public class RenewalEstimateRequest : EntityRequest<RenewalEstimateRequest> 
+        {
+            public RenewalEstimateRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public RenewalEstimateRequest IncludeDelayedCharges(bool includeDelayedCharges) 
+            {
+                m_params.AddOpt("include_delayed_charges", includeDelayedCharges);
                 return this;
             }
         }

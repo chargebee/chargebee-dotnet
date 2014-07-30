@@ -84,10 +84,6 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<StatusEnum>("status", false); }
         }
-        public int? Redemptions 
-        {
-            get { return GetValue<int?>("redemptions", false); }
-        }
         [Obsolete]
         public ApplyDiscountOnEnum ApplyDiscountOn 
         {
@@ -120,6 +116,10 @@ namespace ChargeBee.Models
         public List<string> AddonIds 
         {
             get { return GetList<string>("addon_ids"); }
+        }
+        public int? Redemptions 
+        {
+            get { return GetValue<int?>("redemptions", false); }
         }
         
         #endregion

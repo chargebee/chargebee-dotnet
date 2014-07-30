@@ -63,6 +63,16 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "reactivate");
             return new ReactivateRequest(url, HttpMethod.POST);
         }
+        public static AddChargeAtTermEndRequest AddChargeAtTermEnd(string id)
+        {
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "add_charge_at_term_end");
+            return new AddChargeAtTermEndRequest(url, HttpMethod.POST);
+        }
+        public static ChargeAddonAtTermEndRequest ChargeAddonAtTermEnd(string id)
+        {
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "charge_addon_at_term_end");
+            return new ChargeAddonAtTermEndRequest(url, HttpMethod.POST);
+        }
         public static AddCreditRequest AddCredit(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "add_credit");
@@ -800,6 +810,42 @@ namespace ChargeBee.Models
             public ReactivateRequest TrialPeriodDays(int trialPeriodDays) 
             {
                 m_params.AddOpt("trial_period_days", trialPeriodDays);
+                return this;
+            }
+        }
+        public class AddChargeAtTermEndRequest : EntityRequest<AddChargeAtTermEndRequest> 
+        {
+            public AddChargeAtTermEndRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public AddChargeAtTermEndRequest Amount(int amount) 
+            {
+                m_params.Add("amount", amount);
+                return this;
+            }
+            public AddChargeAtTermEndRequest Description(string description) 
+            {
+                m_params.Add("description", description);
+                return this;
+            }
+        }
+        public class ChargeAddonAtTermEndRequest : EntityRequest<ChargeAddonAtTermEndRequest> 
+        {
+            public ChargeAddonAtTermEndRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public ChargeAddonAtTermEndRequest AddonId(string addonId) 
+            {
+                m_params.Add("addon_id", addonId);
+                return this;
+            }
+            public ChargeAddonAtTermEndRequest AddonQuantity(int addonQuantity) 
+            {
+                m_params.AddOpt("addon_quantity", addonQuantity);
                 return this;
             }
         }

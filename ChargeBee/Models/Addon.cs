@@ -58,6 +58,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("invoice_name", false); }
         }
+        public string Description 
+        {
+            get { return GetValue<string>("description", false); }
+        }
         public TypeEnum AddonType 
         {
             get { return GetEnum<TypeEnum>("type", true); }
