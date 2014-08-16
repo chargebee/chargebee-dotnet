@@ -120,6 +120,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("invoice_name", invoiceName);
                 return this;
             }
+            public CreateRequest Description(string description) 
+            {
+                m_params.AddOpt("description", description);
+                return this;
+            }
             public CreateRequest ChargeType(ChargeTypeEnum chargeType) 
             {
                 m_params.Add("charge_type", chargeType);
@@ -171,6 +176,11 @@ namespace ChargeBee.Models
             public UpdateRequest InvoiceName(string invoiceName) 
             {
                 m_params.AddOpt("invoice_name", invoiceName);
+                return this;
+            }
+            public UpdateRequest Description(string description) 
+            {
+                m_params.AddOpt("description", description);
                 return this;
             }
             public UpdateRequest ChargeType(ChargeTypeEnum chargeType) 

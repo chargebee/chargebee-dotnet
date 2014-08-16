@@ -48,11 +48,6 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "record_payment");
             return new RecordPaymentRequest(url, HttpMethod.POST);
         }
-        public static RefundRequest Refund(string id)
-        {
-            string url = ApiUtil.BuildUrl("transactions", CheckNull(id), "refund");
-            return new RefundRequest(url, HttpMethod.POST);
-        }
         #endregion
         
         #region Properties
@@ -159,24 +154,6 @@ namespace ChargeBee.Models
                 return this;
             }
             public RecordPaymentRequest Memo(string memo) 
-            {
-                m_params.AddOpt("memo", memo);
-                return this;
-            }
-        }
-        public class RefundRequest : EntityRequest<RefundRequest> 
-        {
-            public RefundRequest(string url, HttpMethod method) 
-                    : base(url, method)
-            {
-            }
-
-            public RefundRequest RefundAmount(int refundAmount) 
-            {
-                m_params.AddOpt("refund_amount", refundAmount);
-                return this;
-            }
-            public RefundRequest Memo(string memo) 
             {
                 m_params.AddOpt("memo", memo);
                 return this;
