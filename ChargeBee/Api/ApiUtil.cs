@@ -20,7 +20,7 @@ namespace ChargeBee.Api
 
             foreach (var path in paths)
             {
-				sb.Append('/').Append(HttpUtility.UrlEncode(path));
+				sb.Append('/').Append(HttpUtility.UrlPathEncode(path));
             }
 
             return sb.ToString();
