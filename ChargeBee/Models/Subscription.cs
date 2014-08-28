@@ -146,6 +146,14 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<CancelReasonEnum>("cancel_reason", false); }
         }
+        public string AffiliateToken 
+        {
+            get { return GetValue<string>("affiliate_token", false); }
+        }
+        public string CreatedFromIp 
+        {
+            get { return GetValue<string>("created_from_ip", false); }
+        }
         public int? DueInvoicesCount 
         {
             get { return GetValue<int?>("due_invoices_count", false); }
@@ -223,6 +231,16 @@ namespace ChargeBee.Models
             public CreateRequest Coupon(string coupon) 
             {
                 m_params.AddOpt("coupon", coupon);
+                return this;
+            }
+            public CreateRequest AffiliateToken(string affiliateToken) 
+            {
+                m_params.AddOpt("affiliate_token", affiliateToken);
+                return this;
+            }
+            public CreateRequest CreatedFromIp(string createdFromIp) 
+            {
+                m_params.AddOpt("created_from_ip", createdFromIp);
                 return this;
             }
             public CreateRequest CustomerId(string customerId) 
