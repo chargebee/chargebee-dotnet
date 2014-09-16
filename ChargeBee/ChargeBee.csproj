@@ -75,6 +75,9 @@
     <Compile Include="Models\Enums\EntityTypeEnum.cs" />
     <Compile Include="Models\Download.cs" />
     <Compile Include="Models\PortalSession.cs" />
+    <Compile Include="Exceptions\InvalidRequestException.cs" />
+    <Compile Include="Exceptions\OperationFailedException.cs" />
+    <Compile Include="Exceptions\PaymentException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -90,6 +93,7 @@
   -->
   <ItemGroup>
     <Folder Include="lib\" />
+    <Folder Include="Exceptions\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

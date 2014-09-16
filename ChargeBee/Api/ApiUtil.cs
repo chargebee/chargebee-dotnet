@@ -5,8 +5,11 @@ using System.Net;
 using System.Web;
 using System.Reflection;
 using System.Text;
+using System.Collections.Generic;
 
 using Newtonsoft.Json;
+
+using ChargeBee.Exceptions;
 
 namespace ChargeBee.Api
 {
@@ -59,15 +62,29 @@ namespace ChargeBee.Api
             }
             catch (WebException ex)
             {
-				Console.WriteLine("exception is {0}", ex); 
+                if (ex.Response == null) throw ex;
                 using (HttpWebResponse response = ex.Response as HttpWebResponse)
                 using (StreamReader reader = new StreamReader(response.GetResponseStream()))
                 {
                     code = response.StatusCode;
-                    string json = reader.ReadToEnd();
-                    ApiException apiEx = JsonConvert.DeserializeObject<ApiException>(json);
-                    apiEx.HttpCode = response.StatusCode;
-                    throw apiEx;
+                    string content = reader.ReadToEnd();
+					Dictionary<string, string> errorJson = null;
+					try {
+						errorJson = JsonConvert.DeserializeObject<Dictionary<string, string>> (content);
+					} catch(JsonException e) {
+						throw new SystemException("Not in JSON format. Probably not a ChargeBee response. \n " + content, e);
+					}
+					string type = "";
+					errorJson.TryGetValue ("type", out type);
+					if ("payment".Equals (type)) {
+						throw new PaymentException (response.StatusCode, errorJson);
+					} else if ("operation_failed".Equals (type)) {
+						throw new OperationFailedException (response.StatusCode, errorJson);
+					} else if ("invalid_request".Equals(type)){
+						throw new InvalidRequestException (response.StatusCode, errorJson);
+					} else {
+						throw new ApiException(response.StatusCode, errorJson);
+					}
                 }
             }
         }

@@ -1,3 +1,25 @@
+### v1.3.3 (2014-09-16)
+* * *
+
+**Error Model**:
+
+New simpler model for error handling has been implemented. Please see below api document for more details
+
+https://apidocs.chargebee.com/docs/api?lang=dotnet#error_handling 
+
+The following variables in APIException have been deprecated.
+* ApiCode  (Use ApiErrorCode instead).
+* HttpCode (Use HttpStatusCode instead).
+* Parameter (Use Param instead)
+* ApiMessage (Use exception's Message).
+
+The changes are backward compatible. Ensure that  your error handling code is tested after you upgrade to this version.
+
+**APIs Updated**:
+
+Shipping Address support added to *create subscription for a customer* api call.
+
+
 ### v1.3.2 (2014-08-28)
 * * *
 * Customer id can be passed to the checkout new subscription operation.

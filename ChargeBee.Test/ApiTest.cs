@@ -92,7 +92,7 @@ namespace ChargeBee.Test
             ExpectedMessage = "Sorry, we couldn't find that resource")]
         public void TestRetrieveEventNotFound()
         {
-            EntityResult result = Event.Retrieve("not_existent_id").Request();
+            Event.Retrieve("not_existent_id").Request();
         }
 
         [Test]
@@ -248,7 +248,7 @@ namespace ChargeBee.Test
             ExpectedMessage = "This operation is not supported for ChargeBee gateway")]
         public void TestCheckoutOnetimeCharge()
         {
-            EntityResult result = HostedPage.CheckoutOnetimeCharge()
+            HostedPage.CheckoutOnetimeCharge()
                   .Amount(1000)
                   .Description("Support charge")
                   .SubscriptionId("HoR7OsYNy5YBOlyn").Request();
