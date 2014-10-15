@@ -144,11 +144,11 @@ namespace ChargeBee.Api
         {
             if (t == null) return null;
 
-            DateTime dt = (DateTime)t;
+            DateTime dtutc = ((DateTime)t).ToUniversalTime();
 
-            if (dt < m_unixTime) throw new ArgumentException("Time can't be before 1970, January 1!");
+            if (dtutc < m_unixTime) throw new ArgumentException("Time can't be before 1970, January 1!");
 
-            return (long)(dt.ToUniversalTime() - m_unixTime).TotalSeconds;
+            return (long)(dt - m_unixTime).TotalSeconds;
         }
     }
 
