@@ -304,6 +304,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("company", company);
                 return this;
             }
+            public UpdateRequest AutoCollection(AutoCollectionEnum autoCollection) 
+            {
+                m_params.AddOpt("auto_collection", autoCollection);
+                return this;
+            }
         }
         public class UpdateBillingInfoRequest : EntityRequest<UpdateBillingInfoRequest> 
         {

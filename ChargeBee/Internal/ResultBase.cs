@@ -16,21 +16,23 @@ namespace ChargeBee.Internal
         internal ResultBase(string json)
         {
             if (!String.IsNullOrEmpty(json))
-			{
-				try 
-				{
-                	m_jobj = JToken.Parse(json);
-				} catch(JsonException e){
-					throw new SystemException("Not in JSON format. Probably not a ChargeBee response. \n " + json, e);
-				}
-			}
+            {
+                try
+                {
+                    m_jobj = JToken.Parse(json);
+                }
+                catch(JsonException e)
+                {
+                    throw new SystemException("Not in JSON format. Probably not a ChargeBee response. \n " + json, e);
+                }
+            }
         }
 
         internal ResultBase(JToken jobj)
         {
             m_jobj = jobj;
         }
-        
+
         public Subscription Subscription
         {
             get {  return GetResource<Subscription>("subscription"); }
