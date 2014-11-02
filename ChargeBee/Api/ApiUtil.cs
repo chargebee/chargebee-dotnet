@@ -148,7 +148,7 @@ namespace ChargeBee.Api
 
             if (dtutc < m_unixTime) throw new ArgumentException("Time can't be before 1970, January 1!");
 
-            return (long)(dt - m_unixTime).TotalSeconds;
+            return (long)(dtutc - m_unixTime).TotalSeconds;
         }
     }
 
