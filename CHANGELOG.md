@@ -1,3 +1,9 @@
+### v1.3.5 (2014-11-24)
+* * *
+
+* Support for Amazon Payments
+* Details about customer's payment method is now available as sub resource of Customer.
+
 ### v1.3.4 (2014-10-12)
 * * *
 

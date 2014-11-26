@@ -174,6 +174,8 @@ namespace ChargeBee.Models
             Check,
             [Description("bank_transfer")]
             BankTransfer,
+            [Description("amazon_payments")]
+            AmazonPayments,
             [Description("other")]
             Other,
 
