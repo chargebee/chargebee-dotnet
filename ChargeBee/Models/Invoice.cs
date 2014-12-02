@@ -28,10 +28,10 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", "charge_addon");
             return new ChargeAddonRequest(url, HttpMethod.POST);
         }
-        public static ListRequest List()
+        public static InvoiceListRequest List()
         {
             string url = ApiUtil.BuildUrl("invoices");
-            return new ListRequest(url);
+            return new InvoiceListRequest(url);
         }
         public static ListRequest InvoicesForCustomer(string id)
         {
@@ -144,6 +144,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<InvoiceLinkedTransaction>("linked_transactions"); }
         }
+        public List<InvoiceLinkedOrder> LinkedOrders 
+        {
+            get { return GetResourceList<InvoiceLinkedOrder>("linked_orders"); }
+        }
         
         #endregion
         
@@ -211,6 +215,29 @@ namespace ChargeBee.Models
             public ChargeAddonRequest Coupon(string coupon) 
             {
                 m_params.AddOpt("coupon", coupon);
+                return this;
+            }
+        }
+        public class InvoiceListRequest : ListRequest 
+        {
+            public InvoiceListRequest(string url) 
+                    : base(url)
+            {
+            }
+
+            public InvoiceListRequest Limit(int limit) 
+            {
+                m_params.AddOpt("limit", limit);
+                return this;
+            }
+            public InvoiceListRequest Offset(string offset) 
+            {
+                m_params.AddOpt("offset", offset);
+                return this;
+            }
+            public InvoiceListRequest PaidOnAfter(long paidOnAfter) 
+            {
+                m_params.AddOpt("paid_on_after", paidOnAfter);
                 return this;
             }
         }
@@ -423,6 +450,69 @@ namespace ChargeBee.Models
 
             public int? TxnAmount() {
                 return GetValue<int?>("txn_amount", false);
+            }
+
+        }
+        public class InvoiceLinkedOrder : Resource
+        {
+            public enum StatusEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [Description("new")]
+                New,
+                [Description("processing")]
+                Processing,
+                [Description("complete")]
+                Complete,
+                [Description("cancelled")]
+                Cancelled,
+                [Description("voided")]
+                Voided,
+            }
+
+            public string Id() {
+                return GetValue<string>("id", true);
+            }
+
+            public string InvoiceId() {
+                return GetValue<string>("invoice_id", true);
+            }
+
+            public StatusEnum? Status() {
+                return GetEnum<StatusEnum>("status", false);
+            }
+
+            public string ReferenceId() {
+                return GetValue<string>("reference_id", false);
+            }
+
+            public string FulfillmentStatus() {
+                return GetValue<string>("fulfillment_status", false);
+            }
+
+            public string Note() {
+                return GetValue<string>("note", false);
+            }
+
+            public string TrackingId() {
+                return GetValue<string>("tracking_id", false);
+            }
+
+            public string BatchId() {
+                return GetValue<string>("batch_id", false);
+            }
+
+            public string CreatedBy() {
+                return GetValue<string>("created_by", false);
+            }
+
+            public DateTime CreatedAt() {
+                return (DateTime)GetDateTime("created_at", true);
+            }
+
+            public DateTime StatusUpdateAt() {
+                return (DateTime)GetDateTime("status_update_at", true);
             }
 
         }

@@ -78,6 +78,7 @@
     <Compile Include="Exceptions\InvalidRequestException.cs" />
     <Compile Include="Exceptions\OperationFailedException.cs" />
     <Compile Include="Exceptions\PaymentException.cs" />
+    <Compile Include="Models\Order.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

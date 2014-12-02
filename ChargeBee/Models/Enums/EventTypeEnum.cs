@@ -48,7 +48,6 @@ namespace ChargeBee.Models.Enums
         [Description("invoice_created")]
         InvoiceCreated,
 
-
         [Description("payment_succeeded")]
         PaymentSucceeded,
 
