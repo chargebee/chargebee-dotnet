@@ -53,6 +53,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "remove_scheduled_changes");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
+        public static RemoveScheduledCancellationRequest RemoveScheduledCancellation(string id)
+        {
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "remove_scheduled_cancellation");
+            return new RemoveScheduledCancellationRequest(url, HttpMethod.POST);
+        }
         public static UpdateRequest Update(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id));
@@ -333,6 +338,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[billing_city]", cardBillingCity);
                 return this;
             }
+            public CreateRequest CardBillingStateCode(string cardBillingStateCode) 
+            {
+                m_params.AddOpt("card[billing_state_code]", cardBillingStateCode);
+                return this;
+            }
             public CreateRequest CardBillingState(string cardBillingState) 
             {
                 m_params.AddOpt("card[billing_state]", cardBillingState);
@@ -393,6 +403,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_address[city]", billingAddressCity);
                 return this;
             }
+            public CreateRequest BillingAddressStateCode(string billingAddressStateCode) 
+            {
+                m_params.AddOpt("billing_address[state_code]", billingAddressStateCode);
+                return this;
+            }
             public CreateRequest BillingAddressState(string billingAddressState) 
             {
                 m_params.AddOpt("billing_address[state]", billingAddressState);
@@ -451,6 +466,11 @@ namespace ChargeBee.Models
             public CreateRequest ShippingAddressCity(string shippingAddressCity) 
             {
                 m_params.AddOpt("shipping_address[city]", shippingAddressCity);
+                return this;
+            }
+            public CreateRequest ShippingAddressStateCode(string shippingAddressStateCode) 
+            {
+                m_params.AddOpt("shipping_address[state_code]", shippingAddressStateCode);
                 return this;
             }
             public CreateRequest ShippingAddressState(string shippingAddressState) 
@@ -571,6 +591,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[city]", shippingAddressCity);
                 return this;
             }
+            public CreateForCustomerRequest ShippingAddressStateCode(string shippingAddressStateCode) 
+            {
+                m_params.AddOpt("shipping_address[state_code]", shippingAddressStateCode);
+                return this;
+            }
             public CreateForCustomerRequest ShippingAddressState(string shippingAddressState) 
             {
                 m_params.AddOpt("shipping_address[state]", shippingAddressState);
@@ -594,6 +619,19 @@ namespace ChargeBee.Models
             public CreateForCustomerRequest AddonQuantity(int index, int addonQuantity) 
             {
                 m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
+                return this;
+            }
+        }
+        public class RemoveScheduledCancellationRequest : EntityRequest<RemoveScheduledCancellationRequest> 
+        {
+            public RemoveScheduledCancellationRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public RemoveScheduledCancellationRequest BillingCycles(int billingCycles) 
+            {
+                m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
         }
@@ -704,6 +742,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[billing_city]", cardBillingCity);
                 return this;
             }
+            public UpdateRequest CardBillingStateCode(string cardBillingStateCode) 
+            {
+                m_params.AddOpt("card[billing_state_code]", cardBillingStateCode);
+                return this;
+            }
             public UpdateRequest CardBillingState(string cardBillingState) 
             {
                 m_params.AddOpt("card[billing_state]", cardBillingState);
@@ -764,6 +807,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_address[city]", billingAddressCity);
                 return this;
             }
+            public UpdateRequest BillingAddressStateCode(string billingAddressStateCode) 
+            {
+                m_params.AddOpt("billing_address[state_code]", billingAddressStateCode);
+                return this;
+            }
             public UpdateRequest BillingAddressState(string billingAddressState) 
             {
                 m_params.AddOpt("billing_address[state]", billingAddressState);
@@ -822,6 +870,11 @@ namespace ChargeBee.Models
             public UpdateRequest ShippingAddressCity(string shippingAddressCity) 
             {
                 m_params.AddOpt("shipping_address[city]", shippingAddressCity);
+                return this;
+            }
+            public UpdateRequest ShippingAddressStateCode(string shippingAddressStateCode) 
+            {
+                m_params.AddOpt("shipping_address[state_code]", shippingAddressStateCode);
                 return this;
             }
             public UpdateRequest ShippingAddressState(string shippingAddressState) 
@@ -891,6 +944,11 @@ namespace ChargeBee.Models
             public ReactivateRequest TrialEnd(long trialEnd) 
             {
                 m_params.AddOpt("trial_end", trialEnd);
+                return this;
+            }
+            public ReactivateRequest BillingCycles(int billingCycles) 
+            {
+                m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
             [Obsolete]
@@ -966,6 +1024,8 @@ namespace ChargeBee.Models
             NoCard,
             [Description("fraud_review_failed")]
             FraudReviewFailed,
+            [Description("non_compliant_eu_customer")]
+            NonCompliantEuCustomer,
 
         }
 
@@ -1039,6 +1099,10 @@ namespace ChargeBee.Models
 
             public string City() {
                 return GetValue<string>("city", false);
+            }
+
+            public string StateCode() {
+                return GetValue<string>("state_code", false);
             }
 
             public string State() {

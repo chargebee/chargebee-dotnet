@@ -33,6 +33,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("hosted_pages", "update_card");
             return new UpdateCardRequest(url, HttpMethod.POST);
         }
+        public static UpdatePaymentMethodRequest UpdatePaymentMethod()
+        {
+            string url = ApiUtil.BuildUrl("hosted_pages", "update_payment_method");
+            return new UpdatePaymentMethodRequest(url, HttpMethod.POST);
+        }
         public static CheckoutOnetimeChargeRequest CheckoutOnetimeCharge()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "checkout_onetime_charge");
@@ -333,6 +338,45 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class UpdatePaymentMethodRequest : EntityRequest<UpdatePaymentMethodRequest> 
+        {
+            public UpdatePaymentMethodRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public UpdatePaymentMethodRequest PassThruContent(string passThruContent) 
+            {
+                m_params.AddOpt("pass_thru_content", passThruContent);
+                return this;
+            }
+            public UpdatePaymentMethodRequest Embed(bool embed) 
+            {
+                m_params.AddOpt("embed", embed);
+                return this;
+            }
+            public UpdatePaymentMethodRequest IframeMessaging(bool iframeMessaging) 
+            {
+                m_params.AddOpt("iframe_messaging", iframeMessaging);
+                return this;
+            }
+            public UpdatePaymentMethodRequest CustomerId(string customerId) 
+            {
+                m_params.Add("customer[id]", customerId);
+                return this;
+            }
+            [Obsolete]
+            public UpdatePaymentMethodRequest CustomerVatNumber(string customerVatNumber) 
+            {
+                m_params.AddOpt("customer[vat_number]", customerVatNumber);
+                return this;
+            }
+            public UpdatePaymentMethodRequest CardGateway(GatewayEnum cardGateway) 
+            {
+                m_params.AddOpt("card[gateway]", cardGateway);
+                return this;
+            }
+        }
         public class CheckoutOnetimeChargeRequest : EntityRequest<CheckoutOnetimeChargeRequest> 
         {
             public CheckoutOnetimeChargeRequest(string url, HttpMethod method) 
@@ -421,6 +465,8 @@ namespace ChargeBee.Models
             CheckoutOnetimeCharge,
             [Description("checkout_onetime_addons")]
             CheckoutOnetimeAddons,
+            [Description("update_payment_method")]
+            UpdatePaymentMethod,
 
         }
         public enum StateEnum

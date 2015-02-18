@@ -176,6 +176,8 @@ namespace ChargeBee.Models
             BankTransfer,
             [Description("amazon_payments")]
             AmazonPayments,
+            [Description("paypal_express_checkout")]
+            PaypalExpressCheckout,
             [Description("other")]
             Other,
 

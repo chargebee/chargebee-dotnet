@@ -1,3 +1,29 @@
+### v1.3.8 (2015-02-18)
+* * *
+
+** APIs added**:
+A new API called Remove scheduled cancellation method(Subscription) added to remove the pending cancellation scheduled at end of the subscription term.
+
+** APIs deprecated**:
+Reactivate a subscription(Subscription) API is deprecated for subscriptions in Non-Renewing state as an alternate API(see above) is added.
+
+** APIs updated**:
+Create subscription/customer, update subscription/customer/payment method/billing info API now accepts the State Code for billing, shipping, subscription and card addresses.
+
+### v1.3.7 (2015-01-07)
+* * *
+
+Support for PayPal & Amazon payment added.
+
+** APIs added**:
+A new API called Update payment method(HostedPage) added to support allowing customers to update their payment method with PayPal and Amazon payments.
+
+** APIs deprecated**:
+Update card(HostedPage) API is deprecated as an alternate API is added.
+
+** APIs updated**:
+Create a customer API now accepts the end user IP. 
+
 ### v1.3.6 (2014-12-02)
 * * *
 

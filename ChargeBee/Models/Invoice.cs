@@ -475,10 +475,6 @@ namespace ChargeBee.Models
                 return GetValue<string>("id", true);
             }
 
-            public string InvoiceId() {
-                return GetValue<string>("invoice_id", true);
-            }
-
             public StatusEnum? Status() {
                 return GetEnum<StatusEnum>("status", false);
             }
@@ -491,28 +487,12 @@ namespace ChargeBee.Models
                 return GetValue<string>("fulfillment_status", false);
             }
 
-            public string Note() {
-                return GetValue<string>("note", false);
-            }
-
-            public string TrackingId() {
-                return GetValue<string>("tracking_id", false);
-            }
-
             public string BatchId() {
                 return GetValue<string>("batch_id", false);
             }
 
-            public string CreatedBy() {
-                return GetValue<string>("created_by", false);
-            }
-
             public DateTime CreatedAt() {
                 return (DateTime)GetDateTime("created_at", true);
-            }
-
-            public DateTime StatusUpdateAt() {
-                return (DateTime)GetDateTime("status_update_at", true);
             }
 
         }

@@ -82,6 +82,10 @@ namespace ChargeBee.Models
         {
             get { return (DateTime)GetDateTime("created_at", true); }
         }
+        public string CreatedFromIp 
+        {
+            get { return GetValue<string>("created_from_ip", false); }
+        }
         public CardStatusEnum? CardStatus 
         {
             get { return GetEnum<CardStatusEnum>("card_status", false); }
@@ -145,6 +149,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("vat_number", vatNumber);
                 return this;
             }
+            public CreateRequest CreatedFromIp(string createdFromIp) 
+            {
+                m_params.AddOpt("created_from_ip", createdFromIp);
+                return this;
+            }
             public CreateRequest CardGateway(GatewayEnum cardGateway) 
             {
                 m_params.AddOpt("card[gateway]", cardGateway);
@@ -198,6 +207,11 @@ namespace ChargeBee.Models
             public CreateRequest CardBillingCity(string cardBillingCity) 
             {
                 m_params.AddOpt("card[billing_city]", cardBillingCity);
+                return this;
+            }
+            public CreateRequest CardBillingStateCode(string cardBillingStateCode) 
+            {
+                m_params.AddOpt("card[billing_state_code]", cardBillingStateCode);
                 return this;
             }
             public CreateRequest CardBillingState(string cardBillingState) 
@@ -258,6 +272,11 @@ namespace ChargeBee.Models
             public CreateRequest BillingAddressCity(string billingAddressCity) 
             {
                 m_params.AddOpt("billing_address[city]", billingAddressCity);
+                return this;
+            }
+            public CreateRequest BillingAddressStateCode(string billingAddressStateCode) 
+            {
+                m_params.AddOpt("billing_address[state_code]", billingAddressStateCode);
                 return this;
             }
             public CreateRequest BillingAddressState(string billingAddressState) 
@@ -371,6 +390,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_address[city]", billingAddressCity);
                 return this;
             }
+            public UpdateBillingInfoRequest BillingAddressStateCode(string billingAddressStateCode) 
+            {
+                m_params.AddOpt("billing_address[state_code]", billingAddressStateCode);
+                return this;
+            }
             public UpdateBillingInfoRequest BillingAddressState(string billingAddressState) 
             {
                 m_params.AddOpt("billing_address[state]", billingAddressState);
@@ -445,6 +469,10 @@ namespace ChargeBee.Models
                 return GetValue<string>("city", false);
             }
 
+            public string StateCode() {
+                return GetValue<string>("state_code", false);
+            }
+
             public string State() {
                 return GetValue<string>("state", false);
             }
@@ -466,6 +494,8 @@ namespace ChargeBee.Models
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
                 [Description("card")]
                 Card,
+                [Description("paypal_express_checkout")]
+                PaypalExpressCheckout,
                 [Description("amazon_payments")]
                 AmazonPayments,
             }

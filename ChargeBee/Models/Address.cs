@@ -71,6 +71,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("city", false); }
         }
+        public string StateCode 
+        {
+            get { return GetValue<string>("state_code", false); }
+        }
         public string State 
         {
             get { return GetValue<string>("state", false); }
@@ -169,6 +173,11 @@ namespace ChargeBee.Models
             public UpdateRequest City(string city) 
             {
                 m_params.AddOpt("city", city);
+                return this;
+            }
+            public UpdateRequest StateCode(string stateCode) 
+            {
+                m_params.AddOpt("state_code", stateCode);
                 return this;
             }
             public UpdateRequest State(string state) 
