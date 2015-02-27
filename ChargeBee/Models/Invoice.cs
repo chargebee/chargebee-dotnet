@@ -18,6 +18,11 @@ namespace ChargeBee.Models
     
 
         #region Methods
+        public static CreateRequest Create()
+        {
+            string url = ApiUtil.BuildUrl("invoices");
+            return new CreateRequest(url, HttpMethod.POST);
+        }
         public static ChargeRequest Charge()
         {
             string url = ApiUtil.BuildUrl("invoices", "charge");
@@ -148,10 +153,121 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<InvoiceLinkedOrder>("linked_orders"); }
         }
+        public InvoiceShippingAddress ShippingAddress 
+        {
+            get { return GetSubResource<InvoiceShippingAddress>("shipping_address"); }
+        }
+        public InvoiceBillingAddress BillingAddress 
+        {
+            get { return GetSubResource<InvoiceBillingAddress>("billing_address"); }
+        }
         
         #endregion
         
         #region Requests
+        public class CreateRequest : EntityRequest<CreateRequest> 
+        {
+            public CreateRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CreateRequest CustomerId(string customerId) 
+            {
+                m_params.Add("customer_id", customerId);
+                return this;
+            }
+            public CreateRequest Coupon(string coupon) 
+            {
+                m_params.AddOpt("coupon", coupon);
+                return this;
+            }
+            public CreateRequest ShippingAddressFirstName(string shippingAddressFirstName) 
+            {
+                m_params.AddOpt("shipping_address[first_name]", shippingAddressFirstName);
+                return this;
+            }
+            public CreateRequest ShippingAddressLastName(string shippingAddressLastName) 
+            {
+                m_params.AddOpt("shipping_address[last_name]", shippingAddressLastName);
+                return this;
+            }
+            public CreateRequest ShippingAddressEmail(string shippingAddressEmail) 
+            {
+                m_params.AddOpt("shipping_address[email]", shippingAddressEmail);
+                return this;
+            }
+            public CreateRequest ShippingAddressCompany(string shippingAddressCompany) 
+            {
+                m_params.AddOpt("shipping_address[company]", shippingAddressCompany);
+                return this;
+            }
+            public CreateRequest ShippingAddressPhone(string shippingAddressPhone) 
+            {
+                m_params.AddOpt("shipping_address[phone]", shippingAddressPhone);
+                return this;
+            }
+            public CreateRequest ShippingAddressLine1(string shippingAddressLine1) 
+            {
+                m_params.AddOpt("shipping_address[line1]", shippingAddressLine1);
+                return this;
+            }
+            public CreateRequest ShippingAddressLine2(string shippingAddressLine2) 
+            {
+                m_params.AddOpt("shipping_address[line2]", shippingAddressLine2);
+                return this;
+            }
+            public CreateRequest ShippingAddressLine3(string shippingAddressLine3) 
+            {
+                m_params.AddOpt("shipping_address[line3]", shippingAddressLine3);
+                return this;
+            }
+            public CreateRequest ShippingAddressCity(string shippingAddressCity) 
+            {
+                m_params.AddOpt("shipping_address[city]", shippingAddressCity);
+                return this;
+            }
+            public CreateRequest ShippingAddressStateCode(string shippingAddressStateCode) 
+            {
+                m_params.AddOpt("shipping_address[state_code]", shippingAddressStateCode);
+                return this;
+            }
+            public CreateRequest ShippingAddressState(string shippingAddressState) 
+            {
+                m_params.AddOpt("shipping_address[state]", shippingAddressState);
+                return this;
+            }
+            public CreateRequest ShippingAddressZip(string shippingAddressZip) 
+            {
+                m_params.AddOpt("shipping_address[zip]", shippingAddressZip);
+                return this;
+            }
+            public CreateRequest ShippingAddressCountry(string shippingAddressCountry) 
+            {
+                m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
+                return this;
+            }
+            public CreateRequest AddonId(int index, string addonId) 
+            {
+                m_params.AddOpt("addons[id][" + index + "]", addonId);
+                return this;
+            }
+            public CreateRequest AddonQuantity(int index, int addonQuantity) 
+            {
+                m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
+                return this;
+            }
+            public CreateRequest ChargeAmount(int index, int chargeAmount) 
+            {
+                m_params.AddOpt("charges[amount][" + index + "]", chargeAmount);
+                return this;
+            }
+            public CreateRequest ChargeDescription(int index, string chargeDescription) 
+            {
+                m_params.AddOpt("charges[description][" + index + "]", chargeDescription);
+                return this;
+            }
+        }
         public class ChargeRequest : EntityRequest<ChargeRequest> 
         {
             public ChargeRequest(string url, HttpMethod method) 
@@ -493,6 +609,118 @@ namespace ChargeBee.Models
 
             public DateTime CreatedAt() {
                 return (DateTime)GetDateTime("created_at", true);
+            }
+
+        }
+        public class InvoiceShippingAddress : Resource
+        {
+
+            public string FirstName() {
+                return GetValue<string>("first_name", false);
+            }
+
+            public string LastName() {
+                return GetValue<string>("last_name", false);
+            }
+
+            public string Email() {
+                return GetValue<string>("email", false);
+            }
+
+            public string Company() {
+                return GetValue<string>("company", false);
+            }
+
+            public string Phone() {
+                return GetValue<string>("phone", false);
+            }
+
+            public string Line1() {
+                return GetValue<string>("line1", false);
+            }
+
+            public string Line2() {
+                return GetValue<string>("line2", false);
+            }
+
+            public string Line3() {
+                return GetValue<string>("line3", false);
+            }
+
+            public string City() {
+                return GetValue<string>("city", false);
+            }
+
+            public string StateCode() {
+                return GetValue<string>("state_code", false);
+            }
+
+            public string State() {
+                return GetValue<string>("state", false);
+            }
+
+            public string Country() {
+                return GetValue<string>("country", false);
+            }
+
+            public string Zip() {
+                return GetValue<string>("zip", false);
+            }
+
+        }
+        public class InvoiceBillingAddress : Resource
+        {
+
+            public string FirstName() {
+                return GetValue<string>("first_name", false);
+            }
+
+            public string LastName() {
+                return GetValue<string>("last_name", false);
+            }
+
+            public string Email() {
+                return GetValue<string>("email", false);
+            }
+
+            public string Company() {
+                return GetValue<string>("company", false);
+            }
+
+            public string Phone() {
+                return GetValue<string>("phone", false);
+            }
+
+            public string Line1() {
+                return GetValue<string>("line1", false);
+            }
+
+            public string Line2() {
+                return GetValue<string>("line2", false);
+            }
+
+            public string Line3() {
+                return GetValue<string>("line3", false);
+            }
+
+            public string City() {
+                return GetValue<string>("city", false);
+            }
+
+            public string StateCode() {
+                return GetValue<string>("state_code", false);
+            }
+
+            public string State() {
+                return GetValue<string>("state", false);
+            }
+
+            public string Country() {
+                return GetValue<string>("country", false);
+            }
+
+            public string Zip() {
+                return GetValue<string>("zip", false);
             }
 
         }

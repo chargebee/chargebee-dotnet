@@ -33,12 +33,21 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("portal_sessions", CheckNull(id), "logout");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
+        public static ActivateRequest Activate(string id)
+        {
+            string url = ApiUtil.BuildUrl("portal_sessions", CheckNull(id), "activate");
+            return new ActivateRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
         public string Id 
         {
             get { return GetValue<string>("id", true); }
+        }
+        public string Token 
+        {
+            get { return GetValue<string>("token", true); }
         }
         public string AccessUrl 
         {
@@ -80,6 +89,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("logout_ipaddress", false); }
         }
+        public List<PortalSessionLinkedCustomer> LinkedCustomers 
+        {
+            get { return GetResourceList<PortalSessionLinkedCustomer>("linked_customers"); }
+        }
         
         #endregion
         
@@ -102,6 +115,19 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class ActivateRequest : EntityRequest<ActivateRequest> 
+        {
+            public ActivateRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public ActivateRequest Token(string token) 
+            {
+                m_params.Add("token", token);
+                return this;
+            }
+        }
         #endregion
 
         public enum StatusEnum
@@ -115,10 +141,38 @@ namespace ChargeBee.Models
             LoggedIn,
             [Description("logged_out")]
             LoggedOut,
+            [Description("not_yet_activated")]
+            NotYetActivated,
+            [Description("activated")]
+            Activated,
 
         }
 
         #region Subclasses
+        public class PortalSessionLinkedCustomer : Resource
+        {
+
+            public string CustomerId() {
+                return GetValue<string>("customer_id", true);
+            }
+
+            public string Email() {
+                return GetValue<string>("email", false);
+            }
+
+            public bool HasBillingAddress() {
+                return GetValue<bool>("has_billing_address", true);
+            }
+
+            public bool HasPaymentMethod() {
+                return GetValue<bool>("has_payment_method", true);
+            }
+
+            public bool HasActiveSubscription() {
+                return GetValue<bool>("has_active_subscription", true);
+            }
+
+        }
 
         #endregion
     }
