@@ -229,6 +229,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[billing_country]", cardBillingCountry);
                 return this;
             }
+            public CreateRequest CardIpAddress(string cardIpAddress) 
+            {
+                m_params.AddOpt("card[ip_address]", cardIpAddress);
+                return this;
+            }
             public CreateRequest BillingAddressFirstName(string billingAddressFirstName) 
             {
                 m_params.AddOpt("billing_address[first_name]", billingAddressFirstName);

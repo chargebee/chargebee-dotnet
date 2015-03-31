@@ -78,6 +78,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "refund");
             return new RefundRequest(url, HttpMethod.POST);
         }
+        public static DeleteRequest Delete(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "delete");
+            return new DeleteRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -408,6 +413,19 @@ namespace ChargeBee.Models
             public RefundRequest Memo(string memo) 
             {
                 m_params.AddOpt("memo", memo);
+                return this;
+            }
+        }
+        public class DeleteRequest : EntityRequest<DeleteRequest> 
+        {
+            public DeleteRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public DeleteRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
                 return this;
             }
         }

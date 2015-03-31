@@ -54,6 +54,8 @@ namespace ChargeBee.Models.Enums
         [Description("invoice_created")]
         InvoiceCreated,
 
+        [Description("invoice_deleted")]
+        InvoiceDeleted,
 
 
 

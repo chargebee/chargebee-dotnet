@@ -104,6 +104,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("billing_zip", false); }
         }
+        public string IpAddress 
+        {
+            get { return GetValue<string>("ip_address", false); }
+        }
         public string MaskedNumber 
         {
             get { return GetValue<string>("masked_number", false); }
@@ -192,6 +196,11 @@ namespace ChargeBee.Models
             public UpdateCardForCustomerRequest BillingCountry(string billingCountry) 
             {
                 m_params.AddOpt("billing_country", billingCountry);
+                return this;
+            }
+            public UpdateCardForCustomerRequest IpAddress(string ipAddress) 
+            {
+                m_params.AddOpt("ip_address", ipAddress);
                 return this;
             }
             [Obsolete]
