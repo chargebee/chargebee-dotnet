@@ -121,6 +121,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int?>("redemptions", false); }
         }
+        public string InvoiceNotes 
+        {
+            get { return GetValue<string>("invoice_notes", false); }
+        }
         
         #endregion
         
@@ -210,6 +214,11 @@ namespace ChargeBee.Models
             public CreateRequest MaxRedemptions(int maxRedemptions) 
             {
                 m_params.AddOpt("max_redemptions", maxRedemptions);
+                return this;
+            }
+            public CreateRequest InvoiceNotes(string invoiceNotes) 
+            {
+                m_params.AddOpt("invoice_notes", invoiceNotes);
                 return this;
             }
         }

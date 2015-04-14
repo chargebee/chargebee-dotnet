@@ -98,6 +98,10 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<CustomerPaymentMethod>("payment_method"); }
         }
+        public string InvoiceNotes 
+        {
+            get { return GetValue<string>("invoice_notes", false); }
+        }
         
         #endregion
         
@@ -152,6 +156,11 @@ namespace ChargeBee.Models
             public CreateRequest CreatedFromIp(string createdFromIp) 
             {
                 m_params.AddOpt("created_from_ip", createdFromIp);
+                return this;
+            }
+            public CreateRequest InvoiceNotes(string invoiceNotes) 
+            {
+                m_params.AddOpt("invoice_notes", invoiceNotes);
                 return this;
             }
             public CreateRequest CardGateway(GatewayEnum cardGateway) 
@@ -335,6 +344,11 @@ namespace ChargeBee.Models
             public UpdateRequest AutoCollection(AutoCollectionEnum autoCollection) 
             {
                 m_params.AddOpt("auto_collection", autoCollection);
+                return this;
+            }
+            public UpdateRequest InvoiceNotes(string invoiceNotes) 
+            {
+                m_params.AddOpt("invoice_notes", invoiceNotes);
                 return this;
             }
         }

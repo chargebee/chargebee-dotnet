@@ -131,6 +131,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int?>("remaining_billing_cycles", false); }
         }
+        public string PoNumber 
+        {
+            get { return GetValue<string>("po_number", false); }
+        }
         public DateTime? CreatedAt 
         {
             get { return GetDateTime("created_at", false); }
@@ -192,6 +196,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool?>("has_scheduled_changes", false); }
         }
+        public string InvoiceNotes 
+        {
+            get { return GetValue<string>("invoice_notes", false); }
+        }
         
         #endregion
         
@@ -238,6 +246,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("coupon", coupon);
                 return this;
             }
+            public CreateRequest PoNumber(string poNumber) 
+            {
+                m_params.AddOpt("po_number", poNumber);
+                return this;
+            }
             public CreateRequest AffiliateToken(string affiliateToken) 
             {
                 m_params.AddOpt("affiliate_token", affiliateToken);
@@ -246,6 +259,11 @@ namespace ChargeBee.Models
             public CreateRequest CreatedFromIp(string createdFromIp) 
             {
                 m_params.AddOpt("created_from_ip", createdFromIp);
+                return this;
+            }
+            public CreateRequest InvoiceNotes(string invoiceNotes) 
+            {
+                m_params.AddOpt("invoice_notes", invoiceNotes);
                 return this;
             }
             public CreateRequest CustomerId(string customerId) 
@@ -551,6 +569,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("coupon", coupon);
                 return this;
             }
+            public CreateForCustomerRequest PoNumber(string poNumber) 
+            {
+                m_params.AddOpt("po_number", poNumber);
+                return this;
+            }
+            public CreateForCustomerRequest InvoiceNotes(string invoiceNotes) 
+            {
+                m_params.AddOpt("invoice_notes", invoiceNotes);
+                return this;
+            }
             public CreateForCustomerRequest ShippingAddressFirstName(string shippingAddressFirstName) 
             {
                 m_params.AddOpt("shipping_address[first_name]", shippingAddressFirstName);
@@ -682,6 +710,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("coupon", coupon);
                 return this;
             }
+            public UpdateRequest PoNumber(string poNumber) 
+            {
+                m_params.AddOpt("po_number", poNumber);
+                return this;
+            }
             public UpdateRequest Prorate(bool prorate) 
             {
                 m_params.AddOpt("prorate", prorate);
@@ -690,6 +723,11 @@ namespace ChargeBee.Models
             public UpdateRequest EndOfTerm(bool endOfTerm) 
             {
                 m_params.AddOpt("end_of_term", endOfTerm);
+                return this;
+            }
+            public UpdateRequest InvoiceNotes(string invoiceNotes) 
+            {
+                m_params.AddOpt("invoice_notes", invoiceNotes);
                 return this;
             }
             public UpdateRequest CardGateway(GatewayEnum cardGateway) 

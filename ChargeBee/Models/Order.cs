@@ -86,9 +86,9 @@ namespace ChargeBee.Models
         {
             get { return (DateTime)GetDateTime("created_at", true); }
         }
-        public DateTime StatusUpdateAt 
+        public DateTime? StatusUpdateAt 
         {
-            get { return (DateTime)GetDateTime("status_update_at", true); }
+            get { return GetDateTime("status_update_at", false); }
         }
         
         #endregion

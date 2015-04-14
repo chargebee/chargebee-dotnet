@@ -118,6 +118,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
+            public CheckoutNewRequest RedirectUrl(string redirectUrl) 
+            {
+                m_params.AddOpt("redirect_url", redirectUrl);
+                return this;
+            }
+            public CheckoutNewRequest CancelUrl(string cancelUrl) 
+            {
+                m_params.AddOpt("cancel_url", cancelUrl);
+                return this;
+            }
             public CheckoutNewRequest PassThruContent(string passThruContent) 
             {
                 m_params.AddOpt("pass_thru_content", passThruContent);
@@ -232,6 +242,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("replace_addon_list", replaceAddonList);
                 return this;
             }
+            public CheckoutExistingRequest RedirectUrl(string redirectUrl) 
+            {
+                m_params.AddOpt("redirect_url", redirectUrl);
+                return this;
+            }
+            public CheckoutExistingRequest CancelUrl(string cancelUrl) 
+            {
+                m_params.AddOpt("cancel_url", cancelUrl);
+                return this;
+            }
             public CheckoutExistingRequest PassThruContent(string passThruContent) 
             {
                 m_params.AddOpt("pass_thru_content", passThruContent);
@@ -306,6 +326,16 @@ namespace ChargeBee.Models
             {
             }
 
+            public UpdateCardRequest RedirectUrl(string redirectUrl) 
+            {
+                m_params.AddOpt("redirect_url", redirectUrl);
+                return this;
+            }
+            public UpdateCardRequest CancelUrl(string cancelUrl) 
+            {
+                m_params.AddOpt("cancel_url", cancelUrl);
+                return this;
+            }
             public UpdateCardRequest PassThruContent(string passThruContent) 
             {
                 m_params.AddOpt("pass_thru_content", passThruContent);
@@ -345,6 +375,16 @@ namespace ChargeBee.Models
             {
             }
 
+            public UpdatePaymentMethodRequest RedirectUrl(string redirectUrl) 
+            {
+                m_params.AddOpt("redirect_url", redirectUrl);
+                return this;
+            }
+            public UpdatePaymentMethodRequest CancelUrl(string cancelUrl) 
+            {
+                m_params.AddOpt("cancel_url", cancelUrl);
+                return this;
+            }
             public UpdatePaymentMethodRequest PassThruContent(string passThruContent) 
             {
                 m_params.AddOpt("pass_thru_content", passThruContent);

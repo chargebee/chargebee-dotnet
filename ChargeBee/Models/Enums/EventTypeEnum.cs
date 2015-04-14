@@ -58,6 +58,8 @@ namespace ChargeBee.Models.Enums
         InvoiceDeleted,
 
 
+        [Description("subscription_renewal_reminder")]
+        SubscriptionRenewalReminder,
 
 
         [Description("payment_succeeded")]

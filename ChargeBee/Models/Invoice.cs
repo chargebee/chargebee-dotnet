@@ -90,6 +90,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("id", true); }
         }
+        public string PoNumber 
+        {
+            get { return GetValue<string>("po_number", false); }
+        }
         public string CustomerId 
         {
             get { return GetValue<string>("customer_id", true); }
@@ -121,6 +125,10 @@ namespace ChargeBee.Models
         public int? Amount 
         {
             get { return GetValue<int?>("amount", false); }
+        }
+        public int? AmountDue 
+        {
+            get { return GetValue<int?>("amount_due", false); }
         }
         public DateTime? PaidOn 
         {
@@ -158,6 +166,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<InvoiceLinkedOrder>("linked_orders"); }
         }
+        public List<InvoiceNote> Notes 
+        {
+            get { return GetResourceList<InvoiceNote>("notes"); }
+        }
         public InvoiceShippingAddress ShippingAddress 
         {
             get { return GetSubResource<InvoiceShippingAddress>("shipping_address"); }
@@ -185,6 +197,11 @@ namespace ChargeBee.Models
             public CreateRequest Coupon(string coupon) 
             {
                 m_params.AddOpt("coupon", coupon);
+                return this;
+            }
+            public CreateRequest PoNumber(string poNumber) 
+            {
+                m_params.AddOpt("po_number", poNumber);
                 return this;
             }
             public CreateRequest ShippingAddressFirstName(string shippingAddressFirstName) 
@@ -305,6 +322,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("coupon", coupon);
                 return this;
             }
+            public ChargeRequest PoNumber(string poNumber) 
+            {
+                m_params.AddOpt("po_number", poNumber);
+                return this;
+            }
         }
         public class ChargeAddonRequest : EntityRequest<ChargeAddonRequest> 
         {
@@ -336,6 +358,11 @@ namespace ChargeBee.Models
             public ChargeAddonRequest Coupon(string coupon) 
             {
                 m_params.AddOpt("coupon", coupon);
+                return this;
+            }
+            public ChargeAddonRequest PoNumber(string poNumber) 
+            {
+                m_params.AddOpt("po_number", poNumber);
                 return this;
             }
         }
@@ -627,6 +654,37 @@ namespace ChargeBee.Models
 
             public DateTime CreatedAt() {
                 return (DateTime)GetDateTime("created_at", true);
+            }
+
+        }
+        public class InvoiceNote : Resource
+        {
+            public enum EntityTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [Description("plan")]
+                Plan,
+                [Description("addon")]
+                Addon,
+                [Description("coupon")]
+                Coupon,
+                [Description("subscription")]
+                Subscription,
+                [Description("customer")]
+                Customer,
+            }
+
+            public EntityTypeEnum EntityType() {
+                return GetEnum<EntityTypeEnum>("entity_type", true);
+            }
+
+            public string Note() {
+                return GetValue<string>("note", true);
+            }
+
+            public string EntityId() {
+                return GetValue<string>("entity_id", false);
             }
 
         }

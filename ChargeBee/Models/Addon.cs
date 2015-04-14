@@ -94,6 +94,10 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("archived_at", false); }
         }
+        public string InvoiceNotes 
+        {
+            get { return GetValue<string>("invoice_notes", false); }
+        }
         
         #endregion
         
@@ -155,6 +159,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("unit", unit);
                 return this;
             }
+            public CreateRequest InvoiceNotes(string invoiceNotes) 
+            {
+                m_params.AddOpt("invoice_notes", invoiceNotes);
+                return this;
+            }
         }
         public class UpdateRequest : EntityRequest<UpdateRequest> 
         {
@@ -211,6 +220,11 @@ namespace ChargeBee.Models
             public UpdateRequest Unit(string unit) 
             {
                 m_params.AddOpt("unit", unit);
+                return this;
+            }
+            public UpdateRequest InvoiceNotes(string invoiceNotes) 
+            {
+                m_params.AddOpt("invoice_notes", invoiceNotes);
                 return this;
             }
         }

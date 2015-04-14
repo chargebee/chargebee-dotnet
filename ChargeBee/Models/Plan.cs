@@ -118,6 +118,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool>("enabled_in_hosted_pages", true); }
         }
+        public string InvoiceNotes 
+        {
+            get { return GetValue<string>("invoice_notes", false); }
+        }
         
         #endregion
         
@@ -209,6 +213,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("enabled_in_hosted_pages", enabledInHostedPages);
                 return this;
             }
+            public CreateRequest InvoiceNotes(string invoiceNotes) 
+            {
+                m_params.AddOpt("invoice_notes", invoiceNotes);
+                return this;
+            }
         }
         public class UpdateRequest : EntityRequest<UpdateRequest> 
         {
@@ -295,6 +304,11 @@ namespace ChargeBee.Models
             public UpdateRequest EnabledInHostedPages(bool enabledInHostedPages) 
             {
                 m_params.AddOpt("enabled_in_hosted_pages", enabledInHostedPages);
+                return this;
+            }
+            public UpdateRequest InvoiceNotes(string invoiceNotes) 
+            {
+                m_params.AddOpt("invoice_notes", invoiceNotes);
                 return this;
             }
         }
