@@ -38,6 +38,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers", CheckNull(id));
             return new UpdateRequest(url, HttpMethod.POST);
         }
+        public static UpdatePaymentMethodRequest UpdatePaymentMethod(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "update_payment_method");
+            return new UpdatePaymentMethodRequest(url, HttpMethod.POST);
+        }
         public static UpdateBillingInfoRequest UpdateBillingInfo(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "update_billing_info");
@@ -171,6 +176,16 @@ namespace ChargeBee.Models
             public CreateRequest CardTmpToken(string cardTmpToken) 
             {
                 m_params.AddOpt("card[tmp_token]", cardTmpToken);
+                return this;
+            }
+            public CreateRequest PaymentMethodType(TypeEnum paymentMethodType) 
+            {
+                m_params.AddOpt("payment_method[type]", paymentMethodType);
+                return this;
+            }
+            public CreateRequest PaymentMethodReferenceId(string paymentMethodReferenceId) 
+            {
+                m_params.AddOpt("payment_method[reference_id]", paymentMethodReferenceId);
                 return this;
             }
             public CreateRequest CardFirstName(string cardFirstName) 
@@ -349,6 +364,24 @@ namespace ChargeBee.Models
             public UpdateRequest InvoiceNotes(string invoiceNotes) 
             {
                 m_params.AddOpt("invoice_notes", invoiceNotes);
+                return this;
+            }
+        }
+        public class UpdatePaymentMethodRequest : EntityRequest<UpdatePaymentMethodRequest> 
+        {
+            public UpdatePaymentMethodRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public UpdatePaymentMethodRequest PaymentMethodType(TypeEnum paymentMethodType) 
+            {
+                m_params.Add("payment_method[type]", paymentMethodType);
+                return this;
+            }
+            public UpdatePaymentMethodRequest PaymentMethodReferenceId(string paymentMethodReferenceId) 
+            {
+                m_params.Add("payment_method[reference_id]", paymentMethodReferenceId);
                 return this;
             }
         }

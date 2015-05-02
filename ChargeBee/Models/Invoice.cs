@@ -73,6 +73,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "collect");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
+        public static EntityRequest<Type> CollectPayment(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "collect_payment");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
         public static RefundRequest Refund(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "refund");

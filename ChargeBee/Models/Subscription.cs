@@ -311,6 +311,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[tmp_token]", cardTmpToken);
                 return this;
             }
+            public CreateRequest PaymentMethodType(TypeEnum paymentMethodType) 
+            {
+                m_params.AddOpt("payment_method[type]", paymentMethodType);
+                return this;
+            }
+            public CreateRequest PaymentMethodReferenceId(string paymentMethodReferenceId) 
+            {
+                m_params.AddOpt("payment_method[reference_id]", paymentMethodReferenceId);
+                return this;
+            }
             public CreateRequest CardFirstName(string cardFirstName) 
             {
                 m_params.AddOpt("card[first_name]", cardFirstName);
@@ -738,6 +748,16 @@ namespace ChargeBee.Models
             public UpdateRequest CardTmpToken(string cardTmpToken) 
             {
                 m_params.AddOpt("card[tmp_token]", cardTmpToken);
+                return this;
+            }
+            public UpdateRequest PaymentMethodType(TypeEnum paymentMethodType) 
+            {
+                m_params.AddOpt("payment_method[type]", paymentMethodType);
+                return this;
+            }
+            public UpdateRequest PaymentMethodReferenceId(string paymentMethodReferenceId) 
+            {
+                m_params.AddOpt("payment_method[reference_id]", paymentMethodReferenceId);
                 return this;
             }
             public UpdateRequest CardFirstName(string cardFirstName) 
