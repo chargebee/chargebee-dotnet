@@ -1,3 +1,12 @@
+### v1.4.3 (2015-05-14)
+* * *
+
+** APIs updated**:
+
+Support for recording partial payments. Record Payment For an Invoice API now accept "amount" to record invoice partially. 
+See : https://apidocs.chargebee.com/docs/api/transactions#record_payment_for_an_invoice
+
+
 ### v1.4.2 (2015-05-02)
 * * *
 

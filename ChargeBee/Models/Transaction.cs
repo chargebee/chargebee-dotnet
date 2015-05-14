@@ -138,6 +138,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public RecordPaymentRequest Amount(int amount) 
+            {
+                m_params.AddOpt("amount", amount);
+                return this;
+            }
             public RecordPaymentRequest PaymentMethod(PaymentMethodEnum paymentMethod) 
             {
                 m_params.Add("payment_method", paymentMethod);
