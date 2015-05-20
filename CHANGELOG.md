@@ -1,3 +1,11 @@
+### v1.4.4 (2015-05-20)
+* * *
+
+** APIs updated**:
+
+Now, event "subscription_shipping_address_updated" can be fetched via API. 
+See https://apidocs.chargebee.com/docs/api/events#event_types.
+
 ### v1.4.3 (2015-05-14)
 * * *
 

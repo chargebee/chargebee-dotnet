@@ -48,6 +48,9 @@ namespace ChargeBee.Models.Enums
         [Description("subscription_scheduled_cancellation_removed")]
         SubscriptionScheduledCancellationRemoved,
 
+        [Description("subscription_shipping_address_updated")]
+        SubscriptionShippingAddressUpdated,
+
         [Description("invoice_receipt")]
         InvoiceReceipt,
 
