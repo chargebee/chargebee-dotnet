@@ -94,6 +94,7 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int?>("setup_cost", false); }
         }
+        [Obsolete]
         public double? DowngradePenalty 
         {
             get { return GetValue<double?>("downgrade_penalty", false); }
@@ -198,6 +199,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("free_quantity", freeQuantity);
                 return this;
             }
+            [Obsolete]
             public CreateRequest DowngradePenalty(double downgradePenalty) 
             {
                 m_params.AddOpt("downgrade_penalty", downgradePenalty);
@@ -291,6 +293,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("free_quantity", freeQuantity);
                 return this;
             }
+            [Obsolete]
             public UpdateRequest DowngradePenalty(double downgradePenalty) 
             {
                 m_params.AddOpt("downgrade_penalty", downgradePenalty);
