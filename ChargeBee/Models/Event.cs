@@ -138,6 +138,8 @@ namespace ChargeBee.Models
             ReScheduled,
             [Description("failed")]
             Failed,
+            [Description("skipped")]
+            Skipped,
 
         }
 

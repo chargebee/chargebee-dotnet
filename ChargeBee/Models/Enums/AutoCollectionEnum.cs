@@ -10,10 +10,10 @@ namespace ChargeBee.Models.Enums
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
 
         [Description("on")]
-        On,
+         On,
 
         [Description("off")]
-        Off,
+         Off,
 
     }
 }

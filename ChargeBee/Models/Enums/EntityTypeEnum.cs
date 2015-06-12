@@ -10,25 +10,25 @@ namespace ChargeBee.Models.Enums
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
 
         [Description("customer")]
-        Customer,
+         Customer,
 
         [Description("subscription")]
-        Subscription,
+         Subscription,
 
         [Description("invoice")]
-        Invoice,
+         Invoice,
 
         [Description("transaction")]
-        Transaction,
+         Transaction,
 
         [Description("plan")]
-        Plan,
+         Plan,
 
         [Description("addon")]
-        Addon,
+         Addon,
 
         [Description("coupon")]
-        Coupon,
+         Coupon,
 
     }
 }

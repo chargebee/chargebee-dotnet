@@ -60,6 +60,7 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int?>("discount_amount", false); }
         }
+        [Obsolete]
         public int? DiscountQuantity 
         {
             get { return GetValue<int?>("discount_quantity", false); }
@@ -166,6 +167,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("discount_percentage", discountPercentage);
                 return this;
             }
+            [Obsolete]
             public CreateRequest DiscountQuantity(int discountQuantity) 
             {
                 m_params.AddOpt("discount_quantity", discountQuantity);
@@ -234,6 +236,7 @@ namespace ChargeBee.Models
             [Description("percentage")]
             Percentage,
             [Description("offer_quantity")]
+            [Obsolete]
             OfferQuantity,
 
         }
@@ -286,10 +289,12 @@ namespace ChargeBee.Models
             [Description("invoice_amount")]
             InvoiceAmount,
             [Description("specified_items_total")]
+            [Obsolete]
             SpecifiedItemsTotal,
             [Description("each_specified_item")]
             EachSpecifiedItem,
             [Description("each_unit_of_specified_items")]
+            [Obsolete]
             EachUnitOfSpecifiedItems,
 
         }

@@ -48,6 +48,21 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "update_billing_info");
             return new UpdateBillingInfoRequest(url, HttpMethod.POST);
         }
+        public static AddAccountCreditsRequest AddAccountCredits(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "add_account_credits");
+            return new AddAccountCreditsRequest(url, HttpMethod.POST);
+        }
+        public static DeductAccountCreditsRequest DeductAccountCredits(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "deduct_account_credits");
+            return new DeductAccountCreditsRequest(url, HttpMethod.POST);
+        }
+        public static SetAccountCreditsRequest SetAccountCredits(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "set_account_credits");
+            return new SetAccountCreditsRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -106,6 +121,10 @@ namespace ChargeBee.Models
         public string InvoiceNotes 
         {
             get { return GetValue<string>("invoice_notes", false); }
+        }
+        public int AccountCredits 
+        {
+            get { return GetValue<int>("account_credits", true); }
         }
         
         #endregion
@@ -460,6 +479,60 @@ namespace ChargeBee.Models
             public UpdateBillingInfoRequest BillingAddressCountry(string billingAddressCountry) 
             {
                 m_params.AddOpt("billing_address[country]", billingAddressCountry);
+                return this;
+            }
+        }
+        public class AddAccountCreditsRequest : EntityRequest<AddAccountCreditsRequest> 
+        {
+            public AddAccountCreditsRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public AddAccountCreditsRequest Amount(int amount) 
+            {
+                m_params.Add("amount", amount);
+                return this;
+            }
+            public AddAccountCreditsRequest Description(string description) 
+            {
+                m_params.Add("description", description);
+                return this;
+            }
+        }
+        public class DeductAccountCreditsRequest : EntityRequest<DeductAccountCreditsRequest> 
+        {
+            public DeductAccountCreditsRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public DeductAccountCreditsRequest Amount(int amount) 
+            {
+                m_params.Add("amount", amount);
+                return this;
+            }
+            public DeductAccountCreditsRequest Description(string description) 
+            {
+                m_params.Add("description", description);
+                return this;
+            }
+        }
+        public class SetAccountCreditsRequest : EntityRequest<SetAccountCreditsRequest> 
+        {
+            public SetAccountCreditsRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public SetAccountCreditsRequest Amount(int amount) 
+            {
+                m_params.Add("amount", amount);
+                return this;
+            }
+            public SetAccountCreditsRequest Description(string description) 
+            {
+                m_params.Add("description", description);
                 return this;
             }
         }

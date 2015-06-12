@@ -10,13 +10,13 @@ namespace ChargeBee.Models.Enums
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
 
         [Description("card")]
-        Card,
+         Card,
 
         [Description("paypal_express_checkout")]
-        PaypalExpressCheckout,
+         PaypalExpressCheckout,
 
         [Description("amazon_payments")]
-        AmazonPayments,
+         AmazonPayments,
 
     }
 }

@@ -29,25 +29,40 @@ namespace ChargeBee.Api
             return sb.ToString();
         }
 
-        private static HttpWebRequest GetRequest(string url, HttpMethod method, ApiConfig env)
+		private static HttpWebRequest GetRequest(string url, HttpMethod method, Dictionary<string, string> headers, ApiConfig env)
         {
             HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url);
-            request.Method = Enum.GetName(typeof(HttpMethod), method);
+			request.Method = Enum.GetName(typeof(HttpMethod), method);
             request.UserAgent = String.Format("ChargeBee-DotNet-Client v{0} on {1} / {2}",
                 ApiConfig.Version,
                 Environment.Version,
                 Environment.OSVersion);
 
-            request.Accept = "application/json";
+	     request.Accept = "application/json";
 
-            request.Headers.Add(HttpRequestHeader.AcceptCharset, env.Charset);
-            request.Headers.Add(HttpRequestHeader.Authorization, env.AuthValue);
+			AddHeaders (request, env);
+			AddCustomHeaders (request, headers);
 
             request.Timeout = env.ConnectTimeout;
             request.ReadWriteTimeout = env.ReadTimeout;
 
             return request;
         }
+
+		private static void AddHeaders(HttpWebRequest request, ApiConfig env) {
+			request.Headers.Add(HttpRequestHeader.AcceptCharset, env.Charset);
+			request.Headers.Add(HttpRequestHeader.Authorization, env.AuthValue);
+		}
+
+		private static void AddCustomHeaders(HttpWebRequest request, Dictionary<string, string> headers) {
+			foreach (KeyValuePair<string, string> entry in headers) {
+					AddHeader(request, entry.Key, entry.Value);
+			}
+		}
+
+		private static void AddHeader(HttpWebRequest request, String headerName, String value) {
+			request.Headers.Add(headerName, value);
+		}
 
         private static string SendRequest(HttpWebRequest request, out HttpStatusCode code)
         {
@@ -89,16 +104,16 @@ namespace ChargeBee.Api
             }
         }
 
-        private static string GetJson(string url, Params parameters, ApiConfig env, out HttpStatusCode code)
+		private static string GetJson(string url, Params parameters, ApiConfig env, Dictionary<string, string> headers, out HttpStatusCode code)
         {
             url = String.Format("{0}?{1}", url, parameters.GetQuery());
-			HttpWebRequest request = GetRequest(url, HttpMethod.GET, env);
+			HttpWebRequest request = GetRequest(url, HttpMethod.GET, headers, env);
             return SendRequest(request, out code);
         }
 
-        public static EntityResult Post(string url, Params parameters, ApiConfig env)
+		public static EntityResult Post(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env)
         {
-            HttpWebRequest request = GetRequest(url, HttpMethod.POST, env);
+			HttpWebRequest request = GetRequest(url, HttpMethod.POST, headers, env);
             byte[] paramsBytes =
                 Encoding.GetEncoding(env.Charset).GetBytes(parameters.GetQuery());
 
@@ -117,19 +132,19 @@ namespace ChargeBee.Api
             }
         }
 
-        public static EntityResult Get(string url, Params parameters, ApiConfig env)
+		public static EntityResult Get(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env)
         {
             HttpStatusCode code;
-            string json = GetJson(url, parameters, env, out code);
+			string json = GetJson(url, parameters, env, headers, out code);
 
             EntityResult result = new EntityResult(code, json);
             return result;
         }
 
-        public static ListResult GetList(string url, Params parameters, ApiConfig env)
+		public static ListResult GetList(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env)
         {
             HttpStatusCode code;
-            string json = GetJson(url, parameters, env, out code);
+            string json = GetJson(url, parameters, env, headers, out code);
 
             ListResult result = new ListResult(code, json);
             return result;

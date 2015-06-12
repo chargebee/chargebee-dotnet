@@ -10,19 +10,19 @@ namespace ChargeBee.Models.Enums
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
 
         [Description("future")]
-        Future,
+         Future,
 
         [Description("in_trial")]
-        InTrial,
+         InTrial,
 
         [Description("active")]
-        Active,
+         Active,
 
         [Description("non_renewing")]
-        NonRenewing,
+         NonRenewing,
 
         [Description("cancelled")]
-        Cancelled,
+         Cancelled,
 
     }
 }

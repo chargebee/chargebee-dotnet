@@ -10,28 +10,28 @@ namespace ChargeBee.Models.Enums
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
 
         [Description("admin_console")]
-        AdminConsole,
+         AdminConsole,
 
         [Description("api")]
-        Api,
+         Api,
 
         [Description("scheduled_job")]
-        ScheduledJob,
+         ScheduledJob,
 
         [Description("hosted_page")]
-        HostedPage,
+         HostedPage,
 
         [Description("system")]
-        System,
+         System,
 
         [Description("none")]
-        None,
+         None,
 
         [Description("js_api")]
-        JsApi,
+         JsApi,
 
         [Description("portal")]
-        Portal,
+         Portal,
 
     }
 }

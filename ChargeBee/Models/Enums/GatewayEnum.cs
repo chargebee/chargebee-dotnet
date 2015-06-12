@@ -10,76 +10,76 @@ namespace ChargeBee.Models.Enums
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
 
         [Description("chargebee")]
-        Chargebee,
+         Chargebee,
 
         [Description("stripe")]
-        Stripe,
+         Stripe,
 
         [Description("braintree")]
-        Braintree,
+         Braintree,
 
         [Description("authorize_net")]
-        AuthorizeNet,
+         AuthorizeNet,
 
         [Description("paypal_pro")]
-        PaypalPro,
+         PaypalPro,
 
         [Description("pin")]
-        Pin,
+         Pin,
 
         [Description("eway")]
-        Eway,
+         Eway,
 
         [Description("eway_rapid")]
-        EwayRapid,
+         EwayRapid,
 
         [Description("worldpay")]
-        Worldpay,
+         Worldpay,
 
         [Description("balanced_payments")]
-        BalancedPayments,
+         BalancedPayments,
 
         [Description("beanstream")]
-        Beanstream,
+         Beanstream,
 
         [Description("bluepay")]
-        Bluepay,
+         Bluepay,
 
         [Description("elavon")]
-        Elavon,
+         Elavon,
 
         [Description("first_data_global")]
-        FirstDataGlobal,
+         FirstDataGlobal,
 
         [Description("hdfc")]
-        Hdfc,
+         Hdfc,
 
         [Description("migs")]
-        Migs,
+         Migs,
 
         [Description("nmi")]
-        Nmi,
+         Nmi,
 
         [Description("ogone")]
-        Ogone,
+         Ogone,
 
         [Description("paymill")]
-        Paymill,
+         Paymill,
 
         [Description("paypal_payflow_pro")]
-        PaypalPayflowPro,
+         PaypalPayflowPro,
 
         [Description("sage_pay")]
-        SagePay,
+         SagePay,
 
         [Description("tco")]
-        Tco,
+         Tco,
 
         [Description("wirecard")]
-        Wirecard,
+         Wirecard,
 
         [Description("not_applicable")]
-        NotApplicable,
+         NotApplicable,
 
     }
 }

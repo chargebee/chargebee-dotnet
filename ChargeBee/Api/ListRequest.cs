@@ -1,4 +1,5 @@
-﻿
+﻿using System.Collections.Generic;
+
 namespace ChargeBee.Api
 {
     public class ListRequest
@@ -6,6 +7,7 @@ namespace ChargeBee.Api
         string m_url;
 		protected HttpMethod m_method = HttpMethod.GET;
 		protected Params m_params = new Params();
+		protected Dictionary<string, string> headers = new Dictionary<string, string>();
 
         public ListRequest(string url)
         {
@@ -24,9 +26,14 @@ namespace ChargeBee.Api
             return this;
         }
 
+		public ListRequest Header(string headerName, string headerValue){
+			headers.Add (headerName, headerValue);
+			return this;
+		}
+
         public ListResult Request(ApiConfig env)
         {
-            return ApiUtil.GetList(m_url, m_params, ApiConfig.Instance);
+			return ApiUtil.GetList(m_url, m_params, headers, ApiConfig.Instance);
         }
 
         public ListResult Request()

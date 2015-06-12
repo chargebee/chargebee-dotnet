@@ -10,84 +10,87 @@ namespace ChargeBee.Models.Enums
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
 
         [Description("customer_created")]
-        CustomerCreated,
+         CustomerCreated,
 
         [Description("customer_changed")]
-        CustomerChanged,
+         CustomerChanged,
 
         [Description("subscription_created")]
-        SubscriptionCreated,
+         SubscriptionCreated,
 
         [Description("subscription_started")]
-        SubscriptionStarted,
+         SubscriptionStarted,
 
         [Description("subscription_trial_ending")]
-        SubscriptionTrialEnding,
+         SubscriptionTrialEnding,
 
         [Description("subscription_activated")]
-        SubscriptionActivated,
+         SubscriptionActivated,
 
         [Description("subscription_changed")]
-        SubscriptionChanged,
+         SubscriptionChanged,
 
         [Description("subscription_cancellation_scheduled")]
-        SubscriptionCancellationScheduled,
+         SubscriptionCancellationScheduled,
 
         [Description("subscription_cancelling")]
-        SubscriptionCancelling,
+         SubscriptionCancelling,
 
         [Description("subscription_cancelled")]
-        SubscriptionCancelled,
+         SubscriptionCancelled,
 
         [Description("subscription_reactivated")]
-        SubscriptionReactivated,
+         SubscriptionReactivated,
 
         [Description("subscription_renewed")]
-        SubscriptionRenewed,
+         SubscriptionRenewed,
 
         [Description("subscription_scheduled_cancellation_removed")]
-        SubscriptionScheduledCancellationRemoved,
+         SubscriptionScheduledCancellationRemoved,
 
         [Description("subscription_shipping_address_updated")]
-        SubscriptionShippingAddressUpdated,
+         SubscriptionShippingAddressUpdated,
 
         [Description("invoice_receipt")]
-        InvoiceReceipt,
+         InvoiceReceipt,
 
         [Description("invoice_created")]
-        InvoiceCreated,
+         InvoiceCreated,
+
+        [Description("invoice_updated")]
+         InvoiceUpdated,
 
         [Description("invoice_deleted")]
-        InvoiceDeleted,
+         InvoiceDeleted,
 
 
         [Description("subscription_renewal_reminder")]
-        SubscriptionRenewalReminder,
+         SubscriptionRenewalReminder,
 
 
         [Description("payment_succeeded")]
-        PaymentSucceeded,
+         PaymentSucceeded,
 
         [Description("payment_failed")]
-        PaymentFailed,
+         PaymentFailed,
 
         [Description("payment_refunded")]
-        PaymentRefunded,
+         PaymentRefunded,
 
         [Description("card_added")]
-        CardAdded,
+         CardAdded,
 
         [Description("card_updated")]
-        CardUpdated,
+         CardUpdated,
 
         [Description("card_expiring")]
-        CardExpiring,
+         CardExpiring,
 
         [Description("card_expired")]
-        CardExpired,
+         CardExpired,
 
         [Description("card_deleted")]
-        CardDeleted,
+         CardDeleted,
 
     }
 }
