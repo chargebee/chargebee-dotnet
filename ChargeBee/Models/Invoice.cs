@@ -83,6 +83,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "refund");
             return new RefundRequest(url, HttpMethod.POST);
         }
+        public static VoidInvoiceRequest VoidInvoice(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "void");
+            return new VoidInvoiceRequest(url, HttpMethod.POST);
+        }
         public static DeleteRequest Delete(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "delete");
@@ -448,6 +453,19 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class VoidInvoiceRequest : EntityRequest<VoidInvoiceRequest> 
+        {
+            public VoidInvoiceRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public VoidInvoiceRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
+                return this;
+            }
+        }
         public class DeleteRequest : EntityRequest<DeleteRequest> 
         {
             public DeleteRequest(string url, HttpMethod method) 
@@ -474,6 +492,8 @@ namespace ChargeBee.Models
             PaymentDue,
             [Description("not_paid")]
             NotPaid,
+            [Description("voided")]
+            Voided,
             [Description("pending")]
             Pending,
 

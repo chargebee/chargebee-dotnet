@@ -28,6 +28,7 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("hosted_pages", "checkout_existing");
             return new CheckoutExistingRequest(url, HttpMethod.POST);
         }
+        [Obsolete]
         public static UpdateCardRequest UpdateCard()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "update_card");
