@@ -83,6 +83,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "refund");
             return new RefundRequest(url, HttpMethod.POST);
         }
+        public static RecordRefundRequest RecordRefund(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "record_refund");
+            return new RecordRefundRequest(url, HttpMethod.POST);
+        }
         public static VoidInvoiceRequest VoidInvoice(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "void");
@@ -450,6 +455,39 @@ namespace ChargeBee.Models
             public RefundRequest Memo(string memo) 
             {
                 m_params.AddOpt("memo", memo);
+                return this;
+            }
+        }
+        public class RecordRefundRequest : EntityRequest<RecordRefundRequest> 
+        {
+            public RecordRefundRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public RecordRefundRequest Memo(string memo) 
+            {
+                m_params.Add("memo", memo);
+                return this;
+            }
+            public RecordRefundRequest TransactionAmount(int transactionAmount) 
+            {
+                m_params.AddOpt("transaction[amount]", transactionAmount);
+                return this;
+            }
+            public RecordRefundRequest TransactionPaymentMethod(PaymentMethodEnum transactionPaymentMethod) 
+            {
+                m_params.Add("transaction[payment_method]", transactionPaymentMethod);
+                return this;
+            }
+            public RecordRefundRequest TransactionReferenceNumber(string transactionReferenceNumber) 
+            {
+                m_params.AddOpt("transaction[reference_number]", transactionReferenceNumber);
+                return this;
+            }
+            public RecordRefundRequest TransactionDate(long transactionDate) 
+            {
+                m_params.Add("transaction[date]", transactionDate);
                 return this;
             }
         }

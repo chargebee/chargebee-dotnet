@@ -33,5 +33,8 @@ namespace ChargeBee.Models.Enums
         [Description("portal")]
          Portal,
 
+        [Description("migration")]
+         Migration,
+
     }
 }

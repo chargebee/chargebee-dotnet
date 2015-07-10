@@ -75,6 +75,7 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<GatewayEnum>("gateway", true); }
         }
+        [Obsolete]
         public string Description 
         {
             get { return GetValue<string>("description", false); }
@@ -111,6 +112,7 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("voided_at", false); }
         }
+        [Obsolete]
         public string VoidDescription 
         {
             get { return GetValue<string>("void_description", false); }
@@ -166,27 +168,6 @@ namespace ChargeBee.Models
         }
         #endregion
 
-        public enum PaymentMethodEnum
-        {
-
-            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
-            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("card")]
-            Card,
-            [Description("cash")]
-            Cash,
-            [Description("check")]
-            Check,
-            [Description("bank_transfer")]
-            BankTransfer,
-            [Description("amazon_payments")]
-            AmazonPayments,
-            [Description("paypal_express_checkout")]
-            PaypalExpressCheckout,
-            [Description("other")]
-            Other,
-
-        }
         public enum TypeEnum
         {
 

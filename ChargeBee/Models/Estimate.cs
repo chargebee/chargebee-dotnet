@@ -327,6 +327,8 @@ namespace ChargeBee.Models
                 Coupon,
                 [Description("credit_adjustment")]
                 CreditAdjustment,
+                [Description("account_credits")]
+                AccountCredits,
             }
 
             public int Amount() {

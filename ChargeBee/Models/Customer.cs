@@ -202,6 +202,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_method[type]", paymentMethodType);
                 return this;
             }
+            public CreateRequest PaymentMethodGateway(GatewayEnum paymentMethodGateway) 
+            {
+                m_params.AddOpt("payment_method[gateway]", paymentMethodGateway);
+                return this;
+            }
             public CreateRequest PaymentMethodReferenceId(string paymentMethodReferenceId) 
             {
                 m_params.AddOpt("payment_method[reference_id]", paymentMethodReferenceId);
@@ -396,6 +401,11 @@ namespace ChargeBee.Models
             public UpdatePaymentMethodRequest PaymentMethodType(TypeEnum paymentMethodType) 
             {
                 m_params.Add("payment_method[type]", paymentMethodType);
+                return this;
+            }
+            public UpdatePaymentMethodRequest PaymentMethodGateway(GatewayEnum paymentMethodGateway) 
+            {
+                m_params.AddOpt("payment_method[gateway]", paymentMethodGateway);
                 return this;
             }
             public UpdatePaymentMethodRequest PaymentMethodReferenceId(string paymentMethodReferenceId) 
@@ -640,6 +650,10 @@ namespace ChargeBee.Models
 
             public TypeEnum? PaymentMethodType() {
                 return GetEnum<TypeEnum>("type", false);
+            }
+
+            public GatewayEnum Gateway() {
+                return GetEnum<GatewayEnum>("gateway", true);
             }
 
             public StatusEnum Status() {
