@@ -33,6 +33,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", "charge_addon");
             return new ChargeAddonRequest(url, HttpMethod.POST);
         }
+        public static EntityRequest<Type> StopDunning(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "stop_dunning");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
         public static InvoiceListRequest List()
         {
             string url = ApiUtil.BuildUrl("invoices");
@@ -148,6 +153,10 @@ namespace ChargeBee.Models
         public DateTime? PaidOn 
         {
             get { return GetDateTime("paid_on", false); }
+        }
+        public DunningStatusEnum? DunningStatus 
+        {
+            get { return GetEnum<DunningStatusEnum>("dunning_status", false); }
         }
         public DateTime? NextRetry 
         {
@@ -534,6 +543,21 @@ namespace ChargeBee.Models
             Voided,
             [Description("pending")]
             Pending,
+
+        }
+        public enum DunningStatusEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [Description("in_progress")]
+            InProgress,
+            [Description("exhausted")]
+            Exhausted,
+            [Description("stopped")]
+            Stopped,
+            [Description("success")]
+            Success,
 
         }
 

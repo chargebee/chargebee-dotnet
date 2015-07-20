@@ -80,6 +80,7 @@
     <Compile Include="Exceptions\PaymentException.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Enums\TypeEnum.cs" />
+    <Compile Include="Models\Enums\PaymentMethodEnum.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
