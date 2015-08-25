@@ -129,6 +129,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<TransactionLinkedInvoice>("linked_invoices"); }
         }
+        public string CurrencyCode 
+        {
+            get { return GetValue<string>("currency_code", false); }
+        }
         
         #endregion
         

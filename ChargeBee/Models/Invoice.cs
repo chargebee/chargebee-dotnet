@@ -170,6 +170,14 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int>("tax", true); }
         }
+        public bool? FirstInvoice 
+        {
+            get { return GetValue<bool?>("first_invoice", false); }
+        }
+        public string CurrencyCode 
+        {
+            get { return GetValue<string>("currency_code", false); }
+        }
         public List<InvoiceLineItem> LineItems 
         {
             get { return GetResourceList<InvoiceLineItem>("line_items"); }

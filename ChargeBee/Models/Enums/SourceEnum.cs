@@ -36,5 +36,8 @@ namespace ChargeBee.Models.Enums
         [Description("migration")]
          Migration,
 
+        [Description("bulk_operation")]
+         BulkOperation,
+
     }
 }
