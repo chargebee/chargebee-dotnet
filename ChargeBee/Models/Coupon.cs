@@ -266,6 +266,7 @@ namespace ChargeBee.Models
             Archived,
 
         }
+        [Obsolete]
         public enum ApplyDiscountOnEnum
         {
 

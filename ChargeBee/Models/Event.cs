@@ -62,13 +62,23 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<SourceEnum>("source", true); }
         }
+        public string User 
+        {
+            get { return GetValue<string>("user", false); }
+        }
+        [Obsolete]
         public WebhookStatusEnum WebhookStatus 
         {
             get { return GetEnum<WebhookStatusEnum>("webhook_status", true); }
         }
+        [Obsolete]
         public string WebhookFailureReason 
         {
             get { return GetValue<string>("webhook_failure_reason", false); }
+        }
+        public List<EventWebhook> Webhooks 
+        {
+            get { return GetResourceList<EventWebhook>("webhooks"); }
         }
         public EventTypeEnum? EventType 
         {
@@ -121,6 +131,7 @@ namespace ChargeBee.Models
         }
         #endregion
 
+        [Obsolete]
         public enum WebhookStatusEnum
         {
 
@@ -128,8 +139,6 @@ namespace ChargeBee.Models
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
             [Description("not_configured")]
             NotConfigured,
-            [Description("not_applicable")]
-            NotApplicable,
             [Description("scheduled")]
             Scheduled,
             [Description("succeeded")]
@@ -140,10 +149,41 @@ namespace ChargeBee.Models
             Failed,
             [Description("skipped")]
             Skipped,
+            [Description("not_applicable")]
+            NotApplicable,
 
         }
 
         #region Subclasses
+        public class EventWebhook : Resource
+        {
+            public enum WebhookStatusEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [Description("not_configured")]
+                NotConfigured,
+                [Description("scheduled")]
+                Scheduled,
+                [Description("succeeded")]
+                Succeeded,
+                [Description("re_scheduled")]
+                ReScheduled,
+                [Description("failed")]
+                Failed,
+                [Description("skipped")]
+                Skipped,
+            }
+
+            public string Id() {
+                return GetValue<string>("id", true);
+            }
+
+            public WebhookStatusEnum WebhookStatus() {
+                return GetEnum<WebhookStatusEnum>("webhook_status", true);
+            }
+
+        }
 
         public class EventContent : ResultBase
         {
