@@ -611,6 +611,10 @@ namespace ChargeBee.Models
                 return GetValue<int?>("quantity", false);
             }
 
+            public bool IsTaxed() {
+                return GetValue<bool>("is_taxed", true);
+            }
+
             public int? Tax() {
                 return GetValue<int?>("tax", false);
             }

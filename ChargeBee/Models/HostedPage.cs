@@ -174,6 +174,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[company]", customerCompany);
                 return this;
             }
+            public CheckoutNewRequest CustomerTaxability(TaxabilityEnum customerTaxability) 
+            {
+                m_params.AddOpt("customer[taxability]", customerTaxability);
+                return this;
+            }
             public CheckoutNewRequest CustomerPhone(string customerPhone) 
             {
                 m_params.AddOpt("customer[phone]", customerPhone);

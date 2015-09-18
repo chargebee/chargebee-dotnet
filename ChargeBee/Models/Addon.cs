@@ -98,6 +98,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("invoice_notes", false); }
         }
+        public bool? Taxable 
+        {
+            get { return GetValue<bool?>("taxable", false); }
+        }
         
         #endregion
         
@@ -157,6 +161,11 @@ namespace ChargeBee.Models
             public CreateRequest Unit(string unit) 
             {
                 m_params.AddOpt("unit", unit);
+                return this;
+            }
+            public CreateRequest Taxable(bool taxable) 
+            {
+                m_params.AddOpt("taxable", taxable);
                 return this;
             }
             public CreateRequest InvoiceNotes(string invoiceNotes) 
@@ -220,6 +229,11 @@ namespace ChargeBee.Models
             public UpdateRequest Unit(string unit) 
             {
                 m_params.AddOpt("unit", unit);
+                return this;
+            }
+            public UpdateRequest Taxable(bool taxable) 
+            {
+                m_params.AddOpt("taxable", taxable);
                 return this;
             }
             public UpdateRequest InvoiceNotes(string invoiceNotes) 

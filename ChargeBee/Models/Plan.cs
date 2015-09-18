@@ -123,6 +123,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("invoice_notes", false); }
         }
+        public bool? Taxable 
+        {
+            get { return GetValue<bool?>("taxable", false); }
+        }
         
         #endregion
         
@@ -213,6 +217,11 @@ namespace ChargeBee.Models
             public CreateRequest EnabledInHostedPages(bool enabledInHostedPages) 
             {
                 m_params.AddOpt("enabled_in_hosted_pages", enabledInHostedPages);
+                return this;
+            }
+            public CreateRequest Taxable(bool taxable) 
+            {
+                m_params.AddOpt("taxable", taxable);
                 return this;
             }
             public CreateRequest InvoiceNotes(string invoiceNotes) 
@@ -307,6 +316,11 @@ namespace ChargeBee.Models
             public UpdateRequest EnabledInHostedPages(bool enabledInHostedPages) 
             {
                 m_params.AddOpt("enabled_in_hosted_pages", enabledInHostedPages);
+                return this;
+            }
+            public UpdateRequest Taxable(bool taxable) 
+            {
+                m_params.AddOpt("taxable", taxable);
                 return this;
             }
             public UpdateRequest InvoiceNotes(string invoiceNotes) 

@@ -106,6 +106,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("created_from_ip", false); }
         }
+        public TaxabilityEnum? Taxability 
+        {
+            get { return GetEnum<TaxabilityEnum>("taxability", false); }
+        }
         public CardStatusEnum? CardStatus 
         {
             get { return GetEnum<CardStatusEnum>("card_status", false); }
@@ -175,6 +179,11 @@ namespace ChargeBee.Models
             public CreateRequest VatNumber(string vatNumber) 
             {
                 m_params.AddOpt("vat_number", vatNumber);
+                return this;
+            }
+            public CreateRequest Taxability(TaxabilityEnum taxability) 
+            {
+                m_params.AddOpt("taxability", taxability);
                 return this;
             }
             public CreateRequest CreatedFromIp(string createdFromIp) 
@@ -383,6 +392,11 @@ namespace ChargeBee.Models
             public UpdateRequest AutoCollection(AutoCollectionEnum autoCollection) 
             {
                 m_params.AddOpt("auto_collection", autoCollection);
+                return this;
+            }
+            public UpdateRequest Taxability(TaxabilityEnum taxability) 
+            {
+                m_params.AddOpt("taxability", taxability);
                 return this;
             }
             public UpdateRequest InvoiceNotes(string invoiceNotes) 
