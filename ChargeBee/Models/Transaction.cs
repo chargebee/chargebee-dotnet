@@ -119,7 +119,7 @@ namespace ChargeBee.Models
         }
         public string MaskedCardNumber 
         {
-            get { return GetValue<string>("masked_card_number", true); }
+            get { return GetValue<string>("masked_card_number", false); }
         }
         public string RefundedTxnId 
         {
@@ -190,6 +190,8 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [Description("in_progress")]
+            InProgress,
             [Description("success")]
             Success,
             [Description("voided")]

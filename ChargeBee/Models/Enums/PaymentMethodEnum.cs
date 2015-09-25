@@ -30,6 +30,9 @@ namespace ChargeBee.Models.Enums
         [Description("paypal_express_checkout")]
          PaypalExpressCheckout,
 
+        [Description("direct_debit")]
+         DirectDebit,
+
         [Description("other")]
          Other,
 

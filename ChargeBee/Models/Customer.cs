@@ -110,6 +110,7 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<TaxabilityEnum>("taxability", false); }
         }
+        [Obsolete]
         public CardStatusEnum? CardStatus 
         {
             get { return GetEnum<CardStatusEnum>("card_status", false); }
@@ -562,6 +563,7 @@ namespace ChargeBee.Models
         }
         #endregion
 
+        [Obsolete]
         public enum CardStatusEnum
         {
 
@@ -647,6 +649,8 @@ namespace ChargeBee.Models
                 PaypalExpressCheckout,
                 [Description("amazon_payments")]
                 AmazonPayments,
+                [Description("direct_debit")]
+                DirectDebit,
             }
             public enum StatusEnum
             {

@@ -18,5 +18,8 @@ namespace ChargeBee.Models.Enums
         [Description("amazon_payments")]
          AmazonPayments,
 
+        [Description("direct_debit")]
+         DirectDebit,
+
     }
 }
