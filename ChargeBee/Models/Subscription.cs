@@ -306,6 +306,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[auto_collection]", customerAutoCollection);
                 return this;
             }
+            public CreateRequest CustomerAllowDirectDebit(bool customerAllowDirectDebit) 
+            {
+                m_params.AddOpt("customer[allow_direct_debit]", customerAllowDirectDebit);
+                return this;
+            }
             public CreateRequest CardGateway(GatewayEnum cardGateway) 
             {
                 m_params.AddOpt("card[gateway]", cardGateway);
