@@ -71,6 +71,15 @@ namespace ChargeBee.Models.Enums
          SubscriptionRenewalReminder,
 
 
+        [Description("transaction_created")]
+         TransactionCreated,
+
+        [Description("transaction_updated")]
+         TransactionUpdated,
+
+        [Description("transaction_deleted")]
+         TransactionDeleted,
+
         [Description("payment_succeeded")]
          PaymentSucceeded,
 

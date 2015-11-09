@@ -713,6 +713,10 @@ namespace ChargeBee.Models
                 return GetValue<int>("applied_amount", true);
             }
 
+            public DateTime AppliedAt() {
+                return (DateTime)GetDateTime("applied_at", true);
+            }
+
             public Transaction.TypeEnum TxnType() {
                 return GetEnum<Transaction.TypeEnum>("txn_type", true);
             }

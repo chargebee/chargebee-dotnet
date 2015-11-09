@@ -135,6 +135,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int>("account_credits", true); }
         }
+        public int ExcessPayments 
+        {
+            get { return GetValue<int>("excess_payments", true); }
+        }
         
         #endregion
         
@@ -680,8 +684,8 @@ namespace ChargeBee.Models
                 Invalid,
             }
 
-            public TypeEnum? PaymentMethodType() {
-                return GetEnum<TypeEnum>("type", false);
+            public TypeEnum PaymentMethodType() {
+                return GetEnum<TypeEnum>("type", true);
             }
 
             public GatewayEnum Gateway() {

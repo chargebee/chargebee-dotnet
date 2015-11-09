@@ -117,17 +117,33 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("void_description", false); }
         }
+        public int? AmountUnused 
+        {
+            get { return GetValue<int?>("amount_unused", false); }
+        }
         public string MaskedCardNumber 
         {
             get { return GetValue<string>("masked_card_number", false); }
+        }
+        public string ReferenceTransactionId 
+        {
+            get { return GetValue<string>("reference_transaction_id", false); }
         }
         public string RefundedTxnId 
         {
             get { return GetValue<string>("refunded_txn_id", false); }
         }
+        public string ReversalTransactionId 
+        {
+            get { return GetValue<string>("reversal_transaction_id", false); }
+        }
         public List<TransactionLinkedInvoice> LinkedInvoices 
         {
             get { return GetResourceList<TransactionLinkedInvoice>("linked_invoices"); }
+        }
+        public List<TransactionLinkedRefund> LinkedRefunds 
+        {
+            get { return GetResourceList<TransactionLinkedRefund>("linked_refunds"); }
         }
         public string CurrencyCode 
         {
@@ -183,6 +199,8 @@ namespace ChargeBee.Models
             Payment,
             [Description("refund")]
             Refund,
+            [Description("payment_reversal")]
+            PaymentReversal,
 
         }
         public enum StatusEnum
@@ -217,12 +235,36 @@ namespace ChargeBee.Models
                 return GetValue<int>("applied_amount", true);
             }
 
+            public DateTime AppliedAt() {
+                return (DateTime)GetDateTime("applied_at", true);
+            }
+
             public DateTime? InvoiceDate() {
                 return GetDateTime("invoice_date", false);
             }
 
             public int? InvoiceAmount() {
                 return GetValue<int?>("invoice_amount", false);
+            }
+
+        }
+        public class TransactionLinkedRefund : Resource
+        {
+
+            public int TxnAmount() {
+                return GetValue<int>("txn_amount", true);
+            }
+
+            public DateTime TxnDate() {
+                return (DateTime)GetDateTime("txn_date", true);
+            }
+
+            public string TxnId() {
+                return GetValue<string>("txn_id", true);
+            }
+
+            public Transaction.StatusEnum? TxnStatus() {
+                return GetEnum<Transaction.StatusEnum>("txn_status", false);
             }
 
         }
