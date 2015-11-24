@@ -119,6 +119,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool>("enabled_in_hosted_pages", true); }
         }
+        public bool EnabledInPortal 
+        {
+            get { return GetValue<bool>("enabled_in_portal", true); }
+        }
         public string InvoiceNotes 
         {
             get { return GetValue<string>("invoice_notes", false); }
@@ -219,6 +223,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("enabled_in_hosted_pages", enabledInHostedPages);
                 return this;
             }
+            public CreateRequest EnabledInPortal(bool enabledInPortal) 
+            {
+                m_params.AddOpt("enabled_in_portal", enabledInPortal);
+                return this;
+            }
             public CreateRequest Taxable(bool taxable) 
             {
                 m_params.AddOpt("taxable", taxable);
@@ -316,6 +325,11 @@ namespace ChargeBee.Models
             public UpdateRequest EnabledInHostedPages(bool enabledInHostedPages) 
             {
                 m_params.AddOpt("enabled_in_hosted_pages", enabledInHostedPages);
+                return this;
+            }
+            public UpdateRequest EnabledInPortal(bool enabledInPortal) 
+            {
+                m_params.AddOpt("enabled_in_portal", enabledInPortal);
                 return this;
             }
             public UpdateRequest Taxable(bool taxable) 
