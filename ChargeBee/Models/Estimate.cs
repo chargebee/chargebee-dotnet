@@ -60,13 +60,21 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool>("collect_now", true); }
         }
+        public PriceTypeEnum PriceType 
+        {
+            get { return GetEnum<PriceTypeEnum>("price_type", true); }
+        }
         public int Amount 
         {
             get { return GetValue<int>("amount", true); }
         }
-        public PriceTypeEnum PriceType 
+        public int CreditsApplied 
         {
-            get { return GetEnum<PriceTypeEnum>("price_type", true); }
+            get { return GetValue<int>("credits_applied", true); }
+        }
+        public int AmountDue 
+        {
+            get { return GetValue<int>("amount_due", true); }
         }
         public int SubTotal 
         {
@@ -309,17 +317,6 @@ namespace ChargeBee.Models
         }
         #endregion
 
-        public enum PriceTypeEnum
-        {
-
-            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
-            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("tax_exclusive")]
-            TaxExclusive,
-            [Description("tax_inclusive")]
-            TaxInclusive,
-
-        }
 
         #region Subclasses
         public class EstimateLineItem : Resource

@@ -48,6 +48,21 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "update_billing_info");
             return new UpdateBillingInfoRequest(url, HttpMethod.POST);
         }
+        public static AddContactRequest AddContact(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "add_contact");
+            return new AddContactRequest(url, HttpMethod.POST);
+        }
+        public static UpdateContactRequest UpdateContact(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "update_contact");
+            return new UpdateContactRequest(url, HttpMethod.POST);
+        }
+        public static DeleteContactRequest DeleteContact(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "delete_contact");
+            return new DeleteContactRequest(url, HttpMethod.POST);
+        }
         public static AddAccountCreditsRequest AddAccountCredits(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "add_account_credits");
@@ -123,6 +138,10 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<CustomerBillingAddress>("billing_address"); }
         }
+        public List<CustomerContact> Contacts 
+        {
+            get { return GetResourceList<CustomerContact>("contacts"); }
+        }
         public CustomerPaymentMethod PaymentMethod 
         {
             get { return GetSubResource<CustomerPaymentMethod>("payment_method"); }
@@ -134,6 +153,10 @@ namespace ChargeBee.Models
         public int AccountCredits 
         {
             get { return GetValue<int>("account_credits", true); }
+        }
+        public int RefundableCredits 
+        {
+            get { return GetValue<int>("refundable_credits", true); }
         }
         public int ExcessPayments 
         {
@@ -525,6 +548,125 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class AddContactRequest : EntityRequest<AddContactRequest> 
+        {
+            public AddContactRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public AddContactRequest ContactId(string contactId) 
+            {
+                m_params.AddOpt("contact[id]", contactId);
+                return this;
+            }
+            public AddContactRequest ContactFirstName(string contactFirstName) 
+            {
+                m_params.AddOpt("contact[first_name]", contactFirstName);
+                return this;
+            }
+            public AddContactRequest ContactLastName(string contactLastName) 
+            {
+                m_params.AddOpt("contact[last_name]", contactLastName);
+                return this;
+            }
+            public AddContactRequest ContactEmail(string contactEmail) 
+            {
+                m_params.Add("contact[email]", contactEmail);
+                return this;
+            }
+            public AddContactRequest ContactPhone(string contactPhone) 
+            {
+                m_params.AddOpt("contact[phone]", contactPhone);
+                return this;
+            }
+            public AddContactRequest ContactLabel(string contactLabel) 
+            {
+                m_params.AddOpt("contact[label]", contactLabel);
+                return this;
+            }
+            public AddContactRequest ContactEnabled(bool contactEnabled) 
+            {
+                m_params.AddOpt("contact[enabled]", contactEnabled);
+                return this;
+            }
+            public AddContactRequest ContactSendBillingEmail(bool contactSendBillingEmail) 
+            {
+                m_params.AddOpt("contact[send_billing_email]", contactSendBillingEmail);
+                return this;
+            }
+            public AddContactRequest ContactSendAccountEmail(bool contactSendAccountEmail) 
+            {
+                m_params.AddOpt("contact[send_account_email]", contactSendAccountEmail);
+                return this;
+            }
+        }
+        public class UpdateContactRequest : EntityRequest<UpdateContactRequest> 
+        {
+            public UpdateContactRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public UpdateContactRequest ContactId(string contactId) 
+            {
+                m_params.Add("contact[id]", contactId);
+                return this;
+            }
+            public UpdateContactRequest ContactFirstName(string contactFirstName) 
+            {
+                m_params.AddOpt("contact[first_name]", contactFirstName);
+                return this;
+            }
+            public UpdateContactRequest ContactLastName(string contactLastName) 
+            {
+                m_params.AddOpt("contact[last_name]", contactLastName);
+                return this;
+            }
+            public UpdateContactRequest ContactEmail(string contactEmail) 
+            {
+                m_params.AddOpt("contact[email]", contactEmail);
+                return this;
+            }
+            public UpdateContactRequest ContactPhone(string contactPhone) 
+            {
+                m_params.AddOpt("contact[phone]", contactPhone);
+                return this;
+            }
+            public UpdateContactRequest ContactLabel(string contactLabel) 
+            {
+                m_params.AddOpt("contact[label]", contactLabel);
+                return this;
+            }
+            public UpdateContactRequest ContactEnabled(bool contactEnabled) 
+            {
+                m_params.AddOpt("contact[enabled]", contactEnabled);
+                return this;
+            }
+            public UpdateContactRequest ContactSendBillingEmail(bool contactSendBillingEmail) 
+            {
+                m_params.AddOpt("contact[send_billing_email]", contactSendBillingEmail);
+                return this;
+            }
+            public UpdateContactRequest ContactSendAccountEmail(bool contactSendAccountEmail) 
+            {
+                m_params.AddOpt("contact[send_account_email]", contactSendAccountEmail);
+                return this;
+            }
+        }
+        public class DeleteContactRequest : EntityRequest<DeleteContactRequest> 
+        {
+            public DeleteContactRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public DeleteContactRequest ContactId(string contactId) 
+            {
+                m_params.Add("contact[id]", contactId);
+                return this;
+            }
+        }
         public class AddAccountCreditsRequest : EntityRequest<AddAccountCreditsRequest> 
         {
             public AddAccountCreditsRequest(string url, HttpMethod method) 
@@ -652,6 +794,46 @@ namespace ChargeBee.Models
 
             public string Zip() {
                 return GetValue<string>("zip", false);
+            }
+
+        }
+        public class CustomerContact : Resource
+        {
+
+            public string Id() {
+                return GetValue<string>("id", true);
+            }
+
+            public string FirstName() {
+                return GetValue<string>("first_name", false);
+            }
+
+            public string LastName() {
+                return GetValue<string>("last_name", false);
+            }
+
+            public string Email() {
+                return GetValue<string>("email", true);
+            }
+
+            public string Phone() {
+                return GetValue<string>("phone", false);
+            }
+
+            public string Label() {
+                return GetValue<string>("label", false);
+            }
+
+            public bool Enabled() {
+                return GetValue<bool>("enabled", true);
+            }
+
+            public bool SendAccountEmail() {
+                return GetValue<bool>("send_account_email", true);
+            }
+
+            public bool SendBillingEmail() {
+                return GetValue<bool>("send_billing_email", true);
             }
 
         }
