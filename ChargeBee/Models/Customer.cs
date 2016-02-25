@@ -78,6 +78,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "set_account_credits");
             return new SetAccountCreditsRequest(url, HttpMethod.POST);
         }
+        public static EntityRequest<Type> Delete(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "delete");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties

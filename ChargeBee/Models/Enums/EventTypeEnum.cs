@@ -15,6 +15,9 @@ namespace ChargeBee.Models.Enums
         [Description("customer_changed")]
          CustomerChanged,
 
+        [Description("customer_deleted")]
+         CustomerDeleted,
+
         [Description("subscription_created")]
          SubscriptionCreated,
 
@@ -50,6 +53,9 @@ namespace ChargeBee.Models.Enums
 
         [Description("subscription_shipping_address_updated")]
          SubscriptionShippingAddressUpdated,
+
+        [Description("subscription_deleted")]
+         SubscriptionDeleted,
 
         [Description("invoice_created")]
          InvoiceCreated,

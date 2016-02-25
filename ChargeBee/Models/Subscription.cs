@@ -88,6 +88,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "charge_addon_at_term_end");
             return new ChargeAddonAtTermEndRequest(url, HttpMethod.POST);
         }
+        public static EntityRequest<Type> Delete(string id)
+        {
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "delete");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -163,6 +168,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("created_from_ip", false); }
         }
+        public bool HasScheduledChanges 
+        {
+            get { return GetValue<bool>("has_scheduled_changes", true); }
+        }
         public int? DueInvoicesCount 
         {
             get { return GetValue<int?>("due_invoices_count", false); }
@@ -191,10 +200,6 @@ namespace ChargeBee.Models
         public SubscriptionShippingAddress ShippingAddress 
         {
             get { return GetSubResource<SubscriptionShippingAddress>("shipping_address"); }
-        }
-        public bool? HasScheduledChanges 
-        {
-            get { return GetValue<bool?>("has_scheduled_changes", false); }
         }
         public string InvoiceNotes 
         {
