@@ -78,10 +78,10 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "set_account_credits");
             return new SetAccountCreditsRequest(url, HttpMethod.POST);
         }
-        public static EntityRequest<Type> Delete(string id)
+        public static DeleteRequest Delete(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "delete");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            return new DeleteRequest(url, HttpMethod.POST);
         }
         #endregion
         
@@ -723,6 +723,19 @@ namespace ChargeBee.Models
             public SetAccountCreditsRequest Description(string description) 
             {
                 m_params.Add("description", description);
+                return this;
+            }
+        }
+        public class DeleteRequest : EntityRequest<DeleteRequest> 
+        {
+            public DeleteRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public DeleteRequest DeletePaymentMethod(bool deletePaymentMethod) 
+            {
+                m_params.AddOpt("delete_payment_method", deletePaymentMethod);
                 return this;
             }
         }
