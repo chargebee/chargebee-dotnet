@@ -131,6 +131,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool?>("taxable", false); }
         }
+        public JToken MetaData 
+        {
+            get { return GetJToken("meta_data", false); }
+        }
         
         #endregion
         
@@ -238,6 +242,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("invoice_notes", invoiceNotes);
                 return this;
             }
+            public CreateRequest MetaData(JToken metaData) 
+            {
+                m_params.AddOpt("meta_data", metaData);
+                return this;
+            }
         }
         public class UpdateRequest : EntityRequest<UpdateRequest> 
         {
@@ -340,6 +349,11 @@ namespace ChargeBee.Models
             public UpdateRequest InvoiceNotes(string invoiceNotes) 
             {
                 m_params.AddOpt("invoice_notes", invoiceNotes);
+                return this;
+            }
+            public UpdateRequest MetaData(JToken metaData) 
+            {
+                m_params.AddOpt("meta_data", metaData);
                 return this;
             }
         }

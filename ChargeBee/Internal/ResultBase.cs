@@ -102,6 +102,7 @@ namespace ChargeBee.Internal
             get {  return GetResource<PortalSession>("portal_session"); }
         }
 
+
         private T GetResource<T>(string property) where T : Resource, new()
         {
             if (m_jobj == null)

@@ -5,6 +5,9 @@ using System.ComponentModel;
 using System.Reflection;
 using System.Web;
 
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 namespace ChargeBee.Api
 {
     public class Params
@@ -66,6 +69,8 @@ namespace ChargeBee.Api
 					throw new ArgumentException ("Enum fields must be decorated with DescriptionAttribute!");
 				}
 				return attrs [0].Description;
+			}else if(value is JToken) {	
+				return value.ToString ();
 			}else if(value is IList) {
 				IList origList = (IList)value;
 				List<string> l = new List<string>();

@@ -205,6 +205,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("invoice_notes", false); }
         }
+        public JToken MetaData 
+        {
+            get { return GetJToken("meta_data", false); }
+        }
         
         #endregion
         
@@ -269,6 +273,11 @@ namespace ChargeBee.Models
             public CreateRequest InvoiceNotes(string invoiceNotes) 
             {
                 m_params.AddOpt("invoice_notes", invoiceNotes);
+                return this;
+            }
+            public CreateRequest MetaData(JToken metaData) 
+            {
+                m_params.AddOpt("meta_data", metaData);
                 return this;
             }
             public CreateRequest CustomerId(string customerId) 
@@ -609,6 +618,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("invoice_notes", invoiceNotes);
                 return this;
             }
+            public CreateForCustomerRequest MetaData(JToken metaData) 
+            {
+                m_params.AddOpt("meta_data", metaData);
+                return this;
+            }
             public CreateForCustomerRequest ShippingAddressFirstName(string shippingAddressFirstName) 
             {
                 m_params.AddOpt("shipping_address[first_name]", shippingAddressFirstName);
@@ -758,6 +772,11 @@ namespace ChargeBee.Models
             public UpdateRequest InvoiceNotes(string invoiceNotes) 
             {
                 m_params.AddOpt("invoice_notes", invoiceNotes);
+                return this;
+            }
+            public UpdateRequest MetaData(JToken metaData) 
+            {
+                m_params.AddOpt("meta_data", metaData);
                 return this;
             }
             public UpdateRequest CardGateway(GatewayEnum cardGateway) 
