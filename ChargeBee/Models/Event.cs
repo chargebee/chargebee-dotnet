@@ -23,17 +23,20 @@ namespace ChargeBee.Models
             using (StreamReader reader = new StreamReader(stream))
             {
                 JObj = JToken.Parse(reader.ReadToEnd());
+                apiVersionCheck (JObj);
             }
         }
 
         public Event(TextReader reader)
         {
             JObj = JToken.Parse(reader.ReadToEnd());
+            apiVersionCheck (JObj);    
         }
 
         public Event(String jsonString)
         {
             JObj = JToken.Parse(jsonString);
+            apiVersionCheck (JObj);
         }
 
         #region Methods
@@ -83,6 +86,10 @@ namespace ChargeBee.Models
         public EventTypeEnum? EventType 
         {
             get { return GetEnum<EventTypeEnum>("event_type", false); }
+        }
+        public ApiVersionEnum? ApiVersion 
+        {
+            get { return GetEnum<ApiVersionEnum>("api_version", false); }
         }
         public EventContent Content
         {
@@ -173,6 +180,8 @@ namespace ChargeBee.Models
                 Failed,
                 [Description("skipped")]
                 Skipped,
+                [Description("not_applicable")]
+                NotApplicable,
             }
 
             public string Id() {
