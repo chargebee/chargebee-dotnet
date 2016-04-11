@@ -63,20 +63,20 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "delete_contact");
             return new DeleteContactRequest(url, HttpMethod.POST);
         }
-        public static AddAccountCreditsRequest AddAccountCredits(string id)
+        public static AddPromotionalCreditsRequest AddPromotionalCredits(string id)
         {
-            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "add_account_credits");
-            return new AddAccountCreditsRequest(url, HttpMethod.POST);
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "add_promotional_credits");
+            return new AddPromotionalCreditsRequest(url, HttpMethod.POST);
         }
-        public static DeductAccountCreditsRequest DeductAccountCredits(string id)
+        public static DeductPromotionalCreditsRequest DeductPromotionalCredits(string id)
         {
-            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "deduct_account_credits");
-            return new DeductAccountCreditsRequest(url, HttpMethod.POST);
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "deduct_promotional_credits");
+            return new DeductPromotionalCreditsRequest(url, HttpMethod.POST);
         }
-        public static SetAccountCreditsRequest SetAccountCredits(string id)
+        public static SetPromotionalCreditsRequest SetPromotionalCredits(string id)
         {
-            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "set_account_credits");
-            return new SetAccountCreditsRequest(url, HttpMethod.POST);
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "set_promotional_credits");
+            return new SetPromotionalCreditsRequest(url, HttpMethod.POST);
         }
         public static DeleteRequest Delete(string id)
         {
@@ -155,9 +155,9 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("invoice_notes", false); }
         }
-        public int AccountCredits 
+        public int PromotionalCredits 
         {
-            get { return GetValue<int>("account_credits", true); }
+            get { return GetValue<int>("promotional_credits", true); }
         }
         public int RefundableCredits 
         {
@@ -686,55 +686,55 @@ namespace ChargeBee.Models
                 return this;
             }
         }
-        public class AddAccountCreditsRequest : EntityRequest<AddAccountCreditsRequest> 
+        public class AddPromotionalCreditsRequest : EntityRequest<AddPromotionalCreditsRequest> 
         {
-            public AddAccountCreditsRequest(string url, HttpMethod method) 
+            public AddPromotionalCreditsRequest(string url, HttpMethod method) 
                     : base(url, method)
             {
             }
 
-            public AddAccountCreditsRequest Amount(int amount) 
+            public AddPromotionalCreditsRequest Amount(int amount) 
             {
                 m_params.Add("amount", amount);
                 return this;
             }
-            public AddAccountCreditsRequest Description(string description) 
+            public AddPromotionalCreditsRequest Description(string description) 
             {
                 m_params.Add("description", description);
                 return this;
             }
         }
-        public class DeductAccountCreditsRequest : EntityRequest<DeductAccountCreditsRequest> 
+        public class DeductPromotionalCreditsRequest : EntityRequest<DeductPromotionalCreditsRequest> 
         {
-            public DeductAccountCreditsRequest(string url, HttpMethod method) 
+            public DeductPromotionalCreditsRequest(string url, HttpMethod method) 
                     : base(url, method)
             {
             }
 
-            public DeductAccountCreditsRequest Amount(int amount) 
+            public DeductPromotionalCreditsRequest Amount(int amount) 
             {
                 m_params.Add("amount", amount);
                 return this;
             }
-            public DeductAccountCreditsRequest Description(string description) 
+            public DeductPromotionalCreditsRequest Description(string description) 
             {
                 m_params.Add("description", description);
                 return this;
             }
         }
-        public class SetAccountCreditsRequest : EntityRequest<SetAccountCreditsRequest> 
+        public class SetPromotionalCreditsRequest : EntityRequest<SetPromotionalCreditsRequest> 
         {
-            public SetAccountCreditsRequest(string url, HttpMethod method) 
+            public SetPromotionalCreditsRequest(string url, HttpMethod method) 
                     : base(url, method)
             {
             }
 
-            public SetAccountCreditsRequest Amount(int amount) 
+            public SetPromotionalCreditsRequest Amount(int amount) 
             {
                 m_params.Add("amount", amount);
                 return this;
             }
-            public SetAccountCreditsRequest Description(string description) 
+            public SetPromotionalCreditsRequest Description(string description) 
             {
                 m_params.Add("description", description);
                 return this;

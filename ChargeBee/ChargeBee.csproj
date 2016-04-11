@@ -61,13 +61,16 @@
     <Compile Include="Models\Coupon.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Estimate.cs" />
+    <Compile Include="Models\SubscriptionEstimate.cs" />
+    <Compile Include="Models\InvoiceEstimate.cs" />
+    <Compile Include="Models\CreditNoteEstimate.cs" />
+    <Compile Include="Models\CreditNote.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Internal\ResultBase.cs" />
     <Compile Include="Internal\Resource.cs" />
     <Compile Include="Models\Enums\EventTypeEnum.cs" />
     <Compile Include="Models\Enums\GatewayEnum.cs" />
-    <Compile Include="Models\Enums\SubscriptionStatusEnum.cs" />
     <Compile Include="Internal\JSONSupport.cs" />
     <Compile Include="Models\Enums\AutoCollectionEnum.cs" />
     <Compile Include="Models\CouponCode.cs" />

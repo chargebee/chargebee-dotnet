@@ -1,28 +1,28 @@
-# Chargebee .Net Client Library - API V1
+# Chargebee .Net Client Library - API V2
 
 The .Net library for integrating with Chargebee Recurring Billing and Subscription Management solution.
 
-Chargebee now supports two API versions - [V1](https://apidocs.chargebee.com/docs/api/v1) and [V2](https://apidocs.chargebee.com/docs/api). This library is for our <b>older API version V1</b>. The library for V2 can be found in the [master branch](https://github.com/chargebee/chargebee-dotnet). 
+Chargebee now supports two API versions - [V1](https://apidocs.chargebee.com/docs/api/v1) and [V2](https://apidocs.chargebee.com/docs/api), of which V2 is the latest release and all future developments will happen in V2. 
 
-You'd want to upgrade to V2 to benefit from the new functionality. Click here for the [API V2 Upgradation Guide](https://apidocs.chargebee.com/docs/api/v1#api-v2-upgradation-guide).
+This library is for our <b>API version V2</b>. The library for V1 can be found in [chargebee-v1 branch](https://github.com/chargebee/chargebee-dotnet/tree/chargebee-v1). 
 
 ## Installation
 
-Install the latest version of the 1.x.x library with the following commands:
+Install the latest version of the 2.x.x library with the following commands:
 
 Use NuGet: [NuGet](https://nuget.org) is a package manager for Visual Studio.
 
 To install the ChargeBee .Net Client Library, run the following command in the Package Manager Console:
 	
-	$ Install-Package ChargeBee -Vesrion 1.x.x
+	$ Install-Package ChargeBee -Vesrion 2.x.x
 
-If you would prefer to build it from source, checkout latest version of 1.x.x release tag:
+If you would prefer to build it from source, checkout latest version of 2.x.x release tag:
   
-    $ git checkout [latest 1.x.x release tag]
+    $ git checkout [latest 2.x.x release tag]
   
 ## Documentation
 
-See our [.Net API Reference](https://apidocs.chargebee.com/docs/api/v1/?lang=dotnet "API Reference").
+See our [.Net API Reference](https://apidocs.chargebee.com/docs/api?lang=dotnet "API Reference").
 
 ## Usage
 

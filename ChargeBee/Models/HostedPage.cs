@@ -39,16 +39,6 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("hosted_pages", "update_payment_method");
             return new UpdatePaymentMethodRequest(url, HttpMethod.POST);
         }
-        public static CheckoutOnetimeChargeRequest CheckoutOnetimeCharge()
-        {
-            string url = ApiUtil.BuildUrl("hosted_pages", "checkout_onetime_charge");
-            return new CheckoutOnetimeChargeRequest(url, HttpMethod.POST);
-        }
-        public static CheckoutOnetimeAddonsRequest CheckoutOnetimeAddons()
-        {
-            string url = ApiUtil.BuildUrl("hosted_pages", "checkout_onetime_addons");
-            return new CheckoutOnetimeAddonsRequest(url, HttpMethod.POST);
-        }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("hosted_pages", CheckNull(id));
@@ -420,77 +410,6 @@ namespace ChargeBee.Models
             public UpdatePaymentMethodRequest CardGateway(GatewayEnum cardGateway) 
             {
                 m_params.AddOpt("card[gateway]", cardGateway);
-                return this;
-            }
-        }
-        public class CheckoutOnetimeChargeRequest : EntityRequest<CheckoutOnetimeChargeRequest> 
-        {
-            public CheckoutOnetimeChargeRequest(string url, HttpMethod method) 
-                    : base(url, method)
-            {
-            }
-
-            public CheckoutOnetimeChargeRequest Amount(int amount) 
-            {
-                m_params.Add("amount", amount);
-                return this;
-            }
-            public CheckoutOnetimeChargeRequest Description(string description) 
-            {
-                m_params.Add("description", description);
-                return this;
-            }
-            public CheckoutOnetimeChargeRequest PassThruContent(string passThruContent) 
-            {
-                m_params.AddOpt("pass_thru_content", passThruContent);
-                return this;
-            }
-            public CheckoutOnetimeChargeRequest SubscriptionId(string subscriptionId) 
-            {
-                m_params.Add("subscription[id]", subscriptionId);
-                return this;
-            }
-            public CheckoutOnetimeChargeRequest CardGateway(GatewayEnum cardGateway) 
-            {
-                m_params.AddOpt("card[gateway]", cardGateway);
-                return this;
-            }
-        }
-        public class CheckoutOnetimeAddonsRequest : EntityRequest<CheckoutOnetimeAddonsRequest> 
-        {
-            public CheckoutOnetimeAddonsRequest(string url, HttpMethod method) 
-                    : base(url, method)
-            {
-            }
-
-            public CheckoutOnetimeAddonsRequest Coupon(string coupon) 
-            {
-                m_params.AddOpt("coupon", coupon);
-                return this;
-            }
-            public CheckoutOnetimeAddonsRequest PassThruContent(string passThruContent) 
-            {
-                m_params.AddOpt("pass_thru_content", passThruContent);
-                return this;
-            }
-            public CheckoutOnetimeAddonsRequest SubscriptionId(string subscriptionId) 
-            {
-                m_params.Add("subscription[id]", subscriptionId);
-                return this;
-            }
-            public CheckoutOnetimeAddonsRequest CardGateway(GatewayEnum cardGateway) 
-            {
-                m_params.AddOpt("card[gateway]", cardGateway);
-                return this;
-            }
-            public CheckoutOnetimeAddonsRequest AddonId(int index, string addonId) 
-            {
-                m_params.Add("addons[id][" + index + "]", addonId);
-                return this;
-            }
-            public CheckoutOnetimeAddonsRequest AddonQuantity(int index, int addonQuantity) 
-            {
-                m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
                 return this;
             }
         }

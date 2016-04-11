@@ -27,7 +27,7 @@ namespace ChargeBee.Test
         /*[Test]
         public void TestConfig()
         {
-            Assert.AreEqual("https://guidebot-test.chargebee.com/api/v1", ApiConfig.Instance.ApiBaseUrl);
+            Assert.AreEqual("https://guidebot-test.chargebee.com/api/v2", ApiConfig.Instance.ApiBaseUrl);
         }*/
 
         [Test]
@@ -230,42 +230,6 @@ namespace ChargeBee.Test
 
             HostedPage hostedPage = result.HostedPage;
             Assert.NotNull(hostedPage);
-        }
-
-        [Test]
-        public void TestUpdateCard()
-        {
-            EntityResult result = HostedPage.UpdateCard()
-                  .CustomerId("HoR7OsYNy5YBOlyn").Request();
-
-            HostedPage hostedPage = result.HostedPage;
-            Assert.NotNull(hostedPage);
-        }
-
-        [Test]
-        [ExpectedException(
-            ExpectedException = typeof(ApiException),
-            ExpectedMessage = "This operation is not supported for ChargeBee gateway")]
-        public void TestCheckoutOnetimeCharge()
-        {
-            HostedPage.CheckoutOnetimeCharge()
-                  .Amount(1000)
-                  .Description("Support charge")
-                  .SubscriptionId("HoR7OsYNy5YBOlyn").Request();
-        }
-
-        [Test]
-        [ExpectedException(
-            ExpectedException = typeof(ApiException),
-            ExpectedMessage = "This operation is not supported for ChargeBee gateway")]
-        public void TestCheckoutOnetimeAddons()
-        {
-            EntityResult result = HostedPage.CheckoutOnetimeAddons()
-                  .SubscriptionId("HoR7OsYNy5YBOlyn")
-                  .AddonId(1, "one-off_consulting_support")
-                  .AddonQuantity(1, 2).Request();
-
-            HostedPage hostedPage = result.HostedPage;
         }
 
         [Test]
