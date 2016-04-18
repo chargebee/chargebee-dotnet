@@ -116,10 +116,14 @@ namespace ChargeBee.Internal
         {
             List<T> list = new List<T> ();
             JArray jArr = (JArray)m_jobj.SelectToken (property);
-            foreach (JToken jObj in jArr.Children()) {
-            T t = new T();
-                t.JObj = jObj;
-                list.Add(t);
+            if (jArr != null)
+            {
+                foreach (JToken jObj in jArr.Children())
+                {
+                    T t = new T();
+                    t.JObj = jObj;
+                    list.Add(t);
+                }
             }
             return list;
         }
