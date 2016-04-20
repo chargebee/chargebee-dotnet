@@ -29,8 +29,8 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.0.0")] //-beta
- [assembly: AssemblyFileVersion("2.0.0")] // -beta
+[assembly: AssemblyVersion("2.0.1")] //-beta
+ [assembly: AssemblyFileVersion("2.0.1")] // -beta
 [assembly: AssemblyCompanyAttribute("ChargeBee Inc")]
 [assembly: AssemblyProductAttribute("ChargeBee")]
 [assembly: AssemblyCopyrightAttribute("©ChargeBee Inc. All Rights Reserved.")]
