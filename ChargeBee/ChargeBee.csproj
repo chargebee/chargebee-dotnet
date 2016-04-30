@@ -87,6 +87,7 @@
     <Compile Include="Models\Enums\TaxabilityEnum.cs" />
     <Compile Include="Models\Enums\PriceTypeEnum.cs" />
     <Compile Include="Models\Enums\ApiVersionEnum.cs" />
+    <Compile Include="Models\Enums\EntityCodeEnum.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

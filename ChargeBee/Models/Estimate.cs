@@ -98,9 +98,24 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[coupon]", subscriptionCoupon);
                 return this;
             }
-            public CreateSubscriptionRequest BillingAddressCountry(string billingAddressCountry) 
+            public CreateSubscriptionRequest BillingAddressLine1(string billingAddressLine1) 
             {
-                m_params.AddOpt("billing_address[country]", billingAddressCountry);
+                m_params.AddOpt("billing_address[line1]", billingAddressLine1);
+                return this;
+            }
+            public CreateSubscriptionRequest BillingAddressLine2(string billingAddressLine2) 
+            {
+                m_params.AddOpt("billing_address[line2]", billingAddressLine2);
+                return this;
+            }
+            public CreateSubscriptionRequest BillingAddressLine3(string billingAddressLine3) 
+            {
+                m_params.AddOpt("billing_address[line3]", billingAddressLine3);
+                return this;
+            }
+            public CreateSubscriptionRequest BillingAddressCity(string billingAddressCity) 
+            {
+                m_params.AddOpt("billing_address[city]", billingAddressCity);
                 return this;
             }
             public CreateSubscriptionRequest BillingAddressStateCode(string billingAddressStateCode) 
@@ -113,9 +128,29 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_address[zip]", billingAddressZip);
                 return this;
             }
-            public CreateSubscriptionRequest ShippingAddressCountry(string shippingAddressCountry) 
+            public CreateSubscriptionRequest BillingAddressCountry(string billingAddressCountry) 
             {
-                m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
+                m_params.AddOpt("billing_address[country]", billingAddressCountry);
+                return this;
+            }
+            public CreateSubscriptionRequest ShippingAddressLine1(string shippingAddressLine1) 
+            {
+                m_params.AddOpt("shipping_address[line1]", shippingAddressLine1);
+                return this;
+            }
+            public CreateSubscriptionRequest ShippingAddressLine2(string shippingAddressLine2) 
+            {
+                m_params.AddOpt("shipping_address[line2]", shippingAddressLine2);
+                return this;
+            }
+            public CreateSubscriptionRequest ShippingAddressLine3(string shippingAddressLine3) 
+            {
+                m_params.AddOpt("shipping_address[line3]", shippingAddressLine3);
+                return this;
+            }
+            public CreateSubscriptionRequest ShippingAddressCity(string shippingAddressCity) 
+            {
+                m_params.AddOpt("shipping_address[city]", shippingAddressCity);
                 return this;
             }
             public CreateSubscriptionRequest ShippingAddressStateCode(string shippingAddressStateCode) 
@@ -128,6 +163,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[zip]", shippingAddressZip);
                 return this;
             }
+            public CreateSubscriptionRequest ShippingAddressCountry(string shippingAddressCountry) 
+            {
+                m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
+                return this;
+            }
             public CreateSubscriptionRequest CustomerVatNumber(string customerVatNumber) 
             {
                 m_params.AddOpt("customer[vat_number]", customerVatNumber);
@@ -136,6 +176,16 @@ namespace ChargeBee.Models
             public CreateSubscriptionRequest CustomerTaxability(TaxabilityEnum customerTaxability) 
             {
                 m_params.AddOpt("customer[taxability]", customerTaxability);
+                return this;
+            }
+            public CreateSubscriptionRequest CustomerEntityCode(EntityCodeEnum customerEntityCode) 
+            {
+                m_params.AddOpt("customer[entity_code]", customerEntityCode);
+                return this;
+            }
+            public CreateSubscriptionRequest CustomerExemptNumber(string customerExemptNumber) 
+            {
+                m_params.AddOpt("customer[exempt_number]", customerExemptNumber);
                 return this;
             }
             public CreateSubscriptionRequest AddonId(int index, string addonId) 
@@ -216,9 +266,24 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[coupon]", subscriptionCoupon);
                 return this;
             }
-            public UpdateSubscriptionRequest BillingAddressCountry(string billingAddressCountry) 
+            public UpdateSubscriptionRequest BillingAddressLine1(string billingAddressLine1) 
             {
-                m_params.AddOpt("billing_address[country]", billingAddressCountry);
+                m_params.AddOpt("billing_address[line1]", billingAddressLine1);
+                return this;
+            }
+            public UpdateSubscriptionRequest BillingAddressLine2(string billingAddressLine2) 
+            {
+                m_params.AddOpt("billing_address[line2]", billingAddressLine2);
+                return this;
+            }
+            public UpdateSubscriptionRequest BillingAddressLine3(string billingAddressLine3) 
+            {
+                m_params.AddOpt("billing_address[line3]", billingAddressLine3);
+                return this;
+            }
+            public UpdateSubscriptionRequest BillingAddressCity(string billingAddressCity) 
+            {
+                m_params.AddOpt("billing_address[city]", billingAddressCity);
                 return this;
             }
             public UpdateSubscriptionRequest BillingAddressStateCode(string billingAddressStateCode) 
@@ -231,9 +296,29 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_address[zip]", billingAddressZip);
                 return this;
             }
-            public UpdateSubscriptionRequest ShippingAddressCountry(string shippingAddressCountry) 
+            public UpdateSubscriptionRequest BillingAddressCountry(string billingAddressCountry) 
             {
-                m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
+                m_params.AddOpt("billing_address[country]", billingAddressCountry);
+                return this;
+            }
+            public UpdateSubscriptionRequest ShippingAddressLine1(string shippingAddressLine1) 
+            {
+                m_params.AddOpt("shipping_address[line1]", shippingAddressLine1);
+                return this;
+            }
+            public UpdateSubscriptionRequest ShippingAddressLine2(string shippingAddressLine2) 
+            {
+                m_params.AddOpt("shipping_address[line2]", shippingAddressLine2);
+                return this;
+            }
+            public UpdateSubscriptionRequest ShippingAddressLine3(string shippingAddressLine3) 
+            {
+                m_params.AddOpt("shipping_address[line3]", shippingAddressLine3);
+                return this;
+            }
+            public UpdateSubscriptionRequest ShippingAddressCity(string shippingAddressCity) 
+            {
+                m_params.AddOpt("shipping_address[city]", shippingAddressCity);
                 return this;
             }
             public UpdateSubscriptionRequest ShippingAddressStateCode(string shippingAddressStateCode) 
@@ -246,11 +331,17 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[zip]", shippingAddressZip);
                 return this;
             }
+            public UpdateSubscriptionRequest ShippingAddressCountry(string shippingAddressCountry) 
+            {
+                m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
+                return this;
+            }
             public UpdateSubscriptionRequest CustomerVatNumber(string customerVatNumber) 
             {
                 m_params.AddOpt("customer[vat_number]", customerVatNumber);
                 return this;
             }
+            [Obsolete]
             public UpdateSubscriptionRequest CustomerTaxability(TaxabilityEnum customerTaxability) 
             {
                 m_params.AddOpt("customer[taxability]", customerTaxability);

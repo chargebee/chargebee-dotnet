@@ -1,6 +1,6 @@
 # Chargebee .Net Client Library - API V2
 
-[![NuGet](https://img.shields.io/nuget/v/chargebee.svg?maxAge=2592000)](https://www.nuget.org/packages/ChargeBee/)
+[![NuGet](https://img.shields.io/nuget/v/chargebee.svg?maxAge=2592000)]()
 
 This is the .NET Library for integrating with Chargebee. Sign up for a Chargebee account [here](https://www.chargebee.com).
 

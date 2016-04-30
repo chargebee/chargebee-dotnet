@@ -134,6 +134,14 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<TaxabilityEnum>("taxability", false); }
         }
+        public EntityCodeEnum? EntityCode 
+        {
+            get { return GetEnum<EntityCodeEnum>("entity_code", false); }
+        }
+        public string ExemptNumber 
+        {
+            get { return GetValue<string>("exempt_number", false); }
+        }
         [Obsolete]
         public CardStatusEnum? CardStatus 
         {
@@ -230,6 +238,16 @@ namespace ChargeBee.Models
             public CreateRequest Taxability(TaxabilityEnum taxability) 
             {
                 m_params.AddOpt("taxability", taxability);
+                return this;
+            }
+            public CreateRequest EntityCode(EntityCodeEnum entityCode) 
+            {
+                m_params.AddOpt("entity_code", entityCode);
+                return this;
+            }
+            public CreateRequest ExemptNumber(string exemptNumber) 
+            {
+                m_params.AddOpt("exempt_number", exemptNumber);
                 return this;
             }
             public CreateRequest MetaData(JToken metaData) 
@@ -453,6 +471,16 @@ namespace ChargeBee.Models
             public UpdateRequest Taxability(TaxabilityEnum taxability) 
             {
                 m_params.AddOpt("taxability", taxability);
+                return this;
+            }
+            public UpdateRequest EntityCode(EntityCodeEnum entityCode) 
+            {
+                m_params.AddOpt("entity_code", entityCode);
+                return this;
+            }
+            public UpdateRequest ExemptNumber(string exemptNumber) 
+            {
+                m_params.AddOpt("exempt_number", exemptNumber);
                 return this;
             }
             public UpdateRequest InvoiceNotes(string invoiceNotes) 

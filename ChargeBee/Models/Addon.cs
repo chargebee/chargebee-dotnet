@@ -98,6 +98,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool>("enabled_in_portal", true); }
         }
+        public string TaxCode 
+        {
+            get { return GetValue<string>("tax_code", false); }
+        }
         public string InvoiceNotes 
         {
             get { return GetValue<string>("invoice_notes", false); }
@@ -181,6 +185,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("taxable", taxable);
                 return this;
             }
+            public CreateRequest TaxCode(string taxCode) 
+            {
+                m_params.AddOpt("tax_code", taxCode);
+                return this;
+            }
             public CreateRequest InvoiceNotes(string invoiceNotes) 
             {
                 m_params.AddOpt("invoice_notes", invoiceNotes);
@@ -257,6 +266,11 @@ namespace ChargeBee.Models
             public UpdateRequest Taxable(bool taxable) 
             {
                 m_params.AddOpt("taxable", taxable);
+                return this;
+            }
+            public UpdateRequest TaxCode(string taxCode) 
+            {
+                m_params.AddOpt("tax_code", taxCode);
                 return this;
             }
             public UpdateRequest InvoiceNotes(string invoiceNotes) 

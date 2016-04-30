@@ -310,6 +310,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[taxability]", customerTaxability);
                 return this;
             }
+            public CreateRequest CustomerEntityCode(EntityCodeEnum customerEntityCode) 
+            {
+                m_params.AddOpt("customer[entity_code]", customerEntityCode);
+                return this;
+            }
+            public CreateRequest CustomerExemptNumber(string customerExemptNumber) 
+            {
+                m_params.AddOpt("customer[exempt_number]", customerExemptNumber);
+                return this;
+            }
             public CreateRequest CustomerPhone(string customerPhone) 
             {
                 m_params.AddOpt("customer[phone]", customerPhone);
@@ -1138,6 +1148,8 @@ namespace ChargeBee.Models
             FraudReviewFailed,
             [Description("non_compliant_eu_customer")]
             NonCompliantEuCustomer,
+            [Description("tax_calculation_failed")]
+            TaxCalculationFailed,
 
         }
 
