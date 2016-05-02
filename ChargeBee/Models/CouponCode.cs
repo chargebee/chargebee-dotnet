@@ -28,12 +28,21 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("coupon_codes", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
+        public static EntityRequest<Type> Archive(string id)
+        {
+            string url = ApiUtil.BuildUrl("coupon_codes", CheckNull(id), "archive");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
         public string Code 
         {
             get { return GetValue<string>("code", true); }
+        }
+        public StatusEnum Status 
+        {
+            get { return GetEnum<StatusEnum>("status", true); }
         }
         public string CouponId 
         {
@@ -72,6 +81,19 @@ namespace ChargeBee.Models
         }
         #endregion
 
+        public enum StatusEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [Description("not_redeemed")]
+            NotRedeemed,
+            [Description("redeemed")]
+            Redeemed,
+            [Description("archived")]
+            Archived,
+
+        }
 
         #region Subclasses
 
