@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 using ChargeBee.Internal;
 using ChargeBee.Api;
 using ChargeBee.Models.Enums;
+using ChargeBee.Filters.Enums;
 
 namespace ChargeBee.Models
 {
@@ -43,11 +44,13 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices");
             return new InvoiceListRequest(url);
         }
+        [Obsolete]
         public static ListRequest InvoicesForCustomer(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "invoices");
             return new ListRequest(url);
         }
+        [Obsolete]
         public static ListRequest InvoicesForSubscription(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "invoices");
@@ -210,6 +213,10 @@ namespace ChargeBee.Models
         public List<InvoiceTax> Taxes 
         {
             get { return GetResourceList<InvoiceTax>("taxes"); }
+        }
+        public List<InvoiceLineItemTax> LineItemTaxes 
+        {
+            get { return GetResourceList<InvoiceLineItemTax>("line_item_taxes"); }
         }
         public List<InvoiceLinkedPayment> LinkedPayments 
         {
@@ -431,26 +438,72 @@ namespace ChargeBee.Models
                 return this;
             }
         }
-        public class InvoiceListRequest : ListRequest 
+        public class InvoiceListRequest : ListRequestBase<InvoiceListRequest> 
         {
             public InvoiceListRequest(string url) 
                     : base(url)
             {
             }
 
-            public InvoiceListRequest Limit(int limit) 
-            {
-                m_params.AddOpt("limit", limit);
-                return this;
-            }
-            public InvoiceListRequest Offset(string offset) 
-            {
-                m_params.AddOpt("offset", offset);
-                return this;
-            }
             public InvoiceListRequest PaidOnAfter(long paidOnAfter) 
             {
                 m_params.AddOpt("paid_on_after", paidOnAfter);
+                return this;
+            }
+            public StringFilter<InvoiceListRequest> Id() 
+            {
+                return new StringFilter<InvoiceListRequest>("id", this).SupportsMultiOperators(true);        
+            }
+            public StringFilter<InvoiceListRequest> SubscriptionId() 
+            {
+                return new StringFilter<InvoiceListRequest>("subscription_id", this).SupportsMultiOperators(true).SupportsPresenceOperator(true);        
+            }
+            public StringFilter<InvoiceListRequest> CustomerId() 
+            {
+                return new StringFilter<InvoiceListRequest>("customer_id", this).SupportsMultiOperators(true);        
+            }
+            public BooleanFilter<InvoiceListRequest> Recurring() 
+            {
+                return new BooleanFilter<InvoiceListRequest>("recurring", this);        
+            }
+            public EnumFilter<StatusEnum, InvoiceListRequest> Status() 
+            {
+                return new EnumFilter<StatusEnum, InvoiceListRequest>("status", this);        
+            }
+            public EnumFilter<PriceTypeEnum, InvoiceListRequest> PriceType() 
+            {
+                return new EnumFilter<PriceTypeEnum, InvoiceListRequest>("price_type", this);        
+            }
+            public TimestampFilter<InvoiceListRequest> Date() 
+            {
+                return new TimestampFilter<InvoiceListRequest>("date", this);        
+            }
+            public NumberFilter<int, InvoiceListRequest> Total() 
+            {
+                return new NumberFilter<int, InvoiceListRequest>("total", this);        
+            }
+            public NumberFilter<int, InvoiceListRequest> AmountPaid() 
+            {
+                return new NumberFilter<int, InvoiceListRequest>("amount_paid", this);        
+            }
+            public NumberFilter<int, InvoiceListRequest> AmountAdjusted() 
+            {
+                return new NumberFilter<int, InvoiceListRequest>("amount_adjusted", this);        
+            }
+            public NumberFilter<int, InvoiceListRequest> CreditsApplied() 
+            {
+                return new NumberFilter<int, InvoiceListRequest>("credits_applied", this);        
+            }
+            public NumberFilter<int, InvoiceListRequest> AmountDue() 
+            {
+                return new NumberFilter<int, InvoiceListRequest>("amount_due", this);        
+            }
+            public EnumFilter<DunningStatusEnum, InvoiceListRequest> DunningStatus() 
+            {
+                return new EnumFilter<DunningStatusEnum, InvoiceListRequest>("dunning_status", this).SupportsPresenceOperator(true);        
+            }
+            public InvoiceListRequest SortByDate(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","date");
                 return this;
             }
         }
@@ -601,7 +654,7 @@ namespace ChargeBee.Models
                 m_params.Add("transaction[date]", transactionDate);
                 return this;
             }
-			public RecordRefundRequest CreditNoteReasonCode(CreditNote.ReasonCodeEnum creditNoteReasonCode) 
+            public RecordRefundRequest CreditNoteReasonCode(CreditNote.ReasonCodeEnum creditNoteReasonCode) 
             {
                 m_params.AddOpt("credit_note[reason_code]", creditNoteReasonCode);
                 return this;
@@ -683,6 +736,10 @@ namespace ChargeBee.Models
                 Addon,
                 [Description("adhoc")]
                 Adhoc,
+            }
+
+            public string Id() {
+                return GetValue<string>("id", false);
             }
 
             public DateTime DateFrom() {
@@ -774,12 +831,48 @@ namespace ChargeBee.Models
         public class InvoiceTax : Resource
         {
 
+            public string Name() {
+                return GetValue<string>("name", true);
+            }
+
             public int Amount() {
                 return GetValue<int>("amount", true);
             }
 
             public string Description() {
                 return GetValue<string>("description", false);
+            }
+
+        }
+        public class InvoiceLineItemTax : Resource
+        {
+
+            public string LineItemId() {
+                return GetValue<string>("line_item_id", false);
+            }
+
+            public string TaxName() {
+                return GetValue<string>("tax_name", true);
+            }
+
+            public double TaxRate() {
+                return GetValue<double>("tax_rate", true);
+            }
+
+            public int TaxAmount() {
+                return GetValue<int>("tax_amount", true);
+            }
+
+            public TaxJurisTypeEnum? TaxJurisType() {
+                return GetEnum<TaxJurisTypeEnum>("tax_juris_type", false);
+            }
+
+            public string TaxJurisName() {
+                return GetValue<string>("tax_juris_name", false);
+            }
+
+            public string TaxJurisCode() {
+                return GetValue<string>("tax_juris_code", false);
             }
 
         }

@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 using ChargeBee.Internal;
 using ChargeBee.Api;
 using ChargeBee.Models.Enums;
+using ChargeBee.Filters.Enums;
 
 namespace ChargeBee.Models
 {
@@ -23,10 +24,10 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers");
             return new CreateRequest(url, HttpMethod.POST);
         }
-        public static ListRequest List()
+        public static CustomerListRequest List()
         {
             string url = ApiUtil.BuildUrl("customers");
-            return new ListRequest(url);
+            return new CustomerListRequest(url);
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
@@ -423,6 +424,50 @@ namespace ChargeBee.Models
             public CreateRequest BillingAddressCountry(string billingAddressCountry) 
             {
                 m_params.AddOpt("billing_address[country]", billingAddressCountry);
+                return this;
+            }
+        }
+        public class CustomerListRequest : ListRequestBase<CustomerListRequest> 
+        {
+            public CustomerListRequest(string url) 
+                    : base(url)
+            {
+            }
+
+            public StringFilter<CustomerListRequest> Id() 
+            {
+                return new StringFilter<CustomerListRequest>("id", this).SupportsMultiOperators(true);        
+            }
+            public StringFilter<CustomerListRequest> FirstName() 
+            {
+                return new StringFilter<CustomerListRequest>("first_name", this).SupportsPresenceOperator(true);        
+            }
+            public StringFilter<CustomerListRequest> LastName() 
+            {
+                return new StringFilter<CustomerListRequest>("last_name", this).SupportsPresenceOperator(true);        
+            }
+            public StringFilter<CustomerListRequest> Email() 
+            {
+                return new StringFilter<CustomerListRequest>("email", this).SupportsPresenceOperator(true);        
+            }
+            public StringFilter<CustomerListRequest> Company() 
+            {
+                return new StringFilter<CustomerListRequest>("company", this).SupportsPresenceOperator(true);        
+            }
+            public EnumFilter<AutoCollectionEnum, CustomerListRequest> AutoCollection() 
+            {
+                return new EnumFilter<AutoCollectionEnum, CustomerListRequest>("auto_collection", this);        
+            }
+            public EnumFilter<TaxabilityEnum, CustomerListRequest> Taxability() 
+            {
+                return new EnumFilter<TaxabilityEnum, CustomerListRequest>("taxability", this);        
+            }
+            public TimestampFilter<CustomerListRequest> CreatedAt() 
+            {
+                return new TimestampFilter<CustomerListRequest>("created_at", this);        
+            }
+            public CustomerListRequest SortByCreatedAt(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");
                 return this;
             }
         }

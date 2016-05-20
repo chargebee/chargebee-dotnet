@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 using ChargeBee.Internal;
 using ChargeBee.Api;
 using ChargeBee.Models.Enums;
+using ChargeBee.Filters.Enums;
 
 namespace ChargeBee.Models
 {
@@ -101,23 +102,13 @@ namespace ChargeBee.Models
                 return this;
             }
         }
-        public class CommentListRequest : ListRequest 
+        public class CommentListRequest : ListRequestBase<CommentListRequest> 
         {
             public CommentListRequest(string url) 
                     : base(url)
             {
             }
 
-            public CommentListRequest Limit(int limit) 
-            {
-                m_params.AddOpt("limit", limit);
-                return this;
-            }
-            public CommentListRequest Offset(string offset) 
-            {
-                m_params.AddOpt("offset", offset);
-                return this;
-            }
             public CommentListRequest EntityType(EntityTypeEnum entityType) 
             {
                 m_params.AddOpt("entity_type", entityType);
@@ -126,6 +117,14 @@ namespace ChargeBee.Models
             public CommentListRequest EntityId(string entityId) 
             {
                 m_params.AddOpt("entity_id", entityId);
+                return this;
+            }
+            public TimestampFilter<CommentListRequest> CreatedAt() 
+            {
+                return new TimestampFilter<CommentListRequest>("created_at", this);        
+            }
+            public CommentListRequest SortByCreatedAt(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");
                 return this;
             }
         }

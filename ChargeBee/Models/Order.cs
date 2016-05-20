@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 using ChargeBee.Internal;
 using ChargeBee.Api;
 using ChargeBee.Models.Enums;
+using ChargeBee.Filters.Enums;
 
 namespace ChargeBee.Models
 {
@@ -33,11 +34,12 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("orders", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
-        public static ListRequest List()
+        public static OrderListRequest List()
         {
             string url = ApiUtil.BuildUrl("orders");
-            return new ListRequest(url);
+            return new OrderListRequest(url);
         }
+        [Obsolete]
         public static ListRequest OrdersForInvoice(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "orders");
@@ -177,6 +179,34 @@ namespace ChargeBee.Models
             public UpdateRequest BatchId(string batchId) 
             {
                 m_params.AddOpt("batch_id", batchId);
+                return this;
+            }
+        }
+        public class OrderListRequest : ListRequestBase<OrderListRequest> 
+        {
+            public OrderListRequest(string url) 
+                    : base(url)
+            {
+            }
+
+            public StringFilter<OrderListRequest> Id() 
+            {
+                return new StringFilter<OrderListRequest>("id", this).SupportsMultiOperators(true);        
+            }
+            public StringFilter<OrderListRequest> InvoiceId() 
+            {
+                return new StringFilter<OrderListRequest>("invoice_id", this).SupportsMultiOperators(true);        
+            }
+            public EnumFilter<StatusEnum, OrderListRequest> Status() 
+            {
+                return new EnumFilter<StatusEnum, OrderListRequest>("status", this);        
+            }
+            public TimestampFilter<OrderListRequest> CreatedAt() 
+            {
+                return new TimestampFilter<OrderListRequest>("created_at", this);        
+            }
+            public OrderListRequest SortByCreatedAt(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");
                 return this;
             }
         }

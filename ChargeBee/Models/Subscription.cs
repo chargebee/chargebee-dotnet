@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 using ChargeBee.Internal;
 using ChargeBee.Api;
 using ChargeBee.Models.Enums;
+using ChargeBee.Filters.Enums;
 
 namespace ChargeBee.Models
 {
@@ -28,11 +29,12 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "subscriptions");
             return new CreateForCustomerRequest(url, HttpMethod.POST);
         }
-        public static ListRequest List()
+        public static SubscriptionListRequest List()
         {
             string url = ApiUtil.BuildUrl("subscriptions");
-            return new ListRequest(url);
+            return new SubscriptionListRequest(url);
         }
+        [Obsolete]
         public static ListRequest SubscriptionsForCustomer(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "subscriptions");
@@ -99,6 +101,10 @@ namespace ChargeBee.Models
         public string Id 
         {
             get { return GetValue<string>("id", true); }
+        }
+        public string CustomerId 
+        {
+            get { return GetValue<string>("customer_id", true); }
         }
         public string PlanId 
         {
@@ -706,6 +712,50 @@ namespace ChargeBee.Models
             public CreateForCustomerRequest AddonQuantity(int index, int addonQuantity) 
             {
                 m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
+                return this;
+            }
+        }
+        public class SubscriptionListRequest : ListRequestBase<SubscriptionListRequest> 
+        {
+            public SubscriptionListRequest(string url) 
+                    : base(url)
+            {
+            }
+
+            public StringFilter<SubscriptionListRequest> Id() 
+            {
+                return new StringFilter<SubscriptionListRequest>("id", this).SupportsMultiOperators(true);        
+            }
+            public StringFilter<SubscriptionListRequest> CustomerId() 
+            {
+                return new StringFilter<SubscriptionListRequest>("customer_id", this).SupportsMultiOperators(true);        
+            }
+            public StringFilter<SubscriptionListRequest> PlanId() 
+            {
+                return new StringFilter<SubscriptionListRequest>("plan_id", this).SupportsMultiOperators(true);        
+            }
+            public EnumFilter<StatusEnum, SubscriptionListRequest> Status() 
+            {
+                return new EnumFilter<StatusEnum, SubscriptionListRequest>("status", this);        
+            }
+            public EnumFilter<CancelReasonEnum, SubscriptionListRequest> CancelReason() 
+            {
+                return new EnumFilter<CancelReasonEnum, SubscriptionListRequest>("cancel_reason", this).SupportsPresenceOperator(true);        
+            }
+            public NumberFilter<int, SubscriptionListRequest> RemainingBillingCycles() 
+            {
+                return new NumberFilter<int, SubscriptionListRequest>("remaining_billing_cycles", this).SupportsPresenceOperator(true);        
+            }
+            public TimestampFilter<SubscriptionListRequest> CreatedAt() 
+            {
+                return new TimestampFilter<SubscriptionListRequest>("created_at", this);        
+            }
+            public BooleanFilter<SubscriptionListRequest> HasScheduledChanges() 
+            {
+                return new BooleanFilter<SubscriptionListRequest>("has_scheduled_changes", this);        
+            }
+            public SubscriptionListRequest SortByCreatedAt(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");
                 return this;
             }
         }

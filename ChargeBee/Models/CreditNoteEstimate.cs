@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 using ChargeBee.Internal;
 using ChargeBee.Api;
 using ChargeBee.Models.Enums;
+using ChargeBee.Filters.Enums;
 
 namespace ChargeBee.Models
 {
@@ -61,6 +62,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<CreditNoteEstimateTax>("taxes"); }
         }
+        public List<CreditNoteEstimateLineItemTax> LineItemTaxes 
+        {
+            get { return GetResourceList<CreditNoteEstimateLineItemTax>("line_item_taxes"); }
+        }
         
         #endregion
         
@@ -92,6 +97,10 @@ namespace ChargeBee.Models
                 Addon,
                 [Description("adhoc")]
                 Adhoc,
+            }
+
+            public string Id() {
+                return GetValue<string>("id", false);
             }
 
             public DateTime DateFrom() {
@@ -183,12 +192,48 @@ namespace ChargeBee.Models
         public class CreditNoteEstimateTax : Resource
         {
 
+            public string Name() {
+                return GetValue<string>("name", true);
+            }
+
             public int Amount() {
                 return GetValue<int>("amount", true);
             }
 
             public string Description() {
                 return GetValue<string>("description", false);
+            }
+
+        }
+        public class CreditNoteEstimateLineItemTax : Resource
+        {
+
+            public string LineItemId() {
+                return GetValue<string>("line_item_id", false);
+            }
+
+            public string TaxName() {
+                return GetValue<string>("tax_name", true);
+            }
+
+            public double TaxRate() {
+                return GetValue<double>("tax_rate", true);
+            }
+
+            public int TaxAmount() {
+                return GetValue<int>("tax_amount", true);
+            }
+
+            public TaxJurisTypeEnum? TaxJurisType() {
+                return GetEnum<TaxJurisTypeEnum>("tax_juris_type", false);
+            }
+
+            public string TaxJurisName() {
+                return GetValue<string>("tax_juris_name", false);
+            }
+
+            public string TaxJurisCode() {
+                return GetValue<string>("tax_juris_code", false);
             }
 
         }

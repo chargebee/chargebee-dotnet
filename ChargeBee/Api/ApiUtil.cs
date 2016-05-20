@@ -104,9 +104,9 @@ namespace ChargeBee.Api
             }
         }
 
-		private static string GetJson(string url, Params parameters, ApiConfig env, Dictionary<string, string> headers, out HttpStatusCode code)
+		private static string GetJson(string url, Params parameters, ApiConfig env, Dictionary<string, string> headers, out HttpStatusCode code,bool IsList)
         {
-            url = String.Format("{0}?{1}", url, parameters.GetQuery());
+			url = String.Format("{0}?{1}", url, parameters.GetQuery(IsList));
 			HttpWebRequest request = GetRequest(url, HttpMethod.GET, headers, env);
             return SendRequest(request, out code);
         }
@@ -115,7 +115,7 @@ namespace ChargeBee.Api
         {
 			HttpWebRequest request = GetRequest(url, HttpMethod.POST, headers, env);
             byte[] paramsBytes =
-                Encoding.GetEncoding(env.Charset).GetBytes(parameters.GetQuery());
+				Encoding.GetEncoding(env.Charset).GetBytes(parameters.GetQuery(false));
 
             request.ContentLength = paramsBytes.Length;
             request.ContentType = 
@@ -135,7 +135,7 @@ namespace ChargeBee.Api
 		public static EntityResult Get(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env)
         {
             HttpStatusCode code;
-			string json = GetJson(url, parameters, env, headers, out code);
+			string json = GetJson(url, parameters, env, headers, out code,false);
 
             EntityResult result = new EntityResult(code, json);
             return result;
@@ -144,7 +144,7 @@ namespace ChargeBee.Api
 		public static ListResult GetList(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env)
         {
             HttpStatusCode code;
-            string json = GetJson(url, parameters, env, headers, out code);
+            string json = GetJson(url, parameters, env, headers, out code,true);
 
             ListResult result = new ListResult(code, json);
             return result;

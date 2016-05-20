@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 using ChargeBee.Internal;
 using ChargeBee.Api;
 using ChargeBee.Models.Enums;
+using ChargeBee.Filters.Enums;
 
 namespace ChargeBee.Models
 {
@@ -28,10 +29,10 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("plans", CheckNull(id));
             return new UpdateRequest(url, HttpMethod.POST);
         }
-        public static ListRequest List()
+        public static PlanListRequest List()
         {
             string url = ApiUtil.BuildUrl("plans");
-            return new ListRequest(url);
+            return new PlanListRequest(url);
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
@@ -369,6 +370,50 @@ namespace ChargeBee.Models
             {
                 m_params.AddOpt("meta_data", metaData);
                 return this;
+            }
+        }
+        public class PlanListRequest : ListRequestBase<PlanListRequest> 
+        {
+            public PlanListRequest(string url) 
+                    : base(url)
+            {
+            }
+
+            public StringFilter<PlanListRequest> Id() 
+            {
+                return new StringFilter<PlanListRequest>("id", this).SupportsMultiOperators(true);        
+            }
+            public StringFilter<PlanListRequest> Name() 
+            {
+                return new StringFilter<PlanListRequest>("name", this).SupportsMultiOperators(true);        
+            }
+            public NumberFilter<int, PlanListRequest> Price() 
+            {
+                return new NumberFilter<int, PlanListRequest>("price", this);        
+            }
+            public NumberFilter<int, PlanListRequest> Period() 
+            {
+                return new NumberFilter<int, PlanListRequest>("period", this);        
+            }
+            public EnumFilter<PeriodUnitEnum, PlanListRequest> PeriodUnit() 
+            {
+                return new EnumFilter<PeriodUnitEnum, PlanListRequest>("period_unit", this);        
+            }
+            public NumberFilter<int, PlanListRequest> TrialPeriod() 
+            {
+                return new NumberFilter<int, PlanListRequest>("trial_period", this).SupportsPresenceOperator(true);        
+            }
+            public EnumFilter<TrialPeriodUnitEnum, PlanListRequest> TrialPeriodUnit() 
+            {
+                return new EnumFilter<TrialPeriodUnitEnum, PlanListRequest>("trial_period_unit", this);        
+            }
+            public EnumFilter<ChargeModelEnum, PlanListRequest> ChargeModel() 
+            {
+                return new EnumFilter<ChargeModelEnum, PlanListRequest>("charge_model", this);        
+            }
+            public EnumFilter<StatusEnum, PlanListRequest> Status() 
+            {
+                return new EnumFilter<StatusEnum, PlanListRequest>("status", this);        
             }
         }
         #endregion

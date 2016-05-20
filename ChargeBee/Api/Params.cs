@@ -27,18 +27,22 @@ namespace ChargeBee.Api
 			m_dict.Add(key, value == null ? String.Empty : ConvertValue(value));
         }
 
-        public string GetQuery()
+		public string GetQuery(bool IsList)
         {
-            return String.Join("&", GetPairs());
+			return String.Join("&", GetPairs(IsList));
         }
 
-        private string[] GetPairs()
+		private string[] GetPairs(bool IsList)
         {
             List<string> pairs = new List<string>(m_dict.Keys.Count);
 
             foreach (var pair in m_dict)
             {
 				if (pair.Value is IList) {
+					if (IsList) {
+						pairs.Add (String.Format ("{0}={1}", HttpUtility.UrlEncode (pair.Key), HttpUtility.UrlEncode (JsonConvert.SerializeObject(pair.Value))));
+						continue;
+					}
 					int idx = 0;
 					foreach (object item in (IList)pair.Value) {
 						pairs.Add (String.Format ("{0}[{1}]={2}",
@@ -69,16 +73,19 @@ namespace ChargeBee.Api
 					throw new ArgumentException ("Enum fields must be decorated with DescriptionAttribute!");
 				}
 				return attrs [0].Description;
-			}else if(value is JToken) {	
+			} else if (value is JToken) {	
 				return value.ToString ();
-			}else if(value is IList) {
+			} else if (value is IList) {
 				IList origList = (IList)value;
-				List<string> l = new List<string>();
+				List<string> l = new List<string> ();
 				foreach (object item in origList) {
-					l.Add((string)ConvertValue(item));
+					l.Add ((string)ConvertValue (item));
 				}
 				return l;
-			} else {
+			} else if (value is DateTime) {
+				return ApiUtil.ConvertToTimestamp((DateTime)value).ToString();
+			}
+			else {
 				throw new SystemException("Type [" + value.GetType().ToString() + "] not handled");
 			}
     	}

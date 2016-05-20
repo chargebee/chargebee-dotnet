@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 using ChargeBee.Internal;
 using ChargeBee.Api;
 using ChargeBee.Models.Enums;
+using ChargeBee.Filters.Enums;
 
 namespace ChargeBee.Models
 {
@@ -18,16 +19,18 @@ namespace ChargeBee.Models
     
 
         #region Methods
-        public static ListRequest List()
+        public static TransactionListRequest List()
         {
             string url = ApiUtil.BuildUrl("transactions");
-            return new ListRequest(url);
+            return new TransactionListRequest(url);
         }
+        [Obsolete]
         public static ListRequest TransactionsForCustomer(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "transactions");
             return new ListRequest(url);
         }
+        [Obsolete]
         public static ListRequest TransactionsForSubscription(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "transactions");
@@ -141,6 +144,64 @@ namespace ChargeBee.Models
         
         #endregion
         
+        #region Requests
+        public class TransactionListRequest : ListRequestBase<TransactionListRequest> 
+        {
+            public TransactionListRequest(string url) 
+                    : base(url)
+            {
+            }
+
+            public StringFilter<TransactionListRequest> Id() 
+            {
+                return new StringFilter<TransactionListRequest>("id", this).SupportsMultiOperators(true);        
+            }
+            public StringFilter<TransactionListRequest> CustomerId() 
+            {
+                return new StringFilter<TransactionListRequest>("customer_id", this).SupportsMultiOperators(true).SupportsPresenceOperator(true);        
+            }
+            public StringFilter<TransactionListRequest> SubscriptionId() 
+            {
+                return new StringFilter<TransactionListRequest>("subscription_id", this).SupportsMultiOperators(true).SupportsPresenceOperator(true);        
+            }
+            public EnumFilter<PaymentMethodEnum, TransactionListRequest> PaymentMethod() 
+            {
+                return new EnumFilter<PaymentMethodEnum, TransactionListRequest>("payment_method", this);        
+            }
+            public EnumFilter<GatewayEnum, TransactionListRequest> Gateway() 
+            {
+                return new EnumFilter<GatewayEnum, TransactionListRequest>("gateway", this);        
+            }
+            public StringFilter<TransactionListRequest> IdAtGateway() 
+            {
+                return new StringFilter<TransactionListRequest>("id_at_gateway", this);        
+            }
+            public StringFilter<TransactionListRequest> ReferenceNumber() 
+            {
+                return new StringFilter<TransactionListRequest>("reference_number", this).SupportsPresenceOperator(true);        
+            }
+            public EnumFilter<TypeEnum, TransactionListRequest> Type() 
+            {
+                return new EnumFilter<TypeEnum, TransactionListRequest>("type", this);        
+            }
+            public TimestampFilter<TransactionListRequest> Date() 
+            {
+                return new TimestampFilter<TransactionListRequest>("date", this);        
+            }
+            public NumberFilter<int, TransactionListRequest> Amount() 
+            {
+                return new NumberFilter<int, TransactionListRequest>("amount", this);        
+            }
+            public EnumFilter<StatusEnum, TransactionListRequest> Status() 
+            {
+                return new EnumFilter<StatusEnum, TransactionListRequest>("status", this);        
+            }
+            public TransactionListRequest SortByDate(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","date");
+                return this;
+            }
+        }
+        #endregion
 
         public enum TypeEnum
         {

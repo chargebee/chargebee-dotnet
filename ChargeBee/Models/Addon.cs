@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 using ChargeBee.Internal;
 using ChargeBee.Api;
 using ChargeBee.Models.Enums;
+using ChargeBee.Filters.Enums;
 
 namespace ChargeBee.Models
 {
@@ -28,10 +29,10 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("addons", CheckNull(id));
             return new UpdateRequest(url, HttpMethod.POST);
         }
-        public static ListRequest List()
+        public static AddonListRequest List()
         {
             string url = ApiUtil.BuildUrl("addons");
-            return new ListRequest(url);
+            return new AddonListRequest(url);
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
@@ -282,6 +283,46 @@ namespace ChargeBee.Models
             {
                 m_params.AddOpt("meta_data", metaData);
                 return this;
+            }
+        }
+        public class AddonListRequest : ListRequestBase<AddonListRequest> 
+        {
+            public AddonListRequest(string url) 
+                    : base(url)
+            {
+            }
+
+            public StringFilter<AddonListRequest> Id() 
+            {
+                return new StringFilter<AddonListRequest>("id", this).SupportsMultiOperators(true);        
+            }
+            public StringFilter<AddonListRequest> Name() 
+            {
+                return new StringFilter<AddonListRequest>("name", this).SupportsMultiOperators(true);        
+            }
+            public EnumFilter<TypeEnum, AddonListRequest> Type() 
+            {
+                return new EnumFilter<TypeEnum, AddonListRequest>("type", this);        
+            }
+            public EnumFilter<ChargeTypeEnum, AddonListRequest> ChargeType() 
+            {
+                return new EnumFilter<ChargeTypeEnum, AddonListRequest>("charge_type", this);        
+            }
+            public NumberFilter<int, AddonListRequest> Price() 
+            {
+                return new NumberFilter<int, AddonListRequest>("price", this);        
+            }
+            public NumberFilter<int, AddonListRequest> Period() 
+            {
+                return new NumberFilter<int, AddonListRequest>("period", this);        
+            }
+            public EnumFilter<PeriodUnitEnum, AddonListRequest> PeriodUnit() 
+            {
+                return new EnumFilter<PeriodUnitEnum, AddonListRequest>("period_unit", this);        
+            }
+            public EnumFilter<StatusEnum, AddonListRequest> Status() 
+            {
+                return new EnumFilter<StatusEnum, AddonListRequest>("status", this);        
             }
         }
         #endregion

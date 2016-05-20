@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 using ChargeBee.Internal;
 using ChargeBee.Api;
 using ChargeBee.Models.Enums;
+using ChargeBee.Filters.Enums;
 
 namespace ChargeBee.Models
 {
@@ -98,23 +99,13 @@ namespace ChargeBee.Models
         #endregion
         
         #region Requests
-        public class EventListRequest : ListRequest 
+        public class EventListRequest : ListRequestBase<EventListRequest> 
         {
             public EventListRequest(string url) 
                     : base(url)
             {
             }
 
-            public EventListRequest Limit(int limit) 
-            {
-                m_params.AddOpt("limit", limit);
-                return this;
-            }
-            public EventListRequest Offset(string offset) 
-            {
-                m_params.AddOpt("offset", offset);
-                return this;
-            }
             public EventListRequest StartTime(long startTime) 
             {
                 m_params.AddOpt("start_time", startTime);
@@ -133,6 +124,18 @@ namespace ChargeBee.Models
             public EventListRequest EventType(EventTypeEnum eventType) 
             {
                 m_params.AddOpt("event_type", eventType);
+                return this;
+            }
+            public StringFilter<EventListRequest> Id() 
+            {
+                return new StringFilter<EventListRequest>("id", this).SupportsMultiOperators(true);        
+            }
+            public EnumFilter<SourceEnum, EventListRequest> Source() 
+            {
+                return new EnumFilter<SourceEnum, EventListRequest>("source", this);        
+            }
+            public EventListRequest SortByOccurredAt(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","occurred_at");
                 return this;
             }
         }

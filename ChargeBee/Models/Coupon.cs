@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 using ChargeBee.Internal;
 using ChargeBee.Api;
 using ChargeBee.Models.Enums;
+using ChargeBee.Filters.Enums;
 
 namespace ChargeBee.Models
 {
@@ -23,10 +24,10 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("coupons");
             return new CreateRequest(url, HttpMethod.POST);
         }
-        public static ListRequest List()
+        public static CouponListRequest List()
         {
             string url = ApiUtil.BuildUrl("coupons");
-            return new ListRequest(url);
+            return new CouponListRequest(url);
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
@@ -230,6 +231,46 @@ namespace ChargeBee.Models
             public CreateRequest MetaData(JToken metaData) 
             {
                 m_params.AddOpt("meta_data", metaData);
+                return this;
+            }
+        }
+        public class CouponListRequest : ListRequestBase<CouponListRequest> 
+        {
+            public CouponListRequest(string url) 
+                    : base(url)
+            {
+            }
+
+            public StringFilter<CouponListRequest> Id() 
+            {
+                return new StringFilter<CouponListRequest>("id", this).SupportsMultiOperators(true);        
+            }
+            public StringFilter<CouponListRequest> Name() 
+            {
+                return new StringFilter<CouponListRequest>("name", this).SupportsMultiOperators(true);        
+            }
+            public EnumFilter<DiscountTypeEnum, CouponListRequest> DiscountType() 
+            {
+                return new EnumFilter<DiscountTypeEnum, CouponListRequest>("discount_type", this);        
+            }
+            public EnumFilter<DurationTypeEnum, CouponListRequest> DurationType() 
+            {
+                return new EnumFilter<DurationTypeEnum, CouponListRequest>("duration_type", this);        
+            }
+            public EnumFilter<StatusEnum, CouponListRequest> Status() 
+            {
+                return new EnumFilter<StatusEnum, CouponListRequest>("status", this);        
+            }
+            public EnumFilter<ApplyOnEnum, CouponListRequest> ApplyOn() 
+            {
+                return new EnumFilter<ApplyOnEnum, CouponListRequest>("apply_on", this);        
+            }
+            public TimestampFilter<CouponListRequest> CreatedAt() 
+            {
+                return new TimestampFilter<CouponListRequest>("created_at", this);        
+            }
+            public CouponListRequest SortByCreatedAt(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");
                 return this;
             }
         }
