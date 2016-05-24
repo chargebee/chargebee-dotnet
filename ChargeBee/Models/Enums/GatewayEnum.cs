@@ -12,6 +12,9 @@ namespace ChargeBee.Models.Enums
         [Description("chargebee")]
          Chargebee,
 
+        [Description("wepay")]
+         Wepay,
+
         [Description("stripe")]
          Stripe,
 

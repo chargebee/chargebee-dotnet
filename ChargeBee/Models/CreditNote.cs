@@ -102,6 +102,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int>("sub_total", true); }
         }
+        public string CurrencyCode 
+        {
+            get { return GetValue<string>("currency_code", false); }
+        }
         public List<CreditNoteLineItem> LineItems 
         {
             get { return GetResourceList<CreditNoteLineItem>("line_items"); }
