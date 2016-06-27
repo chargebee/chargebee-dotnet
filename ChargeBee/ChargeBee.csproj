@@ -102,6 +102,7 @@
     <Compile Include="Models\Enums\TaxJurisTypeEnum.cs" />
     <Compile Include="Api\ListRequestBase.cs" />
     <Compile Include="Filters\Enums\SortOrderEnum.cs" />
+    <Compile Include="Models\ThirdPartyPaymentMethod.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Cb-Dotnet.snk" />

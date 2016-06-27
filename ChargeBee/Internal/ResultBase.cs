@@ -45,6 +45,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<Card>("card"); }
         }
+        public ThirdPartyPaymentMethod ThirdPartyPaymentMethod
+        {
+            get {  return GetResource<ThirdPartyPaymentMethod>("third_party_payment_method"); }
+        }
         public Invoice Invoice
         {
             get {  return GetResource<Invoice>("invoice"); }
