@@ -34,6 +34,10 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<PriceTypeEnum>("price_type", true); }
         }
+        public string CurrencyCode 
+        {
+            get { return GetValue<string>("currency_code", true); }
+        }
         public int SubTotal 
         {
             get { return GetValue<int>("sub_total", true); }

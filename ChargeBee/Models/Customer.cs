@@ -771,6 +771,11 @@ namespace ChargeBee.Models
                 m_params.Add("amount", amount);
                 return this;
             }
+            public AddPromotionalCreditsRequest CurrencyCode(string currencyCode) 
+            {
+                m_params.AddOpt("currency_code", currencyCode);
+                return this;
+            }
             public AddPromotionalCreditsRequest Description(string description) 
             {
                 m_params.Add("description", description);
@@ -789,6 +794,11 @@ namespace ChargeBee.Models
                 m_params.Add("amount", amount);
                 return this;
             }
+            public DeductPromotionalCreditsRequest CurrencyCode(string currencyCode) 
+            {
+                m_params.AddOpt("currency_code", currencyCode);
+                return this;
+            }
             public DeductPromotionalCreditsRequest Description(string description) 
             {
                 m_params.Add("description", description);
@@ -805,6 +815,11 @@ namespace ChargeBee.Models
             public SetPromotionalCreditsRequest Amount(int amount) 
             {
                 m_params.Add("amount", amount);
+                return this;
+            }
+            public SetPromotionalCreditsRequest CurrencyCode(string currencyCode) 
+            {
+                m_params.AddOpt("currency_code", currencyCode);
                 return this;
             }
             public SetPromotionalCreditsRequest Description(string description) 

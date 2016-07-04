@@ -150,6 +150,10 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("date", false); }
         }
+        public string CurrencyCode 
+        {
+            get { return GetValue<string>("currency_code", true); }
+        }
         public int? Total 
         {
             get { return GetValue<int?>("total", false); }
@@ -197,10 +201,6 @@ namespace ChargeBee.Models
         public bool? FirstInvoice 
         {
             get { return GetValue<bool?>("first_invoice", false); }
-        }
-        public string CurrencyCode 
-        {
-            get { return GetValue<string>("currency_code", false); }
         }
         public List<InvoiceLineItem> LineItems 
         {
@@ -264,6 +264,11 @@ namespace ChargeBee.Models
             public CreateRequest CustomerId(string customerId) 
             {
                 m_params.Add("customer_id", customerId);
+                return this;
+            }
+            public CreateRequest CurrencyCode(string currencyCode) 
+            {
+                m_params.AddOpt("currency_code", currencyCode);
                 return this;
             }
             public CreateRequest Coupon(string coupon) 
@@ -377,6 +382,11 @@ namespace ChargeBee.Models
             public ChargeRequest SubscriptionId(string subscriptionId) 
             {
                 m_params.AddOpt("subscription_id", subscriptionId);
+                return this;
+            }
+            public ChargeRequest CurrencyCode(string currencyCode) 
+            {
+                m_params.AddOpt("currency_code", currencyCode);
                 return this;
             }
             public ChargeRequest Amount(int amount) 

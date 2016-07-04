@@ -26,6 +26,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("id", false); }
         }
+        public string CurrencyCode 
+        {
+            get { return GetValue<string>("currency_code", true); }
+        }
         public StatusEnum? Status 
         {
             get { return GetEnum<StatusEnum>("status", false); }

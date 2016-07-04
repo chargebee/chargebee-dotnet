@@ -106,6 +106,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("customer_id", true); }
         }
+        public string CurrencyCode 
+        {
+            get { return GetValue<string>("currency_code", true); }
+        }
         public string PlanId 
         {
             get { return GetValue<string>("plan_id", true); }

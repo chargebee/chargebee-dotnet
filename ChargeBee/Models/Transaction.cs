@@ -81,6 +81,10 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("date", false); }
         }
+        public string CurrencyCode 
+        {
+            get { return GetValue<string>("currency_code", true); }
+        }
         public int? Amount 
         {
             get { return GetValue<int?>("amount", false); }
@@ -136,10 +140,6 @@ namespace ChargeBee.Models
         public List<TransactionLinkedRefund> LinkedRefunds 
         {
             get { return GetResourceList<TransactionLinkedRefund>("linked_refunds"); }
-        }
-        public string CurrencyCode 
-        {
-            get { return GetValue<string>("currency_code", false); }
         }
         
         #endregion

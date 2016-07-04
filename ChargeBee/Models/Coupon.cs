@@ -66,6 +66,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int?>("discount_quantity", false); }
         }
+        public string CurrencyCode 
+        {
+            get { return GetValue<string>("currency_code", false); }
+        }
         public DurationTypeEnum DurationType 
         {
             get { return GetEnum<DurationTypeEnum>("duration_type", true); }
@@ -165,6 +169,11 @@ namespace ChargeBee.Models
             public CreateRequest DiscountAmount(int discountAmount) 
             {
                 m_params.AddOpt("discount_amount", discountAmount);
+                return this;
+            }
+            public CreateRequest CurrencyCode(string currencyCode) 
+            {
+                m_params.AddOpt("currency_code", currencyCode);
                 return this;
             }
             public CreateRequest DiscountPercentage(double discountPercentage) 

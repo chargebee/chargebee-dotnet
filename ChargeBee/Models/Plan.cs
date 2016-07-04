@@ -67,6 +67,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int>("price", true); }
         }
+        public string CurrencyCode 
+        {
+            get { return GetValue<string>("currency_code", true); }
+        }
         public int Period 
         {
             get { return GetValue<int>("period", true); }
@@ -201,6 +205,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("price", price);
                 return this;
             }
+            public CreateRequest CurrencyCode(string currencyCode) 
+            {
+                m_params.AddOpt("currency_code", currencyCode);
+                return this;
+            }
             public CreateRequest BillingCycles(int billingCycles) 
             {
                 m_params.AddOpt("billing_cycles", billingCycles);
@@ -313,6 +322,11 @@ namespace ChargeBee.Models
             public UpdateRequest Price(int price) 
             {
                 m_params.AddOpt("price", price);
+                return this;
+            }
+            public UpdateRequest CurrencyCode(string currencyCode) 
+            {
+                m_params.AddOpt("currency_code", currencyCode);
                 return this;
             }
             public UpdateRequest BillingCycles(int billingCycles) 
