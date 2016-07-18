@@ -60,6 +60,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "remove_scheduled_cancellation");
             return new RemoveScheduledCancellationRequest(url, HttpMethod.POST);
         }
+        public static RemoveCouponsRequest RemoveCoupons(string id)
+        {
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "remove_coupons");
+            return new RemoveCouponsRequest(url, HttpMethod.POST);
+        }
         public static UpdateRequest Update(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id));
@@ -773,6 +778,19 @@ namespace ChargeBee.Models
             public RemoveScheduledCancellationRequest BillingCycles(int billingCycles) 
             {
                 m_params.AddOpt("billing_cycles", billingCycles);
+                return this;
+            }
+        }
+        public class RemoveCouponsRequest : EntityRequest<RemoveCouponsRequest> 
+        {
+            public RemoveCouponsRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public RemoveCouponsRequest CouponIds(List<string> couponIds) 
+            {
+                m_params.AddOpt("coupon_ids", couponIds);
                 return this;
             }
         }

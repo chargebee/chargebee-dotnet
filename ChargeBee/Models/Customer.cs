@@ -79,6 +79,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "set_promotional_credits");
             return new SetPromotionalCreditsRequest(url, HttpMethod.POST);
         }
+        public static RecordExcessPaymentRequest RecordExcessPayment(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "record_excess_payment");
+            return new RecordExcessPaymentRequest(url, HttpMethod.POST);
+        }
         public static DeleteRequest Delete(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "delete");
@@ -825,6 +830,44 @@ namespace ChargeBee.Models
             public SetPromotionalCreditsRequest Description(string description) 
             {
                 m_params.Add("description", description);
+                return this;
+            }
+        }
+        public class RecordExcessPaymentRequest : EntityRequest<RecordExcessPaymentRequest> 
+        {
+            public RecordExcessPaymentRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public RecordExcessPaymentRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
+                return this;
+            }
+            public RecordExcessPaymentRequest TransactionAmount(int transactionAmount) 
+            {
+                m_params.Add("transaction[amount]", transactionAmount);
+                return this;
+            }
+            public RecordExcessPaymentRequest TransactionCurrencyCode(string transactionCurrencyCode) 
+            {
+                m_params.AddOpt("transaction[currency_code]", transactionCurrencyCode);
+                return this;
+            }
+            public RecordExcessPaymentRequest TransactionDate(long transactionDate) 
+            {
+                m_params.Add("transaction[date]", transactionDate);
+                return this;
+            }
+            public RecordExcessPaymentRequest TransactionPaymentMethod(ChargeBee.Models.Enums.PaymentMethodEnum transactionPaymentMethod) 
+            {
+                m_params.Add("transaction[payment_method]", transactionPaymentMethod);
+                return this;
+            }
+            public RecordExcessPaymentRequest TransactionReferenceNumber(string transactionReferenceNumber) 
+            {
+                m_params.AddOpt("transaction[reference_number]", transactionReferenceNumber);
                 return this;
             }
         }
