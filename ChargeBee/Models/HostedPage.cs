@@ -200,6 +200,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[coupon]", subscriptionCoupon);
                 return this;
             }
+            public CheckoutNewRequest SubscriptionInvoiceNotes(string subscriptionInvoiceNotes) 
+            {
+                m_params.AddOpt("subscription[invoice_notes]", subscriptionInvoiceNotes);
+                return this;
+            }
             public CheckoutNewRequest CardGateway(GatewayEnum cardGateway) 
             {
                 m_params.AddOpt("card[gateway]", cardGateway);
@@ -292,6 +297,11 @@ namespace ChargeBee.Models
             public CheckoutExistingRequest SubscriptionCoupon(string subscriptionCoupon) 
             {
                 m_params.AddOpt("subscription[coupon]", subscriptionCoupon);
+                return this;
+            }
+            public CheckoutExistingRequest SubscriptionInvoiceNotes(string subscriptionInvoiceNotes) 
+            {
+                m_params.AddOpt("subscription[invoice_notes]", subscriptionInvoiceNotes);
                 return this;
             }
             [Obsolete]
@@ -426,11 +436,8 @@ namespace ChargeBee.Models
             [Description("checkout_existing")]
             CheckoutExisting,
             [Description("update_card")]
+            [Obsolete]
             UpdateCard,
-            [Description("checkout_onetime_charge")]
-            CheckoutOnetimeCharge,
-            [Description("checkout_onetime_addons")]
-            CheckoutOnetimeAddons,
             [Description("update_payment_method")]
             UpdatePaymentMethod,
 

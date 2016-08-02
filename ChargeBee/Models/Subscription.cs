@@ -1222,6 +1222,8 @@ namespace ChargeBee.Models
             NonCompliantEuCustomer,
             [Description("tax_calculation_failed")]
             TaxCalculationFailed,
+            [Description("currency_incompatible_with_gateway")]
+            CurrencyIncompatibleWithGateway,
 
         }
 

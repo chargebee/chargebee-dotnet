@@ -455,6 +455,7 @@ namespace ChargeBee.Models
             {
             }
 
+            [Obsolete]
             public InvoiceListRequest PaidOnAfter(long paidOnAfter) 
             {
                 m_params.AddOpt("paid_on_after", paidOnAfter);
@@ -487,6 +488,10 @@ namespace ChargeBee.Models
             public TimestampFilter<InvoiceListRequest> Date() 
             {
                 return new TimestampFilter<InvoiceListRequest>("date", this);        
+            }
+            public TimestampFilter<InvoiceListRequest> PaidAt() 
+            {
+                return new TimestampFilter<InvoiceListRequest>("paid_at", this);        
             }
             public NumberFilter<int, InvoiceListRequest> Total() 
             {

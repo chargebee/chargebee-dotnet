@@ -24,6 +24,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
+        public static EntityRequest<Type> Pdf(string id)
+        {
+            string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "pdf");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
         public static CreditNoteListRequest List()
         {
             string url = ApiUtil.BuildUrl("credit_notes");
