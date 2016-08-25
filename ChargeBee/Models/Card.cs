@@ -209,6 +209,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_country", billingCountry);
                 return this;
             }
+            [Obsolete]
             public UpdateCardForCustomerRequest IpAddress(string ipAddress) 
             {
                 m_params.AddOpt("ip_address", ipAddress);

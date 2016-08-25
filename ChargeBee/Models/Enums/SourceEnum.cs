@@ -21,6 +21,9 @@ namespace ChargeBee.Models.Enums
         [Description("hosted_page")]
          HostedPage,
 
+        [Description("portal")]
+         Portal,
+
         [Description("system")]
          System,
 
@@ -30,14 +33,14 @@ namespace ChargeBee.Models.Enums
         [Description("js_api")]
          JsApi,
 
-        [Description("portal")]
-         Portal,
-
         [Description("migration")]
          Migration,
 
         [Description("bulk_operation")]
          BulkOperation,
+
+        [Description("external_service")]
+         ExternalService,
 
     }
 }

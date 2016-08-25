@@ -153,6 +153,10 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<CardStatusEnum>("card_status", false); }
         }
+        public FraudFlagEnum? FraudFlag 
+        {
+            get { return GetEnum<FraudFlagEnum>("fraud_flag", false); }
+        }
         public CustomerBillingAddress BillingAddress 
         {
             get { return GetSubResource<CustomerBillingAddress>("billing_address"); }
@@ -261,6 +265,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("meta_data", metaData);
                 return this;
             }
+            [Obsolete]
             public CreateRequest CreatedFromIp(string createdFromIp) 
             {
                 m_params.AddOpt("created_from_ip", createdFromIp);
@@ -294,6 +299,11 @@ namespace ChargeBee.Models
             public CreateRequest PaymentMethodReferenceId(string paymentMethodReferenceId) 
             {
                 m_params.AddOpt("payment_method[reference_id]", paymentMethodReferenceId);
+                return this;
+            }
+            public CreateRequest PaymentMethodTmpToken(string paymentMethodTmpToken) 
+            {
+                m_params.AddOpt("payment_method[tmp_token]", paymentMethodTmpToken);
                 return this;
             }
             public CreateRequest CardFirstName(string cardFirstName) 
@@ -361,6 +371,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[billing_country]", cardBillingCountry);
                 return this;
             }
+            [Obsolete]
             public CreateRequest CardIpAddress(string cardIpAddress) 
             {
                 m_params.AddOpt("card[ip_address]", cardIpAddress);
@@ -429,6 +440,11 @@ namespace ChargeBee.Models
             public CreateRequest BillingAddressCountry(string billingAddressCountry) 
             {
                 m_params.AddOpt("billing_address[country]", billingAddressCountry);
+                return this;
+            }
+            public CreateRequest BillingAddressValidationStatus(ValidationStatusEnum billingAddressValidationStatus) 
+            {
+                m_params.AddOpt("billing_address[validation_status]", billingAddressValidationStatus);
                 return this;
             }
         }
@@ -563,7 +579,12 @@ namespace ChargeBee.Models
             }
             public UpdatePaymentMethodRequest PaymentMethodReferenceId(string paymentMethodReferenceId) 
             {
-                m_params.Add("payment_method[reference_id]", paymentMethodReferenceId);
+                m_params.AddOpt("payment_method[reference_id]", paymentMethodReferenceId);
+                return this;
+            }
+            public UpdatePaymentMethodRequest PaymentMethodTmpToken(string paymentMethodTmpToken) 
+            {
+                m_params.AddOpt("payment_method[tmp_token]", paymentMethodTmpToken);
                 return this;
             }
         }
@@ -642,6 +663,11 @@ namespace ChargeBee.Models
             public UpdateBillingInfoRequest BillingAddressCountry(string billingAddressCountry) 
             {
                 m_params.AddOpt("billing_address[country]", billingAddressCountry);
+                return this;
+            }
+            public UpdateBillingInfoRequest BillingAddressValidationStatus(ValidationStatusEnum billingAddressValidationStatus) 
+            {
+                m_params.AddOpt("billing_address[validation_status]", billingAddressValidationStatus);
                 return this;
             }
         }
@@ -902,6 +928,19 @@ namespace ChargeBee.Models
             Expired,
 
         }
+        public enum FraudFlagEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [Description("safe")]
+            Safe,
+            [Description("suspicious")]
+            Suspicious,
+            [Description("fraudulent")]
+            Fraudulent,
+
+        }
 
         #region Subclasses
         public class CustomerBillingAddress : Resource
@@ -957,6 +996,10 @@ namespace ChargeBee.Models
 
             public string Zip() {
                 return GetValue<string>("zip", false);
+            }
+
+            public ValidationStatusEnum? ValidationStatus() {
+                return GetEnum<ValidationStatusEnum>("validation_status", false);
             }
 
         }
@@ -1027,6 +1070,8 @@ namespace ChargeBee.Models
                 Expired,
                 [Description("invalid")]
                 Invalid,
+                [Description("pending_verification")]
+                PendingVerification,
             }
 
             public TypeEnum PaymentMethodType() {

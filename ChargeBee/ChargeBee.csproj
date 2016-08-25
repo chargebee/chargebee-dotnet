@@ -103,6 +103,7 @@
     <Compile Include="Api\ListRequestBase.cs" />
     <Compile Include="Filters\Enums\SortOrderEnum.cs" />
     <Compile Include="Models\ThirdPartyPaymentMethod.cs" />
+    <Compile Include="Models\Enums\ValidationStatusEnum.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Cb-Dotnet.snk" />

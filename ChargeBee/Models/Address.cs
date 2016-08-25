@@ -88,6 +88,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("zip", false); }
         }
+        public ValidationStatusEnum? ValidationStatus 
+        {
+            get { return GetEnum<ValidationStatusEnum>("validation_status", false); }
+        }
         public string SubscriptionId 
         {
             get { return GetValue<string>("subscription_id", true); }
@@ -194,6 +198,11 @@ namespace ChargeBee.Models
             public UpdateRequest Country(string country) 
             {
                 m_params.AddOpt("country", country);
+                return this;
+            }
+            public UpdateRequest ValidationStatus(ValidationStatusEnum validationStatus) 
+            {
+                m_params.AddOpt("validation_status", validationStatus);
                 return this;
             }
         }

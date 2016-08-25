@@ -138,6 +138,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_address[country]", billingAddressCountry);
                 return this;
             }
+            public CreateSubscriptionRequest BillingAddressValidationStatus(ValidationStatusEnum billingAddressValidationStatus) 
+            {
+                m_params.AddOpt("billing_address[validation_status]", billingAddressValidationStatus);
+                return this;
+            }
             public CreateSubscriptionRequest ShippingAddressLine1(string shippingAddressLine1) 
             {
                 m_params.AddOpt("shipping_address[line1]", shippingAddressLine1);
@@ -171,6 +176,11 @@ namespace ChargeBee.Models
             public CreateSubscriptionRequest ShippingAddressCountry(string shippingAddressCountry) 
             {
                 m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
+                return this;
+            }
+            public CreateSubscriptionRequest ShippingAddressValidationStatus(ValidationStatusEnum shippingAddressValidationStatus) 
+            {
+                m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
             }
             public CreateSubscriptionRequest CustomerVatNumber(string customerVatNumber) 
@@ -306,6 +316,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_address[country]", billingAddressCountry);
                 return this;
             }
+            public UpdateSubscriptionRequest BillingAddressValidationStatus(ValidationStatusEnum billingAddressValidationStatus) 
+            {
+                m_params.AddOpt("billing_address[validation_status]", billingAddressValidationStatus);
+                return this;
+            }
             public UpdateSubscriptionRequest ShippingAddressLine1(string shippingAddressLine1) 
             {
                 m_params.AddOpt("shipping_address[line1]", shippingAddressLine1);
@@ -339,6 +354,11 @@ namespace ChargeBee.Models
             public UpdateSubscriptionRequest ShippingAddressCountry(string shippingAddressCountry) 
             {
                 m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
+                return this;
+            }
+            public UpdateSubscriptionRequest ShippingAddressValidationStatus(ValidationStatusEnum shippingAddressValidationStatus) 
+            {
+                m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
             }
             public UpdateSubscriptionRequest CustomerVatNumber(string customerVatNumber) 
