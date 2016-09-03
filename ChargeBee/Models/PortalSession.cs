@@ -110,6 +110,11 @@ namespace ChargeBee.Models
                 m_params.Add("redirect_url", redirectUrl);
                 return this;
             }
+            public CreateRequest ForwardUrl(string forwardUrl) 
+            {
+                m_params.AddOpt("forward_url", forwardUrl);
+                return this;
+            }
             public CreateRequest CustomerId(string customerId) 
             {
                 m_params.Add("customer[id]", customerId);

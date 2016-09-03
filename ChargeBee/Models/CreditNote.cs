@@ -19,6 +19,11 @@ namespace ChargeBee.Models
     
 
         #region Methods
+        public static CreateRequest Create()
+        {
+            string url = ApiUtil.BuildUrl("credit_notes");
+            return new CreateRequest(url, HttpMethod.POST);
+        }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id));
@@ -139,6 +144,59 @@ namespace ChargeBee.Models
         #endregion
         
         #region Requests
+        public class CreateRequest : EntityRequest<CreateRequest> 
+        {
+            public CreateRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CreateRequest ReferenceInvoiceId(string referenceInvoiceId) 
+            {
+                m_params.Add("reference_invoice_id", referenceInvoiceId);
+                return this;
+            }
+            public CreateRequest Total(int total) 
+            {
+                m_params.AddOpt("total", total);
+                return this;
+            }
+            public CreateRequest Type(TypeEnum type) 
+            {
+                m_params.Add("type", type);
+                return this;
+            }
+            public CreateRequest ReasonCode(ReasonCodeEnum reasonCode) 
+            {
+                m_params.Add("reason_code", reasonCode);
+                return this;
+            }
+            public CreateRequest CustomerNotes(string customerNotes) 
+            {
+                m_params.AddOpt("customer_notes", customerNotes);
+                return this;
+            }
+            public CreateRequest LineItemReferenceLineItemId(int index, string lineItemReferenceLineItemId) 
+            {
+                m_params.Add("line_items[reference_line_item_id][" + index + "]", lineItemReferenceLineItemId);
+                return this;
+            }
+            public CreateRequest LineItemUnitAmount(int index, int lineItemUnitAmount) 
+            {
+                m_params.Add("line_items[unit_amount][" + index + "]", lineItemUnitAmount);
+                return this;
+            }
+            public CreateRequest LineItemQuantity(int index, int lineItemQuantity) 
+            {
+                m_params.Add("line_items[quantity][" + index + "]", lineItemQuantity);
+                return this;
+            }
+            public CreateRequest LineItemDescription(int index, string lineItemDescription) 
+            {
+                m_params.AddOpt("line_items[description][" + index + "]", lineItemDescription);
+                return this;
+            }
+        }
         public class CreditNoteListRequest : ListRequestBase<CreditNoteListRequest> 
         {
             public CreditNoteListRequest(string url) 

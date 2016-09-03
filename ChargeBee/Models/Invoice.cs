@@ -106,6 +106,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "void");
             return new VoidInvoiceRequest(url, HttpMethod.POST);
         }
+        public static WriteOffRequest WriteOff(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "write_off");
+            return new WriteOffRequest(url, HttpMethod.POST);
+        }
         public static DeleteRequest Delete(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "delete");
@@ -688,6 +693,19 @@ namespace ChargeBee.Models
             }
 
             public VoidInvoiceRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
+                return this;
+            }
+        }
+        public class WriteOffRequest : EntityRequest<WriteOffRequest> 
+        {
+            public WriteOffRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public WriteOffRequest Comment(string comment) 
             {
                 m_params.AddOpt("comment", comment);
                 return this;
