@@ -183,6 +183,14 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("created_from_ip", false); }
         }
+        public long? ResourceVersion 
+        {
+            get { return GetValue<long?>("resource_version", false); }
+        }
+        public DateTime? UpdatedAt 
+        {
+            get { return GetDateTime("updated_at", false); }
+        }
         public bool HasScheduledChanges 
         {
             get { return GetValue<bool>("has_scheduled_changes", true); }
@@ -223,6 +231,10 @@ namespace ChargeBee.Models
         public JToken MetaData 
         {
             get { return GetJToken("meta_data", false); }
+        }
+        public bool Deleted 
+        {
+            get { return GetValue<bool>("deleted", true); }
         }
         
         #endregion
@@ -748,6 +760,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public SubscriptionListRequest IncludeDeleted(bool includeDeleted) 
+            {
+                m_params.AddOpt("include_deleted", includeDeleted);
+                return this;
+            }
             public StringFilter<SubscriptionListRequest> Id() 
             {
                 return new StringFilter<SubscriptionListRequest>("id", this).SupportsMultiOperators(true);        
@@ -779,6 +796,10 @@ namespace ChargeBee.Models
             public BooleanFilter<SubscriptionListRequest> HasScheduledChanges() 
             {
                 return new BooleanFilter<SubscriptionListRequest>("has_scheduled_changes", this);        
+            }
+            public TimestampFilter<SubscriptionListRequest> UpdatedAt() 
+            {
+                return new TimestampFilter<SubscriptionListRequest>("updated_at", this);        
             }
             public SubscriptionListRequest SortByCreatedAt(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");

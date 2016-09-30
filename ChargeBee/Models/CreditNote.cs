@@ -112,6 +112,14 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("refunded_at", false); }
         }
+        public long? ResourceVersion 
+        {
+            get { return GetValue<long?>("resource_version", false); }
+        }
+        public DateTime? UpdatedAt 
+        {
+            get { return GetDateTime("updated_at", false); }
+        }
         public int SubTotal 
         {
             get { return GetValue<int>("sub_total", true); }
@@ -139,6 +147,10 @@ namespace ChargeBee.Models
         public List<CreditNoteAllocation> Allocations 
         {
             get { return GetResourceList<CreditNoteAllocation>("allocations"); }
+        }
+        public bool Deleted 
+        {
+            get { return GetValue<bool>("deleted", true); }
         }
         
         #endregion
@@ -169,6 +181,11 @@ namespace ChargeBee.Models
             public CreateRequest ReasonCode(ReasonCodeEnum reasonCode) 
             {
                 m_params.Add("reason_code", reasonCode);
+                return this;
+            }
+            public CreateRequest Date(long date) 
+            {
+                m_params.AddOpt("date", date);
                 return this;
             }
             public CreateRequest CustomerNotes(string customerNotes) 
@@ -204,6 +221,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public CreditNoteListRequest IncludeDeleted(bool includeDeleted) 
+            {
+                m_params.AddOpt("include_deleted", includeDeleted);
+                return this;
+            }
             public StringFilter<CreditNoteListRequest> Id() 
             {
                 return new StringFilter<CreditNoteListRequest>("id", this).SupportsMultiOperators(true);        
@@ -255,6 +277,10 @@ namespace ChargeBee.Models
             public NumberFilter<int, CreditNoteListRequest> AmountAvailable() 
             {
                 return new NumberFilter<int, CreditNoteListRequest>("amount_available", this);        
+            }
+            public TimestampFilter<CreditNoteListRequest> UpdatedAt() 
+            {
+                return new TimestampFilter<CreditNoteListRequest>("updated_at", this);        
             }
             public CreditNoteListRequest SortByDate(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","date");

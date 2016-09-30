@@ -148,6 +148,14 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("exempt_number", false); }
         }
+        public long? ResourceVersion 
+        {
+            get { return GetValue<long?>("resource_version", false); }
+        }
+        public DateTime? UpdatedAt 
+        {
+            get { return GetDateTime("updated_at", false); }
+        }
         [Obsolete]
         public CardStatusEnum? CardStatus 
         {
@@ -188,6 +196,10 @@ namespace ChargeBee.Models
         public JToken MetaData 
         {
             get { return GetJToken("meta_data", false); }
+        }
+        public bool Deleted 
+        {
+            get { return GetValue<bool>("deleted", true); }
         }
         
         #endregion
@@ -455,6 +467,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public CustomerListRequest IncludeDeleted(bool includeDeleted) 
+            {
+                m_params.AddOpt("include_deleted", includeDeleted);
+                return this;
+            }
             public StringFilter<CustomerListRequest> Id() 
             {
                 return new StringFilter<CustomerListRequest>("id", this).SupportsMultiOperators(true);        
@@ -486,6 +503,10 @@ namespace ChargeBee.Models
             public TimestampFilter<CustomerListRequest> CreatedAt() 
             {
                 return new TimestampFilter<CustomerListRequest>("created_at", this);        
+            }
+            public TimestampFilter<CustomerListRequest> UpdatedAt() 
+            {
+                return new TimestampFilter<CustomerListRequest>("updated_at", this);        
             }
             public CustomerListRequest SortByCreatedAt(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");

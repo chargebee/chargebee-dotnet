@@ -195,6 +195,14 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("next_retry_at", false); }
         }
+        public long? ResourceVersion 
+        {
+            get { return GetValue<long?>("resource_version", false); }
+        }
+        public DateTime? UpdatedAt 
+        {
+            get { return GetDateTime("updated_at", false); }
+        }
         public int SubTotal 
         {
             get { return GetValue<int>("sub_total", true); }
@@ -254,6 +262,10 @@ namespace ChargeBee.Models
         public InvoiceBillingAddress BillingAddress 
         {
             get { return GetSubResource<InvoiceBillingAddress>("billing_address"); }
+        }
+        public bool Deleted 
+        {
+            get { return GetValue<bool>("deleted", true); }
         }
         
         #endregion
@@ -471,6 +483,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("paid_on_after", paidOnAfter);
                 return this;
             }
+            public InvoiceListRequest IncludeDeleted(bool includeDeleted) 
+            {
+                m_params.AddOpt("include_deleted", includeDeleted);
+                return this;
+            }
             public StringFilter<InvoiceListRequest> Id() 
             {
                 return new StringFilter<InvoiceListRequest>("id", this).SupportsMultiOperators(true);        
@@ -526,6 +543,10 @@ namespace ChargeBee.Models
             public EnumFilter<DunningStatusEnum, InvoiceListRequest> DunningStatus() 
             {
                 return new EnumFilter<DunningStatusEnum, InvoiceListRequest>("dunning_status", this).SupportsPresenceOperator(true);        
+            }
+            public TimestampFilter<InvoiceListRequest> UpdatedAt() 
+            {
+                return new TimestampFilter<InvoiceListRequest>("updated_at", this);        
             }
             public InvoiceListRequest SortByDate(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","date");

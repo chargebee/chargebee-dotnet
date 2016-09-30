@@ -109,6 +109,14 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("voided_at", false); }
         }
+        public long? ResourceVersion 
+        {
+            get { return GetValue<long?>("resource_version", false); }
+        }
+        public DateTime? UpdatedAt 
+        {
+            get { return GetDateTime("updated_at", false); }
+        }
         public int? AmountUnused 
         {
             get { return GetValue<int?>("amount_unused", false); }
@@ -141,6 +149,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<TransactionLinkedRefund>("linked_refunds"); }
         }
+        public bool Deleted 
+        {
+            get { return GetValue<bool>("deleted", true); }
+        }
         
         #endregion
         
@@ -152,6 +164,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public TransactionListRequest IncludeDeleted(bool includeDeleted) 
+            {
+                m_params.AddOpt("include_deleted", includeDeleted);
+                return this;
+            }
             public StringFilter<TransactionListRequest> Id() 
             {
                 return new StringFilter<TransactionListRequest>("id", this).SupportsMultiOperators(true);        
@@ -195,6 +212,10 @@ namespace ChargeBee.Models
             public EnumFilter<StatusEnum, TransactionListRequest> Status() 
             {
                 return new EnumFilter<StatusEnum, TransactionListRequest>("status", this);        
+            }
+            public TimestampFilter<TransactionListRequest> UpdatedAt() 
+            {
+                return new TimestampFilter<TransactionListRequest>("updated_at", this);        
             }
             public TransactionListRequest SortByDate(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","date");
