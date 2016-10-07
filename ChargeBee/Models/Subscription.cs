@@ -277,6 +277,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
+            [Obsolete]
             public CreateRequest Coupon(string coupon) 
             {
                 m_params.AddOpt("coupon", coupon);
@@ -285,6 +286,11 @@ namespace ChargeBee.Models
             public CreateRequest PoNumber(string poNumber) 
             {
                 m_params.AddOpt("po_number", poNumber);
+                return this;
+            }
+            public CreateRequest CouponIds(List<string> couponIds) 
+            {
+                m_params.AddOpt("coupon_ids", couponIds);
                 return this;
             }
             public CreateRequest AffiliateToken(string affiliateToken) 
@@ -652,6 +658,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
+            [Obsolete]
             public CreateForCustomerRequest Coupon(string coupon) 
             {
                 m_params.AddOpt("coupon", coupon);
@@ -660,6 +667,11 @@ namespace ChargeBee.Models
             public CreateForCustomerRequest PoNumber(string poNumber) 
             {
                 m_params.AddOpt("po_number", poNumber);
+                return this;
+            }
+            public CreateForCustomerRequest CouponIds(List<string> couponIds) 
+            {
+                m_params.AddOpt("coupon_ids", couponIds);
                 return this;
             }
             public CreateForCustomerRequest InvoiceNotes(string invoiceNotes) 
@@ -869,6 +881,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("replace_addon_list", replaceAddonList);
                 return this;
             }
+            [Obsolete]
             public UpdateRequest Coupon(string coupon) 
             {
                 m_params.AddOpt("coupon", coupon);
@@ -879,6 +892,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("po_number", poNumber);
                 return this;
             }
+            public UpdateRequest CouponIds(List<string> couponIds) 
+            {
+                m_params.AddOpt("coupon_ids", couponIds);
+                return this;
+            }
+            public UpdateRequest ReplaceCouponList(bool replaceCouponList) 
+            {
+                m_params.AddOpt("replace_coupon_list", replaceCouponList);
+                return this;
+            }
             public UpdateRequest Prorate(bool prorate) 
             {
                 m_params.AddOpt("prorate", prorate);
@@ -887,6 +910,11 @@ namespace ChargeBee.Models
             public UpdateRequest EndOfTerm(bool endOfTerm) 
             {
                 m_params.AddOpt("end_of_term", endOfTerm);
+                return this;
+            }
+            public UpdateRequest ForceTermReset(bool forceTermReset) 
+            {
+                m_params.AddOpt("force_term_reset", forceTermReset);
                 return this;
             }
             public UpdateRequest InvoiceNotes(string invoiceNotes) 

@@ -73,6 +73,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
+            public CreateSubscriptionRequest CouponIds(List<string> couponIds) 
+            {
+                m_params.AddOpt("coupon_ids", couponIds);
+                return this;
+            }
             public CreateSubscriptionRequest SubscriptionId(string subscriptionId) 
             {
                 m_params.AddOpt("subscription[id]", subscriptionId);
@@ -98,6 +103,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[trial_end]", subscriptionTrialEnd);
                 return this;
             }
+            [Obsolete]
             public CreateSubscriptionRequest SubscriptionCoupon(string subscriptionCoupon) 
             {
                 m_params.AddOpt("subscription[coupon]", subscriptionCoupon);
@@ -231,6 +237,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("replace_addon_list", replaceAddonList);
                 return this;
             }
+            public UpdateSubscriptionRequest CouponIds(List<string> couponIds) 
+            {
+                m_params.AddOpt("coupon_ids", couponIds);
+                return this;
+            }
+            public UpdateSubscriptionRequest ReplaceCouponList(bool replaceCouponList) 
+            {
+                m_params.AddOpt("replace_coupon_list", replaceCouponList);
+                return this;
+            }
             public UpdateSubscriptionRequest Prorate(bool prorate) 
             {
                 m_params.AddOpt("prorate", prorate);
@@ -239,6 +255,11 @@ namespace ChargeBee.Models
             public UpdateSubscriptionRequest EndOfTerm(bool endOfTerm) 
             {
                 m_params.AddOpt("end_of_term", endOfTerm);
+                return this;
+            }
+            public UpdateSubscriptionRequest ForceTermReset(bool forceTermReset) 
+            {
+                m_params.AddOpt("force_term_reset", forceTermReset);
                 return this;
             }
             public UpdateSubscriptionRequest IncludeDelayedCharges(bool includeDelayedCharges) 
@@ -276,6 +297,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[trial_end]", subscriptionTrialEnd);
                 return this;
             }
+            [Obsolete]
             public UpdateSubscriptionRequest SubscriptionCoupon(string subscriptionCoupon) 
             {
                 m_params.AddOpt("subscription[coupon]", subscriptionCoupon);
