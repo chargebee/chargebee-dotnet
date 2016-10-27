@@ -181,6 +181,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("invoice_notes", false); }
         }
+        public string PreferredCurrencyCode 
+        {
+            get { return GetValue<string>("preferred_currency_code", false); }
+        }
         public int PromotionalCredits 
         {
             get { return GetValue<int>("promotional_credits", true); }
@@ -230,6 +234,11 @@ namespace ChargeBee.Models
             public CreateRequest Email(string email) 
             {
                 m_params.AddOpt("email", email);
+                return this;
+            }
+            public CreateRequest PreferredCurrencyCode(string preferredCurrencyCode) 
+            {
+                m_params.AddOpt("preferred_currency_code", preferredCurrencyCode);
                 return this;
             }
             public CreateRequest Phone(string phone) 
@@ -533,6 +542,11 @@ namespace ChargeBee.Models
             public UpdateRequest Email(string email) 
             {
                 m_params.AddOpt("email", email);
+                return this;
+            }
+            public UpdateRequest PreferredCurrencyCode(string preferredCurrencyCode) 
+            {
+                m_params.AddOpt("preferred_currency_code", preferredCurrencyCode);
                 return this;
             }
             public UpdateRequest Phone(string phone) 
