@@ -354,6 +354,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[exempt_number]", customerExemptNumber);
                 return this;
             }
+            public CreateRequest CustomerNetTermDays(int customerNetTermDays) 
+            {
+                m_params.AddOpt("customer[net_term_days]", customerNetTermDays);
+                return this;
+            }
             public CreateRequest CustomerPhone(string customerPhone) 
             {
                 m_params.AddOpt("customer[phone]", customerPhone);

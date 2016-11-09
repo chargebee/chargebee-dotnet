@@ -120,6 +120,14 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("archived_at", false); }
         }
+        public long? ResourceVersion 
+        {
+            get { return GetValue<long?>("resource_version", false); }
+        }
+        public DateTime? UpdatedAt 
+        {
+            get { return GetDateTime("updated_at", false); }
+        }
         public List<string> PlanIds 
         {
             get { return GetList<string>("plan_ids"); }
@@ -282,6 +290,10 @@ namespace ChargeBee.Models
             public TimestampFilter<CouponListRequest> CreatedAt() 
             {
                 return new TimestampFilter<CouponListRequest>("created_at", this);        
+            }
+            public TimestampFilter<CouponListRequest> UpdatedAt() 
+            {
+                return new TimestampFilter<CouponListRequest>("updated_at", this);        
             }
             public CouponListRequest SortByCreatedAt(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");

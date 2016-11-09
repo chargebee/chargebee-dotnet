@@ -155,6 +155,14 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("date", false); }
         }
+        public DateTime? DueDate 
+        {
+            get { return GetDateTime("due_date", false); }
+        }
+        public int? NetTermDays 
+        {
+            get { return GetValue<int?>("net_term_days", false); }
+        }
         public string CurrencyCode 
         {
             get { return GetValue<string>("currency_code", true); }
@@ -754,6 +762,8 @@ namespace ChargeBee.Models
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
             [Description("paid")]
             Paid,
+            [Description("posted")]
+            Posted,
             [Description("payment_due")]
             PaymentDue,
             [Description("not_paid")]

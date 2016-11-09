@@ -9,6 +9,33 @@ namespace ChargeBee.Models.Enums
         UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
 
+        [Description("plan_created")]
+         PlanCreated,
+
+        [Description("plan_updated")]
+         PlanUpdated,
+
+        [Description("plan_deleted")]
+         PlanDeleted,
+
+        [Description("addon_created")]
+         AddonCreated,
+
+        [Description("addon_updated")]
+         AddonUpdated,
+
+        [Description("addon_deleted")]
+         AddonDeleted,
+
+        [Description("coupon_created")]
+         CouponCreated,
+
+        [Description("coupon_updated")]
+         CouponUpdated,
+
+        [Description("coupon_deleted")]
+         CouponDeleted,
+
         [Description("customer_created")]
          CustomerCreated,
 
@@ -104,6 +131,9 @@ namespace ChargeBee.Models.Enums
 
         [Description("refund_initiated")]
          RefundInitiated,
+
+        [Description("netd_payment_due_reminder")]
+         NetdPaymentDueReminder,
 
         [Description("card_added")]
          CardAdded,

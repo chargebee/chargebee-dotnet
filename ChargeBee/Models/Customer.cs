@@ -124,6 +124,10 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<AutoCollectionEnum>("auto_collection", true); }
         }
+        public int NetTermDays 
+        {
+            get { return GetValue<int>("net_term_days", true); }
+        }
         public bool AllowDirectDebit 
         {
             get { return GetValue<bool>("allow_direct_debit", true); }
@@ -254,6 +258,11 @@ namespace ChargeBee.Models
             public CreateRequest AutoCollection(AutoCollectionEnum autoCollection) 
             {
                 m_params.AddOpt("auto_collection", autoCollection);
+                return this;
+            }
+            public CreateRequest NetTermDays(int netTermDays) 
+            {
+                m_params.AddOpt("net_term_days", netTermDays);
                 return this;
             }
             public CreateRequest AllowDirectDebit(bool allowDirectDebit) 
@@ -567,6 +576,11 @@ namespace ChargeBee.Models
             public UpdateRequest AllowDirectDebit(bool allowDirectDebit) 
             {
                 m_params.AddOpt("allow_direct_debit", allowDirectDebit);
+                return this;
+            }
+            public UpdateRequest NetTermDays(int netTermDays) 
+            {
+                m_params.AddOpt("net_term_days", netTermDays);
                 return this;
             }
             public UpdateRequest Taxability(TaxabilityEnum taxability) 

@@ -132,6 +132,14 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("tax_code", false); }
         }
+        public long? ResourceVersion 
+        {
+            get { return GetValue<long?>("resource_version", false); }
+        }
+        public DateTime? UpdatedAt 
+        {
+            get { return GetDateTime("updated_at", false); }
+        }
         public string InvoiceNotes 
         {
             get { return GetValue<string>("invoice_notes", false); }
@@ -428,6 +436,10 @@ namespace ChargeBee.Models
             public EnumFilter<StatusEnum, PlanListRequest> Status() 
             {
                 return new EnumFilter<StatusEnum, PlanListRequest>("status", this);        
+            }
+            public TimestampFilter<PlanListRequest> UpdatedAt() 
+            {
+                return new TimestampFilter<PlanListRequest>("updated_at", this);        
             }
         }
         #endregion
