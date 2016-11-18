@@ -148,6 +148,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool?>("taxable", false); }
         }
+        public string TaxProfileId 
+        {
+            get { return GetValue<string>("tax_profile_id", false); }
+        }
         public JToken MetaData 
         {
             get { return GetJToken("meta_data", false); }
@@ -257,6 +261,11 @@ namespace ChargeBee.Models
             public CreateRequest Taxable(bool taxable) 
             {
                 m_params.AddOpt("taxable", taxable);
+                return this;
+            }
+            public CreateRequest TaxProfileId(string taxProfileId) 
+            {
+                m_params.AddOpt("tax_profile_id", taxProfileId);
                 return this;
             }
             public CreateRequest TaxCode(string taxCode) 
@@ -376,6 +385,11 @@ namespace ChargeBee.Models
             public UpdateRequest Taxable(bool taxable) 
             {
                 m_params.AddOpt("taxable", taxable);
+                return this;
+            }
+            public UpdateRequest TaxProfileId(string taxProfileId) 
+            {
+                m_params.AddOpt("tax_profile_id", taxProfileId);
                 return this;
             }
             public UpdateRequest TaxCode(string taxCode) 
