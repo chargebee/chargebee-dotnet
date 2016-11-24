@@ -95,6 +95,16 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "charge_addon_at_term_end");
             return new ChargeAddonAtTermEndRequest(url, HttpMethod.POST);
         }
+        public static ImportSubscriptionRequest ImportSubscription()
+        {
+            string url = ApiUtil.BuildUrl("subscriptions", "import_subscription");
+            return new ImportSubscriptionRequest(url, HttpMethod.POST);
+        }
+        public static ImportForCustomerRequest ImportForCustomer(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "import_subscription");
+            return new ImportForCustomerRequest(url, HttpMethod.POST);
+        }
         public static EntityRequest<Type> Delete(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "delete");
@@ -1272,6 +1282,572 @@ namespace ChargeBee.Models
             public ChargeAddonAtTermEndRequest AddonQuantity(int addonQuantity) 
             {
                 m_params.AddOpt("addon_quantity", addonQuantity);
+                return this;
+            }
+        }
+        public class ImportSubscriptionRequest : EntityRequest<ImportSubscriptionRequest> 
+        {
+            public ImportSubscriptionRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public ImportSubscriptionRequest Id(string id) 
+            {
+                m_params.AddOpt("id", id);
+                return this;
+            }
+            public ImportSubscriptionRequest PlanId(string planId) 
+            {
+                m_params.Add("plan_id", planId);
+                return this;
+            }
+            public ImportSubscriptionRequest PlanQuantity(int planQuantity) 
+            {
+                m_params.AddOpt("plan_quantity", planQuantity);
+                return this;
+            }
+            public ImportSubscriptionRequest StartDate(long startDate) 
+            {
+                m_params.AddOpt("start_date", startDate);
+                return this;
+            }
+            public ImportSubscriptionRequest TrialEnd(long trialEnd) 
+            {
+                m_params.AddOpt("trial_end", trialEnd);
+                return this;
+            }
+            public ImportSubscriptionRequest BillingCycles(int billingCycles) 
+            {
+                m_params.AddOpt("billing_cycles", billingCycles);
+                return this;
+            }
+            public ImportSubscriptionRequest PoNumber(string poNumber) 
+            {
+                m_params.AddOpt("po_number", poNumber);
+                return this;
+            }
+            public ImportSubscriptionRequest CouponIds(List<string> couponIds) 
+            {
+                m_params.AddOpt("coupon_ids", couponIds);
+                return this;
+            }
+            public ImportSubscriptionRequest Status(StatusEnum status) 
+            {
+                m_params.Add("status", status);
+                return this;
+            }
+            public ImportSubscriptionRequest CurrentTermEnd(long currentTermEnd) 
+            {
+                m_params.AddOpt("current_term_end", currentTermEnd);
+                return this;
+            }
+            public ImportSubscriptionRequest CurrentTermStart(long currentTermStart) 
+            {
+                m_params.AddOpt("current_term_start", currentTermStart);
+                return this;
+            }
+            public ImportSubscriptionRequest TrialStart(long trialStart) 
+            {
+                m_params.AddOpt("trial_start", trialStart);
+                return this;
+            }
+            public ImportSubscriptionRequest CancelledAt(long cancelledAt) 
+            {
+                m_params.AddOpt("cancelled_at", cancelledAt);
+                return this;
+            }
+            public ImportSubscriptionRequest StartedAt(long startedAt) 
+            {
+                m_params.AddOpt("started_at", startedAt);
+                return this;
+            }
+            public ImportSubscriptionRequest AffiliateToken(string affiliateToken) 
+            {
+                m_params.AddOpt("affiliate_token", affiliateToken);
+                return this;
+            }
+            public ImportSubscriptionRequest InvoiceNotes(string invoiceNotes) 
+            {
+                m_params.AddOpt("invoice_notes", invoiceNotes);
+                return this;
+            }
+            public ImportSubscriptionRequest MetaData(JToken metaData) 
+            {
+                m_params.AddOpt("meta_data", metaData);
+                return this;
+            }
+            public ImportSubscriptionRequest CustomerId(string customerId) 
+            {
+                m_params.AddOpt("customer[id]", customerId);
+                return this;
+            }
+            public ImportSubscriptionRequest CustomerEmail(string customerEmail) 
+            {
+                m_params.AddOpt("customer[email]", customerEmail);
+                return this;
+            }
+            public ImportSubscriptionRequest CustomerFirstName(string customerFirstName) 
+            {
+                m_params.AddOpt("customer[first_name]", customerFirstName);
+                return this;
+            }
+            public ImportSubscriptionRequest CustomerLastName(string customerLastName) 
+            {
+                m_params.AddOpt("customer[last_name]", customerLastName);
+                return this;
+            }
+            public ImportSubscriptionRequest CustomerCompany(string customerCompany) 
+            {
+                m_params.AddOpt("customer[company]", customerCompany);
+                return this;
+            }
+            public ImportSubscriptionRequest CustomerTaxability(TaxabilityEnum customerTaxability) 
+            {
+                m_params.AddOpt("customer[taxability]", customerTaxability);
+                return this;
+            }
+            public ImportSubscriptionRequest CustomerEntityCode(EntityCodeEnum customerEntityCode) 
+            {
+                m_params.AddOpt("customer[entity_code]", customerEntityCode);
+                return this;
+            }
+            public ImportSubscriptionRequest CustomerExemptNumber(string customerExemptNumber) 
+            {
+                m_params.AddOpt("customer[exempt_number]", customerExemptNumber);
+                return this;
+            }
+            public ImportSubscriptionRequest CustomerNetTermDays(int customerNetTermDays) 
+            {
+                m_params.AddOpt("customer[net_term_days]", customerNetTermDays);
+                return this;
+            }
+            public ImportSubscriptionRequest CustomerPhone(string customerPhone) 
+            {
+                m_params.AddOpt("customer[phone]", customerPhone);
+                return this;
+            }
+            public ImportSubscriptionRequest CustomerAutoCollection(AutoCollectionEnum customerAutoCollection) 
+            {
+                m_params.AddOpt("customer[auto_collection]", customerAutoCollection);
+                return this;
+            }
+            public ImportSubscriptionRequest CustomerAllowDirectDebit(bool customerAllowDirectDebit) 
+            {
+                m_params.AddOpt("customer[allow_direct_debit]", customerAllowDirectDebit);
+                return this;
+            }
+            public ImportSubscriptionRequest CardGateway(GatewayEnum cardGateway) 
+            {
+                m_params.AddOpt("card[gateway]", cardGateway);
+                return this;
+            }
+            public ImportSubscriptionRequest CardTmpToken(string cardTmpToken) 
+            {
+                m_params.AddOpt("card[tmp_token]", cardTmpToken);
+                return this;
+            }
+            public ImportSubscriptionRequest PaymentMethodType(TypeEnum paymentMethodType) 
+            {
+                m_params.AddOpt("payment_method[type]", paymentMethodType);
+                return this;
+            }
+            public ImportSubscriptionRequest PaymentMethodGateway(GatewayEnum paymentMethodGateway) 
+            {
+                m_params.AddOpt("payment_method[gateway]", paymentMethodGateway);
+                return this;
+            }
+            public ImportSubscriptionRequest PaymentMethodReferenceId(string paymentMethodReferenceId) 
+            {
+                m_params.AddOpt("payment_method[reference_id]", paymentMethodReferenceId);
+                return this;
+            }
+            public ImportSubscriptionRequest CardFirstName(string cardFirstName) 
+            {
+                m_params.AddOpt("card[first_name]", cardFirstName);
+                return this;
+            }
+            public ImportSubscriptionRequest CardLastName(string cardLastName) 
+            {
+                m_params.AddOpt("card[last_name]", cardLastName);
+                return this;
+            }
+            public ImportSubscriptionRequest CardNumber(string cardNumber) 
+            {
+                m_params.AddOpt("card[number]", cardNumber);
+                return this;
+            }
+            public ImportSubscriptionRequest CardExpiryMonth(int cardExpiryMonth) 
+            {
+                m_params.AddOpt("card[expiry_month]", cardExpiryMonth);
+                return this;
+            }
+            public ImportSubscriptionRequest CardExpiryYear(int cardExpiryYear) 
+            {
+                m_params.AddOpt("card[expiry_year]", cardExpiryYear);
+                return this;
+            }
+            public ImportSubscriptionRequest CardCvv(string cardCvv) 
+            {
+                m_params.AddOpt("card[cvv]", cardCvv);
+                return this;
+            }
+            public ImportSubscriptionRequest CardBillingAddr1(string cardBillingAddr1) 
+            {
+                m_params.AddOpt("card[billing_addr1]", cardBillingAddr1);
+                return this;
+            }
+            public ImportSubscriptionRequest CardBillingAddr2(string cardBillingAddr2) 
+            {
+                m_params.AddOpt("card[billing_addr2]", cardBillingAddr2);
+                return this;
+            }
+            public ImportSubscriptionRequest CardBillingCity(string cardBillingCity) 
+            {
+                m_params.AddOpt("card[billing_city]", cardBillingCity);
+                return this;
+            }
+            public ImportSubscriptionRequest CardBillingStateCode(string cardBillingStateCode) 
+            {
+                m_params.AddOpt("card[billing_state_code]", cardBillingStateCode);
+                return this;
+            }
+            public ImportSubscriptionRequest CardBillingState(string cardBillingState) 
+            {
+                m_params.AddOpt("card[billing_state]", cardBillingState);
+                return this;
+            }
+            public ImportSubscriptionRequest CardBillingZip(string cardBillingZip) 
+            {
+                m_params.AddOpt("card[billing_zip]", cardBillingZip);
+                return this;
+            }
+            public ImportSubscriptionRequest CardBillingCountry(string cardBillingCountry) 
+            {
+                m_params.AddOpt("card[billing_country]", cardBillingCountry);
+                return this;
+            }
+            public ImportSubscriptionRequest BillingAddressFirstName(string billingAddressFirstName) 
+            {
+                m_params.AddOpt("billing_address[first_name]", billingAddressFirstName);
+                return this;
+            }
+            public ImportSubscriptionRequest BillingAddressLastName(string billingAddressLastName) 
+            {
+                m_params.AddOpt("billing_address[last_name]", billingAddressLastName);
+                return this;
+            }
+            public ImportSubscriptionRequest BillingAddressEmail(string billingAddressEmail) 
+            {
+                m_params.AddOpt("billing_address[email]", billingAddressEmail);
+                return this;
+            }
+            public ImportSubscriptionRequest BillingAddressCompany(string billingAddressCompany) 
+            {
+                m_params.AddOpt("billing_address[company]", billingAddressCompany);
+                return this;
+            }
+            public ImportSubscriptionRequest BillingAddressPhone(string billingAddressPhone) 
+            {
+                m_params.AddOpt("billing_address[phone]", billingAddressPhone);
+                return this;
+            }
+            public ImportSubscriptionRequest BillingAddressLine1(string billingAddressLine1) 
+            {
+                m_params.AddOpt("billing_address[line1]", billingAddressLine1);
+                return this;
+            }
+            public ImportSubscriptionRequest BillingAddressLine2(string billingAddressLine2) 
+            {
+                m_params.AddOpt("billing_address[line2]", billingAddressLine2);
+                return this;
+            }
+            public ImportSubscriptionRequest BillingAddressLine3(string billingAddressLine3) 
+            {
+                m_params.AddOpt("billing_address[line3]", billingAddressLine3);
+                return this;
+            }
+            public ImportSubscriptionRequest BillingAddressCity(string billingAddressCity) 
+            {
+                m_params.AddOpt("billing_address[city]", billingAddressCity);
+                return this;
+            }
+            public ImportSubscriptionRequest BillingAddressStateCode(string billingAddressStateCode) 
+            {
+                m_params.AddOpt("billing_address[state_code]", billingAddressStateCode);
+                return this;
+            }
+            public ImportSubscriptionRequest BillingAddressState(string billingAddressState) 
+            {
+                m_params.AddOpt("billing_address[state]", billingAddressState);
+                return this;
+            }
+            public ImportSubscriptionRequest BillingAddressZip(string billingAddressZip) 
+            {
+                m_params.AddOpt("billing_address[zip]", billingAddressZip);
+                return this;
+            }
+            public ImportSubscriptionRequest BillingAddressCountry(string billingAddressCountry) 
+            {
+                m_params.AddOpt("billing_address[country]", billingAddressCountry);
+                return this;
+            }
+            public ImportSubscriptionRequest BillingAddressValidationStatus(ValidationStatusEnum billingAddressValidationStatus) 
+            {
+                m_params.AddOpt("billing_address[validation_status]", billingAddressValidationStatus);
+                return this;
+            }
+            public ImportSubscriptionRequest ShippingAddressFirstName(string shippingAddressFirstName) 
+            {
+                m_params.AddOpt("shipping_address[first_name]", shippingAddressFirstName);
+                return this;
+            }
+            public ImportSubscriptionRequest ShippingAddressLastName(string shippingAddressLastName) 
+            {
+                m_params.AddOpt("shipping_address[last_name]", shippingAddressLastName);
+                return this;
+            }
+            public ImportSubscriptionRequest ShippingAddressEmail(string shippingAddressEmail) 
+            {
+                m_params.AddOpt("shipping_address[email]", shippingAddressEmail);
+                return this;
+            }
+            public ImportSubscriptionRequest ShippingAddressCompany(string shippingAddressCompany) 
+            {
+                m_params.AddOpt("shipping_address[company]", shippingAddressCompany);
+                return this;
+            }
+            public ImportSubscriptionRequest ShippingAddressPhone(string shippingAddressPhone) 
+            {
+                m_params.AddOpt("shipping_address[phone]", shippingAddressPhone);
+                return this;
+            }
+            public ImportSubscriptionRequest ShippingAddressLine1(string shippingAddressLine1) 
+            {
+                m_params.AddOpt("shipping_address[line1]", shippingAddressLine1);
+                return this;
+            }
+            public ImportSubscriptionRequest ShippingAddressLine2(string shippingAddressLine2) 
+            {
+                m_params.AddOpt("shipping_address[line2]", shippingAddressLine2);
+                return this;
+            }
+            public ImportSubscriptionRequest ShippingAddressLine3(string shippingAddressLine3) 
+            {
+                m_params.AddOpt("shipping_address[line3]", shippingAddressLine3);
+                return this;
+            }
+            public ImportSubscriptionRequest ShippingAddressCity(string shippingAddressCity) 
+            {
+                m_params.AddOpt("shipping_address[city]", shippingAddressCity);
+                return this;
+            }
+            public ImportSubscriptionRequest ShippingAddressStateCode(string shippingAddressStateCode) 
+            {
+                m_params.AddOpt("shipping_address[state_code]", shippingAddressStateCode);
+                return this;
+            }
+            public ImportSubscriptionRequest ShippingAddressState(string shippingAddressState) 
+            {
+                m_params.AddOpt("shipping_address[state]", shippingAddressState);
+                return this;
+            }
+            public ImportSubscriptionRequest ShippingAddressZip(string shippingAddressZip) 
+            {
+                m_params.AddOpt("shipping_address[zip]", shippingAddressZip);
+                return this;
+            }
+            public ImportSubscriptionRequest ShippingAddressCountry(string shippingAddressCountry) 
+            {
+                m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
+                return this;
+            }
+            public ImportSubscriptionRequest ShippingAddressValidationStatus(ValidationStatusEnum shippingAddressValidationStatus) 
+            {
+                m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+                return this;
+            }
+            public ImportSubscriptionRequest CustomerVatNumber(string customerVatNumber) 
+            {
+                m_params.AddOpt("customer[vat_number]", customerVatNumber);
+                return this;
+            }
+            public ImportSubscriptionRequest AddonId(int index, string addonId) 
+            {
+                m_params.AddOpt("addons[id][" + index + "]", addonId);
+                return this;
+            }
+            public ImportSubscriptionRequest AddonQuantity(int index, int addonQuantity) 
+            {
+                m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
+                return this;
+            }
+        }
+        public class ImportForCustomerRequest : EntityRequest<ImportForCustomerRequest> 
+        {
+            public ImportForCustomerRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public ImportForCustomerRequest Id(string id) 
+            {
+                m_params.AddOpt("id", id);
+                return this;
+            }
+            public ImportForCustomerRequest PlanId(string planId) 
+            {
+                m_params.Add("plan_id", planId);
+                return this;
+            }
+            public ImportForCustomerRequest PlanQuantity(int planQuantity) 
+            {
+                m_params.AddOpt("plan_quantity", planQuantity);
+                return this;
+            }
+            public ImportForCustomerRequest StartDate(long startDate) 
+            {
+                m_params.AddOpt("start_date", startDate);
+                return this;
+            }
+            public ImportForCustomerRequest TrialEnd(long trialEnd) 
+            {
+                m_params.AddOpt("trial_end", trialEnd);
+                return this;
+            }
+            public ImportForCustomerRequest BillingCycles(int billingCycles) 
+            {
+                m_params.AddOpt("billing_cycles", billingCycles);
+                return this;
+            }
+            public ImportForCustomerRequest PoNumber(string poNumber) 
+            {
+                m_params.AddOpt("po_number", poNumber);
+                return this;
+            }
+            public ImportForCustomerRequest CouponIds(List<string> couponIds) 
+            {
+                m_params.AddOpt("coupon_ids", couponIds);
+                return this;
+            }
+            public ImportForCustomerRequest Status(StatusEnum status) 
+            {
+                m_params.Add("status", status);
+                return this;
+            }
+            public ImportForCustomerRequest CurrentTermEnd(long currentTermEnd) 
+            {
+                m_params.AddOpt("current_term_end", currentTermEnd);
+                return this;
+            }
+            public ImportForCustomerRequest CurrentTermStart(long currentTermStart) 
+            {
+                m_params.AddOpt("current_term_start", currentTermStart);
+                return this;
+            }
+            public ImportForCustomerRequest TrialStart(long trialStart) 
+            {
+                m_params.AddOpt("trial_start", trialStart);
+                return this;
+            }
+            public ImportForCustomerRequest CancelledAt(long cancelledAt) 
+            {
+                m_params.AddOpt("cancelled_at", cancelledAt);
+                return this;
+            }
+            public ImportForCustomerRequest StartedAt(long startedAt) 
+            {
+                m_params.AddOpt("started_at", startedAt);
+                return this;
+            }
+            public ImportForCustomerRequest InvoiceNotes(string invoiceNotes) 
+            {
+                m_params.AddOpt("invoice_notes", invoiceNotes);
+                return this;
+            }
+            public ImportForCustomerRequest MetaData(JToken metaData) 
+            {
+                m_params.AddOpt("meta_data", metaData);
+                return this;
+            }
+            public ImportForCustomerRequest ShippingAddressFirstName(string shippingAddressFirstName) 
+            {
+                m_params.AddOpt("shipping_address[first_name]", shippingAddressFirstName);
+                return this;
+            }
+            public ImportForCustomerRequest ShippingAddressLastName(string shippingAddressLastName) 
+            {
+                m_params.AddOpt("shipping_address[last_name]", shippingAddressLastName);
+                return this;
+            }
+            public ImportForCustomerRequest ShippingAddressEmail(string shippingAddressEmail) 
+            {
+                m_params.AddOpt("shipping_address[email]", shippingAddressEmail);
+                return this;
+            }
+            public ImportForCustomerRequest ShippingAddressCompany(string shippingAddressCompany) 
+            {
+                m_params.AddOpt("shipping_address[company]", shippingAddressCompany);
+                return this;
+            }
+            public ImportForCustomerRequest ShippingAddressPhone(string shippingAddressPhone) 
+            {
+                m_params.AddOpt("shipping_address[phone]", shippingAddressPhone);
+                return this;
+            }
+            public ImportForCustomerRequest ShippingAddressLine1(string shippingAddressLine1) 
+            {
+                m_params.AddOpt("shipping_address[line1]", shippingAddressLine1);
+                return this;
+            }
+            public ImportForCustomerRequest ShippingAddressLine2(string shippingAddressLine2) 
+            {
+                m_params.AddOpt("shipping_address[line2]", shippingAddressLine2);
+                return this;
+            }
+            public ImportForCustomerRequest ShippingAddressLine3(string shippingAddressLine3) 
+            {
+                m_params.AddOpt("shipping_address[line3]", shippingAddressLine3);
+                return this;
+            }
+            public ImportForCustomerRequest ShippingAddressCity(string shippingAddressCity) 
+            {
+                m_params.AddOpt("shipping_address[city]", shippingAddressCity);
+                return this;
+            }
+            public ImportForCustomerRequest ShippingAddressStateCode(string shippingAddressStateCode) 
+            {
+                m_params.AddOpt("shipping_address[state_code]", shippingAddressStateCode);
+                return this;
+            }
+            public ImportForCustomerRequest ShippingAddressState(string shippingAddressState) 
+            {
+                m_params.AddOpt("shipping_address[state]", shippingAddressState);
+                return this;
+            }
+            public ImportForCustomerRequest ShippingAddressZip(string shippingAddressZip) 
+            {
+                m_params.AddOpt("shipping_address[zip]", shippingAddressZip);
+                return this;
+            }
+            public ImportForCustomerRequest ShippingAddressCountry(string shippingAddressCountry) 
+            {
+                m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
+                return this;
+            }
+            public ImportForCustomerRequest ShippingAddressValidationStatus(ValidationStatusEnum shippingAddressValidationStatus) 
+            {
+                m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+                return this;
+            }
+            public ImportForCustomerRequest AddonId(int index, string addonId) 
+            {
+                m_params.AddOpt("addons[id][" + index + "]", addonId);
+                return this;
+            }
+            public ImportForCustomerRequest AddonQuantity(int index, int addonQuantity) 
+            {
+                m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
                 return this;
             }
         }

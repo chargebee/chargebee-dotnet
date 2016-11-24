@@ -39,6 +39,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "stop_dunning");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
+        public static ImportInvoiceRequest ImportInvoice()
+        {
+            string url = ApiUtil.BuildUrl("invoices", "import_invoice");
+            return new ImportInvoiceRequest(url, HttpMethod.POST);
+        }
         public static InvoiceListRequest List()
         {
             string url = ApiUtil.BuildUrl("invoices");
@@ -475,6 +480,419 @@ namespace ChargeBee.Models
             public ChargeAddonRequest PoNumber(string poNumber) 
             {
                 m_params.AddOpt("po_number", poNumber);
+                return this;
+            }
+        }
+        public class ImportInvoiceRequest : EntityRequest<ImportInvoiceRequest> 
+        {
+            public ImportInvoiceRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public ImportInvoiceRequest Id(string id) 
+            {
+                m_params.Add("id", id);
+                return this;
+            }
+            public ImportInvoiceRequest CurrencyCode(string currencyCode) 
+            {
+                m_params.AddOpt("currency_code", currencyCode);
+                return this;
+            }
+            public ImportInvoiceRequest CustomerId(string customerId) 
+            {
+                m_params.AddOpt("customer_id", customerId);
+                return this;
+            }
+            public ImportInvoiceRequest SubscriptionId(string subscriptionId) 
+            {
+                m_params.AddOpt("subscription_id", subscriptionId);
+                return this;
+            }
+            public ImportInvoiceRequest PoNumber(string poNumber) 
+            {
+                m_params.AddOpt("po_number", poNumber);
+                return this;
+            }
+            public ImportInvoiceRequest PriceType(PriceTypeEnum priceType) 
+            {
+                m_params.AddOpt("price_type", priceType);
+                return this;
+            }
+            public ImportInvoiceRequest TaxOverrideReason(TaxOverrideReasonEnum taxOverrideReason) 
+            {
+                m_params.AddOpt("tax_override_reason", taxOverrideReason);
+                return this;
+            }
+            public ImportInvoiceRequest VatNumber(string vatNumber) 
+            {
+                m_params.AddOpt("vat_number", vatNumber);
+                return this;
+            }
+            public ImportInvoiceRequest Date(long date) 
+            {
+                m_params.Add("date", date);
+                return this;
+            }
+            public ImportInvoiceRequest Total(int total) 
+            {
+                m_params.Add("total", total);
+                return this;
+            }
+            public ImportInvoiceRequest RoundOff(int roundOff) 
+            {
+                m_params.AddOpt("round_off", roundOff);
+                return this;
+            }
+            public ImportInvoiceRequest Status(StatusEnum status) 
+            {
+                m_params.AddOpt("status", status);
+                return this;
+            }
+            public ImportInvoiceRequest DueDate(long dueDate) 
+            {
+                m_params.AddOpt("due_date", dueDate);
+                return this;
+            }
+            public ImportInvoiceRequest NetTermDays(int netTermDays) 
+            {
+                m_params.AddOpt("net_term_days", netTermDays);
+                return this;
+            }
+            public ImportInvoiceRequest UseForProration(bool useForProration) 
+            {
+                m_params.AddOpt("use_for_proration", useForProration);
+                return this;
+            }
+            public ImportInvoiceRequest BillingAddressFirstName(string billingAddressFirstName) 
+            {
+                m_params.AddOpt("billing_address[first_name]", billingAddressFirstName);
+                return this;
+            }
+            public ImportInvoiceRequest BillingAddressLastName(string billingAddressLastName) 
+            {
+                m_params.AddOpt("billing_address[last_name]", billingAddressLastName);
+                return this;
+            }
+            public ImportInvoiceRequest BillingAddressEmail(string billingAddressEmail) 
+            {
+                m_params.AddOpt("billing_address[email]", billingAddressEmail);
+                return this;
+            }
+            public ImportInvoiceRequest BillingAddressCompany(string billingAddressCompany) 
+            {
+                m_params.AddOpt("billing_address[company]", billingAddressCompany);
+                return this;
+            }
+            public ImportInvoiceRequest BillingAddressPhone(string billingAddressPhone) 
+            {
+                m_params.AddOpt("billing_address[phone]", billingAddressPhone);
+                return this;
+            }
+            public ImportInvoiceRequest BillingAddressLine1(string billingAddressLine1) 
+            {
+                m_params.AddOpt("billing_address[line1]", billingAddressLine1);
+                return this;
+            }
+            public ImportInvoiceRequest BillingAddressLine2(string billingAddressLine2) 
+            {
+                m_params.AddOpt("billing_address[line2]", billingAddressLine2);
+                return this;
+            }
+            public ImportInvoiceRequest BillingAddressLine3(string billingAddressLine3) 
+            {
+                m_params.AddOpt("billing_address[line3]", billingAddressLine3);
+                return this;
+            }
+            public ImportInvoiceRequest BillingAddressCity(string billingAddressCity) 
+            {
+                m_params.AddOpt("billing_address[city]", billingAddressCity);
+                return this;
+            }
+            public ImportInvoiceRequest BillingAddressStateCode(string billingAddressStateCode) 
+            {
+                m_params.AddOpt("billing_address[state_code]", billingAddressStateCode);
+                return this;
+            }
+            public ImportInvoiceRequest BillingAddressState(string billingAddressState) 
+            {
+                m_params.AddOpt("billing_address[state]", billingAddressState);
+                return this;
+            }
+            public ImportInvoiceRequest BillingAddressZip(string billingAddressZip) 
+            {
+                m_params.AddOpt("billing_address[zip]", billingAddressZip);
+                return this;
+            }
+            public ImportInvoiceRequest BillingAddressCountry(string billingAddressCountry) 
+            {
+                m_params.AddOpt("billing_address[country]", billingAddressCountry);
+                return this;
+            }
+            public ImportInvoiceRequest BillingAddressValidationStatus(ValidationStatusEnum billingAddressValidationStatus) 
+            {
+                m_params.AddOpt("billing_address[validation_status]", billingAddressValidationStatus);
+                return this;
+            }
+            public ImportInvoiceRequest ShippingAddressFirstName(string shippingAddressFirstName) 
+            {
+                m_params.AddOpt("shipping_address[first_name]", shippingAddressFirstName);
+                return this;
+            }
+            public ImportInvoiceRequest ShippingAddressLastName(string shippingAddressLastName) 
+            {
+                m_params.AddOpt("shipping_address[last_name]", shippingAddressLastName);
+                return this;
+            }
+            public ImportInvoiceRequest ShippingAddressEmail(string shippingAddressEmail) 
+            {
+                m_params.AddOpt("shipping_address[email]", shippingAddressEmail);
+                return this;
+            }
+            public ImportInvoiceRequest ShippingAddressCompany(string shippingAddressCompany) 
+            {
+                m_params.AddOpt("shipping_address[company]", shippingAddressCompany);
+                return this;
+            }
+            public ImportInvoiceRequest ShippingAddressPhone(string shippingAddressPhone) 
+            {
+                m_params.AddOpt("shipping_address[phone]", shippingAddressPhone);
+                return this;
+            }
+            public ImportInvoiceRequest ShippingAddressLine1(string shippingAddressLine1) 
+            {
+                m_params.AddOpt("shipping_address[line1]", shippingAddressLine1);
+                return this;
+            }
+            public ImportInvoiceRequest ShippingAddressLine2(string shippingAddressLine2) 
+            {
+                m_params.AddOpt("shipping_address[line2]", shippingAddressLine2);
+                return this;
+            }
+            public ImportInvoiceRequest ShippingAddressLine3(string shippingAddressLine3) 
+            {
+                m_params.AddOpt("shipping_address[line3]", shippingAddressLine3);
+                return this;
+            }
+            public ImportInvoiceRequest ShippingAddressCity(string shippingAddressCity) 
+            {
+                m_params.AddOpt("shipping_address[city]", shippingAddressCity);
+                return this;
+            }
+            public ImportInvoiceRequest ShippingAddressStateCode(string shippingAddressStateCode) 
+            {
+                m_params.AddOpt("shipping_address[state_code]", shippingAddressStateCode);
+                return this;
+            }
+            public ImportInvoiceRequest ShippingAddressState(string shippingAddressState) 
+            {
+                m_params.AddOpt("shipping_address[state]", shippingAddressState);
+                return this;
+            }
+            public ImportInvoiceRequest ShippingAddressZip(string shippingAddressZip) 
+            {
+                m_params.AddOpt("shipping_address[zip]", shippingAddressZip);
+                return this;
+            }
+            public ImportInvoiceRequest ShippingAddressCountry(string shippingAddressCountry) 
+            {
+                m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
+                return this;
+            }
+            public ImportInvoiceRequest ShippingAddressValidationStatus(ValidationStatusEnum shippingAddressValidationStatus) 
+            {
+                m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemDateFrom(int index, long lineItemDateFrom) 
+            {
+                m_params.AddOpt("line_items[date_from][" + index + "]", lineItemDateFrom);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemDateTo(int index, long lineItemDateTo) 
+            {
+                m_params.AddOpt("line_items[date_to][" + index + "]", lineItemDateTo);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemDescription(int index, string lineItemDescription) 
+            {
+                m_params.Add("line_items[description][" + index + "]", lineItemDescription);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemUnitAmount(int index, int lineItemUnitAmount) 
+            {
+                m_params.AddOpt("line_items[unit_amount][" + index + "]", lineItemUnitAmount);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemQuantity(int index, int lineItemQuantity) 
+            {
+                m_params.AddOpt("line_items[quantity][" + index + "]", lineItemQuantity);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemAmount(int index, int lineItemAmount) 
+            {
+                m_params.AddOpt("line_items[amount][" + index + "]", lineItemAmount);
+                return this;
+            }
+			public ImportInvoiceRequest LineItemEntityType(int index, InvoiceLineItem.EntityTypeEnum lineItemEntityType) 
+            {
+                m_params.AddOpt("line_items[entity_type][" + index + "]", lineItemEntityType);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemEntityId(int index, string lineItemEntityId) 
+            {
+                m_params.AddOpt("line_items[entity_id][" + index + "]", lineItemEntityId);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemItemLevelDiscount1EntityId(int index, string lineItemItemLevelDiscount1EntityId) 
+            {
+                m_params.AddOpt("line_items[item_level_discount1_entity_id][" + index + "]", lineItemItemLevelDiscount1EntityId);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemItemLevelDiscount1Amount(int index, int lineItemItemLevelDiscount1Amount) 
+            {
+                m_params.AddOpt("line_items[item_level_discount1_amount][" + index + "]", lineItemItemLevelDiscount1Amount);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemItemLevelDiscount2EntityId(int index, string lineItemItemLevelDiscount2EntityId) 
+            {
+                m_params.AddOpt("line_items[item_level_discount2_entity_id][" + index + "]", lineItemItemLevelDiscount2EntityId);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemItemLevelDiscount2Amount(int index, int lineItemItemLevelDiscount2Amount) 
+            {
+                m_params.AddOpt("line_items[item_level_discount2_amount][" + index + "]", lineItemItemLevelDiscount2Amount);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTax1Name(int index, string lineItemTax1Name) 
+            {
+                m_params.AddOpt("line_items[tax1_name][" + index + "]", lineItemTax1Name);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTax1Amount(int index, int lineItemTax1Amount) 
+            {
+                m_params.AddOpt("line_items[tax1_amount][" + index + "]", lineItemTax1Amount);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTax2Name(int index, string lineItemTax2Name) 
+            {
+                m_params.AddOpt("line_items[tax2_name][" + index + "]", lineItemTax2Name);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTax2Amount(int index, int lineItemTax2Amount) 
+            {
+                m_params.AddOpt("line_items[tax2_amount][" + index + "]", lineItemTax2Amount);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTax3Name(int index, string lineItemTax3Name) 
+            {
+                m_params.AddOpt("line_items[tax3_name][" + index + "]", lineItemTax3Name);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTax3Amount(int index, int lineItemTax3Amount) 
+            {
+                m_params.AddOpt("line_items[tax3_amount][" + index + "]", lineItemTax3Amount);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTax4Name(int index, string lineItemTax4Name) 
+            {
+                m_params.AddOpt("line_items[tax4_name][" + index + "]", lineItemTax4Name);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTax4Amount(int index, int lineItemTax4Amount) 
+            {
+                m_params.AddOpt("line_items[tax4_amount][" + index + "]", lineItemTax4Amount);
+                return this;
+            }
+			public ImportInvoiceRequest DiscountEntityType(int index, InvoiceDiscount.EntityTypeEnum discountEntityType) 
+            {
+                m_params.Add("discounts[entity_type][" + index + "]", discountEntityType);
+                return this;
+            }
+            public ImportInvoiceRequest DiscountEntityId(int index, string discountEntityId) 
+            {
+                m_params.AddOpt("discounts[entity_id][" + index + "]", discountEntityId);
+                return this;
+            }
+            public ImportInvoiceRequest DiscountDescription(int index, string discountDescription) 
+            {
+                m_params.AddOpt("discounts[description][" + index + "]", discountDescription);
+                return this;
+            }
+            public ImportInvoiceRequest DiscountAmount(int index, int discountAmount) 
+            {
+                m_params.Add("discounts[amount][" + index + "]", discountAmount);
+                return this;
+            }
+            public ImportInvoiceRequest TaxName(int index, string taxName) 
+            {
+                m_params.Add("taxes[name][" + index + "]", taxName);
+                return this;
+            }
+            public ImportInvoiceRequest TaxRate(int index, double taxRate) 
+            {
+                m_params.Add("taxes[rate][" + index + "]", taxRate);
+                return this;
+            }
+            public ImportInvoiceRequest TaxAmount(int index, int taxAmount) 
+            {
+                m_params.AddOpt("taxes[amount][" + index + "]", taxAmount);
+                return this;
+            }
+            public ImportInvoiceRequest TaxDescription(int index, string taxDescription) 
+            {
+                m_params.AddOpt("taxes[description][" + index + "]", taxDescription);
+                return this;
+            }
+            public ImportInvoiceRequest TaxJurisType(int index, TaxJurisTypeEnum taxJurisType) 
+            {
+                m_params.AddOpt("taxes[juris_type][" + index + "]", taxJurisType);
+                return this;
+            }
+            public ImportInvoiceRequest TaxJurisName(int index, string taxJurisName) 
+            {
+                m_params.AddOpt("taxes[juris_name][" + index + "]", taxJurisName);
+                return this;
+            }
+            public ImportInvoiceRequest TaxJurisCode(int index, string taxJurisCode) 
+            {
+                m_params.AddOpt("taxes[juris_code][" + index + "]", taxJurisCode);
+                return this;
+            }
+            public ImportInvoiceRequest PaymentAmount(int index, int paymentAmount) 
+            {
+                m_params.Add("payments[amount][" + index + "]", paymentAmount);
+                return this;
+            }
+            public ImportInvoiceRequest PaymentPaymentMethod(int index, PaymentMethodEnum paymentPaymentMethod) 
+            {
+                m_params.Add("payments[payment_method][" + index + "]", paymentPaymentMethod);
+                return this;
+            }
+            public ImportInvoiceRequest PaymentDate(int index, long paymentDate) 
+            {
+                m_params.AddOpt("payments[date][" + index + "]", paymentDate);
+                return this;
+            }
+            public ImportInvoiceRequest PaymentReferenceNumber(int index, string paymentReferenceNumber) 
+            {
+                m_params.AddOpt("payments[reference_number][" + index + "]", paymentReferenceNumber);
+                return this;
+            }
+            public ImportInvoiceRequest NoteEntityType(int index, InvoiceNote.EntityTypeEnum noteEntityType) 
+            {
+                m_params.AddOpt("notes[entity_type][" + index + "]", noteEntityType);
+                return this;
+            }
+            public ImportInvoiceRequest NoteEntityId(int index, string noteEntityId) 
+            {
+                m_params.AddOpt("notes[entity_id][" + index + "]", noteEntityId);
+                return this;
+            }
+            public ImportInvoiceRequest NoteNote(int index, string noteNote) 
+            {
+                m_params.AddOpt("notes[note][" + index + "]", noteNote);
                 return this;
             }
         }

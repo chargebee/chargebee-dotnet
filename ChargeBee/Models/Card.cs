@@ -79,6 +79,10 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<CardTypeEnum>("card_type", false); }
         }
+        public FundingTypeEnum FundingType 
+        {
+            get { return GetEnum<FundingTypeEnum>("funding_type", true); }
+        }
         public int ExpiryMonth 
         {
             get { return GetValue<int>("expiry_month", true); }
@@ -282,6 +286,23 @@ namespace ChargeBee.Models
             DinersClub,
             [Description("other")]
             Other,
+            [Description("not_applicable")]
+            NotApplicable,
+
+        }
+        public enum FundingTypeEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [Description("credit")]
+            Credit,
+            [Description("debit")]
+            Debit,
+            [Description("prepaid")]
+            Prepaid,
+            [Description("not_known")]
+            NotKnown,
             [Description("not_applicable")]
             NotApplicable,
 

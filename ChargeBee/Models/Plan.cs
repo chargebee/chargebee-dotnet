@@ -44,6 +44,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("plans", CheckNull(id), "delete");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
+        public static CopyRequest Copy()
+        {
+            string url = ApiUtil.BuildUrl("plans", "copy");
+            return new CopyRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -454,6 +459,24 @@ namespace ChargeBee.Models
             public TimestampFilter<PlanListRequest> UpdatedAt() 
             {
                 return new TimestampFilter<PlanListRequest>("updated_at", this);        
+            }
+        }
+        public class CopyRequest : EntityRequest<CopyRequest> 
+        {
+            public CopyRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CopyRequest FromSite(string fromSite) 
+            {
+                m_params.Add("from_site", fromSite);
+                return this;
+            }
+            public CopyRequest IdAtFromSite(string idAtFromSite) 
+            {
+                m_params.Add("id_at_from_site", idAtFromSite);
+                return this;
             }
         }
         #endregion

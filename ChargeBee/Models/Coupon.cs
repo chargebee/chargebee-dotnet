@@ -39,6 +39,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("coupons", CheckNull(id), "delete");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
+        public static CopyRequest Copy()
+        {
+            string url = ApiUtil.BuildUrl("coupons", "copy");
+            return new CopyRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -297,6 +302,24 @@ namespace ChargeBee.Models
             }
             public CouponListRequest SortByCreatedAt(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");
+                return this;
+            }
+        }
+        public class CopyRequest : EntityRequest<CopyRequest> 
+        {
+            public CopyRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CopyRequest FromSite(string fromSite) 
+            {
+                m_params.Add("from_site", fromSite);
+                return this;
+            }
+            public CopyRequest IdAtFromSite(string idAtFromSite) 
+            {
+                m_params.Add("id_at_from_site", idAtFromSite);
                 return this;
             }
         }

@@ -29,6 +29,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("coupon_codes", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
+        public static CouponCodeListRequest List()
+        {
+            string url = ApiUtil.BuildUrl("coupon_codes");
+            return new CouponCodeListRequest(url);
+        }
         public static EntityRequest<Type> Archive(string id)
         {
             string url = ApiUtil.BuildUrl("coupon_codes", CheckNull(id), "archive");
@@ -78,6 +83,30 @@ namespace ChargeBee.Models
             {
                 m_params.Add("code", code);
                 return this;
+            }
+        }
+        public class CouponCodeListRequest : ListRequestBase<CouponCodeListRequest> 
+        {
+            public CouponCodeListRequest(string url) 
+                    : base(url)
+            {
+            }
+
+            public StringFilter<CouponCodeListRequest> Code() 
+            {
+                return new StringFilter<CouponCodeListRequest>("code", this).SupportsMultiOperators(true);        
+            }
+            public StringFilter<CouponCodeListRequest> CouponId() 
+            {
+                return new StringFilter<CouponCodeListRequest>("coupon_id", this).SupportsMultiOperators(true);        
+            }
+            public StringFilter<CouponCodeListRequest> CouponSetName() 
+            {
+                return new StringFilter<CouponCodeListRequest>("coupon_set_name", this);        
+            }
+            public EnumFilter<StatusEnum, CouponCodeListRequest> Status() 
+            {
+                return new EnumFilter<StatusEnum, CouponCodeListRequest>("status", this);        
             }
         }
         #endregion
