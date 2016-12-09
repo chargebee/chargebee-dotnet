@@ -217,6 +217,18 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int?>("total_dues", false); }
         }
+        public int? Mrr 
+        {
+            get { return GetValue<int?>("mrr", false); }
+        }
+        public decimal? ExchangeRate 
+        {
+            get { return GetValue<decimal?>("exchange_rate", false); }
+        }
+        public string BaseCurrencyCode 
+        {
+            get { return GetValue<string>("base_currency_code", false); }
+        }
         public List<SubscriptionAddon> Addons 
         {
             get { return GetResourceList<SubscriptionAddon>("addons"); }
@@ -352,6 +364,11 @@ namespace ChargeBee.Models
             public CreateRequest CustomerTaxability(TaxabilityEnum customerTaxability) 
             {
                 m_params.AddOpt("customer[taxability]", customerTaxability);
+                return this;
+            }
+            public CreateRequest CustomerLocale(string customerLocale) 
+            {
+                m_params.AddOpt("customer[locale]", customerLocale);
                 return this;
             }
             public CreateRequest CustomerEntityCode(EntityCodeEnum customerEntityCode) 
@@ -819,6 +836,10 @@ namespace ChargeBee.Models
             public TimestampFilter<SubscriptionListRequest> CreatedAt() 
             {
                 return new TimestampFilter<SubscriptionListRequest>("created_at", this);        
+            }
+            public TimestampFilter<SubscriptionListRequest> CancelledAt() 
+            {
+                return new TimestampFilter<SubscriptionListRequest>("cancelled_at", this);        
             }
             public BooleanFilter<SubscriptionListRequest> HasScheduledChanges() 
             {
@@ -1405,6 +1426,11 @@ namespace ChargeBee.Models
             public ImportSubscriptionRequest CustomerTaxability(TaxabilityEnum customerTaxability) 
             {
                 m_params.AddOpt("customer[taxability]", customerTaxability);
+                return this;
+            }
+            public ImportSubscriptionRequest CustomerLocale(string customerLocale) 
+            {
+                m_params.AddOpt("customer[locale]", customerLocale);
                 return this;
             }
             public ImportSubscriptionRequest CustomerEntityCode(EntityCodeEnum customerEntityCode) 

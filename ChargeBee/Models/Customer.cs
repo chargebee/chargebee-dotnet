@@ -160,6 +160,10 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("updated_at", false); }
         }
+        public string Locale 
+        {
+            get { return GetValue<string>("locale", false); }
+        }
         [Obsolete]
         public CardStatusEnum? CardStatus 
         {
@@ -278,6 +282,11 @@ namespace ChargeBee.Models
             public CreateRequest Taxability(TaxabilityEnum taxability) 
             {
                 m_params.AddOpt("taxability", taxability);
+                return this;
+            }
+            public CreateRequest Locale(string locale) 
+            {
+                m_params.AddOpt("locale", locale);
                 return this;
             }
             public CreateRequest EntityCode(EntityCodeEnum entityCode) 
@@ -586,6 +595,11 @@ namespace ChargeBee.Models
             public UpdateRequest Taxability(TaxabilityEnum taxability) 
             {
                 m_params.AddOpt("taxability", taxability);
+                return this;
+            }
+            public UpdateRequest Locale(string locale) 
+            {
+                m_params.AddOpt("locale", locale);
                 return this;
             }
             public UpdateRequest EntityCode(EntityCodeEnum entityCode) 

@@ -112,6 +112,10 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("refunded_at", false); }
         }
+        public DateTime? VoidedAt 
+        {
+            get { return GetDateTime("voided_at", false); }
+        }
         public long? ResourceVersion 
         {
             get { return GetValue<long?>("resource_version", false); }
@@ -277,6 +281,10 @@ namespace ChargeBee.Models
             public NumberFilter<int, CreditNoteListRequest> AmountAvailable() 
             {
                 return new NumberFilter<int, CreditNoteListRequest>("amount_available", this);        
+            }
+            public TimestampFilter<CreditNoteListRequest> VoidedAt() 
+            {
+                return new TimestampFilter<CreditNoteListRequest>("voided_at", this);        
             }
             public TimestampFilter<CreditNoteListRequest> UpdatedAt() 
             {

@@ -170,6 +170,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[taxability]", customerTaxability);
                 return this;
             }
+            public CheckoutNewRequest CustomerLocale(string customerLocale) 
+            {
+                m_params.AddOpt("customer[locale]", customerLocale);
+                return this;
+            }
             public CheckoutNewRequest CustomerPhone(string customerPhone) 
             {
                 m_params.AddOpt("customer[phone]", customerPhone);

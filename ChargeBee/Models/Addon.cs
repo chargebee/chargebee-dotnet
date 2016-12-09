@@ -112,6 +112,22 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("tax_code", false); }
         }
+        public string Sku 
+        {
+            get { return GetValue<string>("sku", false); }
+        }
+        public string AccountingCode 
+        {
+            get { return GetValue<string>("accounting_code", false); }
+        }
+        public string AccountingCategory1 
+        {
+            get { return GetValue<string>("accounting_category1", false); }
+        }
+        public string AccountingCategory2 
+        {
+            get { return GetValue<string>("accounting_category2", false); }
+        }
         public long? ResourceVersion 
         {
             get { return GetValue<long?>("resource_version", false); }
@@ -232,6 +248,26 @@ namespace ChargeBee.Models
                 m_params.AddOpt("meta_data", metaData);
                 return this;
             }
+            public CreateRequest Sku(string sku) 
+            {
+                m_params.AddOpt("sku", sku);
+                return this;
+            }
+            public CreateRequest AccountingCode(string accountingCode) 
+            {
+                m_params.AddOpt("accounting_code", accountingCode);
+                return this;
+            }
+            public CreateRequest AccountingCategory1(string accountingCategory1) 
+            {
+                m_params.AddOpt("accounting_category1", accountingCategory1);
+                return this;
+            }
+            public CreateRequest AccountingCategory2(string accountingCategory2) 
+            {
+                m_params.AddOpt("accounting_category2", accountingCategory2);
+                return this;
+            }
         }
         public class UpdateRequest : EntityRequest<UpdateRequest> 
         {
@@ -323,6 +359,26 @@ namespace ChargeBee.Models
             public UpdateRequest MetaData(JToken metaData) 
             {
                 m_params.AddOpt("meta_data", metaData);
+                return this;
+            }
+            public UpdateRequest Sku(string sku) 
+            {
+                m_params.AddOpt("sku", sku);
+                return this;
+            }
+            public UpdateRequest AccountingCode(string accountingCode) 
+            {
+                m_params.AddOpt("accounting_code", accountingCode);
+                return this;
+            }
+            public UpdateRequest AccountingCategory1(string accountingCategory1) 
+            {
+                m_params.AddOpt("accounting_category1", accountingCategory1);
+                return this;
+            }
+            public UpdateRequest AccountingCategory2(string accountingCategory2) 
+            {
+                m_params.AddOpt("accounting_category2", accountingCategory2);
                 return this;
             }
         }

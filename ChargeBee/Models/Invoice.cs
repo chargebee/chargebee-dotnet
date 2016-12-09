@@ -208,6 +208,10 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("next_retry_at", false); }
         }
+        public DateTime? VoidedAt 
+        {
+            get { return GetDateTime("voided_at", false); }
+        }
         public long? ResourceVersion 
         {
             get { return GetValue<long?>("resource_version", false); }
@@ -970,6 +974,10 @@ namespace ChargeBee.Models
             {
                 return new EnumFilter<DunningStatusEnum, InvoiceListRequest>("dunning_status", this).SupportsPresenceOperator(true);        
             }
+            public TimestampFilter<InvoiceListRequest> VoidedAt() 
+            {
+                return new TimestampFilter<InvoiceListRequest>("voided_at", this);        
+            }
             public TimestampFilter<InvoiceListRequest> UpdatedAt() 
             {
                 return new TimestampFilter<InvoiceListRequest>("updated_at", this);        
@@ -1055,9 +1063,29 @@ namespace ChargeBee.Models
                 m_params.AddOpt("transaction[reference_number]", transactionReferenceNumber);
                 return this;
             }
+            public RecordPaymentRequest TransactionIdAtGateway(string transactionIdAtGateway) 
+            {
+                m_params.AddOpt("transaction[id_at_gateway]", transactionIdAtGateway);
+                return this;
+            }
+			public RecordPaymentRequest TransactionStatus(Transaction.StatusEnum transactionStatus) 
+            {
+                m_params.AddOpt("transaction[status]", transactionStatus);
+                return this;
+            }
             public RecordPaymentRequest TransactionDate(long transactionDate) 
             {
                 m_params.AddOpt("transaction[date]", transactionDate);
+                return this;
+            }
+            public RecordPaymentRequest TransactionErrorCode(string transactionErrorCode) 
+            {
+                m_params.AddOpt("transaction[error_code]", transactionErrorCode);
+                return this;
+            }
+            public RecordPaymentRequest TransactionErrorText(string transactionErrorText) 
+            {
+                m_params.AddOpt("transaction[error_text]", transactionErrorText);
                 return this;
             }
         }
