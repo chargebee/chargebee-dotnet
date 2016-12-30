@@ -190,6 +190,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
                 return this;
             }
+            public CheckoutNewRequest SubscriptionPlanUnitPrice(int subscriptionPlanUnitPrice) 
+            {
+                m_params.AddOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
+                return this;
+            }
+            public CheckoutNewRequest SubscriptionSetupFee(int subscriptionSetupFee) 
+            {
+                m_params.AddOpt("subscription[setup_fee]", subscriptionSetupFee);
+                return this;
+            }
             public CheckoutNewRequest SubscriptionStartDate(long subscriptionStartDate) 
             {
                 m_params.AddOpt("subscription[start_date]", subscriptionStartDate);
@@ -229,6 +239,11 @@ namespace ChargeBee.Models
             public CheckoutNewRequest AddonQuantity(int index, int addonQuantity) 
             {
                 m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
+                return this;
+            }
+            public CheckoutNewRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            {
+                m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
                 return this;
             }
         }
@@ -289,6 +304,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
                 return this;
             }
+            public CheckoutExistingRequest SubscriptionPlanUnitPrice(int subscriptionPlanUnitPrice) 
+            {
+                m_params.AddOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
+                return this;
+            }
+            public CheckoutExistingRequest SubscriptionSetupFee(int subscriptionSetupFee) 
+            {
+                m_params.AddOpt("subscription[setup_fee]", subscriptionSetupFee);
+                return this;
+            }
             public CheckoutExistingRequest SubscriptionStartDate(long subscriptionStartDate) 
             {
                 m_params.AddOpt("subscription[start_date]", subscriptionStartDate);
@@ -328,6 +353,11 @@ namespace ChargeBee.Models
             public CheckoutExistingRequest AddonQuantity(int index, int addonQuantity) 
             {
                 m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
+                return this;
+            }
+            public CheckoutExistingRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            {
+                m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
                 return this;
             }
         }

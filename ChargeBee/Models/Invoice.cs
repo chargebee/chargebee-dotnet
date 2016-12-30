@@ -395,6 +395,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
                 return this;
             }
+            public CreateRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            {
+                m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+                return this;
+            }
             public CreateRequest ChargeAmount(int index, int chargeAmount) 
             {
                 m_params.AddOpt("charges[amount][" + index + "]", chargeAmount);
@@ -474,6 +479,11 @@ namespace ChargeBee.Models
             public ChargeAddonRequest AddonQuantity(int addonQuantity) 
             {
                 m_params.AddOpt("addon_quantity", addonQuantity);
+                return this;
+            }
+            public ChargeAddonRequest AddonUnitPrice(int addonUnitPrice) 
+            {
+                m_params.AddOpt("addon_unit_price", addonUnitPrice);
                 return this;
             }
             public ChargeAddonRequest Coupon(string coupon) 
@@ -1022,6 +1032,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addon_quantity", addonQuantity);
                 return this;
             }
+            public AddAddonChargeRequest AddonUnitPrice(int addonUnitPrice) 
+            {
+                m_params.AddOpt("addon_unit_price", addonUnitPrice);
+                return this;
+            }
         }
         public class CollectPaymentRequest : EntityRequest<CollectPaymentRequest> 
         {
@@ -1303,6 +1318,10 @@ namespace ChargeBee.Models
 
             public EntityTypeEnum EntityType() {
                 return GetEnum<EntityTypeEnum>("entity_type", true);
+            }
+
+            public TaxExemptReasonEnum? TaxExemptReason() {
+                return GetEnum<TaxExemptReasonEnum>("tax_exempt_reason", false);
             }
 
             public string EntityId() {

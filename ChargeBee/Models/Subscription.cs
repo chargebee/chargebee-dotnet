@@ -133,6 +133,26 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int>("plan_quantity", true); }
         }
+        public int? PlanUnitPrice 
+        {
+            get { return GetValue<int?>("plan_unit_price", false); }
+        }
+        public int? SetupFee 
+        {
+            get { return GetValue<int?>("setup_fee", false); }
+        }
+        public int? BillingPeriod 
+        {
+            get { return GetValue<int?>("billing_period", false); }
+        }
+        public BillingPeriodUnitEnum? BillingPeriodUnit 
+        {
+            get { return GetEnum<BillingPeriodUnitEnum>("billing_period_unit", false); }
+        }
+        public int? PlanFreeQuantity 
+        {
+            get { return GetValue<int?>("plan_free_quantity", false); }
+        }
         public StatusEnum Status 
         {
             get { return GetEnum<StatusEnum>("status", true); }
@@ -282,6 +302,16 @@ namespace ChargeBee.Models
             public CreateRequest PlanQuantity(int planQuantity) 
             {
                 m_params.AddOpt("plan_quantity", planQuantity);
+                return this;
+            }
+            public CreateRequest PlanUnitPrice(int planUnitPrice) 
+            {
+                m_params.AddOpt("plan_unit_price", planUnitPrice);
+                return this;
+            }
+            public CreateRequest SetupFee(int setupFee) 
+            {
+                m_params.AddOpt("setup_fee", setupFee);
                 return this;
             }
             public CreateRequest StartDate(long startDate) 
@@ -652,6 +682,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
                 return this;
             }
+            public CreateRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            {
+                m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+                return this;
+            }
         }
         public class CreateForCustomerRequest : EntityRequest<CreateForCustomerRequest> 
         {
@@ -673,6 +708,16 @@ namespace ChargeBee.Models
             public CreateForCustomerRequest PlanQuantity(int planQuantity) 
             {
                 m_params.AddOpt("plan_quantity", planQuantity);
+                return this;
+            }
+            public CreateForCustomerRequest PlanUnitPrice(int planUnitPrice) 
+            {
+                m_params.AddOpt("plan_unit_price", planUnitPrice);
+                return this;
+            }
+            public CreateForCustomerRequest SetupFee(int setupFee) 
+            {
+                m_params.AddOpt("setup_fee", setupFee);
                 return this;
             }
             public CreateForCustomerRequest StartDate(long startDate) 
@@ -796,6 +841,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
                 return this;
             }
+            public CreateForCustomerRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            {
+                m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+                return this;
+            }
         }
         public class SubscriptionListRequest : ListRequestBase<SubscriptionListRequest> 
         {
@@ -895,6 +945,16 @@ namespace ChargeBee.Models
             public UpdateRequest PlanQuantity(int planQuantity) 
             {
                 m_params.AddOpt("plan_quantity", planQuantity);
+                return this;
+            }
+            public UpdateRequest PlanUnitPrice(int planUnitPrice) 
+            {
+                m_params.AddOpt("plan_unit_price", planUnitPrice);
+                return this;
+            }
+            public UpdateRequest SetupFee(int setupFee) 
+            {
+                m_params.AddOpt("setup_fee", setupFee);
                 return this;
             }
             public UpdateRequest StartDate(long startDate) 
@@ -1219,6 +1279,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
                 return this;
             }
+            public UpdateRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            {
+                m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+                return this;
+            }
         }
         public class ChangeTermEndRequest : EntityRequest<ChangeTermEndRequest> 
         {
@@ -1305,6 +1370,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addon_quantity", addonQuantity);
                 return this;
             }
+            public ChargeAddonAtTermEndRequest AddonUnitPrice(int addonUnitPrice) 
+            {
+                m_params.AddOpt("addon_unit_price", addonUnitPrice);
+                return this;
+            }
         }
         public class ImportSubscriptionRequest : EntityRequest<ImportSubscriptionRequest> 
         {
@@ -1326,6 +1396,16 @@ namespace ChargeBee.Models
             public ImportSubscriptionRequest PlanQuantity(int planQuantity) 
             {
                 m_params.AddOpt("plan_quantity", planQuantity);
+                return this;
+            }
+            public ImportSubscriptionRequest PlanUnitPrice(int planUnitPrice) 
+            {
+                m_params.AddOpt("plan_unit_price", planUnitPrice);
+                return this;
+            }
+            public ImportSubscriptionRequest SetupFee(int setupFee) 
+            {
+                m_params.AddOpt("setup_fee", setupFee);
                 return this;
             }
             public ImportSubscriptionRequest StartDate(long startDate) 
@@ -1708,6 +1788,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
                 return this;
             }
+            public ImportSubscriptionRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            {
+                m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+                return this;
+            }
         }
         public class ImportForCustomerRequest : EntityRequest<ImportForCustomerRequest> 
         {
@@ -1729,6 +1814,16 @@ namespace ChargeBee.Models
             public ImportForCustomerRequest PlanQuantity(int planQuantity) 
             {
                 m_params.AddOpt("plan_quantity", planQuantity);
+                return this;
+            }
+            public ImportForCustomerRequest PlanUnitPrice(int planUnitPrice) 
+            {
+                m_params.AddOpt("plan_unit_price", planUnitPrice);
+                return this;
+            }
+            public ImportForCustomerRequest SetupFee(int setupFee) 
+            {
+                m_params.AddOpt("setup_fee", setupFee);
                 return this;
             }
             public ImportForCustomerRequest StartDate(long startDate) 
@@ -1876,9 +1971,27 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
                 return this;
             }
+            public ImportForCustomerRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            {
+                m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+                return this;
+            }
         }
         #endregion
 
+        public enum BillingPeriodUnitEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [Description("week")]
+            Week,
+            [Description("month")]
+            Month,
+            [Description("year")]
+            Year,
+
+        }
         public enum StatusEnum
         {
 
@@ -1928,6 +2041,10 @@ namespace ChargeBee.Models
 
             public int? Quantity() {
                 return GetValue<int?>("quantity", false);
+            }
+
+            public int? UnitPrice() {
+                return GetValue<int?>("unit_price", false);
             }
 
         }

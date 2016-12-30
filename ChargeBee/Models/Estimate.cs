@@ -93,6 +93,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
                 return this;
             }
+            public CreateSubscriptionRequest SubscriptionPlanUnitPrice(int subscriptionPlanUnitPrice) 
+            {
+                m_params.AddOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
+                return this;
+            }
+            public CreateSubscriptionRequest SubscriptionSetupFee(int subscriptionSetupFee) 
+            {
+                m_params.AddOpt("subscription[setup_fee]", subscriptionSetupFee);
+                return this;
+            }
             public CreateSubscriptionRequest SubscriptionStartDate(long subscriptionStartDate) 
             {
                 m_params.AddOpt("subscription[start_date]", subscriptionStartDate);
@@ -219,6 +229,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
                 return this;
             }
+            public CreateSubscriptionRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            {
+                m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+                return this;
+            }
         }
         public class UpdateSubscriptionRequest : EntityRequest<UpdateSubscriptionRequest> 
         {
@@ -285,6 +300,16 @@ namespace ChargeBee.Models
             public UpdateSubscriptionRequest SubscriptionPlanQuantity(int subscriptionPlanQuantity) 
             {
                 m_params.AddOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
+                return this;
+            }
+            public UpdateSubscriptionRequest SubscriptionPlanUnitPrice(int subscriptionPlanUnitPrice) 
+            {
+                m_params.AddOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
+                return this;
+            }
+            public UpdateSubscriptionRequest SubscriptionSetupFee(int subscriptionSetupFee) 
+            {
+                m_params.AddOpt("subscription[setup_fee]", subscriptionSetupFee);
                 return this;
             }
             public UpdateSubscriptionRequest SubscriptionStartDate(long subscriptionStartDate) 
@@ -402,6 +427,11 @@ namespace ChargeBee.Models
             public UpdateSubscriptionRequest AddonQuantity(int index, int addonQuantity) 
             {
                 m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
+                return this;
+            }
+            public UpdateSubscriptionRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            {
+                m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
                 return this;
             }
         }

@@ -144,6 +144,10 @@ namespace ChargeBee.Models
                 return GetEnum<EntityTypeEnum>("entity_type", true);
             }
 
+            public TaxExemptReasonEnum? TaxExemptReason() {
+                return GetEnum<TaxExemptReasonEnum>("tax_exempt_reason", false);
+            }
+
             public string EntityId() {
                 return GetValue<string>("entity_id", false);
             }
