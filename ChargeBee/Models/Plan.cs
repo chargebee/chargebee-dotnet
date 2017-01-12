@@ -49,6 +49,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("plans", "copy");
             return new CopyRequest(url, HttpMethod.POST);
         }
+        public static EntityRequest<Type> Unarchive(string id)
+        {
+            string url = ApiUtil.BuildUrl("plans", CheckNull(id), "unarchive");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
