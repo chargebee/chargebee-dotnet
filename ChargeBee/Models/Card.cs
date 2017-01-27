@@ -59,6 +59,10 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<GatewayEnum>("gateway", true); }
         }
+        public string GatewayAccountId 
+        {
+            get { return GetValue<string>("gateway_account_id", false); }
+        }
         public string FirstName 
         {
             get { return GetValue<string>("first_name", false); }
@@ -138,9 +142,15 @@ namespace ChargeBee.Models
             {
             }
 
+            [Obsolete]
             public UpdateCardForCustomerRequest Gateway(GatewayEnum gateway) 
             {
                 m_params.AddOpt("gateway", gateway);
+                return this;
+            }
+            public UpdateCardForCustomerRequest GatewayAccountId(string gatewayAccountId) 
+            {
+                m_params.AddOpt("gateway_account_id", gatewayAccountId);
                 return this;
             }
             public UpdateCardForCustomerRequest TmpToken(string tmpToken) 
@@ -233,9 +243,15 @@ namespace ChargeBee.Models
             {
             }
 
+            [Obsolete]
             public SwitchGatewayForCustomerRequest Gateway(GatewayEnum gateway) 
             {
-                m_params.Add("gateway", gateway);
+                m_params.AddOpt("gateway", gateway);
+                return this;
+            }
+            public SwitchGatewayForCustomerRequest GatewayAccountId(string gatewayAccountId) 
+            {
+                m_params.Add("gateway_account_id", gatewayAccountId);
                 return this;
             }
         }
@@ -246,9 +262,9 @@ namespace ChargeBee.Models
             {
             }
 
-            public CopyCardForCustomerRequest Gateway(GatewayEnum gateway) 
+            public CopyCardForCustomerRequest GatewayAccountId(string gatewayAccountId) 
             {
-                m_params.Add("gateway", gateway);
+                m_params.Add("gateway_account_id", gatewayAccountId);
                 return this;
             }
         }

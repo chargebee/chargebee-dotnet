@@ -431,9 +431,15 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[allow_direct_debit]", customerAllowDirectDebit);
                 return this;
             }
+            [Obsolete]
             public CreateRequest CardGateway(GatewayEnum cardGateway) 
             {
                 m_params.AddOpt("card[gateway]", cardGateway);
+                return this;
+            }
+            public CreateRequest CardGatewayAccountId(string cardGatewayAccountId) 
+            {
+                m_params.AddOpt("card[gateway_account_id]", cardGatewayAccountId);
                 return this;
             }
             public CreateRequest CardTmpToken(string cardTmpToken) 
@@ -446,9 +452,15 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_method[type]", paymentMethodType);
                 return this;
             }
+            [Obsolete]
             public CreateRequest PaymentMethodGateway(GatewayEnum paymentMethodGateway) 
             {
                 m_params.AddOpt("payment_method[gateway]", paymentMethodGateway);
+                return this;
+            }
+            public CreateRequest PaymentMethodGatewayAccountId(string paymentMethodGatewayAccountId) 
+            {
+                m_params.AddOpt("payment_method[gateway_account_id]", paymentMethodGatewayAccountId);
                 return this;
             }
             public CreateRequest PaymentMethodReferenceId(string paymentMethodReferenceId) 
@@ -1023,9 +1035,15 @@ namespace ChargeBee.Models
                 m_params.AddOpt("meta_data", metaData);
                 return this;
             }
+            [Obsolete]
             public UpdateRequest CardGateway(GatewayEnum cardGateway) 
             {
                 m_params.AddOpt("card[gateway]", cardGateway);
+                return this;
+            }
+            public UpdateRequest CardGatewayAccountId(string cardGatewayAccountId) 
+            {
+                m_params.AddOpt("card[gateway_account_id]", cardGatewayAccountId);
                 return this;
             }
             public UpdateRequest CardTmpToken(string cardTmpToken) 
@@ -1038,9 +1056,15 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_method[type]", paymentMethodType);
                 return this;
             }
+            [Obsolete]
             public UpdateRequest PaymentMethodGateway(GatewayEnum paymentMethodGateway) 
             {
                 m_params.AddOpt("payment_method[gateway]", paymentMethodGateway);
+                return this;
+            }
+            public UpdateRequest PaymentMethodGatewayAccountId(string paymentMethodGatewayAccountId) 
+            {
+                m_params.AddOpt("payment_method[gateway_account_id]", paymentMethodGatewayAccountId);
                 return this;
             }
             public UpdateRequest PaymentMethodReferenceId(string paymentMethodReferenceId) 
@@ -1543,9 +1567,15 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[allow_direct_debit]", customerAllowDirectDebit);
                 return this;
             }
+            [Obsolete]
             public ImportSubscriptionRequest CardGateway(GatewayEnum cardGateway) 
             {
                 m_params.AddOpt("card[gateway]", cardGateway);
+                return this;
+            }
+            public ImportSubscriptionRequest CardGatewayAccountId(string cardGatewayAccountId) 
+            {
+                m_params.AddOpt("card[gateway_account_id]", cardGatewayAccountId);
                 return this;
             }
             public ImportSubscriptionRequest CardTmpToken(string cardTmpToken) 
@@ -1558,9 +1588,15 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_method[type]", paymentMethodType);
                 return this;
             }
+            [Obsolete]
             public ImportSubscriptionRequest PaymentMethodGateway(GatewayEnum paymentMethodGateway) 
             {
                 m_params.AddOpt("payment_method[gateway]", paymentMethodGateway);
+                return this;
+            }
+            public ImportSubscriptionRequest PaymentMethodGatewayAccountId(string paymentMethodGatewayAccountId) 
+            {
+                m_params.AddOpt("payment_method[gateway_account_id]", paymentMethodGatewayAccountId);
                 return this;
             }
             public ImportSubscriptionRequest PaymentMethodReferenceId(string paymentMethodReferenceId) 
