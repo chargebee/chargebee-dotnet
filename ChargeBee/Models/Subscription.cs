@@ -95,6 +95,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "charge_addon_at_term_end");
             return new ChargeAddonAtTermEndRequest(url, HttpMethod.POST);
         }
+        public static ChargeFutureRenewalsRequest ChargeFutureRenewals(string id)
+        {
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "charge_future_renewals");
+            return new ChargeFutureRenewalsRequest(url, HttpMethod.POST);
+        }
         public static ImportSubscriptionRequest ImportSubscription()
         {
             string url = ApiUtil.BuildUrl("subscriptions", "import_subscription");
@@ -176,6 +181,10 @@ namespace ChargeBee.Models
         public DateTime? CurrentTermEnd 
         {
             get { return GetDateTime("current_term_end", false); }
+        }
+        public DateTime? NextBillingAt 
+        {
+            get { return GetDateTime("next_billing_at", false); }
         }
         public int? RemainingBillingCycles 
         {
@@ -995,6 +1004,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("coupon", coupon);
                 return this;
             }
+            public UpdateRequest TermsToCharge(int termsToCharge) 
+            {
+                m_params.AddOpt("terms_to_charge", termsToCharge);
+                return this;
+            }
+            public UpdateRequest ReactivateFrom(long reactivateFrom) 
+            {
+                m_params.AddOpt("reactivate_from", reactivateFrom);
+                return this;
+            }
             public UpdateRequest PoNumber(string poNumber) 
             {
                 m_params.AddOpt("po_number", poNumber);
@@ -1023,6 +1042,11 @@ namespace ChargeBee.Models
             public UpdateRequest ForceTermReset(bool forceTermReset) 
             {
                 m_params.AddOpt("force_term_reset", forceTermReset);
+                return this;
+            }
+            public UpdateRequest Reactivate(bool reactivate) 
+            {
+                m_params.AddOpt("reactivate", reactivate);
                 return this;
             }
             public UpdateRequest InvoiceNotes(string invoiceNotes) 
@@ -1358,6 +1382,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("trial_period_days", trialPeriodDays);
                 return this;
             }
+            public ReactivateRequest ReactivateFrom(long reactivateFrom) 
+            {
+                m_params.AddOpt("reactivate_from", reactivateFrom);
+                return this;
+            }
         }
         public class AddChargeAtTermEndRequest : EntityRequest<AddChargeAtTermEndRequest> 
         {
@@ -1397,6 +1426,19 @@ namespace ChargeBee.Models
             public ChargeAddonAtTermEndRequest AddonUnitPrice(int addonUnitPrice) 
             {
                 m_params.AddOpt("addon_unit_price", addonUnitPrice);
+                return this;
+            }
+        }
+        public class ChargeFutureRenewalsRequest : EntityRequest<ChargeFutureRenewalsRequest> 
+        {
+            public ChargeFutureRenewalsRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public ChargeFutureRenewalsRequest TermsToCharge(int termsToCharge) 
+            {
+                m_params.AddOpt("terms_to_charge", termsToCharge);
                 return this;
             }
         }

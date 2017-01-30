@@ -410,6 +410,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("replace_addon_list", replaceAddonList);
                 return this;
             }
+            public CheckoutExistingRequest TermsToCharge(int termsToCharge) 
+            {
+                m_params.AddOpt("terms_to_charge", termsToCharge);
+                return this;
+            }
+            public CheckoutExistingRequest ReactivateFrom(long reactivateFrom) 
+            {
+                m_params.AddOpt("reactivate_from", reactivateFrom);
+                return this;
+            }
+            public CheckoutExistingRequest Reactivate(bool reactivate) 
+            {
+                m_params.AddOpt("reactivate", reactivate);
+                return this;
+            }
             public CheckoutExistingRequest RedirectUrl(string redirectUrl) 
             {
                 m_params.AddOpt("redirect_url", redirectUrl);

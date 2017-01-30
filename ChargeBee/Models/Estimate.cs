@@ -370,6 +370,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("replace_addon_list", replaceAddonList);
                 return this;
             }
+            public UpdateSubscriptionRequest TermsToCharge(int termsToCharge) 
+            {
+                m_params.AddOpt("terms_to_charge", termsToCharge);
+                return this;
+            }
+            public UpdateSubscriptionRequest ReactivateFrom(long reactivateFrom) 
+            {
+                m_params.AddOpt("reactivate_from", reactivateFrom);
+                return this;
+            }
             public UpdateSubscriptionRequest CouponIds(List<string> couponIds) 
             {
                 m_params.AddOpt("coupon_ids", couponIds);
@@ -393,6 +403,11 @@ namespace ChargeBee.Models
             public UpdateSubscriptionRequest ForceTermReset(bool forceTermReset) 
             {
                 m_params.AddOpt("force_term_reset", forceTermReset);
+                return this;
+            }
+            public UpdateSubscriptionRequest Reactivate(bool reactivate) 
+            {
+                m_params.AddOpt("reactivate", reactivate);
                 return this;
             }
             public UpdateSubscriptionRequest IncludeDelayedCharges(bool includeDelayedCharges) 
