@@ -585,6 +585,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("use_existing_balances", useExistingBalances);
                 return this;
             }
+            public RenewalEstimateRequest IgnoreScheduledCancellation(bool ignoreScheduledCancellation) 
+            {
+                m_params.AddOpt("ignore_scheduled_cancellation", ignoreScheduledCancellation);
+                return this;
+            }
+            public RenewalEstimateRequest IgnoreScheduledChanges(bool ignoreScheduledChanges) 
+            {
+                m_params.AddOpt("ignore_scheduled_changes", ignoreScheduledChanges);
+                return this;
+            }
         }
         #endregion
 

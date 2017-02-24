@@ -109,6 +109,14 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<PortalSession>("portal_session"); }
         }
+        public SiteMigrationDetail SiteMigrationDetail
+        {
+            get {  return GetResource<SiteMigrationDetail>("site_migration_detail"); }
+        }
+        public ResourceMigration ResourceMigration
+        {
+            get {  return GetResource<ResourceMigration>("resource_migration"); }
+        }
 
         public List<CreditNote> CreditNotes
         {

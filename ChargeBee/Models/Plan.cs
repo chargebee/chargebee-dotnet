@@ -539,6 +539,16 @@ namespace ChargeBee.Models
                 m_params.Add("id_at_from_site", idAtFromSite);
                 return this;
             }
+            public CopyRequest Id(string id) 
+            {
+                m_params.AddOpt("id", id);
+                return this;
+            }
+            public CopyRequest ForSiteMerging(bool forSiteMerging) 
+            {
+                m_params.AddOpt("for_site_merging", forSiteMerging);
+                return this;
+            }
         }
         #endregion
 

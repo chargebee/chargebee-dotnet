@@ -89,6 +89,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "delete");
             return new DeleteRequest(url, HttpMethod.POST);
         }
+        public static MoveRequest Move()
+        {
+            string url = ApiUtil.BuildUrl("customers", "move");
+            return new MoveRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -993,6 +998,24 @@ namespace ChargeBee.Models
             public DeleteRequest DeletePaymentMethod(bool deletePaymentMethod) 
             {
                 m_params.AddOpt("delete_payment_method", deletePaymentMethod);
+                return this;
+            }
+        }
+        public class MoveRequest : EntityRequest<MoveRequest> 
+        {
+            public MoveRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public MoveRequest IdAtFromSite(string idAtFromSite) 
+            {
+                m_params.Add("id_at_from_site", idAtFromSite);
+                return this;
+            }
+            public MoveRequest FromSite(string fromSite) 
+            {
+                m_params.Add("from_site", fromSite);
                 return this;
             }
         }

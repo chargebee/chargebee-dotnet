@@ -106,6 +106,8 @@
     <Compile Include="Models\Enums\ValidationStatusEnum.cs" />
     <Compile Include="Models\Enums\TaxOverrideReasonEnum.cs" />
     <Compile Include="Models\Enums\TaxExemptReasonEnum.cs" />
+    <Compile Include="Models\SiteMigrationDetail.cs" />
+    <Compile Include="Models\ResourceMigration.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Cb-Dotnet.snk" />
