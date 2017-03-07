@@ -26,6 +26,27 @@ namespace ChargeBee.Api
 			return (U)this;
 		}
 
+		public StringFilter<U> StringFilterParam(string paranName){
+			return new StringFilter<U>(paranName, (U)this).SupportsMultiOperators(true).SupportsPresenceOperator(true);
+		}
+
+		public BooleanFilter<U> BooleanFilterParam(string paramName){
+			return new BooleanFilter<U>(paramName, (U)this).SupportsPresenceOperator(true);
+    	}
+    
+		public NumberFilter<long, U> LongFilterParam(string paramName) {
+			return new NumberFilter<long, U>(paramName, (U)this).SupportsPresenceOperator(true);
+    	}
+    	
+    	
+    	public TimestampFilter<U> TimestampFilterParam(string paramName){
+			return new TimestampFilter<U>(paramName, (U)this).SupportsPresenceOperator(true);
+    	}
+
+		public DateFilter<U> DateFilterParam(string paramName){
+			return new DateFilter<U>(paramName, (U)this).SupportsPresenceOperator(true);
+		}
+    
 		public U Header(string headerName, string headerValue){
 			headers.Add (headerName, headerValue);
 			return (U)this;

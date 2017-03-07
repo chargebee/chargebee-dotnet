@@ -108,6 +108,7 @@
     <Compile Include="Models\Enums\TaxExemptReasonEnum.cs" />
     <Compile Include="Models\SiteMigrationDetail.cs" />
     <Compile Include="Models\ResourceMigration.cs" />
+    <Compile Include="Filters\DateFilter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Cb-Dotnet.snk" />

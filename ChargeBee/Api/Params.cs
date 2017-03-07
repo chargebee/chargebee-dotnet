@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,8 +24,13 @@ namespace ChargeBee.Api
 
         public void AddOpt(string key, object value)
 		{	
-			m_dict.Add(key, value == null ? String.Empty : ConvertValue(value));
+			m_dict.Add(key, value == null ? String.Empty : ConvertValue(value, false));
         }
+
+		public void AddOpt(string key, object value, bool isDate)
+		{	
+			m_dict.Add(key, value == null ? String.Empty : ConvertValue(value, isDate));
+		}
 
 		public string GetQuery(bool IsList)
         {
@@ -58,7 +63,7 @@ namespace ChargeBee.Api
             return pairs.ToArray();
         }
 
-		private static object ConvertValue(object value) {
+		private static object ConvertValue(object value, bool isDate) {
 			if (value is string || value is int || value is long
 			    || value is double) {
 				return value.ToString ();
@@ -79,13 +84,14 @@ namespace ChargeBee.Api
 				IList origList = (IList)value;
 				List<string> l = new List<string> ();
 				foreach (object item in origList) {
-					l.Add ((string)ConvertValue (item));
+					l.Add ((string)ConvertValue (item, isDate));
 				}
 				return l;
 			} else if (value is DateTime) {
-				return ApiUtil.ConvertToTimestamp((DateTime)value).ToString();
-			}
-			else {
+				return isDate ?
+					((DateTime)value).ToString ("yyyy-MM-dd")
+						: ApiUtil.ConvertToTimestamp ((DateTime)value).ToString ();
+			} else {
 				throw new SystemException("Type [" + value.GetType().ToString() + "] not handled");
 			}
     	}
