@@ -110,6 +110,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
+            public CheckoutNewRequest TermsToCharge(int termsToCharge) 
+            {
+                m_params.AddOpt("terms_to_charge", termsToCharge);
+                return this;
+            }
             public CheckoutNewRequest RedirectUrl(string redirectUrl) 
             {
                 m_params.AddOpt("redirect_url", redirectUrl);
@@ -423,6 +428,11 @@ namespace ChargeBee.Models
             public CheckoutExistingRequest Reactivate(bool reactivate) 
             {
                 m_params.AddOpt("reactivate", reactivate);
+                return this;
+            }
+            public CheckoutExistingRequest ForceTermReset(bool forceTermReset) 
+            {
+                m_params.AddOpt("force_term_reset", forceTermReset);
                 return this;
             }
             public CheckoutExistingRequest RedirectUrl(string redirectUrl) 

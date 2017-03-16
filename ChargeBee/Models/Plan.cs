@@ -337,11 +337,6 @@ namespace ChargeBee.Models
             {
             }
 
-            public UpdateRequest Id(string id) 
-            {
-                m_params.AddOpt("id", id);
-                return this;
-            }
             public UpdateRequest Name(string name) 
             {
                 m_params.AddOpt("name", name);

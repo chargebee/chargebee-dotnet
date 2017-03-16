@@ -78,6 +78,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
+            public CreateSubscriptionRequest TermsToCharge(int termsToCharge) 
+            {
+                m_params.AddOpt("terms_to_charge", termsToCharge);
+                return this;
+            }
             public CreateSubscriptionRequest CouponIds(List<string> couponIds) 
             {
                 m_params.AddOpt("coupon_ids", couponIds);
@@ -255,6 +260,11 @@ namespace ChargeBee.Models
             public CreateSubForCustomerEstimateRequest BillingCycles(int billingCycles) 
             {
                 m_params.AddOpt("billing_cycles", billingCycles);
+                return this;
+            }
+            public CreateSubForCustomerEstimateRequest TermsToCharge(int termsToCharge) 
+            {
+                m_params.AddOpt("terms_to_charge", termsToCharge);
                 return this;
             }
             public CreateSubForCustomerEstimateRequest CouponIds(List<string> couponIds) 

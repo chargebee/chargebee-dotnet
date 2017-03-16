@@ -344,6 +344,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("coupon", coupon);
                 return this;
             }
+            public CreateRequest TermsToCharge(int termsToCharge) 
+            {
+                m_params.AddOpt("terms_to_charge", termsToCharge);
+                return this;
+            }
             public CreateRequest PoNumber(string poNumber) 
             {
                 m_params.AddOpt("po_number", poNumber);
@@ -762,6 +767,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("coupon", coupon);
                 return this;
             }
+            public CreateForCustomerRequest TermsToCharge(int termsToCharge) 
+            {
+                m_params.AddOpt("terms_to_charge", termsToCharge);
+                return this;
+            }
             public CreateForCustomerRequest PoNumber(string poNumber) 
             {
                 m_params.AddOpt("po_number", poNumber);
@@ -907,6 +917,10 @@ namespace ChargeBee.Models
             public TimestampFilter<SubscriptionListRequest> CreatedAt() 
             {
                 return new TimestampFilter<SubscriptionListRequest>("created_at", this);        
+            }
+            public TimestampFilter<SubscriptionListRequest> NextBillingAt() 
+            {
+                return new TimestampFilter<SubscriptionListRequest>("next_billing_at", this);        
             }
             public TimestampFilter<SubscriptionListRequest> CancelledAt() 
             {
@@ -1385,6 +1399,11 @@ namespace ChargeBee.Models
             public ReactivateRequest ReactivateFrom(long reactivateFrom) 
             {
                 m_params.AddOpt("reactivate_from", reactivateFrom);
+                return this;
+            }
+            public ReactivateRequest TermsToCharge(int termsToCharge) 
+            {
+                m_params.AddOpt("terms_to_charge", termsToCharge);
                 return this;
             }
         }
