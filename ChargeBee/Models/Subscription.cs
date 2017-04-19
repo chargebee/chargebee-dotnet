@@ -918,6 +918,10 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<SubscriptionListRequest>("created_at", this);        
             }
+            public TimestampFilter<SubscriptionListRequest> ActivatedAt() 
+            {
+                return new TimestampFilter<SubscriptionListRequest>("activated_at", this);        
+            }
             public TimestampFilter<SubscriptionListRequest> NextBillingAt() 
             {
                 return new TimestampFilter<SubscriptionListRequest>("next_billing_at", this);        

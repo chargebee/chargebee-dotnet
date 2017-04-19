@@ -21,5 +21,14 @@ namespace ChargeBee.Models.Enums
         [Description("direct_debit")]
          DirectDebit,
 
+        [Description("generic")]
+         Generic,
+
+        [Description("alipay")]
+         Alipay,
+
+        [Description("unionpay")]
+         Unionpay,
+
     }
 }

@@ -84,6 +84,9 @@ namespace ChargeBee.Models.Enums
         [Description("gocardless")]
          Gocardless,
 
+        [Description("adyen")]
+         Adyen,
+
         [Description("not_applicable")]
          NotApplicable,
 

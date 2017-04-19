@@ -1035,6 +1035,10 @@ namespace ChargeBee.Models
             Expiring,
             [Description("expired")]
             Expired,
+            [Description("pending_verification")]
+            PendingVerification,
+            [Description("invalid")]
+            Invalid,
 
         }
         public enum FraudFlagEnum
@@ -1166,6 +1170,12 @@ namespace ChargeBee.Models
                 AmazonPayments,
                 [Description("direct_debit")]
                 DirectDebit,
+                [Description("generic")]
+                Generic,
+                [Description("alipay")]
+                Alipay,
+                [Description("unionpay")]
+                Unionpay,
             }
             public enum StatusEnum
             {

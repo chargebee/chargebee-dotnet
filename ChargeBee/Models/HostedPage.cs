@@ -40,10 +40,20 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("hosted_pages", "update_payment_method");
             return new UpdatePaymentMethodRequest(url, HttpMethod.POST);
         }
+        public static EntityRequest<Type> Acknowledge(string id)
+        {
+            string url = ApiUtil.BuildUrl("hosted_pages", CheckNull(id), "acknowledge");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("hosted_pages", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
+        }
+        public static HostedPageListRequest List()
+        {
+            string url = ApiUtil.BuildUrl("hosted_pages");
+            return new HostedPageListRequest(url);
         }
         #endregion
         
@@ -64,6 +74,7 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<StateEnum>("state", false); }
         }
+        [Obsolete]
         public FailureReasonEnum? FailureReason 
         {
             get { return GetEnum<FailureReasonEnum>("failure_reason", false); }
@@ -83,6 +94,18 @@ namespace ChargeBee.Models
         public DateTime? ExpiresAt 
         {
             get { return GetDateTime("expires_at", false); }
+        }
+        public DateTime? UpdatedAt 
+        {
+            get { return GetDateTime("updated_at", false); }
+        }
+        public long? ResourceVersion 
+        {
+            get { return GetValue<long?>("resource_version", false); }
+        }
+        public JToken CheckoutInfo 
+        {
+            get { return GetJToken("checkout_info", false); }
         }
         public HostedPageContent Content
         {
@@ -648,6 +671,30 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class HostedPageListRequest : ListRequestBase<HostedPageListRequest> 
+        {
+            public HostedPageListRequest(string url) 
+                    : base(url)
+            {
+            }
+
+            public StringFilter<HostedPageListRequest> Id() 
+            {
+                return new StringFilter<HostedPageListRequest>("id", this).SupportsMultiOperators(true);        
+            }
+            public EnumFilter<TypeEnum, HostedPageListRequest> Type() 
+            {
+                return new EnumFilter<TypeEnum, HostedPageListRequest>("type", this);        
+            }
+            public EnumFilter<StateEnum, HostedPageListRequest> State() 
+            {
+                return new EnumFilter<StateEnum, HostedPageListRequest>("state", this);        
+            }
+            public TimestampFilter<HostedPageListRequest> UpdatedAt() 
+            {
+                return new TimestampFilter<HostedPageListRequest>("updated_at", this);        
+            }
+        }
         #endregion
 
         public enum TypeEnum
@@ -680,9 +727,13 @@ namespace ChargeBee.Models
             [Description("cancelled")]
             Cancelled,
             [Description("failed")]
+            [Obsolete]
             Failed,
+            [Description("acknowledged")]
+            Acknowledged,
 
         }
+        [Obsolete]
         public enum FailureReasonEnum
         {
 

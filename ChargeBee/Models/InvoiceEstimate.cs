@@ -70,6 +70,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<InvoiceEstimateLineItemTax>("line_item_taxes"); }
         }
+        public List<InvoiceEstimateLineItemDiscount> LineItemDiscounts 
+        {
+            get { return GetResourceList<InvoiceEstimateLineItemDiscount>("line_item_discounts"); }
+        }
         
         #endregion
         
@@ -231,6 +235,39 @@ namespace ChargeBee.Models
 
             public string TaxJurisCode() {
                 return GetValue<string>("tax_juris_code", false);
+            }
+
+        }
+        public class InvoiceEstimateLineItemDiscount : Resource
+        {
+            public enum DiscountTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [Description("item_level_coupon")]
+                ItemLevelCoupon,
+                [Description("document_level_coupon")]
+                DocumentLevelCoupon,
+                [Description("promotional_credits")]
+                PromotionalCredits,
+                [Description("prorated_credits")]
+                ProratedCredits,
+            }
+
+            public string LineItemId() {
+                return GetValue<string>("line_item_id", true);
+            }
+
+            public DiscountTypeEnum DiscountType() {
+                return GetEnum<DiscountTypeEnum>("discount_type", true);
+            }
+
+            public string CouponId() {
+                return GetValue<string>("coupon_id", false);
+            }
+
+            public int DiscountAmount() {
+                return GetValue<int>("discount_amount", true);
             }
 
         }
