@@ -100,6 +100,10 @@ namespace ChargeBee.Models
                 return GetValue<string>("id", false);
             }
 
+            public string SubscriptionId() {
+                return GetValue<string>("subscription_id", false);
+            }
+
             public DateTime DateFrom() {
                 return (DateTime)GetDateTime("date_from", true);
             }

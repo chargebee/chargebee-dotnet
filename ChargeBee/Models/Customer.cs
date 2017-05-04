@@ -49,6 +49,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "update_billing_info");
             return new UpdateBillingInfoRequest(url, HttpMethod.POST);
         }
+        public static AssignPaymentRoleRequest AssignPaymentRole(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "assign_payment_role");
+            return new AssignPaymentRoleRequest(url, HttpMethod.POST);
+        }
         public static AddContactRequest AddContact(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "add_contact");
@@ -169,6 +174,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("locale", false); }
         }
+        public bool? ConsolidatedInvoicing 
+        {
+            get { return GetValue<bool?>("consolidated_invoicing", false); }
+        }
         [Obsolete]
         public CardStatusEnum? CardStatus 
         {
@@ -178,9 +187,21 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<FraudFlagEnum>("fraud_flag", false); }
         }
+        public string PrimaryPaymentSourceId 
+        {
+            get { return GetValue<string>("primary_payment_source_id", false); }
+        }
+        public string BackupPaymentSourceId 
+        {
+            get { return GetValue<string>("backup_payment_source_id", false); }
+        }
         public CustomerBillingAddress BillingAddress 
         {
             get { return GetSubResource<CustomerBillingAddress>("billing_address"); }
+        }
+        public List<CustomerReferralUrl> ReferralUrls 
+        {
+            get { return GetResourceList<CustomerReferralUrl>("referral_urls"); }
         }
         public List<CustomerContact> Contacts 
         {
@@ -307,6 +328,11 @@ namespace ChargeBee.Models
             public CreateRequest MetaData(JToken metaData) 
             {
                 m_params.AddOpt("meta_data", metaData);
+                return this;
+            }
+            public CreateRequest ConsolidatedInvoicing(bool consolidatedInvoicing) 
+            {
+                m_params.AddOpt("consolidated_invoicing", consolidatedInvoicing);
                 return this;
             }
             [Obsolete]
@@ -644,6 +670,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("fraud_flag", fraudFlag);
                 return this;
             }
+            public UpdateRequest ConsolidatedInvoicing(bool consolidatedInvoicing) 
+            {
+                m_params.AddOpt("consolidated_invoicing", consolidatedInvoicing);
+                return this;
+            }
         }
         public class UpdatePaymentMethodRequest : EntityRequest<UpdatePaymentMethodRequest> 
         {
@@ -759,6 +790,24 @@ namespace ChargeBee.Models
             public UpdateBillingInfoRequest BillingAddressValidationStatus(ValidationStatusEnum billingAddressValidationStatus) 
             {
                 m_params.AddOpt("billing_address[validation_status]", billingAddressValidationStatus);
+                return this;
+            }
+        }
+        public class AssignPaymentRoleRequest : EntityRequest<AssignPaymentRoleRequest> 
+        {
+            public AssignPaymentRoleRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public AssignPaymentRoleRequest PaymentSourceId(string paymentSourceId) 
+            {
+                m_params.Add("payment_source_id", paymentSourceId);
+                return this;
+            }
+            public AssignPaymentRoleRequest Role(RoleEnum role) 
+            {
+                m_params.Add("role", role);
                 return this;
             }
         }
@@ -903,6 +952,16 @@ namespace ChargeBee.Models
                 m_params.Add("description", description);
                 return this;
             }
+            public AddPromotionalCreditsRequest CreditType(CreditTypeEnum creditType) 
+            {
+                m_params.AddOpt("credit_type", creditType);
+                return this;
+            }
+            public AddPromotionalCreditsRequest Reference(string reference) 
+            {
+                m_params.AddOpt("reference", reference);
+                return this;
+            }
         }
         public class DeductPromotionalCreditsRequest : EntityRequest<DeductPromotionalCreditsRequest> 
         {
@@ -926,6 +985,16 @@ namespace ChargeBee.Models
                 m_params.Add("description", description);
                 return this;
             }
+            public DeductPromotionalCreditsRequest CreditType(CreditTypeEnum creditType) 
+            {
+                m_params.AddOpt("credit_type", creditType);
+                return this;
+            }
+            public DeductPromotionalCreditsRequest Reference(string reference) 
+            {
+                m_params.AddOpt("reference", reference);
+                return this;
+            }
         }
         public class SetPromotionalCreditsRequest : EntityRequest<SetPromotionalCreditsRequest> 
         {
@@ -947,6 +1016,16 @@ namespace ChargeBee.Models
             public SetPromotionalCreditsRequest Description(string description) 
             {
                 m_params.Add("description", description);
+                return this;
+            }
+            public SetPromotionalCreditsRequest CreditType(CreditTypeEnum creditType) 
+            {
+                m_params.AddOpt("credit_type", creditType);
+                return this;
+            }
+            public SetPromotionalCreditsRequest Reference(string reference) 
+            {
+                m_params.AddOpt("reference", reference);
                 return this;
             }
         }
@@ -1116,6 +1195,42 @@ namespace ChargeBee.Models
             }
 
         }
+        public class CustomerReferralUrl : Resource
+        {
+
+            public string ExternalCustomerId() {
+                return GetValue<string>("external_customer_id", false);
+            }
+
+            public string ReferralSharingUrl() {
+                return GetValue<string>("referral_sharing_url", true);
+            }
+
+            public DateTime CreatedAt() {
+                return (DateTime)GetDateTime("created_at", true);
+            }
+
+            public DateTime UpdatedAt() {
+                return (DateTime)GetDateTime("updated_at", true);
+            }
+
+            public string ReferralCampaignId() {
+                return GetValue<string>("referral_campaign_id", true);
+            }
+
+            public string ReferralAccountId() {
+                return GetValue<string>("referral_account_id", true);
+            }
+
+            public string ReferralExternalCampaignId() {
+                return GetValue<string>("referral_external_campaign_id", false);
+            }
+
+            public ReferralSystemEnum? ReferralSystem() {
+                return GetEnum<ReferralSystemEnum>("referral_system", true);
+            }
+
+        }
         public class CustomerContact : Resource
         {
 
@@ -1210,7 +1325,7 @@ namespace ChargeBee.Models
             }
 
             public string ReferenceId() {
-                return GetValue<string>("reference_id", false);
+                return GetValue<string>("reference_id", true);
             }
 
         }

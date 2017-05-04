@@ -243,6 +243,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[coupon]", subscriptionCoupon);
                 return this;
             }
+            public CheckoutNewRequest SubscriptionAutoCollection(AutoCollectionEnum subscriptionAutoCollection) 
+            {
+                m_params.AddOpt("subscription[auto_collection]", subscriptionAutoCollection);
+                return this;
+            }
             public CheckoutNewRequest SubscriptionInvoiceNotes(string subscriptionInvoiceNotes) 
             {
                 m_params.AddOpt("subscription[invoice_notes]", subscriptionInvoiceNotes);
@@ -263,6 +268,11 @@ namespace ChargeBee.Models
             public CheckoutNewRequest CustomerVatNumber(string customerVatNumber) 
             {
                 m_params.AddOpt("customer[vat_number]", customerVatNumber);
+                return this;
+            }
+            public CheckoutNewRequest CustomerConsolidatedInvoicing(bool customerConsolidatedInvoicing) 
+            {
+                m_params.AddOpt("customer[consolidated_invoicing]", customerConsolidatedInvoicing);
                 return this;
             }
             public CheckoutNewRequest BillingAddressFirstName(string billingAddressFirstName) 

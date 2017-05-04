@@ -62,6 +62,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<CreditNoteEstimate>("credit_note_estimates"); }
         }
+        public List<UnbilledCharge> UnbilledChargeEstimates 
+        {
+            get { return GetResourceList<UnbilledCharge>("unbilled_charge_estimates"); }
+        }
         
         #endregion
         
@@ -86,6 +90,11 @@ namespace ChargeBee.Models
             public CreateSubscriptionRequest CouponIds(List<string> couponIds) 
             {
                 m_params.AddOpt("coupon_ids", couponIds);
+                return this;
+            }
+            public CreateSubscriptionRequest InvoiceImmediately(bool invoiceImmediately) 
+            {
+                m_params.AddOpt("invoice_immediately", invoiceImmediately);
                 return this;
             }
             public CreateSubscriptionRequest SubscriptionId(string subscriptionId) 
@@ -255,6 +264,11 @@ namespace ChargeBee.Models
             public CreateSubForCustomerEstimateRequest UseExistingBalances(bool useExistingBalances) 
             {
                 m_params.AddOpt("use_existing_balances", useExistingBalances);
+                return this;
+            }
+            public CreateSubForCustomerEstimateRequest InvoiceImmediately(bool invoiceImmediately) 
+            {
+                m_params.AddOpt("invoice_immediately", invoiceImmediately);
                 return this;
             }
             public CreateSubForCustomerEstimateRequest BillingCycles(int billingCycles) 
@@ -428,6 +442,11 @@ namespace ChargeBee.Models
             public UpdateSubscriptionRequest UseExistingBalances(bool useExistingBalances) 
             {
                 m_params.AddOpt("use_existing_balances", useExistingBalances);
+                return this;
+            }
+            public UpdateSubscriptionRequest InvoiceImmediately(bool invoiceImmediately) 
+            {
+                m_params.AddOpt("invoice_immediately", invoiceImmediately);
                 return this;
             }
             public UpdateSubscriptionRequest SubscriptionId(string subscriptionId) 

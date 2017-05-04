@@ -110,6 +110,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "import_subscription");
             return new ImportForCustomerRequest(url, HttpMethod.POST);
         }
+        public static OverrideBillingProfileRequest OverrideBillingProfile(string id)
+        {
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "override_billing_profile");
+            return new OverrideBillingProfileRequest(url, HttpMethod.POST);
+        }
         public static EntityRequest<Type> Delete(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "delete");
@@ -234,6 +239,14 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool>("has_scheduled_changes", true); }
         }
+        public string PaymentSourceId 
+        {
+            get { return GetValue<string>("payment_source_id", false); }
+        }
+        public AutoCollectionEnum? AutoCollection 
+        {
+            get { return GetEnum<AutoCollectionEnum>("auto_collection", false); }
+        }
         public int? DueInvoicesCount 
         {
             get { return GetValue<int?>("due_invoices_count", false); }
@@ -274,6 +287,10 @@ namespace ChargeBee.Models
         public SubscriptionShippingAddress ShippingAddress 
         {
             get { return GetSubResource<SubscriptionShippingAddress>("shipping_address"); }
+        }
+        public SubscriptionReferralInfo ReferralInfo 
+        {
+            get { return GetSubResource<SubscriptionReferralInfo>("referral_info"); }
         }
         public string InvoiceNotes 
         {
@@ -344,6 +361,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("coupon", coupon);
                 return this;
             }
+            public CreateRequest AutoCollection(AutoCollectionEnum autoCollection) 
+            {
+                m_params.AddOpt("auto_collection", autoCollection);
+                return this;
+            }
             public CreateRequest TermsToCharge(int termsToCharge) 
             {
                 m_params.AddOpt("terms_to_charge", termsToCharge);
@@ -378,6 +400,11 @@ namespace ChargeBee.Models
             public CreateRequest MetaData(JToken metaData) 
             {
                 m_params.AddOpt("meta_data", metaData);
+                return this;
+            }
+            public CreateRequest InvoiceImmediately(bool invoiceImmediately) 
+            {
+                m_params.AddOpt("invoice_immediately", invoiceImmediately);
                 return this;
             }
             public CreateRequest CustomerId(string customerId) 
@@ -443,6 +470,11 @@ namespace ChargeBee.Models
             public CreateRequest CustomerAllowDirectDebit(bool customerAllowDirectDebit) 
             {
                 m_params.AddOpt("customer[allow_direct_debit]", customerAllowDirectDebit);
+                return this;
+            }
+            public CreateRequest CustomerConsolidatedInvoicing(bool customerConsolidatedInvoicing) 
+            {
+                m_params.AddOpt("customer[consolidated_invoicing]", customerConsolidatedInvoicing);
                 return this;
             }
             [Obsolete]
@@ -767,6 +799,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("coupon", coupon);
                 return this;
             }
+            public CreateForCustomerRequest AutoCollection(AutoCollectionEnum autoCollection) 
+            {
+                m_params.AddOpt("auto_collection", autoCollection);
+                return this;
+            }
             public CreateForCustomerRequest TermsToCharge(int termsToCharge) 
             {
                 m_params.AddOpt("terms_to_charge", termsToCharge);
@@ -782,6 +819,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("coupon_ids", couponIds);
                 return this;
             }
+            public CreateForCustomerRequest PaymentSourceId(string paymentSourceId) 
+            {
+                m_params.AddOpt("payment_source_id", paymentSourceId);
+                return this;
+            }
             public CreateForCustomerRequest InvoiceNotes(string invoiceNotes) 
             {
                 m_params.AddOpt("invoice_notes", invoiceNotes);
@@ -790,6 +832,11 @@ namespace ChargeBee.Models
             public CreateForCustomerRequest MetaData(JToken metaData) 
             {
                 m_params.AddOpt("meta_data", metaData);
+                return this;
+            }
+            public CreateForCustomerRequest InvoiceImmediately(bool invoiceImmediately) 
+            {
+                m_params.AddOpt("invoice_immediately", invoiceImmediately);
                 return this;
             }
             public CreateForCustomerRequest ShippingAddressFirstName(string shippingAddressFirstName) 
@@ -1075,6 +1122,11 @@ namespace ChargeBee.Models
             public UpdateRequest MetaData(JToken metaData) 
             {
                 m_params.AddOpt("meta_data", metaData);
+                return this;
+            }
+            public UpdateRequest InvoiceImmediately(bool invoiceImmediately) 
+            {
+                m_params.AddOpt("invoice_immediately", invoiceImmediately);
                 return this;
             }
             [Obsolete]
@@ -1405,6 +1457,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("reactivate_from", reactivateFrom);
                 return this;
             }
+            public ReactivateRequest InvoiceImmediately(bool invoiceImmediately) 
+            {
+                m_params.AddOpt("invoice_immediately", invoiceImmediately);
+                return this;
+            }
             public ReactivateRequest TermsToCharge(int termsToCharge) 
             {
                 m_params.AddOpt("terms_to_charge", termsToCharge);
@@ -1510,6 +1567,11 @@ namespace ChargeBee.Models
             public ImportSubscriptionRequest BillingCycles(int billingCycles) 
             {
                 m_params.AddOpt("billing_cycles", billingCycles);
+                return this;
+            }
+            public ImportSubscriptionRequest AutoCollection(AutoCollectionEnum autoCollection) 
+            {
+                m_params.AddOpt("auto_collection", autoCollection);
                 return this;
             }
             public ImportSubscriptionRequest PoNumber(string poNumber) 
@@ -1942,6 +2004,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
+            public ImportForCustomerRequest AutoCollection(AutoCollectionEnum autoCollection) 
+            {
+                m_params.AddOpt("auto_collection", autoCollection);
+                return this;
+            }
             public ImportForCustomerRequest PoNumber(string poNumber) 
             {
                 m_params.AddOpt("po_number", poNumber);
@@ -1950,6 +2017,11 @@ namespace ChargeBee.Models
             public ImportForCustomerRequest CouponIds(List<string> couponIds) 
             {
                 m_params.AddOpt("coupon_ids", couponIds);
+                return this;
+            }
+            public ImportForCustomerRequest PaymentSourceId(string paymentSourceId) 
+            {
+                m_params.AddOpt("payment_source_id", paymentSourceId);
                 return this;
             }
             public ImportForCustomerRequest Status(StatusEnum status) 
@@ -2075,6 +2147,24 @@ namespace ChargeBee.Models
             public ImportForCustomerRequest AddonUnitPrice(int index, int addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+                return this;
+            }
+        }
+        public class OverrideBillingProfileRequest : EntityRequest<OverrideBillingProfileRequest> 
+        {
+            public OverrideBillingProfileRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public OverrideBillingProfileRequest PaymentSourceId(string paymentSourceId) 
+            {
+                m_params.AddOpt("payment_source_id", paymentSourceId);
+                return this;
+            }
+            public OverrideBillingProfileRequest AutoCollection(AutoCollectionEnum autoCollection) 
+            {
+                m_params.AddOpt("auto_collection", autoCollection);
                 return this;
             }
         }
@@ -2226,6 +2316,77 @@ namespace ChargeBee.Models
 
             public ValidationStatusEnum? ValidationStatus() {
                 return GetEnum<ValidationStatusEnum>("validation_status", false);
+            }
+
+        }
+        public class SubscriptionReferralInfo : Resource
+        {
+            public enum RewardStatusEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [Description("pending")]
+                Pending,
+                [Description("paid")]
+                Paid,
+                [Description("invalid")]
+                Invalid,
+            }
+
+            public string ReferralCode() {
+                return GetValue<string>("referral_code", false);
+            }
+
+            public string CouponCode() {
+                return GetValue<string>("coupon_code", false);
+            }
+
+            public string ReferrerId() {
+                return GetValue<string>("referrer_id", false);
+            }
+
+            public string ExternalReferenceId() {
+                return GetValue<string>("external_reference_id", false);
+            }
+
+            public RewardStatusEnum? RewardStatus() {
+                return GetEnum<RewardStatusEnum>("reward_status", false);
+            }
+
+            public ReferralSystemEnum? ReferralSystem() {
+                return GetEnum<ReferralSystemEnum>("referral_system", false);
+            }
+
+            public string AccountId() {
+                return GetValue<string>("account_id", true);
+            }
+
+            public string CampaignId() {
+                return GetValue<string>("campaign_id", true);
+            }
+
+            public string ExternalCampaignId() {
+                return GetValue<string>("external_campaign_id", false);
+            }
+
+            public FriendOfferTypeEnum? FriendOfferType() {
+                return GetEnum<FriendOfferTypeEnum>("friend_offer_type", false);
+            }
+
+            public ReferrerRewardTypeEnum? ReferrerRewardType() {
+                return GetEnum<ReferrerRewardTypeEnum>("referrer_reward_type", false);
+            }
+
+            public NotifyReferralSystemEnum? NotifyReferralSystem() {
+                return GetEnum<NotifyReferralSystemEnum>("notify_referral_system", false);
+            }
+
+            public string DestinationUrl() {
+                return GetValue<string>("destination_url", false);
+            }
+
+            public bool PostPurchaseWidgetEnabled() {
+                return GetValue<bool>("post_purchase_widget_enabled", true);
             }
 
         }

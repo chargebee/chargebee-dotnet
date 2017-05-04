@@ -156,5 +156,14 @@ namespace ChargeBee.Models.Enums
         [Description("card_deleted")]
          CardDeleted,
 
+        [Description("payment_source_added")]
+         PaymentSourceAdded,
+
+        [Description("payment_source_updated")]
+         PaymentSourceUpdated,
+
+        [Description("payment_source_deleted")]
+         PaymentSourceDeleted,
+
     }
 }

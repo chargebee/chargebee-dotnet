@@ -41,13 +41,17 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<Customer>("customer"); }
         }
-        public Card Card
+        public PaymentSource PaymentSource
         {
-            get {  return GetResource<Card>("card"); }
+            get {  return GetResource<PaymentSource>("payment_source"); }
         }
         public ThirdPartyPaymentMethod ThirdPartyPaymentMethod
         {
             get {  return GetResource<ThirdPartyPaymentMethod>("third_party_payment_method"); }
+        }
+        public Card Card
+        {
+            get {  return GetResource<Card>("card"); }
         }
         public Invoice Invoice
         {
@@ -56,6 +60,10 @@ namespace ChargeBee.Internal
         public CreditNote CreditNote
         {
             get {  return GetResource<CreditNote>("credit_note"); }
+        }
+        public UnbilledCharge UnbilledCharge
+        {
+            get {  return GetResource<UnbilledCharge>("unbilled_charge"); }
         }
         public Order Order
         {
@@ -118,9 +126,19 @@ namespace ChargeBee.Internal
             get {  return GetResource<ResourceMigration>("resource_migration"); }
         }
 
+        public List<UnbilledCharge> UnbilledCharges
+        {
+            get {  return (List<UnbilledCharge>)GetResourceList<UnbilledCharge>("unbilled_charges", "unbilled_charge"); }
+        }
+
         public List<CreditNote> CreditNotes
         {
             get {  return (List<CreditNote>)GetResourceList<CreditNote>("credit_notes", "credit_note"); }
+        }
+
+        public List<Invoice> Invoices
+        {
+            get {  return (List<Invoice>)GetResourceList<Invoice>("invoices", "invoice"); }
         }
 
 

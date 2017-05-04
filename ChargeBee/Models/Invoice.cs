@@ -323,6 +323,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("po_number", poNumber);
                 return this;
             }
+            public CreateRequest PaymentSourceId(string paymentSourceId) 
+            {
+                m_params.AddOpt("payment_source_id", paymentSourceId);
+                return this;
+            }
             public CreateRequest ShippingAddressFirstName(string shippingAddressFirstName) 
             {
                 m_params.AddOpt("shipping_address[first_name]", shippingAddressFirstName);
@@ -461,6 +466,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("po_number", poNumber);
                 return this;
             }
+            public ChargeRequest PaymentSourceId(string paymentSourceId) 
+            {
+                m_params.AddOpt("payment_source_id", paymentSourceId);
+                return this;
+            }
         }
         public class ChargeAddonRequest : EntityRequest<ChargeAddonRequest> 
         {
@@ -502,6 +512,11 @@ namespace ChargeBee.Models
             public ChargeAddonRequest PoNumber(string poNumber) 
             {
                 m_params.AddOpt("po_number", poNumber);
+                return this;
+            }
+            public ChargeAddonRequest PaymentSourceId(string paymentSourceId) 
+            {
+                m_params.AddOpt("payment_source_id", paymentSourceId);
                 return this;
             }
         }
@@ -1058,6 +1073,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("amount", amount);
                 return this;
             }
+            public CollectPaymentRequest PaymentSourceId(string paymentSourceId) 
+            {
+                m_params.AddOpt("payment_source_id", paymentSourceId);
+                return this;
+            }
         }
         public class RecordPaymentRequest : EntityRequest<RecordPaymentRequest> 
         {
@@ -1278,6 +1298,10 @@ namespace ChargeBee.Models
 
             public string Id() {
                 return GetValue<string>("id", false);
+            }
+
+            public string SubscriptionId() {
+                return GetValue<string>("subscription_id", false);
             }
 
             public DateTime DateFrom() {
