@@ -185,13 +185,13 @@ namespace ChargeBee.Models
             {
                 return new StringFilter<TransactionListRequest>("subscription_id", this).SupportsMultiOperators(true).SupportsPresenceOperator(true);        
             }
-            public EnumFilter<PaymentMethodEnum, TransactionListRequest> PaymentMethod() 
+            public EnumFilter<ChargeBee.Models.Enums.PaymentMethodEnum, TransactionListRequest> PaymentMethod() 
             {
-                return new EnumFilter<PaymentMethodEnum, TransactionListRequest>("payment_method", this);        
+                return new EnumFilter<ChargeBee.Models.Enums.PaymentMethodEnum, TransactionListRequest>("payment_method", this);        
             }
-            public EnumFilter<GatewayEnum, TransactionListRequest> Gateway() 
+            public EnumFilter<ChargeBee.Models.Enums.GatewayEnum, TransactionListRequest> Gateway() 
             {
-                return new EnumFilter<GatewayEnum, TransactionListRequest>("gateway", this);        
+                return new EnumFilter<ChargeBee.Models.Enums.GatewayEnum, TransactionListRequest>("gateway", this);        
             }
             public StringFilter<TransactionListRequest> GatewayAccountId() 
             {
@@ -205,9 +205,9 @@ namespace ChargeBee.Models
             {
                 return new StringFilter<TransactionListRequest>("reference_number", this).SupportsPresenceOperator(true);        
             }
-            public EnumFilter<TypeEnum, TransactionListRequest> Type() 
+            public EnumFilter<Transaction.TypeEnum, TransactionListRequest> Type() 
             {
-                return new EnumFilter<TypeEnum, TransactionListRequest>("type", this);        
+                return new EnumFilter<Transaction.TypeEnum, TransactionListRequest>("type", this);        
             }
             public TimestampFilter<TransactionListRequest> Date() 
             {
@@ -217,9 +217,9 @@ namespace ChargeBee.Models
             {
                 return new NumberFilter<int, TransactionListRequest>("amount", this);        
             }
-            public EnumFilter<StatusEnum, TransactionListRequest> Status() 
+            public EnumFilter<Transaction.StatusEnum, TransactionListRequest> Status() 
             {
-                return new EnumFilter<StatusEnum, TransactionListRequest>("status", this);        
+                return new EnumFilter<Transaction.StatusEnum, TransactionListRequest>("status", this);        
             }
             public TimestampFilter<TransactionListRequest> UpdatedAt() 
             {

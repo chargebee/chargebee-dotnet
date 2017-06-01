@@ -104,9 +104,9 @@ namespace ChargeBee.Models
             {
                 return new StringFilter<CouponCodeListRequest>("coupon_set_name", this);        
             }
-            public EnumFilter<StatusEnum, CouponCodeListRequest> Status() 
+            public EnumFilter<CouponCode.StatusEnum, CouponCodeListRequest> Status() 
             {
-                return new EnumFilter<StatusEnum, CouponCodeListRequest>("status", this);        
+                return new EnumFilter<CouponCode.StatusEnum, CouponCodeListRequest>("status", this);        
             }
         }
         #endregion

@@ -188,7 +188,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("description", description);
                 return this;
             }
-            public CreateRequest ChargeType(ChargeTypeEnum chargeType) 
+            public CreateRequest ChargeType(Addon.ChargeTypeEnum chargeType) 
             {
                 m_params.Add("charge_type", chargeType);
                 return this;
@@ -208,12 +208,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("period", period);
                 return this;
             }
-            public CreateRequest PeriodUnit(PeriodUnitEnum periodUnit) 
+            public CreateRequest PeriodUnit(Addon.PeriodUnitEnum periodUnit) 
             {
                 m_params.AddOpt("period_unit", periodUnit);
                 return this;
             }
-            public CreateRequest Type(TypeEnum type) 
+            public CreateRequest Type(Addon.TypeEnum type) 
             {
                 m_params.Add("type", type);
                 return this;
@@ -296,7 +296,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("description", description);
                 return this;
             }
-            public UpdateRequest ChargeType(ChargeTypeEnum chargeType) 
+            public UpdateRequest ChargeType(Addon.ChargeTypeEnum chargeType) 
             {
                 m_params.AddOpt("charge_type", chargeType);
                 return this;
@@ -316,12 +316,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("period", period);
                 return this;
             }
-            public UpdateRequest PeriodUnit(PeriodUnitEnum periodUnit) 
+            public UpdateRequest PeriodUnit(Addon.PeriodUnitEnum periodUnit) 
             {
                 m_params.AddOpt("period_unit", periodUnit);
                 return this;
             }
-            public UpdateRequest Type(TypeEnum type) 
+            public UpdateRequest Type(Addon.TypeEnum type) 
             {
                 m_params.AddOpt("type", type);
                 return this;
@@ -397,13 +397,13 @@ namespace ChargeBee.Models
             {
                 return new StringFilter<AddonListRequest>("name", this).SupportsMultiOperators(true);        
             }
-            public EnumFilter<TypeEnum, AddonListRequest> Type() 
+            public EnumFilter<Addon.TypeEnum, AddonListRequest> Type() 
             {
-                return new EnumFilter<TypeEnum, AddonListRequest>("type", this);        
+                return new EnumFilter<Addon.TypeEnum, AddonListRequest>("type", this);        
             }
-            public EnumFilter<ChargeTypeEnum, AddonListRequest> ChargeType() 
+            public EnumFilter<Addon.ChargeTypeEnum, AddonListRequest> ChargeType() 
             {
-                return new EnumFilter<ChargeTypeEnum, AddonListRequest>("charge_type", this);        
+                return new EnumFilter<Addon.ChargeTypeEnum, AddonListRequest>("charge_type", this);        
             }
             public NumberFilter<int, AddonListRequest> Price() 
             {
@@ -413,13 +413,13 @@ namespace ChargeBee.Models
             {
                 return new NumberFilter<int, AddonListRequest>("period", this);        
             }
-            public EnumFilter<PeriodUnitEnum, AddonListRequest> PeriodUnit() 
+            public EnumFilter<Addon.PeriodUnitEnum, AddonListRequest> PeriodUnit() 
             {
-                return new EnumFilter<PeriodUnitEnum, AddonListRequest>("period_unit", this);        
+                return new EnumFilter<Addon.PeriodUnitEnum, AddonListRequest>("period_unit", this);        
             }
-            public EnumFilter<StatusEnum, AddonListRequest> Status() 
+            public EnumFilter<Addon.StatusEnum, AddonListRequest> Status() 
             {
-                return new EnumFilter<StatusEnum, AddonListRequest>("status", this);        
+                return new EnumFilter<Addon.StatusEnum, AddonListRequest>("status", this);        
             }
             public TimestampFilter<AddonListRequest> UpdatedAt() 
             {

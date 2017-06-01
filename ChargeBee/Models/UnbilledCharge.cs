@@ -34,6 +34,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("unbilled_charges");
             return new UnbilledChargeListRequest(url);
         }
+        public static InvoiceNowEstimateRequest InvoiceNowEstimate()
+        {
+            string url = ApiUtil.BuildUrl("unbilled_charges", "invoice_now_estimate");
+            return new InvoiceNowEstimateRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -133,6 +138,24 @@ namespace ChargeBee.Models
             public StringFilter<UnbilledChargeListRequest> CustomerId() 
             {
                 return new StringFilter<UnbilledChargeListRequest>("customer_id", this).SupportsMultiOperators(true).SupportsPresenceOperator(true);        
+            }
+        }
+        public class InvoiceNowEstimateRequest : EntityRequest<InvoiceNowEstimateRequest> 
+        {
+            public InvoiceNowEstimateRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public InvoiceNowEstimateRequest SubscriptionId(string subscriptionId) 
+            {
+                m_params.AddOpt("subscription_id", subscriptionId);
+                return this;
+            }
+            public InvoiceNowEstimateRequest CustomerId(string customerId) 
+            {
+                m_params.AddOpt("customer_id", customerId);
+                return this;
             }
         }
         #endregion

@@ -81,7 +81,7 @@ namespace ChargeBee.Models
             {
             }
 
-            public CreateRequest EntityType(EntityTypeEnum entityType) 
+            public CreateRequest EntityType(ChargeBee.Models.Enums.EntityTypeEnum entityType) 
             {
                 m_params.Add("entity_type", entityType);
                 return this;
@@ -109,7 +109,7 @@ namespace ChargeBee.Models
             {
             }
 
-            public CommentListRequest EntityType(EntityTypeEnum entityType) 
+            public CommentListRequest EntityType(ChargeBee.Models.Enums.EntityTypeEnum entityType) 
             {
                 m_params.AddOpt("entity_type", entityType);
                 return this;

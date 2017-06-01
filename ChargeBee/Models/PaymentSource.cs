@@ -131,7 +131,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("gateway_account_id", gatewayAccountId);
                 return this;
             }
-            public CreateUsingTempTokenRequest Type(TypeEnum type) 
+            public CreateUsingTempTokenRequest Type(ChargeBee.Models.Enums.TypeEnum type) 
             {
                 m_params.Add("type", type);
                 return this;
@@ -159,7 +159,7 @@ namespace ChargeBee.Models
                 m_params.Add("customer_id", customerId);
                 return this;
             }
-            public CreateUsingPermanentTokenRequest Type(TypeEnum type) 
+            public CreateUsingPermanentTokenRequest Type(ChargeBee.Models.Enums.TypeEnum type) 
             {
                 m_params.Add("type", type);
                 return this;
@@ -195,12 +195,6 @@ namespace ChargeBee.Models
             public CreateCardRequest ReplacePrimaryPaymentSource(bool replacePrimaryPaymentSource) 
             {
                 m_params.AddOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
-                return this;
-            }
-            [Obsolete]
-            public CreateCardRequest CardGateway(GatewayEnum cardGateway) 
-            {
-                m_params.AddOpt("card[gateway]", cardGateway);
                 return this;
             }
             public CreateCardRequest CardGatewayAccountId(string cardGatewayAccountId) 
@@ -273,12 +267,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[billing_country]", cardBillingCountry);
                 return this;
             }
-            [Obsolete]
-            public CreateCardRequest CardIpAddress(string cardIpAddress) 
-            {
-                m_params.AddOpt("card[ip_address]", cardIpAddress);
-                return this;
-            }
         }
         public class PaymentSourceListRequest : ListRequestBase<PaymentSourceListRequest> 
         {
@@ -291,13 +279,13 @@ namespace ChargeBee.Models
             {
                 return new StringFilter<PaymentSourceListRequest>("customer_id", this).SupportsMultiOperators(true);        
             }
-            public EnumFilter<TypeEnum, PaymentSourceListRequest> Type() 
+            public EnumFilter<ChargeBee.Models.Enums.TypeEnum, PaymentSourceListRequest> Type() 
             {
-                return new EnumFilter<TypeEnum, PaymentSourceListRequest>("type", this);        
+                return new EnumFilter<ChargeBee.Models.Enums.TypeEnum, PaymentSourceListRequest>("type", this);        
             }
-            public EnumFilter<StatusEnum, PaymentSourceListRequest> Status() 
+            public EnumFilter<PaymentSource.StatusEnum, PaymentSourceListRequest> Status() 
             {
-                return new EnumFilter<StatusEnum, PaymentSourceListRequest>("status", this);        
+                return new EnumFilter<PaymentSource.StatusEnum, PaymentSourceListRequest>("status", this);        
             }
         }
         public class SwitchGatewayAccountRequest : EntityRequest<SwitchGatewayAccountRequest> 

@@ -393,7 +393,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
                 return this;
             }
-            public CreateRequest ShippingAddressValidationStatus(ValidationStatusEnum shippingAddressValidationStatus) 
+            public CreateRequest ShippingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum shippingAddressValidationStatus) 
             {
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
@@ -552,12 +552,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("po_number", poNumber);
                 return this;
             }
-            public ImportInvoiceRequest PriceType(PriceTypeEnum priceType) 
+            public ImportInvoiceRequest PriceType(ChargeBee.Models.Enums.PriceTypeEnum priceType) 
             {
                 m_params.AddOpt("price_type", priceType);
                 return this;
             }
-            public ImportInvoiceRequest TaxOverrideReason(TaxOverrideReasonEnum taxOverrideReason) 
+            public ImportInvoiceRequest TaxOverrideReason(ChargeBee.Models.Enums.TaxOverrideReasonEnum taxOverrideReason) 
             {
                 m_params.AddOpt("tax_override_reason", taxOverrideReason);
                 return this;
@@ -582,7 +582,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("round_off", roundOff);
                 return this;
             }
-            public ImportInvoiceRequest Status(StatusEnum status) 
+            public ImportInvoiceRequest Status(Invoice.StatusEnum status) 
             {
                 m_params.AddOpt("status", status);
                 return this;
@@ -667,7 +667,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_address[country]", billingAddressCountry);
                 return this;
             }
-            public ImportInvoiceRequest BillingAddressValidationStatus(ValidationStatusEnum billingAddressValidationStatus) 
+            public ImportInvoiceRequest BillingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum billingAddressValidationStatus) 
             {
                 m_params.AddOpt("billing_address[validation_status]", billingAddressValidationStatus);
                 return this;
@@ -737,7 +737,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
                 return this;
             }
-            public ImportInvoiceRequest ShippingAddressValidationStatus(ValidationStatusEnum shippingAddressValidationStatus) 
+            public ImportInvoiceRequest ShippingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum shippingAddressValidationStatus) 
             {
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
@@ -772,7 +772,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_items[amount][" + index + "]", lineItemAmount);
                 return this;
             }
-			public ImportInvoiceRequest LineItemEntityType(int index, InvoiceLineItem.EntityTypeEnum lineItemEntityType) 
+            public ImportInvoiceRequest LineItemEntityType(int index, InvoiceLineItem.EntityTypeEnum lineItemEntityType) 
             {
                 m_params.AddOpt("line_items[entity_type][" + index + "]", lineItemEntityType);
                 return this;
@@ -842,7 +842,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_items[tax4_amount][" + index + "]", lineItemTax4Amount);
                 return this;
             }
-			public ImportInvoiceRequest DiscountEntityType(int index, InvoiceDiscount.EntityTypeEnum discountEntityType) 
+            public ImportInvoiceRequest DiscountEntityType(int index, InvoiceDiscount.EntityTypeEnum discountEntityType) 
             {
                 m_params.Add("discounts[entity_type][" + index + "]", discountEntityType);
                 return this;
@@ -882,7 +882,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("taxes[description][" + index + "]", taxDescription);
                 return this;
             }
-            public ImportInvoiceRequest TaxJurisType(int index, TaxJurisTypeEnum taxJurisType) 
+            public ImportInvoiceRequest TaxJurisType(int index, ChargeBee.Models.Enums.TaxJurisTypeEnum taxJurisType) 
             {
                 m_params.AddOpt("taxes[juris_type][" + index + "]", taxJurisType);
                 return this;
@@ -902,7 +902,7 @@ namespace ChargeBee.Models
                 m_params.Add("payments[amount][" + index + "]", paymentAmount);
                 return this;
             }
-            public ImportInvoiceRequest PaymentPaymentMethod(int index, PaymentMethodEnum paymentPaymentMethod) 
+            public ImportInvoiceRequest PaymentPaymentMethod(int index, ChargeBee.Models.Enums.PaymentMethodEnum paymentPaymentMethod) 
             {
                 m_params.Add("payments[payment_method][" + index + "]", paymentPaymentMethod);
                 return this;
@@ -967,13 +967,13 @@ namespace ChargeBee.Models
             {
                 return new BooleanFilter<InvoiceListRequest>("recurring", this);        
             }
-            public EnumFilter<StatusEnum, InvoiceListRequest> Status() 
+            public EnumFilter<Invoice.StatusEnum, InvoiceListRequest> Status() 
             {
-                return new EnumFilter<StatusEnum, InvoiceListRequest>("status", this);        
+                return new EnumFilter<Invoice.StatusEnum, InvoiceListRequest>("status", this);        
             }
-            public EnumFilter<PriceTypeEnum, InvoiceListRequest> PriceType() 
+            public EnumFilter<ChargeBee.Models.Enums.PriceTypeEnum, InvoiceListRequest> PriceType() 
             {
-                return new EnumFilter<PriceTypeEnum, InvoiceListRequest>("price_type", this);        
+                return new EnumFilter<ChargeBee.Models.Enums.PriceTypeEnum, InvoiceListRequest>("price_type", this);        
             }
             public TimestampFilter<InvoiceListRequest> Date() 
             {
@@ -1003,9 +1003,9 @@ namespace ChargeBee.Models
             {
                 return new NumberFilter<int, InvoiceListRequest>("amount_due", this);        
             }
-            public EnumFilter<DunningStatusEnum, InvoiceListRequest> DunningStatus() 
+            public EnumFilter<Invoice.DunningStatusEnum, InvoiceListRequest> DunningStatus() 
             {
-                return new EnumFilter<DunningStatusEnum, InvoiceListRequest>("dunning_status", this).SupportsPresenceOperator(true);        
+                return new EnumFilter<Invoice.DunningStatusEnum, InvoiceListRequest>("dunning_status", this).SupportsPresenceOperator(true);        
             }
             public TimestampFilter<InvoiceListRequest> VoidedAt() 
             {
@@ -1096,7 +1096,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("transaction[amount]", transactionAmount);
                 return this;
             }
-            public RecordPaymentRequest TransactionPaymentMethod(PaymentMethodEnum transactionPaymentMethod) 
+            public RecordPaymentRequest TransactionPaymentMethod(ChargeBee.Models.Enums.PaymentMethodEnum transactionPaymentMethod) 
             {
                 m_params.Add("transaction[payment_method]", transactionPaymentMethod);
                 return this;
@@ -1111,7 +1111,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("transaction[id_at_gateway]", transactionIdAtGateway);
                 return this;
             }
-			public RecordPaymentRequest TransactionStatus(Transaction.StatusEnum transactionStatus) 
+            public RecordPaymentRequest TransactionStatus(Transaction.StatusEnum transactionStatus) 
             {
                 m_params.AddOpt("transaction[status]", transactionStatus);
                 return this;
@@ -1182,7 +1182,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("transaction[amount]", transactionAmount);
                 return this;
             }
-            public RecordRefundRequest TransactionPaymentMethod(PaymentMethodEnum transactionPaymentMethod) 
+            public RecordRefundRequest TransactionPaymentMethod(ChargeBee.Models.Enums.PaymentMethodEnum transactionPaymentMethod) 
             {
                 m_params.Add("transaction[payment_method]", transactionPaymentMethod);
                 return this;

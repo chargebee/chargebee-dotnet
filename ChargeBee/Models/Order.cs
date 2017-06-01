@@ -113,7 +113,7 @@ namespace ChargeBee.Models
                 m_params.Add("invoice_id", invoiceId);
                 return this;
             }
-            public CreateRequest Status(StatusEnum status) 
+            public CreateRequest Status(Order.StatusEnum status) 
             {
                 m_params.AddOpt("status", status);
                 return this;
@@ -151,7 +151,7 @@ namespace ChargeBee.Models
             {
             }
 
-            public UpdateRequest Status(StatusEnum status) 
+            public UpdateRequest Status(Order.StatusEnum status) 
             {
                 m_params.AddOpt("status", status);
                 return this;
@@ -197,9 +197,9 @@ namespace ChargeBee.Models
             {
                 return new StringFilter<OrderListRequest>("invoice_id", this).SupportsMultiOperators(true);        
             }
-            public EnumFilter<StatusEnum, OrderListRequest> Status() 
+            public EnumFilter<Order.StatusEnum, OrderListRequest> Status() 
             {
-                return new EnumFilter<StatusEnum, OrderListRequest>("status", this);        
+                return new EnumFilter<Order.StatusEnum, OrderListRequest>("status", this);        
             }
             public TimestampFilter<OrderListRequest> CreatedAt() 
             {

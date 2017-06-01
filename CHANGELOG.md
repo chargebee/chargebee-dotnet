@@ -1,3 +1,17 @@
+### v2.3.1 (2017-06-01)
+* * * 
+
+The endpoint Invoice Now Estimate has been added to the Unbilled Charge resource.
+See : https://apidocs.chargebee.com/docs/api/customers#assign_payment_role
+
+** APIs updated**: 
+
+The filter  param "phone" has been added to the List Customer API.
+See : https://apidocs.chargebee.com/docs/api/customers#list_customers
+
+The subresource "invoice_estimates" has been added to the Estimate resource. 
+See : https://apidocs.chargebee.com/docs/api/estimates#invoice_estimate_attributes
+
 ###v2.3.0 (2017-05-04)
 * * * 
 

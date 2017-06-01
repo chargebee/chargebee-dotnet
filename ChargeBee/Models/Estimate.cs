@@ -54,6 +54,10 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<InvoiceEstimate>("invoice_estimate"); }
         }
+        public List<InvoiceEstimate> InvoiceEstimates 
+        {
+            get { return GetResourceList<InvoiceEstimate>("invoice_estimates"); }
+        }
         public InvoiceEstimate NextInvoiceEstimate 
         {
             get { return GetSubResource<InvoiceEstimate>("next_invoice_estimate"); }
@@ -173,7 +177,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_address[country]", billingAddressCountry);
                 return this;
             }
-            public CreateSubscriptionRequest BillingAddressValidationStatus(ValidationStatusEnum billingAddressValidationStatus) 
+            public CreateSubscriptionRequest BillingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum billingAddressValidationStatus) 
             {
                 m_params.AddOpt("billing_address[validation_status]", billingAddressValidationStatus);
                 return this;
@@ -213,7 +217,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
                 return this;
             }
-            public CreateSubscriptionRequest ShippingAddressValidationStatus(ValidationStatusEnum shippingAddressValidationStatus) 
+            public CreateSubscriptionRequest ShippingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum shippingAddressValidationStatus) 
             {
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
@@ -223,12 +227,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[vat_number]", customerVatNumber);
                 return this;
             }
-            public CreateSubscriptionRequest CustomerTaxability(TaxabilityEnum customerTaxability) 
+            public CreateSubscriptionRequest CustomerTaxability(ChargeBee.Models.Enums.TaxabilityEnum customerTaxability) 
             {
                 m_params.AddOpt("customer[taxability]", customerTaxability);
                 return this;
             }
-            public CreateSubscriptionRequest CustomerEntityCode(EntityCodeEnum customerEntityCode) 
+            public CreateSubscriptionRequest CustomerEntityCode(ChargeBee.Models.Enums.EntityCodeEnum customerEntityCode) 
             {
                 m_params.AddOpt("customer[entity_code]", customerEntityCode);
                 return this;
@@ -356,7 +360,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
                 return this;
             }
-            public CreateSubForCustomerEstimateRequest ShippingAddressValidationStatus(ValidationStatusEnum shippingAddressValidationStatus) 
+            public CreateSubForCustomerEstimateRequest ShippingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum shippingAddressValidationStatus) 
             {
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
@@ -525,7 +529,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_address[country]", billingAddressCountry);
                 return this;
             }
-            public UpdateSubscriptionRequest BillingAddressValidationStatus(ValidationStatusEnum billingAddressValidationStatus) 
+            public UpdateSubscriptionRequest BillingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum billingAddressValidationStatus) 
             {
                 m_params.AddOpt("billing_address[validation_status]", billingAddressValidationStatus);
                 return this;
@@ -565,7 +569,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
                 return this;
             }
-            public UpdateSubscriptionRequest ShippingAddressValidationStatus(ValidationStatusEnum shippingAddressValidationStatus) 
+            public UpdateSubscriptionRequest ShippingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum shippingAddressValidationStatus) 
             {
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
@@ -576,7 +580,7 @@ namespace ChargeBee.Models
                 return this;
             }
             [Obsolete]
-            public UpdateSubscriptionRequest CustomerTaxability(TaxabilityEnum customerTaxability) 
+            public UpdateSubscriptionRequest CustomerTaxability(ChargeBee.Models.Enums.TaxabilityEnum customerTaxability) 
             {
                 m_params.AddOpt("customer[taxability]", customerTaxability);
                 return this;

@@ -71,7 +71,7 @@ namespace ChargeBee.Models
                 m_params.Add("from_site", fromSite);
                 return this;
             }
-            public RetrieveLatestRequest EntityType(EntityTypeEnum entityType) 
+            public RetrieveLatestRequest EntityType(ChargeBee.Models.Enums.EntityTypeEnum entityType) 
             {
                 m_params.Add("entity_type", entityType);
                 return this;

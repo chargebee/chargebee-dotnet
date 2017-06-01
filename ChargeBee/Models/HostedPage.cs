@@ -193,7 +193,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[company]", customerCompany);
                 return this;
             }
-            public CheckoutNewRequest CustomerTaxability(TaxabilityEnum customerTaxability) 
+            public CheckoutNewRequest CustomerTaxability(ChargeBee.Models.Enums.TaxabilityEnum customerTaxability) 
             {
                 m_params.AddOpt("customer[taxability]", customerTaxability);
                 return this;
@@ -243,7 +243,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[coupon]", subscriptionCoupon);
                 return this;
             }
-            public CheckoutNewRequest SubscriptionAutoCollection(AutoCollectionEnum subscriptionAutoCollection) 
+            public CheckoutNewRequest SubscriptionAutoCollection(ChargeBee.Models.Enums.AutoCollectionEnum subscriptionAutoCollection) 
             {
                 m_params.AddOpt("subscription[auto_collection]", subscriptionAutoCollection);
                 return this;
@@ -254,7 +254,7 @@ namespace ChargeBee.Models
                 return this;
             }
             [Obsolete]
-            public CheckoutNewRequest CardGateway(GatewayEnum cardGateway) 
+            public CheckoutNewRequest CardGateway(ChargeBee.Models.Enums.GatewayEnum cardGateway) 
             {
                 m_params.AddOpt("card[gateway]", cardGateway);
                 return this;
@@ -340,7 +340,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_address[country]", billingAddressCountry);
                 return this;
             }
-            public CheckoutNewRequest BillingAddressValidationStatus(ValidationStatusEnum billingAddressValidationStatus) 
+            public CheckoutNewRequest BillingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum billingAddressValidationStatus) 
             {
                 m_params.AddOpt("billing_address[validation_status]", billingAddressValidationStatus);
                 return this;
@@ -410,7 +410,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
                 return this;
             }
-            public CheckoutNewRequest ShippingAddressValidationStatus(ValidationStatusEnum shippingAddressValidationStatus) 
+            public CheckoutNewRequest ShippingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum shippingAddressValidationStatus) 
             {
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
@@ -545,7 +545,7 @@ namespace ChargeBee.Models
                 return this;
             }
             [Obsolete]
-            public CheckoutExistingRequest CardGateway(GatewayEnum cardGateway) 
+            public CheckoutExistingRequest CardGateway(ChargeBee.Models.Enums.GatewayEnum cardGateway) 
             {
                 m_params.AddOpt("card[gateway]", cardGateway);
                 return this;
@@ -615,7 +615,7 @@ namespace ChargeBee.Models
                 return this;
             }
             [Obsolete]
-            public UpdateCardRequest CardGateway(GatewayEnum cardGateway) 
+            public UpdateCardRequest CardGateway(ChargeBee.Models.Enums.GatewayEnum cardGateway) 
             {
                 m_params.AddOpt("card[gateway]", cardGateway);
                 return this;
@@ -670,7 +670,7 @@ namespace ChargeBee.Models
                 return this;
             }
             [Obsolete]
-            public UpdatePaymentMethodRequest CardGateway(GatewayEnum cardGateway) 
+            public UpdatePaymentMethodRequest CardGateway(ChargeBee.Models.Enums.GatewayEnum cardGateway) 
             {
                 m_params.AddOpt("card[gateway]", cardGateway);
                 return this;
@@ -692,13 +692,13 @@ namespace ChargeBee.Models
             {
                 return new StringFilter<HostedPageListRequest>("id", this).SupportsMultiOperators(true);        
             }
-            public EnumFilter<TypeEnum, HostedPageListRequest> Type() 
+            public EnumFilter<HostedPage.TypeEnum, HostedPageListRequest> Type() 
             {
-                return new EnumFilter<TypeEnum, HostedPageListRequest>("type", this);        
+                return new EnumFilter<HostedPage.TypeEnum, HostedPageListRequest>("type", this);        
             }
-            public EnumFilter<StateEnum, HostedPageListRequest> State() 
+            public EnumFilter<HostedPage.StateEnum, HostedPageListRequest> State() 
             {
-                return new EnumFilter<StateEnum, HostedPageListRequest>("state", this);        
+                return new EnumFilter<HostedPage.StateEnum, HostedPageListRequest>("state", this);        
             }
             public TimestampFilter<HostedPageListRequest> UpdatedAt() 
             {

@@ -147,7 +147,7 @@ namespace ChargeBee.Models
             }
 
             [Obsolete]
-            public UpdateCardForCustomerRequest Gateway(GatewayEnum gateway) 
+            public UpdateCardForCustomerRequest Gateway(ChargeBee.Models.Enums.GatewayEnum gateway) 
             {
                 m_params.AddOpt("gateway", gateway);
                 return this;
@@ -248,7 +248,7 @@ namespace ChargeBee.Models
             }
 
             [Obsolete]
-            public SwitchGatewayForCustomerRequest Gateway(GatewayEnum gateway) 
+            public SwitchGatewayForCustomerRequest Gateway(ChargeBee.Models.Enums.GatewayEnum gateway) 
             {
                 m_params.AddOpt("gateway", gateway);
                 return this;

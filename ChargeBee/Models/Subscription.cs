@@ -361,7 +361,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("coupon", coupon);
                 return this;
             }
-            public CreateRequest AutoCollection(AutoCollectionEnum autoCollection) 
+            public CreateRequest AutoCollection(ChargeBee.Models.Enums.AutoCollectionEnum autoCollection) 
             {
                 m_params.AddOpt("auto_collection", autoCollection);
                 return this;
@@ -432,7 +432,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[company]", customerCompany);
                 return this;
             }
-            public CreateRequest CustomerTaxability(TaxabilityEnum customerTaxability) 
+            public CreateRequest CustomerTaxability(ChargeBee.Models.Enums.TaxabilityEnum customerTaxability) 
             {
                 m_params.AddOpt("customer[taxability]", customerTaxability);
                 return this;
@@ -442,7 +442,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[locale]", customerLocale);
                 return this;
             }
-            public CreateRequest CustomerEntityCode(EntityCodeEnum customerEntityCode) 
+            public CreateRequest CustomerEntityCode(ChargeBee.Models.Enums.EntityCodeEnum customerEntityCode) 
             {
                 m_params.AddOpt("customer[entity_code]", customerEntityCode);
                 return this;
@@ -462,7 +462,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[phone]", customerPhone);
                 return this;
             }
-            public CreateRequest CustomerAutoCollection(AutoCollectionEnum customerAutoCollection) 
+            public CreateRequest CustomerAutoCollection(ChargeBee.Models.Enums.AutoCollectionEnum customerAutoCollection) 
             {
                 m_params.AddOpt("customer[auto_collection]", customerAutoCollection);
                 return this;
@@ -478,7 +478,7 @@ namespace ChargeBee.Models
                 return this;
             }
             [Obsolete]
-            public CreateRequest CardGateway(GatewayEnum cardGateway) 
+            public CreateRequest CardGateway(ChargeBee.Models.Enums.GatewayEnum cardGateway) 
             {
                 m_params.AddOpt("card[gateway]", cardGateway);
                 return this;
@@ -493,13 +493,13 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[tmp_token]", cardTmpToken);
                 return this;
             }
-            public CreateRequest PaymentMethodType(TypeEnum paymentMethodType) 
+            public CreateRequest PaymentMethodType(ChargeBee.Models.Enums.TypeEnum paymentMethodType) 
             {
                 m_params.AddOpt("payment_method[type]", paymentMethodType);
                 return this;
             }
             [Obsolete]
-            public CreateRequest PaymentMethodGateway(GatewayEnum paymentMethodGateway) 
+            public CreateRequest PaymentMethodGateway(ChargeBee.Models.Enums.GatewayEnum paymentMethodGateway) 
             {
                 m_params.AddOpt("payment_method[gateway]", paymentMethodGateway);
                 return this;
@@ -650,7 +650,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_address[country]", billingAddressCountry);
                 return this;
             }
-            public CreateRequest BillingAddressValidationStatus(ValidationStatusEnum billingAddressValidationStatus) 
+            public CreateRequest BillingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum billingAddressValidationStatus) 
             {
                 m_params.AddOpt("billing_address[validation_status]", billingAddressValidationStatus);
                 return this;
@@ -720,7 +720,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
                 return this;
             }
-            public CreateRequest ShippingAddressValidationStatus(ValidationStatusEnum shippingAddressValidationStatus) 
+            public CreateRequest ShippingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum shippingAddressValidationStatus) 
             {
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
@@ -799,7 +799,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("coupon", coupon);
                 return this;
             }
-            public CreateForCustomerRequest AutoCollection(AutoCollectionEnum autoCollection) 
+            public CreateForCustomerRequest AutoCollection(ChargeBee.Models.Enums.AutoCollectionEnum autoCollection) 
             {
                 m_params.AddOpt("auto_collection", autoCollection);
                 return this;
@@ -904,7 +904,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
                 return this;
             }
-            public CreateForCustomerRequest ShippingAddressValidationStatus(ValidationStatusEnum shippingAddressValidationStatus) 
+            public CreateForCustomerRequest ShippingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum shippingAddressValidationStatus) 
             {
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
@@ -949,13 +949,13 @@ namespace ChargeBee.Models
             {
                 return new StringFilter<SubscriptionListRequest>("plan_id", this).SupportsMultiOperators(true);        
             }
-            public EnumFilter<StatusEnum, SubscriptionListRequest> Status() 
+            public EnumFilter<Subscription.StatusEnum, SubscriptionListRequest> Status() 
             {
-                return new EnumFilter<StatusEnum, SubscriptionListRequest>("status", this);        
+                return new EnumFilter<Subscription.StatusEnum, SubscriptionListRequest>("status", this);        
             }
-            public EnumFilter<CancelReasonEnum, SubscriptionListRequest> CancelReason() 
+            public EnumFilter<Subscription.CancelReasonEnum, SubscriptionListRequest> CancelReason() 
             {
-                return new EnumFilter<CancelReasonEnum, SubscriptionListRequest>("cancel_reason", this).SupportsPresenceOperator(true);        
+                return new EnumFilter<Subscription.CancelReasonEnum, SubscriptionListRequest>("cancel_reason", this).SupportsPresenceOperator(true);        
             }
             public NumberFilter<int, SubscriptionListRequest> RemainingBillingCycles() 
             {
@@ -1130,7 +1130,7 @@ namespace ChargeBee.Models
                 return this;
             }
             [Obsolete]
-            public UpdateRequest CardGateway(GatewayEnum cardGateway) 
+            public UpdateRequest CardGateway(ChargeBee.Models.Enums.GatewayEnum cardGateway) 
             {
                 m_params.AddOpt("card[gateway]", cardGateway);
                 return this;
@@ -1145,13 +1145,13 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[tmp_token]", cardTmpToken);
                 return this;
             }
-            public UpdateRequest PaymentMethodType(TypeEnum paymentMethodType) 
+            public UpdateRequest PaymentMethodType(ChargeBee.Models.Enums.TypeEnum paymentMethodType) 
             {
                 m_params.AddOpt("payment_method[type]", paymentMethodType);
                 return this;
             }
             [Obsolete]
-            public UpdateRequest PaymentMethodGateway(GatewayEnum paymentMethodGateway) 
+            public UpdateRequest PaymentMethodGateway(ChargeBee.Models.Enums.GatewayEnum paymentMethodGateway) 
             {
                 m_params.AddOpt("payment_method[gateway]", paymentMethodGateway);
                 return this;
@@ -1307,7 +1307,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_address[country]", billingAddressCountry);
                 return this;
             }
-            public UpdateRequest BillingAddressValidationStatus(ValidationStatusEnum billingAddressValidationStatus) 
+            public UpdateRequest BillingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum billingAddressValidationStatus) 
             {
                 m_params.AddOpt("billing_address[validation_status]", billingAddressValidationStatus);
                 return this;
@@ -1377,7 +1377,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
                 return this;
             }
-            public UpdateRequest ShippingAddressValidationStatus(ValidationStatusEnum shippingAddressValidationStatus) 
+            public UpdateRequest ShippingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum shippingAddressValidationStatus) 
             {
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
@@ -1584,7 +1584,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("coupon_ids", couponIds);
                 return this;
             }
-            public ImportSubscriptionRequest Status(StatusEnum status) 
+            public ImportSubscriptionRequest Status(Subscription.StatusEnum status) 
             {
                 m_params.Add("status", status);
                 return this;
@@ -1654,7 +1654,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[company]", customerCompany);
                 return this;
             }
-            public ImportSubscriptionRequest CustomerTaxability(TaxabilityEnum customerTaxability) 
+            public ImportSubscriptionRequest CustomerTaxability(ChargeBee.Models.Enums.TaxabilityEnum customerTaxability) 
             {
                 m_params.AddOpt("customer[taxability]", customerTaxability);
                 return this;
@@ -1664,7 +1664,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[locale]", customerLocale);
                 return this;
             }
-            public ImportSubscriptionRequest CustomerEntityCode(EntityCodeEnum customerEntityCode) 
+            public ImportSubscriptionRequest CustomerEntityCode(ChargeBee.Models.Enums.EntityCodeEnum customerEntityCode) 
             {
                 m_params.AddOpt("customer[entity_code]", customerEntityCode);
                 return this;
@@ -1684,7 +1684,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[phone]", customerPhone);
                 return this;
             }
-            public ImportSubscriptionRequest CustomerAutoCollection(AutoCollectionEnum customerAutoCollection) 
+            public ImportSubscriptionRequest CustomerAutoCollection(ChargeBee.Models.Enums.AutoCollectionEnum customerAutoCollection) 
             {
                 m_params.AddOpt("customer[auto_collection]", customerAutoCollection);
                 return this;
@@ -1695,7 +1695,7 @@ namespace ChargeBee.Models
                 return this;
             }
             [Obsolete]
-            public ImportSubscriptionRequest CardGateway(GatewayEnum cardGateway) 
+            public ImportSubscriptionRequest CardGateway(ChargeBee.Models.Enums.GatewayEnum cardGateway) 
             {
                 m_params.AddOpt("card[gateway]", cardGateway);
                 return this;
@@ -1710,13 +1710,13 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[tmp_token]", cardTmpToken);
                 return this;
             }
-            public ImportSubscriptionRequest PaymentMethodType(TypeEnum paymentMethodType) 
+            public ImportSubscriptionRequest PaymentMethodType(ChargeBee.Models.Enums.TypeEnum paymentMethodType) 
             {
                 m_params.AddOpt("payment_method[type]", paymentMethodType);
                 return this;
             }
             [Obsolete]
-            public ImportSubscriptionRequest PaymentMethodGateway(GatewayEnum paymentMethodGateway) 
+            public ImportSubscriptionRequest PaymentMethodGateway(ChargeBee.Models.Enums.GatewayEnum paymentMethodGateway) 
             {
                 m_params.AddOpt("payment_method[gateway]", paymentMethodGateway);
                 return this;
@@ -1861,7 +1861,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_address[country]", billingAddressCountry);
                 return this;
             }
-            public ImportSubscriptionRequest BillingAddressValidationStatus(ValidationStatusEnum billingAddressValidationStatus) 
+            public ImportSubscriptionRequest BillingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum billingAddressValidationStatus) 
             {
                 m_params.AddOpt("billing_address[validation_status]", billingAddressValidationStatus);
                 return this;
@@ -1931,7 +1931,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
                 return this;
             }
-            public ImportSubscriptionRequest ShippingAddressValidationStatus(ValidationStatusEnum shippingAddressValidationStatus) 
+            public ImportSubscriptionRequest ShippingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum shippingAddressValidationStatus) 
             {
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
@@ -2024,7 +2024,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_source_id", paymentSourceId);
                 return this;
             }
-            public ImportForCustomerRequest Status(StatusEnum status) 
+            public ImportForCustomerRequest Status(Subscription.StatusEnum status) 
             {
                 m_params.Add("status", status);
                 return this;
@@ -2129,7 +2129,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
                 return this;
             }
-            public ImportForCustomerRequest ShippingAddressValidationStatus(ValidationStatusEnum shippingAddressValidationStatus) 
+            public ImportForCustomerRequest ShippingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum shippingAddressValidationStatus) 
             {
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
@@ -2162,7 +2162,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_source_id", paymentSourceId);
                 return this;
             }
-            public OverrideBillingProfileRequest AutoCollection(AutoCollectionEnum autoCollection) 
+            public OverrideBillingProfileRequest AutoCollection(ChargeBee.Models.Enums.AutoCollectionEnum autoCollection) 
             {
                 m_params.AddOpt("auto_collection", autoCollection);
                 return this;

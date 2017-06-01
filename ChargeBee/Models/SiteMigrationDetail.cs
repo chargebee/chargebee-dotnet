@@ -74,9 +74,9 @@ namespace ChargeBee.Models
             {
                 return new StringFilter<SiteMigrationDetailListRequest>("entity_id", this);        
             }
-            public EnumFilter<EntityTypeEnum, SiteMigrationDetailListRequest> EntityType() 
+            public EnumFilter<ChargeBee.Models.Enums.EntityTypeEnum, SiteMigrationDetailListRequest> EntityType() 
             {
-                return new EnumFilter<EntityTypeEnum, SiteMigrationDetailListRequest>("entity_type", this);        
+                return new EnumFilter<ChargeBee.Models.Enums.EntityTypeEnum, SiteMigrationDetailListRequest>("entity_type", this);        
             }
             public EnumFilter<StatusEnum, SiteMigrationDetailListRequest> Status() 
             {

@@ -218,7 +218,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("trial_period", trialPeriod);
                 return this;
             }
-            public CreateRequest TrialPeriodUnit(TrialPeriodUnitEnum trialPeriodUnit) 
+            public CreateRequest TrialPeriodUnit(Plan.TrialPeriodUnitEnum trialPeriodUnit) 
             {
                 m_params.AddOpt("trial_period_unit", trialPeriodUnit);
                 return this;
@@ -228,7 +228,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("period", period);
                 return this;
             }
-            public CreateRequest PeriodUnit(PeriodUnitEnum periodUnit) 
+            public CreateRequest PeriodUnit(Plan.PeriodUnitEnum periodUnit) 
             {
                 m_params.AddOpt("period_unit", periodUnit);
                 return this;
@@ -253,7 +253,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
-            public CreateRequest ChargeModel(ChargeModelEnum chargeModel) 
+            public CreateRequest ChargeModel(Plan.ChargeModelEnum chargeModel) 
             {
                 m_params.AddOpt("charge_model", chargeModel);
                 return this;
@@ -357,7 +357,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("trial_period", trialPeriod);
                 return this;
             }
-            public UpdateRequest TrialPeriodUnit(TrialPeriodUnitEnum trialPeriodUnit) 
+            public UpdateRequest TrialPeriodUnit(Plan.TrialPeriodUnitEnum trialPeriodUnit) 
             {
                 m_params.AddOpt("trial_period_unit", trialPeriodUnit);
                 return this;
@@ -367,7 +367,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("period", period);
                 return this;
             }
-            public UpdateRequest PeriodUnit(PeriodUnitEnum periodUnit) 
+            public UpdateRequest PeriodUnit(Plan.PeriodUnitEnum periodUnit) 
             {
                 m_params.AddOpt("period_unit", periodUnit);
                 return this;
@@ -392,7 +392,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
-            public UpdateRequest ChargeModel(ChargeModelEnum chargeModel) 
+            public UpdateRequest ChargeModel(Plan.ChargeModelEnum chargeModel) 
             {
                 m_params.AddOpt("charge_model", chargeModel);
                 return this;
@@ -492,25 +492,25 @@ namespace ChargeBee.Models
             {
                 return new NumberFilter<int, PlanListRequest>("period", this);        
             }
-            public EnumFilter<PeriodUnitEnum, PlanListRequest> PeriodUnit() 
+            public EnumFilter<Plan.PeriodUnitEnum, PlanListRequest> PeriodUnit() 
             {
-                return new EnumFilter<PeriodUnitEnum, PlanListRequest>("period_unit", this);        
+                return new EnumFilter<Plan.PeriodUnitEnum, PlanListRequest>("period_unit", this);        
             }
             public NumberFilter<int, PlanListRequest> TrialPeriod() 
             {
                 return new NumberFilter<int, PlanListRequest>("trial_period", this).SupportsPresenceOperator(true);        
             }
-            public EnumFilter<TrialPeriodUnitEnum, PlanListRequest> TrialPeriodUnit() 
+            public EnumFilter<Plan.TrialPeriodUnitEnum, PlanListRequest> TrialPeriodUnit() 
             {
-                return new EnumFilter<TrialPeriodUnitEnum, PlanListRequest>("trial_period_unit", this);        
+                return new EnumFilter<Plan.TrialPeriodUnitEnum, PlanListRequest>("trial_period_unit", this);        
             }
-            public EnumFilter<ChargeModelEnum, PlanListRequest> ChargeModel() 
+            public EnumFilter<Plan.ChargeModelEnum, PlanListRequest> ChargeModel() 
             {
-                return new EnumFilter<ChargeModelEnum, PlanListRequest>("charge_model", this);        
+                return new EnumFilter<Plan.ChargeModelEnum, PlanListRequest>("charge_model", this);        
             }
-            public EnumFilter<StatusEnum, PlanListRequest> Status() 
+            public EnumFilter<Plan.StatusEnum, PlanListRequest> Status() 
             {
-                return new EnumFilter<StatusEnum, PlanListRequest>("status", this);        
+                return new EnumFilter<Plan.StatusEnum, PlanListRequest>("status", this);        
             }
             public TimestampFilter<PlanListRequest> UpdatedAt() 
             {

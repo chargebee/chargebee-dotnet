@@ -181,12 +181,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("total", total);
                 return this;
             }
-            public CreateRequest Type(TypeEnum type) 
+            public CreateRequest Type(CreditNote.TypeEnum type) 
             {
                 m_params.Add("type", type);
                 return this;
             }
-            public CreateRequest ReasonCode(ReasonCodeEnum reasonCode) 
+            public CreateRequest ReasonCode(CreditNote.ReasonCodeEnum reasonCode) 
             {
                 m_params.Add("reason_code", reasonCode);
                 return this;
@@ -250,17 +250,17 @@ namespace ChargeBee.Models
             {
                 return new StringFilter<CreditNoteListRequest>("reference_invoice_id", this).SupportsMultiOperators(true);        
             }
-            public EnumFilter<TypeEnum, CreditNoteListRequest> Type() 
+            public EnumFilter<CreditNote.TypeEnum, CreditNoteListRequest> Type() 
             {
-                return new EnumFilter<TypeEnum, CreditNoteListRequest>("type", this);        
+                return new EnumFilter<CreditNote.TypeEnum, CreditNoteListRequest>("type", this);        
             }
-            public EnumFilter<ReasonCodeEnum, CreditNoteListRequest> ReasonCode() 
+            public EnumFilter<CreditNote.ReasonCodeEnum, CreditNoteListRequest> ReasonCode() 
             {
-                return new EnumFilter<ReasonCodeEnum, CreditNoteListRequest>("reason_code", this);        
+                return new EnumFilter<CreditNote.ReasonCodeEnum, CreditNoteListRequest>("reason_code", this);        
             }
-            public EnumFilter<StatusEnum, CreditNoteListRequest> Status() 
+            public EnumFilter<CreditNote.StatusEnum, CreditNoteListRequest> Status() 
             {
-                return new EnumFilter<StatusEnum, CreditNoteListRequest>("status", this);        
+                return new EnumFilter<CreditNote.StatusEnum, CreditNoteListRequest>("status", this);        
             }
             public TimestampFilter<CreditNoteListRequest> Date() 
             {
@@ -270,9 +270,9 @@ namespace ChargeBee.Models
             {
                 return new NumberFilter<int, CreditNoteListRequest>("total", this);        
             }
-            public EnumFilter<PriceTypeEnum, CreditNoteListRequest> PriceType() 
+            public EnumFilter<ChargeBee.Models.Enums.PriceTypeEnum, CreditNoteListRequest> PriceType() 
             {
-                return new EnumFilter<PriceTypeEnum, CreditNoteListRequest>("price_type", this);        
+                return new EnumFilter<ChargeBee.Models.Enums.PriceTypeEnum, CreditNoteListRequest>("price_type", this);        
             }
             public NumberFilter<int, CreditNoteListRequest> AmountAllocated() 
             {

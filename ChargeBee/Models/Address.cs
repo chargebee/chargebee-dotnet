@@ -200,7 +200,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("country", country);
                 return this;
             }
-            public UpdateRequest ValidationStatus(ValidationStatusEnum validationStatus) 
+            public UpdateRequest ValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum validationStatus) 
             {
                 m_params.AddOpt("validation_status", validationStatus);
                 return this;
