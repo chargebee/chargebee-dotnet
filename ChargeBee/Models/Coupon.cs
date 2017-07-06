@@ -265,6 +265,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("meta_data", metaData);
                 return this;
             }
+            public CreateRequest Status(Coupon.StatusEnum status) 
+            {
+                m_params.AddOpt("status", status);
+                return this;
+            }
         }
         public class CouponListRequest : ListRequestBase<CouponListRequest> 
         {

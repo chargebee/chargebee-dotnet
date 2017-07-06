@@ -273,6 +273,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("accounting_category2", accountingCategory2);
                 return this;
             }
+            public CreateRequest Status(Addon.StatusEnum status) 
+            {
+                m_params.AddOpt("status", status);
+                return this;
+            }
         }
         public class UpdateRequest : EntityRequest<UpdateRequest> 
         {

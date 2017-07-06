@@ -101,6 +101,10 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<StatusEnum>("status", false); }
         }
+        public FraudFlagEnum? FraudFlag 
+        {
+            get { return GetEnum<FraudFlagEnum>("fraud_flag", false); }
+        }
         public string ErrorCode 
         {
             get { return GetValue<string>("error_code", false); }
@@ -120,6 +124,10 @@ namespace ChargeBee.Models
         public DateTime? UpdatedAt 
         {
             get { return GetDateTime("updated_at", false); }
+        }
+        public string FraudReason 
+        {
+            get { return GetValue<string>("fraud_reason", false); }
         }
         public int? AmountUnused 
         {
@@ -264,6 +272,19 @@ namespace ChargeBee.Models
             Timeout,
             [Description("needs_attention")]
             NeedsAttention,
+
+        }
+        public enum FraudFlagEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [Description("safe")]
+            Safe,
+            [Description("suspicious")]
+            Suspicious,
+            [Description("fraudulent")]
+            Fraudulent,
 
         }
 

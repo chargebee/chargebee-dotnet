@@ -1569,7 +1569,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
-            public ImportSubscriptionRequest AutoCollection(AutoCollectionEnum autoCollection) 
+            public ImportSubscriptionRequest AutoCollection(ChargeBee.Models.Enums.AutoCollectionEnum autoCollection) 
             {
                 m_params.AddOpt("auto_collection", autoCollection);
                 return this;
@@ -2004,7 +2004,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
-            public ImportForCustomerRequest AutoCollection(AutoCollectionEnum autoCollection) 
+            public ImportForCustomerRequest AutoCollection(ChargeBee.Models.Enums.AutoCollectionEnum autoCollection) 
             {
                 m_params.AddOpt("auto_collection", autoCollection);
                 return this;

@@ -95,6 +95,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int>("expiry_year", true); }
         }
+        public string IssuingCountry 
+        {
+            get { return GetValue<string>("issuing_country", false); }
+        }
         public string BillingAddr1 
         {
             get { return GetValue<string>("billing_addr1", false); }

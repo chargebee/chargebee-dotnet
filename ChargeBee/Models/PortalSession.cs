@@ -107,7 +107,7 @@ namespace ChargeBee.Models
 
             public CreateRequest RedirectUrl(string redirectUrl) 
             {
-                m_params.Add("redirect_url", redirectUrl);
+                m_params.AddOpt("redirect_url", redirectUrl);
                 return this;
             }
             public CreateRequest ForwardUrl(string forwardUrl) 

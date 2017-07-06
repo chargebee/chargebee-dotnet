@@ -337,6 +337,8 @@ namespace ChargeBee.Models
             Waiver,
             [Description("other")]
             Other,
+            [Description("fraudulent")]
+            Fraudulent,
 
         }
         public enum StatusEnum

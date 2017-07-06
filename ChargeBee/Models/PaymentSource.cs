@@ -94,6 +94,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("ip_address", false); }
         }
+        public string IssuingCountry 
+        {
+            get { return GetValue<string>("issuing_country", false); }
+        }
         public PaymentSourceCard Card 
         {
             get { return GetSubResource<PaymentSourceCard>("card"); }
@@ -454,7 +458,7 @@ namespace ChargeBee.Models
             }
 
             public string BankName() {
-                return GetValue<string>("bank_name", true);
+                return GetValue<string>("bank_name", false);
             }
 
             public string MandateId() {
