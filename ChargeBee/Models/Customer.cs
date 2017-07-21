@@ -99,6 +99,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers", "move");
             return new MoveRequest(url, HttpMethod.POST);
         }
+        public static ChangeBillingDateRequest ChangeBillingDate(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "change_billing_date");
+            return new ChangeBillingDateRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -178,6 +183,22 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool?>("consolidated_invoicing", false); }
         }
+        public int? BillingDate 
+        {
+            get { return GetValue<int?>("billing_date", false); }
+        }
+        public BillingDateModeEnum? BillingDateMode 
+        {
+            get { return GetEnum<BillingDateModeEnum>("billing_date_mode", false); }
+        }
+        public BillingDayOfWeekEnum? BillingDayOfWeek 
+        {
+            get { return GetEnum<BillingDayOfWeekEnum>("billing_day_of_week", false); }
+        }
+        public BillingDayOfWeekModeEnum? BillingDayOfWeekMode 
+        {
+            get { return GetEnum<BillingDayOfWeekModeEnum>("billing_day_of_week_mode", false); }
+        }
         [Obsolete]
         public CardStatusEnum? CardStatus 
         {
@@ -222,6 +243,10 @@ namespace ChargeBee.Models
         public int PromotionalCredits 
         {
             get { return GetValue<int>("promotional_credits", true); }
+        }
+        public int UnbilledCharges 
+        {
+            get { return GetValue<int>("unbilled_charges", true); }
         }
         public int RefundableCredits 
         {
@@ -1102,8 +1127,57 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class ChangeBillingDateRequest : EntityRequest<ChangeBillingDateRequest> 
+        {
+            public ChangeBillingDateRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public ChangeBillingDateRequest BillingDate(int billingDate) 
+            {
+                m_params.AddOpt("billing_date", billingDate);
+                return this;
+            }
+            public ChangeBillingDateRequest BillingDateMode(ChargeBee.Models.Enums.BillingDateModeEnum billingDateMode) 
+            {
+                m_params.AddOpt("billing_date_mode", billingDateMode);
+                return this;
+            }
+            public ChangeBillingDateRequest BillingDayOfWeek(Customer.BillingDayOfWeekEnum billingDayOfWeek) 
+            {
+                m_params.AddOpt("billing_day_of_week", billingDayOfWeek);
+                return this;
+            }
+            public ChangeBillingDateRequest BillingDayOfWeekMode(ChargeBee.Models.Enums.BillingDayOfWeekModeEnum billingDayOfWeekMode) 
+            {
+                m_params.AddOpt("billing_day_of_week_mode", billingDayOfWeekMode);
+                return this;
+            }
+        }
         #endregion
 
+        public enum BillingDayOfWeekEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [Description("sunday")]
+            Sunday,
+            [Description("monday")]
+            Monday,
+            [Description("tuesday")]
+            Tuesday,
+            [Description("wednesday")]
+            Wednesday,
+            [Description("thursday")]
+            Thursday,
+            [Description("friday")]
+            Friday,
+            [Description("saturday")]
+            Saturday,
+
+        }
         [Obsolete]
         public enum CardStatusEnum
         {

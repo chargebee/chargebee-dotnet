@@ -39,6 +39,16 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "renewal_estimate");
             return new RenewalEstimateRequest(url, HttpMethod.GET);
         }
+        public static EntityRequest<Type> UpcomingInvoicesEstimate(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "upcoming_invoices_estimate");
+            return new EntityRequest<Type>(url, HttpMethod.GET);
+        }
+        public static ChangeTermEndRequest ChangeTermEnd(string id)
+        {
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "change_term_end_estimate");
+            return new ChangeTermEndRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -89,6 +99,11 @@ namespace ChargeBee.Models
             public CreateSubscriptionRequest TermsToCharge(int termsToCharge) 
             {
                 m_params.AddOpt("terms_to_charge", termsToCharge);
+                return this;
+            }
+            public CreateSubscriptionRequest BillingAlignmentMode(ChargeBee.Models.Enums.BillingAlignmentModeEnum billingAlignmentMode) 
+            {
+                m_params.AddOpt("billing_alignment_mode", billingAlignmentMode);
                 return this;
             }
             public CreateSubscriptionRequest CouponIds(List<string> couponIds) 
@@ -285,6 +300,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("terms_to_charge", termsToCharge);
                 return this;
             }
+            public CreateSubForCustomerEstimateRequest BillingAlignmentMode(ChargeBee.Models.Enums.BillingAlignmentModeEnum billingAlignmentMode) 
+            {
+                m_params.AddOpt("billing_alignment_mode", billingAlignmentMode);
+                return this;
+            }
             public CreateSubForCustomerEstimateRequest CouponIds(List<string> couponIds) 
             {
                 m_params.AddOpt("coupon_ids", couponIds);
@@ -406,6 +426,11 @@ namespace ChargeBee.Models
             public UpdateSubscriptionRequest ReactivateFrom(long reactivateFrom) 
             {
                 m_params.AddOpt("reactivate_from", reactivateFrom);
+                return this;
+            }
+            public UpdateSubscriptionRequest BillingAlignmentMode(ChargeBee.Models.Enums.BillingAlignmentModeEnum billingAlignmentMode) 
+            {
+                m_params.AddOpt("billing_alignment_mode", billingAlignmentMode);
                 return this;
             }
             public UpdateSubscriptionRequest CouponIds(List<string> couponIds) 
@@ -626,6 +651,29 @@ namespace ChargeBee.Models
             public RenewalEstimateRequest IgnoreScheduledChanges(bool ignoreScheduledChanges) 
             {
                 m_params.AddOpt("ignore_scheduled_changes", ignoreScheduledChanges);
+                return this;
+            }
+        }
+        public class ChangeTermEndRequest : EntityRequest<ChangeTermEndRequest> 
+        {
+            public ChangeTermEndRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public ChangeTermEndRequest TermEndsAt(long termEndsAt) 
+            {
+                m_params.AddOpt("term_ends_at", termEndsAt);
+                return this;
+            }
+            public ChangeTermEndRequest Prorate(bool prorate) 
+            {
+                m_params.AddOpt("prorate", prorate);
+                return this;
+            }
+            public ChangeTermEndRequest InvoiceImmediately(bool invoiceImmediately) 
+            {
+                m_params.AddOpt("invoice_immediately", invoiceImmediately);
                 return this;
             }
         }

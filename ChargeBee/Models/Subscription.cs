@@ -371,6 +371,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("terms_to_charge", termsToCharge);
                 return this;
             }
+            public CreateRequest BillingAlignmentMode(ChargeBee.Models.Enums.BillingAlignmentModeEnum billingAlignmentMode) 
+            {
+                m_params.AddOpt("billing_alignment_mode", billingAlignmentMode);
+                return this;
+            }
             public CreateRequest PoNumber(string poNumber) 
             {
                 m_params.AddOpt("po_number", poNumber);
@@ -809,6 +814,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("terms_to_charge", termsToCharge);
                 return this;
             }
+            public CreateForCustomerRequest BillingAlignmentMode(ChargeBee.Models.Enums.BillingAlignmentModeEnum billingAlignmentMode) 
+            {
+                m_params.AddOpt("billing_alignment_mode", billingAlignmentMode);
+                return this;
+            }
             public CreateForCustomerRequest PoNumber(string poNumber) 
             {
                 m_params.AddOpt("po_number", poNumber);
@@ -967,7 +977,7 @@ namespace ChargeBee.Models
             }
             public TimestampFilter<SubscriptionListRequest> ActivatedAt() 
             {
-                return new TimestampFilter<SubscriptionListRequest>("activated_at", this);        
+                return new TimestampFilter<SubscriptionListRequest>("activated_at", this).SupportsPresenceOperator(true);        
             }
             public TimestampFilter<SubscriptionListRequest> NextBillingAt() 
             {
@@ -1077,6 +1087,11 @@ namespace ChargeBee.Models
             public UpdateRequest ReactivateFrom(long reactivateFrom) 
             {
                 m_params.AddOpt("reactivate_from", reactivateFrom);
+                return this;
+            }
+            public UpdateRequest BillingAlignmentMode(ChargeBee.Models.Enums.BillingAlignmentModeEnum billingAlignmentMode) 
+            {
+                m_params.AddOpt("billing_alignment_mode", billingAlignmentMode);
                 return this;
             }
             public UpdateRequest PoNumber(string poNumber) 
@@ -1415,6 +1430,16 @@ namespace ChargeBee.Models
                 m_params.Add("term_ends_at", termEndsAt);
                 return this;
             }
+            public ChangeTermEndRequest Prorate(bool prorate) 
+            {
+                m_params.AddOpt("prorate", prorate);
+                return this;
+            }
+            public ChangeTermEndRequest InvoiceImmediately(bool invoiceImmediately) 
+            {
+                m_params.AddOpt("invoice_immediately", invoiceImmediately);
+                return this;
+            }
         }
         public class CancelRequest : EntityRequest<CancelRequest> 
         {
@@ -1460,6 +1485,11 @@ namespace ChargeBee.Models
             public ReactivateRequest InvoiceImmediately(bool invoiceImmediately) 
             {
                 m_params.AddOpt("invoice_immediately", invoiceImmediately);
+                return this;
+            }
+            public ReactivateRequest BillingAlignmentMode(ChargeBee.Models.Enums.BillingAlignmentModeEnum billingAlignmentMode) 
+            {
+                m_params.AddOpt("billing_alignment_mode", billingAlignmentMode);
                 return this;
             }
             public ReactivateRequest TermsToCharge(int termsToCharge) 

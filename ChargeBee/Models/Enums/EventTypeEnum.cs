@@ -165,5 +165,17 @@ namespace ChargeBee.Models.Enums
         [Description("payment_source_deleted")]
          PaymentSourceDeleted,
 
+        [Description("unbilled_charges_created")]
+         UnbilledChargesCreated,
+
+        [Description("unbilled_charges_voided")]
+         UnbilledChargesVoided,
+
+        [Description("unbilled_charges_deleted")]
+         UnbilledChargesDeleted,
+
+        [Description("unbilled_charges_invoiced")]
+         UnbilledChargesInvoiced,
+
     }
 }

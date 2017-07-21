@@ -1037,6 +1037,16 @@ namespace ChargeBee.Models
                 m_params.Add("description", description);
                 return this;
             }
+            public AddChargeRequest LineItemDateFrom(long lineItemDateFrom) 
+            {
+                m_params.AddOpt("line_item[date_from]", lineItemDateFrom);
+                return this;
+            }
+            public AddChargeRequest LineItemDateTo(long lineItemDateTo) 
+            {
+                m_params.AddOpt("line_item[date_to]", lineItemDateTo);
+                return this;
+            }
         }
         public class AddAddonChargeRequest : EntityRequest<AddAddonChargeRequest> 
         {
@@ -1058,6 +1068,16 @@ namespace ChargeBee.Models
             public AddAddonChargeRequest AddonUnitPrice(int addonUnitPrice) 
             {
                 m_params.AddOpt("addon_unit_price", addonUnitPrice);
+                return this;
+            }
+            public AddAddonChargeRequest LineItemDateFrom(long lineItemDateFrom) 
+            {
+                m_params.AddOpt("line_item[date_from]", lineItemDateFrom);
+                return this;
+            }
+            public AddAddonChargeRequest LineItemDateTo(long lineItemDateTo) 
+            {
+                m_params.AddOpt("line_item[date_to]", lineItemDateTo);
                 return this;
             }
         }

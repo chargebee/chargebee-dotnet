@@ -117,6 +117,10 @@
     <Compile Include="Models\Enums\ReferrerRewardTypeEnum.cs" />
     <Compile Include="Models\Enums\RoleEnum.cs" />
     <Compile Include="Models\Enums\NotifyReferralSystemEnum.cs" />
+    <Compile Include="Models\Enums\BillingAlignmentModeEnum.cs" />
+    <Compile Include="Models\Enums\BillingDateModeEnum.cs" />
+    <Compile Include="Models\Enums\BillingDayOfWeekModeEnum.cs" />
+    <Compile Include="Models\Enums\ChargeModelEnum.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Cb-Dotnet.snk" />

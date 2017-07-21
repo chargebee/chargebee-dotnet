@@ -138,6 +138,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("terms_to_charge", termsToCharge);
                 return this;
             }
+            public CheckoutNewRequest BillingAlignmentMode(ChargeBee.Models.Enums.BillingAlignmentModeEnum billingAlignmentMode) 
+            {
+                m_params.AddOpt("billing_alignment_mode", billingAlignmentMode);
+                return this;
+            }
             public CheckoutNewRequest RedirectUrl(string redirectUrl) 
             {
                 m_params.AddOpt("redirect_url", redirectUrl);
@@ -456,6 +461,11 @@ namespace ChargeBee.Models
             public CheckoutExistingRequest ReactivateFrom(long reactivateFrom) 
             {
                 m_params.AddOpt("reactivate_from", reactivateFrom);
+                return this;
+            }
+            public CheckoutExistingRequest BillingAlignmentMode(ChargeBee.Models.Enums.BillingAlignmentModeEnum billingAlignmentMode) 
+            {
+                m_params.AddOpt("billing_alignment_mode", billingAlignmentMode);
                 return this;
             }
             public CheckoutExistingRequest Reactivate(bool reactivate) 
