@@ -121,6 +121,7 @@
     <Compile Include="Models\Enums\BillingDateModeEnum.cs" />
     <Compile Include="Models\Enums\BillingDayOfWeekModeEnum.cs" />
     <Compile Include="Models\Enums\ChargeModelEnum.cs" />
+    <Compile Include="Models\TimeMachine.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Cb-Dotnet.snk" />

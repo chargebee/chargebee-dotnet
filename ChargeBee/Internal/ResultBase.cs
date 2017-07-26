@@ -125,6 +125,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<ResourceMigration>("resource_migration"); }
         }
+        public TimeMachine TimeMachine
+        {
+            get {  return GetResource<TimeMachine>("time_machine"); }
+        }
 
         public List<UnbilledCharge> UnbilledCharges
         {
