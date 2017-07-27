@@ -21,27 +21,27 @@ namespace ChargeBee.Models
         #region Methods
         public static EntityRequest<Type> Retrieve(string id)
         {
-            string url = ApiUtil.BuildRelativeUrl("cards", CheckNull(id));
+            string url = ApiUtil.BuildUrl("cards", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         public static UpdateCardForCustomerRequest UpdateCardForCustomer(string id)
         {
-            string url = ApiUtil.BuildRelativeUrl("customers", CheckNull(id), "credit_card");
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "credit_card");
             return new UpdateCardForCustomerRequest(url, HttpMethod.POST);
         }
         public static SwitchGatewayForCustomerRequest SwitchGatewayForCustomer(string id)
         {
-            string url = ApiUtil.BuildRelativeUrl("customers", CheckNull(id), "switch_gateway");
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "switch_gateway");
             return new SwitchGatewayForCustomerRequest(url, HttpMethod.POST);
         }
         public static CopyCardForCustomerRequest CopyCardForCustomer(string id)
         {
-            string url = ApiUtil.BuildRelativeUrl("customers", CheckNull(id), "copy_card");
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "copy_card");
             return new CopyCardForCustomerRequest(url, HttpMethod.POST);
         }
         public static EntityRequest<Type> DeleteCardForCustomer(string id)
         {
-            string url = ApiUtil.BuildRelativeUrl("customers", CheckNull(id), "delete_card");
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "delete_card");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
         #endregion

@@ -21,32 +21,32 @@ namespace ChargeBee.Models
         #region Methods
         public static CreateSubscriptionRequest CreateSubscription()
         {
-            string url = ApiUtil.BuildRelativeUrl("estimates", "create_subscription");
+            string url = ApiUtil.BuildUrl("estimates", "create_subscription");
             return new CreateSubscriptionRequest(url, HttpMethod.POST);
         }
         public static CreateSubForCustomerEstimateRequest CreateSubForCustomerEstimate(string id)
         {
-            string url = ApiUtil.BuildRelativeUrl("customers", CheckNull(id), "create_subscription_estimate");
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "create_subscription_estimate");
             return new CreateSubForCustomerEstimateRequest(url, HttpMethod.GET);
         }
         public static UpdateSubscriptionRequest UpdateSubscription()
         {
-            string url = ApiUtil.BuildRelativeUrl("estimates", "update_subscription");
+            string url = ApiUtil.BuildUrl("estimates", "update_subscription");
             return new UpdateSubscriptionRequest(url, HttpMethod.POST);
         }
         public static RenewalEstimateRequest RenewalEstimate(string id)
         {
-            string url = ApiUtil.BuildRelativeUrl("subscriptions", CheckNull(id), "renewal_estimate");
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "renewal_estimate");
             return new RenewalEstimateRequest(url, HttpMethod.GET);
         }
         public static EntityRequest<Type> UpcomingInvoicesEstimate(string id)
         {
-            string url = ApiUtil.BuildRelativeUrl("customers", CheckNull(id), "upcoming_invoices_estimate");
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "upcoming_invoices_estimate");
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         public static ChangeTermEndRequest ChangeTermEnd(string id)
         {
-            string url = ApiUtil.BuildRelativeUrl("subscriptions", CheckNull(id), "change_term_end_estimate");
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "change_term_end_estimate");
             return new ChangeTermEndRequest(url, HttpMethod.POST);
         }
         #endregion

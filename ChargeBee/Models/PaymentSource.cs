@@ -21,42 +21,42 @@ namespace ChargeBee.Models
         #region Methods
         public static CreateUsingTempTokenRequest CreateUsingTempToken()
         {
-            string url = ApiUtil.BuildRelativeUrl("payment_sources", "create_using_temp_token");
+            string url = ApiUtil.BuildUrl("payment_sources", "create_using_temp_token");
             return new CreateUsingTempTokenRequest(url, HttpMethod.POST);
         }
         public static CreateUsingPermanentTokenRequest CreateUsingPermanentToken()
         {
-            string url = ApiUtil.BuildRelativeUrl("payment_sources", "create_using_permanent_token");
+            string url = ApiUtil.BuildUrl("payment_sources", "create_using_permanent_token");
             return new CreateUsingPermanentTokenRequest(url, HttpMethod.POST);
         }
         public static CreateCardRequest CreateCard()
         {
-            string url = ApiUtil.BuildRelativeUrl("payment_sources", "create_card");
+            string url = ApiUtil.BuildUrl("payment_sources", "create_card");
             return new CreateCardRequest(url, HttpMethod.POST);
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
-            string url = ApiUtil.BuildRelativeUrl("payment_sources", CheckNull(id));
+            string url = ApiUtil.BuildUrl("payment_sources", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         public static PaymentSourceListRequest List()
         {
-            string url = ApiUtil.BuildRelativeUrl("payment_sources");
+            string url = ApiUtil.BuildUrl("payment_sources");
             return new PaymentSourceListRequest(url);
         }
         public static SwitchGatewayAccountRequest SwitchGatewayAccount(string id)
         {
-            string url = ApiUtil.BuildRelativeUrl("payment_sources", CheckNull(id), "switch_gateway_account");
+            string url = ApiUtil.BuildUrl("payment_sources", CheckNull(id), "switch_gateway_account");
             return new SwitchGatewayAccountRequest(url, HttpMethod.POST);
         }
         public static ExportPaymentSourceRequest ExportPaymentSource(string id)
         {
-            string url = ApiUtil.BuildRelativeUrl("payment_sources", CheckNull(id), "export_payment_source");
+            string url = ApiUtil.BuildUrl("payment_sources", CheckNull(id), "export_payment_source");
             return new ExportPaymentSourceRequest(url, HttpMethod.POST);
         }
         public static EntityRequest<Type> Delete(string id)
         {
-            string url = ApiUtil.BuildRelativeUrl("payment_sources", CheckNull(id), "delete");
+            string url = ApiUtil.BuildUrl("payment_sources", CheckNull(id), "delete");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
         #endregion

@@ -21,22 +21,22 @@ namespace ChargeBee.Models
         #region Methods
         public static CreateRequest Create()
         {
-            string url = ApiUtil.BuildRelativeUrl("portal_sessions");
+            string url = ApiUtil.BuildUrl("portal_sessions");
             return new CreateRequest(url, HttpMethod.POST);
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
-            string url = ApiUtil.BuildRelativeUrl("portal_sessions", CheckNull(id));
+            string url = ApiUtil.BuildUrl("portal_sessions", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         public static EntityRequest<Type> Logout(string id)
         {
-            string url = ApiUtil.BuildRelativeUrl("portal_sessions", CheckNull(id), "logout");
+            string url = ApiUtil.BuildUrl("portal_sessions", CheckNull(id), "logout");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
         public static ActivateRequest Activate(string id)
         {
-            string url = ApiUtil.BuildRelativeUrl("portal_sessions", CheckNull(id), "activate");
+            string url = ApiUtil.BuildUrl("portal_sessions", CheckNull(id), "activate");
             return new ActivateRequest(url, HttpMethod.POST);
         }
         #endregion

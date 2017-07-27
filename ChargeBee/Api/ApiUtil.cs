@@ -22,7 +22,7 @@ namespace ChargeBee.Api
         /// </summary>
         /// <param name="paths"></param>
         /// <returns></returns>
-        public static string BuildRelativeUrl(params string[] paths)
+        public static string BuildUrl(params string[] paths)
         {
             var encodedPaths = new List<string>();
             foreach (var path in paths)

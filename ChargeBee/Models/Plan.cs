@@ -21,37 +21,37 @@ namespace ChargeBee.Models
         #region Methods
         public static CreateRequest Create()
         {
-            string url = ApiUtil.BuildRelativeUrl("plans");
+            string url = ApiUtil.BuildUrl("plans");
             return new CreateRequest(url, HttpMethod.POST);
         }
         public static UpdateRequest Update(string id)
         {
-            string url = ApiUtil.BuildRelativeUrl("plans", CheckNull(id));
+            string url = ApiUtil.BuildUrl("plans", CheckNull(id));
             return new UpdateRequest(url, HttpMethod.POST);
         }
         public static PlanListRequest List()
         {
-            string url = ApiUtil.BuildRelativeUrl("plans");
+            string url = ApiUtil.BuildUrl("plans");
             return new PlanListRequest(url);
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
-            string url = ApiUtil.BuildRelativeUrl("plans", CheckNull(id));
+            string url = ApiUtil.BuildUrl("plans", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         public static EntityRequest<Type> Delete(string id)
         {
-            string url = ApiUtil.BuildRelativeUrl("plans", CheckNull(id), "delete");
+            string url = ApiUtil.BuildUrl("plans", CheckNull(id), "delete");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
         public static CopyRequest Copy()
         {
-            string url = ApiUtil.BuildRelativeUrl("plans", "copy");
+            string url = ApiUtil.BuildUrl("plans", "copy");
             return new CopyRequest(url, HttpMethod.POST);
         }
         public static EntityRequest<Type> Unarchive(string id)
         {
-            string url = ApiUtil.BuildRelativeUrl("plans", CheckNull(id), "unarchive");
+            string url = ApiUtil.BuildUrl("plans", CheckNull(id), "unarchive");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
         #endregion

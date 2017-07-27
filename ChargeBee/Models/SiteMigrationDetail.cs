@@ -21,7 +21,7 @@ namespace ChargeBee.Models
         #region Methods
         public static SiteMigrationDetailListRequest List()
         {
-            string url = ApiUtil.BuildRelativeUrl("site_migration_details");
+            string url = ApiUtil.BuildUrl("site_migration_details");
             return new SiteMigrationDetailListRequest(url);
         }
         #endregion

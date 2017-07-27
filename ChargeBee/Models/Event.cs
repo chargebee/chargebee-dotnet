@@ -43,12 +43,12 @@ namespace ChargeBee.Models
         #region Methods
         public static EventListRequest List()
         {
-            string url = ApiUtil.BuildRelativeUrl("events");
+            string url = ApiUtil.BuildUrl("events");
             return new EventListRequest(url);
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
-            string url = ApiUtil.BuildRelativeUrl("events", CheckNull(id));
+            string url = ApiUtil.BuildUrl("events", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         #endregion

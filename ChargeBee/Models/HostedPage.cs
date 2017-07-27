@@ -21,38 +21,38 @@ namespace ChargeBee.Models
         #region Methods
         public static CheckoutNewRequest CheckoutNew()
         {
-            string url = ApiUtil.BuildRelativeUrl("hosted_pages", "checkout_new");
+            string url = ApiUtil.BuildUrl("hosted_pages", "checkout_new");
             return new CheckoutNewRequest(url, HttpMethod.POST);
         }
         public static CheckoutExistingRequest CheckoutExisting()
         {
-            string url = ApiUtil.BuildRelativeUrl("hosted_pages", "checkout_existing");
+            string url = ApiUtil.BuildUrl("hosted_pages", "checkout_existing");
             return new CheckoutExistingRequest(url, HttpMethod.POST);
         }
         [Obsolete]
         public static UpdateCardRequest UpdateCard()
         {
-            string url = ApiUtil.BuildRelativeUrl("hosted_pages", "update_card");
+            string url = ApiUtil.BuildUrl("hosted_pages", "update_card");
             return new UpdateCardRequest(url, HttpMethod.POST);
         }
         public static UpdatePaymentMethodRequest UpdatePaymentMethod()
         {
-            string url = ApiUtil.BuildRelativeUrl("hosted_pages", "update_payment_method");
+            string url = ApiUtil.BuildUrl("hosted_pages", "update_payment_method");
             return new UpdatePaymentMethodRequest(url, HttpMethod.POST);
         }
         public static EntityRequest<Type> Acknowledge(string id)
         {
-            string url = ApiUtil.BuildRelativeUrl("hosted_pages", CheckNull(id), "acknowledge");
+            string url = ApiUtil.BuildUrl("hosted_pages", CheckNull(id), "acknowledge");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
-            string url = ApiUtil.BuildRelativeUrl("hosted_pages", CheckNull(id));
+            string url = ApiUtil.BuildUrl("hosted_pages", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         public static HostedPageListRequest List()
         {
-            string url = ApiUtil.BuildRelativeUrl("hosted_pages");
+            string url = ApiUtil.BuildUrl("hosted_pages");
             return new HostedPageListRequest(url);
         }
         #endregion
