@@ -21,12 +21,12 @@ namespace ChargeBee.Models
         #region Methods
         public static RetrieveRequest Retrieve()
         {
-            string url = ApiUtil.BuildUrl("addresses");
+            string url = ApiUtil.BuildRelativeUrl("addresses");
             return new RetrieveRequest(url, HttpMethod.GET);
         }
         public static UpdateRequest Update()
         {
-            string url = ApiUtil.BuildUrl("addresses");
+            string url = ApiUtil.BuildRelativeUrl("addresses");
             return new UpdateRequest(url, HttpMethod.POST);
         }
         #endregion

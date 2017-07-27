@@ -21,22 +21,22 @@ namespace ChargeBee.Models
         #region Methods
         public static InvoiceUnbilledChargesRequest InvoiceUnbilledCharges()
         {
-            string url = ApiUtil.BuildUrl("unbilled_charges", "invoice_unbilled_charges");
+            string url = ApiUtil.BuildRelativeUrl("unbilled_charges", "invoice_unbilled_charges");
             return new InvoiceUnbilledChargesRequest(url, HttpMethod.POST);
         }
         public static EntityRequest<Type> Delete(string id)
         {
-            string url = ApiUtil.BuildUrl("unbilled_charges", CheckNull(id), "delete");
+            string url = ApiUtil.BuildRelativeUrl("unbilled_charges", CheckNull(id), "delete");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
         public static UnbilledChargeListRequest List()
         {
-            string url = ApiUtil.BuildUrl("unbilled_charges");
+            string url = ApiUtil.BuildRelativeUrl("unbilled_charges");
             return new UnbilledChargeListRequest(url);
         }
         public static InvoiceNowEstimateRequest InvoiceNowEstimate()
         {
-            string url = ApiUtil.BuildUrl("unbilled_charges", "invoice_now_estimate");
+            string url = ApiUtil.BuildRelativeUrl("unbilled_charges", "invoice_now_estimate");
             return new InvoiceNowEstimateRequest(url, HttpMethod.POST);
         }
         #endregion

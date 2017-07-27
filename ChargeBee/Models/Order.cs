@@ -21,28 +21,28 @@ namespace ChargeBee.Models
         #region Methods
         public static CreateRequest Create()
         {
-            string url = ApiUtil.BuildUrl("orders");
+            string url = ApiUtil.BuildRelativeUrl("orders");
             return new CreateRequest(url, HttpMethod.POST);
         }
         public static UpdateRequest Update(string id)
         {
-            string url = ApiUtil.BuildUrl("orders", CheckNull(id));
+            string url = ApiUtil.BuildRelativeUrl("orders", CheckNull(id));
             return new UpdateRequest(url, HttpMethod.POST);
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
-            string url = ApiUtil.BuildUrl("orders", CheckNull(id));
+            string url = ApiUtil.BuildRelativeUrl("orders", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         public static OrderListRequest List()
         {
-            string url = ApiUtil.BuildUrl("orders");
+            string url = ApiUtil.BuildRelativeUrl("orders");
             return new OrderListRequest(url);
         }
         [Obsolete]
         public static ListRequest OrdersForInvoice(string id)
         {
-            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "orders");
+            string url = ApiUtil.BuildRelativeUrl("invoices", CheckNull(id), "orders");
             return new ListRequest(url);
         }
         #endregion

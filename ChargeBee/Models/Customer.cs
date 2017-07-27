@@ -21,87 +21,87 @@ namespace ChargeBee.Models
         #region Methods
         public static CreateRequest Create()
         {
-            string url = ApiUtil.BuildUrl("customers");
+            string url = ApiUtil.BuildRelativeUrl("customers");
             return new CreateRequest(url, HttpMethod.POST);
         }
         public static CustomerListRequest List()
         {
-            string url = ApiUtil.BuildUrl("customers");
+            string url = ApiUtil.BuildRelativeUrl("customers");
             return new CustomerListRequest(url);
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
-            string url = ApiUtil.BuildUrl("customers", CheckNull(id));
+            string url = ApiUtil.BuildRelativeUrl("customers", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         public static UpdateRequest Update(string id)
         {
-            string url = ApiUtil.BuildUrl("customers", CheckNull(id));
+            string url = ApiUtil.BuildRelativeUrl("customers", CheckNull(id));
             return new UpdateRequest(url, HttpMethod.POST);
         }
         public static UpdatePaymentMethodRequest UpdatePaymentMethod(string id)
         {
-            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "update_payment_method");
+            string url = ApiUtil.BuildRelativeUrl("customers", CheckNull(id), "update_payment_method");
             return new UpdatePaymentMethodRequest(url, HttpMethod.POST);
         }
         public static UpdateBillingInfoRequest UpdateBillingInfo(string id)
         {
-            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "update_billing_info");
+            string url = ApiUtil.BuildRelativeUrl("customers", CheckNull(id), "update_billing_info");
             return new UpdateBillingInfoRequest(url, HttpMethod.POST);
         }
         public static AssignPaymentRoleRequest AssignPaymentRole(string id)
         {
-            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "assign_payment_role");
+            string url = ApiUtil.BuildRelativeUrl("customers", CheckNull(id), "assign_payment_role");
             return new AssignPaymentRoleRequest(url, HttpMethod.POST);
         }
         public static AddContactRequest AddContact(string id)
         {
-            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "add_contact");
+            string url = ApiUtil.BuildRelativeUrl("customers", CheckNull(id), "add_contact");
             return new AddContactRequest(url, HttpMethod.POST);
         }
         public static UpdateContactRequest UpdateContact(string id)
         {
-            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "update_contact");
+            string url = ApiUtil.BuildRelativeUrl("customers", CheckNull(id), "update_contact");
             return new UpdateContactRequest(url, HttpMethod.POST);
         }
         public static DeleteContactRequest DeleteContact(string id)
         {
-            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "delete_contact");
+            string url = ApiUtil.BuildRelativeUrl("customers", CheckNull(id), "delete_contact");
             return new DeleteContactRequest(url, HttpMethod.POST);
         }
         public static AddPromotionalCreditsRequest AddPromotionalCredits(string id)
         {
-            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "add_promotional_credits");
+            string url = ApiUtil.BuildRelativeUrl("customers", CheckNull(id), "add_promotional_credits");
             return new AddPromotionalCreditsRequest(url, HttpMethod.POST);
         }
         public static DeductPromotionalCreditsRequest DeductPromotionalCredits(string id)
         {
-            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "deduct_promotional_credits");
+            string url = ApiUtil.BuildRelativeUrl("customers", CheckNull(id), "deduct_promotional_credits");
             return new DeductPromotionalCreditsRequest(url, HttpMethod.POST);
         }
         public static SetPromotionalCreditsRequest SetPromotionalCredits(string id)
         {
-            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "set_promotional_credits");
+            string url = ApiUtil.BuildRelativeUrl("customers", CheckNull(id), "set_promotional_credits");
             return new SetPromotionalCreditsRequest(url, HttpMethod.POST);
         }
         public static RecordExcessPaymentRequest RecordExcessPayment(string id)
         {
-            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "record_excess_payment");
+            string url = ApiUtil.BuildRelativeUrl("customers", CheckNull(id), "record_excess_payment");
             return new RecordExcessPaymentRequest(url, HttpMethod.POST);
         }
         public static DeleteRequest Delete(string id)
         {
-            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "delete");
+            string url = ApiUtil.BuildRelativeUrl("customers", CheckNull(id), "delete");
             return new DeleteRequest(url, HttpMethod.POST);
         }
         public static MoveRequest Move()
         {
-            string url = ApiUtil.BuildUrl("customers", "move");
+            string url = ApiUtil.BuildRelativeUrl("customers", "move");
             return new MoveRequest(url, HttpMethod.POST);
         }
         public static ChangeBillingDateRequest ChangeBillingDate(string id)
         {
-            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "change_billing_date");
+            string url = ApiUtil.BuildRelativeUrl("customers", CheckNull(id), "change_billing_date");
             return new ChangeBillingDateRequest(url, HttpMethod.POST);
         }
         #endregion

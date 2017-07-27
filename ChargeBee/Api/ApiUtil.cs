@@ -22,23 +22,25 @@ namespace ChargeBee.Api
         /// </summary>
         /// <param name="paths"></param>
         /// <returns></returns>
-        public static string BuildUrl(params string[] paths)
+        public static string BuildRelativeUrl(params string[] paths)
         {
-            StringBuilder sb = new StringBuilder();
-
+            var encodedPaths = new List<string>();
             foreach (var path in paths)
             {
-                sb.Append('/').Append(HttpUtility.UrlPathEncode(path));
+                var encodedPath = HttpUtility.UrlPathEncode(path);
+                encodedPaths.Add(encodedPath);
             }
 
-            return sb.ToString();
+            return string.Join("/", encodedPaths.ToArray());
         }
 
-        private static HttpWebRequest GetRequest(string relativeUrl, HttpMethod method, Dictionary<string, string> headers, ApiConfig env)
+        private static HttpWebRequest GetRequest(string relativeUrl, HttpMethod method, Dictionary<string, string> headers, ApiConfig env, string query)
         {
-            var fullUrl = BuildUrl(env.ApiBaseUrl, relativeUrl);
-
-            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(fullUrl);
+            UriBuilder builder = new UriBuilder(env.ApiBaseUrl);
+            builder.Path = string.Join("/", new []{builder.Path, relativeUrl});
+            builder.Query = query;
+            
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(builder.Uri);
             request.Method = Enum.GetName(typeof(HttpMethod), method);
             request.UserAgent = String.Format("ChargeBee-DotNet-Client v{0} on {1} / {2}",
                 ApiConfig.Version,
@@ -113,14 +115,15 @@ namespace ChargeBee.Api
 
         private static string GetJson(string relativeUrl, Params parameters, ApiConfig env, Dictionary<string, string> headers, out HttpStatusCode code,bool IsList)
         {
-            relativeUrl = String.Format("{0}?{1}", relativeUrl, parameters.GetQuery(IsList));
-            HttpWebRequest request = GetRequest(relativeUrl, HttpMethod.GET, headers, env);
+            var query = parameters.GetQuery(IsList);
+
+            HttpWebRequest request = GetRequest(relativeUrl, HttpMethod.GET, headers, env, query);
             return SendRequest(request, out code);
         }
 
         public static EntityResult Post(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env)
         {
-            HttpWebRequest request = GetRequest(url, HttpMethod.POST, headers, env);
+            HttpWebRequest request = GetRequest(url, HttpMethod.POST, headers, env, string.Empty);
             byte[] paramsBytes =
                 Encoding.GetEncoding(env.Charset).GetBytes(parameters.GetQuery(false));
 

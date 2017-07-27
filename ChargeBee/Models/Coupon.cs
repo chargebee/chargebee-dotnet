@@ -21,32 +21,32 @@ namespace ChargeBee.Models
         #region Methods
         public static CreateRequest Create()
         {
-            string url = ApiUtil.BuildUrl("coupons");
+            string url = ApiUtil.BuildRelativeUrl("coupons");
             return new CreateRequest(url, HttpMethod.POST);
         }
         public static CouponListRequest List()
         {
-            string url = ApiUtil.BuildUrl("coupons");
+            string url = ApiUtil.BuildRelativeUrl("coupons");
             return new CouponListRequest(url);
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
-            string url = ApiUtil.BuildUrl("coupons", CheckNull(id));
+            string url = ApiUtil.BuildRelativeUrl("coupons", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         public static EntityRequest<Type> Delete(string id)
         {
-            string url = ApiUtil.BuildUrl("coupons", CheckNull(id), "delete");
+            string url = ApiUtil.BuildRelativeUrl("coupons", CheckNull(id), "delete");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
         public static CopyRequest Copy()
         {
-            string url = ApiUtil.BuildUrl("coupons", "copy");
+            string url = ApiUtil.BuildRelativeUrl("coupons", "copy");
             return new CopyRequest(url, HttpMethod.POST);
         }
         public static EntityRequest<Type> Unarchive(string id)
         {
-            string url = ApiUtil.BuildUrl("coupons", CheckNull(id), "unarchive");
+            string url = ApiUtil.BuildRelativeUrl("coupons", CheckNull(id), "unarchive");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
         #endregion

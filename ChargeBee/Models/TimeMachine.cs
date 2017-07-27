@@ -23,17 +23,17 @@ namespace ChargeBee.Models
         #region Methods
         public static EntityRequest<Type> Retrieve(string id)
         {
-            string url = ApiUtil.BuildUrl("time_machines", CheckNull(id));
+            string url = ApiUtil.BuildRelativeUrl("time_machines", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         public static StartAfreshRequest StartAfresh(string id)
         {
-            string url = ApiUtil.BuildUrl("time_machines", CheckNull(id), "start_afresh");
+            string url = ApiUtil.BuildRelativeUrl("time_machines", CheckNull(id), "start_afresh");
             return new StartAfreshRequest(url, HttpMethod.POST);
         }
         public static TravelForwardRequest TravelForward(string id)
         {
-            string url = ApiUtil.BuildUrl("time_machines", CheckNull(id), "travel_forward");
+            string url = ApiUtil.BuildRelativeUrl("time_machines", CheckNull(id), "travel_forward");
             return new TravelForwardRequest(url, HttpMethod.POST);
         }
         #endregion

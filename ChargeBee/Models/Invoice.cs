@@ -21,104 +21,104 @@ namespace ChargeBee.Models
         #region Methods
         public static CreateRequest Create()
         {
-            string url = ApiUtil.BuildUrl("invoices");
+            string url = ApiUtil.BuildRelativeUrl("invoices");
             return new CreateRequest(url, HttpMethod.POST);
         }
         public static ChargeRequest Charge()
         {
-            string url = ApiUtil.BuildUrl("invoices", "charge");
+            string url = ApiUtil.BuildRelativeUrl("invoices", "charge");
             return new ChargeRequest(url, HttpMethod.POST);
         }
         public static ChargeAddonRequest ChargeAddon()
         {
-            string url = ApiUtil.BuildUrl("invoices", "charge_addon");
+            string url = ApiUtil.BuildRelativeUrl("invoices", "charge_addon");
             return new ChargeAddonRequest(url, HttpMethod.POST);
         }
         public static EntityRequest<Type> StopDunning(string id)
         {
-            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "stop_dunning");
+            string url = ApiUtil.BuildRelativeUrl("invoices", CheckNull(id), "stop_dunning");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
         public static ImportInvoiceRequest ImportInvoice()
         {
-            string url = ApiUtil.BuildUrl("invoices", "import_invoice");
+            string url = ApiUtil.BuildRelativeUrl("invoices", "import_invoice");
             return new ImportInvoiceRequest(url, HttpMethod.POST);
         }
         public static InvoiceListRequest List()
         {
-            string url = ApiUtil.BuildUrl("invoices");
+            string url = ApiUtil.BuildRelativeUrl("invoices");
             return new InvoiceListRequest(url);
         }
         [Obsolete]
         public static ListRequest InvoicesForCustomer(string id)
         {
-            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "invoices");
+            string url = ApiUtil.BuildRelativeUrl("customers", CheckNull(id), "invoices");
             return new ListRequest(url);
         }
         [Obsolete]
         public static ListRequest InvoicesForSubscription(string id)
         {
-            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "invoices");
+            string url = ApiUtil.BuildRelativeUrl("subscriptions", CheckNull(id), "invoices");
             return new ListRequest(url);
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
-            string url = ApiUtil.BuildUrl("invoices", CheckNull(id));
+            string url = ApiUtil.BuildRelativeUrl("invoices", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         public static EntityRequest<Type> Pdf(string id)
         {
-            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "pdf");
+            string url = ApiUtil.BuildRelativeUrl("invoices", CheckNull(id), "pdf");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
         public static AddChargeRequest AddCharge(string id)
         {
-            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "add_charge");
+            string url = ApiUtil.BuildRelativeUrl("invoices", CheckNull(id), "add_charge");
             return new AddChargeRequest(url, HttpMethod.POST);
         }
         public static AddAddonChargeRequest AddAddonCharge(string id)
         {
-            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "add_addon_charge");
+            string url = ApiUtil.BuildRelativeUrl("invoices", CheckNull(id), "add_addon_charge");
             return new AddAddonChargeRequest(url, HttpMethod.POST);
         }
         public static EntityRequest<Type> Close(string id)
         {
-            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "close");
+            string url = ApiUtil.BuildRelativeUrl("invoices", CheckNull(id), "close");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
         public static CollectPaymentRequest CollectPayment(string id)
         {
-            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "collect_payment");
+            string url = ApiUtil.BuildRelativeUrl("invoices", CheckNull(id), "collect_payment");
             return new CollectPaymentRequest(url, HttpMethod.POST);
         }
         public static RecordPaymentRequest RecordPayment(string id)
         {
-            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "record_payment");
+            string url = ApiUtil.BuildRelativeUrl("invoices", CheckNull(id), "record_payment");
             return new RecordPaymentRequest(url, HttpMethod.POST);
         }
         public static RefundRequest Refund(string id)
         {
-            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "refund");
+            string url = ApiUtil.BuildRelativeUrl("invoices", CheckNull(id), "refund");
             return new RefundRequest(url, HttpMethod.POST);
         }
         public static RecordRefundRequest RecordRefund(string id)
         {
-            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "record_refund");
+            string url = ApiUtil.BuildRelativeUrl("invoices", CheckNull(id), "record_refund");
             return new RecordRefundRequest(url, HttpMethod.POST);
         }
         public static VoidInvoiceRequest VoidInvoice(string id)
         {
-            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "void");
+            string url = ApiUtil.BuildRelativeUrl("invoices", CheckNull(id), "void");
             return new VoidInvoiceRequest(url, HttpMethod.POST);
         }
         public static WriteOffRequest WriteOff(string id)
         {
-            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "write_off");
+            string url = ApiUtil.BuildRelativeUrl("invoices", CheckNull(id), "write_off");
             return new WriteOffRequest(url, HttpMethod.POST);
         }
         public static DeleteRequest Delete(string id)
         {
-            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "delete");
+            string url = ApiUtil.BuildRelativeUrl("invoices", CheckNull(id), "delete");
             return new DeleteRequest(url, HttpMethod.POST);
         }
         #endregion

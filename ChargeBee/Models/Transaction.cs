@@ -21,29 +21,29 @@ namespace ChargeBee.Models
         #region Methods
         public static TransactionListRequest List()
         {
-            string url = ApiUtil.BuildUrl("transactions");
+            string url = ApiUtil.BuildRelativeUrl("transactions");
             return new TransactionListRequest(url);
         }
         [Obsolete]
         public static ListRequest TransactionsForCustomer(string id)
         {
-            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "transactions");
+            string url = ApiUtil.BuildRelativeUrl("customers", CheckNull(id), "transactions");
             return new ListRequest(url);
         }
         [Obsolete]
         public static ListRequest TransactionsForSubscription(string id)
         {
-            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "transactions");
+            string url = ApiUtil.BuildRelativeUrl("subscriptions", CheckNull(id), "transactions");
             return new ListRequest(url);
         }
         public static ListRequest PaymentsForInvoice(string id)
         {
-            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "payments");
+            string url = ApiUtil.BuildRelativeUrl("invoices", CheckNull(id), "payments");
             return new ListRequest(url);
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
-            string url = ApiUtil.BuildUrl("transactions", CheckNull(id));
+            string url = ApiUtil.BuildRelativeUrl("transactions", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         #endregion

@@ -19,9 +19,9 @@ namespace ChargeBee.Test
         [SetUp]
         public void Configure()
         {
-			ApiConfig.Proto = "http";
-			ApiConfig.DomainSuffix = "localcb.com:8080";
-			ApiConfig.Configure("mannar-test", "__dev__FhJgi9KugVCv9yO8zosAFC11lYCEAufI");
+			//ApiConfig.Proto = "http";
+			//ApiConfig.DomainSuffix = "localcb.com:8080";
+			//ApiConfig.Configure("mannar-test", "__dev__FhJgi9KugVCv9yO8zosAFC11lYCEAufI");
         }
 
         /*[Test]
@@ -29,6 +29,14 @@ namespace ChargeBee.Test
         {
             Assert.AreEqual("https://guidebot-test.chargebee.com/api/v2", ApiConfig.Instance.ApiBaseUrl);
         }*/
+
+        [Test]
+        public void TestPlanRetrieve()
+        {
+            var config = new ApiConfig("virtual-surveyor-usd-test", "test_cusstcdAW3462d6XzYSj8VFEEbocu0fvwtp");
+            var plan = Plan.Retrieve("valley-monthly").Request(config).Plan;
+            Assert.IsNotNull(plan);
+        }
 
         [Test]
         public void TestStatusCode()

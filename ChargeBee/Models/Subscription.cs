@@ -21,103 +21,103 @@ namespace ChargeBee.Models
         #region Methods
         public static CreateRequest Create()
         {
-            string url = ApiUtil.BuildUrl("subscriptions");
+            string url = ApiUtil.BuildRelativeUrl("subscriptions");
             return new CreateRequest(url, HttpMethod.POST);
         }
         public static CreateForCustomerRequest CreateForCustomer(string id)
         {
-            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "subscriptions");
+            string url = ApiUtil.BuildRelativeUrl("customers", CheckNull(id), "subscriptions");
             return new CreateForCustomerRequest(url, HttpMethod.POST);
         }
         public static SubscriptionListRequest List()
         {
-            string url = ApiUtil.BuildUrl("subscriptions");
+            string url = ApiUtil.BuildRelativeUrl("subscriptions");
             return new SubscriptionListRequest(url);
         }
         [Obsolete]
         public static ListRequest SubscriptionsForCustomer(string id)
         {
-            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "subscriptions");
+            string url = ApiUtil.BuildRelativeUrl("customers", CheckNull(id), "subscriptions");
             return new ListRequest(url);
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
-            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id));
+            string url = ApiUtil.BuildRelativeUrl("subscriptions", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         public static EntityRequest<Type> RetrieveWithScheduledChanges(string id)
         {
-            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "retrieve_with_scheduled_changes");
+            string url = ApiUtil.BuildRelativeUrl("subscriptions", CheckNull(id), "retrieve_with_scheduled_changes");
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         public static EntityRequest<Type> RemoveScheduledChanges(string id)
         {
-            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "remove_scheduled_changes");
+            string url = ApiUtil.BuildRelativeUrl("subscriptions", CheckNull(id), "remove_scheduled_changes");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
         public static RemoveScheduledCancellationRequest RemoveScheduledCancellation(string id)
         {
-            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "remove_scheduled_cancellation");
+            string url = ApiUtil.BuildRelativeUrl("subscriptions", CheckNull(id), "remove_scheduled_cancellation");
             return new RemoveScheduledCancellationRequest(url, HttpMethod.POST);
         }
         public static RemoveCouponsRequest RemoveCoupons(string id)
         {
-            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "remove_coupons");
+            string url = ApiUtil.BuildRelativeUrl("subscriptions", CheckNull(id), "remove_coupons");
             return new RemoveCouponsRequest(url, HttpMethod.POST);
         }
         public static UpdateRequest Update(string id)
         {
-            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id));
+            string url = ApiUtil.BuildRelativeUrl("subscriptions", CheckNull(id));
             return new UpdateRequest(url, HttpMethod.POST);
         }
         public static ChangeTermEndRequest ChangeTermEnd(string id)
         {
-            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "change_term_end");
+            string url = ApiUtil.BuildRelativeUrl("subscriptions", CheckNull(id), "change_term_end");
             return new ChangeTermEndRequest(url, HttpMethod.POST);
         }
         public static CancelRequest Cancel(string id)
         {
-            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "cancel");
+            string url = ApiUtil.BuildRelativeUrl("subscriptions", CheckNull(id), "cancel");
             return new CancelRequest(url, HttpMethod.POST);
         }
         public static ReactivateRequest Reactivate(string id)
         {
-            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "reactivate");
+            string url = ApiUtil.BuildRelativeUrl("subscriptions", CheckNull(id), "reactivate");
             return new ReactivateRequest(url, HttpMethod.POST);
         }
         public static AddChargeAtTermEndRequest AddChargeAtTermEnd(string id)
         {
-            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "add_charge_at_term_end");
+            string url = ApiUtil.BuildRelativeUrl("subscriptions", CheckNull(id), "add_charge_at_term_end");
             return new AddChargeAtTermEndRequest(url, HttpMethod.POST);
         }
         public static ChargeAddonAtTermEndRequest ChargeAddonAtTermEnd(string id)
         {
-            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "charge_addon_at_term_end");
+            string url = ApiUtil.BuildRelativeUrl("subscriptions", CheckNull(id), "charge_addon_at_term_end");
             return new ChargeAddonAtTermEndRequest(url, HttpMethod.POST);
         }
         public static ChargeFutureRenewalsRequest ChargeFutureRenewals(string id)
         {
-            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "charge_future_renewals");
+            string url = ApiUtil.BuildRelativeUrl("subscriptions", CheckNull(id), "charge_future_renewals");
             return new ChargeFutureRenewalsRequest(url, HttpMethod.POST);
         }
         public static ImportSubscriptionRequest ImportSubscription()
         {
-            string url = ApiUtil.BuildUrl("subscriptions", "import_subscription");
+            string url = ApiUtil.BuildRelativeUrl("subscriptions", "import_subscription");
             return new ImportSubscriptionRequest(url, HttpMethod.POST);
         }
         public static ImportForCustomerRequest ImportForCustomer(string id)
         {
-            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "import_subscription");
+            string url = ApiUtil.BuildRelativeUrl("customers", CheckNull(id), "import_subscription");
             return new ImportForCustomerRequest(url, HttpMethod.POST);
         }
         public static OverrideBillingProfileRequest OverrideBillingProfile(string id)
         {
-            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "override_billing_profile");
+            string url = ApiUtil.BuildRelativeUrl("subscriptions", CheckNull(id), "override_billing_profile");
             return new OverrideBillingProfileRequest(url, HttpMethod.POST);
         }
         public static EntityRequest<Type> Delete(string id)
         {
-            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "delete");
+            string url = ApiUtil.BuildRelativeUrl("subscriptions", CheckNull(id), "delete");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
         #endregion

@@ -21,7 +21,7 @@ namespace ChargeBee.Models
         #region Methods
         public static RetrieveLatestRequest RetrieveLatest()
         {
-            string url = ApiUtil.BuildUrl("resource_migrations", "retrieve_latest");
+            string url = ApiUtil.BuildRelativeUrl("resource_migrations", "retrieve_latest");
             return new RetrieveLatestRequest(url, HttpMethod.GET);
         }
         #endregion
