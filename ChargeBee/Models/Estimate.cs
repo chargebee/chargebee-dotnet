@@ -272,6 +272,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
                 return this;
             }
+            public CreateSubscriptionRequest AddonTrialEnd(int index, long addonTrialEnd) 
+            {
+                m_params.AddOpt("addons[trial_end][" + index + "]", addonTrialEnd);
+                return this;
+            }
         }
         public class CreateSubForCustomerEstimateRequest : EntityRequest<CreateSubForCustomerEstimateRequest> 
         {
@@ -398,6 +403,11 @@ namespace ChargeBee.Models
             public CreateSubForCustomerEstimateRequest AddonUnitPrice(int index, int addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+                return this;
+            }
+            public CreateSubForCustomerEstimateRequest AddonTrialEnd(int index, long addonTrialEnd) 
+            {
+                m_params.AddOpt("addons[trial_end][" + index + "]", addonTrialEnd);
                 return this;
             }
         }
@@ -623,6 +633,11 @@ namespace ChargeBee.Models
             public UpdateSubscriptionRequest AddonUnitPrice(int index, int addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+                return this;
+            }
+            public UpdateSubscriptionRequest AddonTrialEnd(int index, long addonTrialEnd) 
+            {
+                m_params.AddOpt("addons[trial_end][" + index + "]", addonTrialEnd);
                 return this;
             }
         }

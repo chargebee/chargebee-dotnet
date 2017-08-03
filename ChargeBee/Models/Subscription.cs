@@ -750,6 +750,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
                 return this;
             }
+            public CreateRequest AddonTrialEnd(int index, long addonTrialEnd) 
+            {
+                m_params.AddOpt("addons[trial_end][" + index + "]", addonTrialEnd);
+                return this;
+            }
         }
         public class CreateForCustomerRequest : EntityRequest<CreateForCustomerRequest> 
         {
@@ -932,6 +937,11 @@ namespace ChargeBee.Models
             public CreateForCustomerRequest AddonUnitPrice(int index, int addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+                return this;
+            }
+            public CreateForCustomerRequest AddonTrialEnd(int index, long addonTrialEnd) 
+            {
+                m_params.AddOpt("addons[trial_end][" + index + "]", addonTrialEnd);
                 return this;
             }
         }
@@ -1415,6 +1425,11 @@ namespace ChargeBee.Models
             public UpdateRequest AddonUnitPrice(int index, int addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+                return this;
+            }
+            public UpdateRequest AddonTrialEnd(int index, long addonTrialEnd) 
+            {
+                m_params.AddOpt("addons[trial_end][" + index + "]", addonTrialEnd);
                 return this;
             }
         }
@@ -2266,6 +2281,10 @@ namespace ChargeBee.Models
 
             public int? UnitPrice() {
                 return GetValue<int?>("unit_price", false);
+            }
+
+            public DateTime? TrialEnd() {
+                return GetDateTime("trial_end", false);
             }
 
         }
