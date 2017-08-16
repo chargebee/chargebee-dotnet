@@ -34,6 +34,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("payment_sources", "create_card");
             return new CreateCardRequest(url, HttpMethod.POST);
         }
+        public static UpdateCardRequest UpdateCard(string id)
+        {
+            string url = ApiUtil.BuildUrl("payment_sources", CheckNull(id), "update_card");
+            return new UpdateCardRequest(url, HttpMethod.POST);
+        }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("payment_sources", CheckNull(id));
@@ -267,6 +272,74 @@ namespace ChargeBee.Models
                 return this;
             }
             public CreateCardRequest CardBillingCountry(string cardBillingCountry) 
+            {
+                m_params.AddOpt("card[billing_country]", cardBillingCountry);
+                return this;
+            }
+        }
+        public class UpdateCardRequest : EntityRequest<UpdateCardRequest> 
+        {
+            public UpdateCardRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public UpdateCardRequest GatewayMetaData(string gatewayMetaData) 
+            {
+                m_params.AddOpt("gateway_meta_data", gatewayMetaData);
+                return this;
+            }
+            public UpdateCardRequest CardFirstName(string cardFirstName) 
+            {
+                m_params.AddOpt("card[first_name]", cardFirstName);
+                return this;
+            }
+            public UpdateCardRequest CardLastName(string cardLastName) 
+            {
+                m_params.AddOpt("card[last_name]", cardLastName);
+                return this;
+            }
+            public UpdateCardRequest CardExpiryMonth(int cardExpiryMonth) 
+            {
+                m_params.AddOpt("card[expiry_month]", cardExpiryMonth);
+                return this;
+            }
+            public UpdateCardRequest CardExpiryYear(int cardExpiryYear) 
+            {
+                m_params.AddOpt("card[expiry_year]", cardExpiryYear);
+                return this;
+            }
+            public UpdateCardRequest CardBillingAddr1(string cardBillingAddr1) 
+            {
+                m_params.AddOpt("card[billing_addr1]", cardBillingAddr1);
+                return this;
+            }
+            public UpdateCardRequest CardBillingAddr2(string cardBillingAddr2) 
+            {
+                m_params.AddOpt("card[billing_addr2]", cardBillingAddr2);
+                return this;
+            }
+            public UpdateCardRequest CardBillingCity(string cardBillingCity) 
+            {
+                m_params.AddOpt("card[billing_city]", cardBillingCity);
+                return this;
+            }
+            public UpdateCardRequest CardBillingZip(string cardBillingZip) 
+            {
+                m_params.AddOpt("card[billing_zip]", cardBillingZip);
+                return this;
+            }
+            public UpdateCardRequest CardBillingStateCode(string cardBillingStateCode) 
+            {
+                m_params.AddOpt("card[billing_state_code]", cardBillingStateCode);
+                return this;
+            }
+            public UpdateCardRequest CardBillingState(string cardBillingState) 
+            {
+                m_params.AddOpt("card[billing_state]", cardBillingState);
+                return this;
+            }
+            public UpdateCardRequest CardBillingCountry(string cardBillingCountry) 
             {
                 m_params.AddOpt("card[billing_country]", cardBillingCountry);
                 return this;
