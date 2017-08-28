@@ -44,6 +44,16 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", "import_invoice");
             return new ImportInvoiceRequest(url, HttpMethod.POST);
         }
+        public static ApplyPaymentsRequest ApplyPayments(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "apply_payments");
+            return new ApplyPaymentsRequest(url, HttpMethod.POST);
+        }
+        public static ApplyCreditsRequest ApplyCredits(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "apply_credits");
+            return new ApplyCreditsRequest(url, HttpMethod.POST);
+        }
         public static InvoiceListRequest List()
         {
             string url = ApiUtil.BuildUrl("invoices");
@@ -105,6 +115,16 @@ namespace ChargeBee.Models
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "record_refund");
             return new RecordRefundRequest(url, HttpMethod.POST);
+        }
+        public static RemovePaymentRequest RemovePayment(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "remove_payment");
+            return new RemovePaymentRequest(url, HttpMethod.POST);
+        }
+        public static RemoveCreditNoteRequest RemoveCreditNote(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "remove_credit_note");
+            return new RemoveCreditNoteRequest(url, HttpMethod.POST);
         }
         public static VoidInvoiceRequest VoidInvoice(string id)
         {
@@ -933,6 +953,32 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class ApplyPaymentsRequest : EntityRequest<ApplyPaymentsRequest> 
+        {
+            public ApplyPaymentsRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public ApplyPaymentsRequest TransactionId(int index, string transactionId) 
+            {
+                m_params.AddOpt("transactions[id][" + index + "]", transactionId);
+                return this;
+            }
+        }
+        public class ApplyCreditsRequest : EntityRequest<ApplyCreditsRequest> 
+        {
+            public ApplyCreditsRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public ApplyCreditsRequest CreditNoteId(int index, string creditNoteId) 
+            {
+                m_params.AddOpt("credit_notes[id][" + index + "]", creditNoteId);
+                return this;
+            }
+        }
         public class InvoiceListRequest : ListRequestBase<InvoiceListRequest> 
         {
             public InvoiceListRequest(string url) 
@@ -1220,6 +1266,32 @@ namespace ChargeBee.Models
             public RecordRefundRequest CreditNoteReasonCode(CreditNote.ReasonCodeEnum creditNoteReasonCode) 
             {
                 m_params.AddOpt("credit_note[reason_code]", creditNoteReasonCode);
+                return this;
+            }
+        }
+        public class RemovePaymentRequest : EntityRequest<RemovePaymentRequest> 
+        {
+            public RemovePaymentRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public RemovePaymentRequest TransactionId(string transactionId) 
+            {
+                m_params.Add("transaction[id]", transactionId);
+                return this;
+            }
+        }
+        public class RemoveCreditNoteRequest : EntityRequest<RemoveCreditNoteRequest> 
+        {
+            public RemoveCreditNoteRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public RemoveCreditNoteRequest CreditNoteId(string creditNoteId) 
+            {
+                m_params.Add("credit_note[id]", creditNoteId);
                 return this;
             }
         }

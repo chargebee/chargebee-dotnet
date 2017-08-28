@@ -34,6 +34,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "pdf");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
+        public static VoidCreditNoteRequest VoidCreditNote(string id)
+        {
+            string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "void");
+            return new VoidCreditNoteRequest(url, HttpMethod.POST);
+        }
         public static CreditNoteListRequest List()
         {
             string url = ApiUtil.BuildUrl("credit_notes");
@@ -44,6 +49,11 @@ namespace ChargeBee.Models
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "credit_notes");
             return new ListRequest(url);
+        }
+        public static DeleteRequest Delete(string id)
+        {
+            string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "delete");
+            return new DeleteRequest(url, HttpMethod.POST);
         }
         #endregion
         
@@ -222,6 +232,19 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class VoidCreditNoteRequest : EntityRequest<VoidCreditNoteRequest> 
+        {
+            public VoidCreditNoteRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public VoidCreditNoteRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
+                return this;
+            }
+        }
         public class CreditNoteListRequest : ListRequestBase<CreditNoteListRequest> 
         {
             public CreditNoteListRequest(string url) 
@@ -296,6 +319,19 @@ namespace ChargeBee.Models
             }
             public CreditNoteListRequest SortByDate(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","date");
+                return this;
+            }
+        }
+        public class DeleteRequest : EntityRequest<DeleteRequest> 
+        {
+            public DeleteRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public DeleteRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
                 return this;
             }
         }
