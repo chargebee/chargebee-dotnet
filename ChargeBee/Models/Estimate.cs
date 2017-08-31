@@ -49,6 +49,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "change_term_end_estimate");
             return new ChangeTermEndRequest(url, HttpMethod.POST);
         }
+        public static CancelSubscriptionRequest CancelSubscription(string id)
+        {
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "cancel_subscription_estimate");
+            return new CancelSubscriptionRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -689,6 +694,39 @@ namespace ChargeBee.Models
             public ChangeTermEndRequest InvoiceImmediately(bool invoiceImmediately) 
             {
                 m_params.AddOpt("invoice_immediately", invoiceImmediately);
+                return this;
+            }
+        }
+        public class CancelSubscriptionRequest : EntityRequest<CancelSubscriptionRequest> 
+        {
+            public CancelSubscriptionRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CancelSubscriptionRequest EndOfTerm(bool endOfTerm) 
+            {
+                m_params.AddOpt("end_of_term", endOfTerm);
+                return this;
+            }
+            public CancelSubscriptionRequest CreditOptionForCurrentTermCharges(ChargeBee.Models.Enums.CreditOptionForCurrentTermChargesEnum creditOptionForCurrentTermCharges) 
+            {
+                m_params.AddOpt("credit_option_for_current_term_charges", creditOptionForCurrentTermCharges);
+                return this;
+            }
+            public CancelSubscriptionRequest UnbilledChargesOption(ChargeBee.Models.Enums.UnbilledChargesOptionEnum unbilledChargesOption) 
+            {
+                m_params.AddOpt("unbilled_charges_option", unbilledChargesOption);
+                return this;
+            }
+            public CancelSubscriptionRequest AccountReceivablesHandling(ChargeBee.Models.Enums.AccountReceivablesHandlingEnum accountReceivablesHandling) 
+            {
+                m_params.AddOpt("account_receivables_handling", accountReceivablesHandling);
+                return this;
+            }
+            public CancelSubscriptionRequest RefundableCreditsHandling(ChargeBee.Models.Enums.RefundableCreditsHandlingEnum refundableCreditsHandling) 
+            {
+                m_params.AddOpt("refundable_credits_handling", refundableCreditsHandling);
                 return this;
             }
         }

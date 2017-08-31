@@ -102,6 +102,10 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("voided_at", false); }
         }
+        public bool Deleted 
+        {
+            get { return GetValue<bool>("deleted", true); }
+        }
         
         #endregion
         
@@ -131,6 +135,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public UnbilledChargeListRequest IncludeDeleted(bool includeDeleted) 
+            {
+                m_params.AddOpt("include_deleted", includeDeleted);
+                return this;
+            }
             public StringFilter<UnbilledChargeListRequest> SubscriptionId() 
             {
                 return new StringFilter<UnbilledChargeListRequest>("subscription_id", this).SupportsMultiOperators(true).SupportsPresenceOperator(true);        
