@@ -34,6 +34,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "pdf");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
+        public static RecordRefundRequest RecordRefund(string id)
+        {
+            string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "record_refund");
+            return new RecordRefundRequest(url, HttpMethod.POST);
+        }
         public static VoidCreditNoteRequest VoidCreditNote(string id)
         {
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "void");
@@ -229,6 +234,39 @@ namespace ChargeBee.Models
             public CreateRequest LineItemDescription(int index, string lineItemDescription) 
             {
                 m_params.AddOpt("line_items[description][" + index + "]", lineItemDescription);
+                return this;
+            }
+        }
+        public class RecordRefundRequest : EntityRequest<RecordRefundRequest> 
+        {
+            public RecordRefundRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public RecordRefundRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
+                return this;
+            }
+            public RecordRefundRequest TransactionAmount(int transactionAmount) 
+            {
+                m_params.AddOpt("transaction[amount]", transactionAmount);
+                return this;
+            }
+            public RecordRefundRequest TransactionPaymentMethod(ChargeBee.Models.Enums.PaymentMethodEnum transactionPaymentMethod) 
+            {
+                m_params.Add("transaction[payment_method]", transactionPaymentMethod);
+                return this;
+            }
+            public RecordRefundRequest TransactionReferenceNumber(string transactionReferenceNumber) 
+            {
+                m_params.AddOpt("transaction[reference_number]", transactionReferenceNumber);
+                return this;
+            }
+            public RecordRefundRequest TransactionDate(long transactionDate) 
+            {
+                m_params.Add("transaction[date]", transactionDate);
                 return this;
             }
         }

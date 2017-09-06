@@ -382,6 +382,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[gateway_account_id]", cardGatewayAccountId);
                 return this;
             }
+            [Obsolete]
             public CreateRequest CardTmpToken(string cardTmpToken) 
             {
                 m_params.AddOpt("card[tmp_token]", cardTmpToken);
@@ -1369,6 +1370,8 @@ namespace ChargeBee.Models
                 Alipay,
                 [Description("unionpay")]
                 Unionpay,
+                [Description("applepay")]
+                Applepay,
             }
             public enum StatusEnum
             {
