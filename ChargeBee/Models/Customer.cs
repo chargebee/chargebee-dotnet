@@ -264,6 +264,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool>("deleted", true); }
         }
+        public bool? RegisteredForGst 
+        {
+            get { return GetValue<bool?>("registered_for_gst", false); }
+        }
         
         #endregion
         
@@ -328,6 +332,11 @@ namespace ChargeBee.Models
             public CreateRequest VatNumber(string vatNumber) 
             {
                 m_params.AddOpt("vat_number", vatNumber);
+                return this;
+            }
+            public CreateRequest RegisteredForGst(bool registeredForGst) 
+            {
+                m_params.AddOpt("registered_for_gst", registeredForGst);
                 return this;
             }
             public CreateRequest Taxability(ChargeBee.Models.Enums.TaxabilityEnum taxability) 
@@ -750,6 +759,11 @@ namespace ChargeBee.Models
             public UpdateBillingInfoRequest VatNumber(string vatNumber) 
             {
                 m_params.AddOpt("vat_number", vatNumber);
+                return this;
+            }
+            public UpdateBillingInfoRequest RegisteredForGst(bool registeredForGst) 
+            {
+                m_params.AddOpt("registered_for_gst", registeredForGst);
                 return this;
             }
             public UpdateBillingInfoRequest BillingAddressFirstName(string billingAddressFirstName) 

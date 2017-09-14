@@ -741,6 +741,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[vat_number]", customerVatNumber);
                 return this;
             }
+            public CreateRequest CustomerRegisteredForGst(bool customerRegisteredForGst) 
+            {
+                m_params.AddOpt("customer[registered_for_gst]", customerRegisteredForGst);
+                return this;
+            }
             public CreateRequest AddonId(int index, string addonId) 
             {
                 m_params.AddOpt("addons[id][" + index + "]", addonId);
@@ -1417,6 +1422,11 @@ namespace ChargeBee.Models
             public UpdateRequest CustomerVatNumber(string customerVatNumber) 
             {
                 m_params.AddOpt("customer[vat_number]", customerVatNumber);
+                return this;
+            }
+            public UpdateRequest CustomerRegisteredForGst(bool customerRegisteredForGst) 
+            {
+                m_params.AddOpt("customer[registered_for_gst]", customerRegisteredForGst);
                 return this;
             }
             public UpdateRequest AddonId(int index, string addonId) 
