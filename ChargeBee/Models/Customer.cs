@@ -1384,8 +1384,8 @@ namespace ChargeBee.Models
                 Alipay,
                 [Description("unionpay")]
                 Unionpay,
-                [Description("applepay")]
-                Applepay,
+                [Description("apple_pay")]
+                ApplePay,
             }
             public enum StatusEnum
             {

@@ -30,8 +30,8 @@ namespace ChargeBee.Models.Enums
         [Description("unionpay")]
          Unionpay,
 
-        [Description("applepay")]
-         Applepay,
+        [Description("apple_pay")]
+         ApplePay,
 
     }
 }

@@ -65,6 +65,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("gateway_account_id", false); }
         }
+        public string PaymentSourceId 
+        {
+            get { return GetValue<string>("payment_source_id", false); }
+        }
         public PaymentMethodEnum PaymentMethod 
         {
             get { return GetEnum<PaymentMethodEnum>("payment_method", true); }
@@ -192,6 +196,10 @@ namespace ChargeBee.Models
             public StringFilter<TransactionListRequest> SubscriptionId() 
             {
                 return new StringFilter<TransactionListRequest>("subscription_id", this).SupportsMultiOperators(true).SupportsPresenceOperator(true);        
+            }
+            public StringFilter<TransactionListRequest> PaymentSourceId() 
+            {
+                return new StringFilter<TransactionListRequest>("payment_source_id", this).SupportsMultiOperators(true).SupportsPresenceOperator(true);        
             }
             public EnumFilter<ChargeBee.Models.Enums.PaymentMethodEnum, TransactionListRequest> PaymentMethod() 
             {
