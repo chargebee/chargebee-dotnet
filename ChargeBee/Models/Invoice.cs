@@ -256,6 +256,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool?>("has_advance_charges", false); }
         }
+        public int? AmountToCollect 
+        {
+            get { return GetValue<int?>("amount_to_collect", false); }
+        }
         public List<InvoiceLineItem> LineItems 
         {
             get { return GetResourceList<InvoiceLineItem>("line_items"); }
