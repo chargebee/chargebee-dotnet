@@ -284,7 +284,7 @@ namespace ChargeBee.Models
             {
             }
 
-            public UpdateCardRequest GatewayMetaData(string gatewayMetaData) 
+            public UpdateCardRequest GatewayMetaData(JToken gatewayMetaData) 
             {
                 m_params.AddOpt("gateway_meta_data", gatewayMetaData);
                 return this;

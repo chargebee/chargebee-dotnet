@@ -269,7 +269,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[gateway_account_id]", cardGatewayAccountId);
                 return this;
             }
-            [Obsolete]
             public CheckoutNewRequest CustomerVatNumber(string customerVatNumber) 
             {
                 m_params.AddOpt("customer[vat_number]", customerVatNumber);
@@ -548,7 +547,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[invoice_notes]", subscriptionInvoiceNotes);
                 return this;
             }
-            [Obsolete]
             public CheckoutExistingRequest CustomerVatNumber(string customerVatNumber) 
             {
                 m_params.AddOpt("customer[vat_number]", customerVatNumber);
