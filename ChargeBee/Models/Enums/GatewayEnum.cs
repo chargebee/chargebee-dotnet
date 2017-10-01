@@ -81,6 +81,12 @@ namespace ChargeBee.Models.Enums
         [Description("wirecard")]
          Wirecard,
 
+        [Description("amazon_payments")]
+         AmazonPayments,
+
+        [Description("paypal_express_checkout")]
+         PaypalExpressCheckout,
+
         [Description("gocardless")]
          Gocardless,
 

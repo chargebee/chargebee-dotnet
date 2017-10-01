@@ -1,3 +1,118 @@
+### v2.4.3 (2017-09-28)
+* * * 
+
+** APIs updated**: 
+
+The deprecation has been removed from parameter 'vat_number' in Hosted pages Checkout new and Checkout existing APIs.
+See : https://apidocs.chargebee.com/docs/api/hosted_pages#checkout_new_subscription
+
+The parameter 'gateway_meta_data' type has been changed to Json in 'Update a card payment source' API. 
+See : https://apidocs.chargebee.com/docs/api/payment_sources#update_a_card_payment_source
+
+### v2.4.2 (2017-09-22)
+* * * 
+
+** APIs added**: 
+
+New endpoint 'Collect payment for a customer' has been added as a restricted and deprecated API.
+
+** APIs updated**: 
+
+The attribute 'amount_to_collect' would be added to Invoice resource.
+See : https://apidocs.chargebee.com/docs/api/invoices#invoice_attributes
+
+### v2.4.1 (2017-09-15)
+* * * 
+
+** APIs updated**: 
+
+The attribute payment_source_id would be added to the transaction resource.
+See : https://apidocs.chargebee.com/docs/api/transactions#transaction_payment_source_id
+
+The filter parameter payment_source_id would be added in List transactions API.
+See : https://apidocs.chargebee.com/docs/api/transactions#list_transactions
+
+The gateway types amazon_payments and paypal_express_checkout would be added.
+See : https://apidocs.chargebee.com/docs/api/customers#customer_payment_method_gateway
+
+### v2.4.0 (2017-09-14)
+* * * 
+
+** APIs updated**: 
+
+The attribute registered_for_gst has been added to the Customer resource.
+See : https://apidocs.chargebee.com/docs/api/customers#customer_attributes
+
+The parameter registered_for_gst has been added in Create a customer , Update billing info for a customer , Create subscription estimate , Update subscription estimate , Create a subscription and Update a subscription APIs.
+See : https://apidocs.chargebee.com/docs/api/customers#create_a_customer
+
+### v2.3.9 (2017-09-06)
+* * * 
+
+** APIs added**: 
+
+The new endpoint Record refund for a credit note has been added to Credit note resource.
+See : https://apidocs.chargebee.com/docs/api/credit_notes#record_refund_for_a_credit_note
+
+** APIs updated**: 
+
+The parameter tmp_token has been deprecated in card subresource in Create a customer , Create a subscription , Update a subscription and Import subscription APIs.
+See : https://apidocs.chargebee.com/docs/api/customers#create_a_customer
+
+The parameter tmp_token has been added to payment method subresource in Create a subscription API.
+See : https://apidocs.chargebee.com/docs/api/subscriptions#create_a_subscription
+
+The type apple_pay has been added to payment method types.
+See : https://apidocs.chargebee.com/docs/api/customers#create_a_customer_payment_method_type
+
+### v2.3.8 (2017-08-31)
+* * * 
+
+** APIs added**: 
+
+The parameters credit_option_for_current_term_charges, unbilled_charges_option,refundable_credits_handling and account_receivables_handling would be added inCancel subscription API.
+See : https://apidocs.chargebee.com/docs/api/subscriptions#cancel_a_subscription
+
+A new endpoint Cancel subscription estimate would be added to the Estimate resource.
+See : https://apidocs.chargebee.com/docs/api/estimates#cancel_subscription_estimate
+
+The attribute deleted would be added to the Unbilled charge resource.
+See : https://apidocs.chargebee.com/docs/api/unbilled_charges#unbilled_charge_attributes
+
+The parameter include_deleted would be added in List Unbilled Charges API.
+See : https://apidocs.chargebee.com/docs/api/unbilled_charges#list_unbilled_charges
+
+
+### v2.3.7 (2017-08-28)
+* * * 
+
+** APIs added**: 
+
+The endpoints Void a credit note and Delete a credit note would be added to the Credit notes resource.
+See : https://apidocs.chargebee.com/docs/api/credit_notes
+
+The endpoints Apply payments for an invoice, Apply credits for an invoice, Remove payment from an invoice and Remove credit note from an invoice would be added to the Invoice resource.
+See : https://apidocs.chargebee.com/docs/api/invoices
+
+### v2.3.6 (2017-08-16)
+* * * 
+
+** APIs added**: 
+
+A new endpoint 'Update a card payment source' would be added to the Payment source resource.
+See : https://apidocs.chargebee.com/docs/api/payment_sources#update_a_card_payment_source
+
+### v2.3.5 (2017-08-03)
+* * * 
+
+** APIs updated**: 
+
+The attribute trial_end has been added to Subscriptions Addon subresource.
+See : https://apidocs.chargebee.com/docs/api/subscriptions#subscription_addons_trial_end
+
+The parameter trial_end would be added to Addon subresource in Create a subscription,Create subcription for customer, Update a subcription, Create subscription estimate, Create subscription for customer estimate and Update subscription estimate APIs.
+See : https://apidocs.chargebee.com/docs/api/subscriptions#create_a_subscription_addons_trial_end
+
 ### v2.3.4 (2017-07-26)
 * * * 
 
@@ -980,7 +1095,7 @@ A new API called Activate a portal session method(Portal session) added to suppo
 
 ** APIs updated**:
 
-Shipping and Billing Address are returned as part of Invoice resource attributes. This returns the shiping & billing address that was present at the time of invoice generation.
+Shipping and Billing Address are returned as part of Invoice resource attributes. This returns the shipping & billing address that was present at the time of invoice generation.
 
 Linked Customers as part of Portal session resource attributes.
 

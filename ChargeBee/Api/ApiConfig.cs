@@ -5,10 +5,10 @@ namespace ChargeBee.Api
 {
     public sealed class ApiConfig
     {
-        public static string DomainSuffix = "chargebee.com";
-        public static string Proto = "https";
-        public static string Version = "2.3.4";
-        public static readonly string API_VERSION = "v2";
+		public static string DomainSuffix = "chargebee.com";
+		public static string Proto = "https";
+		public static string Version = "2.4.3";
+		public static readonly string API_VERSION = "v2";
 
         public string ApiKey { get; set; }
         public string SiteName { get; set; }

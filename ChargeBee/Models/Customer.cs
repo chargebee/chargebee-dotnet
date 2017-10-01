@@ -89,6 +89,12 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "record_excess_payment");
             return new RecordExcessPaymentRequest(url, HttpMethod.POST);
         }
+        [Obsolete]
+        public static CollectPaymentRequest CollectPayment(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "collect_payment");
+            return new CollectPaymentRequest(url, HttpMethod.POST);
+        }
         public static DeleteRequest Delete(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "delete");
@@ -264,6 +270,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool>("deleted", true); }
         }
+        public bool? RegisteredForGst 
+        {
+            get { return GetValue<bool?>("registered_for_gst", false); }
+        }
         
         #endregion
         
@@ -330,6 +340,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("vat_number", vatNumber);
                 return this;
             }
+            public CreateRequest RegisteredForGst(bool registeredForGst) 
+            {
+                m_params.AddOpt("registered_for_gst", registeredForGst);
+                return this;
+            }
             public CreateRequest Taxability(ChargeBee.Models.Enums.TaxabilityEnum taxability) 
             {
                 m_params.AddOpt("taxability", taxability);
@@ -382,6 +397,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[gateway_account_id]", cardGatewayAccountId);
                 return this;
             }
+            [Obsolete]
             public CreateRequest CardTmpToken(string cardTmpToken) 
             {
                 m_params.AddOpt("card[tmp_token]", cardTmpToken);
@@ -751,6 +767,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("vat_number", vatNumber);
                 return this;
             }
+            public UpdateBillingInfoRequest RegisteredForGst(bool registeredForGst) 
+            {
+                m_params.AddOpt("registered_for_gst", registeredForGst);
+                return this;
+            }
             public UpdateBillingInfoRequest BillingAddressFirstName(string billingAddressFirstName) 
             {
                 m_params.AddOpt("billing_address[first_name]", billingAddressFirstName);
@@ -1096,6 +1117,134 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class CollectPaymentRequest : EntityRequest<CollectPaymentRequest> 
+        {
+            public CollectPaymentRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CollectPaymentRequest Amount(int amount) 
+            {
+                m_params.AddOpt("amount", amount);
+                return this;
+            }
+            public CollectPaymentRequest PaymentSourceId(string paymentSourceId) 
+            {
+                m_params.AddOpt("payment_source_id", paymentSourceId);
+                return this;
+            }
+            public CollectPaymentRequest ReplacePrimaryPaymentSource(bool replacePrimaryPaymentSource) 
+            {
+                m_params.AddOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
+                return this;
+            }
+            public CollectPaymentRequest RetainPaymentSource(bool retainPaymentSource) 
+            {
+                m_params.AddOpt("retain_payment_source", retainPaymentSource);
+                return this;
+            }
+            public CollectPaymentRequest PaymentMethodType(ChargeBee.Models.Enums.TypeEnum paymentMethodType) 
+            {
+                m_params.AddOpt("payment_method[type]", paymentMethodType);
+                return this;
+            }
+            public CollectPaymentRequest PaymentMethodGatewayAccountId(string paymentMethodGatewayAccountId) 
+            {
+                m_params.AddOpt("payment_method[gateway_account_id]", paymentMethodGatewayAccountId);
+                return this;
+            }
+            public CollectPaymentRequest PaymentMethodReferenceId(string paymentMethodReferenceId) 
+            {
+                m_params.AddOpt("payment_method[reference_id]", paymentMethodReferenceId);
+                return this;
+            }
+            public CollectPaymentRequest PaymentMethodTmpToken(string paymentMethodTmpToken) 
+            {
+                m_params.AddOpt("payment_method[tmp_token]", paymentMethodTmpToken);
+                return this;
+            }
+            public CollectPaymentRequest CardGatewayAccountId(string cardGatewayAccountId) 
+            {
+                m_params.AddOpt("card[gateway_account_id]", cardGatewayAccountId);
+                return this;
+            }
+            public CollectPaymentRequest CardFirstName(string cardFirstName) 
+            {
+                m_params.AddOpt("card[first_name]", cardFirstName);
+                return this;
+            }
+            public CollectPaymentRequest CardLastName(string cardLastName) 
+            {
+                m_params.AddOpt("card[last_name]", cardLastName);
+                return this;
+            }
+            public CollectPaymentRequest CardNumber(string cardNumber) 
+            {
+                m_params.AddOpt("card[number]", cardNumber);
+                return this;
+            }
+            public CollectPaymentRequest CardExpiryMonth(int cardExpiryMonth) 
+            {
+                m_params.AddOpt("card[expiry_month]", cardExpiryMonth);
+                return this;
+            }
+            public CollectPaymentRequest CardExpiryYear(int cardExpiryYear) 
+            {
+                m_params.AddOpt("card[expiry_year]", cardExpiryYear);
+                return this;
+            }
+            public CollectPaymentRequest CardCvv(string cardCvv) 
+            {
+                m_params.AddOpt("card[cvv]", cardCvv);
+                return this;
+            }
+            public CollectPaymentRequest CardBillingAddr1(string cardBillingAddr1) 
+            {
+                m_params.AddOpt("card[billing_addr1]", cardBillingAddr1);
+                return this;
+            }
+            public CollectPaymentRequest CardBillingAddr2(string cardBillingAddr2) 
+            {
+                m_params.AddOpt("card[billing_addr2]", cardBillingAddr2);
+                return this;
+            }
+            public CollectPaymentRequest CardBillingCity(string cardBillingCity) 
+            {
+                m_params.AddOpt("card[billing_city]", cardBillingCity);
+                return this;
+            }
+            public CollectPaymentRequest CardBillingStateCode(string cardBillingStateCode) 
+            {
+                m_params.AddOpt("card[billing_state_code]", cardBillingStateCode);
+                return this;
+            }
+            public CollectPaymentRequest CardBillingState(string cardBillingState) 
+            {
+                m_params.AddOpt("card[billing_state]", cardBillingState);
+                return this;
+            }
+            public CollectPaymentRequest CardBillingZip(string cardBillingZip) 
+            {
+                m_params.AddOpt("card[billing_zip]", cardBillingZip);
+                return this;
+            }
+            public CollectPaymentRequest CardBillingCountry(string cardBillingCountry) 
+            {
+                m_params.AddOpt("card[billing_country]", cardBillingCountry);
+                return this;
+            }
+            public CollectPaymentRequest InvoiceAllocationInvoiceId(int index, string invoiceAllocationInvoiceId) 
+            {
+                m_params.AddOpt("invoice_allocations[invoice_id][" + index + "]", invoiceAllocationInvoiceId);
+                return this;
+            }
+            public CollectPaymentRequest InvoiceAllocationAllocationAmount(int index, int invoiceAllocationAllocationAmount) 
+            {
+                m_params.AddOpt("invoice_allocations[allocation_amount][" + index + "]", invoiceAllocationAllocationAmount);
+                return this;
+            }
+        }
         public class DeleteRequest : EntityRequest<DeleteRequest> 
         {
             public DeleteRequest(string url, HttpMethod method) 
@@ -1369,6 +1518,8 @@ namespace ChargeBee.Models
                 Alipay,
                 [Description("unionpay")]
                 Unionpay,
+                [Description("apple_pay")]
+                ApplePay,
             }
             public enum StatusEnum
             {

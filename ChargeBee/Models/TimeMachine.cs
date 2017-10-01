@@ -9,7 +9,7 @@ using Newtonsoft.Json.Linq;
 using ChargeBee.Internal;
 using ChargeBee.Api;
 using ChargeBee.Models.Enums;
-using ChargeBee.Filters.Enums;	
+using ChargeBee.Filters.Enums;
 using System.Threading;
 using System.Net;
 

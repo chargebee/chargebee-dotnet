@@ -493,6 +493,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[gateway_account_id]", cardGatewayAccountId);
                 return this;
             }
+            [Obsolete]
             public CreateRequest CardTmpToken(string cardTmpToken) 
             {
                 m_params.AddOpt("card[tmp_token]", cardTmpToken);
@@ -517,6 +518,11 @@ namespace ChargeBee.Models
             public CreateRequest PaymentMethodReferenceId(string paymentMethodReferenceId) 
             {
                 m_params.AddOpt("payment_method[reference_id]", paymentMethodReferenceId);
+                return this;
+            }
+            public CreateRequest PaymentMethodTmpToken(string paymentMethodTmpToken) 
+            {
+                m_params.AddOpt("payment_method[tmp_token]", paymentMethodTmpToken);
                 return this;
             }
             public CreateRequest CardFirstName(string cardFirstName) 
@@ -735,6 +741,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[vat_number]", customerVatNumber);
                 return this;
             }
+            public CreateRequest CustomerRegisteredForGst(bool customerRegisteredForGst) 
+            {
+                m_params.AddOpt("customer[registered_for_gst]", customerRegisteredForGst);
+                return this;
+            }
             public CreateRequest AddonId(int index, string addonId) 
             {
                 m_params.AddOpt("addons[id][" + index + "]", addonId);
@@ -748,6 +759,11 @@ namespace ChargeBee.Models
             public CreateRequest AddonUnitPrice(int index, int addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+                return this;
+            }
+            public CreateRequest AddonTrialEnd(int index, long addonTrialEnd) 
+            {
+                m_params.AddOpt("addons[trial_end][" + index + "]", addonTrialEnd);
                 return this;
             }
         }
@@ -932,6 +948,11 @@ namespace ChargeBee.Models
             public CreateForCustomerRequest AddonUnitPrice(int index, int addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+                return this;
+            }
+            public CreateForCustomerRequest AddonTrialEnd(int index, long addonTrialEnd) 
+            {
+                m_params.AddOpt("addons[trial_end][" + index + "]", addonTrialEnd);
                 return this;
             }
         }
@@ -1155,6 +1176,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[gateway_account_id]", cardGatewayAccountId);
                 return this;
             }
+            [Obsolete]
             public UpdateRequest CardTmpToken(string cardTmpToken) 
             {
                 m_params.AddOpt("card[tmp_token]", cardTmpToken);
@@ -1402,6 +1424,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[vat_number]", customerVatNumber);
                 return this;
             }
+            public UpdateRequest CustomerRegisteredForGst(bool customerRegisteredForGst) 
+            {
+                m_params.AddOpt("customer[registered_for_gst]", customerRegisteredForGst);
+                return this;
+            }
             public UpdateRequest AddonId(int index, string addonId) 
             {
                 m_params.AddOpt("addons[id][" + index + "]", addonId);
@@ -1415,6 +1442,11 @@ namespace ChargeBee.Models
             public UpdateRequest AddonUnitPrice(int index, int addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+                return this;
+            }
+            public UpdateRequest AddonTrialEnd(int index, long addonTrialEnd) 
+            {
+                m_params.AddOpt("addons[trial_end][" + index + "]", addonTrialEnd);
                 return this;
             }
         }
@@ -1451,6 +1483,26 @@ namespace ChargeBee.Models
             public CancelRequest EndOfTerm(bool endOfTerm) 
             {
                 m_params.AddOpt("end_of_term", endOfTerm);
+                return this;
+            }
+            public CancelRequest CreditOptionForCurrentTermCharges(ChargeBee.Models.Enums.CreditOptionForCurrentTermChargesEnum creditOptionForCurrentTermCharges) 
+            {
+                m_params.AddOpt("credit_option_for_current_term_charges", creditOptionForCurrentTermCharges);
+                return this;
+            }
+            public CancelRequest UnbilledChargesOption(ChargeBee.Models.Enums.UnbilledChargesOptionEnum unbilledChargesOption) 
+            {
+                m_params.AddOpt("unbilled_charges_option", unbilledChargesOption);
+                return this;
+            }
+            public CancelRequest AccountReceivablesHandling(ChargeBee.Models.Enums.AccountReceivablesHandlingEnum accountReceivablesHandling) 
+            {
+                m_params.AddOpt("account_receivables_handling", accountReceivablesHandling);
+                return this;
+            }
+            public CancelRequest RefundableCreditsHandling(ChargeBee.Models.Enums.RefundableCreditsHandlingEnum refundableCreditsHandling) 
+            {
+                m_params.AddOpt("refundable_credits_handling", refundableCreditsHandling);
                 return this;
             }
         }
@@ -1735,6 +1787,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[gateway_account_id]", cardGatewayAccountId);
                 return this;
             }
+            [Obsolete]
             public ImportSubscriptionRequest CardTmpToken(string cardTmpToken) 
             {
                 m_params.AddOpt("card[tmp_token]", cardTmpToken);
@@ -2266,6 +2319,10 @@ namespace ChargeBee.Models
 
             public int? UnitPrice() {
                 return GetValue<int?>("unit_price", false);
+            }
+
+            public DateTime? TrialEnd() {
+                return GetDateTime("trial_end", false);
             }
 
         }
