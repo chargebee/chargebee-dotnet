@@ -2325,6 +2325,10 @@ namespace ChargeBee.Models
                 return GetDateTime("trial_end", false);
             }
 
+            public int? RemainingBillingCycles() {
+                return GetValue<int?>("remaining_billing_cycles", false);
+            }
+
         }
         public class SubscriptionCoupon : Resource
         {

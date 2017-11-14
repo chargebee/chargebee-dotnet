@@ -36,6 +36,24 @@ namespace ChargeBee.Models.Enums
         [Description("coupon_deleted")]
          CouponDeleted,
 
+        [Description("coupon_set_created")]
+         CouponSetCreated,
+
+        [Description("coupon_set_updated")]
+         CouponSetUpdated,
+
+        [Description("coupon_set_deleted")]
+         CouponSetDeleted,
+
+        [Description("coupon_codes_added")]
+         CouponCodesAdded,
+
+        [Description("coupon_codes_deleted")]
+         CouponCodesDeleted,
+
+        [Description("coupon_codes_updated")]
+         CouponCodesUpdated,
+
         [Description("customer_created")]
          CustomerCreated,
 

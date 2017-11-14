@@ -89,7 +89,6 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "record_excess_payment");
             return new RecordExcessPaymentRequest(url, HttpMethod.POST);
         }
-        [Obsolete]
         public static CollectPaymentRequest CollectPayment(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "collect_payment");

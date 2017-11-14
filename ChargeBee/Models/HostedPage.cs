@@ -40,6 +40,18 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("hosted_pages", "update_payment_method");
             return new UpdatePaymentMethodRequest(url, HttpMethod.POST);
         }
+        [Obsolete]
+        public static ManagePaymentSourcesRequest ManagePaymentSources()
+        {
+            string url = ApiUtil.BuildUrl("hosted_pages", "manage_payment_sources");
+            return new ManagePaymentSourcesRequest(url, HttpMethod.POST);
+        }
+        [Obsolete]
+        public static CollectNowRequest CollectNow()
+        {
+            string url = ApiUtil.BuildUrl("hosted_pages", "collect_now");
+            return new CollectNowRequest(url, HttpMethod.POST);
+        }
         public static EntityRequest<Type> Acknowledge(string id)
         {
             string url = ApiUtil.BuildUrl("hosted_pages", CheckNull(id), "acknowledge");
@@ -689,6 +701,59 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class ManagePaymentSourcesRequest : EntityRequest<ManagePaymentSourcesRequest> 
+        {
+            public ManagePaymentSourcesRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public ManagePaymentSourcesRequest CustomerId(string customerId) 
+            {
+                m_params.Add("customer[id]", customerId);
+                return this;
+            }
+            [Obsolete]
+            public ManagePaymentSourcesRequest CardGateway(ChargeBee.Models.Enums.GatewayEnum cardGateway) 
+            {
+                m_params.AddOpt("card[gateway]", cardGateway);
+                return this;
+            }
+            public ManagePaymentSourcesRequest CardGatewayAccountId(string cardGatewayAccountId) 
+            {
+                m_params.AddOpt("card[gateway_account_id]", cardGatewayAccountId);
+                return this;
+            }
+        }
+        public class CollectNowRequest : EntityRequest<CollectNowRequest> 
+        {
+            public CollectNowRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CollectNowRequest CurrencyCode(string currencyCode) 
+            {
+                m_params.AddOpt("currency_code", currencyCode);
+                return this;
+            }
+            public CollectNowRequest CustomerId(string customerId) 
+            {
+                m_params.Add("customer[id]", customerId);
+                return this;
+            }
+            [Obsolete]
+            public CollectNowRequest CardGateway(ChargeBee.Models.Enums.GatewayEnum cardGateway) 
+            {
+                m_params.AddOpt("card[gateway]", cardGateway);
+                return this;
+            }
+            public CollectNowRequest CardGatewayAccountId(string cardGatewayAccountId) 
+            {
+                m_params.AddOpt("card[gateway_account_id]", cardGatewayAccountId);
+                return this;
+            }
+        }
         public class HostedPageListRequest : ListRequestBase<HostedPageListRequest> 
         {
             public HostedPageListRequest(string url) 
@@ -729,6 +794,10 @@ namespace ChargeBee.Models
             UpdateCard,
             [Description("update_payment_method")]
             UpdatePaymentMethod,
+            [Description("manage_payment_sources")]
+            ManagePaymentSources,
+            [Description("collect_now")]
+            CollectNow,
 
         }
         public enum StateEnum
