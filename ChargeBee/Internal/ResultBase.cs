@@ -53,6 +53,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<Card>("card"); }
         }
+        public PromotionalCredit PromotionalCredit
+        {
+            get {  return GetResource<PromotionalCredit>("promotional_credit"); }
+        }
         public Invoice Invoice
         {
             get {  return GetResource<Invoice>("invoice"); }

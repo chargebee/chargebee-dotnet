@@ -69,6 +69,12 @@ namespace ChargeBee.Models.Enums
         [Description("customer_moved_in")]
          CustomerMovedIn,
 
+        [Description("promotional_credits_added")]
+         PromotionalCreditsAdded,
+
+        [Description("promotional_credits_deducted")]
+         PromotionalCreditsDeducted,
+
         [Description("subscription_created")]
          SubscriptionCreated,
 

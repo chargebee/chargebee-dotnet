@@ -69,16 +69,19 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "delete_contact");
             return new DeleteContactRequest(url, HttpMethod.POST);
         }
+        [Obsolete]
         public static AddPromotionalCreditsRequest AddPromotionalCredits(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "add_promotional_credits");
             return new AddPromotionalCreditsRequest(url, HttpMethod.POST);
         }
+        [Obsolete]
         public static DeductPromotionalCreditsRequest DeductPromotionalCredits(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "deduct_promotional_credits");
             return new DeductPromotionalCreditsRequest(url, HttpMethod.POST);
         }
+        [Obsolete]
         public static SetPromotionalCreditsRequest SetPromotionalCredits(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "set_promotional_credits");
@@ -260,6 +263,10 @@ namespace ChargeBee.Models
         public int ExcessPayments 
         {
             get { return GetValue<int>("excess_payments", true); }
+        }
+        public List<CustomerBalance> Balances 
+        {
+            get { return GetResourceList<CustomerBalance>("balances"); }
         }
         public JToken MetaData 
         {
@@ -1554,6 +1561,30 @@ namespace ChargeBee.Models
 
             public string ReferenceId() {
                 return GetValue<string>("reference_id", true);
+            }
+
+        }
+        public class CustomerBalance : Resource
+        {
+
+            public int PromotionalCredits() {
+                return GetValue<int>("promotional_credits", true);
+            }
+
+            public int ExcessPayments() {
+                return GetValue<int>("excess_payments", true);
+            }
+
+            public int RefundableCredits() {
+                return GetValue<int>("refundable_credits", true);
+            }
+
+            public int UnbilledCharges() {
+                return GetValue<int>("unbilled_charges", true);
+            }
+
+            public string BalanceCurrencyCode() {
+                return GetValue<string>("balance_currency_code", true);
             }
 
         }
