@@ -93,6 +93,9 @@ namespace ChargeBee.Models.Enums
         [Description("adyen")]
          Adyen,
 
+        [Description("orbital")]
+         Orbital,
+
         [Description("not_applicable")]
          NotApplicable,
 

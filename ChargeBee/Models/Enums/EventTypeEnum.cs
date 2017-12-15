@@ -108,6 +108,12 @@ namespace ChargeBee.Models.Enums
         [Description("subscription_scheduled_cancellation_removed")]
          SubscriptionScheduledCancellationRemoved,
 
+        [Description("subscription_changes_scheduled")]
+         SubscriptionChangesScheduled,
+
+        [Description("subscription_scheduled_changes_removed")]
+         SubscriptionScheduledChangesRemoved,
+
         [Description("subscription_shipping_address_updated")]
          SubscriptionShippingAddressUpdated,
 
@@ -116,6 +122,9 @@ namespace ChargeBee.Models.Enums
 
         [Description("pending_invoice_created")]
          PendingInvoiceCreated,
+
+        [Description("pending_invoice_updated")]
+         PendingInvoiceUpdated,
 
         [Description("invoice_generated")]
          InvoiceGenerated,
