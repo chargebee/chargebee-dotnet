@@ -150,6 +150,11 @@ namespace ChargeBee.Models
                 m_params.Add("tmp_token", tmpToken);
                 return this;
             }
+            public CreateUsingTempTokenRequest IssuingCountry(string issuingCountry) 
+            {
+                m_params.AddOpt("issuing_country", issuingCountry);
+                return this;
+            }
             public CreateUsingTempTokenRequest ReplacePrimaryPaymentSource(bool replacePrimaryPaymentSource) 
             {
                 m_params.AddOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
@@ -181,6 +186,11 @@ namespace ChargeBee.Models
             public CreateUsingPermanentTokenRequest ReferenceId(string referenceId) 
             {
                 m_params.Add("reference_id", referenceId);
+                return this;
+            }
+            public CreateUsingPermanentTokenRequest IssuingCountry(string issuingCountry) 
+            {
+                m_params.AddOpt("issuing_country", issuingCountry);
                 return this;
             }
             public CreateUsingPermanentTokenRequest ReplacePrimaryPaymentSource(bool replacePrimaryPaymentSource) 

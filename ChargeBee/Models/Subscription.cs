@@ -525,6 +525,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_method[tmp_token]", paymentMethodTmpToken);
                 return this;
             }
+            public CreateRequest PaymentMethodIssuingCountry(string paymentMethodIssuingCountry) 
+            {
+                m_params.AddOpt("payment_method[issuing_country]", paymentMethodIssuingCountry);
+                return this;
+            }
             public CreateRequest CardFirstName(string cardFirstName) 
             {
                 m_params.AddOpt("card[first_name]", cardFirstName);
@@ -1208,6 +1213,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_method[tmp_token]", paymentMethodTmpToken);
                 return this;
             }
+            public UpdateRequest PaymentMethodIssuingCountry(string paymentMethodIssuingCountry) 
+            {
+                m_params.AddOpt("payment_method[issuing_country]", paymentMethodIssuingCountry);
+                return this;
+            }
             public UpdateRequest CardFirstName(string cardFirstName) 
             {
                 m_params.AddOpt("card[first_name]", cardFirstName);
@@ -1812,6 +1822,11 @@ namespace ChargeBee.Models
             public ImportSubscriptionRequest PaymentMethodReferenceId(string paymentMethodReferenceId) 
             {
                 m_params.AddOpt("payment_method[reference_id]", paymentMethodReferenceId);
+                return this;
+            }
+            public ImportSubscriptionRequest PaymentMethodIssuingCountry(string paymentMethodIssuingCountry) 
+            {
+                m_params.AddOpt("payment_method[issuing_country]", paymentMethodIssuingCountry);
                 return this;
             }
             public ImportSubscriptionRequest CardFirstName(string cardFirstName) 
