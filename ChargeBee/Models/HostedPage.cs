@@ -46,7 +46,6 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("hosted_pages", "manage_payment_sources");
             return new ManagePaymentSourcesRequest(url, HttpMethod.POST);
         }
-        [Obsolete]
         public static CollectNowRequest CollectNow()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "collect_now");

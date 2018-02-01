@@ -143,6 +143,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int>("sub_total", true); }
         }
+        public int? RoundOffAmount 
+        {
+            get { return GetValue<int?>("round_off_amount", false); }
+        }
         public List<CreditNoteLineItem> LineItems 
         {
             get { return GetResourceList<CreditNoteLineItem>("line_items"); }
