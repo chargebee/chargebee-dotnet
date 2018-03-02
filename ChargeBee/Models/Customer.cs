@@ -1536,6 +1536,8 @@ namespace ChargeBee.Models
                 Unionpay,
                 [Description("apple_pay")]
                 ApplePay,
+                [Description("wechat_pay")]
+                WechatPay,
             }
             public enum StatusEnum
             {
@@ -1593,6 +1595,10 @@ namespace ChargeBee.Models
                 return GetValue<int>("unbilled_charges", true);
             }
 
+            public string CurrencyCode() {
+                return GetValue<string>("currency_code", true);
+            }
+			[Obsolete]
             public string BalanceCurrencyCode() {
                 return GetValue<string>("balance_currency_code", true);
             }

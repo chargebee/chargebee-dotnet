@@ -24,12 +24,12 @@ namespace ChargeBee.Api
 
         public void AddOpt(string key, object value)
 		{	
-			m_dict.Add(key, value == null ? String.Empty : ConvertValue(value, false));
+			m_dict[key] = value == null ? String.Empty : ConvertValue(value, false);
         }
 
 		public void AddOpt(string key, object value, bool isDate)
 		{	
-			m_dict.Add(key, value == null ? String.Empty : ConvertValue(value, isDate));
+			m_dict[key] = value == null ? String.Empty : ConvertValue(value, isDate);
 		}
 
 		public string GetQuery(bool IsList)

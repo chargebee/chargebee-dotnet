@@ -48,7 +48,7 @@ namespace ChargeBee.Api
 		}
     
 		public U Header(string headerName, string headerValue){
-			headers.Add (headerName, headerValue);
+			headers[headerName] = headerValue;
 			return (U)this;
 		}
 

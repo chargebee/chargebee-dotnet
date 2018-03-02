@@ -42,6 +42,9 @@ namespace ChargeBee.Models.Enums
         [Description("apple_pay")]
          ApplePay,
 
+        [Description("wechat_pay")]
+         WechatPay,
+
         [Description("other")]
          Other,
 

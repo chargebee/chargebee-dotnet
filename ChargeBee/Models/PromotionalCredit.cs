@@ -83,6 +83,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int>("closing_balance", true); }
         }
+        public string DoneBy 
+        {
+            get { return GetValue<string>("done_by", false); }
+        }
         public DateTime CreatedAt 
         {
             get { return (DateTime)GetDateTime("created_at", true); }
