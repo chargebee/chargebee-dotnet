@@ -127,7 +127,8 @@
     <Compile Include="Models\Enums\RefundableCreditsHandlingEnum.cs" />
     <Compile Include="Models\Enums\UnbilledChargesOptionEnum.cs" />
     <Compile Include="Models\CouponSet.cs" />
-	<Compile Include="Models\PromotionalCredit.cs" />
+    <Compile Include="Models\PromotionalCredit.cs" />
+    <Compile Include="Models\Enums\DispositionTypeEnum.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Cb-Dotnet.snk" />

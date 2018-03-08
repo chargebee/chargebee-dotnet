@@ -76,10 +76,10 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
-        public static EntityRequest<Type> Pdf(string id)
+        public static PdfRequest Pdf(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "pdf");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            return new PdfRequest(url, HttpMethod.POST);
         }
         public static AddChargeRequest AddCharge(string id)
         {
@@ -1076,6 +1076,19 @@ namespace ChargeBee.Models
             }
             public InvoiceListRequest SortByDate(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","date");
+                return this;
+            }
+        }
+        public class PdfRequest : EntityRequest<PdfRequest> 
+        {
+            public PdfRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public PdfRequest DispositionType(ChargeBee.Models.Enums.DispositionTypeEnum dispositionType) 
+            {
+                m_params.AddOpt("disposition_type", dispositionType);
                 return this;
             }
         }
