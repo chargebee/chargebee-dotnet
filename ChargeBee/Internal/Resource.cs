@@ -154,6 +154,11 @@ namespace ChargeBee.Internal
 			}
 		}
 
+		public JToken GetJToken(){
+			return m_jobj;
+		}
+
 	}
+	 
 }
 

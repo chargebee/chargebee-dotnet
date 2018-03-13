@@ -29,10 +29,10 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
-        public static EntityRequest<Type> Pdf(string id)
+        public static PdfRequest Pdf(string id)
         {
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "pdf");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            return new PdfRequest(url, HttpMethod.POST);
         }
         public static RecordRefundRequest RecordRefund(string id)
         {
@@ -143,6 +143,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int>("sub_total", true); }
         }
+        public int? RoundOffAmount 
+        {
+            get { return GetValue<int?>("round_off_amount", false); }
+        }
         public List<CreditNoteLineItem> LineItems 
         {
             get { return GetResourceList<CreditNoteLineItem>("line_items"); }
@@ -234,6 +238,19 @@ namespace ChargeBee.Models
             public CreateRequest LineItemDescription(int index, string lineItemDescription) 
             {
                 m_params.AddOpt("line_items[description][" + index + "]", lineItemDescription);
+                return this;
+            }
+        }
+        public class PdfRequest : EntityRequest<PdfRequest> 
+        {
+            public PdfRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public PdfRequest DispositionType(ChargeBee.Models.Enums.DispositionTypeEnum dispositionType) 
+            {
+                m_params.AddOpt("disposition_type", dispositionType);
                 return this;
             }
         }

@@ -56,7 +56,7 @@ namespace ChargeBee.Models
         }
         public string RedirectUrl 
         {
-            get { return GetValue<string>("redirect_url", true); }
+            get { return GetValue<string>("redirect_url", false); }
         }
         public StatusEnum Status 
         {

@@ -36,6 +36,24 @@ namespace ChargeBee.Models.Enums
         [Description("coupon_deleted")]
          CouponDeleted,
 
+        [Description("coupon_set_created")]
+         CouponSetCreated,
+
+        [Description("coupon_set_updated")]
+         CouponSetUpdated,
+
+        [Description("coupon_set_deleted")]
+         CouponSetDeleted,
+
+        [Description("coupon_codes_added")]
+         CouponCodesAdded,
+
+        [Description("coupon_codes_deleted")]
+         CouponCodesDeleted,
+
+        [Description("coupon_codes_updated")]
+         CouponCodesUpdated,
+
         [Description("customer_created")]
          CustomerCreated,
 
@@ -50,6 +68,12 @@ namespace ChargeBee.Models.Enums
 
         [Description("customer_moved_in")]
          CustomerMovedIn,
+
+        [Description("promotional_credits_added")]
+         PromotionalCreditsAdded,
+
+        [Description("promotional_credits_deducted")]
+         PromotionalCreditsDeducted,
 
         [Description("subscription_created")]
          SubscriptionCreated,
@@ -84,6 +108,12 @@ namespace ChargeBee.Models.Enums
         [Description("subscription_scheduled_cancellation_removed")]
          SubscriptionScheduledCancellationRemoved,
 
+        [Description("subscription_changes_scheduled")]
+         SubscriptionChangesScheduled,
+
+        [Description("subscription_scheduled_changes_removed")]
+         SubscriptionScheduledChangesRemoved,
+
         [Description("subscription_shipping_address_updated")]
          SubscriptionShippingAddressUpdated,
 
@@ -92,6 +122,9 @@ namespace ChargeBee.Models.Enums
 
         [Description("pending_invoice_created")]
          PendingInvoiceCreated,
+
+        [Description("pending_invoice_updated")]
+         PendingInvoiceUpdated,
 
         [Description("invoice_generated")]
          InvoiceGenerated,

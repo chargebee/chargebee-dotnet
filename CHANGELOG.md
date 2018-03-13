@@ -1,3 +1,95 @@
+### v2.5.2 (2018-03-08)
+* * * 
+
+The input parameter disposition_type has been added to 'Retrieve Invoice as PDF' and 'Retrieve Credit Note as PDF' APIs.
+See : https://apidocs.chargebee.com/docs/api/invoices#retrieve_invoice_as_pdf
+
+### v2.5.1 (2018-03-02)
+* * * 
+
+The attribute 'balance_currency_code' has been deprecated and attribute 'currency_code' has been added to Balances sub-resource in Customer resource.
+See : https://apidocs.chargebee.com/docs/api/customers#customer_attributes
+
+The attribute done_by has been added to Promotional credits resource.
+See : https://apidocs.chargebee.com/docs/api/promotional_credits
+
+New payment method wechat_pay has been added.
+See : https://apidocs.chargebee.com/docs/api/customers#customer_attributes
+
+The endpoint Manage Payment Sources has been undeprecated in Hosted pages resource.
+See : https://apidocs.chargebee.com/docs/api/hosted_pages
+
+### v2.5.0 (2018-02-01)
+* * * 
+
+The attribute 'round_off_amount' have been added in Invoice an Credit note resources.
+See : https://apidocs.chargebee.com/docs/api/invoices#invoice_attributes
+
+The attribute 'settled_at' has been added to transaction resource.
+See : https://apidocs.chargebee.com/docs/api/transactions#transaction_attributes
+
+'Collect now' API in Hosted pages resource has been undeprecated.
+See : https://apidocs.chargebee.com/docs/api/hosted_pages#collect_now
+
+### v2.4.9 (2018-01-24)
+* * * 
+
+New Gateway enum types moneris and moneris_us has been added.
+See : https://apidocs.chargebee.com/docs/api/cards#card_gateway
+
+### v2.4.8 (2018-01-12)
+* New endpoint "Update invoice details" has been added to Invoice resource.
+
+### v2.4.7 (2017-12-20)
+
+* New input attribute payment_method[issuing_country] has been released in create a customer, update payment method for a customer, create a subscription, update a subscription API
+
+* New input attribute issuing_country has been released in create using temporary token and create using permanent token API
+
+### v2.4.6 (2017-12-15)
+
+* New Gateway Type orbital has been released
+
+** Events added**:
+
+New Event Type subscription_changes_scheduled, subscription_scheduled_changes_removed and pending_invoice_updated has been released
+
+### v2.4.5 (2017-11-27)
+* * * 
+
+** API changes **:  
+* The new resource [Promotional Credits](http://apidocs.chargebee.com/docs/api/promotional_credits) has been added
+
+* The new sub resource [balances](https://apidocs.chargebee.com/docs/api/customers#customer_balances) has been added
+
+* The API end point add_promotional_credits, deduct_promotional_credits and set_promotional_credits has been deprecated in customer resource
+
+** Events added**:
+* New Event Type promotional_credits_added and promotional_credits_deducted has been added
+
+
+### v2.4.4 (2017-11-13)
+* * * 
+
+** API changes**: 
+* The new resource [Coupon Set](https://apidocs.chargebee.com/docs/api/coupon_sets) has been added
+
+* The API end point create a coupon code for a coupon has been deprecated in coupon code resource
+
+* The attribute [coupon_set_id](https://apidocs.chargebee.com/docs/api/coupon_codes#coupon_code_coupon_set_id) has been added to Coupon Code resource
+
+* The deprecation has been removed for [Collect payment for customer](https://apidocs.chargebee.com/docs/api/customers#collect_payment_for_customer) in customer resource
+
+* New end point Manage payment source and Collect now has been added as deprecated API to hosted page. Please mail us at support@chargebee.com to enable
+
+** Attributes added**:
+* New attribute [remaining_billing_cycles](https://apidocs.chargebee.com/docs/api/subscriptions#subscription_addons_remaining_billing_cycles) has been added in addons under subscription resource.
+
+
+** Events added**:
+* New event type coupon_set_created, coupon_set_updated, coupon_set_deleted, coupon_codes_added, coupon_codes_updated, coupon_codes_deleted
+
+
 ### v2.4.3 (2017-09-28)
 * * * 
 

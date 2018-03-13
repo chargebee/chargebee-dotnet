@@ -19,6 +19,7 @@ namespace ChargeBee.Models
     
 
         #region Methods
+        [Obsolete]
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("coupon_codes");
@@ -53,6 +54,10 @@ namespace ChargeBee.Models
         public string CouponId 
         {
             get { return GetValue<string>("coupon_id", true); }
+        }
+        public string CouponSetId 
+        {
+            get { return GetValue<string>("coupon_set_id", true); }
         }
         public string CouponSetName 
         {

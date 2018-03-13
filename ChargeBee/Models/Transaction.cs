@@ -89,6 +89,10 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("date", false); }
         }
+        public DateTime? SettledAt 
+        {
+            get { return GetDateTime("settled_at", false); }
+        }
         public string CurrencyCode 
         {
             get { return GetValue<string>("currency_code", true); }
