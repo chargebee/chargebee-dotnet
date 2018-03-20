@@ -119,6 +119,10 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<PaymentSourcePaypal>("paypal"); }
         }
+        public bool Deleted 
+        {
+            get { return GetValue<bool>("deleted", true); }
+        }
         
         #endregion
         
