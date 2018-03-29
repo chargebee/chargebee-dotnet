@@ -414,6 +414,8 @@ namespace ChargeBee.Models
             SubscriptionChange,
             [Description("subscription_cancellation")]
             SubscriptionCancellation,
+            [Description("subscription_pause")]
+            SubscriptionPause,
             [Description("chargeback")]
             Chargeback,
             [Description("product_unsatisfactory")]

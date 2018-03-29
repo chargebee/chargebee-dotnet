@@ -54,6 +54,16 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "cancel_subscription_estimate");
             return new CancelSubscriptionRequest(url, HttpMethod.POST);
         }
+        public static PauseSubscriptionRequest PauseSubscription(string id)
+        {
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "pause_subscription_estimate");
+            return new PauseSubscriptionRequest(url, HttpMethod.POST);
+        }
+        public static ResumeSubscriptionRequest ResumeSubscription(string id)
+        {
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "resume_subscription_estimate");
+            return new ResumeSubscriptionRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -737,6 +747,52 @@ namespace ChargeBee.Models
             public CancelSubscriptionRequest RefundableCreditsHandling(ChargeBee.Models.Enums.RefundableCreditsHandlingEnum refundableCreditsHandling) 
             {
                 m_params.AddOpt("refundable_credits_handling", refundableCreditsHandling);
+                return this;
+            }
+        }
+        public class PauseSubscriptionRequest : EntityRequest<PauseSubscriptionRequest> 
+        {
+            public PauseSubscriptionRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public PauseSubscriptionRequest PauseOption(ChargeBee.Models.Enums.PauseOptionEnum pauseOption) 
+            {
+                m_params.AddOpt("pause_option", pauseOption);
+                return this;
+            }
+            public PauseSubscriptionRequest UnbilledChargesHandling(ChargeBee.Models.Enums.UnbilledChargesHandlingEnum unbilledChargesHandling) 
+            {
+                m_params.AddOpt("unbilled_charges_handling", unbilledChargesHandling);
+                return this;
+            }
+            public PauseSubscriptionRequest SubscriptionPauseDate(long subscriptionPauseDate) 
+            {
+                m_params.AddOpt("subscription[pause_date]", subscriptionPauseDate);
+                return this;
+            }
+            public PauseSubscriptionRequest SubscriptionResumeDate(long subscriptionResumeDate) 
+            {
+                m_params.AddOpt("subscription[resume_date]", subscriptionResumeDate);
+                return this;
+            }
+        }
+        public class ResumeSubscriptionRequest : EntityRequest<ResumeSubscriptionRequest> 
+        {
+            public ResumeSubscriptionRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public ResumeSubscriptionRequest ResumeOption(ChargeBee.Models.Enums.ResumeOptionEnum resumeOption) 
+            {
+                m_params.AddOpt("resume_option", resumeOption);
+                return this;
+            }
+            public ResumeSubscriptionRequest SubscriptionResumeDate(long subscriptionResumeDate) 
+            {
+                m_params.AddOpt("subscription[resume_date]", subscriptionResumeDate);
                 return this;
             }
         }

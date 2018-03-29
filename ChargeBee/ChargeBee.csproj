@@ -129,6 +129,11 @@
     <Compile Include="Models\CouponSet.cs" />
     <Compile Include="Models\PromotionalCredit.cs" />
     <Compile Include="Models\Enums\DispositionTypeEnum.cs" />
+    <Compile Include="Models\Enums\InvoiceDunningHandlingEnum.cs" />
+    <Compile Include="Models\Enums\PauseOptionEnum.cs" />
+    <Compile Include="Models\Enums\ResumeOptionEnum.cs" />
+    <Compile Include="Models\Enums\UnbilledChargesHandlingEnum.cs" />
+    <Compile Include="Models\Enums\UnpaidInvoicesHandlingEnum.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Cb-Dotnet.snk" />

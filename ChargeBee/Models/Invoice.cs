@@ -261,6 +261,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool?>("has_advance_charges", false); }
         }
+        public DateTime? ExpectedPaymentDate 
+        {
+            get { return GetDateTime("expected_payment_date", false); }
+        }
         public int? AmountToCollect 
         {
             get { return GetValue<int?>("amount_to_collect", false); }

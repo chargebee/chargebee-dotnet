@@ -38,6 +38,14 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("next_billing_at", false); }
         }
+        public DateTime? PauseDate 
+        {
+            get { return GetDateTime("pause_date", false); }
+        }
+        public DateTime? ResumeDate 
+        {
+            get { return GetDateTime("resume_date", false); }
+        }
         public SubscriptionEstimateShippingAddress ShippingAddress 
         {
             get { return GetSubResource<SubscriptionEstimateShippingAddress>("shipping_address"); }
@@ -59,6 +67,8 @@ namespace ChargeBee.Models
             Active,
             [Description("non_renewing")]
             NonRenewing,
+            [Description("paused")]
+            Paused,
             [Description("cancelled")]
             Cancelled,
 

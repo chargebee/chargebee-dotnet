@@ -120,6 +120,26 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "delete");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
+        public static PauseRequest Pause(string id)
+        {
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "pause");
+            return new PauseRequest(url, HttpMethod.POST);
+        }
+        public static ResumeRequest Resume(string id)
+        {
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "resume");
+            return new ResumeRequest(url, HttpMethod.POST);
+        }
+        public static EntityRequest<Type> RemoveScheduledPause(string id)
+        {
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "remove_scheduled_pause");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
+        public static EntityRequest<Type> RemoveScheduledResumption(string id)
+        {
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "remove_scheduled_resumption");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -210,6 +230,14 @@ namespace ChargeBee.Models
         public DateTime? ActivatedAt 
         {
             get { return GetDateTime("activated_at", false); }
+        }
+        public DateTime? PauseDate 
+        {
+            get { return GetDateTime("pause_date", false); }
+        }
+        public DateTime? ResumeDate 
+        {
+            get { return GetDateTime("resume_date", false); }
         }
         public DateTime? CancelledAt 
         {
@@ -1706,6 +1734,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("started_at", startedAt);
                 return this;
             }
+            public ImportSubscriptionRequest CreateCurrentTermInvoice(bool createCurrentTermInvoice) 
+            {
+                m_params.AddOpt("create_current_term_invoice", createCurrentTermInvoice);
+                return this;
+            }
             public ImportSubscriptionRequest AffiliateToken(string affiliateToken) 
             {
                 m_params.AddOpt("affiliate_token", affiliateToken);
@@ -2039,6 +2072,26 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[vat_number]", customerVatNumber);
                 return this;
             }
+            public ImportSubscriptionRequest TransactionAmount(int transactionAmount) 
+            {
+                m_params.AddOpt("transaction[amount]", transactionAmount);
+                return this;
+            }
+            public ImportSubscriptionRequest TransactionPaymentMethod(ChargeBee.Models.Enums.PaymentMethodEnum transactionPaymentMethod) 
+            {
+                m_params.AddOpt("transaction[payment_method]", transactionPaymentMethod);
+                return this;
+            }
+            public ImportSubscriptionRequest TransactionReferenceNumber(string transactionReferenceNumber) 
+            {
+                m_params.AddOpt("transaction[reference_number]", transactionReferenceNumber);
+                return this;
+            }
+            public ImportSubscriptionRequest TransactionDate(long transactionDate) 
+            {
+                m_params.AddOpt("transaction[date]", transactionDate);
+                return this;
+            }
             public ImportSubscriptionRequest AddonId(int index, string addonId) 
             {
                 m_params.AddOpt("addons[id][" + index + "]", addonId);
@@ -2152,6 +2205,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("started_at", startedAt);
                 return this;
             }
+            public ImportForCustomerRequest CreateCurrentTermInvoice(bool createCurrentTermInvoice) 
+            {
+                m_params.AddOpt("create_current_term_invoice", createCurrentTermInvoice);
+                return this;
+            }
             public ImportForCustomerRequest InvoiceNotes(string invoiceNotes) 
             {
                 m_params.AddOpt("invoice_notes", invoiceNotes);
@@ -2160,6 +2218,26 @@ namespace ChargeBee.Models
             public ImportForCustomerRequest MetaData(JToken metaData) 
             {
                 m_params.AddOpt("meta_data", metaData);
+                return this;
+            }
+            public ImportForCustomerRequest TransactionAmount(int transactionAmount) 
+            {
+                m_params.AddOpt("transaction[amount]", transactionAmount);
+                return this;
+            }
+            public ImportForCustomerRequest TransactionPaymentMethod(ChargeBee.Models.Enums.PaymentMethodEnum transactionPaymentMethod) 
+            {
+                m_params.AddOpt("transaction[payment_method]", transactionPaymentMethod);
+                return this;
+            }
+            public ImportForCustomerRequest TransactionReferenceNumber(string transactionReferenceNumber) 
+            {
+                m_params.AddOpt("transaction[reference_number]", transactionReferenceNumber);
+                return this;
+            }
+            public ImportForCustomerRequest TransactionDate(long transactionDate) 
+            {
+                m_params.AddOpt("transaction[date]", transactionDate);
                 return this;
             }
             public ImportForCustomerRequest ShippingAddressFirstName(string shippingAddressFirstName) 
@@ -2266,6 +2344,62 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class PauseRequest : EntityRequest<PauseRequest> 
+        {
+            public PauseRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public PauseRequest PauseOption(ChargeBee.Models.Enums.PauseOptionEnum pauseOption) 
+            {
+                m_params.AddOpt("pause_option", pauseOption);
+                return this;
+            }
+            public PauseRequest PauseDate(long pauseDate) 
+            {
+                m_params.AddOpt("pause_date", pauseDate);
+                return this;
+            }
+            public PauseRequest UnbilledChargesHandling(ChargeBee.Models.Enums.UnbilledChargesHandlingEnum unbilledChargesHandling) 
+            {
+                m_params.AddOpt("unbilled_charges_handling", unbilledChargesHandling);
+                return this;
+            }
+            public PauseRequest InvoiceDunningHandling(ChargeBee.Models.Enums.InvoiceDunningHandlingEnum invoiceDunningHandling) 
+            {
+                m_params.AddOpt("invoice_dunning_handling", invoiceDunningHandling);
+                return this;
+            }
+            public PauseRequest ResumeDate(long resumeDate) 
+            {
+                m_params.AddOpt("resume_date", resumeDate);
+                return this;
+            }
+        }
+        public class ResumeRequest : EntityRequest<ResumeRequest> 
+        {
+            public ResumeRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public ResumeRequest ResumeOption(ChargeBee.Models.Enums.ResumeOptionEnum resumeOption) 
+            {
+                m_params.AddOpt("resume_option", resumeOption);
+                return this;
+            }
+            public ResumeRequest ResumeDate(long resumeDate) 
+            {
+                m_params.AddOpt("resume_date", resumeDate);
+                return this;
+            }
+            public ResumeRequest UnpaidInvoicesHandling(ChargeBee.Models.Enums.UnpaidInvoicesHandlingEnum unpaidInvoicesHandling) 
+            {
+                m_params.AddOpt("unpaid_invoices_handling", unpaidInvoicesHandling);
+                return this;
+            }
+        }
         #endregion
 
         public enum BillingPeriodUnitEnum
@@ -2294,6 +2428,8 @@ namespace ChargeBee.Models
             Active,
             [Description("non_renewing")]
             NonRenewing,
+            [Description("paused")]
+            Paused,
             [Description("cancelled")]
             Cancelled,
 

@@ -120,6 +120,24 @@ namespace ChargeBee.Models.Enums
         [Description("subscription_deleted")]
          SubscriptionDeleted,
 
+        [Description("subscription_paused")]
+         SubscriptionPaused,
+
+        [Description("subscription_pause_scheduled")]
+         SubscriptionPauseScheduled,
+
+        [Description("subscription_scheduled_pause_removed")]
+         SubscriptionScheduledPauseRemoved,
+
+        [Description("subscription_resumed")]
+         SubscriptionResumed,
+
+        [Description("subscription_resumption_scheduled")]
+         SubscriptionResumptionScheduled,
+
+        [Description("subscription_scheduled_resumption_removed")]
+         SubscriptionScheduledResumptionRemoved,
+
         [Description("pending_invoice_created")]
          PendingInvoiceCreated,
 
