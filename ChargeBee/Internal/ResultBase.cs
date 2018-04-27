@@ -49,6 +49,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<ThirdPartyPaymentMethod>("third_party_payment_method"); }
         }
+        public VirtualBankAccount VirtualBankAccount
+        {
+            get {  return GetResource<VirtualBankAccount>("virtual_bank_account"); }
+        }
         public Card Card
         {
             get {  return GetResource<Card>("card"); }

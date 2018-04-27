@@ -134,6 +134,7 @@
     <Compile Include="Models\Enums\ResumeOptionEnum.cs" />
     <Compile Include="Models\Enums\UnbilledChargesHandlingEnum.cs" />
     <Compile Include="Models\Enums\UnpaidInvoicesHandlingEnum.cs" />
+    <Compile Include="Models\VirtualBankAccount.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Cb-Dotnet.snk" />
