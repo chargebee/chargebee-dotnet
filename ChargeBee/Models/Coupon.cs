@@ -34,6 +34,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("coupons", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
+        public static UpdateRequest Update(string id)
+        {
+            string url = ApiUtil.BuildUrl("coupons", CheckNull(id));
+            return new UpdateRequest(url, HttpMethod.POST);
+        }
         public static EntityRequest<Type> Delete(string id)
         {
             string url = ApiUtil.BuildUrl("coupons", CheckNull(id), "delete");
@@ -312,6 +317,99 @@ namespace ChargeBee.Models
             }
             public CouponListRequest SortByCreatedAt(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");
+                return this;
+            }
+        }
+        public class UpdateRequest : EntityRequest<UpdateRequest> 
+        {
+            public UpdateRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public UpdateRequest Name(string name) 
+            {
+                m_params.AddOpt("name", name);
+                return this;
+            }
+            public UpdateRequest InvoiceName(string invoiceName) 
+            {
+                m_params.AddOpt("invoice_name", invoiceName);
+                return this;
+            }
+            public UpdateRequest DiscountType(Coupon.DiscountTypeEnum discountType) 
+            {
+                m_params.AddOpt("discount_type", discountType);
+                return this;
+            }
+            public UpdateRequest DiscountAmount(int discountAmount) 
+            {
+                m_params.AddOpt("discount_amount", discountAmount);
+                return this;
+            }
+            public UpdateRequest CurrencyCode(string currencyCode) 
+            {
+                m_params.AddOpt("currency_code", currencyCode);
+                return this;
+            }
+            public UpdateRequest DiscountPercentage(double discountPercentage) 
+            {
+                m_params.AddOpt("discount_percentage", discountPercentage);
+                return this;
+            }
+            public UpdateRequest ApplyOn(Coupon.ApplyOnEnum applyOn) 
+            {
+                m_params.AddOpt("apply_on", applyOn);
+                return this;
+            }
+            public UpdateRequest PlanConstraint(PlanConstraintEnum planConstraint) 
+            {
+                m_params.AddOpt("plan_constraint", planConstraint);
+                return this;
+            }
+            public UpdateRequest AddonConstraint(AddonConstraintEnum addonConstraint) 
+            {
+                m_params.AddOpt("addon_constraint", addonConstraint);
+                return this;
+            }
+            public UpdateRequest PlanIds(List<string> planIds) 
+            {
+                m_params.AddOpt("plan_ids", planIds);
+                return this;
+            }
+            public UpdateRequest AddonIds(List<string> addonIds) 
+            {
+                m_params.AddOpt("addon_ids", addonIds);
+                return this;
+            }
+            public UpdateRequest DurationType(Coupon.DurationTypeEnum durationType) 
+            {
+                m_params.AddOpt("duration_type", durationType);
+                return this;
+            }
+            public UpdateRequest DurationMonth(int durationMonth) 
+            {
+                m_params.AddOpt("duration_month", durationMonth);
+                return this;
+            }
+            public UpdateRequest ValidTill(long validTill) 
+            {
+                m_params.AddOpt("valid_till", validTill);
+                return this;
+            }
+            public UpdateRequest MaxRedemptions(int maxRedemptions) 
+            {
+                m_params.AddOpt("max_redemptions", maxRedemptions);
+                return this;
+            }
+            public UpdateRequest InvoiceNotes(string invoiceNotes) 
+            {
+                m_params.AddOpt("invoice_notes", invoiceNotes);
+                return this;
+            }
+            public UpdateRequest MetaData(JToken metaData) 
+            {
+                m_params.AddOpt("meta_data", metaData);
                 return this;
             }
         }
