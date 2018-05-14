@@ -41,6 +41,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<Customer>("customer"); }
         }
+        public Contact Contact
+        {
+            get {  return GetResource<Contact>("contact"); }
+        }
         public PaymentSource PaymentSource
         {
             get {  return GetResource<PaymentSource>("payment_source"); }

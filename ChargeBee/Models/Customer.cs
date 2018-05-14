@@ -49,6 +49,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "update_billing_info");
             return new UpdateBillingInfoRequest(url, HttpMethod.POST);
         }
+        public static ListRequest ContactsForCustomer(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "contacts");
+            return new ListRequest(url);
+        }
         public static AssignPaymentRoleRequest AssignPaymentRole(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "assign_payment_role");
