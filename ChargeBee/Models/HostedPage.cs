@@ -796,6 +796,9 @@ namespace ChargeBee.Models
             ManagePaymentSources,
             [Description("collect_now")]
             CollectNow,
+            [Description("extend_subscription")]
+            [Obsolete]
+            ExtendSubscription,
 
         }
         public enum StateEnum

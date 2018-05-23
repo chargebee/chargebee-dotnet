@@ -1070,13 +1070,13 @@ namespace ChargeBee.Models
             {
                 return new EnumFilter<Invoice.DunningStatusEnum, InvoiceListRequest>("dunning_status", this).SupportsPresenceOperator(true);        
             }
-            public TimestampFilter<InvoiceListRequest> VoidedAt() 
-            {
-                return new TimestampFilter<InvoiceListRequest>("voided_at", this);        
-            }
             public TimestampFilter<InvoiceListRequest> UpdatedAt() 
             {
                 return new TimestampFilter<InvoiceListRequest>("updated_at", this);        
+            }
+            public TimestampFilter<InvoiceListRequest> VoidedAt() 
+            {
+                return new TimestampFilter<InvoiceListRequest>("voided_at", this);        
             }
             public InvoiceListRequest SortByDate(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","date");

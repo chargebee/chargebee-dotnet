@@ -145,6 +145,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<TimeMachine>("time_machine"); }
         }
+        public Export Export
+        {
+            get {  return GetResource<Export>("export"); }
+        }
 
         public List<UnbilledCharge> UnbilledCharges
         {

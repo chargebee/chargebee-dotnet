@@ -102,6 +102,9 @@ namespace ChargeBee.Models.Enums
         [Description("moneris")]
          Moneris,
 
+        [Description("bluesnap")]
+         Bluesnap,
+
         [Description("not_applicable")]
          NotApplicable,
 
