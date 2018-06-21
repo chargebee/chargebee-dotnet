@@ -34,10 +34,20 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("payment_sources", "create_card");
             return new CreateCardRequest(url, HttpMethod.POST);
         }
+        public static CreateBankAccountRequest CreateBankAccount()
+        {
+            string url = ApiUtil.BuildUrl("payment_sources", "create_bank_account");
+            return new CreateBankAccountRequest(url, HttpMethod.POST);
+        }
         public static UpdateCardRequest UpdateCard(string id)
         {
             string url = ApiUtil.BuildUrl("payment_sources", CheckNull(id), "update_card");
             return new UpdateCardRequest(url, HttpMethod.POST);
+        }
+        public static VerifyBankAccountRequest VerifyBankAccount(string id)
+        {
+            string url = ApiUtil.BuildUrl("payment_sources", CheckNull(id), "verify_bank_account");
+            return new VerifyBankAccountRequest(url, HttpMethod.POST);
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
@@ -291,6 +301,99 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class CreateBankAccountRequest : EntityRequest<CreateBankAccountRequest> 
+        {
+            public CreateBankAccountRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CreateBankAccountRequest CustomerId(string customerId) 
+            {
+                m_params.Add("customer_id", customerId);
+                return this;
+            }
+            public CreateBankAccountRequest IssuingCountry(string issuingCountry) 
+            {
+                m_params.AddOpt("issuing_country", issuingCountry);
+                return this;
+            }
+            public CreateBankAccountRequest ReplacePrimaryPaymentSource(bool replacePrimaryPaymentSource) 
+            {
+                m_params.AddOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
+                return this;
+            }
+            public CreateBankAccountRequest BankAccountGatewayAccountId(string bankAccountGatewayAccountId) 
+            {
+                m_params.AddOpt("bank_account[gateway_account_id]", bankAccountGatewayAccountId);
+                return this;
+            }
+            public CreateBankAccountRequest BankAccountIban(string bankAccountIban) 
+            {
+                m_params.AddOpt("bank_account[iban]", bankAccountIban);
+                return this;
+            }
+            public CreateBankAccountRequest BankAccountFirstName(string bankAccountFirstName) 
+            {
+                m_params.AddOpt("bank_account[first_name]", bankAccountFirstName);
+                return this;
+            }
+            public CreateBankAccountRequest BankAccountLastName(string bankAccountLastName) 
+            {
+                m_params.AddOpt("bank_account[last_name]", bankAccountLastName);
+                return this;
+            }
+            public CreateBankAccountRequest BankAccountCompany(string bankAccountCompany) 
+            {
+                m_params.AddOpt("bank_account[company]", bankAccountCompany);
+                return this;
+            }
+            public CreateBankAccountRequest BankAccountEmail(string bankAccountEmail) 
+            {
+                m_params.AddOpt("bank_account[email]", bankAccountEmail);
+                return this;
+            }
+            public CreateBankAccountRequest BankAccountBankName(string bankAccountBankName) 
+            {
+                m_params.AddOpt("bank_account[bank_name]", bankAccountBankName);
+                return this;
+            }
+            public CreateBankAccountRequest BankAccountAccountNumber(string bankAccountAccountNumber) 
+            {
+                m_params.AddOpt("bank_account[account_number]", bankAccountAccountNumber);
+                return this;
+            }
+            public CreateBankAccountRequest BankAccountRoutingNumber(string bankAccountRoutingNumber) 
+            {
+                m_params.AddOpt("bank_account[routing_number]", bankAccountRoutingNumber);
+                return this;
+            }
+            public CreateBankAccountRequest BankAccountBankCode(string bankAccountBankCode) 
+            {
+                m_params.AddOpt("bank_account[bank_code]", bankAccountBankCode);
+                return this;
+            }
+            public CreateBankAccountRequest BankAccountAccountType(ChargeBee.Models.Enums.AccountTypeEnum bankAccountAccountType) 
+            {
+                m_params.AddOpt("bank_account[account_type]", bankAccountAccountType);
+                return this;
+            }
+            public CreateBankAccountRequest BankAccountAccountHolderType(ChargeBee.Models.Enums.AccountHolderTypeEnum bankAccountAccountHolderType) 
+            {
+                m_params.AddOpt("bank_account[account_holder_type]", bankAccountAccountHolderType);
+                return this;
+            }
+            public CreateBankAccountRequest BankAccountEcheckType(ChargeBee.Models.Enums.EcheckTypeEnum bankAccountEcheckType) 
+            {
+                m_params.AddOpt("bank_account[echeck_type]", bankAccountEcheckType);
+                return this;
+            }
+            public CreateBankAccountRequest BankAccountSwedishIdentityNumber(string bankAccountSwedishIdentityNumber) 
+            {
+                m_params.AddOpt("bank_account[swedish_identity_number]", bankAccountSwedishIdentityNumber);
+                return this;
+            }
+        }
         public class UpdateCardRequest : EntityRequest<UpdateCardRequest> 
         {
             public UpdateCardRequest(string url, HttpMethod method) 
@@ -356,6 +459,24 @@ namespace ChargeBee.Models
             public UpdateCardRequest CardBillingCountry(string cardBillingCountry) 
             {
                 m_params.AddOpt("card[billing_country]", cardBillingCountry);
+                return this;
+            }
+        }
+        public class VerifyBankAccountRequest : EntityRequest<VerifyBankAccountRequest> 
+        {
+            public VerifyBankAccountRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public VerifyBankAccountRequest Amount1(int amount1) 
+            {
+                m_params.Add("amount1", amount1);
+                return this;
+            }
+            public VerifyBankAccountRequest Amount2(int amount2) 
+            {
+                m_params.Add("amount2", amount2);
                 return this;
             }
         }
@@ -539,6 +660,28 @@ namespace ChargeBee.Models
                 [Description("savings")]
                 Savings,
             }
+            public enum EcheckTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [Description("web")]
+                Web,
+                [Description("ppd")]
+                Ppd,
+            }
+            public enum AccountHolderTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [Description("individual")]
+                Individual,
+                [Description("company")]
+                Company,
+            }
+
+            public string Last4() {
+                return GetValue<string>("last4", true);
+            }
 
             public string NameOnAccount() {
                 return GetValue<string>("name_on_account", false);
@@ -554,6 +697,14 @@ namespace ChargeBee.Models
 
             public AccountTypeEnum? AccountType() {
                 return GetEnum<AccountTypeEnum>("account_type", false);
+            }
+
+            public EcheckTypeEnum? EcheckType() {
+                return GetEnum<EcheckTypeEnum>("echeck_type", false);
+            }
+
+            public AccountHolderTypeEnum? AccountHolderType() {
+                return GetEnum<AccountHolderTypeEnum>("account_holder_type", false);
             }
 
         }

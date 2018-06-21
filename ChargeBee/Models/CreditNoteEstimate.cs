@@ -74,6 +74,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<CreditNoteEstimateLineItemDiscount>("line_item_discounts"); }
         }
+        public int? RoundOffAmount 
+        {
+            get { return GetValue<int?>("round_off_amount", false); }
+        }
         
         #endregion
         

@@ -50,6 +50,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("hosted_pages", "collect_now");
             return new CollectNowRequest(url, HttpMethod.POST);
         }
+        public static RetrieveAgreementPdfRequest RetrieveAgreementPdf()
+        {
+            string url = ApiUtil.BuildUrl("hosted_pages", "retrieve_agreement_pdf");
+            return new RetrieveAgreementPdfRequest(url, HttpMethod.POST);
+        }
         public static EntityRequest<Type> Acknowledge(string id)
         {
             string url = ApiUtil.BuildUrl("hosted_pages", CheckNull(id), "acknowledge");
@@ -749,6 +754,19 @@ namespace ChargeBee.Models
             public CollectNowRequest CardGatewayAccountId(string cardGatewayAccountId) 
             {
                 m_params.AddOpt("card[gateway_account_id]", cardGatewayAccountId);
+                return this;
+            }
+        }
+        public class RetrieveAgreementPdfRequest : EntityRequest<RetrieveAgreementPdfRequest> 
+        {
+            public RetrieveAgreementPdfRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public RetrieveAgreementPdfRequest PaymentSourceId(string paymentSourceId) 
+            {
+                m_params.Add("payment_source_id", paymentSourceId);
                 return this;
             }
         }

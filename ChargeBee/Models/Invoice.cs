@@ -1082,6 +1082,10 @@ namespace ChargeBee.Models
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","date");
                 return this;
             }
+            public InvoiceListRequest SortByUpdatedAt(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","updated_at");
+                return this;
+            }
         }
         public class PdfRequest : EntityRequest<PdfRequest> 
         {

@@ -69,7 +69,7 @@ namespace ChargeBee.Models
 				? Convert.ToInt32(System.Environment.GetEnvironmentVariable("cb.dotnet.export.sleep.millis"))
 				: 10000;
 			while(this.Status == Export.StatusEnum.InProcess){
-				if(count++ > 30)
+				if(count++ > 50)
 				{
 					throw new SystemException("Export is taking too long");
 				}

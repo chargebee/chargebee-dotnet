@@ -414,6 +414,81 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[tmp_token]", cardTmpToken);
                 return this;
             }
+            public CreateRequest BankAccountGatewayAccountId(string bankAccountGatewayAccountId) 
+            {
+                m_params.AddOpt("bank_account[gateway_account_id]", bankAccountGatewayAccountId);
+                return this;
+            }
+            public CreateRequest BankAccountIban(string bankAccountIban) 
+            {
+                m_params.AddOpt("bank_account[iban]", bankAccountIban);
+                return this;
+            }
+            public CreateRequest BankAccountFirstName(string bankAccountFirstName) 
+            {
+                m_params.AddOpt("bank_account[first_name]", bankAccountFirstName);
+                return this;
+            }
+            public CreateRequest BankAccountLastName(string bankAccountLastName) 
+            {
+                m_params.AddOpt("bank_account[last_name]", bankAccountLastName);
+                return this;
+            }
+            public CreateRequest BankAccountCompany(string bankAccountCompany) 
+            {
+                m_params.AddOpt("bank_account[company]", bankAccountCompany);
+                return this;
+            }
+            public CreateRequest BankAccountEmail(string bankAccountEmail) 
+            {
+                m_params.AddOpt("bank_account[email]", bankAccountEmail);
+                return this;
+            }
+            public CreateRequest BankAccountBankName(string bankAccountBankName) 
+            {
+                m_params.AddOpt("bank_account[bank_name]", bankAccountBankName);
+                return this;
+            }
+            public CreateRequest BankAccountAccountNumber(string bankAccountAccountNumber) 
+            {
+                m_params.AddOpt("bank_account[account_number]", bankAccountAccountNumber);
+                return this;
+            }
+            public CreateRequest BankAccountRoutingNumber(string bankAccountRoutingNumber) 
+            {
+                m_params.AddOpt("bank_account[routing_number]", bankAccountRoutingNumber);
+                return this;
+            }
+            public CreateRequest BankAccountBankCode(string bankAccountBankCode) 
+            {
+                m_params.AddOpt("bank_account[bank_code]", bankAccountBankCode);
+                return this;
+            }
+            public CreateRequest BankAccountAccountType(ChargeBee.Models.Enums.AccountTypeEnum bankAccountAccountType) 
+            {
+                m_params.AddOpt("bank_account[account_type]", bankAccountAccountType);
+                return this;
+            }
+            public CreateRequest BankAccountAccountHolderType(ChargeBee.Models.Enums.AccountHolderTypeEnum bankAccountAccountHolderType) 
+            {
+                m_params.AddOpt("bank_account[account_holder_type]", bankAccountAccountHolderType);
+                return this;
+            }
+            public CreateRequest BankAccountEcheckType(ChargeBee.Models.Enums.EcheckTypeEnum bankAccountEcheckType) 
+            {
+                m_params.AddOpt("bank_account[echeck_type]", bankAccountEcheckType);
+                return this;
+            }
+            public CreateRequest BankAccountIssuingCountry(string bankAccountIssuingCountry) 
+            {
+                m_params.AddOpt("bank_account[issuing_country]", bankAccountIssuingCountry);
+                return this;
+            }
+            public CreateRequest BankAccountSwedishIdentityNumber(string bankAccountSwedishIdentityNumber) 
+            {
+                m_params.AddOpt("bank_account[swedish_identity_number]", bankAccountSwedishIdentityNumber);
+                return this;
+            }
             public CreateRequest PaymentMethodType(ChargeBee.Models.Enums.TypeEnum paymentMethodType) 
             {
                 m_params.AddOpt("payment_method[type]", paymentMethodType);

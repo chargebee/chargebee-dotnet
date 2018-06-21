@@ -138,6 +138,9 @@
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Export.cs" />
     <Compile Include="Models\Enums\ReportByEnum.cs" />
+    <Compile Include="Models\Enums\AccountHolderTypeEnum.cs" />
+    <Compile Include="Models\Enums\AccountTypeEnum.cs" />
+    <Compile Include="Models\Enums\EcheckTypeEnum.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Cb-Dotnet.snk" />
