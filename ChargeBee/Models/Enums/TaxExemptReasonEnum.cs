@@ -30,5 +30,8 @@ namespace ChargeBee.Models.Enums
         [Description("reverse_charge")]
          ReverseCharge,
 
+        [Description("high_value_physical_goods")]
+         HighValuePhysicalGoods,
+
     }
 }

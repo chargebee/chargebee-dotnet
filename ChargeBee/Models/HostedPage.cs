@@ -50,6 +50,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("hosted_pages", "collect_now");
             return new CollectNowRequest(url, HttpMethod.POST);
         }
+        public static ExtendSubscriptionRequest ExtendSubscription()
+        {
+            string url = ApiUtil.BuildUrl("hosted_pages", "extend_subscription");
+            return new ExtendSubscriptionRequest(url, HttpMethod.POST);
+        }
         public static RetrieveAgreementPdfRequest RetrieveAgreementPdf()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "retrieve_agreement_pdf");
@@ -757,6 +762,29 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class ExtendSubscriptionRequest : EntityRequest<ExtendSubscriptionRequest> 
+        {
+            public ExtendSubscriptionRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public ExtendSubscriptionRequest Expiry(int expiry) 
+            {
+                m_params.AddOpt("expiry", expiry);
+                return this;
+            }
+            public ExtendSubscriptionRequest BillingCycle(int billingCycle) 
+            {
+                m_params.AddOpt("billing_cycle", billingCycle);
+                return this;
+            }
+            public ExtendSubscriptionRequest SubscriptionId(string subscriptionId) 
+            {
+                m_params.Add("subscription[id]", subscriptionId);
+                return this;
+            }
+        }
         public class RetrieveAgreementPdfRequest : EntityRequest<RetrieveAgreementPdfRequest> 
         {
             public RetrieveAgreementPdfRequest(string url, HttpMethod method) 
@@ -815,7 +843,6 @@ namespace ChargeBee.Models
             [Description("collect_now")]
             CollectNow,
             [Description("extend_subscription")]
-            [Obsolete]
             ExtendSubscription,
 
         }

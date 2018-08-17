@@ -38,6 +38,10 @@ namespace ChargeBee.Models
         #endregion
         
         #region Properties
+        public string Id 
+        {
+            get { return GetValue<string>("id", true); }
+        }
         public string OperationType 
         {
             get { return GetValue<string>("operation_type", true); }
@@ -53,10 +57,6 @@ namespace ChargeBee.Models
         public DateTime CreatedAt 
         {
             get { return (DateTime)GetDateTime("created_at", true); }
-        }
-        public string Id 
-        {
-            get { return GetValue<string>("id", true); }
         }
         public ExportDownload Download 
         {
@@ -99,14 +99,14 @@ namespace ChargeBee.Models
                 m_params.AddOpt("currency_code", currencyCode);
                 return this;
             }
+            public RevenueRecognitionRequest ReportFromMonth(int reportFromMonth) 
+            {
+                m_params.Add("report_from_month", reportFromMonth);
+                return this;
+            }
             public RevenueRecognitionRequest ReportFromYear(int reportFromYear) 
             {
                 m_params.Add("report_from_year", reportFromYear);
-                return this;
-            }
-            public RevenueRecognitionRequest ReportToYear(int reportToYear) 
-            {
-                m_params.Add("report_to_year", reportToYear);
                 return this;
             }
             public RevenueRecognitionRequest ReportToMonth(int reportToMonth) 
@@ -114,9 +114,9 @@ namespace ChargeBee.Models
                 m_params.Add("report_to_month", reportToMonth);
                 return this;
             }
-            public RevenueRecognitionRequest ReportFromMonth(int reportFromMonth) 
+            public RevenueRecognitionRequest ReportToYear(int reportToYear) 
             {
-                m_params.Add("report_from_month", reportFromMonth);
+                m_params.Add("report_to_year", reportToYear);
                 return this;
             }
             public RevenueRecognitionRequest IncludeDiscounts(bool includeDiscounts) 
@@ -143,14 +143,14 @@ namespace ChargeBee.Models
                 m_params.AddOpt("currency_code", currencyCode);
                 return this;
             }
+            public DeferredRevenueRequest ReportFromMonth(int reportFromMonth) 
+            {
+                m_params.Add("report_from_month", reportFromMonth);
+                return this;
+            }
             public DeferredRevenueRequest ReportFromYear(int reportFromYear) 
             {
                 m_params.Add("report_from_year", reportFromYear);
-                return this;
-            }
-            public DeferredRevenueRequest ReportToYear(int reportToYear) 
-            {
-                m_params.Add("report_to_year", reportToYear);
                 return this;
             }
             public DeferredRevenueRequest ReportToMonth(int reportToMonth) 
@@ -158,9 +158,9 @@ namespace ChargeBee.Models
                 m_params.Add("report_to_month", reportToMonth);
                 return this;
             }
-            public DeferredRevenueRequest ReportFromMonth(int reportFromMonth) 
+            public DeferredRevenueRequest ReportToYear(int reportToYear) 
             {
-                m_params.Add("report_from_month", reportFromMonth);
+                m_params.Add("report_to_year", reportToYear);
                 return this;
             }
             public DeferredRevenueRequest IncludeDiscounts(bool includeDiscounts) 

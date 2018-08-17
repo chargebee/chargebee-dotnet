@@ -117,6 +117,16 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "change_billing_date");
             return new ChangeBillingDateRequest(url, HttpMethod.POST);
         }
+        public static MergeRequest Merge()
+        {
+            string url = ApiUtil.BuildUrl("customers", "merge");
+            return new MergeRequest(url, HttpMethod.POST);
+        }
+        public static EntityRequest<Type> ClearPersonalData(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "clear_personal_data");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -211,6 +221,10 @@ namespace ChargeBee.Models
         public BillingDayOfWeekModeEnum? BillingDayOfWeekMode 
         {
             get { return GetEnum<BillingDayOfWeekModeEnum>("billing_day_of_week_mode", false); }
+        }
+        public PiiClearedEnum? PiiCleared 
+        {
+            get { return GetEnum<PiiClearedEnum>("pii_cleared", false); }
         }
         [Obsolete]
         public CardStatusEnum? CardStatus 
@@ -1400,6 +1414,24 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class MergeRequest : EntityRequest<MergeRequest> 
+        {
+            public MergeRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public MergeRequest FromCustomerId(string fromCustomerId) 
+            {
+                m_params.Add("from_customer_id", fromCustomerId);
+                return this;
+            }
+            public MergeRequest ToCustomerId(string toCustomerId) 
+            {
+                m_params.Add("to_customer_id", toCustomerId);
+                return this;
+            }
+        }
         #endregion
 
         public enum BillingDayOfWeekEnum
@@ -1421,6 +1453,19 @@ namespace ChargeBee.Models
             Friday,
             [Description("saturday")]
             Saturday,
+
+        }
+        public enum PiiClearedEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [Description("active")]
+            Active,
+            [Description("scheduled_for_clear")]
+            ScheduledForClear,
+            [Description("cleared")]
+            Cleared,
 
         }
         [Obsolete]

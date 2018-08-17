@@ -1809,6 +1809,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("started_at", startedAt);
                 return this;
             }
+            public ImportSubscriptionRequest PauseDate(long pauseDate) 
+            {
+                m_params.AddOpt("pause_date", pauseDate);
+                return this;
+            }
+            public ImportSubscriptionRequest ResumeDate(long resumeDate) 
+            {
+                m_params.AddOpt("resume_date", resumeDate);
+                return this;
+            }
             public ImportSubscriptionRequest CreateCurrentTermInvoice(bool createCurrentTermInvoice) 
             {
                 m_params.AddOpt("create_current_term_invoice", createCurrentTermInvoice);
@@ -2280,6 +2290,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("started_at", startedAt);
                 return this;
             }
+            public ImportForCustomerRequest PauseDate(long pauseDate) 
+            {
+                m_params.AddOpt("pause_date", pauseDate);
+                return this;
+            }
+            public ImportForCustomerRequest ResumeDate(long resumeDate) 
+            {
+                m_params.AddOpt("resume_date", resumeDate);
+                return this;
+            }
             public ImportForCustomerRequest CreateCurrentTermInvoice(bool createCurrentTermInvoice) 
             {
                 m_params.AddOpt("create_current_term_invoice", createCurrentTermInvoice);
@@ -2467,6 +2487,11 @@ namespace ChargeBee.Models
             public ResumeRequest ResumeDate(long resumeDate) 
             {
                 m_params.AddOpt("resume_date", resumeDate);
+                return this;
+            }
+            public ResumeRequest ChargesHandling(ChargeBee.Models.Enums.ChargesHandlingEnum chargesHandling) 
+            {
+                m_params.AddOpt("charges_handling", chargesHandling);
                 return this;
             }
             public ResumeRequest UnpaidInvoicesHandling(ChargeBee.Models.Enums.UnpaidInvoicesHandlingEnum unpaidInvoicesHandling) 

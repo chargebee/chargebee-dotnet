@@ -790,6 +790,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("resume_option", resumeOption);
                 return this;
             }
+            public ResumeSubscriptionRequest ChargesHandling(ChargeBee.Models.Enums.ChargesHandlingEnum chargesHandling) 
+            {
+                m_params.AddOpt("charges_handling", chargesHandling);
+                return this;
+            }
             public ResumeSubscriptionRequest SubscriptionResumeDate(long subscriptionResumeDate) 
             {
                 m_params.AddOpt("subscription[resume_date]", subscriptionResumeDate);
