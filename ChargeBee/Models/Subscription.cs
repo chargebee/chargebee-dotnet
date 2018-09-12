@@ -303,6 +303,14 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<SubscriptionAddon>("addons"); }
         }
+        public List<SubscriptionEventBasedAddon> EventBasedAddons 
+        {
+            get { return GetResourceList<SubscriptionEventBasedAddon>("event_based_addons"); }
+        }
+        public List<SubscriptionChargedEventBasedAddon> ChargedEventBasedAddons 
+        {
+            get { return GetResourceList<SubscriptionChargedEventBasedAddon>("charged_event_based_addons"); }
+        }
         [Obsolete]
         public string Coupon 
         {
@@ -402,6 +410,11 @@ namespace ChargeBee.Models
             public CreateRequest BillingAlignmentMode(ChargeBee.Models.Enums.BillingAlignmentModeEnum billingAlignmentMode) 
             {
                 m_params.AddOpt("billing_alignment_mode", billingAlignmentMode);
+                return this;
+            }
+            public CreateRequest MandatoryAddonsToRemove(List<string> mandatoryAddonsToRemove) 
+            {
+                m_params.AddOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
                 return this;
             }
             public CreateRequest PoNumber(string poNumber) 
@@ -869,6 +882,41 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
                 return this;
             }
+            public CreateRequest AddonBillingCycles(int index, int addonBillingCycles) 
+            {
+                m_params.AddOpt("addons[billing_cycles][" + index + "]", addonBillingCycles);
+                return this;
+            }
+            public CreateRequest EventBasedAddonId(int index, string eventBasedAddonId) 
+            {
+                m_params.AddOpt("event_based_addons[id][" + index + "]", eventBasedAddonId);
+                return this;
+            }
+            public CreateRequest EventBasedAddonQuantity(int index, int eventBasedAddonQuantity) 
+            {
+                m_params.AddOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
+                return this;
+            }
+            public CreateRequest EventBasedAddonUnitPrice(int index, int eventBasedAddonUnitPrice) 
+            {
+                m_params.AddOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
+                return this;
+            }
+            public CreateRequest EventBasedAddonOnEvent(int index, ChargeBee.Models.Enums.OnEventEnum eventBasedAddonOnEvent) 
+            {
+                m_params.AddOpt("event_based_addons[on_event][" + index + "]", eventBasedAddonOnEvent);
+                return this;
+            }
+            public CreateRequest EventBasedAddonChargeOnce(int index, bool eventBasedAddonChargeOnce) 
+            {
+                m_params.AddOpt("event_based_addons[charge_once][" + index + "]", eventBasedAddonChargeOnce);
+                return this;
+            }
+            public CreateRequest EventBasedAddonChargeOn(int index, ChargeBee.Models.Enums.ChargeOnEnum eventBasedAddonChargeOn) 
+            {
+                m_params.AddOpt("event_based_addons[charge_on][" + index + "]", eventBasedAddonChargeOn);
+                return this;
+            }
             public CreateRequest AddonTrialEnd(int index, long addonTrialEnd) 
             {
                 m_params.AddOpt("addons[trial_end][" + index + "]", addonTrialEnd);
@@ -941,6 +989,11 @@ namespace ChargeBee.Models
             public CreateForCustomerRequest BillingAlignmentMode(ChargeBee.Models.Enums.BillingAlignmentModeEnum billingAlignmentMode) 
             {
                 m_params.AddOpt("billing_alignment_mode", billingAlignmentMode);
+                return this;
+            }
+            public CreateForCustomerRequest MandatoryAddonsToRemove(List<string> mandatoryAddonsToRemove) 
+            {
+                m_params.AddOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
                 return this;
             }
             public CreateForCustomerRequest PoNumber(string poNumber) 
@@ -1056,6 +1109,41 @@ namespace ChargeBee.Models
             public CreateForCustomerRequest AddonUnitPrice(int index, int addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+                return this;
+            }
+            public CreateForCustomerRequest AddonBillingCycles(int index, int addonBillingCycles) 
+            {
+                m_params.AddOpt("addons[billing_cycles][" + index + "]", addonBillingCycles);
+                return this;
+            }
+            public CreateForCustomerRequest EventBasedAddonId(int index, string eventBasedAddonId) 
+            {
+                m_params.AddOpt("event_based_addons[id][" + index + "]", eventBasedAddonId);
+                return this;
+            }
+            public CreateForCustomerRequest EventBasedAddonQuantity(int index, int eventBasedAddonQuantity) 
+            {
+                m_params.AddOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
+                return this;
+            }
+            public CreateForCustomerRequest EventBasedAddonUnitPrice(int index, int eventBasedAddonUnitPrice) 
+            {
+                m_params.AddOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
+                return this;
+            }
+            public CreateForCustomerRequest EventBasedAddonOnEvent(int index, ChargeBee.Models.Enums.OnEventEnum eventBasedAddonOnEvent) 
+            {
+                m_params.AddOpt("event_based_addons[on_event][" + index + "]", eventBasedAddonOnEvent);
+                return this;
+            }
+            public CreateForCustomerRequest EventBasedAddonChargeOnce(int index, bool eventBasedAddonChargeOnce) 
+            {
+                m_params.AddOpt("event_based_addons[charge_once][" + index + "]", eventBasedAddonChargeOnce);
+                return this;
+            }
+            public CreateForCustomerRequest EventBasedAddonChargeOn(int index, ChargeBee.Models.Enums.ChargeOnEnum eventBasedAddonChargeOn) 
+            {
+                m_params.AddOpt("event_based_addons[charge_on][" + index + "]", eventBasedAddonChargeOn);
                 return this;
             }
             public CreateForCustomerRequest AddonTrialEnd(int index, long addonTrialEnd) 
@@ -1200,6 +1288,11 @@ namespace ChargeBee.Models
             public UpdateRequest ReplaceAddonList(bool replaceAddonList) 
             {
                 m_params.AddOpt("replace_addon_list", replaceAddonList);
+                return this;
+            }
+            public UpdateRequest MandatoryAddonsToRemove(List<string> mandatoryAddonsToRemove) 
+            {
+                m_params.AddOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
                 return this;
             }
             [Obsolete]
@@ -1555,6 +1648,41 @@ namespace ChargeBee.Models
             public UpdateRequest AddonUnitPrice(int index, int addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+                return this;
+            }
+            public UpdateRequest AddonBillingCycles(int index, int addonBillingCycles) 
+            {
+                m_params.AddOpt("addons[billing_cycles][" + index + "]", addonBillingCycles);
+                return this;
+            }
+            public UpdateRequest EventBasedAddonId(int index, string eventBasedAddonId) 
+            {
+                m_params.AddOpt("event_based_addons[id][" + index + "]", eventBasedAddonId);
+                return this;
+            }
+            public UpdateRequest EventBasedAddonQuantity(int index, int eventBasedAddonQuantity) 
+            {
+                m_params.AddOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
+                return this;
+            }
+            public UpdateRequest EventBasedAddonUnitPrice(int index, int eventBasedAddonUnitPrice) 
+            {
+                m_params.AddOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
+                return this;
+            }
+            public UpdateRequest EventBasedAddonChargeOn(int index, ChargeBee.Models.Enums.ChargeOnEnum eventBasedAddonChargeOn) 
+            {
+                m_params.AddOpt("event_based_addons[charge_on][" + index + "]", eventBasedAddonChargeOn);
+                return this;
+            }
+            public UpdateRequest EventBasedAddonOnEvent(int index, ChargeBee.Models.Enums.OnEventEnum eventBasedAddonOnEvent) 
+            {
+                m_params.AddOpt("event_based_addons[on_event][" + index + "]", eventBasedAddonOnEvent);
+                return this;
+            }
+            public UpdateRequest EventBasedAddonChargeOnce(int index, bool eventBasedAddonChargeOnce) 
+            {
+                m_params.AddOpt("event_based_addons[charge_once][" + index + "]", eventBasedAddonChargeOnce);
                 return this;
             }
             public UpdateRequest AddonTrialEnd(int index, long addonTrialEnd) 
@@ -2192,6 +2320,46 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
                 return this;
             }
+            public ImportSubscriptionRequest AddonBillingCycles(int index, int addonBillingCycles) 
+            {
+                m_params.AddOpt("addons[billing_cycles][" + index + "]", addonBillingCycles);
+                return this;
+            }
+            public ImportSubscriptionRequest EventBasedAddonId(int index, string eventBasedAddonId) 
+            {
+                m_params.AddOpt("event_based_addons[id][" + index + "]", eventBasedAddonId);
+                return this;
+            }
+            public ImportSubscriptionRequest EventBasedAddonQuantity(int index, int eventBasedAddonQuantity) 
+            {
+                m_params.AddOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
+                return this;
+            }
+            public ImportSubscriptionRequest EventBasedAddonUnitPrice(int index, int eventBasedAddonUnitPrice) 
+            {
+                m_params.AddOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
+                return this;
+            }
+            public ImportSubscriptionRequest EventBasedAddonOnEvent(int index, ChargeBee.Models.Enums.OnEventEnum eventBasedAddonOnEvent) 
+            {
+                m_params.AddOpt("event_based_addons[on_event][" + index + "]", eventBasedAddonOnEvent);
+                return this;
+            }
+            public ImportSubscriptionRequest EventBasedAddonChargeOnce(int index, bool eventBasedAddonChargeOnce) 
+            {
+                m_params.AddOpt("event_based_addons[charge_once][" + index + "]", eventBasedAddonChargeOnce);
+                return this;
+            }
+            public ImportSubscriptionRequest ChargedEventBasedAddonId(int index, string chargedEventBasedAddonId) 
+            {
+                m_params.AddOpt("charged_event_based_addons[id][" + index + "]", chargedEventBasedAddonId);
+                return this;
+            }
+            public ImportSubscriptionRequest ChargedEventBasedAddonLastChargedAt(int index, long chargedEventBasedAddonLastChargedAt) 
+            {
+                m_params.AddOpt("charged_event_based_addons[last_charged_at][" + index + "]", chargedEventBasedAddonLastChargedAt);
+                return this;
+            }
         }
         public class ImportForCustomerRequest : EntityRequest<ImportForCustomerRequest> 
         {
@@ -2420,6 +2588,46 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
                 return this;
             }
+            public ImportForCustomerRequest AddonBillingCycles(int index, int addonBillingCycles) 
+            {
+                m_params.AddOpt("addons[billing_cycles][" + index + "]", addonBillingCycles);
+                return this;
+            }
+            public ImportForCustomerRequest EventBasedAddonId(int index, string eventBasedAddonId) 
+            {
+                m_params.AddOpt("event_based_addons[id][" + index + "]", eventBasedAddonId);
+                return this;
+            }
+            public ImportForCustomerRequest EventBasedAddonQuantity(int index, int eventBasedAddonQuantity) 
+            {
+                m_params.AddOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
+                return this;
+            }
+            public ImportForCustomerRequest EventBasedAddonUnitPrice(int index, int eventBasedAddonUnitPrice) 
+            {
+                m_params.AddOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
+                return this;
+            }
+            public ImportForCustomerRequest EventBasedAddonOnEvent(int index, ChargeBee.Models.Enums.OnEventEnum eventBasedAddonOnEvent) 
+            {
+                m_params.AddOpt("event_based_addons[on_event][" + index + "]", eventBasedAddonOnEvent);
+                return this;
+            }
+            public ImportForCustomerRequest EventBasedAddonChargeOnce(int index, bool eventBasedAddonChargeOnce) 
+            {
+                m_params.AddOpt("event_based_addons[charge_once][" + index + "]", eventBasedAddonChargeOnce);
+                return this;
+            }
+            public ImportForCustomerRequest ChargedEventBasedAddonId(int index, string chargedEventBasedAddonId) 
+            {
+                m_params.AddOpt("charged_event_based_addons[id][" + index + "]", chargedEventBasedAddonId);
+                return this;
+            }
+            public ImportForCustomerRequest ChargedEventBasedAddonLastChargedAt(int index, long chargedEventBasedAddonLastChargedAt) 
+            {
+                m_params.AddOpt("charged_event_based_addons[last_charged_at][" + index + "]", chargedEventBasedAddonLastChargedAt);
+                return this;
+            }
         }
         public class OverrideBillingProfileRequest : EntityRequest<OverrideBillingProfileRequest> 
         {
@@ -2578,6 +2786,55 @@ namespace ChargeBee.Models
 
             public int? RemainingBillingCycles() {
                 return GetValue<int?>("remaining_billing_cycles", false);
+            }
+
+        }
+        public class SubscriptionEventBasedAddon : Resource
+        {
+            public enum OnEventEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [Description("subscription_creation")]
+                SubscriptionCreation,
+                [Description("subscription_trial_start")]
+                SubscriptionTrialStart,
+                [Description("plan_activation")]
+                PlanActivation,
+                [Description("subscription_activation")]
+                SubscriptionActivation,
+            }
+
+            public string Id() {
+                return GetValue<string>("id", true);
+            }
+
+            public int Quantity() {
+                return GetValue<int>("quantity", true);
+            }
+
+            public int UnitPrice() {
+                return GetValue<int>("unit_price", true);
+            }
+
+            public OnEventEnum OnEvent() {
+                return GetEnum<OnEventEnum>("on_event", true);
+            }
+
+            public bool ChargeOnce() {
+                return GetValue<bool>("charge_once", true);
+            }
+
+        }
+        public class SubscriptionChargedEventBasedAddon : Resource
+        {
+
+            public string Id() {
+                return GetValue<string>("id", true);
+            }
+
+            public DateTime LastChargedAt() {
+                return (DateTime)GetDateTime("last_charged_at", true);
             }
 
         }

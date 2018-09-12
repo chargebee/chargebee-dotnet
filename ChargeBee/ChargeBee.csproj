@@ -142,6 +142,8 @@
     <Compile Include="Models\Enums\AccountTypeEnum.cs" />
     <Compile Include="Models\Enums\EcheckTypeEnum.cs" />
     <Compile Include="Models\Enums\ChargesHandlingEnum.cs" />
+    <Compile Include="Models\Enums\OnEventEnum.cs" />
+    <Compile Include="Models\Enums\ChargeOnEnum.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Cb-Dotnet.snk" />

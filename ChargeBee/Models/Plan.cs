@@ -138,6 +138,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool>("enabled_in_portal", true); }
         }
+        public AddonApplicabilityEnum AddonApplicability 
+        {
+            get { return GetEnum<AddonApplicabilityEnum>("addon_applicability", true); }
+        }
         public string TaxCode 
         {
             get { return GetValue<string>("tax_code", false); }
@@ -181,6 +185,18 @@ namespace ChargeBee.Models
         public JToken MetaData 
         {
             get { return GetJToken("meta_data", false); }
+        }
+        public List<PlanApplicableAddon> ApplicableAddons 
+        {
+            get { return GetResourceList<PlanApplicableAddon>("applicable_addons"); }
+        }
+        public List<PlanAttachedAddon> AttachedAddons 
+        {
+            get { return GetResourceList<PlanAttachedAddon>("attached_addons"); }
+        }
+        public List<PlanEventBasedAddon> EventBasedAddons 
+        {
+            get { return GetResourceList<PlanEventBasedAddon>("event_based_addons"); }
         }
         
         #endregion
@@ -263,6 +279,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("free_quantity", freeQuantity);
                 return this;
             }
+            public CreateRequest AddonApplicability(Plan.AddonApplicabilityEnum addonApplicability) 
+            {
+                m_params.AddOpt("addon_applicability", addonApplicability);
+                return this;
+            }
             [Obsolete]
             public CreateRequest DowngradePenalty(double downgradePenalty) 
             {
@@ -332,6 +353,51 @@ namespace ChargeBee.Models
             public CreateRequest Status(Plan.StatusEnum status) 
             {
                 m_params.AddOpt("status", status);
+                return this;
+            }
+            public CreateRequest ApplicableAddonId(int index, string applicableAddonId) 
+            {
+                m_params.AddOpt("applicable_addons[id][" + index + "]", applicableAddonId);
+                return this;
+            }
+            public CreateRequest EventBasedAddonId(int index, string eventBasedAddonId) 
+            {
+                m_params.AddOpt("event_based_addons[id][" + index + "]", eventBasedAddonId);
+                return this;
+            }
+            public CreateRequest EventBasedAddonQuantity(int index, int eventBasedAddonQuantity) 
+            {
+                m_params.AddOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
+                return this;
+            }
+            public CreateRequest EventBasedAddonOnEvent(int index, ChargeBee.Models.Enums.OnEventEnum eventBasedAddonOnEvent) 
+            {
+                m_params.AddOpt("event_based_addons[on_event][" + index + "]", eventBasedAddonOnEvent);
+                return this;
+            }
+            public CreateRequest EventBasedAddonChargeOnce(int index, bool eventBasedAddonChargeOnce) 
+            {
+                m_params.AddOpt("event_based_addons[charge_once][" + index + "]", eventBasedAddonChargeOnce);
+                return this;
+            }
+            public CreateRequest AttachedAddonId(int index, string attachedAddonId) 
+            {
+                m_params.AddOpt("attached_addons[id][" + index + "]", attachedAddonId);
+                return this;
+            }
+            public CreateRequest AttachedAddonQuantity(int index, int attachedAddonQuantity) 
+            {
+                m_params.AddOpt("attached_addons[quantity][" + index + "]", attachedAddonQuantity);
+                return this;
+            }
+            public CreateRequest AttachedAddonBillingCycles(int index, int attachedAddonBillingCycles) 
+            {
+                m_params.AddOpt("attached_addons[billing_cycles][" + index + "]", attachedAddonBillingCycles);
+                return this;
+            }
+            public CreateRequest AttachedAddonType(int index, PlanAttachedAddon.TypeEnum attachedAddonType) 
+            {
+                m_params.AddOpt("attached_addons[type][" + index + "]", attachedAddonType);
                 return this;
             }
         }
@@ -407,6 +473,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("free_quantity", freeQuantity);
                 return this;
             }
+            public UpdateRequest AddonApplicability(Plan.AddonApplicabilityEnum addonApplicability) 
+            {
+                m_params.AddOpt("addon_applicability", addonApplicability);
+                return this;
+            }
             [Obsolete]
             public UpdateRequest DowngradePenalty(double downgradePenalty) 
             {
@@ -473,6 +544,51 @@ namespace ChargeBee.Models
                 m_params.AddOpt("meta_data", metaData);
                 return this;
             }
+            public UpdateRequest ApplicableAddonId(int index, string applicableAddonId) 
+            {
+                m_params.AddOpt("applicable_addons[id][" + index + "]", applicableAddonId);
+                return this;
+            }
+            public UpdateRequest EventBasedAddonId(int index, string eventBasedAddonId) 
+            {
+                m_params.AddOpt("event_based_addons[id][" + index + "]", eventBasedAddonId);
+                return this;
+            }
+            public UpdateRequest EventBasedAddonQuantity(int index, int eventBasedAddonQuantity) 
+            {
+                m_params.AddOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
+                return this;
+            }
+            public UpdateRequest EventBasedAddonOnEvent(int index, ChargeBee.Models.Enums.OnEventEnum eventBasedAddonOnEvent) 
+            {
+                m_params.AddOpt("event_based_addons[on_event][" + index + "]", eventBasedAddonOnEvent);
+                return this;
+            }
+            public UpdateRequest EventBasedAddonChargeOnce(int index, bool eventBasedAddonChargeOnce) 
+            {
+                m_params.AddOpt("event_based_addons[charge_once][" + index + "]", eventBasedAddonChargeOnce);
+                return this;
+            }
+            public UpdateRequest AttachedAddonId(int index, string attachedAddonId) 
+            {
+                m_params.AddOpt("attached_addons[id][" + index + "]", attachedAddonId);
+                return this;
+            }
+            public UpdateRequest AttachedAddonQuantity(int index, int attachedAddonQuantity) 
+            {
+                m_params.AddOpt("attached_addons[quantity][" + index + "]", attachedAddonQuantity);
+                return this;
+            }
+            public UpdateRequest AttachedAddonBillingCycles(int index, int attachedAddonBillingCycles) 
+            {
+                m_params.AddOpt("attached_addons[billing_cycles][" + index + "]", attachedAddonBillingCycles);
+                return this;
+            }
+            public UpdateRequest AttachedAddonType(int index, PlanAttachedAddon.TypeEnum attachedAddonType) 
+            {
+                m_params.AddOpt("attached_addons[type][" + index + "]", attachedAddonType);
+                return this;
+            }
         }
         public class PlanListRequest : ListRequestBase<PlanListRequest> 
         {
@@ -508,6 +624,10 @@ namespace ChargeBee.Models
             public EnumFilter<Plan.TrialPeriodUnitEnum, PlanListRequest> TrialPeriodUnit() 
             {
                 return new EnumFilter<Plan.TrialPeriodUnitEnum, PlanListRequest>("trial_period_unit", this);        
+            }
+            public EnumFilter<Plan.AddonApplicabilityEnum, PlanListRequest> AddonApplicability() 
+            {
+                return new EnumFilter<Plan.AddonApplicabilityEnum, PlanListRequest>("addon_applicability", this);        
             }
             public EnumFilter<Plan.ChargeModelEnum, PlanListRequest> ChargeModel() 
             {
@@ -600,8 +720,89 @@ namespace ChargeBee.Models
             Deleted,
 
         }
+        public enum AddonApplicabilityEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [Description("all")]
+            All,
+            [Description("restricted")]
+            Restricted,
+
+        }
 
         #region Subclasses
+        public class PlanApplicableAddon : Resource
+        {
+
+            public string Id() {
+                return GetValue<string>("id", true);
+            }
+
+        }
+        public class PlanAttachedAddon : Resource
+        {
+            public enum TypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [Description("recommended")]
+                Recommended,
+                [Description("mandatory")]
+                Mandatory,
+            }
+
+            public string Id() {
+                return GetValue<string>("id", true);
+            }
+
+            public int Quantity() {
+                return GetValue<int>("quantity", true);
+            }
+
+            public int? BillingCycles() {
+                return GetValue<int?>("billing_cycles", false);
+            }
+
+            public TypeEnum AttachedAddonType() {
+                return GetEnum<TypeEnum>("type", true);
+            }
+
+        }
+        public class PlanEventBasedAddon : Resource
+        {
+            public enum OnEventEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [Description("subscription_creation")]
+                SubscriptionCreation,
+                [Description("subscription_trial_start")]
+                SubscriptionTrialStart,
+                [Description("plan_activation")]
+                PlanActivation,
+                [Description("subscription_activation")]
+                SubscriptionActivation,
+            }
+
+            public string Id() {
+                return GetValue<string>("id", true);
+            }
+
+            public int Quantity() {
+                return GetValue<int>("quantity", true);
+            }
+
+            public OnEventEnum OnEvent() {
+                return GetEnum<OnEventEnum>("on_event", true);
+            }
+
+            public bool ChargeOnce() {
+                return GetValue<bool>("charge_once", true);
+            }
+
+        }
 
         #endregion
     }
