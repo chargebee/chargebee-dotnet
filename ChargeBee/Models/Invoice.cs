@@ -1879,14 +1879,45 @@ namespace ChargeBee.Models
                 Cancelled,
                 [Description("voided")]
                 Voided,
+                [Description("queued")]
+                Queued,
+                [Description("awaiting_shipment")]
+                AwaitingShipment,
+                [Description("on_hold")]
+                OnHold,
+                [Description("delivered")]
+                Delivered,
+                [Description("shipped")]
+                Shipped,
+                [Description("partially_delivered")]
+                PartiallyDelivered,
+                [Description("returned")]
+                Returned,
+            }
+            public enum OrderTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [Description("manual")]
+                Manual,
+                [Description("system_generated")]
+                SystemGenerated,
             }
 
             public string Id() {
                 return GetValue<string>("id", true);
             }
 
+            public string DocumentNumber() {
+                return GetValue<string>("document_number", false);
+            }
+
             public StatusEnum? Status() {
                 return GetEnum<StatusEnum>("status", false);
+            }
+
+            public OrderTypeEnum? OrderType() {
+                return GetEnum<OrderTypeEnum>("order_type", false);
             }
 
             public string ReferenceId() {

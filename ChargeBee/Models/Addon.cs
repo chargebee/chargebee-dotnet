@@ -133,6 +133,18 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("accounting_category2", false); }
         }
+        public bool? IsShippable 
+        {
+            get { return GetValue<bool?>("is_shippable", false); }
+        }
+        public int? ShippingFrequencyPeriod 
+        {
+            get { return GetValue<int?>("shipping_frequency_period", false); }
+        }
+        public ShippingFrequencyPeriodUnitEnum? ShippingFrequencyPeriodUnit 
+        {
+            get { return GetEnum<ShippingFrequencyPeriodUnitEnum>("shipping_frequency_period_unit", false); }
+        }
         public long? ResourceVersion 
         {
             get { return GetValue<long?>("resource_version", false); }
@@ -273,6 +285,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("accounting_category2", accountingCategory2);
                 return this;
             }
+            public CreateRequest IsShippable(bool isShippable) 
+            {
+                m_params.AddOpt("is_shippable", isShippable);
+                return this;
+            }
+            public CreateRequest ShippingFrequencyPeriod(int shippingFrequencyPeriod) 
+            {
+                m_params.AddOpt("shipping_frequency_period", shippingFrequencyPeriod);
+                return this;
+            }
+            public CreateRequest ShippingFrequencyPeriodUnit(Addon.ShippingFrequencyPeriodUnitEnum shippingFrequencyPeriodUnit) 
+            {
+                m_params.AddOpt("shipping_frequency_period_unit", shippingFrequencyPeriodUnit);
+                return this;
+            }
             public CreateRequest Status(Addon.StatusEnum status) 
             {
                 m_params.AddOpt("status", status);
@@ -384,6 +411,21 @@ namespace ChargeBee.Models
             public UpdateRequest AccountingCategory2(string accountingCategory2) 
             {
                 m_params.AddOpt("accounting_category2", accountingCategory2);
+                return this;
+            }
+            public UpdateRequest IsShippable(bool isShippable) 
+            {
+                m_params.AddOpt("is_shippable", isShippable);
+                return this;
+            }
+            public UpdateRequest ShippingFrequencyPeriod(int shippingFrequencyPeriod) 
+            {
+                m_params.AddOpt("shipping_frequency_period", shippingFrequencyPeriod);
+                return this;
+            }
+            public UpdateRequest ShippingFrequencyPeriodUnit(Addon.ShippingFrequencyPeriodUnitEnum shippingFrequencyPeriodUnit) 
+            {
+                m_params.AddOpt("shipping_frequency_period_unit", shippingFrequencyPeriodUnit);
                 return this;
             }
         }
@@ -509,6 +551,19 @@ namespace ChargeBee.Models
             Archived,
             [Description("deleted")]
             Deleted,
+
+        }
+        public enum ShippingFrequencyPeriodUnitEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [Description("year")]
+            Year,
+            [Description("month")]
+            Month,
+            [Description("week")]
+            Week,
 
         }
 

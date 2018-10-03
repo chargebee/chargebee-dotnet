@@ -444,6 +444,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
             }
+            public CheckoutNewRequest SubscriptionAffiliateToken(string subscriptionAffiliateToken) 
+            {
+                m_params.AddOpt("subscription[affiliate_token]", subscriptionAffiliateToken);
+                return this;
+            }
             public CheckoutNewRequest AddonId(int index, string addonId) 
             {
                 m_params.AddOpt("addons[id][" + index + "]", addonId);

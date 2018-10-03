@@ -35,6 +35,46 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("exports", "deferred_revenue");
             return new DeferredRevenueRequest(url, HttpMethod.POST);
         }
+        public static PlansRequest Plans()
+        {
+            string url = ApiUtil.BuildUrl("exports", "plans");
+            return new PlansRequest(url, HttpMethod.POST);
+        }
+        public static AddonsRequest Addons()
+        {
+            string url = ApiUtil.BuildUrl("exports", "addons");
+            return new AddonsRequest(url, HttpMethod.POST);
+        }
+        public static CouponsRequest Coupons()
+        {
+            string url = ApiUtil.BuildUrl("exports", "coupons");
+            return new CouponsRequest(url, HttpMethod.POST);
+        }
+        public static CustomersRequest Customers()
+        {
+            string url = ApiUtil.BuildUrl("exports", "customers");
+            return new CustomersRequest(url, HttpMethod.POST);
+        }
+        public static SubscriptionsRequest Subscriptions()
+        {
+            string url = ApiUtil.BuildUrl("exports", "subscriptions");
+            return new SubscriptionsRequest(url, HttpMethod.POST);
+        }
+        public static InvoicesRequest Invoices()
+        {
+            string url = ApiUtil.BuildUrl("exports", "invoices");
+            return new InvoicesRequest(url, HttpMethod.POST);
+        }
+        public static CreditNotesRequest CreditNotes()
+        {
+            string url = ApiUtil.BuildUrl("exports", "credit_notes");
+            return new CreditNotesRequest(url, HttpMethod.POST);
+        }
+        public static TransactionsRequest Transactions()
+        {
+            string url = ApiUtil.BuildUrl("exports", "transactions");
+            return new TransactionsRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -167,6 +207,66 @@ namespace ChargeBee.Models
             {
                 m_params.AddOpt("include_discounts", includeDiscounts);
                 return this;
+            }
+        }
+        public class PlansRequest : EntityRequest<PlansRequest> 
+        {
+            public PlansRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+        }
+        public class AddonsRequest : EntityRequest<AddonsRequest> 
+        {
+            public AddonsRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+        }
+        public class CouponsRequest : EntityRequest<CouponsRequest> 
+        {
+            public CouponsRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+        }
+        public class CustomersRequest : EntityRequest<CustomersRequest> 
+        {
+            public CustomersRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+        }
+        public class SubscriptionsRequest : EntityRequest<SubscriptionsRequest> 
+        {
+            public SubscriptionsRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+        }
+        public class InvoicesRequest : EntityRequest<InvoicesRequest> 
+        {
+            public InvoicesRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+        }
+        public class CreditNotesRequest : EntityRequest<CreditNotesRequest> 
+        {
+            public CreditNotesRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+        }
+        public class TransactionsRequest : EntityRequest<TransactionsRequest> 
+        {
+            public TransactionsRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
             }
         }
         #endregion

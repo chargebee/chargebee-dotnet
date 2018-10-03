@@ -166,9 +166,21 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int>("net_term_days", true); }
         }
+        public DateTime? VatNumberValidatedTime 
+        {
+            get { return GetDateTime("vat_number_validated_time", false); }
+        }
+        public VatNumberStatusEnum? VatNumberStatus 
+        {
+            get { return GetEnum<VatNumberStatusEnum>("vat_number_status", false); }
+        }
         public bool AllowDirectDebit 
         {
             get { return GetValue<bool>("allow_direct_debit", true); }
+        }
+        public bool? IsLocationValid 
+        {
+            get { return GetValue<bool?>("is_location_valid", false); }
         }
         public DateTime CreatedAt 
         {
@@ -1434,6 +1446,21 @@ namespace ChargeBee.Models
         }
         #endregion
 
+        public enum VatNumberStatusEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [Description("valid")]
+            Valid,
+            [Description("invalid")]
+            Invalid,
+            [Description("not_validated")]
+            NotValidated,
+            [Description("undetermined")]
+            Undetermined,
+
+        }
         public enum BillingDayOfWeekEnum
         {
 

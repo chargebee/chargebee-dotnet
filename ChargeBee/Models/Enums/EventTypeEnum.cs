@@ -237,5 +237,20 @@ namespace ChargeBee.Models.Enums
         [Description("unbilled_charges_invoiced")]
          UnbilledChargesInvoiced,
 
+        [Description("order_created")]
+         OrderCreated,
+
+        [Description("order_updated")]
+         OrderUpdated,
+
+        [Description("order_cancelled")]
+         OrderCancelled,
+
+        [Description("order_delivered")]
+         OrderDelivered,
+
+        [Description("order_returned")]
+         OrderReturned,
+
     }
 }
