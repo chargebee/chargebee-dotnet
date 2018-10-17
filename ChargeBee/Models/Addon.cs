@@ -73,6 +73,11 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("description", false); }
         }
+        public PricingModelEnum PricingModel 
+        {
+            get { return GetEnum<PricingModelEnum>("pricing_model", true); }
+        }
+        [Obsolete]
         public TypeEnum AddonType 
         {
             get { return GetEnum<TypeEnum>("type", true); }
@@ -81,9 +86,9 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<ChargeTypeEnum>("charge_type", true); }
         }
-        public int Price 
+        public int? Price 
         {
-            get { return GetValue<int>("price", true); }
+            get { return GetValue<int?>("price", false); }
         }
         public string CurrencyCode 
         {
@@ -169,6 +174,10 @@ namespace ChargeBee.Models
         {
             get { return GetJToken("meta_data", false); }
         }
+        public List<AddonTier> Tiers 
+        {
+            get { return GetResourceList<AddonTier>("tiers"); }
+        }
         
         #endregion
         
@@ -225,9 +234,15 @@ namespace ChargeBee.Models
                 m_params.AddOpt("period_unit", periodUnit);
                 return this;
             }
-            public CreateRequest Type(Addon.TypeEnum type) 
+            public CreateRequest PricingModel(ChargeBee.Models.Enums.PricingModelEnum pricingModel) 
             {
-                m_params.Add("type", type);
+                m_params.AddOpt("pricing_model", pricingModel);
+                return this;
+            }
+            [Obsolete]
+            public CreateRequest Type(TypeEnum type) 
+            {
+                m_params.AddOpt("type", type);
                 return this;
             }
             public CreateRequest Unit(string unit) 
@@ -305,6 +320,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("status", status);
                 return this;
             }
+            public CreateRequest TierStartingUnit(int index, int tierStartingUnit) 
+            {
+                m_params.AddOpt("tiers[starting_unit][" + index + "]", tierStartingUnit);
+                return this;
+            }
+            public CreateRequest TierEndingUnit(int index, int tierEndingUnit) 
+            {
+                m_params.AddOpt("tiers[ending_unit][" + index + "]", tierEndingUnit);
+                return this;
+            }
+            public CreateRequest TierPrice(int index, int tierPrice) 
+            {
+                m_params.AddOpt("tiers[price][" + index + "]", tierPrice);
+                return this;
+            }
         }
         public class UpdateRequest : EntityRequest<UpdateRequest> 
         {
@@ -353,7 +383,13 @@ namespace ChargeBee.Models
                 m_params.AddOpt("period_unit", periodUnit);
                 return this;
             }
-            public UpdateRequest Type(Addon.TypeEnum type) 
+            public UpdateRequest PricingModel(ChargeBee.Models.Enums.PricingModelEnum pricingModel) 
+            {
+                m_params.AddOpt("pricing_model", pricingModel);
+                return this;
+            }
+            [Obsolete]
+            public UpdateRequest Type(TypeEnum type) 
             {
                 m_params.AddOpt("type", type);
                 return this;
@@ -428,6 +464,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_frequency_period_unit", shippingFrequencyPeriodUnit);
                 return this;
             }
+            public UpdateRequest TierStartingUnit(int index, int tierStartingUnit) 
+            {
+                m_params.AddOpt("tiers[starting_unit][" + index + "]", tierStartingUnit);
+                return this;
+            }
+            public UpdateRequest TierEndingUnit(int index, int tierEndingUnit) 
+            {
+                m_params.AddOpt("tiers[ending_unit][" + index + "]", tierEndingUnit);
+                return this;
+            }
+            public UpdateRequest TierPrice(int index, int tierPrice) 
+            {
+                m_params.AddOpt("tiers[price][" + index + "]", tierPrice);
+                return this;
+            }
         }
         public class AddonListRequest : ListRequestBase<AddonListRequest> 
         {
@@ -444,9 +495,14 @@ namespace ChargeBee.Models
             {
                 return new StringFilter<AddonListRequest>("name", this).SupportsMultiOperators(true);        
             }
-            public EnumFilter<Addon.TypeEnum, AddonListRequest> Type() 
+            public EnumFilter<ChargeBee.Models.Enums.PricingModelEnum, AddonListRequest> PricingModel() 
             {
-                return new EnumFilter<Addon.TypeEnum, AddonListRequest>("type", this);        
+                return new EnumFilter<ChargeBee.Models.Enums.PricingModelEnum, AddonListRequest>("pricing_model", this);        
+            }
+            [Obsolete]
+            public EnumFilter<TypeEnum, AddonListRequest> Type() 
+            {
+                return new EnumFilter<TypeEnum, AddonListRequest>("type", this);        
             }
             public EnumFilter<Addon.ChargeTypeEnum, AddonListRequest> ChargeType() 
             {
@@ -503,6 +559,7 @@ namespace ChargeBee.Models
         }
         #endregion
 
+        [Obsolete]
         public enum TypeEnum
         {
 
@@ -512,6 +569,12 @@ namespace ChargeBee.Models
             OnOff,
             [Description("quantity")]
             Quantity,
+            [Description("tiered")]
+            Tiered,
+            [Description("volume")]
+            Volume,
+            [Description("stairstep")]
+            Stairstep,
 
         }
         public enum ChargeTypeEnum
@@ -568,6 +631,22 @@ namespace ChargeBee.Models
         }
 
         #region Subclasses
+        public class AddonTier : Resource
+        {
+
+            public int StartingUnit() {
+                return GetValue<int>("starting_unit", true);
+            }
+
+            public int? EndingUnit() {
+                return GetValue<int?>("ending_unit", false);
+            }
+
+            public int Price() {
+                return GetValue<int>("price", true);
+            }
+
+        }
 
         #endregion
     }

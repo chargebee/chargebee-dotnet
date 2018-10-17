@@ -159,6 +159,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<CreditNoteLineItemDiscount>("line_item_discounts"); }
         }
+        public List<CreditNoteLineItemTier> LineItemTiers 
+        {
+            get { return GetResourceList<CreditNoteLineItemTier>("line_item_tiers"); }
+        }
         public List<CreditNoteTax> Taxes 
         {
             get { return GetResourceList<CreditNoteTax>("taxes"); }
@@ -227,12 +231,17 @@ namespace ChargeBee.Models
             }
             public CreateRequest LineItemUnitAmount(int index, int lineItemUnitAmount) 
             {
-                m_params.Add("line_items[unit_amount][" + index + "]", lineItemUnitAmount);
+                m_params.AddOpt("line_items[unit_amount][" + index + "]", lineItemUnitAmount);
                 return this;
             }
             public CreateRequest LineItemQuantity(int index, int lineItemQuantity) 
             {
-                m_params.Add("line_items[quantity][" + index + "]", lineItemQuantity);
+                m_params.AddOpt("line_items[quantity][" + index + "]", lineItemQuantity);
+                return this;
+            }
+            public CreateRequest LineItemAmount(int index, int lineItemAmount) 
+            {
+                m_params.AddOpt("line_items[amount][" + index + "]", lineItemAmount);
                 return this;
             }
             public CreateRequest LineItemDescription(int index, string lineItemDescription) 
@@ -491,6 +500,14 @@ namespace ChargeBee.Models
                 return GetValue<int?>("quantity", false);
             }
 
+            public int? Amount() {
+                return GetValue<int?>("amount", false);
+            }
+
+            public PricingModelEnum? PricingModel() {
+                return GetEnum<PricingModelEnum>("pricing_model", false);
+            }
+
             public bool IsTaxed() {
                 return GetValue<bool>("is_taxed", true);
             }
@@ -501,10 +518,6 @@ namespace ChargeBee.Models
 
             public double? TaxRate() {
                 return GetValue<double?>("tax_rate", false);
-            }
-
-            public int Amount() {
-                return GetValue<int>("amount", true);
             }
 
             public int? DiscountAmount() {
@@ -595,6 +608,30 @@ namespace ChargeBee.Models
 
             public int DiscountAmount() {
                 return GetValue<int>("discount_amount", true);
+            }
+
+        }
+        public class CreditNoteLineItemTier : Resource
+        {
+
+            public string LineItemId() {
+                return GetValue<string>("line_item_id", false);
+            }
+
+            public int StartingUnit() {
+                return GetValue<int>("starting_unit", true);
+            }
+
+            public int? EndingUnit() {
+                return GetValue<int?>("ending_unit", false);
+            }
+
+            public int QuantityUsed() {
+                return GetValue<int>("quantity_used", true);
+            }
+
+            public int UnitAmount() {
+                return GetValue<int>("unit_amount", true);
             }
 
         }

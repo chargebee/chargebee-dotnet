@@ -74,6 +74,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<CreditNoteEstimateLineItemDiscount>("line_item_discounts"); }
         }
+        public List<CreditNoteEstimateLineItemTier> LineItemTiers 
+        {
+            get { return GetResourceList<CreditNoteEstimateLineItemTier>("line_item_tiers"); }
+        }
         public int? RoundOffAmount 
         {
             get { return GetValue<int?>("round_off_amount", false); }
@@ -135,6 +139,14 @@ namespace ChargeBee.Models
                 return GetValue<int?>("quantity", false);
             }
 
+            public int? Amount() {
+                return GetValue<int?>("amount", false);
+            }
+
+            public PricingModelEnum? PricingModel() {
+                return GetEnum<PricingModelEnum>("pricing_model", false);
+            }
+
             public bool IsTaxed() {
                 return GetValue<bool>("is_taxed", true);
             }
@@ -145,10 +157,6 @@ namespace ChargeBee.Models
 
             public double? TaxRate() {
                 return GetValue<double?>("tax_rate", false);
-            }
-
-            public int Amount() {
-                return GetValue<int>("amount", true);
             }
 
             public int? DiscountAmount() {
@@ -287,6 +295,30 @@ namespace ChargeBee.Models
 
             public int DiscountAmount() {
                 return GetValue<int>("discount_amount", true);
+            }
+
+        }
+        public class CreditNoteEstimateLineItemTier : Resource
+        {
+
+            public string LineItemId() {
+                return GetValue<string>("line_item_id", false);
+            }
+
+            public int StartingUnit() {
+                return GetValue<int>("starting_unit", true);
+            }
+
+            public int? EndingUnit() {
+                return GetValue<int?>("ending_unit", false);
+            }
+
+            public int QuantityUsed() {
+                return GetValue<int>("quantity_used", true);
+            }
+
+            public int UnitAmount() {
+                return GetValue<int>("unit_amount", true);
             }
 
         }

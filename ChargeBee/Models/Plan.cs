@@ -73,9 +73,9 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("description", false); }
         }
-        public int Price 
+        public int? Price 
         {
-            get { return GetValue<int>("price", true); }
+            get { return GetValue<int?>("price", false); }
         }
         public string CurrencyCode 
         {
@@ -97,6 +97,11 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<TrialPeriodUnitEnum>("trial_period_unit", false); }
         }
+        public PricingModelEnum PricingModel 
+        {
+            get { return GetEnum<PricingModelEnum>("pricing_model", true); }
+        }
+        [Obsolete]
         public ChargeModelEnum ChargeModel 
         {
             get { return GetEnum<ChargeModelEnum>("charge_model", true); }
@@ -198,6 +203,10 @@ namespace ChargeBee.Models
         {
             get { return GetJToken("meta_data", false); }
         }
+        public List<PlanTier> Tiers 
+        {
+            get { return GetResourceList<PlanTier>("tiers"); }
+        }
         public List<PlanApplicableAddon> ApplicableAddons 
         {
             get { return GetResourceList<PlanApplicableAddon>("applicable_addons"); }
@@ -281,7 +290,13 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
-            public CreateRequest ChargeModel(Plan.ChargeModelEnum chargeModel) 
+            public CreateRequest PricingModel(ChargeBee.Models.Enums.PricingModelEnum pricingModel) 
+            {
+                m_params.AddOpt("pricing_model", pricingModel);
+                return this;
+            }
+            [Obsolete]
+            public CreateRequest ChargeModel(ChargeModelEnum chargeModel) 
             {
                 m_params.AddOpt("charge_model", chargeModel);
                 return this;
@@ -380,6 +395,21 @@ namespace ChargeBee.Models
             public CreateRequest Status(Plan.StatusEnum status) 
             {
                 m_params.AddOpt("status", status);
+                return this;
+            }
+            public CreateRequest TierStartingUnit(int index, int tierStartingUnit) 
+            {
+                m_params.AddOpt("tiers[starting_unit][" + index + "]", tierStartingUnit);
+                return this;
+            }
+            public CreateRequest TierEndingUnit(int index, int tierEndingUnit) 
+            {
+                m_params.AddOpt("tiers[ending_unit][" + index + "]", tierEndingUnit);
+                return this;
+            }
+            public CreateRequest TierPrice(int index, int tierPrice) 
+            {
+                m_params.AddOpt("tiers[price][" + index + "]", tierPrice);
                 return this;
             }
             public CreateRequest ApplicableAddonId(int index, string applicableAddonId) 
@@ -490,7 +520,13 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
-            public UpdateRequest ChargeModel(Plan.ChargeModelEnum chargeModel) 
+            public UpdateRequest PricingModel(ChargeBee.Models.Enums.PricingModelEnum pricingModel) 
+            {
+                m_params.AddOpt("pricing_model", pricingModel);
+                return this;
+            }
+            [Obsolete]
+            public UpdateRequest ChargeModel(ChargeModelEnum chargeModel) 
             {
                 m_params.AddOpt("charge_model", chargeModel);
                 return this;
@@ -586,6 +622,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("meta_data", metaData);
                 return this;
             }
+            public UpdateRequest TierStartingUnit(int index, int tierStartingUnit) 
+            {
+                m_params.AddOpt("tiers[starting_unit][" + index + "]", tierStartingUnit);
+                return this;
+            }
+            public UpdateRequest TierEndingUnit(int index, int tierEndingUnit) 
+            {
+                m_params.AddOpt("tiers[ending_unit][" + index + "]", tierEndingUnit);
+                return this;
+            }
+            public UpdateRequest TierPrice(int index, int tierPrice) 
+            {
+                m_params.AddOpt("tiers[price][" + index + "]", tierPrice);
+                return this;
+            }
             public UpdateRequest ApplicableAddonId(int index, string applicableAddonId) 
             {
                 m_params.AddOpt("applicable_addons[id][" + index + "]", applicableAddonId);
@@ -671,9 +722,14 @@ namespace ChargeBee.Models
             {
                 return new EnumFilter<Plan.AddonApplicabilityEnum, PlanListRequest>("addon_applicability", this);        
             }
-            public EnumFilter<Plan.ChargeModelEnum, PlanListRequest> ChargeModel() 
+            [Obsolete]
+            public EnumFilter<ChargeModelEnum, PlanListRequest> ChargeModel() 
             {
-                return new EnumFilter<Plan.ChargeModelEnum, PlanListRequest>("charge_model", this);        
+                return new EnumFilter<ChargeModelEnum, PlanListRequest>("charge_model", this);        
+            }
+            public EnumFilter<ChargeBee.Models.Enums.PricingModelEnum, PlanListRequest> PricingModel() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.PricingModelEnum, PlanListRequest>("pricing_model", this);        
             }
             public EnumFilter<Plan.StatusEnum, PlanListRequest> Status() 
             {
@@ -738,6 +794,7 @@ namespace ChargeBee.Models
             Month,
 
         }
+        [Obsolete]
         public enum ChargeModelEnum
         {
 
@@ -747,6 +804,12 @@ namespace ChargeBee.Models
             FlatFee,
             [Description("per_unit")]
             PerUnit,
+            [Description("tiered")]
+            Tiered,
+            [Description("volume")]
+            Volume,
+            [Description("stairstep")]
+            Stairstep,
 
         }
         public enum StatusEnum
@@ -788,6 +851,22 @@ namespace ChargeBee.Models
         }
 
         #region Subclasses
+        public class PlanTier : Resource
+        {
+
+            public int StartingUnit() {
+                return GetValue<int>("starting_unit", true);
+            }
+
+            public int? EndingUnit() {
+                return GetValue<int?>("ending_unit", false);
+            }
+
+            public int Price() {
+                return GetValue<int>("price", true);
+            }
+
+        }
         public class PlanApplicableAddon : Resource
         {
 

@@ -66,6 +66,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int?>("unit_amount", false); }
         }
+        public PricingModelEnum? PricingModel 
+        {
+            get { return GetEnum<PricingModelEnum>("pricing_model", false); }
+        }
         public int? Quantity 
         {
             get { return GetValue<int?>("quantity", false); }
@@ -101,6 +105,10 @@ namespace ChargeBee.Models
         public DateTime? VoidedAt 
         {
             get { return GetDateTime("voided_at", false); }
+        }
+        public List<UnbilledChargeTier> Tiers 
+        {
+            get { return GetResourceList<UnbilledChargeTier>("tiers"); }
         }
         public bool Deleted 
         {
@@ -186,6 +194,26 @@ namespace ChargeBee.Models
         }
 
         #region Subclasses
+        public class UnbilledChargeTier : Resource
+        {
+
+            public int StartingUnit() {
+                return GetValue<int>("starting_unit", true);
+            }
+
+            public int? EndingUnit() {
+                return GetValue<int?>("ending_unit", false);
+            }
+
+            public int QuantityUsed() {
+                return GetValue<int>("quantity_used", true);
+            }
+
+            public int UnitAmount() {
+                return GetValue<int>("unit_amount", true);
+            }
+
+        }
 
         #endregion
     }

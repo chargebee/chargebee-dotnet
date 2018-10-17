@@ -70,6 +70,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<InvoiceEstimateLineItemTax>("line_item_taxes"); }
         }
+        public List<InvoiceEstimateLineItemTier> LineItemTiers 
+        {
+            get { return GetResourceList<InvoiceEstimateLineItemTier>("line_item_tiers"); }
+        }
         public List<InvoiceEstimateLineItemDiscount> LineItemDiscounts 
         {
             get { return GetResourceList<InvoiceEstimateLineItemDiscount>("line_item_discounts"); }
@@ -124,6 +128,14 @@ namespace ChargeBee.Models
                 return GetValue<int?>("quantity", false);
             }
 
+            public int? Amount() {
+                return GetValue<int?>("amount", false);
+            }
+
+            public PricingModelEnum? PricingModel() {
+                return GetEnum<PricingModelEnum>("pricing_model", false);
+            }
+
             public bool IsTaxed() {
                 return GetValue<bool>("is_taxed", true);
             }
@@ -134,10 +146,6 @@ namespace ChargeBee.Models
 
             public double? TaxRate() {
                 return GetValue<double?>("tax_rate", false);
-            }
-
-            public int Amount() {
-                return GetValue<int>("amount", true);
             }
 
             public int? DiscountAmount() {
@@ -243,6 +251,30 @@ namespace ChargeBee.Models
 
             public string TaxJurisCode() {
                 return GetValue<string>("tax_juris_code", false);
+            }
+
+        }
+        public class InvoiceEstimateLineItemTier : Resource
+        {
+
+            public string LineItemId() {
+                return GetValue<string>("line_item_id", false);
+            }
+
+            public int StartingUnit() {
+                return GetValue<int>("starting_unit", true);
+            }
+
+            public int? EndingUnit() {
+                return GetValue<int?>("ending_unit", false);
+            }
+
+            public int QuantityUsed() {
+                return GetValue<int>("quantity_used", true);
+            }
+
+            public int UnitAmount() {
+                return GetValue<int>("unit_amount", true);
             }
 
         }

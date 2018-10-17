@@ -171,6 +171,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int?>("setup_fee", false); }
         }
+        public int? PlanAmount 
+        {
+            get { return GetValue<int?>("plan_amount", false); }
+        }
         public int? BillingPeriod 
         {
             get { return GetValue<int?>("billing_period", false); }

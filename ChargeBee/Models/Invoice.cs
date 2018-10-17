@@ -293,6 +293,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<InvoiceLineItemTax>("line_item_taxes"); }
         }
+        public List<InvoiceLineItemTier> LineItemTiers 
+        {
+            get { return GetResourceList<InvoiceLineItemTier>("line_item_tiers"); }
+        }
         public List<InvoiceLinkedPayment> LinkedPayments 
         {
             get { return GetResourceList<InvoiceLinkedPayment>("linked_payments"); }
@@ -779,6 +783,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
             }
+            public ImportInvoiceRequest LineItemId(int index, string lineItemId) 
+            {
+                m_params.AddOpt("line_items[id][" + index + "]", lineItemId);
+                return this;
+            }
             public ImportInvoiceRequest LineItemDateFrom(int index, long lineItemDateFrom) 
             {
                 m_params.AddOpt("line_items[date_from][" + index + "]", lineItemDateFrom);
@@ -877,6 +886,31 @@ namespace ChargeBee.Models
             public ImportInvoiceRequest LineItemTax4Amount(int index, int lineItemTax4Amount) 
             {
                 m_params.AddOpt("line_items[tax4_amount][" + index + "]", lineItemTax4Amount);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTierLineItemId(int index, string lineItemTierLineItemId) 
+            {
+                m_params.Add("line_item_tiers[line_item_id][" + index + "]", lineItemTierLineItemId);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTierStartingUnit(int index, int lineItemTierStartingUnit) 
+            {
+                m_params.Add("line_item_tiers[starting_unit][" + index + "]", lineItemTierStartingUnit);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTierEndingUnit(int index, int lineItemTierEndingUnit) 
+            {
+                m_params.Add("line_item_tiers[ending_unit][" + index + "]", lineItemTierEndingUnit);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTierQuantityUsed(int index, int lineItemTierQuantityUsed) 
+            {
+                m_params.Add("line_item_tiers[quantity_used][" + index + "]", lineItemTierQuantityUsed);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTierUnitAmount(int index, int lineItemTierUnitAmount) 
+            {
+                m_params.Add("line_item_tiers[unit_amount][" + index + "]", lineItemTierUnitAmount);
                 return this;
             }
             public ImportInvoiceRequest DiscountEntityType(int index, InvoiceDiscount.EntityTypeEnum discountEntityType) 
@@ -1604,6 +1638,14 @@ namespace ChargeBee.Models
                 return GetValue<int?>("quantity", false);
             }
 
+            public int? Amount() {
+                return GetValue<int?>("amount", false);
+            }
+
+            public PricingModelEnum? PricingModel() {
+                return GetEnum<PricingModelEnum>("pricing_model", false);
+            }
+
             public bool IsTaxed() {
                 return GetValue<bool>("is_taxed", true);
             }
@@ -1614,10 +1656,6 @@ namespace ChargeBee.Models
 
             public double? TaxRate() {
                 return GetValue<double?>("tax_rate", false);
-            }
-
-            public int Amount() {
-                return GetValue<int>("amount", true);
             }
 
             public int? DiscountAmount() {
@@ -1756,6 +1794,30 @@ namespace ChargeBee.Models
 
             public string TaxJurisCode() {
                 return GetValue<string>("tax_juris_code", false);
+            }
+
+        }
+        public class InvoiceLineItemTier : Resource
+        {
+
+            public string LineItemId() {
+                return GetValue<string>("line_item_id", false);
+            }
+
+            public int StartingUnit() {
+                return GetValue<int>("starting_unit", true);
+            }
+
+            public int? EndingUnit() {
+                return GetValue<int?>("ending_unit", false);
+            }
+
+            public int QuantityUsed() {
+                return GetValue<int>("quantity_used", true);
+            }
+
+            public int UnitAmount() {
+                return GetValue<int>("unit_amount", true);
             }
 
         }
