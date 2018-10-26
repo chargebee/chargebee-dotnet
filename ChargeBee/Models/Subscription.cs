@@ -2784,6 +2784,10 @@ namespace ChargeBee.Models
                 return GetValue<int?>("unit_price", false);
             }
 
+            public int? Amount() {
+                return GetValue<int?>("amount", false);
+            }
+
             public DateTime? TrialEnd() {
                 return GetDateTime("trial_end", false);
             }

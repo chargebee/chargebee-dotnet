@@ -364,9 +364,19 @@ namespace ChargeBee.Models
                 m_params.AddOpt("po_number", poNumber);
                 return this;
             }
+            public CreateRequest AuthorizationTransactionId(string authorizationTransactionId) 
+            {
+                m_params.AddOpt("authorization_transaction_id", authorizationTransactionId);
+                return this;
+            }
             public CreateRequest PaymentSourceId(string paymentSourceId) 
             {
                 m_params.AddOpt("payment_source_id", paymentSourceId);
+                return this;
+            }
+            public CreateRequest AutoCollection(ChargeBee.Models.Enums.AutoCollectionEnum autoCollection) 
+            {
+                m_params.AddOpt("auto_collection", autoCollection);
                 return this;
             }
             public CreateRequest ShippingAddressFirstName(string shippingAddressFirstName) 
@@ -1205,6 +1215,11 @@ namespace ChargeBee.Models
             public CollectPaymentRequest Amount(int amount) 
             {
                 m_params.AddOpt("amount", amount);
+                return this;
+            }
+            public CollectPaymentRequest AuthorizationTransactionId(string authorizationTransactionId) 
+            {
+                m_params.AddOpt("authorization_transaction_id", authorizationTransactionId);
                 return this;
             }
             public CollectPaymentRequest PaymentSourceId(string paymentSourceId) 

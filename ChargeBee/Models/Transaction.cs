@@ -19,6 +19,16 @@ namespace ChargeBee.Models
     
 
         #region Methods
+        public static CreateAuthorizationRequest CreateAuthorization()
+        {
+            string url = ApiUtil.BuildUrl("transactions", "create_authorization");
+            return new CreateAuthorizationRequest(url, HttpMethod.POST);
+        }
+        public static EntityRequest<Type> VoidTransaction(string id)
+        {
+            string url = ApiUtil.BuildUrl("transactions", CheckNull(id), "void");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
         public static TransactionListRequest List()
         {
             string url = ApiUtil.BuildUrl("transactions");
@@ -113,6 +123,10 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<FraudFlagEnum>("fraud_flag", false); }
         }
+        public AuthorizationReasonEnum? AuthorizationReason 
+        {
+            get { return GetEnum<AuthorizationReasonEnum>("authorization_reason", false); }
+        }
         public string ErrorCode 
         {
             get { return GetValue<string>("error_code", false); }
@@ -153,6 +167,14 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("refunded_txn_id", false); }
         }
+        public string ReferenceAuthorizationId 
+        {
+            get { return GetValue<string>("reference_authorization_id", false); }
+        }
+        public int? AmountCapturable 
+        {
+            get { return GetValue<int?>("amount_capturable", false); }
+        }
         public string ReversalTransactionId 
         {
             get { return GetValue<string>("reversal_transaction_id", false); }
@@ -169,6 +191,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<TransactionLinkedRefund>("linked_refunds"); }
         }
+        public List<TransactionLinkedPayment> LinkedPayments 
+        {
+            get { return GetResourceList<TransactionLinkedPayment>("linked_payments"); }
+        }
         public bool Deleted 
         {
             get { return GetValue<bool>("deleted", true); }
@@ -177,6 +203,34 @@ namespace ChargeBee.Models
         #endregion
         
         #region Requests
+        public class CreateAuthorizationRequest : EntityRequest<CreateAuthorizationRequest> 
+        {
+            public CreateAuthorizationRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CreateAuthorizationRequest CustomerId(string customerId) 
+            {
+                m_params.Add("customer_id", customerId);
+                return this;
+            }
+            public CreateAuthorizationRequest PaymentSourceId(string paymentSourceId) 
+            {
+                m_params.AddOpt("payment_source_id", paymentSourceId);
+                return this;
+            }
+            public CreateAuthorizationRequest CurrencyCode(string currencyCode) 
+            {
+                m_params.AddOpt("currency_code", currencyCode);
+                return this;
+            }
+            public CreateAuthorizationRequest Amount(int amount) 
+            {
+                m_params.Add("amount", amount);
+                return this;
+            }
+        }
         public class TransactionListRequest : ListRequestBase<TransactionListRequest> 
         {
             public TransactionListRequest(string url) 
@@ -236,6 +290,10 @@ namespace ChargeBee.Models
             public NumberFilter<int, TransactionListRequest> Amount() 
             {
                 return new NumberFilter<int, TransactionListRequest>("amount", this);        
+            }
+            public NumberFilter<int, TransactionListRequest> AmountCapturable() 
+            {
+                return new NumberFilter<int, TransactionListRequest>("amount_capturable", this);        
             }
             public EnumFilter<Transaction.StatusEnum, TransactionListRequest> Status() 
             {
@@ -297,6 +355,17 @@ namespace ChargeBee.Models
             Suspicious,
             [Description("fraudulent")]
             Fraudulent,
+
+        }
+        public enum AuthorizationReasonEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [Description("blocking_funds")]
+            BlockingFunds,
+            [Description("verification")]
+            Verification,
 
         }
 
@@ -382,6 +451,43 @@ namespace ChargeBee.Models
 
             public int TxnAmount() {
                 return GetValue<int>("txn_amount", true);
+            }
+
+        }
+        public class TransactionLinkedPayment : Resource
+        {
+            public enum StatusEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [Description("in_progress")]
+                InProgress,
+                [Description("success")]
+                Success,
+                [Description("voided")]
+                Voided,
+                [Description("failure")]
+                Failure,
+                [Description("timeout")]
+                Timeout,
+                [Description("needs_attention")]
+                NeedsAttention,
+            }
+
+            public string Id() {
+                return GetValue<string>("id", true);
+            }
+
+            public StatusEnum Status() {
+                return GetEnum<StatusEnum>("status", true);
+            }
+
+            public int Amount() {
+                return GetValue<int>("amount", true);
+            }
+
+            public DateTime Date() {
+                return (DateTime)GetDateTime("date", true);
             }
 
         }

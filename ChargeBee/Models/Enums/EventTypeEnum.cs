@@ -192,6 +192,12 @@ namespace ChargeBee.Models.Enums
         [Description("netd_payment_due_reminder")]
          NetdPaymentDueReminder,
 
+        [Description("authorization_succeeded")]
+         AuthorizationSucceeded,
+
+        [Description("authorization_voided")]
+         AuthorizationVoided,
+
         [Description("card_added")]
          CardAdded,
 
@@ -251,6 +257,12 @@ namespace ChargeBee.Models.Enums
 
         [Description("order_returned")]
          OrderReturned,
+
+        [Description("order_ready_to_process")]
+         OrderReadyToProcess,
+
+        [Description("order_ready_to_ship")]
+         OrderReadyToShip,
 
     }
 }
