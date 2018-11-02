@@ -235,6 +235,10 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("activated_at", false); }
         }
+        public string GiftId 
+        {
+            get { return GetValue<string>("gift_id", false); }
+        }
         public DateTime? PauseDate 
         {
             get { return GetDateTime("pause_date", false); }

@@ -81,6 +81,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<Order>("order"); }
         }
+        public Gift Gift
+        {
+            get {  return GetResource<Gift>("gift"); }
+        }
         public Transaction Transaction
         {
             get {  return GetResource<Transaction>("transaction"); }

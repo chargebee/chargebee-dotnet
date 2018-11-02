@@ -3,7 +3,7 @@ using ChargeBee.Api;
 
 namespace ChargeBee
 {
-	public class DateFilter<U> where U : ListRequestBase<U> {
+	public class DateFilter<U> where U : EntityRequest<U> {
 		
 		private U req;
 		private String paramName;

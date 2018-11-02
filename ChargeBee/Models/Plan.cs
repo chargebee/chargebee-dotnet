@@ -187,6 +187,14 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("updated_at", false); }
         }
+        public bool Giftable 
+        {
+            get { return GetValue<bool>("giftable", true); }
+        }
+        public string ClaimUrl 
+        {
+            get { return GetValue<string>("claim_url", false); }
+        }
         public string InvoiceNotes 
         {
             get { return GetValue<string>("invoice_notes", false); }
@@ -392,9 +400,19 @@ namespace ChargeBee.Models
                 m_params.AddOpt("meta_data", metaData);
                 return this;
             }
+            public CreateRequest Giftable(bool giftable) 
+            {
+                m_params.AddOpt("giftable", giftable);
+                return this;
+            }
             public CreateRequest Status(Plan.StatusEnum status) 
             {
                 m_params.AddOpt("status", status);
+                return this;
+            }
+            public CreateRequest ClaimUrl(string claimUrl) 
+            {
+                m_params.AddOpt("claim_url", claimUrl);
                 return this;
             }
             public CreateRequest TierStartingUnit(int index, int tierStartingUnit) 
@@ -721,6 +739,10 @@ namespace ChargeBee.Models
             public EnumFilter<Plan.AddonApplicabilityEnum, PlanListRequest> AddonApplicability() 
             {
                 return new EnumFilter<Plan.AddonApplicabilityEnum, PlanListRequest>("addon_applicability", this);        
+            }
+            public BooleanFilter<PlanListRequest> Giftable() 
+            {
+                return new BooleanFilter<PlanListRequest>("giftable", this);        
             }
             [Obsolete]
             public EnumFilter<ChargeModelEnum, PlanListRequest> ChargeModel() 

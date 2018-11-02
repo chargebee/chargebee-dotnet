@@ -55,6 +55,16 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("hosted_pages", "extend_subscription");
             return new ExtendSubscriptionRequest(url, HttpMethod.POST);
         }
+        public static CheckoutGiftRequest CheckoutGift()
+        {
+            string url = ApiUtil.BuildUrl("hosted_pages", "checkout_gift");
+            return new CheckoutGiftRequest(url, HttpMethod.POST);
+        }
+        public static ClaimGiftRequest ClaimGift()
+        {
+            string url = ApiUtil.BuildUrl("hosted_pages", "claim_gift");
+            return new ClaimGiftRequest(url, HttpMethod.POST);
+        }
         public static RetrieveAgreementPdfRequest RetrieveAgreementPdf()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "retrieve_agreement_pdf");
@@ -801,6 +811,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public ManagePaymentSourcesRequest RedirectUrl(string redirectUrl) 
+            {
+                m_params.AddOpt("redirect_url", redirectUrl);
+                return this;
+            }
             public ManagePaymentSourcesRequest CustomerId(string customerId) 
             {
                 m_params.Add("customer[id]", customerId);
@@ -825,6 +840,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public CollectNowRequest RedirectUrl(string redirectUrl) 
+            {
+                m_params.AddOpt("redirect_url", redirectUrl);
+                return this;
+            }
             public CollectNowRequest CurrencyCode(string currencyCode) 
             {
                 m_params.AddOpt("currency_code", currencyCode);
@@ -867,6 +887,77 @@ namespace ChargeBee.Models
             public ExtendSubscriptionRequest SubscriptionId(string subscriptionId) 
             {
                 m_params.Add("subscription[id]", subscriptionId);
+                return this;
+            }
+        }
+        public class CheckoutGiftRequest : EntityRequest<CheckoutGiftRequest> 
+        {
+            public CheckoutGiftRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CheckoutGiftRequest RedirectUrl(string redirectUrl) 
+            {
+                m_params.AddOpt("redirect_url", redirectUrl);
+                return this;
+            }
+            public CheckoutGiftRequest GifterCustomerId(string gifterCustomerId) 
+            {
+                m_params.AddOpt("gifter[customer_id]", gifterCustomerId);
+                return this;
+            }
+            public CheckoutGiftRequest GifterLocale(string gifterLocale) 
+            {
+                m_params.AddOpt("gifter[locale]", gifterLocale);
+                return this;
+            }
+            public CheckoutGiftRequest SubscriptionPlanId(string subscriptionPlanId) 
+            {
+                m_params.Add("subscription[plan_id]", subscriptionPlanId);
+                return this;
+            }
+            public CheckoutGiftRequest SubscriptionPlanQuantity(int subscriptionPlanQuantity) 
+            {
+                m_params.AddOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
+                return this;
+            }
+            public CheckoutGiftRequest SubscriptionCoupon(string subscriptionCoupon) 
+            {
+                m_params.AddOpt("subscription[coupon]", subscriptionCoupon);
+                return this;
+            }
+            public CheckoutGiftRequest AddonId(int index, string addonId) 
+            {
+                m_params.AddOpt("addons[id][" + index + "]", addonId);
+                return this;
+            }
+            public CheckoutGiftRequest AddonQuantity(int index, int addonQuantity) 
+            {
+                m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
+                return this;
+            }
+        }
+        public class ClaimGiftRequest : EntityRequest<ClaimGiftRequest> 
+        {
+            public ClaimGiftRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public ClaimGiftRequest RedirectUrl(string redirectUrl) 
+            {
+                m_params.AddOpt("redirect_url", redirectUrl);
+                return this;
+            }
+            public ClaimGiftRequest GiftId(string giftId) 
+            {
+                m_params.Add("gift[id]", giftId);
+                return this;
+            }
+            public ClaimGiftRequest CustomerLocale(string customerLocale) 
+            {
+                m_params.AddOpt("customer[locale]", customerLocale);
                 return this;
             }
         }
@@ -929,6 +1020,10 @@ namespace ChargeBee.Models
             CollectNow,
             [Description("extend_subscription")]
             ExtendSubscription,
+            [Description("checkout_gift")]
+            CheckoutGift,
+            [Description("claim_gift")]
+            ClaimGift,
 
         }
         public enum StateEnum

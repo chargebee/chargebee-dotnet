@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace ChargeBee.Api
 {
 	public class EntityRequest<T>
     {
-        string m_url;
+		protected string m_url;
         protected HttpMethod m_method;
         protected Params m_params = new Params();
 		protected Dictionary<string, string> headers = new Dictionary<string, string>();
@@ -14,6 +14,10 @@ namespace ChargeBee.Api
 		{
 			m_url = url;
 			m_method = method;
+		}
+
+		public Params Params() {
+			return m_params;
 		}
 
 		public T Param(String paramName, Object value){

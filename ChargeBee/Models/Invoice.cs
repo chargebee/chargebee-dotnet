@@ -261,6 +261,14 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool?>("has_advance_charges", false); }
         }
+        public bool TermFinalized 
+        {
+            get { return GetValue<bool>("term_finalized", true); }
+        }
+        public bool IsGifted 
+        {
+            get { return GetValue<bool>("is_gifted", true); }
+        }
         public DateTime? ExpectedPaymentDate 
         {
             get { return GetDateTime("expected_payment_date", false); }

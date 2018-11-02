@@ -3,7 +3,7 @@ using ChargeBee.Api;
 
 namespace ChargeBee
 {
-	public class BooleanFilter<U> where U : ListRequestBase<U>
+	public class BooleanFilter<U> where U : EntityRequest<U>
 	{
 		private U req;
 		private String paramName;

@@ -1,17 +1,11 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace ChargeBee.Api
 {
-	public class ListRequestBase<U> where U : ListRequestBase<U>
+	public class ListRequestBase<U> : EntityRequest<U> where U : ListRequestBase<U> 
 	{
-		string m_url;
-		protected HttpMethod m_method = HttpMethod.GET;
-		protected Params m_params = new Params();
-		protected Dictionary<string, string> headers = new Dictionary<string, string>();
-
-		public ListRequestBase(string url)
+		public ListRequestBase(string url) : base(url, HttpMethod.GET)
 		{
-			m_url = url;
 		}
 
 		public U Limit(int limit)
@@ -46,24 +40,15 @@ namespace ChargeBee.Api
 		public DateFilter<U> DateFilterParam(string paramName){
 			return new DateFilter<U>(paramName, (U)this).SupportsPresenceOperator(true);
 		}
-    
-		public U Header(string headerName, string headerValue){
-			headers[headerName] = headerValue;
-			return (U)this;
-		}
 
-		public ListResult Request(ApiConfig env)
+		public new ListResult Request(ApiConfig env)
 		{
 			return ApiUtil.GetList(m_url, m_params, headers, ApiConfig.Instance);
 		}
 
-		public ListResult Request()
+		public new ListResult Request()
 		{
 			return Request(ApiConfig.Instance);
-		}
-
-		public Params Params() {
-			return m_params;
 		}
 
 	}

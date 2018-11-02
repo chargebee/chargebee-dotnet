@@ -252,6 +252,18 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("currency_code", false); }
         }
+        public bool? IsGifted 
+        {
+            get { return GetValue<bool?>("is_gifted", false); }
+        }
+        public string GiftNote 
+        {
+            get { return GetValue<string>("gift_note", false); }
+        }
+        public string GiftId 
+        {
+            get { return GetValue<string>("gift_id", false); }
+        }
         
         #endregion
         
@@ -454,6 +466,11 @@ namespace ChargeBee.Models
             public UpdateRequest OrderLineItemStatus(int index, OrderOrderLineItem.StatusEnum orderLineItemStatus) 
             {
                 m_params.AddOpt("order_line_items[status][" + index + "]", orderLineItemStatus);
+                return this;
+            }
+            public UpdateRequest OrderLineItemSku(int index, string orderLineItemSku) 
+            {
+                m_params.AddOpt("order_line_items[sku][" + index + "]", orderLineItemSku);
                 return this;
             }
         }
@@ -675,6 +692,8 @@ namespace ChargeBee.Models
                 PartiallyDelivered,
                 [Description("returned")]
                 Returned,
+                [Description("cancelled")]
+                Cancelled,
             }
             public enum EntityTypeEnum
             {
@@ -744,6 +763,10 @@ namespace ChargeBee.Models
 
             public bool IsShippable() {
                 return GetValue<bool>("is_shippable", true);
+            }
+
+            public string Sku() {
+                return GetValue<string>("sku", false);
             }
 
             public StatusEnum? Status() {
