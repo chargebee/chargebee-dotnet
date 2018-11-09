@@ -1,0 +1,664 @@
+using System;
+using System.IO;
+using System.ComponentModel;
+using System.Collections.Generic;
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+using ChargeBee.Internal;
+using ChargeBee.Api;
+using ChargeBee.Models.Enums;
+using ChargeBee.Filters.Enums;
+
+namespace ChargeBee.Models
+{
+
+    public class Quote : Resource 
+    {
+    
+
+        #region Methods
+        public static EntityRequest<Type> Retrieve(string id)
+        {
+            string url = ApiUtil.BuildUrl("quotes", CheckNull(id));
+            return new EntityRequest<Type>(url, HttpMethod.GET);
+        }
+        public static CreateForOnetimeChargesRequest CreateForOnetimeCharges()
+        {
+            string url = ApiUtil.BuildUrl("quotes", "create_for_onetime_charges");
+            return new CreateForOnetimeChargesRequest(url, HttpMethod.POST);
+        }
+        public static EntityRequest<Type> Convert(string id)
+        {
+            string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "convert");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
+        public static UpdateStatusRequest UpdateStatus(string id)
+        {
+            string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "update_status");
+            return new UpdateStatusRequest(url, HttpMethod.POST);
+        }
+        public static PdfRequest Pdf(string id)
+        {
+            string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "pdf");
+            return new PdfRequest(url, HttpMethod.POST);
+        }
+        #endregion
+        
+        #region Properties
+        public string Id 
+        {
+            get { return GetValue<string>("id", true); }
+        }
+        public string PoNumber 
+        {
+            get { return GetValue<string>("po_number", false); }
+        }
+        public string CustomerId 
+        {
+            get { return GetValue<string>("customer_id", true); }
+        }
+        public string SubscriptionId 
+        {
+            get { return GetValue<string>("subscription_id", false); }
+        }
+        public StatusEnum Status 
+        {
+            get { return GetEnum<StatusEnum>("status", true); }
+        }
+        public OperationTypeEnum OperationType 
+        {
+            get { return GetEnum<OperationTypeEnum>("operation_type", true); }
+        }
+        public string VatNumber 
+        {
+            get { return GetValue<string>("vat_number", false); }
+        }
+        public PriceTypeEnum PriceType 
+        {
+            get { return GetEnum<PriceTypeEnum>("price_type", true); }
+        }
+        public DateTime ValidTill 
+        {
+            get { return (DateTime)GetDateTime("valid_till", true); }
+        }
+        public DateTime Date 
+        {
+            get { return (DateTime)GetDateTime("date", true); }
+        }
+        public int SubTotal 
+        {
+            get { return GetValue<int>("sub_total", true); }
+        }
+        public int? Total 
+        {
+            get { return GetValue<int?>("total", false); }
+        }
+        public int? CreditsApplied 
+        {
+            get { return GetValue<int?>("credits_applied", false); }
+        }
+        public int? AmountPaid 
+        {
+            get { return GetValue<int?>("amount_paid", false); }
+        }
+        public int? AmountDue 
+        {
+            get { return GetValue<int?>("amount_due", false); }
+        }
+        public long? ResourceVersion 
+        {
+            get { return GetValue<long?>("resource_version", false); }
+        }
+        public DateTime? UpdatedAt 
+        {
+            get { return GetDateTime("updated_at", false); }
+        }
+        public string CurrencyCode 
+        {
+            get { return GetValue<string>("currency_code", true); }
+        }
+        public List<QuoteLineItem> LineItems 
+        {
+            get { return GetResourceList<QuoteLineItem>("line_items"); }
+        }
+        public List<QuoteDiscount> Discounts 
+        {
+            get { return GetResourceList<QuoteDiscount>("discounts"); }
+        }
+        public List<QuoteLineItemDiscount> LineItemDiscounts 
+        {
+            get { return GetResourceList<QuoteLineItemDiscount>("line_item_discounts"); }
+        }
+        public List<QuoteTax> Taxes 
+        {
+            get { return GetResourceList<QuoteTax>("taxes"); }
+        }
+        public List<QuoteLineItemTax> LineItemTaxes 
+        {
+            get { return GetResourceList<QuoteLineItemTax>("line_item_taxes"); }
+        }
+        public QuoteShippingAddress ShippingAddress 
+        {
+            get { return GetSubResource<QuoteShippingAddress>("shipping_address"); }
+        }
+        public QuoteBillingAddress BillingAddress 
+        {
+            get { return GetSubResource<QuoteBillingAddress>("billing_address"); }
+        }
+        
+        #endregion
+        
+        #region Requests
+        public class CreateForOnetimeChargesRequest : EntityRequest<CreateForOnetimeChargesRequest> 
+        {
+            public CreateForOnetimeChargesRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CreateForOnetimeChargesRequest CustomerId(string customerId) 
+            {
+                m_params.Add("customer_id", customerId);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest PoNumber(string poNumber) 
+            {
+                m_params.AddOpt("po_number", poNumber);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest CurrencyCode(string currencyCode) 
+            {
+                m_params.AddOpt("currency_code", currencyCode);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest Coupon(string coupon) 
+            {
+                m_params.AddOpt("coupon", coupon);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest ShippingAddressFirstName(string shippingAddressFirstName) 
+            {
+                m_params.AddOpt("shipping_address[first_name]", shippingAddressFirstName);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest ShippingAddressLastName(string shippingAddressLastName) 
+            {
+                m_params.AddOpt("shipping_address[last_name]", shippingAddressLastName);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest ShippingAddressEmail(string shippingAddressEmail) 
+            {
+                m_params.AddOpt("shipping_address[email]", shippingAddressEmail);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest ShippingAddressCompany(string shippingAddressCompany) 
+            {
+                m_params.AddOpt("shipping_address[company]", shippingAddressCompany);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest ShippingAddressPhone(string shippingAddressPhone) 
+            {
+                m_params.AddOpt("shipping_address[phone]", shippingAddressPhone);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest ShippingAddressLine1(string shippingAddressLine1) 
+            {
+                m_params.AddOpt("shipping_address[line1]", shippingAddressLine1);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest ShippingAddressLine2(string shippingAddressLine2) 
+            {
+                m_params.AddOpt("shipping_address[line2]", shippingAddressLine2);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest ShippingAddressLine3(string shippingAddressLine3) 
+            {
+                m_params.AddOpt("shipping_address[line3]", shippingAddressLine3);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest ShippingAddressCity(string shippingAddressCity) 
+            {
+                m_params.AddOpt("shipping_address[city]", shippingAddressCity);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest ShippingAddressStateCode(string shippingAddressStateCode) 
+            {
+                m_params.AddOpt("shipping_address[state_code]", shippingAddressStateCode);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest ShippingAddressState(string shippingAddressState) 
+            {
+                m_params.AddOpt("shipping_address[state]", shippingAddressState);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest ShippingAddressZip(string shippingAddressZip) 
+            {
+                m_params.AddOpt("shipping_address[zip]", shippingAddressZip);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest ShippingAddressCountry(string shippingAddressCountry) 
+            {
+                m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest ShippingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum shippingAddressValidationStatus) 
+            {
+                m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest AddonId(int index, string addonId) 
+            {
+                m_params.AddOpt("addons[id][" + index + "]", addonId);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest AddonQuantity(int index, int addonQuantity) 
+            {
+                m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            {
+                m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest ChargeAmount(int index, int chargeAmount) 
+            {
+                m_params.AddOpt("charges[amount][" + index + "]", chargeAmount);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest ChargeDescription(int index, string chargeDescription) 
+            {
+                m_params.AddOpt("charges[description][" + index + "]", chargeDescription);
+                return this;
+            }
+        }
+        public class UpdateStatusRequest : EntityRequest<UpdateStatusRequest> 
+        {
+            public UpdateStatusRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public UpdateStatusRequest Status(StatusEnum status) 
+            {
+                m_params.Add("status", status);
+                return this;
+            }
+            public UpdateStatusRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
+                return this;
+            }
+        }
+        public class PdfRequest : EntityRequest<PdfRequest> 
+        {
+            public PdfRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public PdfRequest DispositionType(ChargeBee.Models.Enums.DispositionTypeEnum dispositionType) 
+            {
+                m_params.AddOpt("disposition_type", dispositionType);
+                return this;
+            }
+        }
+        #endregion
+
+        public enum StatusEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [Description("open")]
+            Open,
+            [Description("accepted")]
+            Accepted,
+            [Description("declined")]
+            Declined,
+            [Description("invoiced")]
+            Invoiced,
+            [Description("closed")]
+            Closed,
+
+        }
+        public enum OperationTypeEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [Description("create_subscription_for_customer")]
+            CreateSubscriptionForCustomer,
+            [Description("change_subscription")]
+            ChangeSubscription,
+            [Description("onetime_invoice")]
+            OnetimeInvoice,
+
+        }
+
+        #region Subclasses
+        public class QuoteLineItem : Resource
+        {
+            public enum EntityTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [Description("plan_setup")]
+                PlanSetup,
+                [Description("plan")]
+                Plan,
+                [Description("addon")]
+                Addon,
+                [Description("adhoc")]
+                Adhoc,
+            }
+
+            public string Id() {
+                return GetValue<string>("id", false);
+            }
+
+            public string SubscriptionId() {
+                return GetValue<string>("subscription_id", false);
+            }
+
+            public DateTime DateFrom() {
+                return (DateTime)GetDateTime("date_from", true);
+            }
+
+            public DateTime DateTo() {
+                return (DateTime)GetDateTime("date_to", true);
+            }
+
+            public int UnitAmount() {
+                return GetValue<int>("unit_amount", true);
+            }
+
+            public int? Quantity() {
+                return GetValue<int?>("quantity", false);
+            }
+
+            public int? Amount() {
+                return GetValue<int?>("amount", false);
+            }
+
+            public PricingModelEnum? PricingModel() {
+                return GetEnum<PricingModelEnum>("pricing_model", false);
+            }
+
+            public bool IsTaxed() {
+                return GetValue<bool>("is_taxed", true);
+            }
+
+            public int? TaxAmount() {
+                return GetValue<int?>("tax_amount", false);
+            }
+
+            public double? TaxRate() {
+                return GetValue<double?>("tax_rate", false);
+            }
+
+            public int? DiscountAmount() {
+                return GetValue<int?>("discount_amount", false);
+            }
+
+            public int? ItemLevelDiscountAmount() {
+                return GetValue<int?>("item_level_discount_amount", false);
+            }
+
+            public string Description() {
+                return GetValue<string>("description", true);
+            }
+
+            public EntityTypeEnum EntityType() {
+                return GetEnum<EntityTypeEnum>("entity_type", true);
+            }
+
+            public TaxExemptReasonEnum? TaxExemptReason() {
+                return GetEnum<TaxExemptReasonEnum>("tax_exempt_reason", false);
+            }
+
+            public string EntityId() {
+                return GetValue<string>("entity_id", false);
+            }
+
+        }
+        public class QuoteDiscount : Resource
+        {
+            public enum EntityTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [Description("item_level_coupon")]
+                ItemLevelCoupon,
+                [Description("document_level_coupon")]
+                DocumentLevelCoupon,
+                [Description("promotional_credits")]
+                PromotionalCredits,
+                [Description("prorated_credits")]
+                ProratedCredits,
+            }
+
+            public int Amount() {
+                return GetValue<int>("amount", true);
+            }
+
+            public string Description() {
+                return GetValue<string>("description", false);
+            }
+
+            public EntityTypeEnum EntityType() {
+                return GetEnum<EntityTypeEnum>("entity_type", true);
+            }
+
+            public string EntityId() {
+                return GetValue<string>("entity_id", false);
+            }
+
+        }
+        public class QuoteLineItemDiscount : Resource
+        {
+            public enum DiscountTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [Description("item_level_coupon")]
+                ItemLevelCoupon,
+                [Description("document_level_coupon")]
+                DocumentLevelCoupon,
+                [Description("promotional_credits")]
+                PromotionalCredits,
+                [Description("prorated_credits")]
+                ProratedCredits,
+            }
+
+            public string LineItemId() {
+                return GetValue<string>("line_item_id", true);
+            }
+
+            public DiscountTypeEnum DiscountType() {
+                return GetEnum<DiscountTypeEnum>("discount_type", true);
+            }
+
+            public string CouponId() {
+                return GetValue<string>("coupon_id", false);
+            }
+
+            public int DiscountAmount() {
+                return GetValue<int>("discount_amount", true);
+            }
+
+        }
+        public class QuoteTax : Resource
+        {
+
+            public string Name() {
+                return GetValue<string>("name", true);
+            }
+
+            public int Amount() {
+                return GetValue<int>("amount", true);
+            }
+
+            public string Description() {
+                return GetValue<string>("description", false);
+            }
+
+        }
+        public class QuoteLineItemTax : Resource
+        {
+
+            public string LineItemId() {
+                return GetValue<string>("line_item_id", false);
+            }
+
+            public string TaxName() {
+                return GetValue<string>("tax_name", true);
+            }
+
+            public double TaxRate() {
+                return GetValue<double>("tax_rate", true);
+            }
+
+            public int TaxAmount() {
+                return GetValue<int>("tax_amount", true);
+            }
+
+            public TaxJurisTypeEnum? TaxJurisType() {
+                return GetEnum<TaxJurisTypeEnum>("tax_juris_type", false);
+            }
+
+            public string TaxJurisName() {
+                return GetValue<string>("tax_juris_name", false);
+            }
+
+            public string TaxJurisCode() {
+                return GetValue<string>("tax_juris_code", false);
+            }
+
+        }
+        public class QuoteShippingAddress : Resource
+        {
+
+            public string FirstName() {
+                return GetValue<string>("first_name", false);
+            }
+
+            public string LastName() {
+                return GetValue<string>("last_name", false);
+            }
+
+            public string Email() {
+                return GetValue<string>("email", false);
+            }
+
+            public string Company() {
+                return GetValue<string>("company", false);
+            }
+
+            public string Phone() {
+                return GetValue<string>("phone", false);
+            }
+
+            public string Line1() {
+                return GetValue<string>("line1", false);
+            }
+
+            public string Line2() {
+                return GetValue<string>("line2", false);
+            }
+
+            public string Line3() {
+                return GetValue<string>("line3", false);
+            }
+
+            public string City() {
+                return GetValue<string>("city", false);
+            }
+
+            public string StateCode() {
+                return GetValue<string>("state_code", false);
+            }
+
+            public string State() {
+                return GetValue<string>("state", false);
+            }
+
+            public string Country() {
+                return GetValue<string>("country", false);
+            }
+
+            public string Zip() {
+                return GetValue<string>("zip", false);
+            }
+
+            public ValidationStatusEnum? ValidationStatus() {
+                return GetEnum<ValidationStatusEnum>("validation_status", false);
+            }
+
+        }
+        public class QuoteBillingAddress : Resource
+        {
+
+            public string FirstName() {
+                return GetValue<string>("first_name", false);
+            }
+
+            public string LastName() {
+                return GetValue<string>("last_name", false);
+            }
+
+            public string Email() {
+                return GetValue<string>("email", false);
+            }
+
+            public string Company() {
+                return GetValue<string>("company", false);
+            }
+
+            public string Phone() {
+                return GetValue<string>("phone", false);
+            }
+
+            public string Line1() {
+                return GetValue<string>("line1", false);
+            }
+
+            public string Line2() {
+                return GetValue<string>("line2", false);
+            }
+
+            public string Line3() {
+                return GetValue<string>("line3", false);
+            }
+
+            public string City() {
+                return GetValue<string>("city", false);
+            }
+
+            public string StateCode() {
+                return GetValue<string>("state_code", false);
+            }
+
+            public string State() {
+                return GetValue<string>("state", false);
+            }
+
+            public string Country() {
+                return GetValue<string>("country", false);
+            }
+
+            public string Zip() {
+                return GetValue<string>("zip", false);
+            }
+
+            public ValidationStatusEnum? ValidationStatus() {
+                return GetEnum<ValidationStatusEnum>("validation_status", false);
+            }
+
+        }
+
+        #endregion
+    }
+}

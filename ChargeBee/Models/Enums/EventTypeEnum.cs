@@ -264,6 +264,12 @@ namespace ChargeBee.Models.Enums
         [Description("order_ready_to_ship")]
          OrderReadyToShip,
 
+        [Description("quote_created")]
+         QuoteCreated,
+
+        [Description("quote_updated")]
+         QuoteUpdated,
+
         [Description("gift_scheduled")]
          GiftScheduled,
 

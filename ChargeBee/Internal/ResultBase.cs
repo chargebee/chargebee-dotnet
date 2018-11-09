@@ -97,6 +97,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<Estimate>("estimate"); }
         }
+        public Quote Quote
+        {
+            get {  return GetResource<Quote>("quote"); }
+        }
         public Plan Plan
         {
             get {  return GetResource<Plan>("plan"); }

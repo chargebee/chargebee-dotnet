@@ -146,6 +146,7 @@
     <Compile Include="Models\Enums\ChargeOnEnum.cs" />
     <Compile Include="Models\Enums\PricingModelEnum.cs" />
     <Compile Include="Models\Gift.cs" />
+    <Compile Include="Models\Quote.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Cb-Dotnet.snk" />

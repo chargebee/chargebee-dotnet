@@ -18,6 +18,9 @@ namespace ChargeBee.Models.Enums
         [Description("invoice")]
          Invoice,
 
+        [Description("quote")]
+         Quote,
+
         [Description("credit_note")]
          CreditNote,
 
