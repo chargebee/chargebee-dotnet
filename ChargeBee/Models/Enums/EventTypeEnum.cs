@@ -270,6 +270,9 @@ namespace ChargeBee.Models.Enums
         [Description("quote_updated")]
          QuoteUpdated,
 
+        [Description("quote_deleted")]
+         QuoteDeleted,
+
         [Description("gift_scheduled")]
          GiftScheduled,
 

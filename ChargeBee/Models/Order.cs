@@ -553,6 +553,10 @@ namespace ChargeBee.Models
             {
                 return new StringFilter<OrderListRequest>("invoice_id", this).SupportsMultiOperators(true);        
             }
+            public StringFilter<OrderListRequest> SubscriptionId() 
+            {
+                return new StringFilter<OrderListRequest>("subscription_id", this);        
+            }
             public EnumFilter<Order.StatusEnum, OrderListRequest> Status() 
             {
                 return new EnumFilter<Order.StatusEnum, OrderListRequest>("status", this);        
@@ -560,6 +564,10 @@ namespace ChargeBee.Models
             public TimestampFilter<OrderListRequest> ShippingDate() 
             {
                 return new TimestampFilter<OrderListRequest>("shipping_date", this);        
+            }
+            public EnumFilter<Order.OrderTypeEnum, OrderListRequest> OrderType() 
+            {
+                return new EnumFilter<Order.OrderTypeEnum, OrderListRequest>("order_type", this);        
             }
             public TimestampFilter<OrderListRequest> OrderDate() 
             {

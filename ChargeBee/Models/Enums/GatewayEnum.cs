@@ -105,6 +105,9 @@ namespace ChargeBee.Models.Enums
         [Description("bluesnap")]
          Bluesnap,
 
+        [Description("cybersource")]
+         Cybersource,
+
         [Description("not_applicable")]
          NotApplicable,
 
