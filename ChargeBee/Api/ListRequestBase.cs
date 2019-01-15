@@ -43,7 +43,7 @@ namespace ChargeBee.Api
 
 		public new ListResult Request(ApiConfig env)
 		{
-			return ApiUtil.GetList(m_url, m_params, headers, ApiConfig.Instance);
+			return ApiUtil.GetList(m_url, m_params, headers, env);
 		}
 
 		public new ListResult Request()

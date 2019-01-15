@@ -19,9 +19,9 @@ namespace ChargeBee.Test
         [SetUp]
         public void Configure()
         {
-			ApiConfig.Proto = "http";
-			ApiConfig.DomainSuffix = "localcb.com:8080";
-			ApiConfig.Configure("mannar-test", "__dev__FhJgi9KugVCv9yO8zosAFC11lYCEAufI");
+            ApiConfig.Proto = "http";
+            ApiConfig.DomainSuffix = "localcb.com:8080";
+            ApiConfig.Configure("mannar-test", "__dev__FhJgi9KugVCv9yO8zosAFC11lYCEAufI");
         }
 
         /*[Test]
@@ -187,8 +187,8 @@ namespace ChargeBee.Test
             Subscription subs = result.Subscription;
             result = Subscription.Cancel(subs.Id).Request();
             result = Subscription.Reactivate(subs.Id).
-				TrialEnd((long)(DateTime.Now.AddDays(5)-new DateTime(1970, 1, 1)).TotalSeconds)
-					.Request();
+                TrialEnd((long)(DateTime.Now.AddDays(5)-new DateTime(1970, 1, 1)).TotalSeconds)
+                    .Request();
         }
 
         [Test]
