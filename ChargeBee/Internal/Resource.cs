@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-
+using System.Reflection;
 using Newtonsoft.Json.Linq;
-
+using System.Runtime.Serialization;
 using ChargeBee.Api;
 
 namespace ChargeBee.Internal
@@ -59,18 +59,18 @@ namespace ChargeBee.Internal
 			Type eType = typeof(T);
 			
 			// Handle nullable enum
-			if (eType.IsGenericType)
-				eType = eType.GetGenericArguments()[0];
+			if (eType.IsConstructedGenericType)
+				eType = eType.GenericTypeArguments[0];
 			
-			foreach (var fi in eType.GetFields())
+			foreach (var fi in eType.GetTypeInfo().DeclaredFields)
 			{
-				DescriptionAttribute[] attrs = 
-					(DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
+				EnumMemberAttribute[] attrs = 
+					(EnumMemberAttribute[])fi.GetCustomAttributes(typeof(EnumMemberAttribute), false);
 				
 				if (attrs.Length == 0)
 					continue;
 				
-				if (value == attrs[0].Description)
+				if (value == attrs[0].Value)
 					return (T)fi.GetValue(null);
 			}
 			

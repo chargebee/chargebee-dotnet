@@ -1,36 +1,37 @@
 using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace ChargeBee.Models.Enums
 {
     public enum TaxExemptReasonEnum
     {
 
-        [Description("Unknown Enum")]
+        [EnumMember(Value = "Unknown Enum")]
         UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
 
-        [Description("tax_not_configured")]
+        [EnumMember(Value = "tax_not_configured")]
          TaxNotConfigured,
 
-        [Description("region_non_taxable")]
+        [EnumMember(Value = "region_non_taxable")]
          RegionNonTaxable,
 
-        [Description("export")]
+        [EnumMember(Value = "export")]
          Export,
 
-        [Description("customer_exempt")]
+        [EnumMember(Value = "customer_exempt")]
          CustomerExempt,
 
-        [Description("product_exempt")]
+        [EnumMember(Value = "product_exempt")]
          ProductExempt,
 
-        [Description("zero_rated")]
+        [EnumMember(Value = "zero_rated")]
          ZeroRated,
 
-        [Description("reverse_charge")]
+        [EnumMember(Value = "reverse_charge")]
          ReverseCharge,
 
-        [Description("high_value_physical_goods")]
+        [EnumMember(Value = "high_value_physical_goods")]
          HighValuePhysicalGoods,
 
     }

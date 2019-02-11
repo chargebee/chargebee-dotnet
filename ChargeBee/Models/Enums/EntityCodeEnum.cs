@@ -1,66 +1,67 @@
 using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace ChargeBee.Models.Enums
 {
     public enum EntityCodeEnum
     {
 
-        [Description("Unknown Enum")]
+        [EnumMember(Value = "Unknown Enum")]
         UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
 
-        [Description("a")]
+        [EnumMember(Value = "a")]
          A,
 
-        [Description("b")]
+        [EnumMember(Value = "b")]
          B,
 
-        [Description("c")]
+        [EnumMember(Value = "c")]
          C,
 
-        [Description("d")]
+        [EnumMember(Value = "d")]
          D,
 
-        [Description("e")]
+        [EnumMember(Value = "e")]
          E,
 
-        [Description("f")]
+        [EnumMember(Value = "f")]
          F,
 
-        [Description("g")]
+        [EnumMember(Value = "g")]
          G,
 
-        [Description("h")]
+        [EnumMember(Value = "h")]
          H,
 
-        [Description("i")]
+        [EnumMember(Value = "i")]
          I,
 
-        [Description("j")]
+        [EnumMember(Value = "j")]
          J,
 
-        [Description("k")]
+        [EnumMember(Value = "k")]
          K,
 
-        [Description("l")]
+        [EnumMember(Value = "l")]
          L,
 
-        [Description("n")]
+        [EnumMember(Value = "n")]
          N,
 
-        [Description("p")]
+        [EnumMember(Value = "p")]
          P,
 
-        [Description("q")]
+        [EnumMember(Value = "q")]
          Q,
 
-        [Description("r")]
+        [EnumMember(Value = "r")]
          R,
 
-        [Description("med1")]
+        [EnumMember(Value = "med1")]
          Med1,
 
-        [Description("med2")]
+        [EnumMember(Value = "med2")]
          Med2,
 
     }

@@ -4,6 +4,8 @@
 
 This is the .NET Library for integrating with Chargebee. Sign up for a Chargebee account [here](https://www.chargebee.com).
 
+Supports .NET Standard 1.2+,.NET Core 1.0+ and .NET Framework 4.5+ .
+
 Chargebee now supports two API versions - [V1](https://apidocs.chargebee.com/docs/api/v1) and [V2](https://apidocs.chargebee.com/docs/api), of which V2 is the latest release and all future developments will happen in V2. This library is for <b>API version V2</b>. If you’re looking for V1, head to [chargebee-v1 branch](https://github.com/chargebee/chargebee-dotnet/tree/chargebee-v1).
 
 ## Installation

@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.ComponentModel;
 using System.Collections.Generic;
-
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -1451,13 +1451,13 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("valid")]
+            [EnumMember(Value = "valid")]
             Valid,
-            [Description("invalid")]
+            [EnumMember(Value = "invalid")]
             Invalid,
-            [Description("not_validated")]
+            [EnumMember(Value = "not_validated")]
             NotValidated,
-            [Description("undetermined")]
+            [EnumMember(Value = "undetermined")]
             Undetermined,
 
         }
@@ -1466,19 +1466,19 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("sunday")]
+            [EnumMember(Value = "sunday")]
             Sunday,
-            [Description("monday")]
+            [EnumMember(Value = "monday")]
             Monday,
-            [Description("tuesday")]
+            [EnumMember(Value = "tuesday")]
             Tuesday,
-            [Description("wednesday")]
+            [EnumMember(Value = "wednesday")]
             Wednesday,
-            [Description("thursday")]
+            [EnumMember(Value = "thursday")]
             Thursday,
-            [Description("friday")]
+            [EnumMember(Value = "friday")]
             Friday,
-            [Description("saturday")]
+            [EnumMember(Value = "saturday")]
             Saturday,
 
         }
@@ -1487,11 +1487,11 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("active")]
+            [EnumMember(Value = "active")]
             Active,
-            [Description("scheduled_for_clear")]
+            [EnumMember(Value = "scheduled_for_clear")]
             ScheduledForClear,
-            [Description("cleared")]
+            [EnumMember(Value = "cleared")]
             Cleared,
 
         }
@@ -1501,17 +1501,17 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("no_card")]
+            [EnumMember(Value = "no_card")]
             NoCard,
-            [Description("valid")]
+            [EnumMember(Value = "valid")]
             Valid,
-            [Description("expiring")]
+            [EnumMember(Value = "expiring")]
             Expiring,
-            [Description("expired")]
+            [EnumMember(Value = "expired")]
             Expired,
-            [Description("pending_verification")]
+            [EnumMember(Value = "pending_verification")]
             PendingVerification,
-            [Description("invalid")]
+            [EnumMember(Value = "invalid")]
             Invalid,
 
         }
@@ -1520,11 +1520,11 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("safe")]
+            [EnumMember(Value = "safe")]
             Safe,
-            [Description("suspicious")]
+            [EnumMember(Value = "suspicious")]
             Suspicious,
-            [Description("fraudulent")]
+            [EnumMember(Value = "fraudulent")]
             Fraudulent,
 
         }
@@ -1672,38 +1672,38 @@ namespace ChargeBee.Models
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [Description("card")]
+                [EnumMember(Value = "card")]
                 Card,
-                [Description("paypal_express_checkout")]
+                [EnumMember(Value = "paypal_express_checkout")]
                 PaypalExpressCheckout,
-                [Description("amazon_payments")]
+                [EnumMember(Value = "amazon_payments")]
                 AmazonPayments,
-                [Description("direct_debit")]
+                [EnumMember(Value = "direct_debit")]
                 DirectDebit,
-                [Description("generic")]
+                [EnumMember(Value = "generic")]
                 Generic,
-                [Description("alipay")]
+                [EnumMember(Value = "alipay")]
                 Alipay,
-                [Description("unionpay")]
+                [EnumMember(Value = "unionpay")]
                 Unionpay,
-                [Description("apple_pay")]
+                [EnumMember(Value = "apple_pay")]
                 ApplePay,
-                [Description("wechat_pay")]
+                [EnumMember(Value = "wechat_pay")]
                 WechatPay,
             }
             public enum StatusEnum
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [Description("valid")]
+                [EnumMember(Value = "valid")]
                 Valid,
-                [Description("expiring")]
+                [EnumMember(Value = "expiring")]
                 Expiring,
-                [Description("expired")]
+                [EnumMember(Value = "expired")]
                 Expired,
-                [Description("invalid")]
+                [EnumMember(Value = "invalid")]
                 Invalid,
-                [Description("pending_verification")]
+                [EnumMember(Value = "pending_verification")]
                 PendingVerification,
             }
 

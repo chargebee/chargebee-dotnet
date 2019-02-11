@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.ComponentModel;
 using System.Collections.Generic;
-
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -163,19 +163,19 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("not_configured")]
+            [EnumMember(Value = "not_configured")]
             NotConfigured,
-            [Description("scheduled")]
+            [EnumMember(Value = "scheduled")]
             Scheduled,
-            [Description("succeeded")]
+            [EnumMember(Value = "succeeded")]
             Succeeded,
-            [Description("re_scheduled")]
+            [EnumMember(Value = "re_scheduled")]
             ReScheduled,
-            [Description("failed")]
+            [EnumMember(Value = "failed")]
             Failed,
-            [Description("skipped")]
+            [EnumMember(Value = "skipped")]
             Skipped,
-            [Description("not_applicable")]
+            [EnumMember(Value = "not_applicable")]
             NotApplicable,
 
         }
@@ -187,19 +187,19 @@ namespace ChargeBee.Models
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [Description("not_configured")]
+                [EnumMember(Value = "not_configured")]
                 NotConfigured,
-                [Description("scheduled")]
+                [EnumMember(Value = "scheduled")]
                 Scheduled,
-                [Description("succeeded")]
+                [EnumMember(Value = "succeeded")]
                 Succeeded,
-                [Description("re_scheduled")]
+                [EnumMember(Value = "re_scheduled")]
                 ReScheduled,
-                [Description("failed")]
+                [EnumMember(Value = "failed")]
                 Failed,
-                [Description("skipped")]
+                [EnumMember(Value = "skipped")]
                 Skipped,
-                [Description("not_applicable")]
+                [EnumMember(Value = "not_applicable")]
                 NotApplicable,
             }
 

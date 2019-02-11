@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.ComponentModel;
 using System.Collections.Generic;
-
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -59,17 +59,17 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("future")]
+            [EnumMember(Value = "future")]
             Future,
-            [Description("in_trial")]
+            [EnumMember(Value = "in_trial")]
             InTrial,
-            [Description("active")]
+            [EnumMember(Value = "active")]
             Active,
-            [Description("non_renewing")]
+            [EnumMember(Value = "non_renewing")]
             NonRenewing,
-            [Description("paused")]
+            [EnumMember(Value = "paused")]
             Paused,
-            [Description("cancelled")]
+            [EnumMember(Value = "cancelled")]
             Cancelled,
 
         }

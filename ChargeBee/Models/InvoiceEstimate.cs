@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.ComponentModel;
 using System.Collections.Generic;
-
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -94,13 +94,13 @@ namespace ChargeBee.Models
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [Description("plan_setup")]
+                [EnumMember(Value = "plan_setup")]
                 PlanSetup,
-                [Description("plan")]
+                [EnumMember(Value = "plan")]
                 Plan,
-                [Description("addon")]
+                [EnumMember(Value = "addon")]
                 Addon,
-                [Description("adhoc")]
+                [EnumMember(Value = "adhoc")]
                 Adhoc,
             }
 
@@ -179,13 +179,13 @@ namespace ChargeBee.Models
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [Description("item_level_coupon")]
+                [EnumMember(Value = "item_level_coupon")]
                 ItemLevelCoupon,
-                [Description("document_level_coupon")]
+                [EnumMember(Value = "document_level_coupon")]
                 DocumentLevelCoupon,
-                [Description("promotional_credits")]
+                [EnumMember(Value = "promotional_credits")]
                 PromotionalCredits,
-                [Description("prorated_credits")]
+                [EnumMember(Value = "prorated_credits")]
                 ProratedCredits,
             }
 
@@ -284,13 +284,13 @@ namespace ChargeBee.Models
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [Description("item_level_coupon")]
+                [EnumMember(Value = "item_level_coupon")]
                 ItemLevelCoupon,
-                [Description("document_level_coupon")]
+                [EnumMember(Value = "document_level_coupon")]
                 DocumentLevelCoupon,
-                [Description("promotional_credits")]
+                [EnumMember(Value = "promotional_credits")]
                 PromotionalCredits,
-                [Description("prorated_credits")]
+                [EnumMember(Value = "prorated_credits")]
                 ProratedCredits,
             }
 

@@ -1,24 +1,25 @@
 using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace ChargeBee.Models.Enums
 {
     public enum ValidationStatusEnum
     {
 
-        [Description("Unknown Enum")]
+        [EnumMember(Value = "Unknown Enum")]
         UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
 
-        [Description("not_validated")]
+        [EnumMember(Value = "not_validated")]
          NotValidated,
 
-        [Description("valid")]
+        [EnumMember(Value = "valid")]
          Valid,
 
-        [Description("partially_valid")]
+        [EnumMember(Value = "partially_valid")]
          PartiallyValid,
 
-        [Description("invalid")]
+        [EnumMember(Value = "invalid")]
          Invalid,
 
     }

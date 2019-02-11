@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace ChargeBee.Api
 {
-    public class ApiException : ApplicationException
+    public class ApiException : Exception
     {
 
 		private string ErrorType = "";

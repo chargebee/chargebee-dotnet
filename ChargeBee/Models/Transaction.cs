@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.ComponentModel;
 using System.Collections.Generic;
-
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -315,13 +315,13 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("authorization")]
+            [EnumMember(Value = "authorization")]
             Authorization,
-            [Description("payment")]
+            [EnumMember(Value = "payment")]
             Payment,
-            [Description("refund")]
+            [EnumMember(Value = "refund")]
             Refund,
-            [Description("payment_reversal")]
+            [EnumMember(Value = "payment_reversal")]
             PaymentReversal,
 
         }
@@ -330,17 +330,17 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("in_progress")]
+            [EnumMember(Value = "in_progress")]
             InProgress,
-            [Description("success")]
+            [EnumMember(Value = "success")]
             Success,
-            [Description("voided")]
+            [EnumMember(Value = "voided")]
             Voided,
-            [Description("failure")]
+            [EnumMember(Value = "failure")]
             Failure,
-            [Description("timeout")]
+            [EnumMember(Value = "timeout")]
             Timeout,
-            [Description("needs_attention")]
+            [EnumMember(Value = "needs_attention")]
             NeedsAttention,
 
         }
@@ -349,11 +349,11 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("safe")]
+            [EnumMember(Value = "safe")]
             Safe,
-            [Description("suspicious")]
+            [EnumMember(Value = "suspicious")]
             Suspicious,
-            [Description("fraudulent")]
+            [EnumMember(Value = "fraudulent")]
             Fraudulent,
 
         }
@@ -362,9 +362,9 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("blocking_funds")]
+            [EnumMember(Value = "blocking_funds")]
             BlockingFunds,
-            [Description("verification")]
+            [EnumMember(Value = "verification")]
             Verification,
 
         }
@@ -460,17 +460,17 @@ namespace ChargeBee.Models
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [Description("in_progress")]
+                [EnumMember(Value = "in_progress")]
                 InProgress,
-                [Description("success")]
+                [EnumMember(Value = "success")]
                 Success,
-                [Description("voided")]
+                [EnumMember(Value = "voided")]
                 Voided,
-                [Description("failure")]
+                [EnumMember(Value = "failure")]
                 Failure,
-                [Description("timeout")]
+                [EnumMember(Value = "timeout")]
                 Timeout,
-                [Description("needs_attention")]
+                [EnumMember(Value = "needs_attention")]
                 NeedsAttention,
             }
 

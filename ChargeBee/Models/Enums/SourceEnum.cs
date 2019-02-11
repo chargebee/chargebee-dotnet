@@ -1,45 +1,46 @@
 using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace ChargeBee.Models.Enums
 {
     public enum SourceEnum
     {
 
-        [Description("Unknown Enum")]
+        [EnumMember(Value = "Unknown Enum")]
         UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
 
-        [Description("admin_console")]
+        [EnumMember(Value = "admin_console")]
          AdminConsole,
 
-        [Description("api")]
+        [EnumMember(Value = "api")]
          Api,
 
-        [Description("scheduled_job")]
+        [EnumMember(Value = "scheduled_job")]
          ScheduledJob,
 
-        [Description("hosted_page")]
+        [EnumMember(Value = "hosted_page")]
          HostedPage,
 
-        [Description("portal")]
+        [EnumMember(Value = "portal")]
          Portal,
 
-        [Description("system")]
+        [EnumMember(Value = "system")]
          System,
 
-        [Description("none")]
+        [EnumMember(Value = "none")]
          None,
 
-        [Description("js_api")]
+        [EnumMember(Value = "js_api")]
          JsApi,
 
-        [Description("migration")]
+        [EnumMember(Value = "migration")]
          Migration,
 
-        [Description("bulk_operation")]
+        [EnumMember(Value = "bulk_operation")]
          BulkOperation,
 
-        [Description("external_service")]
+        [EnumMember(Value = "external_service")]
          ExternalService,
 
     }

@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.ComponentModel;
 using System.Collections.Generic;
-
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -283,11 +283,11 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("valid")]
+            [EnumMember(Value = "valid")]
             Valid,
-            [Description("expiring")]
+            [EnumMember(Value = "expiring")]
             Expiring,
-            [Description("expired")]
+            [EnumMember(Value = "expired")]
             Expired,
 
         }
@@ -296,21 +296,21 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("visa")]
+            [EnumMember(Value = "visa")]
             Visa,
-            [Description("mastercard")]
+            [EnumMember(Value = "mastercard")]
             Mastercard,
-            [Description("american_express")]
+            [EnumMember(Value = "american_express")]
             AmericanExpress,
-            [Description("discover")]
+            [EnumMember(Value = "discover")]
             Discover,
-            [Description("jcb")]
+            [EnumMember(Value = "jcb")]
             Jcb,
-            [Description("diners_club")]
+            [EnumMember(Value = "diners_club")]
             DinersClub,
-            [Description("other")]
+            [EnumMember(Value = "other")]
             Other,
-            [Description("not_applicable")]
+            [EnumMember(Value = "not_applicable")]
             NotApplicable,
 
         }
@@ -319,15 +319,15 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("credit")]
+            [EnumMember(Value = "credit")]
             Credit,
-            [Description("debit")]
+            [EnumMember(Value = "debit")]
             Debit,
-            [Description("prepaid")]
+            [EnumMember(Value = "prepaid")]
             Prepaid,
-            [Description("not_known")]
+            [EnumMember(Value = "not_known")]
             NotKnown,
-            [Description("not_applicable")]
+            [EnumMember(Value = "not_applicable")]
             NotApplicable,
 
         }

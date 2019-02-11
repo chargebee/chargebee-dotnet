@@ -1,291 +1,292 @@
 using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace ChargeBee.Models.Enums
 {
     public enum EventTypeEnum
     {
 
-        [Description("Unknown Enum")]
+        [EnumMember(Value = "Unknown Enum")]
         UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
 
-        [Description("plan_created")]
+        [EnumMember(Value = "plan_created")]
          PlanCreated,
 
-        [Description("plan_updated")]
+        [EnumMember(Value = "plan_updated")]
          PlanUpdated,
 
-        [Description("plan_deleted")]
+        [EnumMember(Value = "plan_deleted")]
          PlanDeleted,
 
-        [Description("addon_created")]
+        [EnumMember(Value = "addon_created")]
          AddonCreated,
 
-        [Description("addon_updated")]
+        [EnumMember(Value = "addon_updated")]
          AddonUpdated,
 
-        [Description("addon_deleted")]
+        [EnumMember(Value = "addon_deleted")]
          AddonDeleted,
 
-        [Description("coupon_created")]
+        [EnumMember(Value = "coupon_created")]
          CouponCreated,
 
-        [Description("coupon_updated")]
+        [EnumMember(Value = "coupon_updated")]
          CouponUpdated,
 
-        [Description("coupon_deleted")]
+        [EnumMember(Value = "coupon_deleted")]
          CouponDeleted,
 
-        [Description("coupon_set_created")]
+        [EnumMember(Value = "coupon_set_created")]
          CouponSetCreated,
 
-        [Description("coupon_set_updated")]
+        [EnumMember(Value = "coupon_set_updated")]
          CouponSetUpdated,
 
-        [Description("coupon_set_deleted")]
+        [EnumMember(Value = "coupon_set_deleted")]
          CouponSetDeleted,
 
-        [Description("coupon_codes_added")]
+        [EnumMember(Value = "coupon_codes_added")]
          CouponCodesAdded,
 
-        [Description("coupon_codes_deleted")]
+        [EnumMember(Value = "coupon_codes_deleted")]
          CouponCodesDeleted,
 
-        [Description("coupon_codes_updated")]
+        [EnumMember(Value = "coupon_codes_updated")]
          CouponCodesUpdated,
 
-        [Description("customer_created")]
+        [EnumMember(Value = "customer_created")]
          CustomerCreated,
 
-        [Description("customer_changed")]
+        [EnumMember(Value = "customer_changed")]
          CustomerChanged,
 
-        [Description("customer_deleted")]
+        [EnumMember(Value = "customer_deleted")]
          CustomerDeleted,
 
-        [Description("customer_moved_out")]
+        [EnumMember(Value = "customer_moved_out")]
          CustomerMovedOut,
 
-        [Description("customer_moved_in")]
+        [EnumMember(Value = "customer_moved_in")]
          CustomerMovedIn,
 
-        [Description("promotional_credits_added")]
+        [EnumMember(Value = "promotional_credits_added")]
          PromotionalCreditsAdded,
 
-        [Description("promotional_credits_deducted")]
+        [EnumMember(Value = "promotional_credits_deducted")]
          PromotionalCreditsDeducted,
 
-        [Description("subscription_created")]
+        [EnumMember(Value = "subscription_created")]
          SubscriptionCreated,
 
-        [Description("subscription_started")]
+        [EnumMember(Value = "subscription_started")]
          SubscriptionStarted,
 
-        [Description("subscription_trial_end_reminder")]
+        [EnumMember(Value = "subscription_trial_end_reminder")]
          SubscriptionTrialEndReminder,
 
-        [Description("subscription_activated")]
+        [EnumMember(Value = "subscription_activated")]
          SubscriptionActivated,
 
-        [Description("subscription_changed")]
+        [EnumMember(Value = "subscription_changed")]
          SubscriptionChanged,
 
-        [Description("subscription_cancellation_scheduled")]
+        [EnumMember(Value = "subscription_cancellation_scheduled")]
          SubscriptionCancellationScheduled,
 
-        [Description("subscription_cancellation_reminder")]
+        [EnumMember(Value = "subscription_cancellation_reminder")]
          SubscriptionCancellationReminder,
 
-        [Description("subscription_cancelled")]
+        [EnumMember(Value = "subscription_cancelled")]
          SubscriptionCancelled,
 
-        [Description("subscription_reactivated")]
+        [EnumMember(Value = "subscription_reactivated")]
          SubscriptionReactivated,
 
-        [Description("subscription_renewed")]
+        [EnumMember(Value = "subscription_renewed")]
          SubscriptionRenewed,
 
-        [Description("subscription_scheduled_cancellation_removed")]
+        [EnumMember(Value = "subscription_scheduled_cancellation_removed")]
          SubscriptionScheduledCancellationRemoved,
 
-        [Description("subscription_changes_scheduled")]
+        [EnumMember(Value = "subscription_changes_scheduled")]
          SubscriptionChangesScheduled,
 
-        [Description("subscription_scheduled_changes_removed")]
+        [EnumMember(Value = "subscription_scheduled_changes_removed")]
          SubscriptionScheduledChangesRemoved,
 
-        [Description("subscription_shipping_address_updated")]
+        [EnumMember(Value = "subscription_shipping_address_updated")]
          SubscriptionShippingAddressUpdated,
 
-        [Description("subscription_deleted")]
+        [EnumMember(Value = "subscription_deleted")]
          SubscriptionDeleted,
 
-        [Description("subscription_paused")]
+        [EnumMember(Value = "subscription_paused")]
          SubscriptionPaused,
 
-        [Description("subscription_pause_scheduled")]
+        [EnumMember(Value = "subscription_pause_scheduled")]
          SubscriptionPauseScheduled,
 
-        [Description("subscription_scheduled_pause_removed")]
+        [EnumMember(Value = "subscription_scheduled_pause_removed")]
          SubscriptionScheduledPauseRemoved,
 
-        [Description("subscription_resumed")]
+        [EnumMember(Value = "subscription_resumed")]
          SubscriptionResumed,
 
-        [Description("subscription_resumption_scheduled")]
+        [EnumMember(Value = "subscription_resumption_scheduled")]
          SubscriptionResumptionScheduled,
 
-        [Description("subscription_scheduled_resumption_removed")]
+        [EnumMember(Value = "subscription_scheduled_resumption_removed")]
          SubscriptionScheduledResumptionRemoved,
 
-        [Description("pending_invoice_created")]
+        [EnumMember(Value = "pending_invoice_created")]
          PendingInvoiceCreated,
 
-        [Description("pending_invoice_updated")]
+        [EnumMember(Value = "pending_invoice_updated")]
          PendingInvoiceUpdated,
 
-        [Description("invoice_generated")]
+        [EnumMember(Value = "invoice_generated")]
          InvoiceGenerated,
 
-        [Description("invoice_updated")]
+        [EnumMember(Value = "invoice_updated")]
          InvoiceUpdated,
 
-        [Description("invoice_deleted")]
+        [EnumMember(Value = "invoice_deleted")]
          InvoiceDeleted,
 
-        [Description("credit_note_created")]
+        [EnumMember(Value = "credit_note_created")]
          CreditNoteCreated,
 
-        [Description("credit_note_updated")]
+        [EnumMember(Value = "credit_note_updated")]
          CreditNoteUpdated,
 
-        [Description("credit_note_deleted")]
+        [EnumMember(Value = "credit_note_deleted")]
          CreditNoteDeleted,
 
-        [Description("subscription_renewal_reminder")]
+        [EnumMember(Value = "subscription_renewal_reminder")]
          SubscriptionRenewalReminder,
 
-        [Description("transaction_created")]
+        [EnumMember(Value = "transaction_created")]
          TransactionCreated,
 
-        [Description("transaction_updated")]
+        [EnumMember(Value = "transaction_updated")]
          TransactionUpdated,
 
-        [Description("transaction_deleted")]
+        [EnumMember(Value = "transaction_deleted")]
          TransactionDeleted,
 
-        [Description("payment_succeeded")]
+        [EnumMember(Value = "payment_succeeded")]
          PaymentSucceeded,
 
-        [Description("payment_failed")]
+        [EnumMember(Value = "payment_failed")]
          PaymentFailed,
 
-        [Description("payment_refunded")]
+        [EnumMember(Value = "payment_refunded")]
          PaymentRefunded,
 
-        [Description("payment_initiated")]
+        [EnumMember(Value = "payment_initiated")]
          PaymentInitiated,
 
-        [Description("refund_initiated")]
+        [EnumMember(Value = "refund_initiated")]
          RefundInitiated,
 
-        [Description("netd_payment_due_reminder")]
+        [EnumMember(Value = "netd_payment_due_reminder")]
          NetdPaymentDueReminder,
 
-        [Description("authorization_succeeded")]
+        [EnumMember(Value = "authorization_succeeded")]
          AuthorizationSucceeded,
 
-        [Description("authorization_voided")]
+        [EnumMember(Value = "authorization_voided")]
          AuthorizationVoided,
 
-        [Description("card_added")]
+        [EnumMember(Value = "card_added")]
          CardAdded,
 
-        [Description("card_updated")]
+        [EnumMember(Value = "card_updated")]
          CardUpdated,
 
-        [Description("card_expiry_reminder")]
+        [EnumMember(Value = "card_expiry_reminder")]
          CardExpiryReminder,
 
-        [Description("card_expired")]
+        [EnumMember(Value = "card_expired")]
          CardExpired,
 
-        [Description("card_deleted")]
+        [EnumMember(Value = "card_deleted")]
          CardDeleted,
 
-        [Description("payment_source_added")]
+        [EnumMember(Value = "payment_source_added")]
          PaymentSourceAdded,
 
-        [Description("payment_source_updated")]
+        [EnumMember(Value = "payment_source_updated")]
          PaymentSourceUpdated,
 
-        [Description("payment_source_deleted")]
+        [EnumMember(Value = "payment_source_deleted")]
          PaymentSourceDeleted,
 
-        [Description("virtual_bank_account_added")]
+        [EnumMember(Value = "virtual_bank_account_added")]
          VirtualBankAccountAdded,
 
-        [Description("virtual_bank_account_updated")]
+        [EnumMember(Value = "virtual_bank_account_updated")]
          VirtualBankAccountUpdated,
 
-        [Description("virtual_bank_account_deleted")]
+        [EnumMember(Value = "virtual_bank_account_deleted")]
          VirtualBankAccountDeleted,
 
-        [Description("unbilled_charges_created")]
+        [EnumMember(Value = "unbilled_charges_created")]
          UnbilledChargesCreated,
 
-        [Description("unbilled_charges_voided")]
+        [EnumMember(Value = "unbilled_charges_voided")]
          UnbilledChargesVoided,
 
-        [Description("unbilled_charges_deleted")]
+        [EnumMember(Value = "unbilled_charges_deleted")]
          UnbilledChargesDeleted,
 
-        [Description("unbilled_charges_invoiced")]
+        [EnumMember(Value = "unbilled_charges_invoiced")]
          UnbilledChargesInvoiced,
 
-        [Description("order_created")]
+        [EnumMember(Value = "order_created")]
          OrderCreated,
 
-        [Description("order_updated")]
+        [EnumMember(Value = "order_updated")]
          OrderUpdated,
 
-        [Description("order_cancelled")]
+        [EnumMember(Value = "order_cancelled")]
          OrderCancelled,
 
-        [Description("order_delivered")]
+        [EnumMember(Value = "order_delivered")]
          OrderDelivered,
 
-        [Description("order_returned")]
+        [EnumMember(Value = "order_returned")]
          OrderReturned,
 
-        [Description("order_ready_to_process")]
+        [EnumMember(Value = "order_ready_to_process")]
          OrderReadyToProcess,
 
-        [Description("order_ready_to_ship")]
+        [EnumMember(Value = "order_ready_to_ship")]
          OrderReadyToShip,
 
-        [Description("quote_created")]
+        [EnumMember(Value = "quote_created")]
          QuoteCreated,
 
-        [Description("quote_updated")]
+        [EnumMember(Value = "quote_updated")]
          QuoteUpdated,
 
-        [Description("quote_deleted")]
+        [EnumMember(Value = "quote_deleted")]
          QuoteDeleted,
 
-        [Description("gift_scheduled")]
+        [EnumMember(Value = "gift_scheduled")]
          GiftScheduled,
 
-        [Description("gift_unclaimed")]
+        [EnumMember(Value = "gift_unclaimed")]
          GiftUnclaimed,
 
-        [Description("gift_claimed")]
+        [EnumMember(Value = "gift_claimed")]
          GiftClaimed,
 
-        [Description("gift_expired")]
+        [EnumMember(Value = "gift_expired")]
          GiftExpired,
 
-        [Description("gift_cancelled")]
+        [EnumMember(Value = "gift_cancelled")]
          GiftCancelled,
 
     }

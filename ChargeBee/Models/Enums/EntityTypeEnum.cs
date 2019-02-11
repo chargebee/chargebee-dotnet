@@ -1,39 +1,40 @@
 using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace ChargeBee.Models.Enums
 {
     public enum EntityTypeEnum
     {
 
-        [Description("Unknown Enum")]
+        [EnumMember(Value = "Unknown Enum")]
         UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
 
-        [Description("customer")]
+        [EnumMember(Value = "customer")]
          Customer,
 
-        [Description("subscription")]
+        [EnumMember(Value = "subscription")]
          Subscription,
 
-        [Description("invoice")]
+        [EnumMember(Value = "invoice")]
          Invoice,
 
-        [Description("quote")]
+        [EnumMember(Value = "quote")]
          Quote,
 
-        [Description("credit_note")]
+        [EnumMember(Value = "credit_note")]
          CreditNote,
 
-        [Description("transaction")]
+        [EnumMember(Value = "transaction")]
          Transaction,
 
-        [Description("plan")]
+        [EnumMember(Value = "plan")]
          Plan,
 
-        [Description("addon")]
+        [EnumMember(Value = "addon")]
          Addon,
 
-        [Description("coupon")]
+        [EnumMember(Value = "coupon")]
          Coupon,
 
     }

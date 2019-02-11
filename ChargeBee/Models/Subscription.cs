@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.ComponentModel;
 using System.Collections.Generic;
-
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -2723,11 +2723,11 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("week")]
+            [EnumMember(Value = "week")]
             Week,
-            [Description("month")]
+            [EnumMember(Value = "month")]
             Month,
-            [Description("year")]
+            [EnumMember(Value = "year")]
             Year,
 
         }
@@ -2736,17 +2736,17 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("future")]
+            [EnumMember(Value = "future")]
             Future,
-            [Description("in_trial")]
+            [EnumMember(Value = "in_trial")]
             InTrial,
-            [Description("active")]
+            [EnumMember(Value = "active")]
             Active,
-            [Description("non_renewing")]
+            [EnumMember(Value = "non_renewing")]
             NonRenewing,
-            [Description("paused")]
+            [EnumMember(Value = "paused")]
             Paused,
-            [Description("cancelled")]
+            [EnumMember(Value = "cancelled")]
             Cancelled,
 
         }
@@ -2755,19 +2755,19 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("not_paid")]
+            [EnumMember(Value = "not_paid")]
             NotPaid,
-            [Description("no_card")]
+            [EnumMember(Value = "no_card")]
             NoCard,
-            [Description("fraud_review_failed")]
+            [EnumMember(Value = "fraud_review_failed")]
             FraudReviewFailed,
-            [Description("non_compliant_eu_customer")]
+            [EnumMember(Value = "non_compliant_eu_customer")]
             NonCompliantEuCustomer,
-            [Description("tax_calculation_failed")]
+            [EnumMember(Value = "tax_calculation_failed")]
             TaxCalculationFailed,
-            [Description("currency_incompatible_with_gateway")]
+            [EnumMember(Value = "currency_incompatible_with_gateway")]
             CurrencyIncompatibleWithGateway,
-            [Description("non_compliant_customer")]
+            [EnumMember(Value = "non_compliant_customer")]
             NonCompliantCustomer,
 
         }
@@ -2807,13 +2807,13 @@ namespace ChargeBee.Models
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [Description("subscription_creation")]
+                [EnumMember(Value = "subscription_creation")]
                 SubscriptionCreation,
-                [Description("subscription_trial_start")]
+                [EnumMember(Value = "subscription_trial_start")]
                 SubscriptionTrialStart,
-                [Description("plan_activation")]
+                [EnumMember(Value = "plan_activation")]
                 PlanActivation,
-                [Description("subscription_activation")]
+                [EnumMember(Value = "subscription_activation")]
                 SubscriptionActivation,
             }
 
@@ -2936,11 +2936,11 @@ namespace ChargeBee.Models
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [Description("pending")]
+                [EnumMember(Value = "pending")]
                 Pending,
-                [Description("paid")]
+                [EnumMember(Value = "paid")]
                 Paid,
-                [Description("invalid")]
+                [EnumMember(Value = "invalid")]
                 Invalid,
             }
 

@@ -1,21 +1,22 @@
 using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace ChargeBee.Models.Enums
 {
     public enum NotifyReferralSystemEnum
     {
 
-        [Description("Unknown Enum")]
+        [EnumMember(Value = "Unknown Enum")]
         UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
 
-        [Description("none")]
+        [EnumMember(Value = "none")]
          None,
 
-        [Description("first_paid_conversion")]
+        [EnumMember(Value = "first_paid_conversion")]
          FirstPaidConversion,
 
-        [Description("all_invoices")]
+        [EnumMember(Value = "all_invoices")]
          AllInvoices,
 
     }

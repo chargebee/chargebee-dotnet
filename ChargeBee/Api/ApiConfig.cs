@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text;
 
 namespace ChargeBee.Api
@@ -7,14 +7,15 @@ namespace ChargeBee.Api
     {
 		public static string DomainSuffix = "chargebee.com";
 		public static string Proto = "https";
-		public static string Version = "2.6.7";
+		public static string Version = "2.6.8";
 		public static readonly string API_VERSION = "v2";
+        public static int TimeTravelMillis { get; set; }
+        public static int ExportSleepMillis { get; set;}
 
-		public string ApiKey { get; set; }
+        public string ApiKey { get; set; }
         public string SiteName { get; set; }
         public string Charset { get; set; }
-        public int ConnectTimeout { get; set; }
-        public int ReadTimeout { get; set; }
+        public static int ConnectTimeout { get; set; }
 
         public string ApiBaseUrl
         {
@@ -33,7 +34,7 @@ namespace ChargeBee.Api
             get
             {
                 return String.Format("Basic {0}",
-                    Convert.ToBase64String(Encoding.ASCII.GetBytes(
+                    Convert.ToBase64String(Encoding.UTF8.GetBytes(
                     String.Format("{0}:", ApiKey))));
             }
         }
@@ -41,9 +42,9 @@ namespace ChargeBee.Api
         private ApiConfig(string siteName, string apiKey)
         {
             Charset = Encoding.UTF8.WebName;
-            ConnectTimeout = 15000;
-            ReadTimeout = 60000;
-
+            ConnectTimeout = 15000; 
+            TimeTravelMillis = 3000;
+            ExportSleepMillis = 10000;
             SiteName = siteName;
             ApiKey = apiKey;
         }
@@ -66,7 +67,7 @@ namespace ChargeBee.Api
             get
             {
                 if (m_instance == null)
-                    throw new ApplicationException("Not yet configured!");
+                    throw new Exception("Not yet configured!");
 
                 return m_instance;
             }

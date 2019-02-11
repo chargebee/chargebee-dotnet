@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.ComponentModel;
 using System.Collections.Generic;
-
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -1005,24 +1005,24 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("checkout_new")]
+            [EnumMember(Value = "checkout_new")]
             CheckoutNew,
-            [Description("checkout_existing")]
+            [EnumMember(Value = "checkout_existing")]
             CheckoutExisting,
-            [Description("update_card")]
+            [EnumMember(Value = "update_card")]
             [Obsolete]
             UpdateCard,
-            [Description("update_payment_method")]
+            [EnumMember(Value = "update_payment_method")]
             UpdatePaymentMethod,
-            [Description("manage_payment_sources")]
+            [EnumMember(Value = "manage_payment_sources")]
             ManagePaymentSources,
-            [Description("collect_now")]
+            [EnumMember(Value = "collect_now")]
             CollectNow,
-            [Description("extend_subscription")]
+            [EnumMember(Value = "extend_subscription")]
             ExtendSubscription,
-            [Description("checkout_gift")]
+            [EnumMember(Value = "checkout_gift")]
             CheckoutGift,
-            [Description("claim_gift")]
+            [EnumMember(Value = "claim_gift")]
             ClaimGift,
 
         }
@@ -1031,18 +1031,18 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("created")]
+            [EnumMember(Value = "created")]
             Created,
-            [Description("requested")]
+            [EnumMember(Value = "requested")]
             Requested,
-            [Description("succeeded")]
+            [EnumMember(Value = "succeeded")]
             Succeeded,
-            [Description("cancelled")]
+            [EnumMember(Value = "cancelled")]
             Cancelled,
-            [Description("failed")]
+            [EnumMember(Value = "failed")]
             [Obsolete]
             Failed,
-            [Description("acknowledged")]
+            [EnumMember(Value = "acknowledged")]
             Acknowledged,
 
         }
@@ -1052,9 +1052,9 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("card_error")]
+            [EnumMember(Value = "card_error")]
             CardError,
-            [Description("server_error")]
+            [EnumMember(Value = "server_error")]
             ServerError,
 
         }

@@ -1,18 +1,19 @@
 using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace ChargeBee.Models.Enums
 {
     public enum UnpaidInvoicesHandlingEnum
     {
 
-        [Description("Unknown Enum")]
+        [EnumMember(Value = "Unknown Enum")]
         UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
 
-        [Description("no_action")]
+        [EnumMember(Value = "no_action")]
          NoAction,
 
-        [Description("schedule_payment_collection")]
+        [EnumMember(Value = "schedule_payment_collection")]
          SchedulePaymentCollection,
 
     }

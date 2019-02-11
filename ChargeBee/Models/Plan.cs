@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.ComponentModel;
 using System.Collections.Generic;
-
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -797,11 +797,11 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("week")]
+            [EnumMember(Value = "week")]
             Week,
-            [Description("month")]
+            [EnumMember(Value = "month")]
             Month,
-            [Description("year")]
+            [EnumMember(Value = "year")]
             Year,
 
         }
@@ -810,9 +810,9 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("day")]
+            [EnumMember(Value = "day")]
             Day,
-            [Description("month")]
+            [EnumMember(Value = "month")]
             Month,
 
         }
@@ -822,15 +822,15 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("flat_fee")]
+            [EnumMember(Value = "flat_fee")]
             FlatFee,
-            [Description("per_unit")]
+            [EnumMember(Value = "per_unit")]
             PerUnit,
-            [Description("tiered")]
+            [EnumMember(Value = "tiered")]
             Tiered,
-            [Description("volume")]
+            [EnumMember(Value = "volume")]
             Volume,
-            [Description("stairstep")]
+            [EnumMember(Value = "stairstep")]
             Stairstep,
 
         }
@@ -839,11 +839,11 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("active")]
+            [EnumMember(Value = "active")]
             Active,
-            [Description("archived")]
+            [EnumMember(Value = "archived")]
             Archived,
-            [Description("deleted")]
+            [EnumMember(Value = "deleted")]
             Deleted,
 
         }
@@ -852,9 +852,9 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("all")]
+            [EnumMember(Value = "all")]
             All,
-            [Description("restricted")]
+            [EnumMember(Value = "restricted")]
             Restricted,
 
         }
@@ -863,11 +863,11 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("year")]
+            [EnumMember(Value = "year")]
             Year,
-            [Description("month")]
+            [EnumMember(Value = "month")]
             Month,
-            [Description("week")]
+            [EnumMember(Value = "week")]
             Week,
 
         }
@@ -903,9 +903,9 @@ namespace ChargeBee.Models
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [Description("recommended")]
+                [EnumMember(Value = "recommended")]
                 Recommended,
-                [Description("mandatory")]
+                [EnumMember(Value = "mandatory")]
                 Mandatory,
             }
 
@@ -932,13 +932,13 @@ namespace ChargeBee.Models
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [Description("subscription_creation")]
+                [EnumMember(Value = "subscription_creation")]
                 SubscriptionCreation,
-                [Description("subscription_trial_start")]
+                [EnumMember(Value = "subscription_trial_start")]
                 SubscriptionTrialStart,
-                [Description("plan_activation")]
+                [EnumMember(Value = "plan_activation")]
                 PlanActivation,
-                [Description("subscription_activation")]
+                [EnumMember(Value = "subscription_activation")]
                 SubscriptionActivation,
             }
 

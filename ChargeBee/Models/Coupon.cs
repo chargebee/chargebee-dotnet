@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.ComponentModel;
 using System.Collections.Generic;
-
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -448,11 +448,11 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("fixed_amount")]
+            [EnumMember(Value = "fixed_amount")]
             FixedAmount,
-            [Description("percentage")]
+            [EnumMember(Value = "percentage")]
             Percentage,
-            [Description("offer_quantity")]
+            [EnumMember(Value = "offer_quantity")]
             [Obsolete]
             OfferQuantity,
 
@@ -462,11 +462,11 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("one_time")]
+            [EnumMember(Value = "one_time")]
             OneTime,
-            [Description("forever")]
+            [EnumMember(Value = "forever")]
             Forever,
-            [Description("limited_period")]
+            [EnumMember(Value = "limited_period")]
             LimitedPeriod,
 
         }
@@ -475,13 +475,13 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("active")]
+            [EnumMember(Value = "active")]
             Active,
-            [Description("expired")]
+            [EnumMember(Value = "expired")]
             Expired,
-            [Description("archived")]
+            [EnumMember(Value = "archived")]
             Archived,
-            [Description("deleted")]
+            [EnumMember(Value = "deleted")]
             Deleted,
 
         }
@@ -491,13 +491,13 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("plans")]
+            [EnumMember(Value = "plans")]
             Plans,
-            [Description("plans_and_addons")]
+            [EnumMember(Value = "plans_and_addons")]
             PlansAndAddons,
-            [Description("plans_with_quantity")]
+            [EnumMember(Value = "plans_with_quantity")]
             PlansWithQuantity,
-            [Description("not_applicable")]
+            [EnumMember(Value = "not_applicable")]
             NotApplicable,
 
         }
@@ -506,14 +506,14 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("invoice_amount")]
+            [EnumMember(Value = "invoice_amount")]
             InvoiceAmount,
-            [Description("specified_items_total")]
+            [EnumMember(Value = "specified_items_total")]
             [Obsolete]
             SpecifiedItemsTotal,
-            [Description("each_specified_item")]
+            [EnumMember(Value = "each_specified_item")]
             EachSpecifiedItem,
-            [Description("each_unit_of_specified_items")]
+            [EnumMember(Value = "each_unit_of_specified_items")]
             [Obsolete]
             EachUnitOfSpecifiedItems,
 
@@ -523,13 +523,13 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("none")]
+            [EnumMember(Value = "none")]
             None,
-            [Description("all")]
+            [EnumMember(Value = "all")]
             All,
-            [Description("specific")]
+            [EnumMember(Value = "specific")]
             Specific,
-            [Description("not_applicable")]
+            [EnumMember(Value = "not_applicable")]
             NotApplicable,
 
         }
@@ -538,13 +538,13 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("none")]
+            [EnumMember(Value = "none")]
             None,
-            [Description("all")]
+            [EnumMember(Value = "all")]
             All,
-            [Description("specific")]
+            [EnumMember(Value = "specific")]
             Specific,
-            [Description("not_applicable")]
+            [EnumMember(Value = "not_applicable")]
             NotApplicable,
 
         }

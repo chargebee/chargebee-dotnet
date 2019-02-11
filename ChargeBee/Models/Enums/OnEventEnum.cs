@@ -1,24 +1,25 @@
 using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace ChargeBee.Models.Enums
 {
     public enum OnEventEnum
     {
 
-        [Description("Unknown Enum")]
+        [EnumMember(Value = "Unknown Enum")]
         UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
 
-        [Description("subscription_creation")]
+        [EnumMember(Value = "subscription_creation")]
          SubscriptionCreation,
 
-        [Description("subscription_trial_start")]
+        [EnumMember(Value = "subscription_trial_start")]
          SubscriptionTrialStart,
 
-        [Description("plan_activation")]
+        [EnumMember(Value = "plan_activation")]
          PlanActivation,
 
-        [Description("subscription_activation")]
+        [EnumMember(Value = "subscription_activation")]
          SubscriptionActivation,
 
     }

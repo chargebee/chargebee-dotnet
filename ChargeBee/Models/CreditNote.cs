@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.ComponentModel;
 using System.Collections.Generic;
-
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -406,9 +406,9 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("adjustment")]
+            [EnumMember(Value = "adjustment")]
             Adjustment,
-            [Description("refundable")]
+            [EnumMember(Value = "refundable")]
             Refundable,
 
         }
@@ -417,29 +417,29 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("write_off")]
+            [EnumMember(Value = "write_off")]
             WriteOff,
-            [Description("subscription_change")]
+            [EnumMember(Value = "subscription_change")]
             SubscriptionChange,
-            [Description("subscription_cancellation")]
+            [EnumMember(Value = "subscription_cancellation")]
             SubscriptionCancellation,
-            [Description("subscription_pause")]
+            [EnumMember(Value = "subscription_pause")]
             SubscriptionPause,
-            [Description("chargeback")]
+            [EnumMember(Value = "chargeback")]
             Chargeback,
-            [Description("product_unsatisfactory")]
+            [EnumMember(Value = "product_unsatisfactory")]
             ProductUnsatisfactory,
-            [Description("service_unsatisfactory")]
+            [EnumMember(Value = "service_unsatisfactory")]
             ServiceUnsatisfactory,
-            [Description("order_change")]
+            [EnumMember(Value = "order_change")]
             OrderChange,
-            [Description("order_cancellation")]
+            [EnumMember(Value = "order_cancellation")]
             OrderCancellation,
-            [Description("waiver")]
+            [EnumMember(Value = "waiver")]
             Waiver,
-            [Description("other")]
+            [EnumMember(Value = "other")]
             Other,
-            [Description("fraudulent")]
+            [EnumMember(Value = "fraudulent")]
             Fraudulent,
 
         }
@@ -448,13 +448,13 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("adjusted")]
+            [EnumMember(Value = "adjusted")]
             Adjusted,
-            [Description("refunded")]
+            [EnumMember(Value = "refunded")]
             Refunded,
-            [Description("refund_due")]
+            [EnumMember(Value = "refund_due")]
             RefundDue,
-            [Description("voided")]
+            [EnumMember(Value = "voided")]
             Voided,
 
         }
@@ -466,13 +466,13 @@ namespace ChargeBee.Models
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [Description("plan_setup")]
+                [EnumMember(Value = "plan_setup")]
                 PlanSetup,
-                [Description("plan")]
+                [EnumMember(Value = "plan")]
                 Plan,
-                [Description("addon")]
+                [EnumMember(Value = "addon")]
                 Addon,
-                [Description("adhoc")]
+                [EnumMember(Value = "adhoc")]
                 Adhoc,
             }
 
@@ -551,13 +551,13 @@ namespace ChargeBee.Models
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [Description("item_level_coupon")]
+                [EnumMember(Value = "item_level_coupon")]
                 ItemLevelCoupon,
-                [Description("document_level_coupon")]
+                [EnumMember(Value = "document_level_coupon")]
                 DocumentLevelCoupon,
-                [Description("promotional_credits")]
+                [EnumMember(Value = "promotional_credits")]
                 PromotionalCredits,
-                [Description("prorated_credits")]
+                [EnumMember(Value = "prorated_credits")]
                 ProratedCredits,
             }
 
@@ -584,13 +584,13 @@ namespace ChargeBee.Models
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [Description("item_level_coupon")]
+                [EnumMember(Value = "item_level_coupon")]
                 ItemLevelCoupon,
-                [Description("document_level_coupon")]
+                [EnumMember(Value = "document_level_coupon")]
                 DocumentLevelCoupon,
-                [Description("promotional_credits")]
+                [EnumMember(Value = "promotional_credits")]
                 PromotionalCredits,
-                [Description("prorated_credits")]
+                [EnumMember(Value = "prorated_credits")]
                 ProratedCredits,
             }
 

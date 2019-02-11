@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.ComponentModel;
 using System.Collections.Generic;
-
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -10,7 +10,7 @@ using ChargeBee.Internal;
 using ChargeBee.Api;
 using ChargeBee.Models.Enums;
 using ChargeBee.Filters.Enums;
-using System.Threading;
+using System.Threading.Tasks;
 using System.Net;
 
 namespace ChargeBee.Models
@@ -71,27 +71,33 @@ namespace ChargeBee.Models
             return WaitForTimeTravelCompletion(null);
         }
 
-        public TimeMachine WaitForTimeTravelCompletion(ApiConfig config) {
+        public TimeMachine WaitForTimeTravelCompletion(ApiConfig config)
+        {
             int count = 0;
-            int sleepTime = System.Environment.GetEnvironmentVariable("cb.dotnet.time_travel.sleep.millis") != null
-                ? Convert.ToInt32(System.Environment.GetEnvironmentVariable("cb.dotnet.time_travel.sleep.millis"))
-                : 3000;
-            while (this.TimeTravelStatus == TimeTravelStatusEnum.InProgress) {
-                if (count++ > 30) {
-                    throw new SystemException("Time travel is taking too much time");
+            while (this.TimeTravelStatus == TimeTravelStatusEnum.InProgress)
+            {
+                if (count++ > 30)
+                {
+                    throw new Exception("Time travel is taking too much time");
                 }
-                Thread.Sleep(sleepTime);
+                var t = Task.Factory.StartNew(() =>
+                {
+                    Task.Delay(ApiConfig.TimeTravelMillis).Wait();
+                });
+                t.Wait();
                 EntityRequest<Type> req = Retrieve(this.Name);
                 this.JObj = ((config == null) ? req.Request() : req.Request(config)).TimeMachine.JObj;
             }
-            if (this.TimeTravelStatus == TimeTravelStatusEnum.Failed) {
-                Dictionary<String, String> errorJson = JsonConvert.DeserializeObject < Dictionary < String, String>>(this.ErrorJson
+            if (this.TimeTravelStatus == TimeTravelStatusEnum.Failed)
+            {
+                Dictionary<String, String> errorJson = JsonConvert.DeserializeObject<Dictionary<String, String>>(this.ErrorJson
                 );
-                HttpStatusCode httpStatusCode = (HttpStatusCode) Convert.ToInt32(errorJson["http_code"]);
+                HttpStatusCode httpStatusCode = (HttpStatusCode)Convert.ToInt32(errorJson["http_code"]);
                 throw new Exceptions.OperationFailedException(httpStatusCode, errorJson);
             }
-            if (this.TimeTravelStatus == TimeTravelStatusEnum.NotEnabled || this.TimeTravelStatus == TimeTravelStatusEnum.UnKnown) {
-                throw new SystemException("Time travel is in wrong state : " + this.TimeTravelStatus);
+            if (this.TimeTravelStatus == TimeTravelStatusEnum.NotEnabled || this.TimeTravelStatus == TimeTravelStatusEnum.UnKnown)
+            {
+                throw new Exception("Time travel is in wrong state : " + this.TimeTravelStatus);
             }
             return this;
         }
@@ -131,13 +137,13 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("not_enabled")]
+            [EnumMember(Value = "not_enabled")]
             NotEnabled,
-            [Description("in_progress")]
+            [EnumMember(Value = "in_progress")]
             InProgress,
-            [Description("succeeded")]
+            [EnumMember(Value = "succeeded")]
             Succeeded,
-            [Description("failed")]
+            [EnumMember(Value = "failed")]
             Failed,
 
         }

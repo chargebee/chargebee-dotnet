@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.ComponentModel;
 using System.Collections.Generic;
-
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -10,7 +10,8 @@ using ChargeBee.Internal;
 using ChargeBee.Api;
 using ChargeBee.Models.Enums;
 using ChargeBee.Filters.Enums;
-using System.Threading;
+using System.Threading.Tasks;
+using System.Net;
 
 namespace ChargeBee.Models
 {
@@ -102,23 +103,25 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<ExportDownload>("download"); }
         }
-        public Export WaitForExportCompletion() 
-		{
-			int count = 0;
-			int sleepTime = System.Environment.GetEnvironmentVariable("cb.dotnet.export.sleep.millis") != null
-				? Convert.ToInt32(System.Environment.GetEnvironmentVariable("cb.dotnet.export.sleep.millis"))
-				: 10000;
-			while(this.Status == Export.StatusEnum.InProcess){
-				if(count++ > 50)
-				{
-					throw new SystemException("Export is taking too long");
-				}
-				Thread.Sleep(sleepTime);
-				EntityRequest<Type> req = Retrieve(Id);
-				this.JObj = req.Request().Export.JObj;
-			}
-			return this;
-		}		
+        public Export WaitForExportCompletion()
+        {
+            int count = 0;
+            while (this.Status == Export.StatusEnum.InProcess)
+            {
+                if (count++ > 50)
+                {
+                    throw new Exception("Export is taking too long");
+                }
+                var t = Task.Factory.StartNew(() =>
+                {
+                    Task.Delay(ApiConfig.ExportSleepMillis).Wait();
+                });
+                t.Wait();
+                EntityRequest<Type> req = Retrieve(Id);
+                this.JObj = req.Request().Export.JObj;
+            }
+            return this;
+        }
         #endregion
         
         #region Requests
@@ -1099,9 +1102,9 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("pdf")]
+            [EnumMember(Value = "pdf")]
             Pdf,
-            [Description("zip")]
+            [EnumMember(Value = "zip")]
             Zip,
 
         }
@@ -1110,11 +1113,11 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("in_process")]
+            [EnumMember(Value = "in_process")]
             InProcess,
-            [Description("completed")]
+            [EnumMember(Value = "completed")]
             Completed,
-            [Description("failed")]
+            [EnumMember(Value = "failed")]
             Failed,
 
         }

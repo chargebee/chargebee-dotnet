@@ -1,39 +1,40 @@
 using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace ChargeBee.Models.Enums
 {
     public enum TypeEnum
     {
 
-        [Description("Unknown Enum")]
+        [EnumMember(Value = "Unknown Enum")]
         UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
 
-        [Description("card")]
+        [EnumMember(Value = "card")]
          Card,
 
-        [Description("paypal_express_checkout")]
+        [EnumMember(Value = "paypal_express_checkout")]
          PaypalExpressCheckout,
 
-        [Description("amazon_payments")]
+        [EnumMember(Value = "amazon_payments")]
          AmazonPayments,
 
-        [Description("direct_debit")]
+        [EnumMember(Value = "direct_debit")]
          DirectDebit,
 
-        [Description("generic")]
+        [EnumMember(Value = "generic")]
          Generic,
 
-        [Description("alipay")]
+        [EnumMember(Value = "alipay")]
          Alipay,
 
-        [Description("unionpay")]
+        [EnumMember(Value = "unionpay")]
          Unionpay,
 
-        [Description("apple_pay")]
+        [EnumMember(Value = "apple_pay")]
          ApplePay,
 
-        [Description("wechat_pay")]
+        [EnumMember(Value = "wechat_pay")]
          WechatPay,
 
     }

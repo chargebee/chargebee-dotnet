@@ -1,54 +1,55 @@
 using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace ChargeBee.Models.Enums
 {
     public enum PaymentMethodEnum
     {
 
-        [Description("Unknown Enum")]
+        [EnumMember(Value = "Unknown Enum")]
         UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
 
-        [Description("card")]
+        [EnumMember(Value = "card")]
          Card,
 
-        [Description("cash")]
+        [EnumMember(Value = "cash")]
          Cash,
 
-        [Description("check")]
+        [EnumMember(Value = "check")]
          Check,
 
-        [Description("chargeback")]
+        [EnumMember(Value = "chargeback")]
          Chargeback,
 
-        [Description("bank_transfer")]
+        [EnumMember(Value = "bank_transfer")]
          BankTransfer,
 
-        [Description("amazon_payments")]
+        [EnumMember(Value = "amazon_payments")]
          AmazonPayments,
 
-        [Description("paypal_express_checkout")]
+        [EnumMember(Value = "paypal_express_checkout")]
          PaypalExpressCheckout,
 
-        [Description("direct_debit")]
+        [EnumMember(Value = "direct_debit")]
          DirectDebit,
 
-        [Description("alipay")]
+        [EnumMember(Value = "alipay")]
          Alipay,
 
-        [Description("unionpay")]
+        [EnumMember(Value = "unionpay")]
          Unionpay,
 
-        [Description("apple_pay")]
+        [EnumMember(Value = "apple_pay")]
          ApplePay,
 
-        [Description("wechat_pay")]
+        [EnumMember(Value = "wechat_pay")]
          WechatPay,
 
-        [Description("ach_credit")]
+        [EnumMember(Value = "ach_credit")]
          AchCredit,
 
-        [Description("other")]
+        [EnumMember(Value = "other")]
          Other,
 
     }

@@ -23,7 +23,7 @@ namespace ChargeBee.Internal
                 }
                 catch(JsonException e)
                 {
-                    throw new SystemException("Not in JSON format. Probably not a ChargeBee response. \n " + json, e);
+                    throw new Exception("Not in JSON format. Probably not a ChargeBee response. \n " + json, e);
                 }
             }
         }

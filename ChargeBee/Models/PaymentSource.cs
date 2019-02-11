@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.ComponentModel;
 using System.Collections.Generic;
-
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -533,15 +533,15 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("valid")]
+            [EnumMember(Value = "valid")]
             Valid,
-            [Description("expiring")]
+            [EnumMember(Value = "expiring")]
             Expiring,
-            [Description("expired")]
+            [EnumMember(Value = "expired")]
             Expired,
-            [Description("invalid")]
+            [EnumMember(Value = "invalid")]
             Invalid,
-            [Description("pending_verification")]
+            [EnumMember(Value = "pending_verification")]
             PendingVerification,
 
         }
@@ -553,34 +553,34 @@ namespace ChargeBee.Models
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [Description("visa")]
+                [EnumMember(Value = "visa")]
                 Visa,
-                [Description("mastercard")]
+                [EnumMember(Value = "mastercard")]
                 Mastercard,
-                [Description("american_express")]
+                [EnumMember(Value = "american_express")]
                 AmericanExpress,
-                [Description("discover")]
+                [EnumMember(Value = "discover")]
                 Discover,
-                [Description("jcb")]
+                [EnumMember(Value = "jcb")]
                 Jcb,
-                [Description("diners_club")]
+                [EnumMember(Value = "diners_club")]
                 DinersClub,
-                [Description("other")]
+                [EnumMember(Value = "other")]
                 Other,
             }
             public enum FundingTypeEnum
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [Description("credit")]
+                [EnumMember(Value = "credit")]
                 Credit,
-                [Description("debit")]
+                [EnumMember(Value = "debit")]
                 Debit,
-                [Description("prepaid")]
+                [EnumMember(Value = "prepaid")]
                 Prepaid,
-                [Description("not_known")]
+                [EnumMember(Value = "not_known")]
                 NotKnown,
-                [Description("not_applicable")]
+                [EnumMember(Value = "not_applicable")]
                 NotApplicable,
             }
 
@@ -655,27 +655,27 @@ namespace ChargeBee.Models
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [Description("checking")]
+                [EnumMember(Value = "checking")]
                 Checking,
-                [Description("savings")]
+                [EnumMember(Value = "savings")]
                 Savings,
             }
             public enum EcheckTypeEnum
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [Description("web")]
+                [EnumMember(Value = "web")]
                 Web,
-                [Description("ppd")]
+                [EnumMember(Value = "ppd")]
                 Ppd,
             }
             public enum AccountHolderTypeEnum
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [Description("individual")]
+                [EnumMember(Value = "individual")]
                 Individual,
-                [Description("company")]
+                [EnumMember(Value = "company")]
                 Company,
             }
 

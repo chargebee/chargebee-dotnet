@@ -1,114 +1,115 @@
 using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace ChargeBee.Models.Enums
 {
     public enum GatewayEnum
     {
 
-        [Description("Unknown Enum")]
+        [EnumMember(Value = "Unknown Enum")]
         UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
 
-        [Description("chargebee")]
+        [EnumMember(Value = "chargebee")]
          Chargebee,
 
-        [Description("stripe")]
+        [EnumMember(Value = "stripe")]
          Stripe,
 
-        [Description("wepay")]
+        [EnumMember(Value = "wepay")]
          Wepay,
 
-        [Description("braintree")]
+        [EnumMember(Value = "braintree")]
          Braintree,
 
-        [Description("authorize_net")]
+        [EnumMember(Value = "authorize_net")]
          AuthorizeNet,
 
-        [Description("paypal_pro")]
+        [EnumMember(Value = "paypal_pro")]
          PaypalPro,
 
-        [Description("pin")]
+        [EnumMember(Value = "pin")]
          Pin,
 
-        [Description("eway")]
+        [EnumMember(Value = "eway")]
          Eway,
 
-        [Description("eway_rapid")]
+        [EnumMember(Value = "eway_rapid")]
          EwayRapid,
 
-        [Description("worldpay")]
+        [EnumMember(Value = "worldpay")]
          Worldpay,
 
-        [Description("balanced_payments")]
+        [EnumMember(Value = "balanced_payments")]
          BalancedPayments,
 
-        [Description("beanstream")]
+        [EnumMember(Value = "beanstream")]
          Beanstream,
 
-        [Description("bluepay")]
+        [EnumMember(Value = "bluepay")]
          Bluepay,
 
-        [Description("elavon")]
+        [EnumMember(Value = "elavon")]
          Elavon,
 
-        [Description("first_data_global")]
+        [EnumMember(Value = "first_data_global")]
          FirstDataGlobal,
 
-        [Description("hdfc")]
+        [EnumMember(Value = "hdfc")]
          Hdfc,
 
-        [Description("migs")]
+        [EnumMember(Value = "migs")]
          Migs,
 
-        [Description("nmi")]
+        [EnumMember(Value = "nmi")]
          Nmi,
 
-        [Description("ogone")]
+        [EnumMember(Value = "ogone")]
          Ogone,
 
-        [Description("paymill")]
+        [EnumMember(Value = "paymill")]
          Paymill,
 
-        [Description("paypal_payflow_pro")]
+        [EnumMember(Value = "paypal_payflow_pro")]
          PaypalPayflowPro,
 
-        [Description("sage_pay")]
+        [EnumMember(Value = "sage_pay")]
          SagePay,
 
-        [Description("tco")]
+        [EnumMember(Value = "tco")]
          Tco,
 
-        [Description("wirecard")]
+        [EnumMember(Value = "wirecard")]
          Wirecard,
 
-        [Description("amazon_payments")]
+        [EnumMember(Value = "amazon_payments")]
          AmazonPayments,
 
-        [Description("paypal_express_checkout")]
+        [EnumMember(Value = "paypal_express_checkout")]
          PaypalExpressCheckout,
 
-        [Description("gocardless")]
+        [EnumMember(Value = "gocardless")]
          Gocardless,
 
-        [Description("adyen")]
+        [EnumMember(Value = "adyen")]
          Adyen,
 
-        [Description("orbital")]
+        [EnumMember(Value = "orbital")]
          Orbital,
 
-        [Description("moneris_us")]
+        [EnumMember(Value = "moneris_us")]
          MonerisUs,
 
-        [Description("moneris")]
+        [EnumMember(Value = "moneris")]
          Moneris,
 
-        [Description("bluesnap")]
+        [EnumMember(Value = "bluesnap")]
          Bluesnap,
 
-        [Description("cybersource")]
+        [EnumMember(Value = "cybersource")]
          Cybersource,
 
-        [Description("not_applicable")]
+        [EnumMember(Value = "not_applicable")]
          NotApplicable,
 
     }

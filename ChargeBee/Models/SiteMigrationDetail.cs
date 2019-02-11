@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.ComponentModel;
 using System.Collections.Generic;
-
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -90,11 +90,11 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("moved_in")]
+            [EnumMember(Value = "moved_in")]
             MovedIn,
-            [Description("moved_out")]
+            [EnumMember(Value = "moved_out")]
             MovedOut,
-            [Description("moving_out")]
+            [EnumMember(Value = "moving_out")]
             MovingOut,
 
         }

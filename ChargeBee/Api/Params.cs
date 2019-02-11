@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
-using System.Web;
-
 using Newtonsoft.Json;
+using System.Runtime.Serialization;
 using Newtonsoft.Json.Linq;
+using System.Net;
 
 namespace ChargeBee.Api
 {
@@ -24,12 +24,12 @@ namespace ChargeBee.Api
 
         public void AddOpt(string key, object value)
 		{	
-			m_dict[key] = value == null ? String.Empty : ConvertValue(value, false);
+			m_dict.Add(key, value == null ? String.Empty : ConvertValue(value, false));
         }
 
 		public void AddOpt(string key, object value, bool isDate)
 		{	
-			m_dict[key] = value == null ? String.Empty : ConvertValue(value, isDate);
+			m_dict.Add(key, value == null ? String.Empty : ConvertValue(value, isDate));
 		}
 
 		public string GetQuery(bool IsList)
@@ -45,19 +45,19 @@ namespace ChargeBee.Api
             {
 				if (pair.Value is IList) {
 					if (IsList) {
-						pairs.Add (String.Format ("{0}={1}", HttpUtility.UrlEncode (pair.Key), HttpUtility.UrlEncode (JsonConvert.SerializeObject(pair.Value))));
+						pairs.Add (String.Format ("{0}={1}", WebUtility.UrlEncode (pair.Key), WebUtility.UrlEncode (JsonConvert.SerializeObject(pair.Value))));
 						continue;
 					}
 					int idx = 0;
 					foreach (object item in (IList)pair.Value) {
 						pairs.Add (String.Format ("{0}[{1}]={2}",
-							HttpUtility.UrlEncode (pair.Key),
+							WebUtility.UrlEncode (pair.Key),
 							idx++,
-							HttpUtility.UrlEncode (item.ToString ()))
+							WebUtility.UrlEncode (item.ToString ()))
 						);
 					}
 				} else {
-					pairs.Add (String.Format ("{0}={1}", HttpUtility.UrlEncode (pair.Key), HttpUtility.UrlEncode (pair.Value.ToString ())));
+					pairs.Add (String.Format ("{0}={1}", WebUtility.UrlEncode (pair.Key), WebUtility.UrlEncode (pair.Value.ToString ())));
 				}
             }
             return pairs.ToArray();
@@ -71,13 +71,13 @@ namespace ChargeBee.Api
 				return value.ToString ().ToLower ();
 			} else if (value is Enum) {
 				Type eType = value.GetType ();
-				FieldInfo fi = eType.GetField (value.ToString ());
-				DescriptionAttribute[] attrs = (DescriptionAttribute[])fi.GetCustomAttributes (
-					                               typeof(DescriptionAttribute), false);
+				FieldInfo fi = eType.GetRuntimeField(value.ToString ());
+				EnumMemberAttribute[] attrs = (EnumMemberAttribute[])fi.GetCustomAttributes (
+					                               typeof(EnumMemberAttribute), false);
 				if (attrs.Length == 0) {
 					throw new ArgumentException ("Enum fields must be decorated with DescriptionAttribute!");
 				}
-				return attrs [0].Description;
+				return attrs [0].Value;
 			} else if (value is JToken) {	
 				return value.ToString ();
 			} else if (value is IList) {
@@ -92,7 +92,7 @@ namespace ChargeBee.Api
 					((DateTime)value).ToString ("yyyy-MM-dd")
 						: ApiUtil.ConvertToTimestamp ((DateTime)value).ToString ();
 			} else {
-				throw new SystemException("Type [" + value.GetType().ToString() + "] not handled");
+				throw new ArgumentException("Type [" + value.GetType().ToString() + "] not handled");
 			}
     	}
 	}

@@ -1,30 +1,31 @@
 using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace ChargeBee.Models.Enums
 {
     public enum TaxJurisTypeEnum
     {
 
-        [Description("Unknown Enum")]
+        [EnumMember(Value = "Unknown Enum")]
         UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
 
-        [Description("country")]
+        [EnumMember(Value = "country")]
          Country,
 
-        [Description("state")]
+        [EnumMember(Value = "state")]
          State,
 
-        [Description("county")]
+        [EnumMember(Value = "county")]
          County,
 
-        [Description("city")]
+        [EnumMember(Value = "city")]
          City,
 
-        [Description("special")]
+        [EnumMember(Value = "special")]
          Special,
 
-        [Description("other")]
+        [EnumMember(Value = "other")]
          Other,
 
     }

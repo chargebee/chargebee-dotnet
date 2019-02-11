@@ -1,3 +1,15 @@
+### v2.6.8 (2019-02-11)
+* * *
+
+**Major changes in the library supported** 
+* Support for .NET Framework version < 4.5 has been stopped.
+* Added support for **.NET Standard 1.2+**, **.NET Core 1.0+** and **.NET Framework 4.5+**.
+* Dependency library versions are :
+  * Newtonsoft.Json - 9.0.1
+  * System.Net.Http - 4.3.3
+  * System.Net.Requests - 4.3.0
+
+
 ### v2.6.7 (2019-01-10)
 * * *
 

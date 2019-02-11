@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.ComponentModel;
 using System.Collections.Generic;
-
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -141,15 +141,15 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [Description("created")]
+            [EnumMember(Value = "created")]
             Created,
-            [Description("logged_in")]
+            [EnumMember(Value = "logged_in")]
             LoggedIn,
-            [Description("logged_out")]
+            [EnumMember(Value = "logged_out")]
             LoggedOut,
-            [Description("not_yet_activated")]
+            [EnumMember(Value = "not_yet_activated")]
             NotYetActivated,
-            [Description("activated")]
+            [EnumMember(Value = "activated")]
             Activated,
 
         }
