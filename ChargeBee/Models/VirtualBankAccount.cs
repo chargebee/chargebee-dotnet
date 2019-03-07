@@ -78,6 +78,18 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("gateway_account_id", true); }
         }
+        public long? ResourceVersion 
+        {
+            get { return GetValue<long?>("resource_version", false); }
+        }
+        public DateTime? UpdatedAt 
+        {
+            get { return GetDateTime("updated_at", false); }
+        }
+        public DateTime CreatedAt 
+        {
+            get { return (DateTime)GetDateTime("created_at", true); }
+        }
         public string ReferenceId 
         {
             get { return GetValue<string>("reference_id", true); }
@@ -136,6 +148,14 @@ namespace ChargeBee.Models
             public StringFilter<VirtualBankAccountListRequest> CustomerId() 
             {
                 return new StringFilter<VirtualBankAccountListRequest>("customer_id", this).SupportsMultiOperators(true);        
+            }
+            public TimestampFilter<VirtualBankAccountListRequest> UpdatedAt() 
+            {
+                return new TimestampFilter<VirtualBankAccountListRequest>("updated_at", this);        
+            }
+            public TimestampFilter<VirtualBankAccountListRequest> CreatedAt() 
+            {
+                return new TimestampFilter<VirtualBankAccountListRequest>("created_at", this);        
             }
         }
         #endregion

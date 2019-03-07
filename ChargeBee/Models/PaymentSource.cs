@@ -81,6 +81,18 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("id", true); }
         }
+        public long? ResourceVersion 
+        {
+            get { return GetValue<long?>("resource_version", false); }
+        }
+        public DateTime? UpdatedAt 
+        {
+            get { return GetDateTime("updated_at", false); }
+        }
+        public DateTime CreatedAt 
+        {
+            get { return (DateTime)GetDateTime("created_at", true); }
+        }
         public string CustomerId 
         {
             get { return GetValue<string>("customer_id", true); }
@@ -498,6 +510,14 @@ namespace ChargeBee.Models
             public EnumFilter<PaymentSource.StatusEnum, PaymentSourceListRequest> Status() 
             {
                 return new EnumFilter<PaymentSource.StatusEnum, PaymentSourceListRequest>("status", this);        
+            }
+            public TimestampFilter<PaymentSourceListRequest> UpdatedAt() 
+            {
+                return new TimestampFilter<PaymentSourceListRequest>("updated_at", this);        
+            }
+            public TimestampFilter<PaymentSourceListRequest> CreatedAt() 
+            {
+                return new TimestampFilter<PaymentSourceListRequest>("created_at", this);        
             }
         }
         public class SwitchGatewayAccountRequest : EntityRequest<SwitchGatewayAccountRequest> 

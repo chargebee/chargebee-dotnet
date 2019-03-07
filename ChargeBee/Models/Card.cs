@@ -127,6 +127,18 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("billing_zip", false); }
         }
+        public DateTime CreatedAt 
+        {
+            get { return (DateTime)GetDateTime("created_at", true); }
+        }
+        public long? ResourceVersion 
+        {
+            get { return GetValue<long?>("resource_version", false); }
+        }
+        public DateTime? UpdatedAt 
+        {
+            get { return GetDateTime("updated_at", false); }
+        }
         public string IpAddress 
         {
             get { return GetValue<string>("ip_address", false); }

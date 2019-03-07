@@ -50,6 +50,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("hosted_pages", "collect_now");
             return new CollectNowRequest(url, HttpMethod.POST);
         }
+        public static AcceptQuoteRequest AcceptQuote()
+        {
+            string url = ApiUtil.BuildUrl("hosted_pages", "accept_quote");
+            return new AcceptQuoteRequest(url, HttpMethod.POST);
+        }
         public static ExtendSubscriptionRequest ExtendSubscription()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "extend_subscription");
@@ -864,6 +869,19 @@ namespace ChargeBee.Models
             public CollectNowRequest CardGatewayAccountId(string cardGatewayAccountId) 
             {
                 m_params.AddOpt("card[gateway_account_id]", cardGatewayAccountId);
+                return this;
+            }
+        }
+        public class AcceptQuoteRequest : EntityRequest<AcceptQuoteRequest> 
+        {
+            public AcceptQuoteRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public AcceptQuoteRequest QuoteId(string quoteId) 
+            {
+                m_params.Add("quote[id]", quoteId);
                 return this;
             }
         }

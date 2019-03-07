@@ -56,6 +56,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("transactions", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
+        public static DeleteOfflineTransactionRequest DeleteOfflineTransaction(string id)
+        {
+            string url = ApiUtil.BuildUrl("transactions", CheckNull(id), "delete_offline_transaction");
+            return new DeleteOfflineTransactionRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -305,6 +310,23 @@ namespace ChargeBee.Models
             }
             public TransactionListRequest SortByDate(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","date");
+                return this;
+            }
+            public TransactionListRequest SortByUpdatedAt(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","updated_at");
+                return this;
+            }
+        }
+        public class DeleteOfflineTransactionRequest : EntityRequest<DeleteOfflineTransactionRequest> 
+        {
+            public DeleteOfflineTransactionRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public DeleteOfflineTransactionRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
                 return this;
             }
         }

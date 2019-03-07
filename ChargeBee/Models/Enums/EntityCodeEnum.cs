@@ -46,6 +46,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "l")]
          L,
 
+        [EnumMember(Value = "m")]
+         M,
+
         [EnumMember(Value = "n")]
          N,
 

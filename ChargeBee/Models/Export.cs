@@ -76,6 +76,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("exports", "transactions");
             return new TransactionsRequest(url, HttpMethod.POST);
         }
+        public static OrdersRequest Orders()
+        {
+            string url = ApiUtil.BuildUrl("exports", "orders");
+            return new OrdersRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -103,7 +108,7 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<ExportDownload>("download"); }
         }
-        public Export WaitForExportCompletion()
+         public Export WaitForExportCompletion()
         {
             int count = 0;
             while (this.Status == Export.StatusEnum.InProcess)
@@ -1092,6 +1097,88 @@ namespace ChargeBee.Models
             public TimestampFilter<TransactionsRequest> TransactionUpdatedAt() 
             {
                 return new TimestampFilter<TransactionsRequest>("transaction[updated_at]", this);        
+            }
+
+        }
+        public class OrdersRequest : EntityRequest<OrdersRequest> 
+        {
+            public OrdersRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public NumberFilter<int, OrdersRequest> Total() 
+            {
+                return new NumberFilter<int, OrdersRequest>("total", this);        
+            }
+            public StringFilter<OrdersRequest> OrderId() 
+            {
+                return new StringFilter<OrdersRequest>("order[id]", this).SupportsMultiOperators(true);        
+            }
+
+            public StringFilter<OrdersRequest> OrderSubscriptionId() 
+            {
+                return new StringFilter<OrdersRequest>("order[subscription_id]", this).SupportsMultiOperators(true).SupportsPresenceOperator(true);        
+            }
+
+            public StringFilter<OrdersRequest> OrderCustomerId() 
+            {
+                return new StringFilter<OrdersRequest>("order[customer_id]", this).SupportsMultiOperators(true);        
+            }
+
+            public EnumFilter<Order.StatusEnum, OrdersRequest> OrderStatus() 
+            {
+                return new EnumFilter<Order.StatusEnum, OrdersRequest>("order[status]", this);        
+            }
+
+            public EnumFilter<ChargeBee.Models.Enums.PriceTypeEnum, OrdersRequest> OrderPriceType() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.PriceTypeEnum, OrdersRequest>("order[price_type]", this);        
+            }
+
+            public TimestampFilter<OrdersRequest> OrderOrderDate() 
+            {
+                return new TimestampFilter<OrdersRequest>("order[order_date]", this);        
+            }
+
+            public TimestampFilter<OrdersRequest> OrderShippingDate() 
+            {
+                return new TimestampFilter<OrdersRequest>("order[shipping_date]", this);        
+            }
+
+            public TimestampFilter<OrdersRequest> OrderShippedAt() 
+            {
+                return new TimestampFilter<OrdersRequest>("order[shipped_at]", this);        
+            }
+
+            public TimestampFilter<OrdersRequest> OrderDeliveredAt() 
+            {
+                return new TimestampFilter<OrdersRequest>("order[delivered_at]", this);        
+            }
+
+            public TimestampFilter<OrdersRequest> OrderCancelledAt() 
+            {
+                return new TimestampFilter<OrdersRequest>("order[cancelled_at]", this);        
+            }
+
+            public NumberFilter<int, OrdersRequest> OrderAmountPaid() 
+            {
+                return new NumberFilter<int, OrdersRequest>("order[amount_paid]", this);        
+            }
+
+            public NumberFilter<int, OrdersRequest> OrderRefundableCredits() 
+            {
+                return new NumberFilter<int, OrdersRequest>("order[refundable_credits]", this);        
+            }
+
+            public NumberFilter<int, OrdersRequest> OrderRefundableCreditsIssued() 
+            {
+                return new NumberFilter<int, OrdersRequest>("order[refundable_credits_issued]", this);        
+            }
+
+            public TimestampFilter<OrdersRequest> OrderUpdatedAt() 
+            {
+                return new TimestampFilter<OrdersRequest>("order[updated_at]", this);        
             }
 
         }

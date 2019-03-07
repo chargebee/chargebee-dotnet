@@ -1224,6 +1224,10 @@ namespace ChargeBee.Models
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");
                 return this;
             }
+            public SubscriptionListRequest SortByUpdatedAt(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","updated_at");
+                return this;
+            }
         }
         public class RemoveScheduledCancellationRequest : EntityRequest<RemoveScheduledCancellationRequest> 
         {
