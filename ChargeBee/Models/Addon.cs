@@ -122,6 +122,18 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("tax_code", false); }
         }
+        public AvalaraSaleTypeEnum? AvalaraSaleType 
+        {
+            get { return GetEnum<AvalaraSaleTypeEnum>("avalara_sale_type", false); }
+        }
+        public int? AvalaraTransactionType 
+        {
+            get { return GetValue<int?>("avalara_transaction_type", false); }
+        }
+        public int? AvalaraServiceType 
+        {
+            get { return GetValue<int?>("avalara_service_type", false); }
+        }
         public string Sku 
         {
             get { return GetValue<string>("sku", false); }
@@ -263,6 +275,21 @@ namespace ChargeBee.Models
             public CreateRequest TaxProfileId(string taxProfileId) 
             {
                 m_params.AddOpt("tax_profile_id", taxProfileId);
+                return this;
+            }
+            public CreateRequest AvalaraSaleType(ChargeBee.Models.Enums.AvalaraSaleTypeEnum avalaraSaleType) 
+            {
+                m_params.AddOpt("avalara_sale_type", avalaraSaleType);
+                return this;
+            }
+            public CreateRequest AvalaraTransactionType(int avalaraTransactionType) 
+            {
+                m_params.AddOpt("avalara_transaction_type", avalaraTransactionType);
+                return this;
+            }
+            public CreateRequest AvalaraServiceType(int avalaraServiceType) 
+            {
+                m_params.AddOpt("avalara_service_type", avalaraServiceType);
                 return this;
             }
             public CreateRequest TaxCode(string taxCode) 
@@ -412,6 +439,21 @@ namespace ChargeBee.Models
             public UpdateRequest TaxProfileId(string taxProfileId) 
             {
                 m_params.AddOpt("tax_profile_id", taxProfileId);
+                return this;
+            }
+            public UpdateRequest AvalaraSaleType(ChargeBee.Models.Enums.AvalaraSaleTypeEnum avalaraSaleType) 
+            {
+                m_params.AddOpt("avalara_sale_type", avalaraSaleType);
+                return this;
+            }
+            public UpdateRequest AvalaraTransactionType(int avalaraTransactionType) 
+            {
+                m_params.AddOpt("avalara_transaction_type", avalaraTransactionType);
+                return this;
+            }
+            public UpdateRequest AvalaraServiceType(int avalaraServiceType) 
+            {
+                m_params.AddOpt("avalara_service_type", avalaraServiceType);
                 return this;
             }
             public UpdateRequest TaxCode(string taxCode) 

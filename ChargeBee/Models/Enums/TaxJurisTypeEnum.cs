@@ -13,6 +13,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "country")]
          Country,
 
+        [EnumMember(Value = "federal")]
+         Federal,
+
         [EnumMember(Value = "state")]
          State,
 
@@ -24,6 +27,9 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "special")]
          Special,
+
+        [EnumMember(Value = "unincorporated")]
+         Unincorporated,
 
         [EnumMember(Value = "other")]
          Other,

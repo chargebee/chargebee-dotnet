@@ -50,8 +50,19 @@ namespace ChargeBee.Internal
 
 			return JToken.Parse(m_jobj[key].ToString());
 		}
-		
-		public T GetEnum<T>(string key, bool required = true)
+
+        public JArray GetJArray(String key, bool required = true)
+        {
+            if (required)
+                ThrowIfKeyMissed(key);
+
+            if (m_jobj[key] == null)
+                return null;
+
+            return JArray.Parse(m_jobj[key].ToString());
+        }
+
+        public T GetEnum<T>(string key, bool required = true)
 		{
 			string value = GetValue<string>(key, required);
 			if (String.IsNullOrEmpty(value)) return default(T);

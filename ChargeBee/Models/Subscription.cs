@@ -875,6 +875,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[registered_for_gst]", customerRegisteredForGst);
                 return this;
             }
+            public CreateRequest CustomerExemptionDetails(JArray customerExemptionDetails) 
+            {
+                m_params.AddOpt("customer[exemption_details]", customerExemptionDetails);
+                return this;
+            }
+            public CreateRequest CustomerCustomerType(ChargeBee.Models.Enums.CustomerTypeEnum customerCustomerType) 
+            {
+                m_params.AddOpt("customer[customer_type]", customerCustomerType);
+                return this;
+            }
             public CreateRequest AddonId(int index, string addonId) 
             {
                 m_params.AddOpt("addons[id][" + index + "]", addonId);
@@ -1820,6 +1830,21 @@ namespace ChargeBee.Models
                 m_params.Add("description", description);
                 return this;
             }
+            public AddChargeAtTermEndRequest AvalaraSaleType(ChargeBee.Models.Enums.AvalaraSaleTypeEnum avalaraSaleType) 
+            {
+                m_params.AddOpt("avalara_sale_type", avalaraSaleType);
+                return this;
+            }
+            public AddChargeAtTermEndRequest AvalaraTransactionType(int avalaraTransactionType) 
+            {
+                m_params.AddOpt("avalara_transaction_type", avalaraTransactionType);
+                return this;
+            }
+            public AddChargeAtTermEndRequest AvalaraServiceType(int avalaraServiceType) 
+            {
+                m_params.AddOpt("avalara_service_type", avalaraServiceType);
+                return this;
+            }
         }
         public class ChargeAddonAtTermEndRequest : EntityRequest<ChargeAddonAtTermEndRequest> 
         {
@@ -2032,6 +2057,11 @@ namespace ChargeBee.Models
             public ImportSubscriptionRequest CustomerPhone(string customerPhone) 
             {
                 m_params.AddOpt("customer[phone]", customerPhone);
+                return this;
+            }
+            public ImportSubscriptionRequest CustomerCustomerType(ChargeBee.Models.Enums.CustomerTypeEnum customerCustomerType) 
+            {
+                m_params.AddOpt("customer[customer_type]", customerCustomerType);
                 return this;
             }
             public ImportSubscriptionRequest CustomerAutoCollection(ChargeBee.Models.Enums.AutoCollectionEnum customerAutoCollection) 

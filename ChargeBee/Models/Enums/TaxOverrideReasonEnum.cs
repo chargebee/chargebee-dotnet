@@ -16,5 +16,8 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "customer_exempt")]
          CustomerExempt,
 
+        [EnumMember(Value = "export")]
+         Export,
+
     }
 }

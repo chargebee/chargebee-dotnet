@@ -74,6 +74,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("payment_sources", CheckNull(id), "delete");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
+        public static EntityRequest<Type> DeleteLocal(string id)
+        {
+            string url = ApiUtil.BuildUrl("payment_sources", CheckNull(id), "delete_local");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties

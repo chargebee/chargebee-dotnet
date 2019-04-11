@@ -190,6 +190,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("created_from_ip", false); }
         }
+        public JArray ExemptionDetails 
+        {
+            get { return GetJArray("exemption_details", false); }
+        }
         public TaxabilityEnum? Taxability 
         {
             get { return GetEnum<TaxabilityEnum>("taxability", false); }
@@ -311,6 +315,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool?>("registered_for_gst", false); }
         }
+        public CustomerTypeEnum? CustomerType 
+        {
+            get { return GetEnum<CustomerTypeEnum>("customer_type", false); }
+        }
         
         #endregion
         
@@ -385,6 +393,16 @@ namespace ChargeBee.Models
             public CreateRequest Taxability(ChargeBee.Models.Enums.TaxabilityEnum taxability) 
             {
                 m_params.AddOpt("taxability", taxability);
+                return this;
+            }
+            public CreateRequest ExemptionDetails(JArray exemptionDetails) 
+            {
+                m_params.AddOpt("exemption_details", exemptionDetails);
+                return this;
+            }
+            public CreateRequest CustomerType(ChargeBee.Models.Enums.CustomerTypeEnum customerType) 
+            {
+                m_params.AddOpt("customer_type", customerType);
                 return this;
             }
             public CreateRequest Locale(string locale) 
@@ -804,6 +822,16 @@ namespace ChargeBee.Models
             public UpdateRequest Taxability(ChargeBee.Models.Enums.TaxabilityEnum taxability) 
             {
                 m_params.AddOpt("taxability", taxability);
+                return this;
+            }
+            public UpdateRequest ExemptionDetails(JArray exemptionDetails) 
+            {
+                m_params.AddOpt("exemption_details", exemptionDetails);
+                return this;
+            }
+            public UpdateRequest CustomerType(ChargeBee.Models.Enums.CustomerTypeEnum customerType) 
+            {
+                m_params.AddOpt("customer_type", customerType);
                 return this;
             }
             public UpdateRequest Locale(string locale) 

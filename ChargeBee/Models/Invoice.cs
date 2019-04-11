@@ -482,6 +482,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("charges[description][" + index + "]", chargeDescription);
                 return this;
             }
+            public CreateRequest ChargeAvalaraSaleType(int index, ChargeBee.Models.Enums.AvalaraSaleTypeEnum chargeAvalaraSaleType) 
+            {
+                m_params.AddOpt("charges[avalara_sale_type][" + index + "]", chargeAvalaraSaleType);
+                return this;
+            }
+            public CreateRequest ChargeAvalaraTransactionType(int index, int chargeAvalaraTransactionType) 
+            {
+                m_params.AddOpt("charges[avalara_transaction_type][" + index + "]", chargeAvalaraTransactionType);
+                return this;
+            }
+            public CreateRequest ChargeAvalaraServiceType(int index, int chargeAvalaraServiceType) 
+            {
+                m_params.AddOpt("charges[avalara_service_type][" + index + "]", chargeAvalaraServiceType);
+                return this;
+            }
         }
         public class ChargeRequest : EntityRequest<ChargeRequest> 
         {
@@ -518,6 +533,21 @@ namespace ChargeBee.Models
             public ChargeRequest Coupon(string coupon) 
             {
                 m_params.AddOpt("coupon", coupon);
+                return this;
+            }
+            public ChargeRequest AvalaraSaleType(ChargeBee.Models.Enums.AvalaraSaleTypeEnum avalaraSaleType) 
+            {
+                m_params.AddOpt("avalara_sale_type", avalaraSaleType);
+                return this;
+            }
+            public ChargeRequest AvalaraTransactionType(int avalaraTransactionType) 
+            {
+                m_params.AddOpt("avalara_transaction_type", avalaraTransactionType);
+                return this;
+            }
+            public ChargeRequest AvalaraServiceType(int avalaraServiceType) 
+            {
+                m_params.AddOpt("avalara_service_type", avalaraServiceType);
                 return this;
             }
             public ChargeRequest PoNumber(string poNumber) 
@@ -1169,6 +1199,21 @@ namespace ChargeBee.Models
                 m_params.Add("description", description);
                 return this;
             }
+            public AddChargeRequest AvalaraSaleType(ChargeBee.Models.Enums.AvalaraSaleTypeEnum avalaraSaleType) 
+            {
+                m_params.AddOpt("avalara_sale_type", avalaraSaleType);
+                return this;
+            }
+            public AddChargeRequest AvalaraTransactionType(int avalaraTransactionType) 
+            {
+                m_params.AddOpt("avalara_transaction_type", avalaraTransactionType);
+                return this;
+            }
+            public AddChargeRequest AvalaraServiceType(int avalaraServiceType) 
+            {
+                m_params.AddOpt("avalara_service_type", avalaraServiceType);
+                return this;
+            }
             public AddChargeRequest LineItemDateFrom(long lineItemDateFrom) 
             {
                 m_params.AddOpt("line_item[date_from]", lineItemDateFrom);
@@ -1801,6 +1846,18 @@ namespace ChargeBee.Models
 
             public double TaxRate() {
                 return GetValue<double>("tax_rate", true);
+            }
+
+            public bool? IsPartialTaxApplied() {
+                return GetValue<bool?>("is_partial_tax_applied", false);
+            }
+
+            public bool? IsNonComplianceTax() {
+                return GetValue<bool?>("is_non_compliance_tax", false);
+            }
+
+            public int TaxableAmount() {
+                return GetValue<int>("taxable_amount", true);
             }
 
             public int TaxAmount() {

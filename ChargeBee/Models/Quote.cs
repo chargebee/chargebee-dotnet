@@ -790,6 +790,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("charges[description][" + index + "]", chargeDescription);
                 return this;
             }
+            public CreateForOnetimeChargesRequest ChargeAvalaraSaleType(int index, ChargeBee.Models.Enums.AvalaraSaleTypeEnum chargeAvalaraSaleType) 
+            {
+                m_params.AddOpt("charges[avalara_sale_type][" + index + "]", chargeAvalaraSaleType);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest ChargeAvalaraTransactionType(int index, int chargeAvalaraTransactionType) 
+            {
+                m_params.AddOpt("charges[avalara_transaction_type][" + index + "]", chargeAvalaraTransactionType);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest ChargeAvalaraServiceType(int index, int chargeAvalaraServiceType) 
+            {
+                m_params.AddOpt("charges[avalara_service_type][" + index + "]", chargeAvalaraServiceType);
+                return this;
+            }
         }
         public class UpdateStatusRequest : EntityRequest<UpdateStatusRequest> 
         {
@@ -1049,6 +1064,18 @@ namespace ChargeBee.Models
 
             public double TaxRate() {
                 return GetValue<double>("tax_rate", true);
+            }
+
+            public bool? IsPartialTaxApplied() {
+                return GetValue<bool?>("is_partial_tax_applied", false);
+            }
+
+            public bool? IsNonComplianceTax() {
+                return GetValue<bool?>("is_non_compliance_tax", false);
+            }
+
+            public int TaxableAmount() {
+                return GetValue<int>("taxable_amount", true);
             }
 
             public int TaxAmount() {

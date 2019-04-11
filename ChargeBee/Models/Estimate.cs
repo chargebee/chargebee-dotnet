@@ -282,6 +282,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[exempt_number]", customerExemptNumber);
                 return this;
             }
+            public CreateSubscriptionRequest CustomerExemptionDetails(JArray customerExemptionDetails) 
+            {
+                m_params.AddOpt("customer[exemption_details]", customerExemptionDetails);
+                return this;
+            }
+            public CreateSubscriptionRequest CustomerCustomerType(ChargeBee.Models.Enums.CustomerTypeEnum customerCustomerType) 
+            {
+                m_params.AddOpt("customer[customer_type]", customerCustomerType);
+                return this;
+            }
             public CreateSubscriptionRequest AddonId(int index, string addonId) 
             {
                 m_params.AddOpt("addons[id][" + index + "]", addonId);

@@ -491,6 +491,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer_notes", customerNotes);
                 return this;
             }
+            public CancelRequest CancelledAt(long cancelledAt) 
+            {
+                m_params.AddOpt("cancelled_at", cancelledAt);
+                return this;
+            }
             public CancelRequest CreditNoteTotal(int creditNoteTotal) 
             {
                 m_params.AddOpt("credit_note[total]", creditNoteTotal);
@@ -587,6 +592,10 @@ namespace ChargeBee.Models
             }
             public OrderListRequest SortByCreatedAt(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");
+                return this;
+            }
+            public OrderListRequest SortByUpdatedAt(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","updated_at");
                 return this;
             }
         }
@@ -931,6 +940,18 @@ namespace ChargeBee.Models
 
             public double TaxRate() {
                 return GetValue<double>("tax_rate", true);
+            }
+
+            public bool? IsPartialTaxApplied() {
+                return GetValue<bool?>("is_partial_tax_applied", false);
+            }
+
+            public bool? IsNonComplianceTax() {
+                return GetValue<bool?>("is_non_compliance_tax", false);
+            }
+
+            public int TaxableAmount() {
+                return GetValue<int>("taxable_amount", true);
             }
 
             public int TaxAmount() {
