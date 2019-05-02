@@ -16,7 +16,7 @@ Use NuGet: [NuGet](https://nuget.org) is a package manager for Visual Studio.
 
 To install the ChargeBee .Net Client Library, run the following command in the Package Manager Console:
 	
-	$ Install-Package ChargeBee -Vesrion 2.x.x
+	$ Install-Package ChargeBee -Version 2.x.x
 
 If you would prefer to build it from source, checkout latest version of 2.x.x release tag:
   
