@@ -183,6 +183,10 @@ namespace ChargeBee.Models
                 return GetValue<string>("entity_id", false);
             }
 
+            public string CustomerId() {
+                return GetValue<string>("customer_id", false);
+            }
+
         }
         public class CreditNoteEstimateDiscount : Resource
         {

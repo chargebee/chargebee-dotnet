@@ -232,6 +232,15 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "virtual_bank_account_deleted")]
          VirtualBankAccountDeleted,
 
+        [EnumMember(Value = "token_created")]
+         TokenCreated,
+
+        [EnumMember(Value = "token_consumed")]
+         TokenConsumed,
+
+        [EnumMember(Value = "token_expired")]
+         TokenExpired,
+
         [EnumMember(Value = "unbilled_charges_created")]
          UnbilledChargesCreated,
 
@@ -288,6 +297,12 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "gift_cancelled")]
          GiftCancelled,
+
+        [EnumMember(Value = "hierarchy_created")]
+         HierarchyCreated,
+
+        [EnumMember(Value = "hierarchy_deleted")]
+         HierarchyDeleted,
 
     }
 }

@@ -839,6 +839,8 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "day")]
+            Day,
             [EnumMember(Value = "week")]
             Week,
             [EnumMember(Value = "month")]
@@ -911,6 +913,8 @@ namespace ChargeBee.Models
             Month,
             [EnumMember(Value = "week")]
             Week,
+            [EnumMember(Value = "day")]
+            Day,
 
         }
 

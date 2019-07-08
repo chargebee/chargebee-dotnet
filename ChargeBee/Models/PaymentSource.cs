@@ -29,6 +29,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("payment_sources", "create_using_permanent_token");
             return new CreateUsingPermanentTokenRequest(url, HttpMethod.POST);
         }
+        public static CreateUsingTokenRequest CreateUsingToken()
+        {
+            string url = ApiUtil.BuildUrl("payment_sources", "create_using_token");
+            return new CreateUsingTokenRequest(url, HttpMethod.POST);
+        }
         public static CreateCardRequest CreateCard()
         {
             string url = ApiUtil.BuildUrl("payment_sources", "create_card");
@@ -227,6 +232,29 @@ namespace ChargeBee.Models
             public CreateUsingPermanentTokenRequest ReplacePrimaryPaymentSource(bool replacePrimaryPaymentSource) 
             {
                 m_params.AddOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
+                return this;
+            }
+        }
+        public class CreateUsingTokenRequest : EntityRequest<CreateUsingTokenRequest> 
+        {
+            public CreateUsingTokenRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CreateUsingTokenRequest CustomerId(string customerId) 
+            {
+                m_params.Add("customer_id", customerId);
+                return this;
+            }
+            public CreateUsingTokenRequest ReplacePrimaryPaymentSource(bool replacePrimaryPaymentSource) 
+            {
+                m_params.AddOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
+                return this;
+            }
+            public CreateUsingTokenRequest TokenId(string tokenId) 
+            {
+                m_params.Add("token_id", tokenId);
                 return this;
             }
         }

@@ -127,6 +127,21 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "clear_personal_data");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
+        public static RelationshipsRequest Relationships(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "relationships");
+            return new RelationshipsRequest(url, HttpMethod.POST);
+        }
+        public static EntityRequest<Type> DeleteRelationship(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "delete_relationship");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
+        public static HierarchyRequest Hierarchy(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "hierarchy");
+            return new HierarchyRequest(url, HttpMethod.GET);
+        }
         #endregion
         
         #region Properties
@@ -315,9 +330,17 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool?>("registered_for_gst", false); }
         }
+        public bool? BusinessCustomerWithoutVatNumber 
+        {
+            get { return GetValue<bool?>("business_customer_without_vat_number", false); }
+        }
         public CustomerTypeEnum? CustomerType 
         {
             get { return GetEnum<CustomerTypeEnum>("customer_type", false); }
+        }
+        public CustomerRelationship Relationship 
+        {
+            get { return GetSubResource<CustomerRelationship>("relationship"); }
         }
         
         #endregion
@@ -428,6 +451,11 @@ namespace ChargeBee.Models
             public CreateRequest ConsolidatedInvoicing(bool consolidatedInvoicing) 
             {
                 m_params.AddOpt("consolidated_invoicing", consolidatedInvoicing);
+                return this;
+            }
+            public CreateRequest TokenId(string tokenId) 
+            {
+                m_params.AddOpt("token_id", tokenId);
                 return this;
             }
             [Obsolete]
@@ -766,6 +794,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","updated_at");
                 return this;
             }
+            public StringFilter<CustomerListRequest> RelationshipParentId() 
+            {
+                return new StringFilter<CustomerListRequest>("relationship[parent_id]", this);        
+            }
+
+            public StringFilter<CustomerListRequest> RelationshipPaymentOwnerId() 
+            {
+                return new StringFilter<CustomerListRequest>("relationship[payment_owner_id]", this);        
+            }
+
+            public StringFilter<CustomerListRequest> RelationshipInvoiceOwnerId() 
+            {
+                return new StringFilter<CustomerListRequest>("relationship[invoice_owner_id]", this);        
+            }
+
         }
         public class UpdateRequest : EntityRequest<UpdateRequest> 
         {
@@ -1288,6 +1331,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_source_id", paymentSourceId);
                 return this;
             }
+            public CollectPaymentRequest TokenId(string tokenId) 
+            {
+                m_params.AddOpt("token_id", tokenId);
+                return this;
+            }
             public CollectPaymentRequest ReplacePrimaryPaymentSource(bool replacePrimaryPaymentSource) 
             {
                 m_params.AddOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
@@ -1473,6 +1521,42 @@ namespace ChargeBee.Models
             public MergeRequest ToCustomerId(string toCustomerId) 
             {
                 m_params.Add("to_customer_id", toCustomerId);
+                return this;
+            }
+        }
+        public class RelationshipsRequest : EntityRequest<RelationshipsRequest> 
+        {
+            public RelationshipsRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public RelationshipsRequest ParentId(string parentId) 
+            {
+                m_params.AddOpt("parent_id", parentId);
+                return this;
+            }
+            public RelationshipsRequest PaymentOwnerId(string paymentOwnerId) 
+            {
+                m_params.AddOpt("payment_owner_id", paymentOwnerId);
+                return this;
+            }
+            public RelationshipsRequest InvoiceOwnerId(string invoiceOwnerId) 
+            {
+                m_params.AddOpt("invoice_owner_id", invoiceOwnerId);
+                return this;
+            }
+        }
+        public class HierarchyRequest : EntityRequest<HierarchyRequest> 
+        {
+            public HierarchyRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public HierarchyRequest HierarchyOperationType(ChargeBee.Models.Enums.HierarchyOperationTypeEnum hierarchyOperationType) 
+            {
+                m_params.AddOpt("hierarchy_operation_type", hierarchyOperationType);
                 return this;
             }
         }
@@ -1785,6 +1869,22 @@ namespace ChargeBee.Models
 			[Obsolete]
             public string BalanceCurrencyCode() {
                 return GetValue<string>("balance_currency_code", true);
+            }
+
+        }
+        public class CustomerRelationship : Resource
+        {
+
+            public string ParentId() {
+                return GetValue<string>("parent_id", false);
+            }
+
+            public string PaymentOwnerId() {
+                return GetValue<string>("payment_owner_id", true);
+            }
+
+            public string InvoiceOwnerId() {
+                return GetValue<string>("invoice_owner_id", true);
             }
 
         }

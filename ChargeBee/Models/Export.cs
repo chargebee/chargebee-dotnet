@@ -172,6 +172,10 @@ namespace ChargeBee.Models
                 m_params.AddOpt("include_discounts", includeDiscounts);
                 return this;
             }
+            public StringFilter<RevenueRecognitionRequest> PaymentOwner() 
+            {
+                return new StringFilter<RevenueRecognitionRequest>("payment_owner", this).SupportsMultiOperators(true);        
+            }
             public StringFilter<RevenueRecognitionRequest> InvoiceId() 
             {
                 return new StringFilter<RevenueRecognitionRequest>("invoice[id]", this).SupportsMultiOperators(true);        
@@ -347,6 +351,21 @@ namespace ChargeBee.Models
                 return new TimestampFilter<RevenueRecognitionRequest>("customer[updated_at]", this);        
             }
 
+            public StringFilter<RevenueRecognitionRequest> RelationshipParentId() 
+            {
+                return new StringFilter<RevenueRecognitionRequest>("relationship[parent_id]", this);        
+            }
+
+            public StringFilter<RevenueRecognitionRequest> RelationshipPaymentOwnerId() 
+            {
+                return new StringFilter<RevenueRecognitionRequest>("relationship[payment_owner_id]", this);        
+            }
+
+            public StringFilter<RevenueRecognitionRequest> RelationshipInvoiceOwnerId() 
+            {
+                return new StringFilter<RevenueRecognitionRequest>("relationship[invoice_owner_id]", this);        
+            }
+
         }
         public class DeferredRevenueRequest : EntityRequest<DeferredRevenueRequest> 
         {
@@ -389,6 +408,10 @@ namespace ChargeBee.Models
             {
                 m_params.AddOpt("include_discounts", includeDiscounts);
                 return this;
+            }
+            public StringFilter<DeferredRevenueRequest> PaymentOwner() 
+            {
+                return new StringFilter<DeferredRevenueRequest>("payment_owner", this).SupportsMultiOperators(true);        
             }
             public StringFilter<DeferredRevenueRequest> InvoiceId() 
             {
@@ -563,6 +586,21 @@ namespace ChargeBee.Models
             public TimestampFilter<DeferredRevenueRequest> CustomerUpdatedAt() 
             {
                 return new TimestampFilter<DeferredRevenueRequest>("customer[updated_at]", this);        
+            }
+
+            public StringFilter<DeferredRevenueRequest> RelationshipParentId() 
+            {
+                return new StringFilter<DeferredRevenueRequest>("relationship[parent_id]", this);        
+            }
+
+            public StringFilter<DeferredRevenueRequest> RelationshipPaymentOwnerId() 
+            {
+                return new StringFilter<DeferredRevenueRequest>("relationship[payment_owner_id]", this);        
+            }
+
+            public StringFilter<DeferredRevenueRequest> RelationshipInvoiceOwnerId() 
+            {
+                return new StringFilter<DeferredRevenueRequest>("relationship[invoice_owner_id]", this);        
             }
 
         }
@@ -782,6 +820,21 @@ namespace ChargeBee.Models
                 return new TimestampFilter<CustomersRequest>("customer[updated_at]", this);        
             }
 
+            public StringFilter<CustomersRequest> RelationshipParentId() 
+            {
+                return new StringFilter<CustomersRequest>("relationship[parent_id]", this);        
+            }
+
+            public StringFilter<CustomersRequest> RelationshipPaymentOwnerId() 
+            {
+                return new StringFilter<CustomersRequest>("relationship[payment_owner_id]", this);        
+            }
+
+            public StringFilter<CustomersRequest> RelationshipInvoiceOwnerId() 
+            {
+                return new StringFilter<CustomersRequest>("relationship[invoice_owner_id]", this);        
+            }
+
         }
         public class SubscriptionsRequest : EntityRequest<SubscriptionsRequest> 
         {
@@ -858,6 +911,10 @@ namespace ChargeBee.Models
             {
             }
 
+            public StringFilter<InvoicesRequest> PaymentOwner() 
+            {
+                return new StringFilter<InvoicesRequest>("payment_owner", this).SupportsMultiOperators(true);        
+            }
             public StringFilter<InvoicesRequest> InvoiceId() 
             {
                 return new StringFilter<InvoicesRequest>("invoice[id]", this).SupportsMultiOperators(true);        

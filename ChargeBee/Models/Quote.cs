@@ -338,6 +338,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
                 return this;
             }
+            public CreateSubForCustomerQuoteRequest EventBasedAddonServicePeriodInDays(int index, int eventBasedAddonServicePeriodInDays) 
+            {
+                m_params.AddOpt("event_based_addons[service_period_in_days][" + index + "]", eventBasedAddonServicePeriodInDays);
+                return this;
+            }
             public CreateSubForCustomerQuoteRequest EventBasedAddonOnEvent(int index, ChargeBee.Models.Enums.OnEventEnum eventBasedAddonOnEvent) 
             {
                 m_params.AddOpt("event_based_addons[on_event][" + index + "]", eventBasedAddonOnEvent);
@@ -647,6 +652,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
                 return this;
             }
+            public UpdateSubscriptionQuoteRequest EventBasedAddonServicePeriodInDays(int index, int eventBasedAddonServicePeriodInDays) 
+            {
+                m_params.AddOpt("event_based_addons[service_period_in_days][" + index + "]", eventBasedAddonServicePeriodInDays);
+                return this;
+            }
             public UpdateSubscriptionQuoteRequest EventBasedAddonChargeOn(int index, ChargeBee.Models.Enums.ChargeOnEnum eventBasedAddonChargeOn) 
             {
                 m_params.AddOpt("event_based_addons[charge_on][" + index + "]", eventBasedAddonChargeOn);
@@ -780,6 +790,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
                 return this;
             }
+            public CreateForOnetimeChargesRequest AddonDateFrom(int index, long addonDateFrom) 
+            {
+                m_params.AddOpt("addons[date_from][" + index + "]", addonDateFrom);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest AddonDateTo(int index, long addonDateTo) 
+            {
+                m_params.AddOpt("addons[date_to][" + index + "]", addonDateTo);
+                return this;
+            }
             public CreateForOnetimeChargesRequest ChargeAmount(int index, int chargeAmount) 
             {
                 m_params.AddOpt("charges[amount][" + index + "]", chargeAmount);
@@ -803,6 +823,16 @@ namespace ChargeBee.Models
             public CreateForOnetimeChargesRequest ChargeAvalaraServiceType(int index, int chargeAvalaraServiceType) 
             {
                 m_params.AddOpt("charges[avalara_service_type][" + index + "]", chargeAvalaraServiceType);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest ChargeDateFrom(int index, long chargeDateFrom) 
+            {
+                m_params.AddOpt("charges[date_from][" + index + "]", chargeDateFrom);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest ChargeDateTo(int index, long chargeDateTo) 
+            {
+                m_params.AddOpt("charges[date_to][" + index + "]", chargeDateTo);
                 return this;
             }
         }
@@ -966,6 +996,10 @@ namespace ChargeBee.Models
 
             public string EntityId() {
                 return GetValue<string>("entity_id", false);
+            }
+
+            public string CustomerId() {
+                return GetValue<string>("customer_id", false);
             }
 
         }

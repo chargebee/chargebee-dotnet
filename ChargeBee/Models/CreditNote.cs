@@ -147,6 +147,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int?>("round_off_amount", false); }
         }
+        public int? FractionalCorrection 
+        {
+            get { return GetValue<int?>("fractional_correction", false); }
+        }
         public List<CreditNoteLineItem> LineItems 
         {
             get { return GetResourceList<CreditNoteLineItem>("line_items"); }
@@ -224,6 +228,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer_notes", customerNotes);
                 return this;
             }
+            public CreateRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
+                return this;
+            }
             public CreateRequest LineItemReferenceLineItemId(int index, string lineItemReferenceLineItemId) 
             {
                 m_params.Add("line_items[reference_line_item_id][" + index + "]", lineItemReferenceLineItemId);
@@ -242,6 +251,16 @@ namespace ChargeBee.Models
             public CreateRequest LineItemAmount(int index, int lineItemAmount) 
             {
                 m_params.AddOpt("line_items[amount][" + index + "]", lineItemAmount);
+                return this;
+            }
+            public CreateRequest LineItemDateFrom(int index, long lineItemDateFrom) 
+            {
+                m_params.AddOpt("line_items[date_from][" + index + "]", lineItemDateFrom);
+                return this;
+            }
+            public CreateRequest LineItemDateTo(int index, long lineItemDateTo) 
+            {
+                m_params.AddOpt("line_items[date_to][" + index + "]", lineItemDateTo);
                 return this;
             }
             public CreateRequest LineItemDescription(int index, string lineItemDescription) 
@@ -542,6 +561,10 @@ namespace ChargeBee.Models
 
             public string EntityId() {
                 return GetValue<string>("entity_id", false);
+            }
+
+            public string CustomerId() {
+                return GetValue<string>("customer_id", false);
             }
 
         }

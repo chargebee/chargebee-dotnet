@@ -34,10 +34,10 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", "charge_addon");
             return new ChargeAddonRequest(url, HttpMethod.POST);
         }
-        public static EntityRequest<Type> StopDunning(string id)
+        public static StopDunningRequest StopDunning(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "stop_dunning");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            return new StopDunningRequest(url, HttpMethod.POST);
         }
         public static ImportInvoiceRequest ImportInvoice()
         {
@@ -91,10 +91,10 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "add_addon_charge");
             return new AddAddonChargeRequest(url, HttpMethod.POST);
         }
-        public static EntityRequest<Type> Close(string id)
+        public static CloseRequest Close(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "close");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            return new CloseRequest(url, HttpMethod.POST);
         }
         public static CollectPaymentRequest CollectPayment(string id)
         {
@@ -337,6 +337,10 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<InvoiceBillingAddress>("billing_address"); }
         }
+        public string PaymentOwner 
+        {
+            get { return GetValue<string>("payment_owner", false); }
+        }
         public bool Deleted 
         {
             get { return GetValue<bool>("deleted", true); }
@@ -472,6 +476,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
                 return this;
             }
+            public CreateRequest AddonDateFrom(int index, long addonDateFrom) 
+            {
+                m_params.AddOpt("addons[date_from][" + index + "]", addonDateFrom);
+                return this;
+            }
+            public CreateRequest AddonDateTo(int index, long addonDateTo) 
+            {
+                m_params.AddOpt("addons[date_to][" + index + "]", addonDateTo);
+                return this;
+            }
             public CreateRequest ChargeAmount(int index, int chargeAmount) 
             {
                 m_params.AddOpt("charges[amount][" + index + "]", chargeAmount);
@@ -495,6 +509,16 @@ namespace ChargeBee.Models
             public CreateRequest ChargeAvalaraServiceType(int index, int chargeAvalaraServiceType) 
             {
                 m_params.AddOpt("charges[avalara_service_type][" + index + "]", chargeAvalaraServiceType);
+                return this;
+            }
+            public CreateRequest ChargeDateFrom(int index, long chargeDateFrom) 
+            {
+                m_params.AddOpt("charges[date_from][" + index + "]", chargeDateFrom);
+                return this;
+            }
+            public CreateRequest ChargeDateTo(int index, long chargeDateTo) 
+            {
+                m_params.AddOpt("charges[date_to][" + index + "]", chargeDateTo);
                 return this;
             }
         }
@@ -528,6 +552,16 @@ namespace ChargeBee.Models
             public ChargeRequest Description(string description) 
             {
                 m_params.Add("description", description);
+                return this;
+            }
+            public ChargeRequest DateFrom(long dateFrom) 
+            {
+                m_params.AddOpt("date_from", dateFrom);
+                return this;
+            }
+            public ChargeRequest DateTo(long dateTo) 
+            {
+                m_params.AddOpt("date_to", dateTo);
                 return this;
             }
             public ChargeRequest Coupon(string coupon) 
@@ -593,6 +627,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addon_unit_price", addonUnitPrice);
                 return this;
             }
+            public ChargeAddonRequest DateFrom(long dateFrom) 
+            {
+                m_params.AddOpt("date_from", dateFrom);
+                return this;
+            }
+            public ChargeAddonRequest DateTo(long dateTo) 
+            {
+                m_params.AddOpt("date_to", dateTo);
+                return this;
+            }
             public ChargeAddonRequest Coupon(string coupon) 
             {
                 m_params.AddOpt("coupon", coupon);
@@ -606,6 +650,19 @@ namespace ChargeBee.Models
             public ChargeAddonRequest PaymentSourceId(string paymentSourceId) 
             {
                 m_params.AddOpt("payment_source_id", paymentSourceId);
+                return this;
+            }
+        }
+        public class StopDunningRequest : EntityRequest<StopDunningRequest> 
+        {
+            public StopDunningRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public StopDunningRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
                 return this;
             }
         }
@@ -1059,6 +1116,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public ApplyPaymentsRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
+                return this;
+            }
             public ApplyPaymentsRequest TransactionId(int index, string transactionId) 
             {
                 m_params.AddOpt("transactions[id][" + index + "]", transactionId);
@@ -1072,6 +1134,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public ApplyCreditsRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
+                return this;
+            }
             public ApplyCreditsRequest CreditNoteId(int index, string creditNoteId) 
             {
                 m_params.AddOpt("credit_notes[id][" + index + "]", creditNoteId);
@@ -1152,6 +1219,10 @@ namespace ChargeBee.Models
             {
                 return new EnumFilter<Invoice.DunningStatusEnum, InvoiceListRequest>("dunning_status", this).SupportsPresenceOperator(true);        
             }
+            public StringFilter<InvoiceListRequest> PaymentOwner() 
+            {
+                return new StringFilter<InvoiceListRequest>("payment_owner", this).SupportsMultiOperators(true);        
+            }
             public TimestampFilter<InvoiceListRequest> UpdatedAt() 
             {
                 return new TimestampFilter<InvoiceListRequest>("updated_at", this);        
@@ -1214,6 +1285,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("avalara_service_type", avalaraServiceType);
                 return this;
             }
+            public AddChargeRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
+                return this;
+            }
             public AddChargeRequest LineItemDateFrom(long lineItemDateFrom) 
             {
                 m_params.AddOpt("line_item[date_from]", lineItemDateFrom);
@@ -1247,6 +1323,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addon_unit_price", addonUnitPrice);
                 return this;
             }
+            public AddAddonChargeRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
+                return this;
+            }
             public AddAddonChargeRequest LineItemDateFrom(long lineItemDateFrom) 
             {
                 m_params.AddOpt("line_item[date_from]", lineItemDateFrom);
@@ -1255,6 +1336,19 @@ namespace ChargeBee.Models
             public AddAddonChargeRequest LineItemDateTo(long lineItemDateTo) 
             {
                 m_params.AddOpt("line_item[date_to]", lineItemDateTo);
+                return this;
+            }
+        }
+        public class CloseRequest : EntityRequest<CloseRequest> 
+        {
+            public CloseRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CloseRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
                 return this;
             }
         }
@@ -1278,6 +1372,11 @@ namespace ChargeBee.Models
             public CollectPaymentRequest PaymentSourceId(string paymentSourceId) 
             {
                 m_params.AddOpt("payment_source_id", paymentSourceId);
+                return this;
+            }
+            public CollectPaymentRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
                 return this;
             }
         }
@@ -1469,6 +1568,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("comment", comment);
                 return this;
             }
+            public DeleteRequest ClaimCredits(bool claimCredits) 
+            {
+                m_params.AddOpt("claim_credits", claimCredits);
+                return this;
+            }
         }
         public class UpdateDetailsRequest : EntityRequest<UpdateDetailsRequest> 
         {
@@ -1485,6 +1589,11 @@ namespace ChargeBee.Models
             public UpdateDetailsRequest PoNumber(string poNumber) 
             {
                 m_params.AddOpt("po_number", poNumber);
+                return this;
+            }
+            public UpdateDetailsRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
                 return this;
             }
             public UpdateDetailsRequest BillingAddressFirstName(string billingAddressFirstName) 
@@ -1748,6 +1857,10 @@ namespace ChargeBee.Models
 
             public string EntityId() {
                 return GetValue<string>("entity_id", false);
+            }
+
+            public string CustomerId() {
+                return GetValue<string>("customer_id", false);
             }
 
         }

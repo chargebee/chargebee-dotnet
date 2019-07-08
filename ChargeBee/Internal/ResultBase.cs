@@ -41,9 +41,17 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<Customer>("customer"); }
         }
+        public Hierarchy Hierarchy
+        {
+            get {  return GetResource<Hierarchy>("hierarchy"); }
+        }
         public Contact Contact
         {
             get {  return GetResource<Contact>("contact"); }
+        }
+        public Token Token
+        {
+            get {  return GetResource<Token>("token"); }
         }
         public PaymentSource PaymentSource
         {
@@ -166,6 +174,11 @@ namespace ChargeBee.Internal
         public List<CreditNote> CreditNotes
         {
             get {  return (List<CreditNote>)GetResourceList<CreditNote>("credit_notes", "credit_note"); }
+        }
+
+        public List<Hierarchy> Hierarchies
+        {
+            get {  return (List<Hierarchy>)GetResourceList<Hierarchy>("hierarchies", "hierarchy"); }
         }
 
         public List<Invoice> Invoices
