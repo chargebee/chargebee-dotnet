@@ -342,6 +342,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[ip_address]", cardIpAddress);
                 return this;
             }
+            public CreateRequest PaymentIntentGatewayAccountId(string paymentIntentGatewayAccountId) 
+            {
+                m_params.AddOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
+                return this;
+            }
+            public CreateRequest PaymentIntentGwToken(string paymentIntentGwToken) 
+            {
+                m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
+                return this;
+            }
             public CreateRequest BillingAddressFirstName(string billingAddressFirstName) 
             {
                 m_params.AddOpt("billing_address[first_name]", billingAddressFirstName);

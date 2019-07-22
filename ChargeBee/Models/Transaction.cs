@@ -100,6 +100,14 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<StatusEnum>("status", false); }
         }
+        public InitiatorTypeEnum? InitiatorType 
+        {
+            get { return GetEnum<InitiatorTypeEnum>("initiator_type", false); }
+        }
+        public bool? ThreeDSecure 
+        {
+            get { return GetValue<bool?>("three_d_secure", false); }
+        }
         public string ErrorCode 
         {
             get { return GetValue<string>("error_code", false); }
@@ -220,6 +228,17 @@ namespace ChargeBee.Models
             Timeout,
             [Description("needs_attention")]
             NeedsAttention,
+
+        }
+        public enum InitiatorTypeEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "customer")]
+            Customer,
+            [EnumMember(Value = "merchant")]
+            Merchant,
 
         }
 

@@ -28,6 +28,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "credit_card");
             return new UpdateCardForCustomerRequest(url, HttpMethod.POST);
         }
+        public static UpdateCardForCustomerUsingPaymentIntentRequest UpdateCardForCustomerUsingPaymentIntent(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "credit_card_using_payment_intent");
+            return new UpdateCardForCustomerUsingPaymentIntentRequest(url, HttpMethod.POST);
+        }
         public static SwitchGatewayForCustomerRequest SwitchGatewayForCustomer(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "switch_gateway");
@@ -41,10 +46,6 @@ namespace ChargeBee.Models
         #endregion
         
         #region Properties
-        public string CustomerId 
-        {
-            get { return GetValue<string>("customer_id", true); }
-        }
         public StatusEnum Status 
         {
             get { return GetEnum<StatusEnum>("status", true); }
@@ -52,6 +53,10 @@ namespace ChargeBee.Models
         public GatewayEnum Gateway 
         {
             get { return GetEnum<GatewayEnum>("gateway", true); }
+        }
+        public string ReferenceId 
+        {
+            get { return GetValue<string>("reference_id", false); }
         }
         public string FirstName 
         {
@@ -112,6 +117,10 @@ namespace ChargeBee.Models
         public string IpAddress 
         {
             get { return GetValue<string>("ip_address", false); }
+        }
+        public string CustomerId 
+        {
+            get { return GetValue<string>("customer_id", true); }
         }
         public string MaskedNumber 
         {
@@ -212,6 +221,24 @@ namespace ChargeBee.Models
             public UpdateCardForCustomerRequest CustomerVatNumber(string customerVatNumber) 
             {
                 m_params.AddOpt("customer[vat_number]", customerVatNumber);
+                return this;
+            }
+        }
+        public class UpdateCardForCustomerUsingPaymentIntentRequest : EntityRequest<UpdateCardForCustomerUsingPaymentIntentRequest> 
+        {
+            public UpdateCardForCustomerUsingPaymentIntentRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public UpdateCardForCustomerUsingPaymentIntentRequest GatewayAccountId(string gatewayAccountId) 
+            {
+                m_params.Add("gateway_account_id", gatewayAccountId);
+                return this;
+            }
+            public UpdateCardForCustomerUsingPaymentIntentRequest GwToken(string gwToken) 
+            {
+                m_params.Add("gw_token", gwToken);
                 return this;
             }
         }
