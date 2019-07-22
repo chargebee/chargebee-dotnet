@@ -309,6 +309,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<InvoiceLinkedPayment>("linked_payments"); }
         }
+        public List<InvoiceDunningAttempt> DunningAttempts 
+        {
+            get { return GetResourceList<InvoiceDunningAttempt>("dunning_attempts"); }
+        }
         public List<InvoiceAppliedCredit> AppliedCredits 
         {
             get { return GetResourceList<InvoiceAppliedCredit>("applied_credits"); }
@@ -2035,6 +2039,34 @@ namespace ChargeBee.Models
 
             public DateTime? TxnDate() {
                 return GetDateTime("txn_date", false);
+            }
+
+            public int? TxnAmount() {
+                return GetValue<int?>("txn_amount", false);
+            }
+
+        }
+        public class InvoiceDunningAttempt : Resource
+        {
+
+            public int Attempt() {
+                return GetValue<int>("attempt", true);
+            }
+
+            public string TransactionId() {
+                return GetValue<string>("transaction_id", false);
+            }
+
+            public DunningTypeEnum DunningType() {
+                return GetEnum<DunningTypeEnum>("dunning_type", true);
+            }
+
+            public DateTime CreatedAt() {
+                return (DateTime)GetDateTime("created_at", true);
+            }
+
+            public Transaction.StatusEnum? TxnStatus() {
+                return GetEnum<Transaction.StatusEnum>("txn_status", false);
             }
 
             public int? TxnAmount() {

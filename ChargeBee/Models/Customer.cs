@@ -663,6 +663,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[ip_address]", cardIpAddress);
                 return this;
             }
+            public CreateRequest PaymentIntentGatewayAccountId(string paymentIntentGatewayAccountId) 
+            {
+                m_params.AddOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
+                return this;
+            }
+            public CreateRequest PaymentIntentGwToken(string paymentIntentGwToken) 
+            {
+                m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
+                return this;
+            }
             public CreateRequest BillingAddressFirstName(string billingAddressFirstName) 
             {
                 m_params.AddOpt("billing_address[first_name]", billingAddressFirstName);
@@ -1434,6 +1444,16 @@ namespace ChargeBee.Models
             public CollectPaymentRequest CardBillingCountry(string cardBillingCountry) 
             {
                 m_params.AddOpt("card[billing_country]", cardBillingCountry);
+                return this;
+            }
+            public CollectPaymentRequest PaymentIntentGatewayAccountId(string paymentIntentGatewayAccountId) 
+            {
+                m_params.AddOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
+                return this;
+            }
+            public CollectPaymentRequest PaymentIntentGwToken(string paymentIntentGwToken) 
+            {
+                m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
                 return this;
             }
             public CollectPaymentRequest InvoiceAllocationInvoiceId(int index, string invoiceAllocationInvoiceId) 

@@ -128,6 +128,14 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<FraudFlagEnum>("fraud_flag", false); }
         }
+        public InitiatorTypeEnum? InitiatorType 
+        {
+            get { return GetEnum<InitiatorTypeEnum>("initiator_type", false); }
+        }
+        public bool? ThreeDSecure 
+        {
+            get { return GetValue<bool?>("three_d_secure", false); }
+        }
         public AuthorizationReasonEnum? AuthorizationReason 
         {
             get { return GetEnum<AuthorizationReasonEnum>("authorization_reason", false); }
@@ -377,6 +385,17 @@ namespace ChargeBee.Models
             Suspicious,
             [EnumMember(Value = "fraudulent")]
             Fraudulent,
+
+        }
+        public enum InitiatorTypeEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "customer")]
+            Customer,
+            [EnumMember(Value = "merchant")]
+            Merchant,
 
         }
         public enum AuthorizationReasonEnum

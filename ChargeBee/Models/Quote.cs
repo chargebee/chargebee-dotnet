@@ -39,6 +39,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("quotes", "create_for_onetime_charges");
             return new CreateForOnetimeChargesRequest(url, HttpMethod.POST);
         }
+        public static QuoteListRequest List()
+        {
+            string url = ApiUtil.BuildUrl("quotes");
+            return new QuoteListRequest(url);
+        }
         public static EntityRequest<Type> Convert(string id)
         {
             string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "convert");
@@ -833,6 +838,47 @@ namespace ChargeBee.Models
             public CreateForOnetimeChargesRequest ChargeDateTo(int index, long chargeDateTo) 
             {
                 m_params.AddOpt("charges[date_to][" + index + "]", chargeDateTo);
+                return this;
+            }
+        }
+        public class QuoteListRequest : ListRequestBase<QuoteListRequest> 
+        {
+            public QuoteListRequest(string url) 
+                    : base(url)
+            {
+            }
+
+            public QuoteListRequest IncludeDeleted(bool includeDeleted) 
+            {
+                m_params.AddOpt("include_deleted", includeDeleted);
+                return this;
+            }
+            public StringFilter<QuoteListRequest> Id() 
+            {
+                return new StringFilter<QuoteListRequest>("id", this).SupportsMultiOperators(true);        
+            }
+            public StringFilter<QuoteListRequest> CustomerId() 
+            {
+                return new StringFilter<QuoteListRequest>("customer_id", this).SupportsMultiOperators(true);        
+            }
+            public StringFilter<QuoteListRequest> SubscriptionId() 
+            {
+                return new StringFilter<QuoteListRequest>("subscription_id", this).SupportsMultiOperators(true).SupportsPresenceOperator(true);        
+            }
+            public EnumFilter<Quote.StatusEnum, QuoteListRequest> Status() 
+            {
+                return new EnumFilter<Quote.StatusEnum, QuoteListRequest>("status", this);        
+            }
+            public TimestampFilter<QuoteListRequest> Date() 
+            {
+                return new TimestampFilter<QuoteListRequest>("date", this);        
+            }
+            public TimestampFilter<QuoteListRequest> UpdatedAt() 
+            {
+                return new TimestampFilter<QuoteListRequest>("updated_at", this);        
+            }
+            public QuoteListRequest SortByDate(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","date");
                 return this;
             }
         }

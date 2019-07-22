@@ -109,6 +109,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "cybersource")]
          Cybersource,
 
+        [EnumMember(Value = "vantiv")]
+         Vantiv,
+
         [EnumMember(Value = "not_applicable")]
          NotApplicable,
 

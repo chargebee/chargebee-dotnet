@@ -49,6 +49,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "ach_credit")]
          AchCredit,
 
+        [EnumMember(Value = "sepa_credit")]
+         SepaCredit,
+
         [EnumMember(Value = "other")]
          Other,
 

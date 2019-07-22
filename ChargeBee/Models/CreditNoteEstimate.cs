@@ -82,6 +82,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int?>("round_off_amount", false); }
         }
+        public string CustomerId 
+        {
+            get { return GetValue<string>("customer_id", false); }
+        }
         
         #endregion
         

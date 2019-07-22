@@ -63,6 +63,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("gateway_account_id", false); }
         }
+        public string RefTxId 
+        {
+            get { return GetValue<string>("ref_tx_id", false); }
+        }
         public string FirstName 
         {
             get { return GetValue<string>("first_name", false); }

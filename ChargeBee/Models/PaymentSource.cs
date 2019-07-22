@@ -34,6 +34,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("payment_sources", "create_using_token");
             return new CreateUsingTokenRequest(url, HttpMethod.POST);
         }
+        public static CreateUsingPaymentIntentRequest CreateUsingPaymentIntent()
+        {
+            string url = ApiUtil.BuildUrl("payment_sources", "create_using_payment_intent");
+            return new CreateUsingPaymentIntentRequest(url, HttpMethod.POST);
+        }
         public static CreateCardRequest CreateCard()
         {
             string url = ApiUtil.BuildUrl("payment_sources", "create_card");
@@ -258,6 +263,34 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class CreateUsingPaymentIntentRequest : EntityRequest<CreateUsingPaymentIntentRequest> 
+        {
+            public CreateUsingPaymentIntentRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CreateUsingPaymentIntentRequest CustomerId(string customerId) 
+            {
+                m_params.Add("customer_id", customerId);
+                return this;
+            }
+            public CreateUsingPaymentIntentRequest GatewayAccountId(string gatewayAccountId) 
+            {
+                m_params.Add("gateway_account_id", gatewayAccountId);
+                return this;
+            }
+            public CreateUsingPaymentIntentRequest GwToken(string gwToken) 
+            {
+                m_params.Add("gw_token", gwToken);
+                return this;
+            }
+            public CreateUsingPaymentIntentRequest ReplacePrimaryPaymentSource(bool replacePrimaryPaymentSource) 
+            {
+                m_params.AddOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
+                return this;
+            }
+        }
         public class CreateCardRequest : EntityRequest<CreateCardRequest> 
         {
             public CreateCardRequest(string url, HttpMethod method) 
@@ -449,6 +482,11 @@ namespace ChargeBee.Models
             public UpdateCardRequest GatewayMetaData(JToken gatewayMetaData) 
             {
                 m_params.AddOpt("gateway_meta_data", gatewayMetaData);
+                return this;
+            }
+            public UpdateCardRequest ReferenceTransaction(string referenceTransaction) 
+            {
+                m_params.AddOpt("reference_transaction", referenceTransaction);
                 return this;
             }
             public UpdateCardRequest CardFirstName(string cardFirstName) 

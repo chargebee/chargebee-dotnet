@@ -734,6 +734,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[ip_address]", cardIpAddress);
                 return this;
             }
+            public CreateRequest PaymentIntentGatewayAccountId(string paymentIntentGatewayAccountId) 
+            {
+                m_params.AddOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
+                return this;
+            }
+            public CreateRequest PaymentIntentGwToken(string paymentIntentGwToken) 
+            {
+                m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
+                return this;
+            }
             public CreateRequest BillingAddressFirstName(string billingAddressFirstName) 
             {
                 m_params.AddOpt("billing_address[first_name]", billingAddressFirstName);
@@ -1131,6 +1141,16 @@ namespace ChargeBee.Models
             public CreateForCustomerRequest ShippingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum shippingAddressValidationStatus) 
             {
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+                return this;
+            }
+            public CreateForCustomerRequest PaymentIntentGatewayAccountId(string paymentIntentGatewayAccountId) 
+            {
+                m_params.AddOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
+                return this;
+            }
+            public CreateForCustomerRequest PaymentIntentGwToken(string paymentIntentGwToken) 
+            {
+                m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
                 return this;
             }
             public CreateForCustomerRequest AddonId(int index, string addonId) 
@@ -1543,6 +1563,16 @@ namespace ChargeBee.Models
             public UpdateRequest CardIpAddress(string cardIpAddress) 
             {
                 m_params.AddOpt("card[ip_address]", cardIpAddress);
+                return this;
+            }
+            public UpdateRequest PaymentIntentGatewayAccountId(string paymentIntentGatewayAccountId) 
+            {
+                m_params.AddOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
+                return this;
+            }
+            public UpdateRequest PaymentIntentGwToken(string paymentIntentGwToken) 
+            {
+                m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
                 return this;
             }
             public UpdateRequest BillingAddressFirstName(string billingAddressFirstName) 

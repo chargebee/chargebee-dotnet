@@ -59,6 +59,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("email", true); }
         }
+        public SchemeEnum? Scheme 
+        {
+            get { return GetEnum<SchemeEnum>("scheme", false); }
+        }
         public string BankName 
         {
             get { return GetValue<string>("bank_name", false); }
@@ -69,7 +73,7 @@ namespace ChargeBee.Models
         }
         public string RoutingNumber 
         {
-            get { return GetValue<string>("routing_number", true); }
+            get { return GetValue<string>("routing_number", false); }
         }
         public string SwiftCode 
         {
@@ -124,6 +128,11 @@ namespace ChargeBee.Models
                 m_params.Add("reference_id", referenceId);
                 return this;
             }
+            public CreateUsingPermanentTokenRequest Scheme(VirtualBankAccount.SchemeEnum scheme) 
+            {
+                m_params.AddOpt("scheme", scheme);
+                return this;
+            }
         }
         public class CreateRequest : EntityRequest<CreateRequest> 
         {
@@ -140,6 +149,11 @@ namespace ChargeBee.Models
             public CreateRequest Email(string email) 
             {
                 m_params.AddOpt("email", email);
+                return this;
+            }
+            public CreateRequest Scheme(VirtualBankAccount.SchemeEnum scheme) 
+            {
+                m_params.AddOpt("scheme", scheme);
                 return this;
             }
         }
@@ -165,6 +179,17 @@ namespace ChargeBee.Models
         }
         #endregion
 
+        public enum SchemeEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "ach_credit")]
+            AchCredit,
+            [EnumMember(Value = "sepa_credit")]
+            SepaCredit,
+
+        }
 
         #region Subclasses
 
