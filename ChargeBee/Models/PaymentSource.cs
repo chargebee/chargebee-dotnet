@@ -285,6 +285,11 @@ namespace ChargeBee.Models
                 m_params.Add("gw_token", gwToken);
                 return this;
             }
+            public CreateUsingPaymentIntentRequest GwPaymentMethodId(string gwPaymentMethodId) 
+            {
+                m_params.AddOpt("gw_payment_method_id", gwPaymentMethodId);
+                return this;
+            }
             public CreateUsingPaymentIntentRequest ReplacePrimaryPaymentSource(bool replacePrimaryPaymentSource) 
             {
                 m_params.AddOpt("replace_primary_payment_source", replacePrimaryPaymentSource);

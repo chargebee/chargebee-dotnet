@@ -273,6 +273,14 @@ namespace ChargeBee.Models
                 return GetValue<string>("tax_juris_code", false);
             }
 
+            public int? TaxAmountInLocalCurrency() {
+                return GetValue<int?>("tax_amount_in_local_currency", false);
+            }
+
+            public string LocalCurrencyCode() {
+                return GetValue<string>("local_currency_code", false);
+            }
+
         }
         public class InvoiceEstimateLineItemTier : Resource
         {

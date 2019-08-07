@@ -44,10 +44,10 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("quotes");
             return new QuoteListRequest(url);
         }
-        public static EntityRequest<Type> Convert(string id)
+        public static ConvertRequest Convert(string id)
         {
             string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "convert");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            return new ConvertRequest(url, HttpMethod.POST);
         }
         public static UpdateStatusRequest UpdateStatus(string id)
         {
@@ -71,6 +71,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("id", true); }
         }
+        public string Name 
+        {
+            get { return GetValue<string>("name", false); }
+        }
         public string PoNumber 
         {
             get { return GetValue<string>("po_number", false); }
@@ -82,6 +86,10 @@ namespace ChargeBee.Models
         public string SubscriptionId 
         {
             get { return GetValue<string>("subscription_id", false); }
+        }
+        public string InvoiceId 
+        {
+            get { return GetValue<string>("invoice_id", false); }
         }
         public StatusEnum Status 
         {
@@ -159,6 +167,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<QuoteLineItemTax>("line_item_taxes"); }
         }
+        public JArray Notes 
+        {
+            get { return GetJArray("notes", false); }
+        }
         public QuoteShippingAddress ShippingAddress 
         {
             get { return GetSubResource<QuoteShippingAddress>("shipping_address"); }
@@ -178,6 +190,21 @@ namespace ChargeBee.Models
             {
             }
 
+            public CreateSubForCustomerQuoteRequest Name(string name) 
+            {
+                m_params.AddOpt("name", name);
+                return this;
+            }
+            public CreateSubForCustomerQuoteRequest Notes(string notes) 
+            {
+                m_params.AddOpt("notes", notes);
+                return this;
+            }
+            public CreateSubForCustomerQuoteRequest ExpiresAt(long expiresAt) 
+            {
+                m_params.AddOpt("expires_at", expiresAt);
+                return this;
+            }
             public CreateSubForCustomerQuoteRequest BillingCycles(int billingCycles) 
             {
                 m_params.AddOpt("billing_cycles", billingCycles);
@@ -376,6 +403,21 @@ namespace ChargeBee.Models
             {
             }
 
+            public UpdateSubscriptionQuoteRequest Name(string name) 
+            {
+                m_params.AddOpt("name", name);
+                return this;
+            }
+            public UpdateSubscriptionQuoteRequest Notes(string notes) 
+            {
+                m_params.AddOpt("notes", notes);
+                return this;
+            }
+            public UpdateSubscriptionQuoteRequest ExpiresAt(long expiresAt) 
+            {
+                m_params.AddOpt("expires_at", expiresAt);
+                return this;
+            }
             public UpdateSubscriptionQuoteRequest BillingCycles(int billingCycles) 
             {
                 m_params.AddOpt("billing_cycles", billingCycles);
@@ -700,6 +742,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("po_number", poNumber);
                 return this;
             }
+            public CreateForOnetimeChargesRequest Name(string name) 
+            {
+                m_params.AddOpt("name", name);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest Notes(string notes) 
+            {
+                m_params.AddOpt("notes", notes);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest ExpiresAt(long expiresAt) 
+            {
+                m_params.AddOpt("expires_at", expiresAt);
+                return this;
+            }
             public CreateForOnetimeChargesRequest CurrencyCode(string currencyCode) 
             {
                 m_params.AddOpt("currency_code", currencyCode);
@@ -879,6 +936,29 @@ namespace ChargeBee.Models
             }
             public QuoteListRequest SortByDate(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","date");
+                return this;
+            }
+        }
+        public class ConvertRequest : EntityRequest<ConvertRequest> 
+        {
+            public ConvertRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public ConvertRequest SubscriptionId(string subscriptionId) 
+            {
+                m_params.AddOpt("subscription[id]", subscriptionId);
+                return this;
+            }
+            public ConvertRequest SubscriptionAutoCollection(ChargeBee.Models.Enums.AutoCollectionEnum subscriptionAutoCollection) 
+            {
+                m_params.AddOpt("subscription[auto_collection]", subscriptionAutoCollection);
+                return this;
+            }
+            public ConvertRequest SubscriptionPoNumber(string subscriptionPoNumber) 
+            {
+                m_params.AddOpt("subscription[po_number]", subscriptionPoNumber);
                 return this;
             }
         }
@@ -1172,6 +1252,14 @@ namespace ChargeBee.Models
 
             public string TaxJurisCode() {
                 return GetValue<string>("tax_juris_code", false);
+            }
+
+            public int? TaxAmountInLocalCurrency() {
+                return GetValue<int?>("tax_amount_in_local_currency", false);
+            }
+
+            public string LocalCurrencyCode() {
+                return GetValue<string>("local_currency_code", false);
             }
 
         }

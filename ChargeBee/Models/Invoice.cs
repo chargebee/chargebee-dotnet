@@ -249,6 +249,18 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int>("sub_total", true); }
         }
+        public int? SubTotalInLocalCurrency 
+        {
+            get { return GetValue<int?>("sub_total_in_local_currency", false); }
+        }
+        public int? TotalInLocalCurrency 
+        {
+            get { return GetValue<int?>("total_in_local_currency", false); }
+        }
+        public string LocalCurrencyCode 
+        {
+            get { return GetValue<string>("local_currency_code", false); }
+        }
         public int Tax 
         {
             get { return GetValue<int>("tax", true); }
@@ -1991,6 +2003,14 @@ namespace ChargeBee.Models
 
             public string TaxJurisCode() {
                 return GetValue<string>("tax_juris_code", false);
+            }
+
+            public int? TaxAmountInLocalCurrency() {
+                return GetValue<int?>("tax_amount_in_local_currency", false);
+            }
+
+            public string LocalCurrencyCode() {
+                return GetValue<string>("local_currency_code", false);
             }
 
         }
