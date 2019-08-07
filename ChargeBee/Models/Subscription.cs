@@ -430,6 +430,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
                 return this;
             }
+            public CreateRequest PaymentIntentGwPaymentMethodId(string paymentIntentGwPaymentMethodId) 
+            {
+                m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+                return this;
+            }
             public CreateRequest BillingAddressFirstName(string billingAddressFirstName) 
             {
                 m_params.AddOpt("billing_address[first_name]", billingAddressFirstName);
@@ -708,6 +713,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
                 return this;
             }
+            public CreateForCustomerRequest PaymentIntentGwPaymentMethodId(string paymentIntentGwPaymentMethodId) 
+            {
+                m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+                return this;
+            }
             public CreateForCustomerRequest AddonId(int index, string addonId) 
             {
                 m_params.AddOpt("addons[id][" + index + "]", addonId);
@@ -902,6 +912,11 @@ namespace ChargeBee.Models
             public UpdateRequest PaymentIntentGwToken(string paymentIntentGwToken) 
             {
                 m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
+                return this;
+            }
+            public UpdateRequest PaymentIntentGwPaymentMethodId(string paymentIntentGwPaymentMethodId) 
+            {
+                m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
                 return this;
             }
             public UpdateRequest BillingAddressFirstName(string billingAddressFirstName) 

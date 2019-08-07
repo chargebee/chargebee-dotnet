@@ -241,6 +241,11 @@ namespace ChargeBee.Models
                 m_params.Add("gw_token", gwToken);
                 return this;
             }
+            public UpdateCardForCustomerUsingPaymentIntentRequest GwPaymentMethodId(string gwPaymentMethodId) 
+            {
+                m_params.AddOpt("gw_payment_method_id", gwPaymentMethodId);
+                return this;
+            }
         }
         public class SwitchGatewayForCustomerRequest : EntityRequest<SwitchGatewayForCustomerRequest> 
         {

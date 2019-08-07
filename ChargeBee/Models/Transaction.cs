@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 using ChargeBee.Internal;
 using ChargeBee.Api;
 using ChargeBee.Models.Enums;
+using System.Runtime.Serialization;
 
 namespace ChargeBee.Models
 {
