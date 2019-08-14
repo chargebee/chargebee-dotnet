@@ -295,6 +295,26 @@ namespace ChargeBee.Models
                 m_params.AddOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
                 return this;
             }
+            public CreateUsingPaymentIntentRequest PaymentIntentId(string paymentIntentId) 
+            {
+                m_params.AddOpt("payment_intent[id]", paymentIntentId);
+                return this;
+            }
+            public CreateUsingPaymentIntentRequest PaymentIntentGatewayAccountId(string paymentIntentGatewayAccountId) 
+            {
+                m_params.AddOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
+                return this;
+            }
+            public CreateUsingPaymentIntentRequest PaymentIntentGwToken(string paymentIntentGwToken) 
+            {
+                m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
+                return this;
+            }
+            public CreateUsingPaymentIntentRequest PaymentIntentGwPaymentMethodId(string paymentIntentGwPaymentMethodId) 
+            {
+                m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+                return this;
+            }
         }
         public class CreateCardRequest : EntityRequest<CreateCardRequest> 
         {

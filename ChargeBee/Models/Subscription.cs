@@ -734,6 +734,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[ip_address]", cardIpAddress);
                 return this;
             }
+            public CreateRequest PaymentIntentId(string paymentIntentId) 
+            {
+                m_params.AddOpt("payment_intent[id]", paymentIntentId);
+                return this;
+            }
             public CreateRequest PaymentIntentGatewayAccountId(string paymentIntentGatewayAccountId) 
             {
                 m_params.AddOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
@@ -1146,6 +1151,11 @@ namespace ChargeBee.Models
             public CreateForCustomerRequest ShippingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum shippingAddressValidationStatus) 
             {
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+                return this;
+            }
+            public CreateForCustomerRequest PaymentIntentId(string paymentIntentId) 
+            {
+                m_params.AddOpt("payment_intent[id]", paymentIntentId);
                 return this;
             }
             public CreateForCustomerRequest PaymentIntentGatewayAccountId(string paymentIntentGatewayAccountId) 
@@ -1573,6 +1583,11 @@ namespace ChargeBee.Models
             public UpdateRequest CardIpAddress(string cardIpAddress) 
             {
                 m_params.AddOpt("card[ip_address]", cardIpAddress);
+                return this;
+            }
+            public UpdateRequest PaymentIntentId(string paymentIntentId) 
+            {
+                m_params.AddOpt("payment_intent[id]", paymentIntentId);
                 return this;
             }
             public UpdateRequest PaymentIntentGatewayAccountId(string paymentIntentGatewayAccountId) 

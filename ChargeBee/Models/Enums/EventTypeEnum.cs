@@ -304,5 +304,11 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "hierarchy_deleted")]
          HierarchyDeleted,
 
+        [EnumMember(Value = "payment_intent_created")]
+         PaymentIntentCreated,
+
+        [EnumMember(Value = "payment_intent_updated")]
+         PaymentIntentUpdated,
+
     }
 }

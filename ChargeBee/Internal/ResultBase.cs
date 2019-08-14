@@ -165,6 +165,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<Export>("export"); }
         }
+        public PaymentIntent PaymentIntent
+        {
+            get {  return GetResource<PaymentIntent>("payment_intent"); }
+        }
 
         public List<UnbilledCharge> UnbilledCharges
         {
