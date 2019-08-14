@@ -101,6 +101,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<PortalSession>("portal_session"); }
         }
+        public PaymentIntent PaymentIntent
+        {
+            get {  return GetResource<PaymentIntent>("payment_intent"); }
+        }
 
 
         private T GetResource<T>(string property) where T : Resource, new()

@@ -231,14 +231,19 @@ namespace ChargeBee.Models
             {
             }
 
+            public UpdateCardForCustomerUsingPaymentIntentRequest PaymentIntentId(string paymentIntentId) 
+            {
+                m_params.AddOpt("payment_intent_id", paymentIntentId);
+                return this;
+            }
             public UpdateCardForCustomerUsingPaymentIntentRequest GatewayAccountId(string gatewayAccountId) 
             {
-                m_params.Add("gateway_account_id", gatewayAccountId);
+                m_params.AddOpt("gateway_account_id", gatewayAccountId);
                 return this;
             }
             public UpdateCardForCustomerUsingPaymentIntentRequest GwToken(string gwToken) 
             {
-                m_params.Add("gw_token", gwToken);
+                m_params.AddOpt("gw_token", gwToken);
                 return this;
             }
             public UpdateCardForCustomerUsingPaymentIntentRequest GwPaymentMethodId(string gwPaymentMethodId) 
