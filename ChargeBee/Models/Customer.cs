@@ -338,6 +338,10 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<CustomerTypeEnum>("customer_type", false); }
         }
+        public string ClientProfileId 
+        {
+            get { return GetValue<string>("client_profile_id", false); }
+        }
         public CustomerRelationship Relationship 
         {
             get { return GetSubResource<CustomerRelationship>("relationship"); }
@@ -426,6 +430,11 @@ namespace ChargeBee.Models
             public CreateRequest CustomerType(ChargeBee.Models.Enums.CustomerTypeEnum customerType) 
             {
                 m_params.AddOpt("customer_type", customerType);
+                return this;
+            }
+            public CreateRequest ClientProfileId(string clientProfileId) 
+            {
+                m_params.AddOpt("client_profile_id", clientProfileId);
                 return this;
             }
             public CreateRequest Locale(string locale) 
@@ -895,6 +904,11 @@ namespace ChargeBee.Models
             public UpdateRequest CustomerType(ChargeBee.Models.Enums.CustomerTypeEnum customerType) 
             {
                 m_params.AddOpt("customer_type", customerType);
+                return this;
+            }
+            public UpdateRequest ClientProfileId(string clientProfileId) 
+            {
+                m_params.AddOpt("client_profile_id", clientProfileId);
                 return this;
             }
             public UpdateRequest Locale(string locale) 

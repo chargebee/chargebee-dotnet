@@ -470,6 +470,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("invoice_immediately", invoiceImmediately);
                 return this;
             }
+            public CreateRequest ClientProfileId(string clientProfileId) 
+            {
+                m_params.AddOpt("client_profile_id", clientProfileId);
+                return this;
+            }
             public CreateRequest CustomerId(string customerId) 
             {
                 m_params.AddOpt("customer[id]", customerId);
@@ -1915,6 +1920,26 @@ namespace ChargeBee.Models
                 m_params.AddOpt("terms_to_charge", termsToCharge);
                 return this;
             }
+            public ReactivateRequest PaymentIntentId(string paymentIntentId) 
+            {
+                m_params.AddOpt("payment_intent[id]", paymentIntentId);
+                return this;
+            }
+            public ReactivateRequest PaymentIntentGatewayAccountId(string paymentIntentGatewayAccountId) 
+            {
+                m_params.AddOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
+                return this;
+            }
+            public ReactivateRequest PaymentIntentGwToken(string paymentIntentGwToken) 
+            {
+                m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
+                return this;
+            }
+            public ReactivateRequest PaymentIntentGwPaymentMethodId(string paymentIntentGwPaymentMethodId) 
+            {
+                m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+                return this;
+            }
         }
         public class AddChargeAtTermEndRequest : EntityRequest<AddChargeAtTermEndRequest> 
         {
@@ -2015,6 +2040,11 @@ namespace ChargeBee.Models
             public ImportSubscriptionRequest Id(string id) 
             {
                 m_params.AddOpt("id", id);
+                return this;
+            }
+            public ImportSubscriptionRequest ClientProfileId(string clientProfileId) 
+            {
+                m_params.AddOpt("client_profile_id", clientProfileId);
                 return this;
             }
             public ImportSubscriptionRequest PlanId(string planId) 
@@ -2880,6 +2910,26 @@ namespace ChargeBee.Models
             public ResumeRequest UnpaidInvoicesHandling(ChargeBee.Models.Enums.UnpaidInvoicesHandlingEnum unpaidInvoicesHandling) 
             {
                 m_params.AddOpt("unpaid_invoices_handling", unpaidInvoicesHandling);
+                return this;
+            }
+            public ResumeRequest PaymentIntentId(string paymentIntentId) 
+            {
+                m_params.AddOpt("payment_intent[id]", paymentIntentId);
+                return this;
+            }
+            public ResumeRequest PaymentIntentGatewayAccountId(string paymentIntentGatewayAccountId) 
+            {
+                m_params.AddOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
+                return this;
+            }
+            public ResumeRequest PaymentIntentGwToken(string paymentIntentGwToken) 
+            {
+                m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
+                return this;
+            }
+            public ResumeRequest PaymentIntentGwPaymentMethodId(string paymentIntentGwPaymentMethodId) 
+            {
+                m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
                 return this;
             }
         }

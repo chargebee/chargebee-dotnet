@@ -136,6 +136,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("invoice_immediately", invoiceImmediately);
                 return this;
             }
+            public CreateSubscriptionRequest ClientProfileId(string clientProfileId) 
+            {
+                m_params.AddOpt("client_profile_id", clientProfileId);
+                return this;
+            }
             public CreateSubscriptionRequest SubscriptionId(string subscriptionId) 
             {
                 m_params.AddOpt("subscription[id]", subscriptionId);
