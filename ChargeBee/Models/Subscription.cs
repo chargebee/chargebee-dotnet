@@ -1129,6 +1129,26 @@ namespace ChargeBee.Models
                 m_params.AddOpt("trial_period_days", trialPeriodDays);
                 return this;
             }
+            public ReactivateRequest PaymentIntentId(string paymentIntentId) 
+            {
+                m_params.AddOpt("payment_intent[id]", paymentIntentId);
+                return this;
+            }
+            public ReactivateRequest PaymentIntentGatewayAccountId(string paymentIntentGatewayAccountId) 
+            {
+                m_params.AddOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
+                return this;
+            }
+            public ReactivateRequest PaymentIntentGwToken(string paymentIntentGwToken) 
+            {
+                m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
+                return this;
+            }
+            public ReactivateRequest PaymentIntentGwPaymentMethodId(string paymentIntentGwPaymentMethodId) 
+            {
+                m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+                return this;
+            }
         }
         public class AddChargeAtTermEndRequest : EntityRequest<AddChargeAtTermEndRequest> 
         {
