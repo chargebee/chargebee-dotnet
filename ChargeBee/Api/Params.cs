@@ -66,7 +66,7 @@ namespace ChargeBee.Api
 		private static object ConvertValue(object value, bool isDate) {
 			if (value is string || value is int || value is long
 			    || value is double) {
-				return value.ToString ();
+				return Convert.ToString(value, System.Globalization.CultureInfo.InvariantCulture);
 			} else if (value is bool) {
 				return value.ToString ().ToLower ();
 			} else if (value is Enum) {
