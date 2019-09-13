@@ -64,6 +64,16 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "resume_subscription_estimate");
             return new ResumeSubscriptionRequest(url, HttpMethod.POST);
         }
+        public static GiftSubscriptionRequest GiftSubscription()
+        {
+            string url = ApiUtil.BuildUrl("estimates", "gift_subscription");
+            return new GiftSubscriptionRequest(url, HttpMethod.POST);
+        }
+        public static CreateInvoiceRequest CreateInvoice()
+        {
+            string url = ApiUtil.BuildUrl("estimates", "create_invoice");
+            return new CreateInvoiceRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -948,6 +958,337 @@ namespace ChargeBee.Models
             public ResumeSubscriptionRequest SubscriptionResumeDate(long subscriptionResumeDate) 
             {
                 m_params.AddOpt("subscription[resume_date]", subscriptionResumeDate);
+                return this;
+            }
+        }
+        public class GiftSubscriptionRequest : EntityRequest<GiftSubscriptionRequest> 
+        {
+            public GiftSubscriptionRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public GiftSubscriptionRequest CouponIds(List<string> couponIds) 
+            {
+                m_params.AddOpt("coupon_ids", couponIds);
+                return this;
+            }
+            public GiftSubscriptionRequest GiftScheduledAt(long giftScheduledAt) 
+            {
+                m_params.AddOpt("gift[scheduled_at]", giftScheduledAt);
+                return this;
+            }
+            public GiftSubscriptionRequest GiftAutoClaim(bool giftAutoClaim) 
+            {
+                m_params.AddOpt("gift[auto_claim]", giftAutoClaim);
+                return this;
+            }
+            public GiftSubscriptionRequest GiftClaimExpiryDate(long giftClaimExpiryDate) 
+            {
+                m_params.AddOpt("gift[claim_expiry_date]", giftClaimExpiryDate);
+                return this;
+            }
+            public GiftSubscriptionRequest GifterCustomerId(string gifterCustomerId) 
+            {
+                m_params.Add("gifter[customer_id]", gifterCustomerId);
+                return this;
+            }
+            public GiftSubscriptionRequest GifterSignature(string gifterSignature) 
+            {
+                m_params.Add("gifter[signature]", gifterSignature);
+                return this;
+            }
+            public GiftSubscriptionRequest GifterNote(string gifterNote) 
+            {
+                m_params.AddOpt("gifter[note]", gifterNote);
+                return this;
+            }
+            public GiftSubscriptionRequest GifterPaymentSrcId(string gifterPaymentSrcId) 
+            {
+                m_params.AddOpt("gifter[payment_src_id]", gifterPaymentSrcId);
+                return this;
+            }
+            public GiftSubscriptionRequest GiftReceiverCustomerId(string giftReceiverCustomerId) 
+            {
+                m_params.Add("gift_receiver[customer_id]", giftReceiverCustomerId);
+                return this;
+            }
+            public GiftSubscriptionRequest GiftReceiverFirstName(string giftReceiverFirstName) 
+            {
+                m_params.Add("gift_receiver[first_name]", giftReceiverFirstName);
+                return this;
+            }
+            public GiftSubscriptionRequest GiftReceiverLastName(string giftReceiverLastName) 
+            {
+                m_params.Add("gift_receiver[last_name]", giftReceiverLastName);
+                return this;
+            }
+            public GiftSubscriptionRequest GiftReceiverEmail(string giftReceiverEmail) 
+            {
+                m_params.Add("gift_receiver[email]", giftReceiverEmail);
+                return this;
+            }
+            public GiftSubscriptionRequest SubscriptionPlanId(string subscriptionPlanId) 
+            {
+                m_params.Add("subscription[plan_id]", subscriptionPlanId);
+                return this;
+            }
+            public GiftSubscriptionRequest SubscriptionPlanQuantity(int subscriptionPlanQuantity) 
+            {
+                m_params.AddOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
+                return this;
+            }
+            public GiftSubscriptionRequest ShippingAddressFirstName(string shippingAddressFirstName) 
+            {
+                m_params.AddOpt("shipping_address[first_name]", shippingAddressFirstName);
+                return this;
+            }
+            public GiftSubscriptionRequest ShippingAddressLastName(string shippingAddressLastName) 
+            {
+                m_params.AddOpt("shipping_address[last_name]", shippingAddressLastName);
+                return this;
+            }
+            public GiftSubscriptionRequest ShippingAddressEmail(string shippingAddressEmail) 
+            {
+                m_params.AddOpt("shipping_address[email]", shippingAddressEmail);
+                return this;
+            }
+            public GiftSubscriptionRequest ShippingAddressCompany(string shippingAddressCompany) 
+            {
+                m_params.AddOpt("shipping_address[company]", shippingAddressCompany);
+                return this;
+            }
+            public GiftSubscriptionRequest ShippingAddressPhone(string shippingAddressPhone) 
+            {
+                m_params.AddOpt("shipping_address[phone]", shippingAddressPhone);
+                return this;
+            }
+            public GiftSubscriptionRequest ShippingAddressLine1(string shippingAddressLine1) 
+            {
+                m_params.AddOpt("shipping_address[line1]", shippingAddressLine1);
+                return this;
+            }
+            public GiftSubscriptionRequest ShippingAddressLine2(string shippingAddressLine2) 
+            {
+                m_params.AddOpt("shipping_address[line2]", shippingAddressLine2);
+                return this;
+            }
+            public GiftSubscriptionRequest ShippingAddressLine3(string shippingAddressLine3) 
+            {
+                m_params.AddOpt("shipping_address[line3]", shippingAddressLine3);
+                return this;
+            }
+            public GiftSubscriptionRequest ShippingAddressCity(string shippingAddressCity) 
+            {
+                m_params.AddOpt("shipping_address[city]", shippingAddressCity);
+                return this;
+            }
+            public GiftSubscriptionRequest ShippingAddressStateCode(string shippingAddressStateCode) 
+            {
+                m_params.AddOpt("shipping_address[state_code]", shippingAddressStateCode);
+                return this;
+            }
+            public GiftSubscriptionRequest ShippingAddressState(string shippingAddressState) 
+            {
+                m_params.AddOpt("shipping_address[state]", shippingAddressState);
+                return this;
+            }
+            public GiftSubscriptionRequest ShippingAddressZip(string shippingAddressZip) 
+            {
+                m_params.AddOpt("shipping_address[zip]", shippingAddressZip);
+                return this;
+            }
+            public GiftSubscriptionRequest ShippingAddressCountry(string shippingAddressCountry) 
+            {
+                m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
+                return this;
+            }
+            public GiftSubscriptionRequest ShippingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum shippingAddressValidationStatus) 
+            {
+                m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+                return this;
+            }
+            public GiftSubscriptionRequest AddonId(int index, string addonId) 
+            {
+                m_params.AddOpt("addons[id][" + index + "]", addonId);
+                return this;
+            }
+            public GiftSubscriptionRequest AddonQuantity(int index, int addonQuantity) 
+            {
+                m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
+                return this;
+            }
+        }
+        public class CreateInvoiceRequest : EntityRequest<CreateInvoiceRequest> 
+        {
+            public CreateInvoiceRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CreateInvoiceRequest CurrencyCode(string currencyCode) 
+            {
+                m_params.AddOpt("currency_code", currencyCode);
+                return this;
+            }
+            public CreateInvoiceRequest Coupon(string coupon) 
+            {
+                m_params.AddOpt("coupon", coupon);
+                return this;
+            }
+            public CreateInvoiceRequest AuthorizationTransactionId(string authorizationTransactionId) 
+            {
+                m_params.AddOpt("authorization_transaction_id", authorizationTransactionId);
+                return this;
+            }
+            public CreateInvoiceRequest PaymentSourceId(string paymentSourceId) 
+            {
+                m_params.AddOpt("payment_source_id", paymentSourceId);
+                return this;
+            }
+            public CreateInvoiceRequest AutoCollection(ChargeBee.Models.Enums.AutoCollectionEnum autoCollection) 
+            {
+                m_params.AddOpt("auto_collection", autoCollection);
+                return this;
+            }
+            public CreateInvoiceRequest InvoiceCustomerId(string invoiceCustomerId) 
+            {
+                m_params.Add("invoice[customer_id]", invoiceCustomerId);
+                return this;
+            }
+            public CreateInvoiceRequest InvoicePoNumber(string invoicePoNumber) 
+            {
+                m_params.AddOpt("invoice[po_number]", invoicePoNumber);
+                return this;
+            }
+            public CreateInvoiceRequest ShippingAddressFirstName(string shippingAddressFirstName) 
+            {
+                m_params.AddOpt("shipping_address[first_name]", shippingAddressFirstName);
+                return this;
+            }
+            public CreateInvoiceRequest ShippingAddressLastName(string shippingAddressLastName) 
+            {
+                m_params.AddOpt("shipping_address[last_name]", shippingAddressLastName);
+                return this;
+            }
+            public CreateInvoiceRequest ShippingAddressEmail(string shippingAddressEmail) 
+            {
+                m_params.AddOpt("shipping_address[email]", shippingAddressEmail);
+                return this;
+            }
+            public CreateInvoiceRequest ShippingAddressCompany(string shippingAddressCompany) 
+            {
+                m_params.AddOpt("shipping_address[company]", shippingAddressCompany);
+                return this;
+            }
+            public CreateInvoiceRequest ShippingAddressPhone(string shippingAddressPhone) 
+            {
+                m_params.AddOpt("shipping_address[phone]", shippingAddressPhone);
+                return this;
+            }
+            public CreateInvoiceRequest ShippingAddressLine1(string shippingAddressLine1) 
+            {
+                m_params.AddOpt("shipping_address[line1]", shippingAddressLine1);
+                return this;
+            }
+            public CreateInvoiceRequest ShippingAddressLine2(string shippingAddressLine2) 
+            {
+                m_params.AddOpt("shipping_address[line2]", shippingAddressLine2);
+                return this;
+            }
+            public CreateInvoiceRequest ShippingAddressLine3(string shippingAddressLine3) 
+            {
+                m_params.AddOpt("shipping_address[line3]", shippingAddressLine3);
+                return this;
+            }
+            public CreateInvoiceRequest ShippingAddressCity(string shippingAddressCity) 
+            {
+                m_params.AddOpt("shipping_address[city]", shippingAddressCity);
+                return this;
+            }
+            public CreateInvoiceRequest ShippingAddressStateCode(string shippingAddressStateCode) 
+            {
+                m_params.AddOpt("shipping_address[state_code]", shippingAddressStateCode);
+                return this;
+            }
+            public CreateInvoiceRequest ShippingAddressState(string shippingAddressState) 
+            {
+                m_params.AddOpt("shipping_address[state]", shippingAddressState);
+                return this;
+            }
+            public CreateInvoiceRequest ShippingAddressZip(string shippingAddressZip) 
+            {
+                m_params.AddOpt("shipping_address[zip]", shippingAddressZip);
+                return this;
+            }
+            public CreateInvoiceRequest ShippingAddressCountry(string shippingAddressCountry) 
+            {
+                m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
+                return this;
+            }
+            public CreateInvoiceRequest ShippingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum shippingAddressValidationStatus) 
+            {
+                m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+                return this;
+            }
+            public CreateInvoiceRequest AddonId(int index, string addonId) 
+            {
+                m_params.AddOpt("addons[id][" + index + "]", addonId);
+                return this;
+            }
+            public CreateInvoiceRequest AddonQuantity(int index, int addonQuantity) 
+            {
+                m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
+                return this;
+            }
+            public CreateInvoiceRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            {
+                m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+                return this;
+            }
+            public CreateInvoiceRequest AddonDateFrom(int index, long addonDateFrom) 
+            {
+                m_params.AddOpt("addons[date_from][" + index + "]", addonDateFrom);
+                return this;
+            }
+            public CreateInvoiceRequest AddonDateTo(int index, long addonDateTo) 
+            {
+                m_params.AddOpt("addons[date_to][" + index + "]", addonDateTo);
+                return this;
+            }
+            public CreateInvoiceRequest ChargeAmount(int index, int chargeAmount) 
+            {
+                m_params.AddOpt("charges[amount][" + index + "]", chargeAmount);
+                return this;
+            }
+            public CreateInvoiceRequest ChargeDescription(int index, string chargeDescription) 
+            {
+                m_params.AddOpt("charges[description][" + index + "]", chargeDescription);
+                return this;
+            }
+            public CreateInvoiceRequest ChargeAvalaraSaleType(int index, ChargeBee.Models.Enums.AvalaraSaleTypeEnum chargeAvalaraSaleType) 
+            {
+                m_params.AddOpt("charges[avalara_sale_type][" + index + "]", chargeAvalaraSaleType);
+                return this;
+            }
+            public CreateInvoiceRequest ChargeAvalaraTransactionType(int index, int chargeAvalaraTransactionType) 
+            {
+                m_params.AddOpt("charges[avalara_transaction_type][" + index + "]", chargeAvalaraTransactionType);
+                return this;
+            }
+            public CreateInvoiceRequest ChargeAvalaraServiceType(int index, int chargeAvalaraServiceType) 
+            {
+                m_params.AddOpt("charges[avalara_service_type][" + index + "]", chargeAvalaraServiceType);
+                return this;
+            }
+            public CreateInvoiceRequest ChargeDateFrom(int index, long chargeDateFrom) 
+            {
+                m_params.AddOpt("charges[date_from][" + index + "]", chargeDateFrom);
+                return this;
+            }
+            public CreateInvoiceRequest ChargeDateTo(int index, long chargeDateTo) 
+            {
+                m_params.AddOpt("charges[date_to][" + index + "]", chargeDateTo);
                 return this;
             }
         }

@@ -275,21 +275,6 @@ namespace ChargeBee.Models
                 m_params.Add("customer_id", customerId);
                 return this;
             }
-            public CreateUsingPaymentIntentRequest GatewayAccountId(string gatewayAccountId) 
-            {
-                m_params.Add("gateway_account_id", gatewayAccountId);
-                return this;
-            }
-            public CreateUsingPaymentIntentRequest GwToken(string gwToken) 
-            {
-                m_params.Add("gw_token", gwToken);
-                return this;
-            }
-            public CreateUsingPaymentIntentRequest GwPaymentMethodId(string gwPaymentMethodId) 
-            {
-                m_params.AddOpt("gw_payment_method_id", gwPaymentMethodId);
-                return this;
-            }
             public CreateUsingPaymentIntentRequest ReplacePrimaryPaymentSource(bool replacePrimaryPaymentSource) 
             {
                 m_params.AddOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
@@ -310,6 +295,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
                 return this;
             }
+            public CreateUsingPaymentIntentRequest PaymentIntentReferenceId(string paymentIntentReferenceId) 
+            {
+                m_params.AddOpt("payment_intent[reference_id]", paymentIntentReferenceId);
+                return this;
+            }
+            [Obsolete]
             public CreateUsingPaymentIntentRequest PaymentIntentGwPaymentMethodId(string paymentIntentGwPaymentMethodId) 
             {
                 m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);

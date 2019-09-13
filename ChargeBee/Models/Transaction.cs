@@ -29,6 +29,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("transactions", CheckNull(id), "void");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
+        public static RecordRefundRequest RecordRefund(string id)
+        {
+            string url = ApiUtil.BuildUrl("transactions", CheckNull(id), "record_refund");
+            return new RecordRefundRequest(url, HttpMethod.POST);
+        }
         public static TransactionListRequest List()
         {
             string url = ApiUtil.BuildUrl("transactions");
@@ -241,6 +246,39 @@ namespace ChargeBee.Models
             public CreateAuthorizationRequest Amount(int amount) 
             {
                 m_params.Add("amount", amount);
+                return this;
+            }
+        }
+        public class RecordRefundRequest : EntityRequest<RecordRefundRequest> 
+        {
+            public RecordRefundRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public RecordRefundRequest Amount(int amount) 
+            {
+                m_params.AddOpt("amount", amount);
+                return this;
+            }
+            public RecordRefundRequest PaymentMethod(ChargeBee.Models.Enums.PaymentMethodEnum paymentMethod) 
+            {
+                m_params.Add("payment_method", paymentMethod);
+                return this;
+            }
+            public RecordRefundRequest Date(long date) 
+            {
+                m_params.Add("date", date);
+                return this;
+            }
+            public RecordRefundRequest ReferenceNumber(string referenceNumber) 
+            {
+                m_params.AddOpt("reference_number", referenceNumber);
+                return this;
+            }
+            public RecordRefundRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
                 return this;
             }
         }
