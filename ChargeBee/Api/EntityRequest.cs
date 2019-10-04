@@ -21,7 +21,7 @@ namespace ChargeBee.Api
 		}
 
 		public T Param(String paramName, Object value){
-			m_params.Add(paramName, value);
+			m_params.AddOpt(paramName, value);
 			return (T)Convert.ChangeType (this, typeof(T));
 		}
 
