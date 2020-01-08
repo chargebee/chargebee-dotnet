@@ -44,6 +44,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("gifts", CheckNull(id), "cancel");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
+        public static UpdateGiftRequest UpdateGift(string id)
+        {
+            string url = ApiUtil.BuildUrl("gifts", CheckNull(id), "update_gift");
+            return new UpdateGiftRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -62,6 +67,10 @@ namespace ChargeBee.Models
         public bool AutoClaim 
         {
             get { return GetValue<bool>("auto_claim", true); }
+        }
+        public bool NoExpiry 
+        {
+            get { return GetValue<bool>("no_expiry", true); }
         }
         public DateTime? ClaimExpiryDate 
         {
@@ -106,6 +115,11 @@ namespace ChargeBee.Models
             public CreateRequest AutoClaim(bool autoClaim) 
             {
                 m_params.AddOpt("auto_claim", autoClaim);
+                return this;
+            }
+            public CreateRequest NoExpiry(bool noExpiry) 
+            {
+                m_params.AddOpt("no_expiry", noExpiry);
                 return this;
             }
             public CreateRequest ClaimExpiryDate(long claimExpiryDate) 
@@ -301,6 +315,24 @@ namespace ChargeBee.Models
                 return new StringFilter<GiftListRequest>("gift_receiver[customer_id]", this);        
             }
 
+        }
+        public class UpdateGiftRequest : EntityRequest<UpdateGiftRequest> 
+        {
+            public UpdateGiftRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public UpdateGiftRequest ScheduledAt(long scheduledAt) 
+            {
+                m_params.Add("scheduled_at", scheduledAt);
+                return this;
+            }
+            public UpdateGiftRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
+                return this;
+            }
         }
         #endregion
 

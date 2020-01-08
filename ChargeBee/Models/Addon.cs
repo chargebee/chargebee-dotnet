@@ -122,6 +122,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("tax_code", false); }
         }
+        public string TaxjarProductCode 
+        {
+            get { return GetValue<string>("taxjar_product_code", false); }
+        }
         public AvalaraSaleTypeEnum? AvalaraSaleType 
         {
             get { return GetEnum<AvalaraSaleTypeEnum>("avalara_sale_type", false); }
@@ -297,6 +301,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("tax_code", taxCode);
                 return this;
             }
+            public CreateRequest TaxjarProductCode(string taxjarProductCode) 
+            {
+                m_params.AddOpt("taxjar_product_code", taxjarProductCode);
+                return this;
+            }
             public CreateRequest InvoiceNotes(string invoiceNotes) 
             {
                 m_params.AddOpt("invoice_notes", invoiceNotes);
@@ -459,6 +468,11 @@ namespace ChargeBee.Models
             public UpdateRequest TaxCode(string taxCode) 
             {
                 m_params.AddOpt("tax_code", taxCode);
+                return this;
+            }
+            public UpdateRequest TaxjarProductCode(string taxjarProductCode) 
+            {
+                m_params.AddOpt("taxjar_product_code", taxjarProductCode);
                 return this;
             }
             public UpdateRequest InvoiceNotes(string invoiceNotes) 

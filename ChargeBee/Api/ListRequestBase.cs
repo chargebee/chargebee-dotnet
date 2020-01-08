@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ChargeBee.Api
 {
@@ -43,13 +44,23 @@ namespace ChargeBee.Api
 
 		public new ListResult Request(ApiConfig env)
 		{
-			return ApiUtil.GetList(m_url, m_params, headers, ApiConfig.Instance);
+			return ApiUtil.GetList(m_url, m_params, headers, env);
 		}
 
-		public new ListResult Request()
+        public new Task<ListResult> RequestAsync(ApiConfig env)
+        {
+            return ApiUtil.GetListAsync(m_url, m_params, headers, env);
+        }
+
+        public new ListResult Request()
 		{
 			return Request(ApiConfig.Instance);
 		}
 
-	}
+        public new Task<ListResult> RequestAsync()
+        {
+            return RequestAsync(ApiConfig.Instance);
+        }
+
+    }
 }

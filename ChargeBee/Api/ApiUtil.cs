@@ -11,12 +11,14 @@ using Newtonsoft.Json;
 
 using ChargeBee.Exceptions;
 using System.Net.Http;
+using System.Threading.Tasks;
+
 namespace ChargeBee.Api
 {
     public static class ApiUtil
     {
         private static DateTime m_unixTime = new DateTime(1970, 1, 1);
-        private static HttpClient httpClient = new HttpClient() { Timeout = TimeSpan.FromMilliseconds(ApiConfig.ConnectTimeout)};
+        private static HttpClient httpClient = new HttpClient() { Timeout = TimeSpan.FromMilliseconds(ApiConfig.ConnectTimeout) };
 
         public static string BuildUrl(params string[] paths)
         {
@@ -116,11 +118,16 @@ namespace ChargeBee.Api
             }
 
         }
-        private static EntityResult GetEntityResult(String url, Params parameters, Dictionary<string, string> headers, ApiConfig env,HttpMethod meth)
+        private static EntityResult GetEntityResult(String url, Params parameters, Dictionary<string, string> headers, ApiConfig env, HttpMethod meth)
+        {
+
+            return GetEntityResultAsync(url, parameters, headers, env, meth).ConfigureAwait(false).GetAwaiter().GetResult();
+        }
+        private static async Task<EntityResult> GetEntityResultAsync(String url, Params parameters, Dictionary<string, string> headers, ApiConfig env, HttpMethod meth)
         {
             HttpRequestMessage request = GetRequestMessage(url, meth, parameters, headers, env);
-            var response = httpClient.SendAsync(request).ConfigureAwait(false).GetAwaiter().GetResult();
-            var json = response.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+            var response = await httpClient.SendAsync(request).ConfigureAwait(false);
+            var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             if (response.IsSuccessStatusCode)
             {
                 EntityResult result = new EntityResult(response.StatusCode, json);
@@ -137,18 +144,34 @@ namespace ChargeBee.Api
             return GetEntityResult(url, parameters, headers, env, HttpMethod.POST);
         }
 
+        public static Task<EntityResult> PostAsync(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env)
+        {
+            return GetEntityResultAsync(url, parameters, headers, env, HttpMethod.POST);
+        }
+
         public static EntityResult Get(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env)
         {
             url = String.Format("{0}?{1}", url, parameters.GetQuery(false));
             return GetEntityResult(url, parameters, headers, env, HttpMethod.GET);
         }
 
+        public static Task<EntityResult> GetAsync(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env)
+        {
+            url = String.Format("{0}?{1}", url, parameters.GetQuery(false));
+            return GetEntityResultAsync(url, parameters, headers, env, HttpMethod.GET);
+        }
+
         public static ListResult GetList(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env)
         {
             url = String.Format("{0}?{1}", url, parameters.GetQuery(true));
+            return GetListAsync(url, parameters, headers, env).GetAwaiter().GetResult();
+        }
+
+        public static async Task<ListResult> GetListAsync(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env)
+        {
             HttpRequestMessage request = GetRequestMessage(url, HttpMethod.GET, parameters, headers, env);
-            var response = httpClient.SendAsync(request).ConfigureAwait(false).GetAwaiter().GetResult();
-            var json = response.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+            var response = await httpClient.SendAsync(request).ConfigureAwait(false);
+            var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             if (response.IsSuccessStatusCode)
             {
                 ListResult result = new ListResult(response.StatusCode, json);

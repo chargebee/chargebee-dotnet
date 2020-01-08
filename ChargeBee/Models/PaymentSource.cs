@@ -766,6 +766,8 @@ namespace ChargeBee.Models
                 Checking,
                 [EnumMember(Value = "savings")]
                 Savings,
+                [EnumMember(Value = "business_checking")]
+                BusinessChecking,
             }
             public enum EcheckTypeEnum
             {
@@ -775,6 +777,8 @@ namespace ChargeBee.Models
                 Web,
                 [EnumMember(Value = "ppd")]
                 Ppd,
+                [EnumMember(Value = "ccd")]
+                Ccd,
             }
             public enum AccountHolderTypeEnum
             {

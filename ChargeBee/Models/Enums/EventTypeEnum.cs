@@ -298,6 +298,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "gift_cancelled")]
          GiftCancelled,
 
+        [EnumMember(Value = "gift_updated")]
+         GiftUpdated,
+
         [EnumMember(Value = "hierarchy_created")]
          HierarchyCreated,
 

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ChargeBee.Api
 {
@@ -35,6 +36,11 @@ namespace ChargeBee.Api
             return Request(ApiConfig.Instance);
         }
 
+        public Task<EntityResult> RequestAsync()
+        {
+            return RequestAsync(ApiConfig.Instance);
+        }
+
         public EntityResult Request(ApiConfig env)
         {
             switch (m_method)
@@ -43,6 +49,22 @@ namespace ChargeBee.Api
 					return ApiUtil.Get(m_url, m_params, headers, env);
                 case HttpMethod.POST:
 					return ApiUtil.Post(m_url, m_params, headers, env);
+                default:
+                    throw new NotImplementedException(String.Format(
+                        "HTTP method {0} is not implemented",
+                        Enum.GetName(typeof(HttpMethod), m_method)));
+            }
+
+        }
+
+        public Task<EntityResult> RequestAsync(ApiConfig env)
+        {
+            switch (m_method)
+            {
+                case HttpMethod.GET:
+                    return ApiUtil.GetAsync(m_url, m_params, headers, env);
+                case HttpMethod.POST:
+                    return ApiUtil.PostAsync(m_url, m_params, headers, env);
                 default:
                     throw new NotImplementedException(String.Format(
                         "HTTP method {0} is not implemented",

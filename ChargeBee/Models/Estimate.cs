@@ -983,6 +983,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("gift[auto_claim]", giftAutoClaim);
                 return this;
             }
+            public GiftSubscriptionRequest GiftNoExpiry(bool giftNoExpiry) 
+            {
+                m_params.AddOpt("gift[no_expiry]", giftNoExpiry);
+                return this;
+            }
             public GiftSubscriptionRequest GiftClaimExpiryDate(long giftClaimExpiryDate) 
             {
                 m_params.AddOpt("gift[claim_expiry_date]", giftClaimExpiryDate);

@@ -437,6 +437,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("client_profile_id", clientProfileId);
                 return this;
             }
+            public CreateRequest TaxjarExemptionCategory(ChargeBee.Models.Enums.TaxjarExemptionCategoryEnum taxjarExemptionCategory) 
+            {
+                m_params.AddOpt("taxjar_exemption_category", taxjarExemptionCategory);
+                return this;
+            }
             public CreateRequest Locale(string locale) 
             {
                 m_params.AddOpt("locale", locale);
@@ -915,6 +920,11 @@ namespace ChargeBee.Models
             public UpdateRequest ClientProfileId(string clientProfileId) 
             {
                 m_params.AddOpt("client_profile_id", clientProfileId);
+                return this;
+            }
+            public UpdateRequest TaxjarExemptionCategory(ChargeBee.Models.Enums.TaxjarExemptionCategoryEnum taxjarExemptionCategory) 
+            {
+                m_params.AddOpt("taxjar_exemption_category", taxjarExemptionCategory);
                 return this;
             }
             public UpdateRequest Locale(string locale) 

@@ -525,6 +525,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[net_term_days]", customerNetTermDays);
                 return this;
             }
+            public CreateRequest CustomerTaxjarExemptionCategory(ChargeBee.Models.Enums.TaxjarExemptionCategoryEnum customerTaxjarExemptionCategory) 
+            {
+                m_params.AddOpt("customer[taxjar_exemption_category]", customerTaxjarExemptionCategory);
+                return this;
+            }
             public CreateRequest CustomerPhone(string customerPhone) 
             {
                 m_params.AddOpt("customer[phone]", customerPhone);
@@ -2229,6 +2234,11 @@ namespace ChargeBee.Models
             public ImportSubscriptionRequest CustomerNetTermDays(int customerNetTermDays) 
             {
                 m_params.AddOpt("customer[net_term_days]", customerNetTermDays);
+                return this;
+            }
+            public ImportSubscriptionRequest CustomerTaxjarExemptionCategory(ChargeBee.Models.Enums.TaxjarExemptionCategoryEnum customerTaxjarExemptionCategory) 
+            {
+                m_params.AddOpt("customer[taxjar_exemption_category]", customerTaxjarExemptionCategory);
                 return this;
             }
             public ImportSubscriptionRequest CustomerPhone(string customerPhone) 
