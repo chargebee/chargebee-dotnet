@@ -135,6 +135,14 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int?>("amount_due", false); }
         }
+        public long? TotalPayable 
+        {
+            get { return GetValue<long?>("total_payable", false); }
+        }
+        public int? ChargeOnAcceptance 
+        {
+            get { return GetValue<int?>("charge_on_acceptance", false); }
+        }
         public long? ResourceVersion 
         {
             get { return GetValue<long?>("resource_version", false); }

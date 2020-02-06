@@ -1,3 +1,10 @@
+### v2.7.9 (2020-02-06)
+* * *
+
+* New attribute total_payable and charge_on_aaceptance has been added in Quote.java
+* New input parameter cancel_at has been added in cancel_a_subscription api
+* Fix - Input parameters for List Async apis
+
 ### v2.7.8 (2020-01-08)
 * * * 
 * Async support has been added for all the apis

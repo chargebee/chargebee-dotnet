@@ -1867,39 +1867,6 @@ namespace ChargeBee.Models
                 return this;
             }
         }
-        public class CancelRequest : EntityRequest<CancelRequest> 
-        {
-            public CancelRequest(string url, HttpMethod method) 
-                    : base(url, method)
-            {
-            }
-
-            public CancelRequest EndOfTerm(bool endOfTerm) 
-            {
-                m_params.AddOpt("end_of_term", endOfTerm);
-                return this;
-            }
-            public CancelRequest CreditOptionForCurrentTermCharges(ChargeBee.Models.Enums.CreditOptionForCurrentTermChargesEnum creditOptionForCurrentTermCharges) 
-            {
-                m_params.AddOpt("credit_option_for_current_term_charges", creditOptionForCurrentTermCharges);
-                return this;
-            }
-            public CancelRequest UnbilledChargesOption(ChargeBee.Models.Enums.UnbilledChargesOptionEnum unbilledChargesOption) 
-            {
-                m_params.AddOpt("unbilled_charges_option", unbilledChargesOption);
-                return this;
-            }
-            public CancelRequest AccountReceivablesHandling(ChargeBee.Models.Enums.AccountReceivablesHandlingEnum accountReceivablesHandling) 
-            {
-                m_params.AddOpt("account_receivables_handling", accountReceivablesHandling);
-                return this;
-            }
-            public CancelRequest RefundableCreditsHandling(ChargeBee.Models.Enums.RefundableCreditsHandlingEnum refundableCreditsHandling) 
-            {
-                m_params.AddOpt("refundable_credits_handling", refundableCreditsHandling);
-                return this;
-            }
-        }
         public class ReactivateRequest : EntityRequest<ReactivateRequest> 
         {
             public ReactivateRequest(string url, HttpMethod method) 
@@ -2916,6 +2883,44 @@ namespace ChargeBee.Models
             public PauseRequest ResumeDate(long resumeDate) 
             {
                 m_params.AddOpt("resume_date", resumeDate);
+                return this;
+            }
+        }
+        public class CancelRequest : EntityRequest<CancelRequest> 
+        {
+            public CancelRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CancelRequest EndOfTerm(bool endOfTerm) 
+            {
+                m_params.AddOpt("end_of_term", endOfTerm);
+                return this;
+            }
+            public CancelRequest CancelAt(long cancelAt) 
+            {
+                m_params.AddOpt("cancel_at", cancelAt);
+                return this;
+            }
+            public CancelRequest CreditOptionForCurrentTermCharges(ChargeBee.Models.Enums.CreditOptionForCurrentTermChargesEnum creditOptionForCurrentTermCharges) 
+            {
+                m_params.AddOpt("credit_option_for_current_term_charges", creditOptionForCurrentTermCharges);
+                return this;
+            }
+            public CancelRequest UnbilledChargesOption(ChargeBee.Models.Enums.UnbilledChargesOptionEnum unbilledChargesOption) 
+            {
+                m_params.AddOpt("unbilled_charges_option", unbilledChargesOption);
+                return this;
+            }
+            public CancelRequest AccountReceivablesHandling(ChargeBee.Models.Enums.AccountReceivablesHandlingEnum accountReceivablesHandling) 
+            {
+                m_params.AddOpt("account_receivables_handling", accountReceivablesHandling);
+                return this;
+            }
+            public CancelRequest RefundableCreditsHandling(ChargeBee.Models.Enums.RefundableCreditsHandlingEnum refundableCreditsHandling) 
+            {
+                m_params.AddOpt("refundable_credits_handling", refundableCreditsHandling);
                 return this;
             }
         }

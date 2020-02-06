@@ -163,12 +163,12 @@ namespace ChargeBee.Api
 
         public static ListResult GetList(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env)
         {
-            url = String.Format("{0}?{1}", url, parameters.GetQuery(true));
             return GetListAsync(url, parameters, headers, env).GetAwaiter().GetResult();
         }
 
         public static async Task<ListResult> GetListAsync(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env)
         {
+            url = String.Format("{0}?{1}", url, parameters.GetQuery(true));
             HttpRequestMessage request = GetRequestMessage(url, HttpMethod.GET, parameters, headers, env);
             var response = await httpClient.SendAsync(request).ConfigureAwait(false);
             var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
