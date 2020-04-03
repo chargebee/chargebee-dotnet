@@ -50,6 +50,10 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<SubscriptionEstimateShippingAddress>("shipping_address"); }
         }
+        public SubscriptionEstimateContractTerm ContractTerm 
+        {
+            get { return GetSubResource<SubscriptionEstimateContractTerm>("contract_term"); }
+        }
         
         #endregion
         
@@ -132,6 +136,80 @@ namespace ChargeBee.Models
 
             public ValidationStatusEnum? ValidationStatus() {
                 return GetEnum<ValidationStatusEnum>("validation_status", false);
+            }
+
+        }
+        public class SubscriptionEstimateContractTerm : Resource
+        {
+            public enum StatusEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "active")]
+                Active,
+                [EnumMember(Value = "completed")]
+                Completed,
+                [EnumMember(Value = "cancelled")]
+                Cancelled,
+                [EnumMember(Value = "terminated")]
+                Terminated,
+            }
+            public enum ActionAtTermEndEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "renew")]
+                Renew,
+                [EnumMember(Value = "evergreen")]
+                Evergreen,
+                [EnumMember(Value = "cancel")]
+                Cancel,
+                [EnumMember(Value = "renew_once")]
+                RenewOnce,
+            }
+
+            public string Id() {
+                return GetValue<string>("id", true);
+            }
+
+            public StatusEnum Status() {
+                return GetEnum<StatusEnum>("status", true);
+            }
+
+            public DateTime ContractStart() {
+                return (DateTime)GetDateTime("contract_start", true);
+            }
+
+            public DateTime ContractEnd() {
+                return (DateTime)GetDateTime("contract_end", true);
+            }
+
+            public int BillingCycle() {
+                return GetValue<int>("billing_cycle", true);
+            }
+
+            public ActionAtTermEndEnum ActionAtTermEnd() {
+                return GetEnum<ActionAtTermEndEnum>("action_at_term_end", true);
+            }
+
+            public long TotalContractValue() {
+                return GetValue<long>("total_contract_value", true);
+            }
+
+            public int? CancellationCutoffPeriod() {
+                return GetValue<int?>("cancellation_cutoff_period", false);
+            }
+
+            public DateTime CreatedAt() {
+                return (DateTime)GetDateTime("created_at", true);
+            }
+
+            public string SubscriptionId() {
+                return GetValue<string>("subscription_id", true);
+            }
+
+            public int? RemainingBillingCycles() {
+                return GetValue<int?>("remaining_billing_cycles", false);
             }
 
         }

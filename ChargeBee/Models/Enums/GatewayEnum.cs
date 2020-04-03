@@ -112,6 +112,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "vantiv")]
          Vantiv,
 
+        [EnumMember(Value = "checkout_com")]
+         CheckoutCom,
+
         [EnumMember(Value = "not_applicable")]
          NotApplicable,
 

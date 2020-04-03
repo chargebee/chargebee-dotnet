@@ -52,6 +52,12 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "sepa_credit")]
          SepaCredit,
 
+        [EnumMember(Value = "ideal")]
+         Ideal,
+
+        [EnumMember(Value = "google_pay")]
+         GooglePay,
+
         [EnumMember(Value = "other")]
          Other,
 

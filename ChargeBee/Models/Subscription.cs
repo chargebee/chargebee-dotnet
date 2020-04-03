@@ -40,6 +40,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "subscriptions");
             return new ListRequest(url);
         }
+        public static ListRequest ContractTermsForSubscription(string id)
+        {
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "contract_terms");
+            return new ListRequest(url);
+        }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id));
@@ -239,6 +244,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("gift_id", false); }
         }
+        public int? ContractTermBillingCycleOnRenewal 
+        {
+            get { return GetValue<int?>("contract_term_billing_cycle_on_renewal", false); }
+        }
         public bool? OverrideRelationship 
         {
             get { return GetValue<bool?>("override_relationship", false); }
@@ -351,6 +360,10 @@ namespace ChargeBee.Models
         public bool Deleted 
         {
             get { return GetValue<bool>("deleted", true); }
+        }
+        public SubscriptionContractTerm ContractTerm 
+        {
+            get { return GetSubResource<SubscriptionContractTerm>("contract_term"); }
         }
         
         #endregion
@@ -468,6 +481,11 @@ namespace ChargeBee.Models
             public CreateRequest InvoiceImmediately(bool invoiceImmediately) 
             {
                 m_params.AddOpt("invoice_immediately", invoiceImmediately);
+                return this;
+            }
+            public CreateRequest ContractTermBillingCycleOnRenewal(int contractTermBillingCycleOnRenewal) 
+            {
+                m_params.AddOpt("contract_term_billing_cycle_on_renewal", contractTermBillingCycleOnRenewal);
                 return this;
             }
             public CreateRequest ClientProfileId(string clientProfileId) 
@@ -920,6 +938,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[registered_for_gst]", customerRegisteredForGst);
                 return this;
             }
+            public CreateRequest CustomerBusinessCustomerWithoutVatNumber(bool customerBusinessCustomerWithoutVatNumber) 
+            {
+                m_params.AddOpt("customer[business_customer_without_vat_number]", customerBusinessCustomerWithoutVatNumber);
+                return this;
+            }
+            public CreateRequest ContractTermActionAtTermEnd(SubscriptionContractTerm.ActionAtTermEndEnum contractTermActionAtTermEnd) 
+            {
+                m_params.AddOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+                return this;
+            }
+            public CreateRequest ContractTermCancellationCutoffPeriod(int contractTermCancellationCutoffPeriod) 
+            {
+                m_params.AddOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
+                return this;
+            }
             public CreateRequest CustomerExemptionDetails(JArray customerExemptionDetails) 
             {
                 m_params.AddOpt("customer[exemption_details]", customerExemptionDetails);
@@ -1099,6 +1132,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("invoice_immediately", invoiceImmediately);
                 return this;
             }
+            public CreateForCustomerRequest ContractTermBillingCycleOnRenewal(int contractTermBillingCycleOnRenewal) 
+            {
+                m_params.AddOpt("contract_term_billing_cycle_on_renewal", contractTermBillingCycleOnRenewal);
+                return this;
+            }
             public CreateForCustomerRequest ShippingAddressFirstName(string shippingAddressFirstName) 
             {
                 m_params.AddOpt("shipping_address[first_name]", shippingAddressFirstName);
@@ -1193,6 +1231,16 @@ namespace ChargeBee.Models
             public CreateForCustomerRequest PaymentIntentGwPaymentMethodId(string paymentIntentGwPaymentMethodId) 
             {
                 m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+                return this;
+            }
+            public CreateForCustomerRequest ContractTermActionAtTermEnd(SubscriptionContractTerm.ActionAtTermEndEnum contractTermActionAtTermEnd) 
+            {
+                m_params.AddOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+                return this;
+            }
+            public CreateForCustomerRequest ContractTermCancellationCutoffPeriod(int contractTermCancellationCutoffPeriod) 
+            {
+                m_params.AddOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
                 return this;
             }
             public CreateForCustomerRequest AddonId(int index, string addonId) 
@@ -1488,6 +1536,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("override_relationship", overrideRelationship);
                 return this;
             }
+            public UpdateRequest ContractTermBillingCycleOnRenewal(int contractTermBillingCycleOnRenewal) 
+            {
+                m_params.AddOpt("contract_term_billing_cycle_on_renewal", contractTermBillingCycleOnRenewal);
+                return this;
+            }
             [Obsolete]
             public UpdateRequest CardGateway(ChargeBee.Models.Enums.GatewayEnum cardGateway) 
             {
@@ -1778,9 +1831,24 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[vat_number]", customerVatNumber);
                 return this;
             }
+            public UpdateRequest CustomerBusinessCustomerWithoutVatNumber(bool customerBusinessCustomerWithoutVatNumber) 
+            {
+                m_params.AddOpt("customer[business_customer_without_vat_number]", customerBusinessCustomerWithoutVatNumber);
+                return this;
+            }
             public UpdateRequest CustomerRegisteredForGst(bool customerRegisteredForGst) 
             {
                 m_params.AddOpt("customer[registered_for_gst]", customerRegisteredForGst);
+                return this;
+            }
+            public UpdateRequest ContractTermActionAtTermEnd(SubscriptionContractTerm.ActionAtTermEndEnum contractTermActionAtTermEnd) 
+            {
+                m_params.AddOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+                return this;
+            }
+            public UpdateRequest ContractTermCancellationCutoffPeriod(int contractTermCancellationCutoffPeriod) 
+            {
+                m_params.AddOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
                 return this;
             }
             public UpdateRequest AddonId(int index, string addonId) 
@@ -1908,6 +1976,21 @@ namespace ChargeBee.Models
             public ReactivateRequest TermsToCharge(int termsToCharge) 
             {
                 m_params.AddOpt("terms_to_charge", termsToCharge);
+                return this;
+            }
+            public ReactivateRequest ContractTermBillingCycleOnRenewal(int contractTermBillingCycleOnRenewal) 
+            {
+                m_params.AddOpt("contract_term_billing_cycle_on_renewal", contractTermBillingCycleOnRenewal);
+                return this;
+            }
+            public ReactivateRequest ContractTermActionAtTermEnd(SubscriptionContractTerm.ActionAtTermEndEnum contractTermActionAtTermEnd) 
+            {
+                m_params.AddOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+                return this;
+            }
+            public ReactivateRequest ContractTermCancellationCutoffPeriod(int contractTermCancellationCutoffPeriod) 
+            {
+                m_params.AddOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
                 return this;
             }
             public ReactivateRequest PaymentIntentId(string paymentIntentId) 
@@ -2923,6 +3006,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("refundable_credits_handling", refundableCreditsHandling);
                 return this;
             }
+            public CancelRequest ContractTermCancelOption(ChargeBee.Models.Enums.ContractTermCancelOptionEnum contractTermCancelOption) 
+            {
+                m_params.AddOpt("contract_term_cancel_option", contractTermCancelOption);
+                return this;
+            }
         }
         public class ResumeRequest : EntityRequest<ResumeRequest> 
         {
@@ -3079,6 +3167,8 @@ namespace ChargeBee.Models
                 PlanActivation,
                 [EnumMember(Value = "subscription_activation")]
                 SubscriptionActivation,
+                [EnumMember(Value = "contract_termination")]
+                ContractTermination,
             }
 
             public string Id() {
@@ -3266,6 +3356,80 @@ namespace ChargeBee.Models
 
             public bool PostPurchaseWidgetEnabled() {
                 return GetValue<bool>("post_purchase_widget_enabled", true);
+            }
+
+        }
+        public class SubscriptionContractTerm : Resource
+        {
+            public enum StatusEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "active")]
+                Active,
+                [EnumMember(Value = "completed")]
+                Completed,
+                [EnumMember(Value = "cancelled")]
+                Cancelled,
+                [EnumMember(Value = "terminated")]
+                Terminated,
+            }
+            public enum ActionAtTermEndEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "renew")]
+                Renew,
+                [EnumMember(Value = "evergreen")]
+                Evergreen,
+                [EnumMember(Value = "cancel")]
+                Cancel,
+                [EnumMember(Value = "renew_once")]
+                RenewOnce,
+            }
+
+            public string Id() {
+                return GetValue<string>("id", true);
+            }
+
+            public StatusEnum Status() {
+                return GetEnum<StatusEnum>("status", true);
+            }
+
+            public DateTime ContractStart() {
+                return (DateTime)GetDateTime("contract_start", true);
+            }
+
+            public DateTime ContractEnd() {
+                return (DateTime)GetDateTime("contract_end", true);
+            }
+
+            public int BillingCycle() {
+                return GetValue<int>("billing_cycle", true);
+            }
+
+            public ActionAtTermEndEnum ActionAtTermEnd() {
+                return GetEnum<ActionAtTermEndEnum>("action_at_term_end", true);
+            }
+
+            public long TotalContractValue() {
+                return GetValue<long>("total_contract_value", true);
+            }
+
+            public int? CancellationCutoffPeriod() {
+                return GetValue<int?>("cancellation_cutoff_period", false);
+            }
+
+            public DateTime CreatedAt() {
+                return (DateTime)GetDateTime("created_at", true);
+            }
+
+            public string SubscriptionId() {
+                return GetValue<string>("subscription_id", true);
+            }
+
+            public int? RemainingBillingCycles() {
+                return GetValue<int?>("remaining_billing_cycles", false);
             }
 
         }

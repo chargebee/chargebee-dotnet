@@ -442,6 +442,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("taxjar_exemption_category", taxjarExemptionCategory);
                 return this;
             }
+            public CreateRequest BusinessCustomerWithoutVatNumber(bool businessCustomerWithoutVatNumber) 
+            {
+                m_params.AddOpt("business_customer_without_vat_number", businessCustomerWithoutVatNumber);
+                return this;
+            }
             public CreateRequest Locale(string locale) 
             {
                 m_params.AddOpt("locale", locale);
@@ -1017,6 +1022,11 @@ namespace ChargeBee.Models
             public UpdateBillingInfoRequest RegisteredForGst(bool registeredForGst) 
             {
                 m_params.AddOpt("registered_for_gst", registeredForGst);
+                return this;
+            }
+            public UpdateBillingInfoRequest BusinessCustomerWithoutVatNumber(bool businessCustomerWithoutVatNumber) 
+            {
+                m_params.AddOpt("business_customer_without_vat_number", businessCustomerWithoutVatNumber);
                 return this;
             }
             public UpdateBillingInfoRequest BillingAddressFirstName(string billingAddressFirstName) 
@@ -1882,6 +1892,10 @@ namespace ChargeBee.Models
                 ApplePay,
                 [EnumMember(Value = "wechat_pay")]
                 WechatPay,
+                [EnumMember(Value = "ideal")]
+                Ideal,
+                [EnumMember(Value = "google_pay")]
+                GooglePay,
             }
             public enum StatusEnum
             {

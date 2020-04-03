@@ -44,6 +44,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("quotes");
             return new QuoteListRequest(url);
         }
+        public static ListRequest QuoteLineGroupsForQuote(string id)
+        {
+            string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "quote_line_groups");
+            return new ListRequest(url);
+        }
         public static ConvertRequest Convert(string id)
         {
             string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "convert");
@@ -860,14 +865,9 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
                 return this;
             }
-            public CreateForOnetimeChargesRequest AddonDateFrom(int index, long addonDateFrom) 
+            public CreateForOnetimeChargesRequest AddonServicePeriod(int index, int addonServicePeriod) 
             {
-                m_params.AddOpt("addons[date_from][" + index + "]", addonDateFrom);
-                return this;
-            }
-            public CreateForOnetimeChargesRequest AddonDateTo(int index, long addonDateTo) 
-            {
-                m_params.AddOpt("addons[date_to][" + index + "]", addonDateTo);
+                m_params.AddOpt("addons[service_period][" + index + "]", addonServicePeriod);
                 return this;
             }
             public CreateForOnetimeChargesRequest ChargeAmount(int index, int chargeAmount) 
@@ -895,14 +895,9 @@ namespace ChargeBee.Models
                 m_params.AddOpt("charges[avalara_service_type][" + index + "]", chargeAvalaraServiceType);
                 return this;
             }
-            public CreateForOnetimeChargesRequest ChargeDateFrom(int index, long chargeDateFrom) 
+            public CreateForOnetimeChargesRequest ChargeServicePeriod(int index, int chargeServicePeriod) 
             {
-                m_params.AddOpt("charges[date_from][" + index + "]", chargeDateFrom);
-                return this;
-            }
-            public CreateForOnetimeChargesRequest ChargeDateTo(int index, long chargeDateTo) 
-            {
-                m_params.AddOpt("charges[date_to][" + index + "]", chargeDateTo);
+                m_params.AddOpt("charges[service_period][" + index + "]", chargeServicePeriod);
                 return this;
             }
         }
@@ -1008,6 +1003,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public PdfRequest ConsolidatedView(bool consolidatedView) 
+            {
+                m_params.AddOpt("consolidated_view", consolidatedView);
+                return this;
+            }
             public PdfRequest DispositionType(ChargeBee.Models.Enums.DispositionTypeEnum dispositionType) 
             {
                 m_params.AddOpt("disposition_type", dispositionType);

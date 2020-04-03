@@ -1000,6 +1000,8 @@ namespace ChargeBee.Models
                 PlanActivation,
                 [EnumMember(Value = "subscription_activation")]
                 SubscriptionActivation,
+                [EnumMember(Value = "contract_termination")]
+                ContractTermination,
             }
 
             public string Id() {

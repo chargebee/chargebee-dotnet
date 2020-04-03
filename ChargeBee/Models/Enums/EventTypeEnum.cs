@@ -313,5 +313,20 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "payment_intent_updated")]
          PaymentIntentUpdated,
 
+        [EnumMember(Value = "contract_term_created")]
+         ContractTermCreated,
+
+        [EnumMember(Value = "contract_term_renewed")]
+         ContractTermRenewed,
+
+        [EnumMember(Value = "contract_term_terminated")]
+         ContractTermTerminated,
+
+        [EnumMember(Value = "contract_term_completed")]
+         ContractTermCompleted,
+
+        [EnumMember(Value = "contract_term_cancelled")]
+         ContractTermCancelled,
+
     }
 }

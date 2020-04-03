@@ -22,5 +22,8 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "subscription_activation")]
          SubscriptionActivation,
 
+        [EnumMember(Value = "contract_termination")]
+         ContractTermination,
+
     }
 }

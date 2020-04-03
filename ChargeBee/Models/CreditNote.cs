@@ -34,6 +34,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "pdf");
             return new PdfRequest(url, HttpMethod.POST);
         }
+        public static RefundRequest Refund(string id)
+        {
+            string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "refund");
+            return new RefundRequest(url, HttpMethod.POST);
+        }
         public static RecordRefundRequest RecordRefund(string id)
         {
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "record_refund");
@@ -291,6 +296,24 @@ namespace ChargeBee.Models
             public PdfRequest DispositionType(ChargeBee.Models.Enums.DispositionTypeEnum dispositionType) 
             {
                 m_params.AddOpt("disposition_type", dispositionType);
+                return this;
+            }
+        }
+        public class RefundRequest : EntityRequest<RefundRequest> 
+        {
+            public RefundRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public RefundRequest RefundAmount(int refundAmount) 
+            {
+                m_params.AddOpt("refund_amount", refundAmount);
+                return this;
+            }
+            public RefundRequest CustomerNotes(string customerNotes) 
+            {
+                m_params.AddOpt("customer_notes", customerNotes);
                 return this;
             }
         }

@@ -37,6 +37,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<Subscription>("subscription"); }
         }
+        public ContractTerm ContractTerm
+        {
+            get {  return GetResource<ContractTerm>("contract_term"); }
+        }
         public Customer Customer
         {
             get {  return GetResource<Customer>("customer"); }
@@ -108,6 +112,10 @@ namespace ChargeBee.Internal
         public Quote Quote
         {
             get {  return GetResource<Quote>("quote"); }
+        }
+        public QuoteLineGroup QuoteLineGroup
+        {
+            get {  return GetResource<QuoteLineGroup>("quote_line_group"); }
         }
         public Plan Plan
         {

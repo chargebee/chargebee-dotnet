@@ -37,5 +37,11 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "wechat_pay")]
          WechatPay,
 
+        [EnumMember(Value = "ideal")]
+         Ideal,
+
+        [EnumMember(Value = "google_pay")]
+         GooglePay,
+
     }
 }
