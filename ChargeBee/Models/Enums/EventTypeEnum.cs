@@ -91,6 +91,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "subscription_changed")]
          SubscriptionChanged,
 
+        [EnumMember(Value = "mrr_updated")]
+         MrrUpdated,
+
         [EnumMember(Value = "subscription_cancellation_scheduled")]
          SubscriptionCancellationScheduled,
 
@@ -273,6 +276,9 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "order_ready_to_ship")]
          OrderReadyToShip,
+
+        [EnumMember(Value = "order_deleted")]
+         OrderDeleted,
 
         [EnumMember(Value = "quote_created")]
          QuoteCreated,

@@ -22,6 +22,10 @@ namespace ChargeBee.Models
         #endregion
         
         #region Properties
+        public int? Version 
+        {
+            get { return GetValue<int?>("version", false); }
+        }
         public string Id 
         {
             get { return GetValue<string>("id", false); }
@@ -167,6 +171,10 @@ namespace ChargeBee.Models
 
             public string Description() {
                 return GetValue<string>("description", true);
+            }
+
+            public string EntityDescription() {
+                return GetValue<string>("entity_description", true);
             }
 
             public EntityTypeEnum EntityType() {

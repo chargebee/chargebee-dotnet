@@ -168,6 +168,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
+            public CheckoutNewRequest MandatoryAddonsToRemove(List<string> mandatoryAddonsToRemove) 
+            {
+                m_params.AddOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+                return this;
+            }
             public CheckoutNewRequest TermsToCharge(int termsToCharge) 
             {
                 m_params.AddOpt("terms_to_charge", termsToCharge);
@@ -178,9 +183,9 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_alignment_mode", billingAlignmentMode);
                 return this;
             }
-            public CheckoutNewRequest MandatoryAddonsToRemove(List<string> mandatoryAddonsToRemove) 
+            public CheckoutNewRequest CouponIds(List<string> couponIds) 
             {
-                m_params.AddOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+                m_params.AddOpt("coupon_ids", couponIds);
                 return this;
             }
             public CheckoutNewRequest RedirectUrl(string redirectUrl) 
@@ -273,16 +278,17 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[setup_fee]", subscriptionSetupFee);
                 return this;
             }
-            public CheckoutNewRequest SubscriptionStartDate(long subscriptionStartDate) 
-            {
-                m_params.AddOpt("subscription[start_date]", subscriptionStartDate);
-                return this;
-            }
             public CheckoutNewRequest SubscriptionTrialEnd(long subscriptionTrialEnd) 
             {
                 m_params.AddOpt("subscription[trial_end]", subscriptionTrialEnd);
                 return this;
             }
+            public CheckoutNewRequest SubscriptionStartDate(long subscriptionStartDate) 
+            {
+                m_params.AddOpt("subscription[start_date]", subscriptionStartDate);
+                return this;
+            }
+            [Obsolete]
             public CheckoutNewRequest SubscriptionCoupon(string subscriptionCoupon) 
             {
                 m_params.AddOpt("subscription[coupon]", subscriptionCoupon);
@@ -542,11 +548,6 @@ namespace ChargeBee.Models
             {
             }
 
-            public CheckoutExistingRequest BillingCycles(int billingCycles) 
-            {
-                m_params.AddOpt("billing_cycles", billingCycles);
-                return this;
-            }
             public CheckoutExistingRequest ReplaceAddonList(bool replaceAddonList) 
             {
                 m_params.AddOpt("replace_addon_list", replaceAddonList);
@@ -555,6 +556,11 @@ namespace ChargeBee.Models
             public CheckoutExistingRequest MandatoryAddonsToRemove(List<string> mandatoryAddonsToRemove) 
             {
                 m_params.AddOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+                return this;
+            }
+            public CheckoutExistingRequest BillingCycles(int billingCycles) 
+            {
+                m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
             public CheckoutExistingRequest TermsToCharge(int termsToCharge) 
@@ -570,6 +576,11 @@ namespace ChargeBee.Models
             public CheckoutExistingRequest BillingAlignmentMode(ChargeBee.Models.Enums.BillingAlignmentModeEnum billingAlignmentMode) 
             {
                 m_params.AddOpt("billing_alignment_mode", billingAlignmentMode);
+                return this;
+            }
+            public CheckoutExistingRequest CouponIds(List<string> couponIds) 
+            {
+                m_params.AddOpt("coupon_ids", couponIds);
                 return this;
             }
             public CheckoutExistingRequest Reactivate(bool reactivate) 
@@ -642,6 +653,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[trial_end]", subscriptionTrialEnd);
                 return this;
             }
+            [Obsolete]
             public CheckoutExistingRequest SubscriptionCoupon(string subscriptionCoupon) 
             {
                 m_params.AddOpt("subscription[coupon]", subscriptionCoupon);

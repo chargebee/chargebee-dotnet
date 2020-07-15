@@ -357,6 +357,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("payment_owner", false); }
         }
+        public string VoidReasonCode 
+        {
+            get { return GetValue<string>("void_reason_code", false); }
+        }
         public bool Deleted 
         {
             get { return GetValue<bool>("deleted", true); }
@@ -377,19 +381,40 @@ namespace ChargeBee.Models
                 m_params.Add("customer_id", customerId);
                 return this;
             }
+            public CreateRequest SubscriptionId(string subscriptionId) 
+            {
+                m_params.AddOpt("subscription_id", subscriptionId);
+                return this;
+            }
             public CreateRequest CurrencyCode(string currencyCode) 
             {
                 m_params.AddOpt("currency_code", currencyCode);
                 return this;
             }
-            public CreateRequest Coupon(string coupon) 
+            public CreateRequest InvoiceNote(string invoiceNote) 
             {
-                m_params.AddOpt("coupon", coupon);
+                m_params.AddOpt("invoice_note", invoiceNote);
+                return this;
+            }
+            public CreateRequest RemoveGeneralNote(bool removeGeneralNote) 
+            {
+                m_params.AddOpt("remove_general_note", removeGeneralNote);
                 return this;
             }
             public CreateRequest PoNumber(string poNumber) 
             {
                 m_params.AddOpt("po_number", poNumber);
+                return this;
+            }
+            [Obsolete]
+            public CreateRequest Coupon(string coupon) 
+            {
+                m_params.AddOpt("coupon", coupon);
+                return this;
+            }
+            public CreateRequest CouponIds(List<string> couponIds) 
+            {
+                m_params.AddOpt("coupon_ids", couponIds);
                 return this;
             }
             public CreateRequest AuthorizationTransactionId(string authorizationTransactionId) 
@@ -566,6 +591,36 @@ namespace ChargeBee.Models
             public CreateRequest ChargeDateTo(int index, long chargeDateTo) 
             {
                 m_params.AddOpt("charges[date_to][" + index + "]", chargeDateTo);
+                return this;
+            }
+            public CreateRequest ChargeTaxable(int index, bool chargeTaxable) 
+            {
+                m_params.AddOpt("charges[taxable][" + index + "]", chargeTaxable);
+                return this;
+            }
+            public CreateRequest ChargeTaxProfileId(int index, string chargeTaxProfileId) 
+            {
+                m_params.AddOpt("charges[tax_profile_id][" + index + "]", chargeTaxProfileId);
+                return this;
+            }
+            public CreateRequest ChargeAvalaraTaxCode(int index, string chargeAvalaraTaxCode) 
+            {
+                m_params.AddOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
+                return this;
+            }
+            public CreateRequest ChargeTaxjarProductCode(int index, string chargeTaxjarProductCode) 
+            {
+                m_params.AddOpt("charges[taxjar_product_code][" + index + "]", chargeTaxjarProductCode);
+                return this;
+            }
+            public CreateRequest NotesToRemoveEntityType(int index, ChargeBee.Models.Enums.EntityTypeEnum notesToRemoveEntityType) 
+            {
+                m_params.AddOpt("notes_to_remove[entity_type][" + index + "]", notesToRemoveEntityType);
+                return this;
+            }
+            public CreateRequest NotesToRemoveEntityId(int index, string notesToRemoveEntityId) 
+            {
+                m_params.AddOpt("notes_to_remove[entity_id][" + index + "]", notesToRemoveEntityId);
                 return this;
             }
         }
@@ -1278,6 +1333,10 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<InvoiceListRequest>("voided_at", this);        
             }
+            public StringFilter<InvoiceListRequest> VoidReasonCode() 
+            {
+                return new StringFilter<InvoiceListRequest>("void_reason_code", this).SupportsMultiOperators(true);        
+            }
             public InvoiceListRequest SortByDate(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","date");
                 return this;
@@ -1398,6 +1457,26 @@ namespace ChargeBee.Models
                 m_params.AddOpt("comment", comment);
                 return this;
             }
+            public CloseRequest InvoiceNote(string invoiceNote) 
+            {
+                m_params.AddOpt("invoice_note", invoiceNote);
+                return this;
+            }
+            public CloseRequest RemoveGeneralNote(bool removeGeneralNote) 
+            {
+                m_params.AddOpt("remove_general_note", removeGeneralNote);
+                return this;
+            }
+            public CloseRequest NotesToRemoveEntityType(int index, ChargeBee.Models.Enums.EntityTypeEnum notesToRemoveEntityType) 
+            {
+                m_params.AddOpt("notes_to_remove[entity_type][" + index + "]", notesToRemoveEntityType);
+                return this;
+            }
+            public CloseRequest NotesToRemoveEntityId(int index, string notesToRemoveEntityId) 
+            {
+                m_params.AddOpt("notes_to_remove[entity_id][" + index + "]", notesToRemoveEntityId);
+                return this;
+            }
         }
         public class CollectPaymentRequest : EntityRequest<CollectPaymentRequest> 
         {
@@ -1507,6 +1586,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("credit_note[reason_code]", creditNoteReasonCode);
                 return this;
             }
+            public RefundRequest CreditNoteCreateReasonCode(string creditNoteCreateReasonCode) 
+            {
+                m_params.AddOpt("credit_note[create_reason_code]", creditNoteCreateReasonCode);
+                return this;
+            }
         }
         public class RecordRefundRequest : EntityRequest<RecordRefundRequest> 
         {
@@ -1550,6 +1634,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("credit_note[reason_code]", creditNoteReasonCode);
                 return this;
             }
+            public RecordRefundRequest CreditNoteCreateReasonCode(string creditNoteCreateReasonCode) 
+            {
+                m_params.AddOpt("credit_note[create_reason_code]", creditNoteCreateReasonCode);
+                return this;
+            }
         }
         public class RemovePaymentRequest : EntityRequest<RemovePaymentRequest> 
         {
@@ -1587,6 +1676,11 @@ namespace ChargeBee.Models
             public VoidInvoiceRequest Comment(string comment) 
             {
                 m_params.AddOpt("comment", comment);
+                return this;
+            }
+            public VoidInvoiceRequest VoidReasonCode(string voidReasonCode) 
+            {
+                m_params.AddOpt("void_reason_code", voidReasonCode);
                 return this;
             }
         }
@@ -1894,6 +1988,10 @@ namespace ChargeBee.Models
                 return GetValue<string>("description", true);
             }
 
+            public string EntityDescription() {
+                return GetValue<string>("entity_description", true);
+            }
+
             public EntityTypeEnum EntityType() {
                 return GetEnum<EntityTypeEnum>("entity_type", true);
             }
@@ -2140,8 +2238,12 @@ namespace ChargeBee.Models
                 return (DateTime)GetDateTime("applied_at", true);
             }
 
-            public CreditNote.ReasonCodeEnum CnReasonCode() {
-                return GetEnum<CreditNote.ReasonCodeEnum>("cn_reason_code", true);
+            public CreditNote.ReasonCodeEnum? CnReasonCode() {
+                return GetEnum<CreditNote.ReasonCodeEnum>("cn_reason_code", false);
+            }
+
+            public string CnCreateReasonCode() {
+                return GetValue<string>("cn_create_reason_code", false);
             }
 
             public DateTime? CnDate() {
@@ -2160,8 +2262,12 @@ namespace ChargeBee.Models
                 return GetValue<string>("cn_id", true);
             }
 
-            public CreditNote.ReasonCodeEnum CnReasonCode() {
-                return GetEnum<CreditNote.ReasonCodeEnum>("cn_reason_code", true);
+            public CreditNote.ReasonCodeEnum? CnReasonCode() {
+                return GetEnum<CreditNote.ReasonCodeEnum>("cn_reason_code", false);
+            }
+
+            public string CnCreateReasonCode() {
+                return GetValue<string>("cn_create_reason_code", false);
             }
 
             public DateTime? CnDate() {
@@ -2184,8 +2290,12 @@ namespace ChargeBee.Models
                 return GetValue<string>("cn_id", true);
             }
 
-            public CreditNote.ReasonCodeEnum CnReasonCode() {
-                return GetEnum<CreditNote.ReasonCodeEnum>("cn_reason_code", true);
+            public CreditNote.ReasonCodeEnum? CnReasonCode() {
+                return GetEnum<CreditNote.ReasonCodeEnum>("cn_reason_code", false);
+            }
+
+            public string CnCreateReasonCode() {
+                return GetValue<string>("cn_create_reason_code", false);
             }
 
             public DateTime? CnDate() {

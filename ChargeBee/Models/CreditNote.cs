@@ -88,9 +88,9 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<TypeEnum>("type", true); }
         }
-        public ReasonCodeEnum ReasonCode 
+        public ReasonCodeEnum? ReasonCode 
         {
-            get { return GetEnum<ReasonCodeEnum>("reason_code", true); }
+            get { return GetEnum<ReasonCodeEnum>("reason_code", false); }
         }
         public StatusEnum Status 
         {
@@ -204,6 +204,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool>("deleted", true); }
         }
+        public string CreateReasonCode 
+        {
+            get { return GetValue<string>("create_reason_code", false); }
+        }
         
         #endregion
         
@@ -232,7 +236,12 @@ namespace ChargeBee.Models
             }
             public CreateRequest ReasonCode(CreditNote.ReasonCodeEnum reasonCode) 
             {
-                m_params.Add("reason_code", reasonCode);
+                m_params.AddOpt("reason_code", reasonCode);
+                return this;
+            }
+            public CreateRequest CreateReasonCode(string createReasonCode) 
+            {
+                m_params.AddOpt("create_reason_code", createReasonCode);
                 return this;
             }
             public CreateRequest Date(long date) 
@@ -316,6 +325,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer_notes", customerNotes);
                 return this;
             }
+            public RefundRequest RefundReasonCode(string refundReasonCode) 
+            {
+                m_params.AddOpt("refund_reason_code", refundReasonCode);
+                return this;
+            }
         }
         public class RecordRefundRequest : EntityRequest<RecordRefundRequest> 
         {
@@ -324,6 +338,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public RecordRefundRequest RefundReasonCode(string refundReasonCode) 
+            {
+                m_params.AddOpt("refund_reason_code", refundReasonCode);
+                return this;
+            }
             public RecordRefundRequest Comment(string comment) 
             {
                 m_params.AddOpt("comment", comment);
@@ -398,6 +417,10 @@ namespace ChargeBee.Models
             public EnumFilter<CreditNote.ReasonCodeEnum, CreditNoteListRequest> ReasonCode() 
             {
                 return new EnumFilter<CreditNote.ReasonCodeEnum, CreditNoteListRequest>("reason_code", this);        
+            }
+            public StringFilter<CreditNoteListRequest> CreateReasonCode() 
+            {
+                return new StringFilter<CreditNoteListRequest>("create_reason_code", this).SupportsMultiOperators(true);        
             }
             public EnumFilter<CreditNote.StatusEnum, CreditNoteListRequest> Status() 
             {
@@ -584,6 +607,10 @@ namespace ChargeBee.Models
 
             public string Description() {
                 return GetValue<string>("description", true);
+            }
+
+            public string EntityDescription() {
+                return GetValue<string>("entity_description", true);
             }
 
             public EntityTypeEnum EntityType() {
@@ -786,6 +813,10 @@ namespace ChargeBee.Models
 
             public int? TxnAmount() {
                 return GetValue<int?>("txn_amount", false);
+            }
+
+            public string RefundReasonCode() {
+                return GetValue<string>("refund_reason_code", false);
             }
 
         }

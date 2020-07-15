@@ -243,6 +243,14 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<PlanEventBasedAddon>("event_based_addons"); }
         }
+        public bool? ShowDescriptionInInvoices 
+        {
+            get { return GetValue<bool?>("show_description_in_invoices", false); }
+        }
+        public bool? ShowDescriptionInQuotes 
+        {
+            get { return GetValue<bool?>("show_description_in_quotes", false); }
+        }
         
         #endregion
         
@@ -434,6 +442,16 @@ namespace ChargeBee.Models
             public CreateRequest MetaData(JToken metaData) 
             {
                 m_params.AddOpt("meta_data", metaData);
+                return this;
+            }
+            public CreateRequest ShowDescriptionInInvoices(bool showDescriptionInInvoices) 
+            {
+                m_params.AddOpt("show_description_in_invoices", showDescriptionInInvoices);
+                return this;
+            }
+            public CreateRequest ShowDescriptionInQuotes(bool showDescriptionInQuotes) 
+            {
+                m_params.AddOpt("show_description_in_quotes", showDescriptionInQuotes);
                 return this;
             }
             public CreateRequest Giftable(bool giftable) 
@@ -694,6 +712,16 @@ namespace ChargeBee.Models
             public UpdateRequest MetaData(JToken metaData) 
             {
                 m_params.AddOpt("meta_data", metaData);
+                return this;
+            }
+            public UpdateRequest ShowDescriptionInInvoices(bool showDescriptionInInvoices) 
+            {
+                m_params.AddOpt("show_description_in_invoices", showDescriptionInInvoices);
+                return this;
+            }
+            public UpdateRequest ShowDescriptionInQuotes(bool showDescriptionInQuotes) 
+            {
+                m_params.AddOpt("show_description_in_quotes", showDescriptionInQuotes);
                 return this;
             }
             public UpdateRequest TierStartingUnit(int index, int tierStartingUnit) 

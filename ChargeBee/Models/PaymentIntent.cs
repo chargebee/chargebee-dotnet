@@ -65,6 +65,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("reference_id", false); }
         }
+        public PaymentMethodTypeEnum? PaymentMethodType 
+        {
+            get { return GetEnum<PaymentMethodTypeEnum>("payment_method_type", false); }
+        }
         public DateTime CreatedAt 
         {
             get { return (DateTime)GetDateTime("created_at", true); }
@@ -121,6 +125,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("reference_id", referenceId);
                 return this;
             }
+            public CreateRequest PaymentMethodType(PaymentIntent.PaymentMethodTypeEnum paymentMethodType) 
+            {
+                m_params.AddOpt("payment_method_type", paymentMethodType);
+                return this;
+            }
         }
         public class UpdateRequest : EntityRequest<UpdateRequest> 
         {
@@ -144,6 +153,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("gateway_account_id", gatewayAccountId);
                 return this;
             }
+            public UpdateRequest PaymentMethodType(PaymentIntent.PaymentMethodTypeEnum paymentMethodType) 
+            {
+                m_params.AddOpt("payment_method_type", paymentMethodType);
+                return this;
+            }
         }
         #endregion
 
@@ -162,6 +176,21 @@ namespace ChargeBee.Models
             Consumed,
             [EnumMember(Value = "expired")]
             Expired,
+
+        }
+        public enum PaymentMethodTypeEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "card")]
+            Card,
+            [EnumMember(Value = "ideal")]
+            Ideal,
+            [EnumMember(Value = "sofort")]
+            Sofort,
+            [EnumMember(Value = "bancontact")]
+            Bancontact,
 
         }
 
@@ -192,6 +221,10 @@ namespace ChargeBee.Models
 
             public StatusEnum Status() {
                 return GetEnum<StatusEnum>("status", true);
+            }
+
+            public PaymentMethodTypeEnum? PaymentMethodType() {
+                return GetEnum<PaymentMethodTypeEnum>("payment_method_type", false);
             }
 
             public string IdAtGateway() {

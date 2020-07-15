@@ -60,7 +60,7 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<StatusEnum>("status", true); }
         }
-        public DateTime ScheduledAt 
+        public DateTime ScheduledAt
         {
             get { return (DateTime)GetDateTime("scheduled_at", true); }
         }

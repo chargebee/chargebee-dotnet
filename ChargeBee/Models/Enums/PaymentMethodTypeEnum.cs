@@ -43,5 +43,11 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "google_pay")]
          GooglePay,
 
+        [EnumMember(Value = "sofort")]
+         Sofort,
+
+        [EnumMember(Value = "bancontact")]
+         Bancontact,
+
     }
 }

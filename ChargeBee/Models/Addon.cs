@@ -194,6 +194,14 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<AddonTier>("tiers"); }
         }
+        public bool? ShowDescriptionInInvoices 
+        {
+            get { return GetValue<bool?>("show_description_in_invoices", false); }
+        }
+        public bool? ShowDescriptionInQuotes 
+        {
+            get { return GetValue<bool?>("show_description_in_quotes", false); }
+        }
         
         #endregion
         
@@ -349,6 +357,16 @@ namespace ChargeBee.Models
             public CreateRequest ShippingFrequencyPeriodUnit(Addon.ShippingFrequencyPeriodUnitEnum shippingFrequencyPeriodUnit) 
             {
                 m_params.AddOpt("shipping_frequency_period_unit", shippingFrequencyPeriodUnit);
+                return this;
+            }
+            public CreateRequest ShowDescriptionInInvoices(bool showDescriptionInInvoices) 
+            {
+                m_params.AddOpt("show_description_in_invoices", showDescriptionInInvoices);
+                return this;
+            }
+            public CreateRequest ShowDescriptionInQuotes(bool showDescriptionInQuotes) 
+            {
+                m_params.AddOpt("show_description_in_quotes", showDescriptionInQuotes);
                 return this;
             }
             public CreateRequest Status(Addon.StatusEnum status) 
@@ -518,6 +536,16 @@ namespace ChargeBee.Models
             public UpdateRequest ShippingFrequencyPeriodUnit(Addon.ShippingFrequencyPeriodUnitEnum shippingFrequencyPeriodUnit) 
             {
                 m_params.AddOpt("shipping_frequency_period_unit", shippingFrequencyPeriodUnit);
+                return this;
+            }
+            public UpdateRequest ShowDescriptionInInvoices(bool showDescriptionInInvoices) 
+            {
+                m_params.AddOpt("show_description_in_invoices", showDescriptionInInvoices);
+                return this;
+            }
+            public UpdateRequest ShowDescriptionInQuotes(bool showDescriptionInQuotes) 
+            {
+                m_params.AddOpt("show_description_in_quotes", showDescriptionInQuotes);
                 return this;
             }
             public UpdateRequest TierStartingUnit(int index, int tierStartingUnit) 

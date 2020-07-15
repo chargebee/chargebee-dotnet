@@ -29,6 +29,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("orders", CheckNull(id));
             return new UpdateRequest(url, HttpMethod.POST);
         }
+        public static ImportOrderRequest ImportOrder()
+        {
+            string url = ApiUtil.BuildUrl("orders", "import_order");
+            return new ImportOrderRequest(url, HttpMethod.POST);
+        }
         public static EntityRequest<Type> AssignOrderNumber(string id)
         {
             string url = ApiUtil.BuildUrl("orders", CheckNull(id), "assign_order_number");
@@ -53,6 +58,11 @@ namespace ChargeBee.Models
         {
             string url = ApiUtil.BuildUrl("orders", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
+        }
+        public static EntityRequest<Type> Delete(string id)
+        {
+            string url = ApiUtil.BuildUrl("orders", CheckNull(id), "delete");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
         }
         public static OrderListRequest List()
         {
@@ -474,6 +484,259 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class ImportOrderRequest : EntityRequest<ImportOrderRequest> 
+        {
+            public ImportOrderRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public ImportOrderRequest Id(string id) 
+            {
+                m_params.AddOpt("id", id);
+                return this;
+            }
+            public ImportOrderRequest DocumentNumber(string documentNumber) 
+            {
+                m_params.AddOpt("document_number", documentNumber);
+                return this;
+            }
+            public ImportOrderRequest InvoiceId(string invoiceId) 
+            {
+                m_params.Add("invoice_id", invoiceId);
+                return this;
+            }
+            public ImportOrderRequest Status(Order.StatusEnum status) 
+            {
+                m_params.Add("status", status);
+                return this;
+            }
+            public ImportOrderRequest SubscriptionId(string subscriptionId) 
+            {
+                m_params.AddOpt("subscription_id", subscriptionId);
+                return this;
+            }
+            public ImportOrderRequest CustomerId(string customerId) 
+            {
+                m_params.AddOpt("customer_id", customerId);
+                return this;
+            }
+            public ImportOrderRequest CreatedAt(long createdAt) 
+            {
+                m_params.Add("created_at", createdAt);
+                return this;
+            }
+            public ImportOrderRequest OrderDate(long orderDate) 
+            {
+                m_params.Add("order_date", orderDate);
+                return this;
+            }
+            public ImportOrderRequest ShippingDate(long shippingDate) 
+            {
+                m_params.Add("shipping_date", shippingDate);
+                return this;
+            }
+            public ImportOrderRequest ReferenceId(string referenceId) 
+            {
+                m_params.AddOpt("reference_id", referenceId);
+                return this;
+            }
+            public ImportOrderRequest FulfillmentStatus(string fulfillmentStatus) 
+            {
+                m_params.AddOpt("fulfillment_status", fulfillmentStatus);
+                return this;
+            }
+            public ImportOrderRequest Note(string note) 
+            {
+                m_params.AddOpt("note", note);
+                return this;
+            }
+            public ImportOrderRequest TrackingId(string trackingId) 
+            {
+                m_params.AddOpt("tracking_id", trackingId);
+                return this;
+            }
+            public ImportOrderRequest BatchId(string batchId) 
+            {
+                m_params.AddOpt("batch_id", batchId);
+                return this;
+            }
+            public ImportOrderRequest ShipmentCarrier(string shipmentCarrier) 
+            {
+                m_params.AddOpt("shipment_carrier", shipmentCarrier);
+                return this;
+            }
+            public ImportOrderRequest ShippingCutOffDate(long shippingCutOffDate) 
+            {
+                m_params.AddOpt("shipping_cut_off_date", shippingCutOffDate);
+                return this;
+            }
+            public ImportOrderRequest DeliveredAt(long deliveredAt) 
+            {
+                m_params.AddOpt("delivered_at", deliveredAt);
+                return this;
+            }
+            public ImportOrderRequest ShippedAt(long shippedAt) 
+            {
+                m_params.AddOpt("shipped_at", shippedAt);
+                return this;
+            }
+            public ImportOrderRequest CancelledAt(long cancelledAt) 
+            {
+                m_params.AddOpt("cancelled_at", cancelledAt);
+                return this;
+            }
+            public ImportOrderRequest CancellationReason(Order.CancellationReasonEnum cancellationReason) 
+            {
+                m_params.AddOpt("cancellation_reason", cancellationReason);
+                return this;
+            }
+            public ImportOrderRequest RefundableCreditsIssued(int refundableCreditsIssued) 
+            {
+                m_params.AddOpt("refundable_credits_issued", refundableCreditsIssued);
+                return this;
+            }
+            public ImportOrderRequest ShippingAddressFirstName(string shippingAddressFirstName) 
+            {
+                m_params.AddOpt("shipping_address[first_name]", shippingAddressFirstName);
+                return this;
+            }
+            public ImportOrderRequest ShippingAddressLastName(string shippingAddressLastName) 
+            {
+                m_params.AddOpt("shipping_address[last_name]", shippingAddressLastName);
+                return this;
+            }
+            public ImportOrderRequest ShippingAddressEmail(string shippingAddressEmail) 
+            {
+                m_params.AddOpt("shipping_address[email]", shippingAddressEmail);
+                return this;
+            }
+            public ImportOrderRequest ShippingAddressCompany(string shippingAddressCompany) 
+            {
+                m_params.AddOpt("shipping_address[company]", shippingAddressCompany);
+                return this;
+            }
+            public ImportOrderRequest ShippingAddressPhone(string shippingAddressPhone) 
+            {
+                m_params.AddOpt("shipping_address[phone]", shippingAddressPhone);
+                return this;
+            }
+            public ImportOrderRequest ShippingAddressLine1(string shippingAddressLine1) 
+            {
+                m_params.AddOpt("shipping_address[line1]", shippingAddressLine1);
+                return this;
+            }
+            public ImportOrderRequest ShippingAddressLine2(string shippingAddressLine2) 
+            {
+                m_params.AddOpt("shipping_address[line2]", shippingAddressLine2);
+                return this;
+            }
+            public ImportOrderRequest ShippingAddressLine3(string shippingAddressLine3) 
+            {
+                m_params.AddOpt("shipping_address[line3]", shippingAddressLine3);
+                return this;
+            }
+            public ImportOrderRequest ShippingAddressCity(string shippingAddressCity) 
+            {
+                m_params.AddOpt("shipping_address[city]", shippingAddressCity);
+                return this;
+            }
+            public ImportOrderRequest ShippingAddressStateCode(string shippingAddressStateCode) 
+            {
+                m_params.AddOpt("shipping_address[state_code]", shippingAddressStateCode);
+                return this;
+            }
+            public ImportOrderRequest ShippingAddressState(string shippingAddressState) 
+            {
+                m_params.AddOpt("shipping_address[state]", shippingAddressState);
+                return this;
+            }
+            public ImportOrderRequest ShippingAddressZip(string shippingAddressZip) 
+            {
+                m_params.AddOpt("shipping_address[zip]", shippingAddressZip);
+                return this;
+            }
+            public ImportOrderRequest ShippingAddressCountry(string shippingAddressCountry) 
+            {
+                m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
+                return this;
+            }
+            public ImportOrderRequest ShippingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum shippingAddressValidationStatus) 
+            {
+                m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+                return this;
+            }
+            public ImportOrderRequest BillingAddressFirstName(string billingAddressFirstName) 
+            {
+                m_params.AddOpt("billing_address[first_name]", billingAddressFirstName);
+                return this;
+            }
+            public ImportOrderRequest BillingAddressLastName(string billingAddressLastName) 
+            {
+                m_params.AddOpt("billing_address[last_name]", billingAddressLastName);
+                return this;
+            }
+            public ImportOrderRequest BillingAddressEmail(string billingAddressEmail) 
+            {
+                m_params.AddOpt("billing_address[email]", billingAddressEmail);
+                return this;
+            }
+            public ImportOrderRequest BillingAddressCompany(string billingAddressCompany) 
+            {
+                m_params.AddOpt("billing_address[company]", billingAddressCompany);
+                return this;
+            }
+            public ImportOrderRequest BillingAddressPhone(string billingAddressPhone) 
+            {
+                m_params.AddOpt("billing_address[phone]", billingAddressPhone);
+                return this;
+            }
+            public ImportOrderRequest BillingAddressLine1(string billingAddressLine1) 
+            {
+                m_params.AddOpt("billing_address[line1]", billingAddressLine1);
+                return this;
+            }
+            public ImportOrderRequest BillingAddressLine2(string billingAddressLine2) 
+            {
+                m_params.AddOpt("billing_address[line2]", billingAddressLine2);
+                return this;
+            }
+            public ImportOrderRequest BillingAddressLine3(string billingAddressLine3) 
+            {
+                m_params.AddOpt("billing_address[line3]", billingAddressLine3);
+                return this;
+            }
+            public ImportOrderRequest BillingAddressCity(string billingAddressCity) 
+            {
+                m_params.AddOpt("billing_address[city]", billingAddressCity);
+                return this;
+            }
+            public ImportOrderRequest BillingAddressStateCode(string billingAddressStateCode) 
+            {
+                m_params.AddOpt("billing_address[state_code]", billingAddressStateCode);
+                return this;
+            }
+            public ImportOrderRequest BillingAddressState(string billingAddressState) 
+            {
+                m_params.AddOpt("billing_address[state]", billingAddressState);
+                return this;
+            }
+            public ImportOrderRequest BillingAddressZip(string billingAddressZip) 
+            {
+                m_params.AddOpt("billing_address[zip]", billingAddressZip);
+                return this;
+            }
+            public ImportOrderRequest BillingAddressCountry(string billingAddressCountry) 
+            {
+                m_params.AddOpt("billing_address[country]", billingAddressCountry);
+                return this;
+            }
+            public ImportOrderRequest BillingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum billingAddressValidationStatus) 
+            {
+                m_params.AddOpt("billing_address[validation_status]", billingAddressValidationStatus);
+                return this;
+            }
+        }
         public class CancelRequest : EntityRequest<CancelRequest> 
         {
             public CancelRequest(string url, HttpMethod method) 
@@ -548,6 +811,11 @@ namespace ChargeBee.Models
             public OrderListRequest IncludeDeleted(bool includeDeleted) 
             {
                 m_params.AddOpt("include_deleted", includeDeleted);
+                return this;
+            }
+            public OrderListRequest ExcludeDeletedCreditNotes(bool excludeDeletedCreditNotes) 
+            {
+                m_params.AddOpt("exclude_deleted_credit_notes", excludeDeletedCreditNotes);
                 return this;
             }
             public StringFilter<OrderListRequest> Id() 

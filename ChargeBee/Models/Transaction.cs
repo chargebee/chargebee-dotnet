@@ -492,8 +492,12 @@ namespace ChargeBee.Models
                 return (DateTime)GetDateTime("applied_at", true);
             }
 
-            public CreditNote.ReasonCodeEnum CnReasonCode() {
-                return GetEnum<CreditNote.ReasonCodeEnum>("cn_reason_code", true);
+            public CreditNote.ReasonCodeEnum? CnReasonCode() {
+                return GetEnum<CreditNote.ReasonCodeEnum>("cn_reason_code", false);
+            }
+
+            public string CnCreateReasonCode() {
+                return GetValue<string>("cn_create_reason_code", false);
             }
 
             public DateTime? CnDate() {

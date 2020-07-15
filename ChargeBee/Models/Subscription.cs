@@ -365,6 +365,10 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<SubscriptionContractTerm>("contract_term"); }
         }
+        public string CancelReasonCode 
+        {
+            get { return GetValue<string>("cancel_reason_code", false); }
+        }
         
         #endregion
         
@@ -1061,7 +1065,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("start_date", startDate);
                 return this;
             }
-            public CreateForCustomerRequest TrialEnd(long trialEnd) 
+            public CreateForCustomerRequest TrialEnd(long trialEnd)
             {
                 m_params.AddOpt("trial_end", trialEnd);
                 return this;
@@ -1335,6 +1339,10 @@ namespace ChargeBee.Models
             public EnumFilter<Subscription.CancelReasonEnum, SubscriptionListRequest> CancelReason() 
             {
                 return new EnumFilter<Subscription.CancelReasonEnum, SubscriptionListRequest>("cancel_reason", this).SupportsPresenceOperator(true);        
+            }
+            public StringFilter<SubscriptionListRequest> CancelReasonCode() 
+            {
+                return new StringFilter<SubscriptionListRequest>("cancel_reason_code", this).SupportsMultiOperators(true);        
             }
             public NumberFilter<int, SubscriptionListRequest> RemainingBillingCycles() 
             {
@@ -2176,6 +2184,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("coupon_ids", couponIds);
                 return this;
             }
+            public ImportSubscriptionRequest ContractTermBillingCycleOnRenewal(int contractTermBillingCycleOnRenewal) 
+            {
+                m_params.AddOpt("contract_term_billing_cycle_on_renewal", contractTermBillingCycleOnRenewal);
+                return this;
+            }
             public ImportSubscriptionRequest Status(Subscription.StatusEnum status) 
             {
                 m_params.Add("status", status);
@@ -2309,6 +2322,41 @@ namespace ChargeBee.Models
             public ImportSubscriptionRequest CustomerAllowDirectDebit(bool customerAllowDirectDebit) 
             {
                 m_params.AddOpt("customer[allow_direct_debit]", customerAllowDirectDebit);
+                return this;
+            }
+            public ImportSubscriptionRequest ContractTermId(string contractTermId) 
+            {
+                m_params.AddOpt("contract_term[id]", contractTermId);
+                return this;
+            }
+            public ImportSubscriptionRequest ContractTermCreatedAt(long contractTermCreatedAt) 
+            {
+                m_params.AddOpt("contract_term[created_at]", contractTermCreatedAt);
+                return this;
+            }
+            public ImportSubscriptionRequest ContractTermContractStart(long contractTermContractStart) 
+            {
+                m_params.AddOpt("contract_term[contract_start]", contractTermContractStart);
+                return this;
+            }
+            public ImportSubscriptionRequest ContractTermTotalAmountRaised(long contractTermTotalAmountRaised) 
+            {
+                m_params.AddOpt("contract_term[total_amount_raised]", contractTermTotalAmountRaised);
+                return this;
+            }
+            public ImportSubscriptionRequest ContractTermBillingCycle(int contractTermBillingCycle) 
+            {
+                m_params.AddOpt("contract_term[billing_cycle]", contractTermBillingCycle);
+                return this;
+            }
+            public ImportSubscriptionRequest ContractTermActionAtTermEnd(SubscriptionContractTerm.ActionAtTermEndEnum contractTermActionAtTermEnd) 
+            {
+                m_params.AddOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+                return this;
+            }
+            public ImportSubscriptionRequest ContractTermCancellationCutoffPeriod(int contractTermCancellationCutoffPeriod) 
+            {
+                m_params.AddOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
                 return this;
             }
             [Obsolete]
@@ -2752,6 +2800,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("resume_date", resumeDate);
                 return this;
             }
+            public ImportForCustomerRequest ContractTermBillingCycleOnRenewal(int contractTermBillingCycleOnRenewal) 
+            {
+                m_params.AddOpt("contract_term_billing_cycle_on_renewal", contractTermBillingCycleOnRenewal);
+                return this;
+            }
             public ImportForCustomerRequest CreateCurrentTermInvoice(bool createCurrentTermInvoice) 
             {
                 m_params.AddOpt("create_current_term_invoice", createCurrentTermInvoice);
@@ -2765,6 +2818,41 @@ namespace ChargeBee.Models
             public ImportForCustomerRequest MetaData(JToken metaData) 
             {
                 m_params.AddOpt("meta_data", metaData);
+                return this;
+            }
+            public ImportForCustomerRequest ContractTermId(string contractTermId) 
+            {
+                m_params.AddOpt("contract_term[id]", contractTermId);
+                return this;
+            }
+            public ImportForCustomerRequest ContractTermCreatedAt(long contractTermCreatedAt) 
+            {
+                m_params.AddOpt("contract_term[created_at]", contractTermCreatedAt);
+                return this;
+            }
+            public ImportForCustomerRequest ContractTermContractStart(long contractTermContractStart) 
+            {
+                m_params.AddOpt("contract_term[contract_start]", contractTermContractStart);
+                return this;
+            }
+            public ImportForCustomerRequest ContractTermTotalAmountRaised(long contractTermTotalAmountRaised) 
+            {
+                m_params.AddOpt("contract_term[total_amount_raised]", contractTermTotalAmountRaised);
+                return this;
+            }
+            public ImportForCustomerRequest ContractTermBillingCycle(int contractTermBillingCycle) 
+            {
+                m_params.AddOpt("contract_term[billing_cycle]", contractTermBillingCycle);
+                return this;
+            }
+            public ImportForCustomerRequest ContractTermActionAtTermEnd(SubscriptionContractTerm.ActionAtTermEndEnum contractTermActionAtTermEnd) 
+            {
+                m_params.AddOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+                return this;
+            }
+            public ImportForCustomerRequest ContractTermCancellationCutoffPeriod(int contractTermCancellationCutoffPeriod) 
+            {
+                m_params.AddOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
                 return this;
             }
             public ImportForCustomerRequest TransactionAmount(int transactionAmount) 
@@ -3009,6 +3097,31 @@ namespace ChargeBee.Models
             public CancelRequest ContractTermCancelOption(ChargeBee.Models.Enums.ContractTermCancelOptionEnum contractTermCancelOption) 
             {
                 m_params.AddOpt("contract_term_cancel_option", contractTermCancelOption);
+                return this;
+            }
+            public CancelRequest CancelReasonCode(string cancelReasonCode) 
+            {
+                m_params.AddOpt("cancel_reason_code", cancelReasonCode);
+                return this;
+            }
+            public CancelRequest EventBasedAddonId(int index, string eventBasedAddonId) 
+            {
+                m_params.AddOpt("event_based_addons[id][" + index + "]", eventBasedAddonId);
+                return this;
+            }
+            public CancelRequest EventBasedAddonQuantity(int index, int eventBasedAddonQuantity) 
+            {
+                m_params.AddOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
+                return this;
+            }
+            public CancelRequest EventBasedAddonUnitPrice(int index, int eventBasedAddonUnitPrice) 
+            {
+                m_params.AddOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
+                return this;
+            }
+            public CancelRequest EventBasedAddonServicePeriodInDays(int index, int eventBasedAddonServicePeriodInDays) 
+            {
+                m_params.AddOpt("event_based_addons[service_period_in_days][" + index + "]", eventBasedAddonServicePeriodInDays);
                 return this;
             }
         }

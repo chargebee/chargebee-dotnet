@@ -175,6 +175,10 @@ namespace ChargeBee.Models
                 return GetValue<string>("description", true);
             }
 
+            public string EntityDescription() {
+                return GetValue<string>("entity_description", true);
+            }
+
             public EntityTypeEnum EntityType() {
                 return GetEnum<EntityTypeEnum>("entity_type", true);
             }

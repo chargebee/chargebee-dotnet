@@ -176,6 +176,10 @@ namespace ChargeBee.Models
             {
                 return new StringFilter<RevenueRecognitionRequest>("payment_owner", this).SupportsMultiOperators(true);        
             }
+            public StringFilter<RevenueRecognitionRequest> CancelReasonCode()
+            {
+                return new StringFilter<RevenueRecognitionRequest>("cancel_reason_code", this).SupportsMultiOperators(true);        
+            }
             public StringFilter<RevenueRecognitionRequest> InvoiceId() 
             {
                 return new StringFilter<RevenueRecognitionRequest>("invoice[id]", this).SupportsMultiOperators(true);        
@@ -412,6 +416,10 @@ namespace ChargeBee.Models
             public StringFilter<DeferredRevenueRequest> PaymentOwner() 
             {
                 return new StringFilter<DeferredRevenueRequest>("payment_owner", this).SupportsMultiOperators(true);        
+            }
+            public StringFilter<DeferredRevenueRequest> CancelReasonCode()
+            {
+                return new StringFilter<DeferredRevenueRequest>("cancel_reason_code", this).SupportsMultiOperators(true);        
             }
             public StringFilter<DeferredRevenueRequest> InvoiceId() 
             {
@@ -843,6 +851,10 @@ namespace ChargeBee.Models
             {
             }
 
+            public StringFilter<SubscriptionsRequest> CancelReasonCode()
+            {
+                return new StringFilter<SubscriptionsRequest>("cancel_reason_code", this).SupportsMultiOperators(true);        
+            }
             public StringFilter<SubscriptionsRequest> SubscriptionId() 
             {
                 return new StringFilter<SubscriptionsRequest>("subscription[id]", this).SupportsMultiOperators(true);        
@@ -1026,6 +1038,11 @@ namespace ChargeBee.Models
             public EnumFilter<CreditNote.ReasonCodeEnum, CreditNotesRequest> CreditNoteReasonCode() 
             {
                 return new EnumFilter<CreditNote.ReasonCodeEnum, CreditNotesRequest>("credit_note[reason_code]", this);        
+            }
+
+            public StringFilter<CreditNotesRequest> CreditNoteCreateReasonCode() 
+            {
+                return new StringFilter<CreditNotesRequest>("credit_note[create_reason_code]", this).SupportsMultiOperators(true);        
             }
 
             public EnumFilter<CreditNote.StatusEnum, CreditNotesRequest> CreditNoteStatus() 

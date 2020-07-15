@@ -148,6 +148,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("include_deleted", includeDeleted);
                 return this;
             }
+            public UnbilledChargeListRequest IsVoided(bool isVoided) 
+            {
+                m_params.AddOpt("is_voided", isVoided);
+                return this;
+            }
             public StringFilter<UnbilledChargeListRequest> SubscriptionId() 
             {
                 return new StringFilter<UnbilledChargeListRequest>("subscription_id", this).SupportsMultiOperators(true).SupportsPresenceOperator(true);        

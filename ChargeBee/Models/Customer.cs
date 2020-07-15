@@ -142,6 +142,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "hierarchy");
             return new HierarchyRequest(url, HttpMethod.GET);
         }
+        public static UpdateHierarchySettingsRequest UpdateHierarchySettings(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "update_hierarchy_settings");
+            return new UpdateHierarchySettingsRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -334,17 +339,29 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool?>("business_customer_without_vat_number", false); }
         }
-        public CustomerTypeEnum? CustomerType 
+        public CustomerTypeEnum? CustomerType
         {
             get { return GetEnum<CustomerTypeEnum>("customer_type", false); }
         }
-        public string ClientProfileId 
+        public string ClientProfileId
         {
             get { return GetValue<string>("client_profile_id", false); }
         }
         public CustomerRelationship Relationship 
         {
             get { return GetSubResource<CustomerRelationship>("relationship"); }
+        }
+        public bool? UseDefaultHierarchySettings 
+        {
+            get { return GetValue<bool?>("use_default_hierarchy_settings", false); }
+        }
+        public CustomerParentAccountAccess ParentAccountAccess 
+        {
+            get { return GetSubResource<CustomerParentAccountAccess>("parent_account_access"); }
+        }
+        public CustomerChildAccountAccess ChildAccountAccess 
+        {
+            get { return GetSubResource<CustomerChildAccountAccess>("child_account_access"); }
         }
         
         #endregion
@@ -1632,6 +1649,61 @@ namespace ChargeBee.Models
                 m_params.AddOpt("invoice_owner_id", invoiceOwnerId);
                 return this;
             }
+            public RelationshipsRequest UseDefaultHierarchySettings(bool useDefaultHierarchySettings) 
+            {
+                m_params.AddOpt("use_default_hierarchy_settings", useDefaultHierarchySettings);
+                return this;
+            }
+            public RelationshipsRequest ParentAccountAccessPortalEditChildSubscriptions(ParentAccountAccess.PortalEditChildSubscriptionsEnum parentAccountAccessPortalEditChildSubscriptions) 
+            {
+                m_params.AddOpt("parent_account_access[portal_edit_child_subscriptions]", parentAccountAccessPortalEditChildSubscriptions);
+                return this;
+            }
+            public RelationshipsRequest ParentAccountAccessPortalDownloadChildInvoices(ParentAccountAccess.PortalDownloadChildInvoicesEnum parentAccountAccessPortalDownloadChildInvoices) 
+            {
+                m_params.AddOpt("parent_account_access[portal_download_child_invoices]", parentAccountAccessPortalDownloadChildInvoices);
+                return this;
+            }
+            public RelationshipsRequest ParentAccountAccessSendSubscriptionEmails(bool parentAccountAccessSendSubscriptionEmails) 
+            {
+                m_params.AddOpt("parent_account_access[send_subscription_emails]", parentAccountAccessSendSubscriptionEmails);
+                return this;
+            }
+            public RelationshipsRequest ParentAccountAccessSendPaymentEmails(bool parentAccountAccessSendPaymentEmails) 
+            {
+                m_params.AddOpt("parent_account_access[send_payment_emails]", parentAccountAccessSendPaymentEmails);
+                return this;
+            }
+            public RelationshipsRequest ParentAccountAccessSendInvoiceEmails(bool parentAccountAccessSendInvoiceEmails) 
+            {
+                m_params.AddOpt("parent_account_access[send_invoice_emails]", parentAccountAccessSendInvoiceEmails);
+                return this;
+            }
+            public RelationshipsRequest ChildAccountAccessPortalEditSubscriptions(ChildAccountAccess.PortalEditSubscriptionsEnum childAccountAccessPortalEditSubscriptions) 
+            {
+                m_params.AddOpt("child_account_access[portal_edit_subscriptions]", childAccountAccessPortalEditSubscriptions);
+                return this;
+            }
+            public RelationshipsRequest ChildAccountAccessPortalDownloadInvoices(ChildAccountAccess.PortalDownloadInvoicesEnum childAccountAccessPortalDownloadInvoices) 
+            {
+                m_params.AddOpt("child_account_access[portal_download_invoices]", childAccountAccessPortalDownloadInvoices);
+                return this;
+            }
+            public RelationshipsRequest ChildAccountAccessSendSubscriptionEmails(bool childAccountAccessSendSubscriptionEmails) 
+            {
+                m_params.AddOpt("child_account_access[send_subscription_emails]", childAccountAccessSendSubscriptionEmails);
+                return this;
+            }
+            public RelationshipsRequest ChildAccountAccessSendPaymentEmails(bool childAccountAccessSendPaymentEmails) 
+            {
+                m_params.AddOpt("child_account_access[send_payment_emails]", childAccountAccessSendPaymentEmails);
+                return this;
+            }
+            public RelationshipsRequest ChildAccountAccessSendInvoiceEmails(bool childAccountAccessSendInvoiceEmails) 
+            {
+                m_params.AddOpt("child_account_access[send_invoice_emails]", childAccountAccessSendInvoiceEmails);
+                return this;
+            }
         }
         public class HierarchyRequest : EntityRequest<HierarchyRequest> 
         {
@@ -1643,6 +1715,69 @@ namespace ChargeBee.Models
             public HierarchyRequest HierarchyOperationType(ChargeBee.Models.Enums.HierarchyOperationTypeEnum hierarchyOperationType) 
             {
                 m_params.AddOpt("hierarchy_operation_type", hierarchyOperationType);
+                return this;
+            }
+        }
+        public class UpdateHierarchySettingsRequest : EntityRequest<UpdateHierarchySettingsRequest> 
+        {
+            public UpdateHierarchySettingsRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public UpdateHierarchySettingsRequest UseDefaultHierarchySettings(bool useDefaultHierarchySettings) 
+            {
+                m_params.AddOpt("use_default_hierarchy_settings", useDefaultHierarchySettings);
+                return this;
+            }
+            public UpdateHierarchySettingsRequest ParentAccountAccessPortalEditChildSubscriptions(ParentAccountAccess.PortalEditChildSubscriptionsEnum parentAccountAccessPortalEditChildSubscriptions) 
+            {
+                m_params.AddOpt("parent_account_access[portal_edit_child_subscriptions]", parentAccountAccessPortalEditChildSubscriptions);
+                return this;
+            }
+            public UpdateHierarchySettingsRequest ParentAccountAccessPortalDownloadChildInvoices(ParentAccountAccess.PortalDownloadChildInvoicesEnum parentAccountAccessPortalDownloadChildInvoices) 
+            {
+                m_params.AddOpt("parent_account_access[portal_download_child_invoices]", parentAccountAccessPortalDownloadChildInvoices);
+                return this;
+            }
+            public UpdateHierarchySettingsRequest ParentAccountAccessSendSubscriptionEmails(bool parentAccountAccessSendSubscriptionEmails) 
+            {
+                m_params.AddOpt("parent_account_access[send_subscription_emails]", parentAccountAccessSendSubscriptionEmails);
+                return this;
+            }
+            public UpdateHierarchySettingsRequest ParentAccountAccessSendPaymentEmails(bool parentAccountAccessSendPaymentEmails) 
+            {
+                m_params.AddOpt("parent_account_access[send_payment_emails]", parentAccountAccessSendPaymentEmails);
+                return this;
+            }
+            public UpdateHierarchySettingsRequest ParentAccountAccessSendInvoiceEmails(bool parentAccountAccessSendInvoiceEmails) 
+            {
+                m_params.AddOpt("parent_account_access[send_invoice_emails]", parentAccountAccessSendInvoiceEmails);
+                return this;
+            }
+            public UpdateHierarchySettingsRequest ChildAccountAccessPortalEditSubscriptions(ChildAccountAccess.PortalEditSubscriptionsEnum childAccountAccessPortalEditSubscriptions) 
+            {
+                m_params.AddOpt("child_account_access[portal_edit_subscriptions]", childAccountAccessPortalEditSubscriptions);
+                return this;
+            }
+            public UpdateHierarchySettingsRequest ChildAccountAccessPortalDownloadInvoices(ChildAccountAccess.PortalDownloadInvoicesEnum childAccountAccessPortalDownloadInvoices) 
+            {
+                m_params.AddOpt("child_account_access[portal_download_invoices]", childAccountAccessPortalDownloadInvoices);
+                return this;
+            }
+            public UpdateHierarchySettingsRequest ChildAccountAccessSendSubscriptionEmails(bool childAccountAccessSendSubscriptionEmails) 
+            {
+                m_params.AddOpt("child_account_access[send_subscription_emails]", childAccountAccessSendSubscriptionEmails);
+                return this;
+            }
+            public UpdateHierarchySettingsRequest ChildAccountAccessSendPaymentEmails(bool childAccountAccessSendPaymentEmails) 
+            {
+                m_params.AddOpt("child_account_access[send_payment_emails]", childAccountAccessSendPaymentEmails);
+                return this;
+            }
+            public UpdateHierarchySettingsRequest ChildAccountAccessSendInvoiceEmails(bool childAccountAccessSendInvoiceEmails) 
+            {
+                m_params.AddOpt("child_account_access[send_invoice_emails]", childAccountAccessSendInvoiceEmails);
                 return this;
             }
         }
@@ -1896,6 +2031,10 @@ namespace ChargeBee.Models
                 Ideal,
                 [EnumMember(Value = "google_pay")]
                 GooglePay,
+                [EnumMember(Value = "sofort")]
+                Sofort,
+                [EnumMember(Value = "bancontact")]
+                Bancontact,
             }
             public enum StatusEnum
             {
@@ -1975,6 +2114,96 @@ namespace ChargeBee.Models
 
             public string InvoiceOwnerId() {
                 return GetValue<string>("invoice_owner_id", true);
+            }
+
+        }
+        public class CustomerParentAccountAccess : Resource
+        {
+            public enum PortalEditChildSubscriptionsEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "yes")]
+                Yes,
+                [EnumMember(Value = "view_only")]
+                ViewOnly,
+                [EnumMember(Value = "no")]
+                No,
+            }
+            public enum PortalDownloadChildInvoicesEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "yes")]
+                Yes,
+                [EnumMember(Value = "view_only")]
+                ViewOnly,
+                [EnumMember(Value = "no")]
+                No,
+            }
+
+            public PortalEditChildSubscriptionsEnum? PortalEditChildSubscriptions() {
+                return GetEnum<PortalEditChildSubscriptionsEnum>("portal_edit_child_subscriptions", false);
+            }
+
+            public PortalDownloadChildInvoicesEnum? PortalDownloadChildInvoices() {
+                return GetEnum<PortalDownloadChildInvoicesEnum>("portal_download_child_invoices", false);
+            }
+
+            public bool SendSubscriptionEmails() {
+                return GetValue<bool>("send_subscription_emails", true);
+            }
+
+            public bool SendInvoiceEmails() {
+                return GetValue<bool>("send_invoice_emails", true);
+            }
+
+            public bool SendPaymentEmails() {
+                return GetValue<bool>("send_payment_emails", true);
+            }
+
+        }
+        public class CustomerChildAccountAccess : Resource
+        {
+            public enum PortalEditSubscriptionsEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "yes")]
+                Yes,
+                [EnumMember(Value = "view_only")]
+                ViewOnly,
+            }
+            public enum PortalDownloadInvoicesEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "yes")]
+                Yes,
+                [EnumMember(Value = "view_only")]
+                ViewOnly,
+                [EnumMember(Value = "no")]
+                No,
+            }
+
+            public PortalEditSubscriptionsEnum? PortalEditSubscriptions() {
+                return GetEnum<PortalEditSubscriptionsEnum>("portal_edit_subscriptions", false);
+            }
+
+            public PortalDownloadInvoicesEnum? PortalDownloadInvoices() {
+                return GetEnum<PortalDownloadInvoicesEnum>("portal_download_invoices", false);
+            }
+
+            public bool SendSubscriptionEmails() {
+                return GetValue<bool>("send_subscription_emails", true);
+            }
+
+            public bool SendInvoiceEmails() {
+                return GetValue<bool>("send_invoice_emails", true);
+            }
+
+            public bool SendPaymentEmails() {
+                return GetValue<bool>("send_payment_emails", true);
             }
 
         }

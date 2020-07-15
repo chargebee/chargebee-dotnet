@@ -420,7 +420,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
                 return this;
             }
-            public CreateSubForCustomerEstimateRequest CouponIds(List<string> couponIds) 
+            public CreateSubForCustomerEstimateRequest CouponIds(List<string> couponIds)
             {
                 m_params.AddOpt("coupon_ids", couponIds);
                 return this;
@@ -455,7 +455,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[start_date]", subscriptionStartDate);
                 return this;
             }
-            public CreateSubForCustomerEstimateRequest SubscriptionTrialEnd(long subscriptionTrialEnd) 
+            public CreateSubForCustomerEstimateRequest SubscriptionTrialEnd(long subscriptionTrialEnd)
             {
                 m_params.AddOpt("subscription[trial_end]", subscriptionTrialEnd);
                 return this;
@@ -588,7 +588,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
-            public UpdateSubscriptionRequest ReplaceAddonList(bool replaceAddonList) 
+            public UpdateSubscriptionRequest ReplaceAddonList(bool replaceAddonList)
             {
                 m_params.AddOpt("replace_addon_list", replaceAddonList);
                 return this;
@@ -1166,9 +1166,20 @@ namespace ChargeBee.Models
                 m_params.AddOpt("currency_code", currencyCode);
                 return this;
             }
+            public CreateInvoiceRequest InvoiceNotes(string invoiceNotes) 
+            {
+                m_params.AddOpt("invoice_notes", invoiceNotes);
+                return this;
+            }
+            [Obsolete]
             public CreateInvoiceRequest Coupon(string coupon) 
             {
                 m_params.AddOpt("coupon", coupon);
+                return this;
+            }
+            public CreateInvoiceRequest CouponIds(List<string> couponIds) 
+            {
+                m_params.AddOpt("coupon_ids", couponIds);
                 return this;
             }
             public CreateInvoiceRequest AuthorizationTransactionId(string authorizationTransactionId) 
@@ -1189,6 +1200,11 @@ namespace ChargeBee.Models
             public CreateInvoiceRequest InvoiceCustomerId(string invoiceCustomerId) 
             {
                 m_params.Add("invoice[customer_id]", invoiceCustomerId);
+                return this;
+            }
+            public CreateInvoiceRequest InvoiceSubscriptionId(string invoiceSubscriptionId) 
+            {
+                m_params.AddOpt("invoice[subscription_id]", invoiceSubscriptionId);
                 return this;
             }
             public CreateInvoiceRequest InvoicePoNumber(string invoicePoNumber) 
@@ -1324,6 +1340,26 @@ namespace ChargeBee.Models
             public CreateInvoiceRequest ChargeDateTo(int index, long chargeDateTo) 
             {
                 m_params.AddOpt("charges[date_to][" + index + "]", chargeDateTo);
+                return this;
+            }
+            public CreateInvoiceRequest ChargeTaxable(int index, bool chargeTaxable) 
+            {
+                m_params.AddOpt("charges[taxable][" + index + "]", chargeTaxable);
+                return this;
+            }
+            public CreateInvoiceRequest ChargeTaxProfileId(int index, string chargeTaxProfileId) 
+            {
+                m_params.AddOpt("charges[tax_profile_id][" + index + "]", chargeTaxProfileId);
+                return this;
+            }
+            public CreateInvoiceRequest ChargeAvalaraTaxCode(int index, string chargeAvalaraTaxCode) 
+            {
+                m_params.AddOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
+                return this;
+            }
+            public CreateInvoiceRequest ChargeTaxjarProductCode(int index, string chargeTaxjarProductCode) 
+            {
+                m_params.AddOpt("charges[taxjar_product_code][" + index + "]", chargeTaxjarProductCode);
                 return this;
             }
         }
