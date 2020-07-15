@@ -1654,12 +1654,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("use_default_hierarchy_settings", useDefaultHierarchySettings);
                 return this;
             }
-            public RelationshipsRequest ParentAccountAccessPortalEditChildSubscriptions(ParentAccountAccess.PortalEditChildSubscriptionsEnum parentAccountAccessPortalEditChildSubscriptions) 
+            public RelationshipsRequest ParentAccountAccessPortalEditChildSubscriptions(CustomerParentAccountAccess.PortalEditChildSubscriptionsEnum parentAccountAccessPortalEditChildSubscriptions) 
             {
                 m_params.AddOpt("parent_account_access[portal_edit_child_subscriptions]", parentAccountAccessPortalEditChildSubscriptions);
                 return this;
             }
-            public RelationshipsRequest ParentAccountAccessPortalDownloadChildInvoices(ParentAccountAccess.PortalDownloadChildInvoicesEnum parentAccountAccessPortalDownloadChildInvoices) 
+            public RelationshipsRequest ParentAccountAccessPortalDownloadChildInvoices(CustomerParentAccountAccess.PortalDownloadChildInvoicesEnum parentAccountAccessPortalDownloadChildInvoices) 
             {
                 m_params.AddOpt("parent_account_access[portal_download_child_invoices]", parentAccountAccessPortalDownloadChildInvoices);
                 return this;
@@ -1679,12 +1679,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("parent_account_access[send_invoice_emails]", parentAccountAccessSendInvoiceEmails);
                 return this;
             }
-            public RelationshipsRequest ChildAccountAccessPortalEditSubscriptions(ChildAccountAccess.PortalEditSubscriptionsEnum childAccountAccessPortalEditSubscriptions) 
+            public RelationshipsRequest ChildAccountAccessPortalEditSubscriptions(CustomerChildAccountAccess.PortalEditSubscriptionsEnum childAccountAccessPortalEditSubscriptions) 
             {
                 m_params.AddOpt("child_account_access[portal_edit_subscriptions]", childAccountAccessPortalEditSubscriptions);
                 return this;
             }
-            public RelationshipsRequest ChildAccountAccessPortalDownloadInvoices(ChildAccountAccess.PortalDownloadInvoicesEnum childAccountAccessPortalDownloadInvoices) 
+            public RelationshipsRequest ChildAccountAccessPortalDownloadInvoices(CustomerChildAccountAccess.PortalDownloadInvoicesEnum childAccountAccessPortalDownloadInvoices) 
             {
                 m_params.AddOpt("child_account_access[portal_download_invoices]", childAccountAccessPortalDownloadInvoices);
                 return this;
@@ -1730,12 +1730,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("use_default_hierarchy_settings", useDefaultHierarchySettings);
                 return this;
             }
-            public UpdateHierarchySettingsRequest ParentAccountAccessPortalEditChildSubscriptions(ParentAccountAccess.PortalEditChildSubscriptionsEnum parentAccountAccessPortalEditChildSubscriptions) 
+            public UpdateHierarchySettingsRequest ParentAccountAccessPortalEditChildSubscriptions(CustomerParentAccountAccess.PortalEditChildSubscriptionsEnum parentAccountAccessPortalEditChildSubscriptions) 
             {
                 m_params.AddOpt("parent_account_access[portal_edit_child_subscriptions]", parentAccountAccessPortalEditChildSubscriptions);
                 return this;
             }
-            public UpdateHierarchySettingsRequest ParentAccountAccessPortalDownloadChildInvoices(ParentAccountAccess.PortalDownloadChildInvoicesEnum parentAccountAccessPortalDownloadChildInvoices) 
+            public UpdateHierarchySettingsRequest ParentAccountAccessPortalDownloadChildInvoices(CustomerParentAccountAccess.PortalDownloadChildInvoicesEnum parentAccountAccessPortalDownloadChildInvoices) 
             {
                 m_params.AddOpt("parent_account_access[portal_download_child_invoices]", parentAccountAccessPortalDownloadChildInvoices);
                 return this;
@@ -1755,12 +1755,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("parent_account_access[send_invoice_emails]", parentAccountAccessSendInvoiceEmails);
                 return this;
             }
-            public UpdateHierarchySettingsRequest ChildAccountAccessPortalEditSubscriptions(ChildAccountAccess.PortalEditSubscriptionsEnum childAccountAccessPortalEditSubscriptions) 
+            public UpdateHierarchySettingsRequest ChildAccountAccessPortalEditSubscriptions(CustomerChildAccountAccess.PortalEditSubscriptionsEnum childAccountAccessPortalEditSubscriptions) 
             {
                 m_params.AddOpt("child_account_access[portal_edit_subscriptions]", childAccountAccessPortalEditSubscriptions);
                 return this;
             }
-            public UpdateHierarchySettingsRequest ChildAccountAccessPortalDownloadInvoices(ChildAccountAccess.PortalDownloadInvoicesEnum childAccountAccessPortalDownloadInvoices) 
+            public UpdateHierarchySettingsRequest ChildAccountAccessPortalDownloadInvoices(CustomerChildAccountAccess.PortalDownloadInvoicesEnum childAccountAccessPortalDownloadInvoices) 
             {
                 m_params.AddOpt("child_account_access[portal_download_invoices]", childAccountAccessPortalDownloadInvoices);
                 return this;
