@@ -561,16 +561,16 @@ namespace ChargeBee.Models
                 return GetValue<string>("id", true);
             }
 
-            public StatusEnum Status() {
-                return GetEnum<StatusEnum>("status", true);
+            public StatusEnum? Status() {
+                return GetEnum<StatusEnum>("status", false);
             }
 
-            public int Amount() {
-                return GetValue<int>("amount", true);
+            public int? Amount() {
+                return GetValue<int?>("amount", false);
             }
 
-            public DateTime Date() {
-                return (DateTime)GetDateTime("date", true);
+            public DateTime? Date() {
+                return GetDateTime("date", false);
             }
 
         }

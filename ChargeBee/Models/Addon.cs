@@ -612,6 +612,10 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<AddonListRequest>("updated_at", this);        
             }
+            public StringFilter<AddonListRequest> CurrencyCode() 
+            {
+                return new StringFilter<AddonListRequest>("currency_code", this).SupportsMultiOperators(true);        
+            }
         }
         public class CopyRequest : EntityRequest<CopyRequest> 
         {

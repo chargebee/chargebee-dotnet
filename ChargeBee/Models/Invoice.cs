@@ -378,7 +378,7 @@ namespace ChargeBee.Models
 
             public CreateRequest CustomerId(string customerId) 
             {
-                m_params.Add("customer_id", customerId);
+                m_params.AddOpt("customer_id", customerId);
                 return this;
             }
             public CreateRequest SubscriptionId(string subscriptionId) 
@@ -2210,8 +2210,8 @@ namespace ChargeBee.Models
                 return GetEnum<DunningTypeEnum>("dunning_type", true);
             }
 
-            public DateTime CreatedAt() {
-                return (DateTime)GetDateTime("created_at", true);
+            public DateTime? CreatedAt() {
+                return GetDateTime("created_at", false);
             }
 
             public Transaction.StatusEnum? TxnStatus() {

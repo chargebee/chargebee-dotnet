@@ -60,9 +60,9 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<StatusEnum>("status", true); }
         }
-        public DateTime ScheduledAt
+        public DateTime? ScheduledAt 
         {
-            get { return (DateTime)GetDateTime("scheduled_at", true); }
+            get { return GetDateTime("scheduled_at", false); }
         }
         public bool AutoClaim 
         {
@@ -367,7 +367,7 @@ namespace ChargeBee.Models
             }
 
             public string Signature() {
-                return GetValue<string>("signature", true);
+                return GetValue<string>("signature", false);
             }
 
             public string Note() {
@@ -387,15 +387,15 @@ namespace ChargeBee.Models
             }
 
             public string FirstName() {
-                return GetValue<string>("first_name", true);
+                return GetValue<string>("first_name", false);
             }
 
             public string LastName() {
-                return GetValue<string>("last_name", true);
+                return GetValue<string>("last_name", false);
             }
 
             public string Email() {
-                return GetValue<string>("email", true);
+                return GetValue<string>("email", false);
             }
 
         }
@@ -406,8 +406,8 @@ namespace ChargeBee.Models
                 return GetEnum<StatusEnum>("status", true);
             }
 
-            public DateTime OccurredAt() {
-				return (DateTime)GetDateTime("date", true);
+            public DateTime? OccurredAt() {
+                return GetDateTime("occurred_at", false);
             }
 
         }

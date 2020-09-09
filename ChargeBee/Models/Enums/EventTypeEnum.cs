@@ -226,6 +226,12 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "payment_source_deleted")]
          PaymentSourceDeleted,
 
+        [EnumMember(Value = "payment_source_expiring")]
+         PaymentSourceExpiring,
+
+        [EnumMember(Value = "payment_source_expired")]
+         PaymentSourceExpired,
+
         [EnumMember(Value = "virtual_bank_account_added")]
          VirtualBankAccountAdded,
 

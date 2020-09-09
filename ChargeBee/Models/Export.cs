@@ -619,6 +619,10 @@ namespace ChargeBee.Models
             {
             }
 
+            public StringFilter<PlansRequest> CurrencyCode() 
+            {
+                return new StringFilter<PlansRequest>("currency_code", this).SupportsMultiOperators(true);        
+            }
             public StringFilter<PlansRequest> PlanId() 
             {
                 return new StringFilter<PlansRequest>("plan[id]", this).SupportsMultiOperators(true);        
@@ -682,6 +686,10 @@ namespace ChargeBee.Models
             {
             }
 
+            public StringFilter<AddonsRequest> CurrencyCode() 
+            {
+                return new StringFilter<AddonsRequest>("currency_code", this).SupportsMultiOperators(true);        
+            }
             public StringFilter<AddonsRequest> AddonId() 
             {
                 return new StringFilter<AddonsRequest>("addon[id]", this).SupportsMultiOperators(true);        
@@ -730,6 +738,10 @@ namespace ChargeBee.Models
             {
             }
 
+            public StringFilter<CouponsRequest> CurrencyCode() 
+            {
+                return new StringFilter<CouponsRequest>("currency_code", this).SupportsMultiOperators(true);        
+            }
             public StringFilter<CouponsRequest> CouponId() 
             {
                 return new StringFilter<CouponsRequest>("coupon[id]", this).SupportsMultiOperators(true);        

@@ -115,6 +115,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "checkout_com")]
          CheckoutCom,
 
+        [EnumMember(Value = "paypal")]
+         Paypal,
+
         [EnumMember(Value = "not_applicable")]
          NotApplicable,
 

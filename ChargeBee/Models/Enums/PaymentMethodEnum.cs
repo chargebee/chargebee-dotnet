@@ -64,6 +64,12 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "bancontact")]
          Bancontact,
 
+        [EnumMember(Value = "giropay")]
+         Giropay,
+
+        [EnumMember(Value = "dotpay")]
+         Dotpay,
+
         [EnumMember(Value = "other")]
          Other,
 

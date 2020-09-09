@@ -22,6 +22,10 @@ namespace ChargeBee.Models
         #endregion
         
         #region Properties
+        public string CustomerId 
+        {
+            get { return GetValue<string>("customer_id", true); }
+        }
         public string ParentId 
         {
             get { return GetValue<string>("parent_id", false); }
@@ -33,10 +37,6 @@ namespace ChargeBee.Models
         public string InvoiceOwnerId 
         {
             get { return GetValue<string>("invoice_owner_id", true); }
-        }
-        public string CustomerId 
-        {
-            get { return GetValue<string>("customer_id", true); }
         }
         public List<string> ChildrenIds 
         {

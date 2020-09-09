@@ -220,26 +220,6 @@ namespace ChargeBee.Models
                 m_params.Add("apply_on", applyOn);
                 return this;
             }
-            public CreateRequest PlanConstraint(PlanConstraintEnum planConstraint) 
-            {
-                m_params.AddOpt("plan_constraint", planConstraint);
-                return this;
-            }
-            public CreateRequest AddonConstraint(AddonConstraintEnum addonConstraint) 
-            {
-                m_params.AddOpt("addon_constraint", addonConstraint);
-                return this;
-            }
-            public CreateRequest PlanIds(List<string> planIds) 
-            {
-                m_params.AddOpt("plan_ids", planIds);
-                return this;
-            }
-            public CreateRequest AddonIds(List<string> addonIds) 
-            {
-                m_params.AddOpt("addon_ids", addonIds);
-                return this;
-            }
             public CreateRequest DurationType(Coupon.DurationTypeEnum durationType) 
             {
                 m_params.Add("duration_type", durationType);
@@ -268,6 +248,26 @@ namespace ChargeBee.Models
             public CreateRequest MetaData(JToken metaData) 
             {
                 m_params.AddOpt("meta_data", metaData);
+                return this;
+            }
+            public CreateRequest PlanConstraint(PlanConstraintEnum planConstraint) 
+            {
+                m_params.AddOpt("plan_constraint", planConstraint);
+                return this;
+            }
+            public CreateRequest AddonConstraint(AddonConstraintEnum addonConstraint) 
+            {
+                m_params.AddOpt("addon_constraint", addonConstraint);
+                return this;
+            }
+            public CreateRequest PlanIds(List<string> planIds) 
+            {
+                m_params.AddOpt("plan_ids", planIds);
+                return this;
+            }
+            public CreateRequest AddonIds(List<string> addonIds) 
+            {
+                m_params.AddOpt("addon_ids", addonIds);
                 return this;
             }
             public CreateRequest Status(Coupon.StatusEnum status) 
@@ -319,6 +319,10 @@ namespace ChargeBee.Models
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");
                 return this;
             }
+            public StringFilter<CouponListRequest> CurrencyCode() 
+            {
+                return new StringFilter<CouponListRequest>("currency_code", this).SupportsMultiOperators(true);        
+            }
         }
         public class UpdateRequest : EntityRequest<UpdateRequest> 
         {
@@ -362,26 +366,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("apply_on", applyOn);
                 return this;
             }
-            public UpdateRequest PlanConstraint(PlanConstraintEnum planConstraint) 
-            {
-                m_params.AddOpt("plan_constraint", planConstraint);
-                return this;
-            }
-            public UpdateRequest AddonConstraint(AddonConstraintEnum addonConstraint) 
-            {
-                m_params.AddOpt("addon_constraint", addonConstraint);
-                return this;
-            }
-            public UpdateRequest PlanIds(List<string> planIds) 
-            {
-                m_params.AddOpt("plan_ids", planIds);
-                return this;
-            }
-            public UpdateRequest AddonIds(List<string> addonIds) 
-            {
-                m_params.AddOpt("addon_ids", addonIds);
-                return this;
-            }
             public UpdateRequest DurationType(Coupon.DurationTypeEnum durationType) 
             {
                 m_params.AddOpt("duration_type", durationType);
@@ -410,6 +394,26 @@ namespace ChargeBee.Models
             public UpdateRequest MetaData(JToken metaData) 
             {
                 m_params.AddOpt("meta_data", metaData);
+                return this;
+            }
+            public UpdateRequest PlanConstraint(PlanConstraintEnum planConstraint) 
+            {
+                m_params.AddOpt("plan_constraint", planConstraint);
+                return this;
+            }
+            public UpdateRequest AddonConstraint(AddonConstraintEnum addonConstraint) 
+            {
+                m_params.AddOpt("addon_constraint", addonConstraint);
+                return this;
+            }
+            public UpdateRequest PlanIds(List<string> planIds) 
+            {
+                m_params.AddOpt("plan_ids", planIds);
+                return this;
+            }
+            public UpdateRequest AddonIds(List<string> addonIds) 
+            {
+                m_params.AddOpt("addon_ids", addonIds);
                 return this;
             }
         }

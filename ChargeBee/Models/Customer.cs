@@ -335,15 +335,15 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool?>("registered_for_gst", false); }
         }
+        public CustomerTypeEnum? CustomerType 
+        {
+            get { return GetEnum<CustomerTypeEnum>("customer_type", false); }
+        }
         public bool? BusinessCustomerWithoutVatNumber 
         {
             get { return GetValue<bool?>("business_customer_without_vat_number", false); }
         }
-        public CustomerTypeEnum? CustomerType
-        {
-            get { return GetEnum<CustomerTypeEnum>("customer_type", false); }
-        }
-        public string ClientProfileId
+        public string ClientProfileId 
         {
             get { return GetValue<string>("client_profile_id", false); }
         }
@@ -2035,6 +2035,10 @@ namespace ChargeBee.Models
                 Sofort,
                 [EnumMember(Value = "bancontact")]
                 Bancontact,
+                [EnumMember(Value = "giropay")]
+                Giropay,
+                [EnumMember(Value = "dotpay")]
+                Dotpay,
             }
             public enum StatusEnum
             {

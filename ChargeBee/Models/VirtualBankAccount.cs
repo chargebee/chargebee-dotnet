@@ -39,6 +39,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("virtual_bank_accounts");
             return new VirtualBankAccountListRequest(url);
         }
+        public static EntityRequest<Type> Delete(string id)
+        {
+            string url = ApiUtil.BuildUrl("virtual_bank_accounts", CheckNull(id), "delete");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
         public static EntityRequest<Type> DeleteLocal(string id)
         {
             string url = ApiUtil.BuildUrl("virtual_bank_accounts", CheckNull(id), "delete_local");

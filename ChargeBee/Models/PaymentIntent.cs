@@ -191,6 +191,12 @@ namespace ChargeBee.Models
             Sofort,
             [EnumMember(Value = "bancontact")]
             Bancontact,
+            [EnumMember(Value = "google_pay")]
+            GooglePay,
+            [EnumMember(Value = "dotpay")]
+            Dotpay,
+            [EnumMember(Value = "giropay")]
+            Giropay,
 
         }
 

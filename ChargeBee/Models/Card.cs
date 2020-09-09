@@ -147,6 +147,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("ip_address", false); }
         }
+        public PoweredByEnum? PoweredBy 
+        {
+            get { return GetEnum<PoweredByEnum>("powered_by", false); }
+        }
         public string CustomerId 
         {
             get { return GetValue<string>("customer_id", true); }
@@ -343,6 +347,23 @@ namespace ChargeBee.Models
             Prepaid,
             [EnumMember(Value = "not_known")]
             NotKnown,
+            [EnumMember(Value = "not_applicable")]
+            NotApplicable,
+
+        }
+        public enum PoweredByEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "ideal")]
+            Ideal,
+            [EnumMember(Value = "sofort")]
+            Sofort,
+            [EnumMember(Value = "bancontact")]
+            Bancontact,
+            [EnumMember(Value = "giropay")]
+            Giropay,
             [EnumMember(Value = "not_applicable")]
             NotApplicable,
 

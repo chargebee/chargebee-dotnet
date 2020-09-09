@@ -845,6 +845,10 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<PlanListRequest>("updated_at", this);        
             }
+            public StringFilter<PlanListRequest> CurrencyCode() 
+            {
+                return new StringFilter<PlanListRequest>("currency_code", this).SupportsMultiOperators(true);        
+            }
         }
         public class CopyRequest : EntityRequest<CopyRequest> 
         {

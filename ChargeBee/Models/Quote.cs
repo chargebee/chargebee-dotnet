@@ -180,11 +180,7 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("updated_at", false); }
         }
-        public string CurrencyCode 
-        {
-            get { return GetValue<string>("currency_code", true); }
-        }
-        public List<QuoteLineItem> LineItems
+        public List<QuoteLineItem> LineItems 
         {
             get { return GetResourceList<QuoteLineItem>("line_items"); }
         }
@@ -203,6 +199,10 @@ namespace ChargeBee.Models
         public List<QuoteLineItemTax> LineItemTaxes 
         {
             get { return GetResourceList<QuoteLineItemTax>("line_item_taxes"); }
+        }
+        public string CurrencyCode 
+        {
+            get { return GetValue<string>("currency_code", true); }
         }
         public JArray Notes 
         {
@@ -259,6 +259,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
+            public CreateSubForCustomerQuoteRequest MandatoryAddonsToRemove(List<string> mandatoryAddonsToRemove) 
+            {
+                m_params.AddOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+                return this;
+            }
             public CreateSubForCustomerQuoteRequest TermsToCharge(int termsToCharge) 
             {
                 m_params.AddOpt("terms_to_charge", termsToCharge);
@@ -269,12 +274,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_alignment_mode", billingAlignmentMode);
                 return this;
             }
-            public CreateSubForCustomerQuoteRequest MandatoryAddonsToRemove(List<string> mandatoryAddonsToRemove) 
-            {
-                m_params.AddOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
-                return this;
-            }
-            public CreateSubForCustomerQuoteRequest CouponIds(List<string> couponIds)
+            public CreateSubForCustomerQuoteRequest CouponIds(List<string> couponIds) 
             {
                 m_params.AddOpt("coupon_ids", couponIds);
                 return this;
@@ -304,17 +304,17 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[setup_fee]", subscriptionSetupFee);
                 return this;
             }
-            public CreateSubForCustomerQuoteRequest SubscriptionStartDate(long subscriptionStartDate) 
-            {
-                m_params.AddOpt("subscription[start_date]", subscriptionStartDate);
-                return this;
-            }
             public CreateSubForCustomerQuoteRequest SubscriptionTrialEnd(long subscriptionTrialEnd) 
             {
                 m_params.AddOpt("subscription[trial_end]", subscriptionTrialEnd);
                 return this;
             }
-            public CreateSubForCustomerQuoteRequest ShippingAddressFirstName(string shippingAddressFirstName)
+            public CreateSubForCustomerQuoteRequest SubscriptionStartDate(long subscriptionStartDate) 
+            {
+                m_params.AddOpt("subscription[start_date]", subscriptionStartDate);
+                return this;
+            }
+            public CreateSubForCustomerQuoteRequest ShippingAddressFirstName(string shippingAddressFirstName) 
             {
                 m_params.AddOpt("shipping_address[first_name]", shippingAddressFirstName);
                 return this;
@@ -705,12 +705,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("expires_at", expiresAt);
                 return this;
             }
-            public UpdateSubscriptionQuoteRequest BillingCycles(int billingCycles) 
-            {
-                m_params.AddOpt("billing_cycles", billingCycles);
-                return this;
-            }
-            public UpdateSubscriptionQuoteRequest ReplaceAddonList(bool replaceAddonList)
+            public UpdateSubscriptionQuoteRequest ReplaceAddonList(bool replaceAddonList) 
             {
                 m_params.AddOpt("replace_addon_list", replaceAddonList);
                 return this;
@@ -718,6 +713,11 @@ namespace ChargeBee.Models
             public UpdateSubscriptionQuoteRequest MandatoryAddonsToRemove(List<string> mandatoryAddonsToRemove) 
             {
                 m_params.AddOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+                return this;
+            }
+            public UpdateSubscriptionQuoteRequest BillingCycles(int billingCycles) 
+            {
+                m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
             public UpdateSubscriptionQuoteRequest TermsToCharge(int termsToCharge) 
@@ -1358,6 +1358,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public CreateForOnetimeChargesRequest Name(string name) 
+            {
+                m_params.AddOpt("name", name);
+                return this;
+            }
             public CreateForOnetimeChargesRequest CustomerId(string customerId) 
             {
                 m_params.Add("customer_id", customerId);
@@ -1366,11 +1371,6 @@ namespace ChargeBee.Models
             public CreateForOnetimeChargesRequest PoNumber(string poNumber) 
             {
                 m_params.AddOpt("po_number", poNumber);
-                return this;
-            }
-            public CreateForOnetimeChargesRequest Name(string name) 
-            {
-                m_params.AddOpt("name", name);
                 return this;
             }
             public CreateForOnetimeChargesRequest Notes(string notes) 

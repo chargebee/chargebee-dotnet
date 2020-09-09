@@ -121,6 +121,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
+            public CreateSubscriptionRequest MandatoryAddonsToRemove(List<string> mandatoryAddonsToRemove) 
+            {
+                m_params.AddOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+                return this;
+            }
             public CreateSubscriptionRequest TermsToCharge(int termsToCharge) 
             {
                 m_params.AddOpt("terms_to_charge", termsToCharge);
@@ -129,11 +134,6 @@ namespace ChargeBee.Models
             public CreateSubscriptionRequest BillingAlignmentMode(ChargeBee.Models.Enums.BillingAlignmentModeEnum billingAlignmentMode) 
             {
                 m_params.AddOpt("billing_alignment_mode", billingAlignmentMode);
-                return this;
-            }
-            public CreateSubscriptionRequest MandatoryAddonsToRemove(List<string> mandatoryAddonsToRemove) 
-            {
-                m_params.AddOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
                 return this;
             }
             public CreateSubscriptionRequest CouponIds(List<string> couponIds) 
@@ -176,14 +176,14 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[setup_fee]", subscriptionSetupFee);
                 return this;
             }
-            public CreateSubscriptionRequest SubscriptionStartDate(long subscriptionStartDate) 
-            {
-                m_params.AddOpt("subscription[start_date]", subscriptionStartDate);
-                return this;
-            }
             public CreateSubscriptionRequest SubscriptionTrialEnd(long subscriptionTrialEnd) 
             {
                 m_params.AddOpt("subscription[trial_end]", subscriptionTrialEnd);
+                return this;
+            }
+            public CreateSubscriptionRequest SubscriptionStartDate(long subscriptionStartDate) 
+            {
+                m_params.AddOpt("subscription[start_date]", subscriptionStartDate);
                 return this;
             }
             [Obsolete]
@@ -297,6 +297,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[exempt_number]", customerExemptNumber);
                 return this;
             }
+            public CreateSubscriptionRequest SubscriptionFreePeriod(int subscriptionFreePeriod) 
+            {
+                m_params.AddOpt("subscription[free_period]", subscriptionFreePeriod);
+                return this;
+            }
+            public CreateSubscriptionRequest SubscriptionFreePeriodUnit(ChargeBee.Models.Enums.FreePeriodUnitEnum subscriptionFreePeriodUnit) 
+            {
+                m_params.AddOpt("subscription[free_period_unit]", subscriptionFreePeriodUnit);
+                return this;
+            }
             public CreateSubscriptionRequest ContractTermActionAtTermEnd(ContractTerm.ActionAtTermEndEnum contractTermActionAtTermEnd) 
             {
                 m_params.AddOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
@@ -405,6 +415,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
+            public CreateSubForCustomerEstimateRequest MandatoryAddonsToRemove(List<string> mandatoryAddonsToRemove) 
+            {
+                m_params.AddOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+                return this;
+            }
             public CreateSubForCustomerEstimateRequest TermsToCharge(int termsToCharge) 
             {
                 m_params.AddOpt("terms_to_charge", termsToCharge);
@@ -415,12 +430,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_alignment_mode", billingAlignmentMode);
                 return this;
             }
-            public CreateSubForCustomerEstimateRequest MandatoryAddonsToRemove(List<string> mandatoryAddonsToRemove) 
-            {
-                m_params.AddOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
-                return this;
-            }
-            public CreateSubForCustomerEstimateRequest CouponIds(List<string> couponIds)
+            public CreateSubForCustomerEstimateRequest CouponIds(List<string> couponIds) 
             {
                 m_params.AddOpt("coupon_ids", couponIds);
                 return this;
@@ -450,14 +460,14 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[setup_fee]", subscriptionSetupFee);
                 return this;
             }
+            public CreateSubForCustomerEstimateRequest SubscriptionTrialEnd(long subscriptionTrialEnd) 
+            {
+                m_params.AddOpt("subscription[trial_end]", subscriptionTrialEnd);
+                return this;
+            }
             public CreateSubForCustomerEstimateRequest SubscriptionStartDate(long subscriptionStartDate) 
             {
                 m_params.AddOpt("subscription[start_date]", subscriptionStartDate);
-                return this;
-            }
-            public CreateSubForCustomerEstimateRequest SubscriptionTrialEnd(long subscriptionTrialEnd)
-            {
-                m_params.AddOpt("subscription[trial_end]", subscriptionTrialEnd);
                 return this;
             }
             public CreateSubForCustomerEstimateRequest ShippingAddressLine1(string shippingAddressLine1) 
@@ -498,6 +508,16 @@ namespace ChargeBee.Models
             public CreateSubForCustomerEstimateRequest ShippingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum shippingAddressValidationStatus) 
             {
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+                return this;
+            }
+            public CreateSubForCustomerEstimateRequest SubscriptionFreePeriod(int subscriptionFreePeriod) 
+            {
+                m_params.AddOpt("subscription[free_period]", subscriptionFreePeriod);
+                return this;
+            }
+            public CreateSubForCustomerEstimateRequest SubscriptionFreePeriodUnit(ChargeBee.Models.Enums.FreePeriodUnitEnum subscriptionFreePeriodUnit) 
+            {
+                m_params.AddOpt("subscription[free_period_unit]", subscriptionFreePeriodUnit);
                 return this;
             }
             public CreateSubForCustomerEstimateRequest ContractTermActionAtTermEnd(ContractTerm.ActionAtTermEndEnum contractTermActionAtTermEnd) 
@@ -583,12 +603,7 @@ namespace ChargeBee.Models
             {
             }
 
-            public UpdateSubscriptionRequest BillingCycles(int billingCycles) 
-            {
-                m_params.AddOpt("billing_cycles", billingCycles);
-                return this;
-            }
-            public UpdateSubscriptionRequest ReplaceAddonList(bool replaceAddonList)
+            public UpdateSubscriptionRequest ReplaceAddonList(bool replaceAddonList) 
             {
                 m_params.AddOpt("replace_addon_list", replaceAddonList);
                 return this;
@@ -596,6 +611,11 @@ namespace ChargeBee.Models
             public UpdateSubscriptionRequest MandatoryAddonsToRemove(List<string> mandatoryAddonsToRemove) 
             {
                 m_params.AddOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+                return this;
+            }
+            public UpdateSubscriptionRequest BillingCycles(int billingCycles) 
+            {
+                m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
             public UpdateSubscriptionRequest TermsToCharge(int termsToCharge) 
@@ -787,6 +807,16 @@ namespace ChargeBee.Models
             public UpdateSubscriptionRequest CustomerRegisteredForGst(bool customerRegisteredForGst) 
             {
                 m_params.AddOpt("customer[registered_for_gst]", customerRegisteredForGst);
+                return this;
+            }
+            public UpdateSubscriptionRequest SubscriptionFreePeriod(int subscriptionFreePeriod) 
+            {
+                m_params.AddOpt("subscription[free_period]", subscriptionFreePeriod);
+                return this;
+            }
+            public UpdateSubscriptionRequest SubscriptionFreePeriodUnit(ChargeBee.Models.Enums.FreePeriodUnitEnum subscriptionFreePeriodUnit) 
+            {
+                m_params.AddOpt("subscription[free_period_unit]", subscriptionFreePeriodUnit);
                 return this;
             }
             [Obsolete]
@@ -1199,7 +1229,7 @@ namespace ChargeBee.Models
             }
             public CreateInvoiceRequest InvoiceCustomerId(string invoiceCustomerId) 
             {
-                m_params.Add("invoice[customer_id]", invoiceCustomerId);
+                m_params.AddOpt("invoice[customer_id]", invoiceCustomerId);
                 return this;
             }
             public CreateInvoiceRequest InvoiceSubscriptionId(string invoiceSubscriptionId) 
