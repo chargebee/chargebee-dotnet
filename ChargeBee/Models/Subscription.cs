@@ -301,7 +301,11 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<AutoCollectionEnum>("auto_collection", false); }
         }
-        public int? DueInvoicesCount 
+        public OfflinePaymentMethodEnum? OfflinePaymentMethod 
+        {
+            get { return GetEnum<OfflinePaymentMethodEnum>("offline_payment_method", false); }
+        }
+        public int? DueInvoicesCount
         {
             get { return GetValue<int?>("due_invoices_count", false); }
         }
@@ -459,6 +463,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_alignment_mode", billingAlignmentMode);
                 return this;
             }
+            public CreateRequest OfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum offlinePaymentMethod) 
+            {
+                m_params.AddOpt("offline_payment_method", offlinePaymentMethod);
+                return this;
+            }
             public CreateRequest PoNumber(string poNumber) 
             {
                 m_params.AddOpt("po_number", poNumber);
@@ -583,6 +592,11 @@ namespace ChargeBee.Models
             public CreateRequest CustomerAutoCollection(ChargeBee.Models.Enums.AutoCollectionEnum customerAutoCollection) 
             {
                 m_params.AddOpt("customer[auto_collection]", customerAutoCollection);
+                return this;
+            }
+            public CreateRequest CustomerOfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum customerOfflinePaymentMethod) 
+            {
+                m_params.AddOpt("customer[offline_payment_method]", customerOfflinePaymentMethod);
                 return this;
             }
             public CreateRequest CustomerAllowDirectDebit(bool customerAllowDirectDebit) 
@@ -1124,6 +1138,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_alignment_mode", billingAlignmentMode);
                 return this;
             }
+            public CreateForCustomerRequest OfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum offlinePaymentMethod) 
+            {
+                m_params.AddOpt("offline_payment_method", offlinePaymentMethod);
+                return this;
+            }
             public CreateForCustomerRequest PoNumber(string poNumber) 
             {
                 m_params.AddOpt("po_number", poNumber);
@@ -1365,7 +1384,7 @@ namespace ChargeBee.Models
             {
                 return new StringFilter<SubscriptionListRequest>("plan_id", this).SupportsMultiOperators(true);        
             }
-            public EnumFilter<Subscription.StatusEnum, SubscriptionListRequest> Status() 
+            public EnumFilter<Subscription.StatusEnum, SubscriptionListRequest> Status()
             {
                 return new EnumFilter<Subscription.StatusEnum, SubscriptionListRequest>("status", this);        
             }
@@ -1404,6 +1423,10 @@ namespace ChargeBee.Models
             public TimestampFilter<SubscriptionListRequest> UpdatedAt() 
             {
                 return new TimestampFilter<SubscriptionListRequest>("updated_at", this);        
+            }
+            public EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, SubscriptionListRequest> OfflinePaymentMethod() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, SubscriptionListRequest>("offline_payment_method", this);        
             }
             public BooleanFilter<SubscriptionListRequest> OverrideRelationship() 
             {
@@ -1515,6 +1538,16 @@ namespace ChargeBee.Models
             public UpdateRequest BillingAlignmentMode(ChargeBee.Models.Enums.BillingAlignmentModeEnum billingAlignmentMode) 
             {
                 m_params.AddOpt("billing_alignment_mode", billingAlignmentMode);
+                return this;
+            }
+            public UpdateRequest AutoCollection(ChargeBee.Models.Enums.AutoCollectionEnum autoCollection) 
+            {
+                m_params.AddOpt("auto_collection", autoCollection);
+                return this;
+            }
+            public UpdateRequest OfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum offlinePaymentMethod) 
+            {
+                m_params.AddOpt("offline_payment_method", offlinePaymentMethod);
                 return this;
             }
             public UpdateRequest PoNumber(string poNumber) 

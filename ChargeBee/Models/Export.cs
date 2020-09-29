@@ -305,6 +305,11 @@ namespace ChargeBee.Models
                 return new TimestampFilter<RevenueRecognitionRequest>("subscription[updated_at]", this);        
             }
 
+            public EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, RevenueRecognitionRequest> SubscriptionOfflinePaymentMethod() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, RevenueRecognitionRequest>("subscription[offline_payment_method]", this);        
+            }
+
             public StringFilter<RevenueRecognitionRequest> CustomerId() 
             {
                 return new StringFilter<RevenueRecognitionRequest>("customer[id]", this).SupportsMultiOperators(true);        
@@ -368,6 +373,11 @@ namespace ChargeBee.Models
             public StringFilter<RevenueRecognitionRequest> RelationshipInvoiceOwnerId() 
             {
                 return new StringFilter<RevenueRecognitionRequest>("relationship[invoice_owner_id]", this);        
+            }
+
+            public EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, RevenueRecognitionRequest> CustomerOfflinePaymentMethod() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, RevenueRecognitionRequest>("customer[offline_payment_method]", this);        
             }
 
         }
@@ -546,6 +556,11 @@ namespace ChargeBee.Models
                 return new TimestampFilter<DeferredRevenueRequest>("subscription[updated_at]", this);        
             }
 
+            public EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, DeferredRevenueRequest> SubscriptionOfflinePaymentMethod() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, DeferredRevenueRequest>("subscription[offline_payment_method]", this);        
+            }
+
             public StringFilter<DeferredRevenueRequest> CustomerId() 
             {
                 return new StringFilter<DeferredRevenueRequest>("customer[id]", this).SupportsMultiOperators(true);        
@@ -609,6 +624,11 @@ namespace ChargeBee.Models
             public StringFilter<DeferredRevenueRequest> RelationshipInvoiceOwnerId() 
             {
                 return new StringFilter<DeferredRevenueRequest>("relationship[invoice_owner_id]", this);        
+            }
+
+            public EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, DeferredRevenueRequest> CustomerOfflinePaymentMethod() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, DeferredRevenueRequest>("customer[offline_payment_method]", this);        
             }
 
         }
@@ -855,6 +875,11 @@ namespace ChargeBee.Models
                 return new StringFilter<CustomersRequest>("relationship[invoice_owner_id]", this);        
             }
 
+            public EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, CustomersRequest> CustomerOfflinePaymentMethod() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, CustomersRequest>("customer[offline_payment_method]", this);        
+            }
+
         }
         public class SubscriptionsRequest : EntityRequest<SubscriptionsRequest> 
         {
@@ -925,6 +950,11 @@ namespace ChargeBee.Models
             public TimestampFilter<SubscriptionsRequest> SubscriptionUpdatedAt() 
             {
                 return new TimestampFilter<SubscriptionsRequest>("subscription[updated_at]", this);        
+            }
+
+            public EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, SubscriptionsRequest> SubscriptionOfflinePaymentMethod() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, SubscriptionsRequest>("subscription[offline_payment_method]", this);        
             }
 
         }

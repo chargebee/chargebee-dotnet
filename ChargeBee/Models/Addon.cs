@@ -174,6 +174,10 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("updated_at", false); }
         }
+        public bool? IncludedInMrr 
+        {
+            get { return GetValue<bool?>("included_in_mrr", false); }
+        }
         public string InvoiceNotes 
         {
             get { return GetValue<string>("invoice_notes", false); }
@@ -359,6 +363,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_frequency_period_unit", shippingFrequencyPeriodUnit);
                 return this;
             }
+            public CreateRequest IncludedInMrr(bool includedInMrr) 
+            {
+                m_params.AddOpt("included_in_mrr", includedInMrr);
+                return this;
+            }
             public CreateRequest ShowDescriptionInInvoices(bool showDescriptionInInvoices) 
             {
                 m_params.AddOpt("show_description_in_invoices", showDescriptionInInvoices);
@@ -536,6 +545,11 @@ namespace ChargeBee.Models
             public UpdateRequest ShippingFrequencyPeriodUnit(Addon.ShippingFrequencyPeriodUnitEnum shippingFrequencyPeriodUnit) 
             {
                 m_params.AddOpt("shipping_frequency_period_unit", shippingFrequencyPeriodUnit);
+                return this;
+            }
+            public UpdateRequest IncludedInMrr(bool includedInMrr) 
+            {
+                m_params.AddOpt("included_in_mrr", includedInMrr);
                 return this;
             }
             public UpdateRequest ShowDescriptionInInvoices(bool showDescriptionInInvoices) 

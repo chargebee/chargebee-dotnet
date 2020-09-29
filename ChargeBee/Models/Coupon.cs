@@ -143,6 +143,10 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("updated_at", false); }
         }
+        public bool? IncludedInMrr 
+        {
+            get { return GetValue<bool?>("included_in_mrr", false); }
+        }
         public List<string> PlanIds 
         {
             get { return GetList<string>("plan_ids"); }
@@ -248,6 +252,11 @@ namespace ChargeBee.Models
             public CreateRequest MetaData(JToken metaData) 
             {
                 m_params.AddOpt("meta_data", metaData);
+                return this;
+            }
+            public CreateRequest IncludedInMrr(bool includedInMrr) 
+            {
+                m_params.AddOpt("included_in_mrr", includedInMrr);
                 return this;
             }
             public CreateRequest PlanConstraint(PlanConstraintEnum planConstraint) 
@@ -394,6 +403,11 @@ namespace ChargeBee.Models
             public UpdateRequest MetaData(JToken metaData) 
             {
                 m_params.AddOpt("meta_data", metaData);
+                return this;
+            }
+            public UpdateRequest IncludedInMrr(bool includedInMrr) 
+            {
+                m_params.AddOpt("included_in_mrr", includedInMrr);
                 return this;
             }
             public UpdateRequest PlanConstraint(PlanConstraintEnum planConstraint) 

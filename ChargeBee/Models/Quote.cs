@@ -314,6 +314,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[start_date]", subscriptionStartDate);
                 return this;
             }
+            public CreateSubForCustomerQuoteRequest SubscriptionOfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum subscriptionOfflinePaymentMethod) 
+            {
+                m_params.AddOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
+                return this;
+            }
             public CreateSubForCustomerQuoteRequest ShippingAddressFirstName(string shippingAddressFirstName) 
             {
                 m_params.AddOpt("shipping_address[first_name]", shippingAddressFirstName);
@@ -535,6 +540,11 @@ namespace ChargeBee.Models
             public EditCreateSubForCustomerQuoteRequest SubscriptionStartDate(long subscriptionStartDate) 
             {
                 m_params.AddOpt("subscription[start_date]", subscriptionStartDate);
+                return this;
+            }
+            public EditCreateSubForCustomerQuoteRequest SubscriptionOfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum subscriptionOfflinePaymentMethod) 
+            {
+                m_params.AddOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
                 return this;
             }
             public EditCreateSubForCustomerQuoteRequest ShippingAddressFirstName(string shippingAddressFirstName) 
@@ -794,6 +804,16 @@ namespace ChargeBee.Models
             public UpdateSubscriptionQuoteRequest SubscriptionCoupon(string subscriptionCoupon) 
             {
                 m_params.AddOpt("subscription[coupon]", subscriptionCoupon);
+                return this;
+            }
+            public UpdateSubscriptionQuoteRequest SubscriptionAutoCollection(ChargeBee.Models.Enums.AutoCollectionEnum subscriptionAutoCollection) 
+            {
+                m_params.AddOpt("subscription[auto_collection]", subscriptionAutoCollection);
+                return this;
+            }
+            public UpdateSubscriptionQuoteRequest SubscriptionOfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum subscriptionOfflinePaymentMethod) 
+            {
+                m_params.AddOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
                 return this;
             }
             public UpdateSubscriptionQuoteRequest BillingAddressFirstName(string billingAddressFirstName) 
@@ -1123,6 +1143,16 @@ namespace ChargeBee.Models
             public EditUpdateSubscriptionQuoteRequest SubscriptionCoupon(string subscriptionCoupon) 
             {
                 m_params.AddOpt("subscription[coupon]", subscriptionCoupon);
+                return this;
+            }
+            public EditUpdateSubscriptionQuoteRequest SubscriptionAutoCollection(ChargeBee.Models.Enums.AutoCollectionEnum subscriptionAutoCollection) 
+            {
+                m_params.AddOpt("subscription[auto_collection]", subscriptionAutoCollection);
+                return this;
+            }
+            public EditUpdateSubscriptionQuoteRequest SubscriptionOfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum subscriptionOfflinePaymentMethod) 
+            {
+                m_params.AddOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
                 return this;
             }
             public EditUpdateSubscriptionQuoteRequest BillingAddressFirstName(string billingAddressFirstName) 

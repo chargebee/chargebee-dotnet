@@ -213,6 +213,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("iframe_messaging", iframeMessaging);
                 return this;
             }
+            public CheckoutNewRequest AllowOfflinePaymentMethods(bool allowOfflinePaymentMethods) 
+            {
+                m_params.AddOpt("allow_offline_payment_methods", allowOfflinePaymentMethods);
+                return this;
+            }
             public CheckoutNewRequest SubscriptionId(string subscriptionId) 
             {
                 m_params.AddOpt("subscription[id]", subscriptionId);
@@ -297,6 +302,11 @@ namespace ChargeBee.Models
             public CheckoutNewRequest SubscriptionAutoCollection(ChargeBee.Models.Enums.AutoCollectionEnum subscriptionAutoCollection) 
             {
                 m_params.AddOpt("subscription[auto_collection]", subscriptionAutoCollection);
+                return this;
+            }
+            public CheckoutNewRequest SubscriptionOfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum subscriptionOfflinePaymentMethod) 
+            {
+                m_params.AddOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
                 return this;
             }
             public CheckoutNewRequest SubscriptionInvoiceNotes(string subscriptionInvoiceNotes) 
@@ -618,6 +628,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("iframe_messaging", iframeMessaging);
                 return this;
             }
+            public CheckoutExistingRequest AllowOfflinePaymentMethods(bool allowOfflinePaymentMethods) 
+            {
+                m_params.AddOpt("allow_offline_payment_methods", allowOfflinePaymentMethods);
+                return this;
+            }
             public CheckoutExistingRequest SubscriptionId(string subscriptionId) 
             {
                 m_params.Add("subscription[id]", subscriptionId);
@@ -657,6 +672,16 @@ namespace ChargeBee.Models
             public CheckoutExistingRequest SubscriptionCoupon(string subscriptionCoupon) 
             {
                 m_params.AddOpt("subscription[coupon]", subscriptionCoupon);
+                return this;
+            }
+            public CheckoutExistingRequest SubscriptionAutoCollection(ChargeBee.Models.Enums.AutoCollectionEnum subscriptionAutoCollection) 
+            {
+                m_params.AddOpt("subscription[auto_collection]", subscriptionAutoCollection);
+                return this;
+            }
+            public CheckoutExistingRequest SubscriptionOfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum subscriptionOfflinePaymentMethod) 
+            {
+                m_params.AddOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
                 return this;
             }
             public CheckoutExistingRequest SubscriptionInvoiceNotes(string subscriptionInvoiceNotes) 

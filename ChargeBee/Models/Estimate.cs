@@ -192,6 +192,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[coupon]", subscriptionCoupon);
                 return this;
             }
+            public CreateSubscriptionRequest SubscriptionOfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum subscriptionOfflinePaymentMethod) 
+            {
+                m_params.AddOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
+                return this;
+            }
             public CreateSubscriptionRequest BillingAddressLine1(string billingAddressLine1) 
             {
                 m_params.AddOpt("billing_address[line1]", billingAddressLine1);
@@ -470,6 +475,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[start_date]", subscriptionStartDate);
                 return this;
             }
+            public CreateSubForCustomerEstimateRequest SubscriptionOfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum subscriptionOfflinePaymentMethod) 
+            {
+                m_params.AddOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
+                return this;
+            }
             public CreateSubForCustomerEstimateRequest ShippingAddressLine1(string shippingAddressLine1) 
             {
                 m_params.AddOpt("shipping_address[line1]", shippingAddressLine1);
@@ -717,6 +727,16 @@ namespace ChargeBee.Models
             public UpdateSubscriptionRequest SubscriptionCoupon(string subscriptionCoupon) 
             {
                 m_params.AddOpt("subscription[coupon]", subscriptionCoupon);
+                return this;
+            }
+            public UpdateSubscriptionRequest SubscriptionAutoCollection(ChargeBee.Models.Enums.AutoCollectionEnum subscriptionAutoCollection) 
+            {
+                m_params.AddOpt("subscription[auto_collection]", subscriptionAutoCollection);
+                return this;
+            }
+            public UpdateSubscriptionRequest SubscriptionOfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum subscriptionOfflinePaymentMethod) 
+            {
+                m_params.AddOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
                 return this;
             }
             public UpdateSubscriptionRequest BillingAddressLine1(string billingAddressLine1) 

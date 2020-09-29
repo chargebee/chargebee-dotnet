@@ -182,6 +182,10 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<AutoCollectionEnum>("auto_collection", true); }
         }
+        public OfflinePaymentMethodEnum? OfflinePaymentMethod 
+        {
+            get { return GetEnum<OfflinePaymentMethodEnum>("offline_payment_method", false); }
+        }
         public int NetTermDays 
         {
             get { return GetValue<int>("net_term_days", true); }
@@ -237,10 +241,6 @@ namespace ChargeBee.Models
         public string Locale 
         {
             get { return GetValue<string>("locale", false); }
-        }
-        public bool? ConsolidatedInvoicing 
-        {
-            get { return GetValue<bool?>("consolidated_invoicing", false); }
         }
         public int? BillingDate 
         {
@@ -334,6 +334,10 @@ namespace ChargeBee.Models
         public bool? RegisteredForGst 
         {
             get { return GetValue<bool?>("registered_for_gst", false); }
+        }
+        public bool? ConsolidatedInvoicing 
+        {
+            get { return GetValue<bool?>("consolidated_invoicing", false); }
         }
         public CustomerTypeEnum? CustomerType 
         {
@@ -482,6 +486,11 @@ namespace ChargeBee.Models
             public CreateRequest MetaData(JToken metaData) 
             {
                 m_params.AddOpt("meta_data", metaData);
+                return this;
+            }
+            public CreateRequest OfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum offlinePaymentMethod) 
+            {
+                m_params.AddOpt("offline_payment_method", offlinePaymentMethod);
                 return this;
             }
             public CreateRequest ConsolidatedInvoicing(bool consolidatedInvoicing) 
@@ -848,6 +857,10 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<CustomerListRequest>("updated_at", this);        
             }
+            public EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, CustomerListRequest> OfflinePaymentMethod() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, CustomerListRequest>("offline_payment_method", this);        
+            }
             public CustomerListRequest SortByCreatedAt(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");
                 return this;
@@ -962,6 +975,11 @@ namespace ChargeBee.Models
             public UpdateRequest ExemptNumber(string exemptNumber) 
             {
                 m_params.AddOpt("exempt_number", exemptNumber);
+                return this;
+            }
+            public UpdateRequest OfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum offlinePaymentMethod) 
+            {
+                m_params.AddOpt("offline_payment_method", offlinePaymentMethod);
                 return this;
             }
             public UpdateRequest InvoiceNotes(string invoiceNotes) 
