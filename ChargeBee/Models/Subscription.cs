@@ -157,10 +157,6 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("id", true); }
         }
-        public string CustomerId 
-        {
-            get { return GetValue<string>("customer_id", true); }
-        }
         public string CurrencyCode 
         {
             get { return GetValue<string>("currency_code", true); }
@@ -181,10 +177,6 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int?>("setup_fee", false); }
         }
-        public int? PlanAmount 
-        {
-            get { return GetValue<int?>("plan_amount", false); }
-        }
         public int? BillingPeriod 
         {
             get { return GetValue<int?>("billing_period", false); }
@@ -192,6 +184,34 @@ namespace ChargeBee.Models
         public BillingPeriodUnitEnum? BillingPeriodUnit 
         {
             get { return GetEnum<BillingPeriodUnitEnum>("billing_period_unit", false); }
+        }
+        public DateTime? StartDate 
+        {
+            get { return GetDateTime("start_date", false); }
+        }
+        public DateTime? TrialEnd 
+        {
+            get { return GetDateTime("trial_end", false); }
+        }
+        public int? RemainingBillingCycles 
+        {
+            get { return GetValue<int?>("remaining_billing_cycles", false); }
+        }
+        public string PoNumber 
+        {
+            get { return GetValue<string>("po_number", false); }
+        }
+        public AutoCollectionEnum? AutoCollection 
+        {
+            get { return GetEnum<AutoCollectionEnum>("auto_collection", false); }
+        }
+        public string CustomerId 
+        {
+            get { return GetValue<string>("customer_id", true); }
+        }
+        public int? PlanAmount 
+        {
+            get { return GetValue<int?>("plan_amount", false); }
         }
         public int? PlanFreeQuantity 
         {
@@ -201,17 +221,9 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<StatusEnum>("status", true); }
         }
-        public DateTime? StartDate 
-        {
-            get { return GetDateTime("start_date", false); }
-        }
         public DateTime? TrialStart 
         {
             get { return GetDateTime("trial_start", false); }
-        }
-        public DateTime? TrialEnd 
-        {
-            get { return GetDateTime("trial_end", false); }
         }
         public DateTime? CurrentTermStart 
         {
@@ -224,14 +236,6 @@ namespace ChargeBee.Models
         public DateTime? NextBillingAt 
         {
             get { return GetDateTime("next_billing_at", false); }
-        }
-        public int? RemainingBillingCycles 
-        {
-            get { return GetValue<int?>("remaining_billing_cycles", false); }
-        }
-        public string PoNumber 
-        {
-            get { return GetValue<string>("po_number", false); }
         }
         public DateTime? CreatedAt 
         {
@@ -297,15 +301,11 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("payment_source_id", false); }
         }
-        public AutoCollectionEnum? AutoCollection 
-        {
-            get { return GetEnum<AutoCollectionEnum>("auto_collection", false); }
-        }
         public OfflinePaymentMethodEnum? OfflinePaymentMethod 
         {
             get { return GetEnum<OfflinePaymentMethodEnum>("offline_payment_method", false); }
         }
-        public int? DueInvoicesCount
+        public int? DueInvoicesCount 
         {
             get { return GetValue<int?>("due_invoices_count", false); }
         }
@@ -1384,7 +1384,7 @@ namespace ChargeBee.Models
             {
                 return new StringFilter<SubscriptionListRequest>("plan_id", this).SupportsMultiOperators(true);        
             }
-            public EnumFilter<Subscription.StatusEnum, SubscriptionListRequest> Status()
+            public EnumFilter<Subscription.StatusEnum, SubscriptionListRequest> Status() 
             {
                 return new EnumFilter<Subscription.StatusEnum, SubscriptionListRequest>("status", this);        
             }

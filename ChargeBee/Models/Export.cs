@@ -176,7 +176,7 @@ namespace ChargeBee.Models
             {
                 return new StringFilter<RevenueRecognitionRequest>("payment_owner", this).SupportsMultiOperators(true);        
             }
-            public StringFilter<RevenueRecognitionRequest> CancelReasonCode()
+            public StringFilter<RevenueRecognitionRequest> CancelReasonCode() 
             {
                 return new StringFilter<RevenueRecognitionRequest>("cancel_reason_code", this).SupportsMultiOperators(true);        
             }
@@ -427,7 +427,7 @@ namespace ChargeBee.Models
             {
                 return new StringFilter<DeferredRevenueRequest>("payment_owner", this).SupportsMultiOperators(true);        
             }
-            public StringFilter<DeferredRevenueRequest> CancelReasonCode()
+            public StringFilter<DeferredRevenueRequest> CancelReasonCode() 
             {
                 return new StringFilter<DeferredRevenueRequest>("cancel_reason_code", this).SupportsMultiOperators(true);        
             }
@@ -888,7 +888,7 @@ namespace ChargeBee.Models
             {
             }
 
-            public StringFilter<SubscriptionsRequest> CancelReasonCode()
+            public StringFilter<SubscriptionsRequest> CancelReasonCode() 
             {
                 return new StringFilter<SubscriptionsRequest>("cancel_reason_code", this).SupportsMultiOperators(true);        
             }

@@ -41,6 +41,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<ContractTerm>("contract_term"); }
         }
+        public AdvanceInvoiceSchedule AdvanceInvoiceSchedule
+        {
+            get {  return GetResource<AdvanceInvoiceSchedule>("advance_invoice_schedule"); }
+        }
         public Customer Customer
         {
             get {  return GetResource<Customer>("customer"); }
@@ -112,6 +116,10 @@ namespace ChargeBee.Internal
         public Quote Quote
         {
             get {  return GetResource<Quote>("quote"); }
+        }
+        public QuotedSubscription QuotedSubscription
+        {
+            get {  return GetResource<QuotedSubscription>("quoted_subscription"); }
         }
         public QuoteLineGroup QuoteLineGroup
         {
@@ -186,6 +194,11 @@ namespace ChargeBee.Internal
         public List<CreditNote> CreditNotes
         {
             get {  return (List<CreditNote>)GetResourceList<CreditNote>("credit_notes", "credit_note"); }
+        }
+
+        public List<AdvanceInvoiceSchedule> AdvanceInvoiceSchedules
+        {
+            get {  return (List<AdvanceInvoiceSchedule>)GetResourceList<AdvanceInvoiceSchedule>("advance_invoice_schedules", "advance_invoice_schedule"); }
         }
 
         public List<Hierarchy> Hierarchies

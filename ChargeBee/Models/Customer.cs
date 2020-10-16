@@ -2117,7 +2117,8 @@ namespace ChargeBee.Models
             public string CurrencyCode() {
                 return GetValue<string>("currency_code", true);
             }
-			[Obsolete]
+
+            [Obsolete]
             public string BalanceCurrencyCode() {
                 return GetValue<string>("balance_currency_code", true);
             }

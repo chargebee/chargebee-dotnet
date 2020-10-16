@@ -142,6 +142,15 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "subscription_scheduled_resumption_removed")]
          SubscriptionScheduledResumptionRemoved,
 
+        [EnumMember(Value = "subscription_advance_invoice_schedule_added")]
+         SubscriptionAdvanceInvoiceScheduleAdded,
+
+        [EnumMember(Value = "subscription_advance_invoice_schedule_updated")]
+         SubscriptionAdvanceInvoiceScheduleUpdated,
+
+        [EnumMember(Value = "subscription_advance_invoice_schedule_removed")]
+         SubscriptionAdvanceInvoiceScheduleRemoved,
+
         [EnumMember(Value = "pending_invoice_created")]
          PendingInvoiceCreated,
 

@@ -295,7 +295,7 @@ namespace ChargeBee.Models
                 m_params.Add("invoice_id", invoiceId);
                 return this;
             }
-            public CreateRequest Status(Order.StatusEnum status) 
+            public CreateRequest Status(StatusEnum status) 
             {
                 m_params.AddOpt("status", status);
                 return this;

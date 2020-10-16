@@ -77,6 +77,14 @@ namespace ChargeBee.Models
         {
             get { return (DateTime)GetDateTime("modified_at", true); }
         }
+        public long? ResourceVersion 
+        {
+            get { return GetValue<long?>("resource_version", false); }
+        }
+        public DateTime? UpdatedAt 
+        {
+            get { return GetDateTime("updated_at", false); }
+        }
         public string CustomerId 
         {
             get { return GetValue<string>("customer_id", true); }
