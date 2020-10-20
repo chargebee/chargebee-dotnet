@@ -1,3 +1,7 @@
+### v2.8.5 (2020-10-20)
+* * *
+* Fixing target framework from the previous version
+
 ### v2.8.4 (2020-10-16)
 * * *
 * New optional attribute quoted_subscriptions has been added to the resource quote
