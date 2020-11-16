@@ -17,6 +17,28 @@ namespace ChargeBee.Models
     public class Quote : Resource 
     {
     
+        public Quote() { }
+
+        public Quote(Stream stream)
+        {
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                JObj = JToken.Parse(reader.ReadToEnd());
+                apiVersionCheck (JObj);
+            }
+        }
+
+        public Quote(TextReader reader)
+        {
+            JObj = JToken.Parse(reader.ReadToEnd());
+            apiVersionCheck (JObj);    
+        }
+
+        public Quote(String jsonString)
+        {
+            JObj = JToken.Parse(jsonString);
+            apiVersionCheck (JObj);
+        }
 
         #region Methods
         public static EntityRequest<Type> Retrieve(string id)
@@ -284,6 +306,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[id]", subscriptionId);
                 return this;
             }
+            public CreateSubForCustomerQuoteRequest SubscriptionPlanUnitPriceInDecimal(string subscriptionPlanUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("subscription[plan_unit_price_in_decimal]", subscriptionPlanUnitPriceInDecimal);
+                return this;
+            }
+            public CreateSubForCustomerQuoteRequest SubscriptionPlanQuantityInDecimal(string subscriptionPlanQuantityInDecimal) 
+            {
+                m_params.AddOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
+                return this;
+            }
             public CreateSubForCustomerQuoteRequest SubscriptionPlanId(string subscriptionPlanId) 
             {
                 m_params.Add("subscription[plan_id]", subscriptionPlanId);
@@ -414,9 +446,19 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
                 return this;
             }
+            public CreateSubForCustomerQuoteRequest AddonQuantityInDecimal(int index, string addonQuantityInDecimal) 
+            {
+                m_params.AddOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+                return this;
+            }
             public CreateSubForCustomerQuoteRequest AddonUnitPrice(int index, int addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+                return this;
+            }
+            public CreateSubForCustomerQuoteRequest AddonUnitPriceInDecimal(int index, string addonUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("addons[unit_price_in_decimal][" + index + "]", addonUnitPriceInDecimal);
                 return this;
             }
             public CreateSubForCustomerQuoteRequest AddonBillingCycles(int index, int addonBillingCycles) 
@@ -437,6 +479,16 @@ namespace ChargeBee.Models
             public CreateSubForCustomerQuoteRequest EventBasedAddonUnitPrice(int index, int eventBasedAddonUnitPrice) 
             {
                 m_params.AddOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
+                return this;
+            }
+            public CreateSubForCustomerQuoteRequest EventBasedAddonQuantityInDecimal(int index, string eventBasedAddonQuantityInDecimal) 
+            {
+                m_params.AddOpt("event_based_addons[quantity_in_decimal][" + index + "]", eventBasedAddonQuantityInDecimal);
+                return this;
+            }
+            public CreateSubForCustomerQuoteRequest EventBasedAddonUnitPriceInDecimal(int index, string eventBasedAddonUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("event_based_addons[unit_price_in_decimal][" + index + "]", eventBasedAddonUnitPriceInDecimal);
                 return this;
             }
             public CreateSubForCustomerQuoteRequest EventBasedAddonServicePeriodInDays(int index, int eventBasedAddonServicePeriodInDays) 
@@ -510,6 +562,16 @@ namespace ChargeBee.Models
             public EditCreateSubForCustomerQuoteRequest SubscriptionId(string subscriptionId) 
             {
                 m_params.AddOpt("subscription[id]", subscriptionId);
+                return this;
+            }
+            public EditCreateSubForCustomerQuoteRequest SubscriptionPlanUnitPriceInDecimal(string subscriptionPlanUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("subscription[plan_unit_price_in_decimal]", subscriptionPlanUnitPriceInDecimal);
+                return this;
+            }
+            public EditCreateSubForCustomerQuoteRequest SubscriptionPlanQuantityInDecimal(string subscriptionPlanQuantityInDecimal) 
+            {
+                m_params.AddOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
                 return this;
             }
             public EditCreateSubForCustomerQuoteRequest SubscriptionPlanId(string subscriptionPlanId) 
@@ -642,9 +704,19 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
                 return this;
             }
+            public EditCreateSubForCustomerQuoteRequest AddonQuantityInDecimal(int index, string addonQuantityInDecimal) 
+            {
+                m_params.AddOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+                return this;
+            }
             public EditCreateSubForCustomerQuoteRequest AddonUnitPrice(int index, int addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+                return this;
+            }
+            public EditCreateSubForCustomerQuoteRequest AddonUnitPriceInDecimal(int index, string addonUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("addons[unit_price_in_decimal][" + index + "]", addonUnitPriceInDecimal);
                 return this;
             }
             public EditCreateSubForCustomerQuoteRequest AddonBillingCycles(int index, int addonBillingCycles) 
@@ -665,6 +737,16 @@ namespace ChargeBee.Models
             public EditCreateSubForCustomerQuoteRequest EventBasedAddonUnitPrice(int index, int eventBasedAddonUnitPrice) 
             {
                 m_params.AddOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
+                return this;
+            }
+            public EditCreateSubForCustomerQuoteRequest EventBasedAddonQuantityInDecimal(int index, string eventBasedAddonQuantityInDecimal) 
+            {
+                m_params.AddOpt("event_based_addons[quantity_in_decimal][" + index + "]", eventBasedAddonQuantityInDecimal);
+                return this;
+            }
+            public EditCreateSubForCustomerQuoteRequest EventBasedAddonUnitPriceInDecimal(int index, string eventBasedAddonUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("event_based_addons[unit_price_in_decimal][" + index + "]", eventBasedAddonUnitPriceInDecimal);
                 return this;
             }
             public EditCreateSubForCustomerQuoteRequest EventBasedAddonServicePeriodInDays(int index, int eventBasedAddonServicePeriodInDays) 
@@ -788,6 +870,16 @@ namespace ChargeBee.Models
             public UpdateSubscriptionQuoteRequest SubscriptionSetupFee(int subscriptionSetupFee) 
             {
                 m_params.AddOpt("subscription[setup_fee]", subscriptionSetupFee);
+                return this;
+            }
+            public UpdateSubscriptionQuoteRequest SubscriptionPlanQuantityInDecimal(string subscriptionPlanQuantityInDecimal) 
+            {
+                m_params.AddOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
+                return this;
+            }
+            public UpdateSubscriptionQuoteRequest SubscriptionPlanUnitPriceInDecimal(string subscriptionPlanUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("subscription[plan_unit_price_in_decimal]", subscriptionPlanUnitPriceInDecimal);
                 return this;
             }
             public UpdateSubscriptionQuoteRequest SubscriptionStartDate(long subscriptionStartDate) 
@@ -1036,6 +1128,26 @@ namespace ChargeBee.Models
                 m_params.AddOpt("event_based_addons[charge_once][" + index + "]", eventBasedAddonChargeOnce);
                 return this;
             }
+            public UpdateSubscriptionQuoteRequest AddonQuantityInDecimal(int index, string addonQuantityInDecimal) 
+            {
+                m_params.AddOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+                return this;
+            }
+            public UpdateSubscriptionQuoteRequest AddonUnitPriceInDecimal(int index, string addonUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("addons[unit_price_in_decimal][" + index + "]", addonUnitPriceInDecimal);
+                return this;
+            }
+            public UpdateSubscriptionQuoteRequest EventBasedAddonQuantityInDecimal(int index, string eventBasedAddonQuantityInDecimal) 
+            {
+                m_params.AddOpt("event_based_addons[quantity_in_decimal][" + index + "]", eventBasedAddonQuantityInDecimal);
+                return this;
+            }
+            public UpdateSubscriptionQuoteRequest EventBasedAddonUnitPriceInDecimal(int index, string eventBasedAddonUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("event_based_addons[unit_price_in_decimal][" + index + "]", eventBasedAddonUnitPriceInDecimal);
+                return this;
+            }
             public UpdateSubscriptionQuoteRequest AddonTrialEnd(int index, long addonTrialEnd) 
             {
                 m_params.AddOpt("addons[trial_end][" + index + "]", addonTrialEnd);
@@ -1127,6 +1239,16 @@ namespace ChargeBee.Models
             public EditUpdateSubscriptionQuoteRequest SubscriptionSetupFee(int subscriptionSetupFee) 
             {
                 m_params.AddOpt("subscription[setup_fee]", subscriptionSetupFee);
+                return this;
+            }
+            public EditUpdateSubscriptionQuoteRequest SubscriptionPlanQuantityInDecimal(string subscriptionPlanQuantityInDecimal) 
+            {
+                m_params.AddOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
+                return this;
+            }
+            public EditUpdateSubscriptionQuoteRequest SubscriptionPlanUnitPriceInDecimal(string subscriptionPlanUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("subscription[plan_unit_price_in_decimal]", subscriptionPlanUnitPriceInDecimal);
                 return this;
             }
             public EditUpdateSubscriptionQuoteRequest SubscriptionStartDate(long subscriptionStartDate) 
@@ -1375,6 +1497,26 @@ namespace ChargeBee.Models
                 m_params.AddOpt("event_based_addons[charge_once][" + index + "]", eventBasedAddonChargeOnce);
                 return this;
             }
+            public EditUpdateSubscriptionQuoteRequest AddonQuantityInDecimal(int index, string addonQuantityInDecimal) 
+            {
+                m_params.AddOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+                return this;
+            }
+            public EditUpdateSubscriptionQuoteRequest AddonUnitPriceInDecimal(int index, string addonUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("addons[unit_price_in_decimal][" + index + "]", addonUnitPriceInDecimal);
+                return this;
+            }
+            public EditUpdateSubscriptionQuoteRequest EventBasedAddonQuantityInDecimal(int index, string eventBasedAddonQuantityInDecimal) 
+            {
+                m_params.AddOpt("event_based_addons[quantity_in_decimal][" + index + "]", eventBasedAddonQuantityInDecimal);
+                return this;
+            }
+            public EditUpdateSubscriptionQuoteRequest EventBasedAddonUnitPriceInDecimal(int index, string eventBasedAddonUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("event_based_addons[unit_price_in_decimal][" + index + "]", eventBasedAddonUnitPriceInDecimal);
+                return this;
+            }
             public EditUpdateSubscriptionQuoteRequest AddonTrialEnd(int index, long addonTrialEnd) 
             {
                 m_params.AddOpt("addons[trial_end][" + index + "]", addonTrialEnd);
@@ -1503,9 +1645,19 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
                 return this;
             }
+            public CreateForOnetimeChargesRequest AddonQuantityInDecimal(int index, string addonQuantityInDecimal) 
+            {
+                m_params.AddOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+                return this;
+            }
             public CreateForOnetimeChargesRequest AddonUnitPrice(int index, int addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest AddonUnitPriceInDecimal(int index, string addonUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("addons[unit_price_in_decimal][" + index + "]", addonUnitPriceInDecimal);
                 return this;
             }
             public CreateForOnetimeChargesRequest AddonServicePeriod(int index, int addonServicePeriod) 
@@ -1516,6 +1668,11 @@ namespace ChargeBee.Models
             public CreateForOnetimeChargesRequest ChargeAmount(int index, int chargeAmount) 
             {
                 m_params.AddOpt("charges[amount][" + index + "]", chargeAmount);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest ChargeAmountInDecimal(int index, string chargeAmountInDecimal) 
+            {
+                m_params.AddOpt("charges[amount_in_decimal][" + index + "]", chargeAmountInDecimal);
                 return this;
             }
             public CreateForOnetimeChargesRequest ChargeDescription(int index, string chargeDescription) 
@@ -1656,9 +1813,19 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
                 return this;
             }
+            public EditOneTimeQuoteRequest AddonQuantityInDecimal(int index, string addonQuantityInDecimal) 
+            {
+                m_params.AddOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+                return this;
+            }
             public EditOneTimeQuoteRequest AddonUnitPrice(int index, int addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+                return this;
+            }
+            public EditOneTimeQuoteRequest AddonUnitPriceInDecimal(int index, string addonUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("addons[unit_price_in_decimal][" + index + "]", addonUnitPriceInDecimal);
                 return this;
             }
             public EditOneTimeQuoteRequest AddonServicePeriod(int index, int addonServicePeriod) 
@@ -1669,6 +1836,11 @@ namespace ChargeBee.Models
             public EditOneTimeQuoteRequest ChargeAmount(int index, int chargeAmount) 
             {
                 m_params.AddOpt("charges[amount][" + index + "]", chargeAmount);
+                return this;
+            }
+            public EditOneTimeQuoteRequest ChargeAmountInDecimal(int index, string chargeAmountInDecimal) 
+            {
+                m_params.AddOpt("charges[amount_in_decimal][" + index + "]", chargeAmountInDecimal);
                 return this;
             }
             public EditOneTimeQuoteRequest ChargeDescription(int index, string chargeDescription) 
@@ -1915,6 +2087,18 @@ namespace ChargeBee.Models
 
             public double? TaxRate() {
                 return GetValue<double?>("tax_rate", false);
+            }
+
+            public string UnitAmountInDecimal() {
+                return GetValue<string>("unit_amount_in_decimal", false);
+            }
+
+            public string QuantityInDecimal() {
+                return GetValue<string>("quantity_in_decimal", false);
+            }
+
+            public string AmountInDecimal() {
+                return GetValue<string>("amount_in_decimal", false);
             }
 
             public int? DiscountAmount() {

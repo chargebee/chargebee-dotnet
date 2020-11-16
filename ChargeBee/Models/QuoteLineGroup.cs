@@ -17,6 +17,28 @@ namespace ChargeBee.Models
     public class QuoteLineGroup : Resource 
     {
     
+        public QuoteLineGroup() { }
+
+        public QuoteLineGroup(Stream stream)
+        {
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                JObj = JToken.Parse(reader.ReadToEnd());
+                apiVersionCheck (JObj);
+            }
+        }
+
+        public QuoteLineGroup(TextReader reader)
+        {
+            JObj = JToken.Parse(reader.ReadToEnd());
+            apiVersionCheck (JObj);    
+        }
+
+        public QuoteLineGroup(String jsonString)
+        {
+            JObj = JToken.Parse(jsonString);
+            apiVersionCheck (JObj);
+        }
 
         #region Methods
         #endregion
@@ -159,6 +181,18 @@ namespace ChargeBee.Models
 
             public double? TaxRate() {
                 return GetValue<double?>("tax_rate", false);
+            }
+
+            public string UnitAmountInDecimal() {
+                return GetValue<string>("unit_amount_in_decimal", false);
+            }
+
+            public string QuantityInDecimal() {
+                return GetValue<string>("quantity_in_decimal", false);
+            }
+
+            public string AmountInDecimal() {
+                return GetValue<string>("amount_in_decimal", false);
             }
 
             public int? DiscountAmount() {

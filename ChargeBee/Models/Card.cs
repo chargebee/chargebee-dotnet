@@ -17,6 +17,28 @@ namespace ChargeBee.Models
     public class Card : Resource 
     {
     
+        public Card() { }
+
+        public Card(Stream stream)
+        {
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                JObj = JToken.Parse(reader.ReadToEnd());
+                apiVersionCheck (JObj);
+            }
+        }
+
+        public Card(TextReader reader)
+        {
+            JObj = JToken.Parse(reader.ReadToEnd());
+            apiVersionCheck (JObj);    
+        }
+
+        public Card(String jsonString)
+        {
+            JObj = JToken.Parse(jsonString);
+            apiVersionCheck (JObj);
+        }
 
         #region Methods
         public static EntityRequest<Type> Retrieve(string id)

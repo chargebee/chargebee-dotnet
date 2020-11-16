@@ -19,6 +19,28 @@ namespace ChargeBee.Models
     public class TimeMachine : Resource 
     {
     
+        public TimeMachine() { }
+
+        public TimeMachine(Stream stream)
+        {
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                JObj = JToken.Parse(reader.ReadToEnd());
+                apiVersionCheck (JObj);
+            }
+        }
+
+        public TimeMachine(TextReader reader)
+        {
+            JObj = JToken.Parse(reader.ReadToEnd());
+            apiVersionCheck (JObj);    
+        }
+
+        public TimeMachine(String jsonString)
+        {
+            JObj = JToken.Parse(jsonString);
+            apiVersionCheck (JObj);
+        }
 
         #region Methods
         public static EntityRequest<Type> Retrieve(string id)

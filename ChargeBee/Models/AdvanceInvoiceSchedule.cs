@@ -17,6 +17,28 @@ namespace ChargeBee.Models
     public class AdvanceInvoiceSchedule : Resource 
     {
     
+        public AdvanceInvoiceSchedule() { }
+
+        public AdvanceInvoiceSchedule(Stream stream)
+        {
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                JObj = JToken.Parse(reader.ReadToEnd());
+                apiVersionCheck (JObj);
+            }
+        }
+
+        public AdvanceInvoiceSchedule(TextReader reader)
+        {
+            JObj = JToken.Parse(reader.ReadToEnd());
+            apiVersionCheck (JObj);    
+        }
+
+        public AdvanceInvoiceSchedule(String jsonString)
+        {
+            JObj = JToken.Parse(jsonString);
+            apiVersionCheck (JObj);
+        }
 
         #region Methods
         #endregion

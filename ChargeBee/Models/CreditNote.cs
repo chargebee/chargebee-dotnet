@@ -17,6 +17,28 @@ namespace ChargeBee.Models
     public class CreditNote : Resource 
     {
     
+        public CreditNote() { }
+
+        public CreditNote(Stream stream)
+        {
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                JObj = JToken.Parse(reader.ReadToEnd());
+                apiVersionCheck (JObj);
+            }
+        }
+
+        public CreditNote(TextReader reader)
+        {
+            JObj = JToken.Parse(reader.ReadToEnd());
+            apiVersionCheck (JObj);    
+        }
+
+        public CreditNote(String jsonString)
+        {
+            JObj = JToken.Parse(jsonString);
+            apiVersionCheck (JObj);
+        }
 
         #region Methods
         public static CreateRequest Create()
@@ -269,9 +291,19 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_items[unit_amount][" + index + "]", lineItemUnitAmount);
                 return this;
             }
+            public CreateRequest LineItemUnitAmountInDecimal(int index, string lineItemUnitAmountInDecimal) 
+            {
+                m_params.AddOpt("line_items[unit_amount_in_decimal][" + index + "]", lineItemUnitAmountInDecimal);
+                return this;
+            }
             public CreateRequest LineItemQuantity(int index, int lineItemQuantity) 
             {
                 m_params.AddOpt("line_items[quantity][" + index + "]", lineItemQuantity);
+                return this;
+            }
+            public CreateRequest LineItemQuantityInDecimal(int index, string lineItemQuantityInDecimal) 
+            {
+                m_params.AddOpt("line_items[quantity_in_decimal][" + index + "]", lineItemQuantityInDecimal);
                 return this;
             }
             public CreateRequest LineItemAmount(int index, int lineItemAmount) 
@@ -597,6 +629,18 @@ namespace ChargeBee.Models
                 return GetValue<double?>("tax_rate", false);
             }
 
+            public string UnitAmountInDecimal() {
+                return GetValue<string>("unit_amount_in_decimal", false);
+            }
+
+            public string QuantityInDecimal() {
+                return GetValue<string>("quantity_in_decimal", false);
+            }
+
+            public string AmountInDecimal() {
+                return GetValue<string>("amount_in_decimal", false);
+            }
+
             public int? DiscountAmount() {
                 return GetValue<int?>("discount_amount", false);
             }
@@ -717,6 +761,22 @@ namespace ChargeBee.Models
 
             public int UnitAmount() {
                 return GetValue<int>("unit_amount", true);
+            }
+
+            public string StartingUnitInDecimal() {
+                return GetValue<string>("starting_unit_in_decimal", false);
+            }
+
+            public string EndingUnitInDecimal() {
+                return GetValue<string>("ending_unit_in_decimal", false);
+            }
+
+            public string QuantityUsedInDecimal() {
+                return GetValue<string>("quantity_used_in_decimal", false);
+            }
+
+            public string UnitAmountInDecimal() {
+                return GetValue<string>("unit_amount_in_decimal", false);
             }
 
         }

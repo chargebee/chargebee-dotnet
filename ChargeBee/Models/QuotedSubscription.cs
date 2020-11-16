@@ -17,6 +17,28 @@ namespace ChargeBee.Models
     public class QuotedSubscription : Resource 
     {
     
+        public QuotedSubscription() { }
+
+        public QuotedSubscription(Stream stream)
+        {
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                JObj = JToken.Parse(reader.ReadToEnd());
+                apiVersionCheck (JObj);
+            }
+        }
+
+        public QuotedSubscription(TextReader reader)
+        {
+            JObj = JToken.Parse(reader.ReadToEnd());
+            apiVersionCheck (JObj);    
+        }
+
+        public QuotedSubscription(String jsonString)
+        {
+            JObj = JToken.Parse(jsonString);
+            apiVersionCheck (JObj);
+        }
 
         #region Methods
         #endregion
@@ -130,6 +152,18 @@ namespace ChargeBee.Models
                 return GetValue<int?>("remaining_billing_cycles", false);
             }
 
+            public string QuantityInDecimal() {
+                return GetValue<string>("quantity_in_decimal", false);
+            }
+
+            public string UnitPriceInDecimal() {
+                return GetValue<string>("unit_price_in_decimal", false);
+            }
+
+            public string AmountInDecimal() {
+                return GetValue<string>("amount_in_decimal", false);
+            }
+
         }
         public class QuotedSubscriptionEventBasedAddon : Resource
         {
@@ -171,6 +205,14 @@ namespace ChargeBee.Models
 
             public bool ChargeOnce() {
                 return GetValue<bool>("charge_once", true);
+            }
+
+            public string QuantityInDecimal() {
+                return GetValue<string>("quantity_in_decimal", false);
+            }
+
+            public string UnitPriceInDecimal() {
+                return GetValue<string>("unit_price_in_decimal", false);
             }
 
         }

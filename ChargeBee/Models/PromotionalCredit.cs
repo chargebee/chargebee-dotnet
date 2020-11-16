@@ -17,6 +17,28 @@ namespace ChargeBee.Models
     public class PromotionalCredit : Resource 
     {
     
+        public PromotionalCredit() { }
+
+        public PromotionalCredit(Stream stream)
+        {
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                JObj = JToken.Parse(reader.ReadToEnd());
+                apiVersionCheck (JObj);
+            }
+        }
+
+        public PromotionalCredit(TextReader reader)
+        {
+            JObj = JToken.Parse(reader.ReadToEnd());
+            apiVersionCheck (JObj);    
+        }
+
+        public PromotionalCredit(String jsonString)
+        {
+            JObj = JToken.Parse(jsonString);
+            apiVersionCheck (JObj);
+        }
 
         #region Methods
         public static AddRequest Add()
@@ -58,6 +80,10 @@ namespace ChargeBee.Models
         public TypeEnum PromotionalCreditType 
         {
             get { return GetEnum<TypeEnum>("type", true); }
+        }
+        public string AmountInDecimal 
+        {
+            get { return GetValue<string>("amount_in_decimal", false); }
         }
         public int Amount 
         {
@@ -109,7 +135,12 @@ namespace ChargeBee.Models
             }
             public AddRequest Amount(int amount) 
             {
-                m_params.Add("amount", amount);
+                m_params.AddOpt("amount", amount);
+                return this;
+            }
+            public AddRequest AmountInDecimal(string amountInDecimal) 
+            {
+                m_params.AddOpt("amount_in_decimal", amountInDecimal);
                 return this;
             }
             public AddRequest CurrencyCode(string currencyCode) 
@@ -147,7 +178,12 @@ namespace ChargeBee.Models
             }
             public DeductRequest Amount(int amount) 
             {
-                m_params.Add("amount", amount);
+                m_params.AddOpt("amount", amount);
+                return this;
+            }
+            public DeductRequest AmountInDecimal(string amountInDecimal) 
+            {
+                m_params.AddOpt("amount_in_decimal", amountInDecimal);
                 return this;
             }
             public DeductRequest CurrencyCode(string currencyCode) 
@@ -185,7 +221,12 @@ namespace ChargeBee.Models
             }
             public SetRequest Amount(int amount) 
             {
-                m_params.Add("amount", amount);
+                m_params.AddOpt("amount", amount);
+                return this;
+            }
+            public SetRequest AmountInDecimal(string amountInDecimal) 
+            {
+                m_params.AddOpt("amount_in_decimal", amountInDecimal);
                 return this;
             }
             public SetRequest CurrencyCode(string currencyCode) 

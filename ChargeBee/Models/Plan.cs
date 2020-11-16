@@ -17,6 +17,28 @@ namespace ChargeBee.Models
     public class Plan : Resource 
     {
     
+        public Plan() { }
+
+        public Plan(Stream stream)
+        {
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                JObj = JToken.Parse(reader.ReadToEnd());
+                apiVersionCheck (JObj);
+            }
+        }
+
+        public Plan(TextReader reader)
+        {
+            JObj = JToken.Parse(reader.ReadToEnd());
+            apiVersionCheck (JObj);    
+        }
+
+        public Plan(String jsonString)
+        {
+            JObj = JToken.Parse(jsonString);
+            apiVersionCheck (JObj);
+        }
 
         #region Methods
         public static CreateRequest Create()
@@ -211,6 +233,14 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("claim_url", false); }
         }
+        public string FreeQuantityInDecimal 
+        {
+            get { return GetValue<string>("free_quantity_in_decimal", false); }
+        }
+        public string PriceInDecimal 
+        {
+            get { return GetValue<string>("price_in_decimal", false); }
+        }
         public string InvoiceNotes 
         {
             get { return GetValue<string>("invoice_notes", false); }
@@ -312,6 +342,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("price", price);
                 return this;
             }
+            public CreateRequest PriceInDecimal(string priceInDecimal) 
+            {
+                m_params.AddOpt("price_in_decimal", priceInDecimal);
+                return this;
+            }
             public CreateRequest CurrencyCode(string currencyCode) 
             {
                 m_params.AddOpt("currency_code", currencyCode);
@@ -336,6 +371,11 @@ namespace ChargeBee.Models
             public CreateRequest FreeQuantity(int freeQuantity) 
             {
                 m_params.AddOpt("free_quantity", freeQuantity);
+                return this;
+            }
+            public CreateRequest FreeQuantityInDecimal(string freeQuantityInDecimal) 
+            {
+                m_params.AddOpt("free_quantity_in_decimal", freeQuantityInDecimal);
                 return this;
             }
             public CreateRequest AddonApplicability(Plan.AddonApplicabilityEnum addonApplicability) 
@@ -484,6 +524,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("tiers[price][" + index + "]", tierPrice);
                 return this;
             }
+            public CreateRequest TierStartingUnitInDecimal(int index, string tierStartingUnitInDecimal) 
+            {
+                m_params.AddOpt("tiers[starting_unit_in_decimal][" + index + "]", tierStartingUnitInDecimal);
+                return this;
+            }
+            public CreateRequest TierEndingUnitInDecimal(int index, string tierEndingUnitInDecimal) 
+            {
+                m_params.AddOpt("tiers[ending_unit_in_decimal][" + index + "]", tierEndingUnitInDecimal);
+                return this;
+            }
+            public CreateRequest TierPriceInDecimal(int index, string tierPriceInDecimal) 
+            {
+                m_params.AddOpt("tiers[price_in_decimal][" + index + "]", tierPriceInDecimal);
+                return this;
+            }
             public CreateRequest ApplicableAddonId(int index, string applicableAddonId) 
             {
                 m_params.AddOpt("applicable_addons[id][" + index + "]", applicableAddonId);
@@ -497,6 +552,11 @@ namespace ChargeBee.Models
             public CreateRequest EventBasedAddonQuantity(int index, int eventBasedAddonQuantity) 
             {
                 m_params.AddOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
+                return this;
+            }
+            public CreateRequest EventBasedAddonQuantityInDecimal(int index, string eventBasedAddonQuantityInDecimal) 
+            {
+                m_params.AddOpt("event_based_addons[quantity_in_decimal][" + index + "]", eventBasedAddonQuantityInDecimal);
                 return this;
             }
             public CreateRequest EventBasedAddonOnEvent(int index, ChargeBee.Models.Enums.OnEventEnum eventBasedAddonOnEvent) 
@@ -517,6 +577,11 @@ namespace ChargeBee.Models
             public CreateRequest AttachedAddonQuantity(int index, int attachedAddonQuantity) 
             {
                 m_params.AddOpt("attached_addons[quantity][" + index + "]", attachedAddonQuantity);
+                return this;
+            }
+            public CreateRequest AttachedAddonQuantityInDecimal(int index, string attachedAddonQuantityInDecimal) 
+            {
+                m_params.AddOpt("attached_addons[quantity_in_decimal][" + index + "]", attachedAddonQuantityInDecimal);
                 return this;
             }
             public CreateRequest AttachedAddonBillingCycles(int index, int attachedAddonBillingCycles) 
@@ -582,6 +647,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("price", price);
                 return this;
             }
+            public UpdateRequest PriceInDecimal(string priceInDecimal) 
+            {
+                m_params.AddOpt("price_in_decimal", priceInDecimal);
+                return this;
+            }
             public UpdateRequest CurrencyCode(string currencyCode) 
             {
                 m_params.AddOpt("currency_code", currencyCode);
@@ -606,6 +676,11 @@ namespace ChargeBee.Models
             public UpdateRequest FreeQuantity(int freeQuantity) 
             {
                 m_params.AddOpt("free_quantity", freeQuantity);
+                return this;
+            }
+            public UpdateRequest FreeQuantityInDecimal(string freeQuantityInDecimal) 
+            {
+                m_params.AddOpt("free_quantity_in_decimal", freeQuantityInDecimal);
                 return this;
             }
             public UpdateRequest AddonApplicability(Plan.AddonApplicabilityEnum addonApplicability) 
@@ -739,6 +814,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("tiers[price][" + index + "]", tierPrice);
                 return this;
             }
+            public UpdateRequest TierStartingUnitInDecimal(int index, string tierStartingUnitInDecimal) 
+            {
+                m_params.AddOpt("tiers[starting_unit_in_decimal][" + index + "]", tierStartingUnitInDecimal);
+                return this;
+            }
+            public UpdateRequest TierEndingUnitInDecimal(int index, string tierEndingUnitInDecimal) 
+            {
+                m_params.AddOpt("tiers[ending_unit_in_decimal][" + index + "]", tierEndingUnitInDecimal);
+                return this;
+            }
+            public UpdateRequest TierPriceInDecimal(int index, string tierPriceInDecimal) 
+            {
+                m_params.AddOpt("tiers[price_in_decimal][" + index + "]", tierPriceInDecimal);
+                return this;
+            }
             public UpdateRequest ApplicableAddonId(int index, string applicableAddonId) 
             {
                 m_params.AddOpt("applicable_addons[id][" + index + "]", applicableAddonId);
@@ -752,6 +842,11 @@ namespace ChargeBee.Models
             public UpdateRequest EventBasedAddonQuantity(int index, int eventBasedAddonQuantity) 
             {
                 m_params.AddOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
+                return this;
+            }
+            public UpdateRequest EventBasedAddonQuantityInDecimal(int index, string eventBasedAddonQuantityInDecimal) 
+            {
+                m_params.AddOpt("event_based_addons[quantity_in_decimal][" + index + "]", eventBasedAddonQuantityInDecimal);
                 return this;
             }
             public UpdateRequest EventBasedAddonOnEvent(int index, ChargeBee.Models.Enums.OnEventEnum eventBasedAddonOnEvent) 
@@ -772,6 +867,11 @@ namespace ChargeBee.Models
             public UpdateRequest AttachedAddonQuantity(int index, int attachedAddonQuantity) 
             {
                 m_params.AddOpt("attached_addons[quantity][" + index + "]", attachedAddonQuantity);
+                return this;
+            }
+            public UpdateRequest AttachedAddonQuantityInDecimal(int index, string attachedAddonQuantityInDecimal) 
+            {
+                m_params.AddOpt("attached_addons[quantity_in_decimal][" + index + "]", attachedAddonQuantityInDecimal);
                 return this;
             }
             public UpdateRequest AttachedAddonBillingCycles(int index, int attachedAddonBillingCycles) 
@@ -980,6 +1080,18 @@ namespace ChargeBee.Models
                 return GetValue<int>("price", true);
             }
 
+            public string StartingUnitInDecimal() {
+                return GetValue<string>("starting_unit_in_decimal", false);
+            }
+
+            public string EndingUnitInDecimal() {
+                return GetValue<string>("ending_unit_in_decimal", false);
+            }
+
+            public string PriceInDecimal() {
+                return GetValue<string>("price_in_decimal", false);
+            }
+
         }
         public class PlanApplicableAddon : Resource
         {
@@ -1017,6 +1129,10 @@ namespace ChargeBee.Models
                 return GetEnum<TypeEnum>("type", true);
             }
 
+            public string QuantityInDecimal() {
+                return GetValue<string>("quantity_in_decimal", false);
+            }
+
         }
         public class PlanEventBasedAddon : Resource
         {
@@ -1050,6 +1166,10 @@ namespace ChargeBee.Models
 
             public bool ChargeOnce() {
                 return GetValue<bool>("charge_once", true);
+            }
+
+            public string QuantityInDecimal() {
+                return GetValue<string>("quantity_in_decimal", false);
             }
 
         }

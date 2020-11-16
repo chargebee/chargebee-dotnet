@@ -17,6 +17,28 @@ namespace ChargeBee.Models
     public class Invoice : Resource 
     {
     
+        public Invoice() { }
+
+        public Invoice(Stream stream)
+        {
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                JObj = JToken.Parse(reader.ReadToEnd());
+                apiVersionCheck (JObj);
+            }
+        }
+
+        public Invoice(TextReader reader)
+        {
+            JObj = JToken.Parse(reader.ReadToEnd());
+            apiVersionCheck (JObj);    
+        }
+
+        public Invoice(String jsonString)
+        {
+            JObj = JToken.Parse(jsonString);
+            apiVersionCheck (JObj);
+        }
 
         #region Methods
         public static CreateRequest Create()
@@ -548,6 +570,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
                 return this;
             }
+            public CreateRequest AddonQuantityInDecimal(int index, string addonQuantityInDecimal) 
+            {
+                m_params.AddOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+                return this;
+            }
+            public CreateRequest AddonUnitPriceInDecimal(int index, string addonUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("addons[unit_price_in_decimal][" + index + "]", addonUnitPriceInDecimal);
+                return this;
+            }
             public CreateRequest AddonDateFrom(int index, long addonDateFrom) 
             {
                 m_params.AddOpt("addons[date_from][" + index + "]", addonDateFrom);
@@ -561,6 +593,11 @@ namespace ChargeBee.Models
             public CreateRequest ChargeAmount(int index, int chargeAmount) 
             {
                 m_params.AddOpt("charges[amount][" + index + "]", chargeAmount);
+                return this;
+            }
+            public CreateRequest ChargeAmountInDecimal(int index, string chargeAmountInDecimal) 
+            {
+                m_params.AddOpt("charges[amount_in_decimal][" + index + "]", chargeAmountInDecimal);
                 return this;
             }
             public CreateRequest ChargeDescription(int index, string chargeDescription) 
@@ -648,7 +685,12 @@ namespace ChargeBee.Models
             }
             public ChargeRequest Amount(int amount) 
             {
-                m_params.Add("amount", amount);
+                m_params.AddOpt("amount", amount);
+                return this;
+            }
+            public ChargeRequest AmountInDecimal(string amountInDecimal) 
+            {
+                m_params.AddOpt("amount_in_decimal", amountInDecimal);
                 return this;
             }
             public ChargeRequest Description(string description) 
@@ -727,6 +769,16 @@ namespace ChargeBee.Models
             public ChargeAddonRequest AddonUnitPrice(int addonUnitPrice) 
             {
                 m_params.AddOpt("addon_unit_price", addonUnitPrice);
+                return this;
+            }
+            public ChargeAddonRequest AddonQuantityInDecimal(string addonQuantityInDecimal) 
+            {
+                m_params.AddOpt("addon_quantity_in_decimal", addonQuantityInDecimal);
+                return this;
+            }
+            public ChargeAddonRequest AddonUnitPriceInDecimal(string addonUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("addon_unit_price_in_decimal", addonUnitPriceInDecimal);
                 return this;
             }
             public ChargeAddonRequest DateFrom(long dateFrom) 
@@ -1025,6 +1077,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_items[amount][" + index + "]", lineItemAmount);
                 return this;
             }
+            public ImportInvoiceRequest LineItemUnitAmountInDecimal(int index, string lineItemUnitAmountInDecimal) 
+            {
+                m_params.AddOpt("line_items[unit_amount_in_decimal][" + index + "]", lineItemUnitAmountInDecimal);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemQuantityInDecimal(int index, string lineItemQuantityInDecimal) 
+            {
+                m_params.AddOpt("line_items[quantity_in_decimal][" + index + "]", lineItemQuantityInDecimal);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemAmountInDecimal(int index, string lineItemAmountInDecimal) 
+            {
+                m_params.AddOpt("line_items[amount_in_decimal][" + index + "]", lineItemAmountInDecimal);
+                return this;
+            }
             public ImportInvoiceRequest LineItemEntityType(int index, InvoiceLineItem.EntityTypeEnum lineItemEntityType) 
             {
                 m_params.AddOpt("line_items[entity_type][" + index + "]", lineItemEntityType);
@@ -1102,22 +1169,42 @@ namespace ChargeBee.Models
             }
             public ImportInvoiceRequest LineItemTierStartingUnit(int index, int lineItemTierStartingUnit) 
             {
-                m_params.Add("line_item_tiers[starting_unit][" + index + "]", lineItemTierStartingUnit);
+                m_params.AddOpt("line_item_tiers[starting_unit][" + index + "]", lineItemTierStartingUnit);
                 return this;
             }
             public ImportInvoiceRequest LineItemTierEndingUnit(int index, int lineItemTierEndingUnit) 
             {
-                m_params.Add("line_item_tiers[ending_unit][" + index + "]", lineItemTierEndingUnit);
+                m_params.AddOpt("line_item_tiers[ending_unit][" + index + "]", lineItemTierEndingUnit);
                 return this;
             }
             public ImportInvoiceRequest LineItemTierQuantityUsed(int index, int lineItemTierQuantityUsed) 
             {
-                m_params.Add("line_item_tiers[quantity_used][" + index + "]", lineItemTierQuantityUsed);
+                m_params.AddOpt("line_item_tiers[quantity_used][" + index + "]", lineItemTierQuantityUsed);
                 return this;
             }
             public ImportInvoiceRequest LineItemTierUnitAmount(int index, int lineItemTierUnitAmount) 
             {
-                m_params.Add("line_item_tiers[unit_amount][" + index + "]", lineItemTierUnitAmount);
+                m_params.AddOpt("line_item_tiers[unit_amount][" + index + "]", lineItemTierUnitAmount);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTierStartingUnitInDecimal(int index, string lineItemTierStartingUnitInDecimal) 
+            {
+                m_params.AddOpt("line_item_tiers[starting_unit_in_decimal][" + index + "]", lineItemTierStartingUnitInDecimal);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTierEndingUnitInDecimal(int index, string lineItemTierEndingUnitInDecimal) 
+            {
+                m_params.AddOpt("line_item_tiers[ending_unit_in_decimal][" + index + "]", lineItemTierEndingUnitInDecimal);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTierQuantityUsedInDecimal(int index, string lineItemTierQuantityUsedInDecimal) 
+            {
+                m_params.AddOpt("line_item_tiers[quantity_used_in_decimal][" + index + "]", lineItemTierQuantityUsedInDecimal);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTierUnitAmountInDecimal(int index, string lineItemTierUnitAmountInDecimal) 
+            {
+                m_params.AddOpt("line_item_tiers[unit_amount_in_decimal][" + index + "]", lineItemTierUnitAmountInDecimal);
                 return this;
             }
             public ImportInvoiceRequest DiscountEntityType(int index, InvoiceDiscount.EntityTypeEnum discountEntityType) 
@@ -1429,6 +1516,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addon_unit_price", addonUnitPrice);
                 return this;
             }
+            public AddAddonChargeRequest AddonQuantityInDecimal(string addonQuantityInDecimal) 
+            {
+                m_params.AddOpt("addon_quantity_in_decimal", addonQuantityInDecimal);
+                return this;
+            }
+            public AddAddonChargeRequest AddonUnitPriceInDecimal(string addonUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("addon_unit_price_in_decimal", addonUnitPriceInDecimal);
+                return this;
+            }
             public AddAddonChargeRequest Comment(string comment) 
             {
                 m_params.AddOpt("comment", comment);
@@ -1465,6 +1562,11 @@ namespace ChargeBee.Models
             public CloseRequest RemoveGeneralNote(bool removeGeneralNote) 
             {
                 m_params.AddOpt("remove_general_note", removeGeneralNote);
+                return this;
+            }
+            public CloseRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
                 return this;
             }
             public CloseRequest NotesToRemoveEntityType(int index, ChargeBee.Models.Enums.EntityTypeEnum notesToRemoveEntityType) 
@@ -1976,6 +2078,18 @@ namespace ChargeBee.Models
                 return GetValue<double?>("tax_rate", false);
             }
 
+            public string UnitAmountInDecimal() {
+                return GetValue<string>("unit_amount_in_decimal", false);
+            }
+
+            public string QuantityInDecimal() {
+                return GetValue<string>("quantity_in_decimal", false);
+            }
+
+            public string AmountInDecimal() {
+                return GetValue<string>("amount_in_decimal", false);
+            }
+
             public int? DiscountAmount() {
                 return GetValue<int?>("discount_amount", false);
             }
@@ -2164,6 +2278,22 @@ namespace ChargeBee.Models
 
             public int UnitAmount() {
                 return GetValue<int>("unit_amount", true);
+            }
+
+            public string StartingUnitInDecimal() {
+                return GetValue<string>("starting_unit_in_decimal", false);
+            }
+
+            public string EndingUnitInDecimal() {
+                return GetValue<string>("ending_unit_in_decimal", false);
+            }
+
+            public string QuantityUsedInDecimal() {
+                return GetValue<string>("quantity_used_in_decimal", false);
+            }
+
+            public string UnitAmountInDecimal() {
+                return GetValue<string>("unit_amount_in_decimal", false);
             }
 
         }

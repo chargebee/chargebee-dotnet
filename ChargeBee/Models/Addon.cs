@@ -17,6 +17,28 @@ namespace ChargeBee.Models
     public class Addon : Resource 
     {
     
+        public Addon() { }
+
+        public Addon(Stream stream)
+        {
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                JObj = JToken.Parse(reader.ReadToEnd());
+                apiVersionCheck (JObj);
+            }
+        }
+
+        public Addon(TextReader reader)
+        {
+            JObj = JToken.Parse(reader.ReadToEnd());
+            apiVersionCheck (JObj);    
+        }
+
+        public Addon(String jsonString)
+        {
+            JObj = JToken.Parse(jsonString);
+            apiVersionCheck (JObj);
+        }
 
         #region Methods
         public static CreateRequest Create()
@@ -173,6 +195,10 @@ namespace ChargeBee.Models
         public DateTime? UpdatedAt 
         {
             get { return GetDateTime("updated_at", false); }
+        }
+        public string PriceInDecimal 
+        {
+            get { return GetValue<string>("price_in_decimal", false); }
         }
         public bool? IncludedInMrr 
         {
@@ -378,6 +404,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("show_description_in_quotes", showDescriptionInQuotes);
                 return this;
             }
+            public CreateRequest PriceInDecimal(string priceInDecimal) 
+            {
+                m_params.AddOpt("price_in_decimal", priceInDecimal);
+                return this;
+            }
             public CreateRequest Status(Addon.StatusEnum status) 
             {
                 m_params.AddOpt("status", status);
@@ -396,6 +427,21 @@ namespace ChargeBee.Models
             public CreateRequest TierPrice(int index, int tierPrice) 
             {
                 m_params.AddOpt("tiers[price][" + index + "]", tierPrice);
+                return this;
+            }
+            public CreateRequest TierStartingUnitInDecimal(int index, string tierStartingUnitInDecimal) 
+            {
+                m_params.AddOpt("tiers[starting_unit_in_decimal][" + index + "]", tierStartingUnitInDecimal);
+                return this;
+            }
+            public CreateRequest TierEndingUnitInDecimal(int index, string tierEndingUnitInDecimal) 
+            {
+                m_params.AddOpt("tiers[ending_unit_in_decimal][" + index + "]", tierEndingUnitInDecimal);
+                return this;
+            }
+            public CreateRequest TierPriceInDecimal(int index, string tierPriceInDecimal) 
+            {
+                m_params.AddOpt("tiers[price_in_decimal][" + index + "]", tierPriceInDecimal);
                 return this;
             }
         }
@@ -562,6 +608,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("show_description_in_quotes", showDescriptionInQuotes);
                 return this;
             }
+            public UpdateRequest PriceInDecimal(string priceInDecimal) 
+            {
+                m_params.AddOpt("price_in_decimal", priceInDecimal);
+                return this;
+            }
             public UpdateRequest TierStartingUnit(int index, int tierStartingUnit) 
             {
                 m_params.AddOpt("tiers[starting_unit][" + index + "]", tierStartingUnit);
@@ -575,6 +626,21 @@ namespace ChargeBee.Models
             public UpdateRequest TierPrice(int index, int tierPrice) 
             {
                 m_params.AddOpt("tiers[price][" + index + "]", tierPrice);
+                return this;
+            }
+            public UpdateRequest TierStartingUnitInDecimal(int index, string tierStartingUnitInDecimal) 
+            {
+                m_params.AddOpt("tiers[starting_unit_in_decimal][" + index + "]", tierStartingUnitInDecimal);
+                return this;
+            }
+            public UpdateRequest TierEndingUnitInDecimal(int index, string tierEndingUnitInDecimal) 
+            {
+                m_params.AddOpt("tiers[ending_unit_in_decimal][" + index + "]", tierEndingUnitInDecimal);
+                return this;
+            }
+            public UpdateRequest TierPriceInDecimal(int index, string tierPriceInDecimal) 
+            {
+                m_params.AddOpt("tiers[price_in_decimal][" + index + "]", tierPriceInDecimal);
                 return this;
             }
         }
@@ -750,6 +816,18 @@ namespace ChargeBee.Models
 
             public int Price() {
                 return GetValue<int>("price", true);
+            }
+
+            public string StartingUnitInDecimal() {
+                return GetValue<string>("starting_unit_in_decimal", false);
+            }
+
+            public string EndingUnitInDecimal() {
+                return GetValue<string>("ending_unit_in_decimal", false);
+            }
+
+            public string PriceInDecimal() {
+                return GetValue<string>("price_in_decimal", false);
             }
 
         }

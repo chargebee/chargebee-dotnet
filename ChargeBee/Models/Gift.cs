@@ -17,6 +17,28 @@ namespace ChargeBee.Models
     public class Gift : Resource 
     {
     
+        public Gift() { }
+
+        public Gift(Stream stream)
+        {
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                JObj = JToken.Parse(reader.ReadToEnd());
+                apiVersionCheck (JObj);
+            }
+        }
+
+        public Gift(TextReader reader)
+        {
+            JObj = JToken.Parse(reader.ReadToEnd());
+            apiVersionCheck (JObj);    
+        }
+
+        public Gift(String jsonString)
+        {
+            JObj = JToken.Parse(jsonString);
+            apiVersionCheck (JObj);
+        }
 
         #region Methods
         public static CreateRequest Create()
@@ -182,6 +204,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
                 return this;
             }
+            public CreateRequest SubscriptionPlanQuantityInDecimal(string subscriptionPlanQuantityInDecimal) 
+            {
+                m_params.AddOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
+                return this;
+            }
             public CreateRequest PaymentIntentId(string paymentIntentId) 
             {
                 m_params.AddOpt("payment_intent[id]", paymentIntentId);
@@ -286,6 +313,11 @@ namespace ChargeBee.Models
             public CreateRequest AddonQuantity(int index, int addonQuantity) 
             {
                 m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
+                return this;
+            }
+            public CreateRequest AddonQuantityInDecimal(int index, string addonQuantityInDecimal) 
+            {
+                m_params.AddOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
                 return this;
             }
         }

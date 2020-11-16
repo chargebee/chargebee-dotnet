@@ -17,6 +17,28 @@ namespace ChargeBee.Models
     public class VirtualBankAccount : Resource 
     {
     
+        public VirtualBankAccount() { }
+
+        public VirtualBankAccount(Stream stream)
+        {
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                JObj = JToken.Parse(reader.ReadToEnd());
+                apiVersionCheck (JObj);
+            }
+        }
+
+        public VirtualBankAccount(TextReader reader)
+        {
+            JObj = JToken.Parse(reader.ReadToEnd());
+            apiVersionCheck (JObj);    
+        }
+
+        public VirtualBankAccount(String jsonString)
+        {
+            JObj = JToken.Parse(jsonString);
+            apiVersionCheck (JObj);
+        }
 
         #region Methods
         public static CreateUsingPermanentTokenRequest CreateUsingPermanentToken()

@@ -17,6 +17,28 @@ namespace ChargeBee.Models
     public class ResourceMigration : Resource 
     {
     
+        public ResourceMigration() { }
+
+        public ResourceMigration(Stream stream)
+        {
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                JObj = JToken.Parse(reader.ReadToEnd());
+                apiVersionCheck (JObj);
+            }
+        }
+
+        public ResourceMigration(TextReader reader)
+        {
+            JObj = JToken.Parse(reader.ReadToEnd());
+            apiVersionCheck (JObj);    
+        }
+
+        public ResourceMigration(String jsonString)
+        {
+            JObj = JToken.Parse(jsonString);
+            apiVersionCheck (JObj);
+        }
 
         #region Methods
         public static RetrieveLatestRequest RetrieveLatest()

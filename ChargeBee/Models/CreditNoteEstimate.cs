@@ -17,6 +17,28 @@ namespace ChargeBee.Models
     public class CreditNoteEstimate : Resource 
     {
     
+        public CreditNoteEstimate() { }
+
+        public CreditNoteEstimate(Stream stream)
+        {
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                JObj = JToken.Parse(reader.ReadToEnd());
+                apiVersionCheck (JObj);
+            }
+        }
+
+        public CreditNoteEstimate(TextReader reader)
+        {
+            JObj = JToken.Parse(reader.ReadToEnd());
+            apiVersionCheck (JObj);    
+        }
+
+        public CreditNoteEstimate(String jsonString)
+        {
+            JObj = JToken.Parse(jsonString);
+            apiVersionCheck (JObj);
+        }
 
         #region Methods
         #endregion
@@ -161,6 +183,18 @@ namespace ChargeBee.Models
 
             public double? TaxRate() {
                 return GetValue<double?>("tax_rate", false);
+            }
+
+            public string UnitAmountInDecimal() {
+                return GetValue<string>("unit_amount_in_decimal", false);
+            }
+
+            public string QuantityInDecimal() {
+                return GetValue<string>("quantity_in_decimal", false);
+            }
+
+            public string AmountInDecimal() {
+                return GetValue<string>("amount_in_decimal", false);
             }
 
             public int? DiscountAmount() {
@@ -351,6 +385,22 @@ namespace ChargeBee.Models
 
             public int UnitAmount() {
                 return GetValue<int>("unit_amount", true);
+            }
+
+            public string StartingUnitInDecimal() {
+                return GetValue<string>("starting_unit_in_decimal", false);
+            }
+
+            public string EndingUnitInDecimal() {
+                return GetValue<string>("ending_unit_in_decimal", false);
+            }
+
+            public string QuantityUsedInDecimal() {
+                return GetValue<string>("quantity_used_in_decimal", false);
+            }
+
+            public string UnitAmountInDecimal() {
+                return GetValue<string>("unit_amount_in_decimal", false);
             }
 
         }

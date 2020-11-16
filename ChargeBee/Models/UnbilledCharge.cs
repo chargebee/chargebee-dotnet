@@ -17,6 +17,28 @@ namespace ChargeBee.Models
     public class UnbilledCharge : Resource 
     {
     
+        public UnbilledCharge() { }
+
+        public UnbilledCharge(Stream stream)
+        {
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                JObj = JToken.Parse(reader.ReadToEnd());
+                apiVersionCheck (JObj);
+            }
+        }
+
+        public UnbilledCharge(TextReader reader)
+        {
+            JObj = JToken.Parse(reader.ReadToEnd());
+            apiVersionCheck (JObj);    
+        }
+
+        public UnbilledCharge(String jsonString)
+        {
+            JObj = JToken.Parse(jsonString);
+            apiVersionCheck (JObj);
+        }
 
         #region Methods
         public static InvoiceUnbilledChargesRequest InvoiceUnbilledCharges()
@@ -105,6 +127,18 @@ namespace ChargeBee.Models
         public DateTime? VoidedAt 
         {
             get { return GetDateTime("voided_at", false); }
+        }
+        public string UnitAmountInDecimal 
+        {
+            get { return GetValue<string>("unit_amount_in_decimal", false); }
+        }
+        public string QuantityInDecimal 
+        {
+            get { return GetValue<string>("quantity_in_decimal", false); }
+        }
+        public string AmountInDecimal 
+        {
+            get { return GetValue<string>("amount_in_decimal", false); }
         }
         public List<UnbilledChargeTier> Tiers 
         {
@@ -216,6 +250,22 @@ namespace ChargeBee.Models
 
             public int UnitAmount() {
                 return GetValue<int>("unit_amount", true);
+            }
+
+            public string StartingUnitInDecimal() {
+                return GetValue<string>("starting_unit_in_decimal", false);
+            }
+
+            public string EndingUnitInDecimal() {
+                return GetValue<string>("ending_unit_in_decimal", false);
+            }
+
+            public string QuantityUsedInDecimal() {
+                return GetValue<string>("quantity_used_in_decimal", false);
+            }
+
+            public string UnitAmountInDecimal() {
+                return GetValue<string>("unit_amount_in_decimal", false);
             }
 
         }

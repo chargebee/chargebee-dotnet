@@ -17,6 +17,28 @@ namespace ChargeBee.Models
     public class Transaction : Resource 
     {
     
+        public Transaction() { }
+
+        public Transaction(Stream stream)
+        {
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                JObj = JToken.Parse(reader.ReadToEnd());
+                apiVersionCheck (JObj);
+            }
+        }
+
+        public Transaction(TextReader reader)
+        {
+            JObj = JToken.Parse(reader.ReadToEnd());
+            apiVersionCheck (JObj);    
+        }
+
+        public Transaction(String jsonString)
+        {
+            JObj = JToken.Parse(jsonString);
+            apiVersionCheck (JObj);
+        }
 
         #region Methods
         public static CreateAuthorizationRequest CreateAuthorization()
@@ -33,6 +55,11 @@ namespace ChargeBee.Models
         {
             string url = ApiUtil.BuildUrl("transactions", CheckNull(id), "record_refund");
             return new RecordRefundRequest(url, HttpMethod.POST);
+        }
+        public static RefundRequest Refund(string id)
+        {
+            string url = ApiUtil.BuildUrl("transactions", CheckNull(id), "refund");
+            return new RefundRequest(url, HttpMethod.POST);
         }
         public static TransactionListRequest List()
         {
@@ -277,6 +304,24 @@ namespace ChargeBee.Models
                 return this;
             }
             public RecordRefundRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
+                return this;
+            }
+        }
+        public class RefundRequest : EntityRequest<RefundRequest> 
+        {
+            public RefundRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public RefundRequest Amount(int amount) 
+            {
+                m_params.AddOpt("amount", amount);
+                return this;
+            }
+            public RefundRequest Comment(string comment) 
             {
                 m_params.AddOpt("comment", comment);
                 return this;

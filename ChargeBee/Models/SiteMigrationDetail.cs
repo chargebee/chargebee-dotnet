@@ -17,6 +17,28 @@ namespace ChargeBee.Models
     public class SiteMigrationDetail : Resource 
     {
     
+        public SiteMigrationDetail() { }
+
+        public SiteMigrationDetail(Stream stream)
+        {
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                JObj = JToken.Parse(reader.ReadToEnd());
+                apiVersionCheck (JObj);
+            }
+        }
+
+        public SiteMigrationDetail(TextReader reader)
+        {
+            JObj = JToken.Parse(reader.ReadToEnd());
+            apiVersionCheck (JObj);    
+        }
+
+        public SiteMigrationDetail(String jsonString)
+        {
+            JObj = JToken.Parse(jsonString);
+            apiVersionCheck (JObj);
+        }
 
         #region Methods
         public static SiteMigrationDetailListRequest List()

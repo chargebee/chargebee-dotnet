@@ -17,6 +17,28 @@ namespace ChargeBee.Models
     public class ThirdPartyPaymentMethod : Resource 
     {
     
+        public ThirdPartyPaymentMethod() { }
+
+        public ThirdPartyPaymentMethod(Stream stream)
+        {
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                JObj = JToken.Parse(reader.ReadToEnd());
+                apiVersionCheck (JObj);
+            }
+        }
+
+        public ThirdPartyPaymentMethod(TextReader reader)
+        {
+            JObj = JToken.Parse(reader.ReadToEnd());
+            apiVersionCheck (JObj);    
+        }
+
+        public ThirdPartyPaymentMethod(String jsonString)
+        {
+            JObj = JToken.Parse(jsonString);
+            apiVersionCheck (JObj);
+        }
 
         #region Methods
         #endregion
