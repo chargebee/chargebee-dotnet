@@ -41,6 +41,11 @@ namespace ChargeBee.Models
         }
 
         #region Methods
+        public static CreateRequest Create()
+        {
+            string url = ApiUtil.BuildUrl("unbilled_charges");
+            return new CreateRequest(url, HttpMethod.POST);
+        }
         public static InvoiceUnbilledChargesRequest InvoiceUnbilledCharges()
         {
             string url = ApiUtil.BuildUrl("unbilled_charges", "invoice_unbilled_charges");
@@ -152,6 +157,114 @@ namespace ChargeBee.Models
         #endregion
         
         #region Requests
+        public class CreateRequest : EntityRequest<CreateRequest> 
+        {
+            public CreateRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CreateRequest SubscriptionId(string subscriptionId) 
+            {
+                m_params.Add("subscription_id", subscriptionId);
+                return this;
+            }
+            public CreateRequest CurrencyCode(string currencyCode) 
+            {
+                m_params.AddOpt("currency_code", currencyCode);
+                return this;
+            }
+            public CreateRequest ItemPriceItemPriceId(int index, string itemPriceItemPriceId) 
+            {
+                m_params.AddOpt("item_prices[item_price_id][" + index + "]", itemPriceItemPriceId);
+                return this;
+            }
+            public CreateRequest ItemPriceQuantity(int index, int itemPriceQuantity) 
+            {
+                m_params.AddOpt("item_prices[quantity][" + index + "]", itemPriceQuantity);
+                return this;
+            }
+            public CreateRequest ItemPriceUnitPrice(int index, int itemPriceUnitPrice) 
+            {
+                m_params.AddOpt("item_prices[unit_price][" + index + "]", itemPriceUnitPrice);
+                return this;
+            }
+            public CreateRequest ItemPriceDateFrom(int index, long itemPriceDateFrom) 
+            {
+                m_params.AddOpt("item_prices[date_from][" + index + "]", itemPriceDateFrom);
+                return this;
+            }
+            public CreateRequest ItemPriceDateTo(int index, long itemPriceDateTo) 
+            {
+                m_params.AddOpt("item_prices[date_to][" + index + "]", itemPriceDateTo);
+                return this;
+            }
+            public CreateRequest ItemTierItemPriceId(int index, string itemTierItemPriceId) 
+            {
+                m_params.AddOpt("item_tiers[item_price_id][" + index + "]", itemTierItemPriceId);
+                return this;
+            }
+            public CreateRequest ItemTierStartingUnit(int index, int itemTierStartingUnit) 
+            {
+                m_params.AddOpt("item_tiers[starting_unit][" + index + "]", itemTierStartingUnit);
+                return this;
+            }
+            public CreateRequest ItemTierEndingUnit(int index, int itemTierEndingUnit) 
+            {
+                m_params.AddOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
+                return this;
+            }
+            public CreateRequest ItemTierPrice(int index, int itemTierPrice) 
+            {
+                m_params.AddOpt("item_tiers[price][" + index + "]", itemTierPrice);
+                return this;
+            }
+            public CreateRequest ChargeAmount(int index, int chargeAmount) 
+            {
+                m_params.AddOpt("charges[amount][" + index + "]", chargeAmount);
+                return this;
+            }
+            public CreateRequest ChargeAmountInDecimal(int index, string chargeAmountInDecimal) 
+            {
+                m_params.AddOpt("charges[amount_in_decimal][" + index + "]", chargeAmountInDecimal);
+                return this;
+            }
+            public CreateRequest ChargeDescription(int index, string chargeDescription) 
+            {
+                m_params.AddOpt("charges[description][" + index + "]", chargeDescription);
+                return this;
+            }
+            public CreateRequest ChargeAvalaraSaleType(int index, ChargeBee.Models.Enums.AvalaraSaleTypeEnum chargeAvalaraSaleType) 
+            {
+                m_params.AddOpt("charges[avalara_sale_type][" + index + "]", chargeAvalaraSaleType);
+                return this;
+            }
+            public CreateRequest ChargeAvalaraTransactionType(int index, int chargeAvalaraTransactionType) 
+            {
+                m_params.AddOpt("charges[avalara_transaction_type][" + index + "]", chargeAvalaraTransactionType);
+                return this;
+            }
+            public CreateRequest ChargeAvalaraServiceType(int index, int chargeAvalaraServiceType) 
+            {
+                m_params.AddOpt("charges[avalara_service_type][" + index + "]", chargeAvalaraServiceType);
+                return this;
+            }
+            public CreateRequest ChargeDateFrom(int index, long chargeDateFrom) 
+            {
+                m_params.AddOpt("charges[date_from][" + index + "]", chargeDateFrom);
+                return this;
+            }
+            public CreateRequest ChargeDateTo(int index, long chargeDateTo) 
+            {
+                m_params.AddOpt("charges[date_to][" + index + "]", chargeDateTo);
+                return this;
+            }
+            public CreateRequest ChargeTaxable(int index, bool chargeTaxable) 
+            {
+                m_params.AddOpt("charges[taxable][" + index + "]", chargeTaxable);
+                return this;
+            }
+        }
         public class InvoiceUnbilledChargesRequest : EntityRequest<InvoiceUnbilledChargesRequest> 
         {
             public InvoiceUnbilledChargesRequest(string url, HttpMethod method) 
@@ -229,6 +342,12 @@ namespace ChargeBee.Models
             Addon,
             [EnumMember(Value = "adhoc")]
             Adhoc,
+            [EnumMember(Value = "plan_item_price")]
+            PlanItemPrice,
+            [EnumMember(Value = "addon_item_price")]
+            AddonItemPrice,
+            [EnumMember(Value = "charge_item_price")]
+            ChargeItemPrice,
 
         }
 

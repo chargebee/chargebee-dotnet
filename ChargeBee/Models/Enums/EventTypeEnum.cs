@@ -349,5 +349,50 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "contract_term_cancelled")]
          ContractTermCancelled,
 
+        [EnumMember(Value = "item_family_created")]
+         ItemFamilyCreated,
+
+        [EnumMember(Value = "item_family_updated")]
+         ItemFamilyUpdated,
+
+        [EnumMember(Value = "item_family_deleted")]
+         ItemFamilyDeleted,
+
+        [EnumMember(Value = "item_created")]
+         ItemCreated,
+
+        [EnumMember(Value = "item_updated")]
+         ItemUpdated,
+
+        [EnumMember(Value = "item_deleted")]
+         ItemDeleted,
+
+        [EnumMember(Value = "item_price_created")]
+         ItemPriceCreated,
+
+        [EnumMember(Value = "item_price_updated")]
+         ItemPriceUpdated,
+
+        [EnumMember(Value = "item_price_deleted")]
+         ItemPriceDeleted,
+
+        [EnumMember(Value = "attached_item_created")]
+         AttachedItemCreated,
+
+        [EnumMember(Value = "attached_item_updated")]
+         AttachedItemUpdated,
+
+        [EnumMember(Value = "attached_item_deleted")]
+         AttachedItemDeleted,
+
+        [EnumMember(Value = "differential_price_created")]
+         DifferentialPriceCreated,
+
+        [EnumMember(Value = "differential_price_updated")]
+         DifferentialPriceUpdated,
+
+        [EnumMember(Value = "differential_price_deleted")]
+         DifferentialPriceDeleted,
+
     }
 }

@@ -25,5 +25,8 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "contract_termination")]
          ContractTermination,
 
+        [EnumMember(Value = "on_demand")]
+         OnDemand,
+
     }
 }

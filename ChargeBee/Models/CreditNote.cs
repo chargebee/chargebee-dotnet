@@ -583,6 +583,12 @@ namespace ChargeBee.Models
                 Addon,
                 [EnumMember(Value = "adhoc")]
                 Adhoc,
+                [EnumMember(Value = "plan_item_price")]
+                PlanItemPrice,
+                [EnumMember(Value = "addon_item_price")]
+                AddonItemPrice,
+                [EnumMember(Value = "charge_item_price")]
+                ChargeItemPrice,
             }
 
             public string Id() {

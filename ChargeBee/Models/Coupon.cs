@@ -46,6 +46,16 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("coupons");
             return new CreateRequest(url, HttpMethod.POST);
         }
+        public static CreateForItemsRequest CreateForItems()
+        {
+            string url = ApiUtil.BuildUrl("coupons", "create_for_items");
+            return new CreateForItemsRequest(url, HttpMethod.POST);
+        }
+        public static UpdateForItemsRequest UpdateForItems(string id)
+        {
+            string url = ApiUtil.BuildUrl("coupons", CheckNull(id), "update_for_items");
+            return new UpdateForItemsRequest(url, HttpMethod.POST);
+        }
         public static CouponListRequest List()
         {
             string url = ApiUtil.BuildUrl("coupons");
@@ -177,6 +187,14 @@ namespace ChargeBee.Models
         {
             get { return GetList<string>("addon_ids"); }
         }
+        public List<CouponItemConstraint> ItemConstraints 
+        {
+            get { return GetResourceList<CouponItemConstraint>("item_constraints"); }
+        }
+        public List<CouponItemConstraintCriteria> ItemConstraintCriteria 
+        {
+            get { return GetResourceList<CouponItemConstraintCriteria>("item_constraint_criteria"); }
+        }
         public int? Redemptions 
         {
             get { return GetValue<int?>("redemptions", false); }
@@ -304,6 +322,248 @@ namespace ChargeBee.Models
             public CreateRequest Status(Coupon.StatusEnum status) 
             {
                 m_params.AddOpt("status", status);
+                return this;
+            }
+        }
+        public class CreateForItemsRequest : EntityRequest<CreateForItemsRequest> 
+        {
+            public CreateForItemsRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CreateForItemsRequest Id(string id) 
+            {
+                m_params.Add("id", id);
+                return this;
+            }
+            public CreateForItemsRequest Name(string name) 
+            {
+                m_params.Add("name", name);
+                return this;
+            }
+            public CreateForItemsRequest InvoiceName(string invoiceName) 
+            {
+                m_params.AddOpt("invoice_name", invoiceName);
+                return this;
+            }
+            public CreateForItemsRequest DiscountType(Coupon.DiscountTypeEnum discountType) 
+            {
+                m_params.Add("discount_type", discountType);
+                return this;
+            }
+            public CreateForItemsRequest DiscountAmount(int discountAmount) 
+            {
+                m_params.AddOpt("discount_amount", discountAmount);
+                return this;
+            }
+            public CreateForItemsRequest CurrencyCode(string currencyCode) 
+            {
+                m_params.AddOpt("currency_code", currencyCode);
+                return this;
+            }
+            public CreateForItemsRequest DiscountPercentage(double discountPercentage) 
+            {
+                m_params.AddOpt("discount_percentage", discountPercentage);
+                return this;
+            }
+            [Obsolete]
+            public CreateForItemsRequest DiscountQuantity(int discountQuantity) 
+            {
+                m_params.AddOpt("discount_quantity", discountQuantity);
+                return this;
+            }
+            public CreateForItemsRequest ApplyOn(Coupon.ApplyOnEnum applyOn) 
+            {
+                m_params.Add("apply_on", applyOn);
+                return this;
+            }
+            public CreateForItemsRequest DurationType(Coupon.DurationTypeEnum durationType) 
+            {
+                m_params.Add("duration_type", durationType);
+                return this;
+            }
+            public CreateForItemsRequest DurationMonth(int durationMonth) 
+            {
+                m_params.AddOpt("duration_month", durationMonth);
+                return this;
+            }
+            public CreateForItemsRequest ValidTill(long validTill) 
+            {
+                m_params.AddOpt("valid_till", validTill);
+                return this;
+            }
+            public CreateForItemsRequest MaxRedemptions(int maxRedemptions) 
+            {
+                m_params.AddOpt("max_redemptions", maxRedemptions);
+                return this;
+            }
+            public CreateForItemsRequest InvoiceNotes(string invoiceNotes) 
+            {
+                m_params.AddOpt("invoice_notes", invoiceNotes);
+                return this;
+            }
+            public CreateForItemsRequest MetaData(JToken metaData) 
+            {
+                m_params.AddOpt("meta_data", metaData);
+                return this;
+            }
+            public CreateForItemsRequest IncludedInMrr(bool includedInMrr) 
+            {
+                m_params.AddOpt("included_in_mrr", includedInMrr);
+                return this;
+            }
+            public CreateForItemsRequest Status(Coupon.StatusEnum status) 
+            {
+                m_params.AddOpt("status", status);
+                return this;
+            }
+            public CreateForItemsRequest ItemConstraintConstraint(int index, CouponItemConstraint.ConstraintEnum itemConstraintConstraint) 
+            {
+                m_params.Add("item_constraints[constraint][" + index + "]", itemConstraintConstraint);
+                return this;
+            }
+            public CreateForItemsRequest ItemConstraintItemType(int index, CouponItemConstraint.ItemTypeEnum itemConstraintItemType) 
+            {
+                m_params.Add("item_constraints[item_type][" + index + "]", itemConstraintItemType);
+                return this;
+            }
+            public CreateForItemsRequest ItemConstraintItemPriceIds(int index, JArray itemConstraintItemPriceIds) 
+            {
+                m_params.AddOpt("item_constraints[item_price_ids][" + index + "]", itemConstraintItemPriceIds);
+                return this;
+            }
+            public CreateForItemsRequest ItemConstraintCriteriaItemType(int index, CouponItemConstraintCriteria.ItemTypeEnum itemConstraintCriteriaItemType) 
+            {
+                m_params.AddOpt("item_constraint_criteria[item_type][" + index + "]", itemConstraintCriteriaItemType);
+                return this;
+            }
+            public CreateForItemsRequest ItemConstraintCriteriaItemFamilyIds(int index, JArray itemConstraintCriteriaItemFamilyIds) 
+            {
+                m_params.AddOpt("item_constraint_criteria[item_family_ids][" + index + "]", itemConstraintCriteriaItemFamilyIds);
+                return this;
+            }
+            public CreateForItemsRequest ItemConstraintCriteriaCurrencies(int index, JArray itemConstraintCriteriaCurrencies) 
+            {
+                m_params.AddOpt("item_constraint_criteria[currencies][" + index + "]", itemConstraintCriteriaCurrencies);
+                return this;
+            }
+            public CreateForItemsRequest ItemConstraintCriteriaItemPricePeriods(int index, JArray itemConstraintCriteriaItemPricePeriods) 
+            {
+                m_params.AddOpt("item_constraint_criteria[item_price_periods][" + index + "]", itemConstraintCriteriaItemPricePeriods);
+                return this;
+            }
+        }
+        public class UpdateForItemsRequest : EntityRequest<UpdateForItemsRequest> 
+        {
+            public UpdateForItemsRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public UpdateForItemsRequest Name(string name) 
+            {
+                m_params.AddOpt("name", name);
+                return this;
+            }
+            public UpdateForItemsRequest InvoiceName(string invoiceName) 
+            {
+                m_params.AddOpt("invoice_name", invoiceName);
+                return this;
+            }
+            public UpdateForItemsRequest DiscountType(Coupon.DiscountTypeEnum discountType) 
+            {
+                m_params.AddOpt("discount_type", discountType);
+                return this;
+            }
+            public UpdateForItemsRequest DiscountAmount(int discountAmount) 
+            {
+                m_params.AddOpt("discount_amount", discountAmount);
+                return this;
+            }
+            public UpdateForItemsRequest CurrencyCode(string currencyCode) 
+            {
+                m_params.AddOpt("currency_code", currencyCode);
+                return this;
+            }
+            public UpdateForItemsRequest DiscountPercentage(double discountPercentage) 
+            {
+                m_params.AddOpt("discount_percentage", discountPercentage);
+                return this;
+            }
+            public UpdateForItemsRequest ApplyOn(Coupon.ApplyOnEnum applyOn) 
+            {
+                m_params.AddOpt("apply_on", applyOn);
+                return this;
+            }
+            public UpdateForItemsRequest DurationType(Coupon.DurationTypeEnum durationType) 
+            {
+                m_params.AddOpt("duration_type", durationType);
+                return this;
+            }
+            public UpdateForItemsRequest DurationMonth(int durationMonth) 
+            {
+                m_params.AddOpt("duration_month", durationMonth);
+                return this;
+            }
+            public UpdateForItemsRequest ValidTill(long validTill) 
+            {
+                m_params.AddOpt("valid_till", validTill);
+                return this;
+            }
+            public UpdateForItemsRequest MaxRedemptions(int maxRedemptions) 
+            {
+                m_params.AddOpt("max_redemptions", maxRedemptions);
+                return this;
+            }
+            public UpdateForItemsRequest InvoiceNotes(string invoiceNotes) 
+            {
+                m_params.AddOpt("invoice_notes", invoiceNotes);
+                return this;
+            }
+            public UpdateForItemsRequest MetaData(JToken metaData) 
+            {
+                m_params.AddOpt("meta_data", metaData);
+                return this;
+            }
+            public UpdateForItemsRequest IncludedInMrr(bool includedInMrr) 
+            {
+                m_params.AddOpt("included_in_mrr", includedInMrr);
+                return this;
+            }
+            public UpdateForItemsRequest ItemConstraintConstraint(int index, CouponItemConstraint.ConstraintEnum itemConstraintConstraint) 
+            {
+                m_params.Add("item_constraints[constraint][" + index + "]", itemConstraintConstraint);
+                return this;
+            }
+            public UpdateForItemsRequest ItemConstraintItemType(int index, CouponItemConstraint.ItemTypeEnum itemConstraintItemType) 
+            {
+                m_params.Add("item_constraints[item_type][" + index + "]", itemConstraintItemType);
+                return this;
+            }
+            public UpdateForItemsRequest ItemConstraintItemPriceIds(int index, JArray itemConstraintItemPriceIds) 
+            {
+                m_params.AddOpt("item_constraints[item_price_ids][" + index + "]", itemConstraintItemPriceIds);
+                return this;
+            }
+            public UpdateForItemsRequest ItemConstraintCriteriaItemType(int index, CouponItemConstraintCriteria.ItemTypeEnum itemConstraintCriteriaItemType) 
+            {
+                m_params.AddOpt("item_constraint_criteria[item_type][" + index + "]", itemConstraintCriteriaItemType);
+                return this;
+            }
+            public UpdateForItemsRequest ItemConstraintCriteriaItemFamilyIds(int index, JArray itemConstraintCriteriaItemFamilyIds) 
+            {
+                m_params.AddOpt("item_constraint_criteria[item_family_ids][" + index + "]", itemConstraintCriteriaItemFamilyIds);
+                return this;
+            }
+            public UpdateForItemsRequest ItemConstraintCriteriaCurrencies(int index, JArray itemConstraintCriteriaCurrencies) 
+            {
+                m_params.AddOpt("item_constraint_criteria[currencies][" + index + "]", itemConstraintCriteriaCurrencies);
+                return this;
+            }
+            public UpdateForItemsRequest ItemConstraintCriteriaItemPricePeriods(int index, JArray itemConstraintCriteriaItemPricePeriods) 
+            {
+                m_params.AddOpt("item_constraint_criteria[item_price_periods][" + index + "]", itemConstraintCriteriaItemPricePeriods);
                 return this;
             }
         }
@@ -590,6 +850,77 @@ namespace ChargeBee.Models
         }
 
         #region Subclasses
+        public class CouponItemConstraint : Resource
+        {
+            public enum ItemTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "plan")]
+                Plan,
+                [EnumMember(Value = "addon")]
+                Addon,
+                [EnumMember(Value = "charge")]
+                Charge,
+            }
+            public enum ConstraintEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "none")]
+                None,
+                [EnumMember(Value = "all")]
+                All,
+                [EnumMember(Value = "specific")]
+                Specific,
+                [EnumMember(Value = "criteria")]
+                Criteria,
+            }
+
+            public ItemTypeEnum ItemType() {
+                return GetEnum<ItemTypeEnum>("item_type", true);
+            }
+
+            public ConstraintEnum Constraint() {
+                return GetEnum<ConstraintEnum>("constraint", true);
+            }
+
+            public JArray ItemPriceIds() {
+                return GetJArray("item_price_ids", false);
+            }
+
+        }
+        public class CouponItemConstraintCriteria : Resource
+        {
+            public enum ItemTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "plan")]
+                Plan,
+                [EnumMember(Value = "addon")]
+                Addon,
+                [EnumMember(Value = "charge")]
+                Charge,
+            }
+
+            public ItemTypeEnum ItemType() {
+                return GetEnum<ItemTypeEnum>("item_type", true);
+            }
+
+            public JArray Currencies() {
+                return GetJArray("currencies", false);
+            }
+
+            public JArray ItemFamilyIds() {
+                return GetJArray("item_family_ids", false);
+            }
+
+            public JArray ItemPricePeriods() {
+                return GetJArray("item_price_periods", false);
+            }
+
+        }
 
         #endregion
     }

@@ -185,6 +185,26 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<PaymentIntent>("payment_intent"); }
         }
+        public ItemFamily ItemFamily
+        {
+            get {  return GetResource<ItemFamily>("item_family"); }
+        }
+        public Item Item
+        {
+            get {  return GetResource<Item>("item"); }
+        }
+        public ItemPrice ItemPrice
+        {
+            get {  return GetResource<ItemPrice>("item_price"); }
+        }
+        public AttachedItem AttachedItem
+        {
+            get {  return GetResource<AttachedItem>("attached_item"); }
+        }
+        public DifferentialPrice DifferentialPrice
+        {
+            get {  return GetResource<DifferentialPrice>("differential_price"); }
+        }
 
         public List<UnbilledCharge> UnbilledCharges
         {
@@ -209,6 +229,11 @@ namespace ChargeBee.Internal
         public List<Invoice> Invoices
         {
             get {  return (List<Invoice>)GetResourceList<Invoice>("invoices", "invoice"); }
+        }
+
+        public List<DifferentialPrice> DifferentialPrices
+        {
+            get {  return (List<DifferentialPrice>)GetResourceList<DifferentialPrice>("differential_prices", "differential_price"); }
         }
 
 

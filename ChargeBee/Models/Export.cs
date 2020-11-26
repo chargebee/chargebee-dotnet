@@ -103,6 +103,31 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("exports", "orders");
             return new OrdersRequest(url, HttpMethod.POST);
         }
+        public static ItemFamiliesRequest ItemFamilies()
+        {
+            string url = ApiUtil.BuildUrl("exports", "item_families");
+            return new ItemFamiliesRequest(url, HttpMethod.POST);
+        }
+        public static ItemsRequest Items()
+        {
+            string url = ApiUtil.BuildUrl("exports", "items");
+            return new ItemsRequest(url, HttpMethod.POST);
+        }
+        public static ItemPricesRequest ItemPrices()
+        {
+            string url = ApiUtil.BuildUrl("exports", "item_prices");
+            return new ItemPricesRequest(url, HttpMethod.POST);
+        }
+        public static AttachedItemsRequest AttachedItems()
+        {
+            string url = ApiUtil.BuildUrl("exports", "attached_items");
+            return new AttachedItemsRequest(url, HttpMethod.POST);
+        }
+        public static DifferentialPricesRequest DifferentialPrices()
+        {
+            string url = ApiUtil.BuildUrl("exports", "differential_prices");
+            return new DifferentialPricesRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -197,6 +222,14 @@ namespace ChargeBee.Models
             public StringFilter<RevenueRecognitionRequest> PaymentOwner() 
             {
                 return new StringFilter<RevenueRecognitionRequest>("payment_owner", this).SupportsMultiOperators(true);        
+            }
+            public StringFilter<RevenueRecognitionRequest> ItemId() 
+            {
+                return new StringFilter<RevenueRecognitionRequest>("item_id", this).SupportsMultiOperators(true);        
+            }
+            public StringFilter<RevenueRecognitionRequest> ItemPriceId() 
+            {
+                return new StringFilter<RevenueRecognitionRequest>("item_price_id", this).SupportsMultiOperators(true);        
             }
             public StringFilter<RevenueRecognitionRequest> CancelReasonCode() 
             {
@@ -448,6 +481,14 @@ namespace ChargeBee.Models
             public StringFilter<DeferredRevenueRequest> PaymentOwner() 
             {
                 return new StringFilter<DeferredRevenueRequest>("payment_owner", this).SupportsMultiOperators(true);        
+            }
+            public StringFilter<DeferredRevenueRequest> ItemId() 
+            {
+                return new StringFilter<DeferredRevenueRequest>("item_id", this).SupportsMultiOperators(true);        
+            }
+            public StringFilter<DeferredRevenueRequest> ItemPriceId() 
+            {
+                return new StringFilter<DeferredRevenueRequest>("item_price_id", this).SupportsMultiOperators(true);        
             }
             public StringFilter<DeferredRevenueRequest> CancelReasonCode() 
             {
@@ -910,6 +951,14 @@ namespace ChargeBee.Models
             {
             }
 
+            public StringFilter<SubscriptionsRequest> ItemId() 
+            {
+                return new StringFilter<SubscriptionsRequest>("item_id", this).SupportsMultiOperators(true);        
+            }
+            public StringFilter<SubscriptionsRequest> ItemPriceId() 
+            {
+                return new StringFilter<SubscriptionsRequest>("item_price_id", this).SupportsMultiOperators(true);        
+            }
             public StringFilter<SubscriptionsRequest> CancelReasonCode() 
             {
                 return new StringFilter<SubscriptionsRequest>("cancel_reason_code", this).SupportsMultiOperators(true);        
@@ -1317,6 +1366,216 @@ namespace ChargeBee.Models
             public TimestampFilter<OrdersRequest> OrderUpdatedAt() 
             {
                 return new TimestampFilter<OrdersRequest>("order[updated_at]", this);        
+            }
+
+        }
+        public class ItemFamiliesRequest : EntityRequest<ItemFamiliesRequest> 
+        {
+            public ItemFamiliesRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public StringFilter<ItemFamiliesRequest> ItemFamilyId() 
+            {
+                return new StringFilter<ItemFamiliesRequest>("item_family[id]", this).SupportsMultiOperators(true);        
+            }
+
+            public StringFilter<ItemFamiliesRequest> ItemFamilyName() 
+            {
+                return new StringFilter<ItemFamiliesRequest>("item_family[name]", this);        
+            }
+
+        }
+        public class ItemsRequest : EntityRequest<ItemsRequest> 
+        {
+            public ItemsRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public StringFilter<ItemsRequest> ItemId() 
+            {
+                return new StringFilter<ItemsRequest>("item[id]", this).SupportsMultiOperators(true);        
+            }
+
+            public StringFilter<ItemsRequest> ItemItemFamilyId() 
+            {
+                return new StringFilter<ItemsRequest>("item[item_family_id]", this).SupportsMultiOperators(true);        
+            }
+
+            public EnumFilter<Item.TypeEnum, ItemsRequest> ItemType() 
+            {
+                return new EnumFilter<Item.TypeEnum, ItemsRequest>("item[type]", this);        
+            }
+
+            public StringFilter<ItemsRequest> ItemName() 
+            {
+                return new StringFilter<ItemsRequest>("item[name]", this);        
+            }
+
+            public EnumFilter<Item.ItemApplicabilityEnum, ItemsRequest> ItemItemApplicability() 
+            {
+                return new EnumFilter<Item.ItemApplicabilityEnum, ItemsRequest>("item[item_applicability]", this);        
+            }
+
+            public EnumFilter<Item.StatusEnum, ItemsRequest> ItemStatus() 
+            {
+                return new EnumFilter<Item.StatusEnum, ItemsRequest>("item[status]", this);        
+            }
+
+            public BooleanFilter<ItemsRequest> ItemIsGiftable() 
+            {
+                return new BooleanFilter<ItemsRequest>("item[is_giftable]", this);        
+            }
+
+            public TimestampFilter<ItemsRequest> ItemUpdatedAt() 
+            {
+                return new TimestampFilter<ItemsRequest>("item[updated_at]", this);        
+            }
+
+            public BooleanFilter<ItemsRequest> ItemEnabledForCheckout() 
+            {
+                return new BooleanFilter<ItemsRequest>("item[enabled_for_checkout]", this);        
+            }
+
+            public BooleanFilter<ItemsRequest> ItemEnabledInPortal() 
+            {
+                return new BooleanFilter<ItemsRequest>("item[enabled_in_portal]", this);        
+            }
+
+        }
+        public class ItemPricesRequest : EntityRequest<ItemPricesRequest> 
+        {
+            public ItemPricesRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public StringFilter<ItemPricesRequest> ItemFamilyId() 
+            {
+                return new StringFilter<ItemPricesRequest>("item_family_id", this).SupportsMultiOperators(true);        
+            }
+            public EnumFilter<ChargeBee.Models.Enums.ItemTypeEnum, ItemPricesRequest> ItemType() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.ItemTypeEnum, ItemPricesRequest>("item_type", this);        
+            }
+            public StringFilter<ItemPricesRequest> CurrencyCode() 
+            {
+                return new StringFilter<ItemPricesRequest>("currency_code", this).SupportsMultiOperators(true);        
+            }
+            public StringFilter<ItemPricesRequest> ItemPriceId() 
+            {
+                return new StringFilter<ItemPricesRequest>("item_price[id]", this).SupportsMultiOperators(true);        
+            }
+
+            public StringFilter<ItemPricesRequest> ItemPriceName() 
+            {
+                return new StringFilter<ItemPricesRequest>("item_price[name]", this).SupportsMultiOperators(true);        
+            }
+
+            public EnumFilter<ChargeBee.Models.Enums.PricingModelEnum, ItemPricesRequest> ItemPricePricingModel() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.PricingModelEnum, ItemPricesRequest>("item_price[pricing_model]", this);        
+            }
+
+            public StringFilter<ItemPricesRequest> ItemPriceItemId() 
+            {
+                return new StringFilter<ItemPricesRequest>("item_price[item_id]", this).SupportsMultiOperators(true);        
+            }
+
+            public NumberFilter<int, ItemPricesRequest> ItemPriceTrialPeriod() 
+            {
+                return new NumberFilter<int, ItemPricesRequest>("item_price[trial_period]", this);        
+            }
+
+            public EnumFilter<ItemPrice.TrialPeriodUnitEnum, ItemPricesRequest> ItemPriceTrialPeriodUnit() 
+            {
+                return new EnumFilter<ItemPrice.TrialPeriodUnitEnum, ItemPricesRequest>("item_price[trial_period_unit]", this);        
+            }
+
+            public EnumFilter<ItemPrice.StatusEnum, ItemPricesRequest> ItemPriceStatus() 
+            {
+                return new EnumFilter<ItemPrice.StatusEnum, ItemPricesRequest>("item_price[status]", this);        
+            }
+
+            public TimestampFilter<ItemPricesRequest> ItemPriceUpdatedAt() 
+            {
+                return new TimestampFilter<ItemPricesRequest>("item_price[updated_at]", this);        
+            }
+
+            public EnumFilter<ItemPrice.PeriodUnitEnum, ItemPricesRequest> ItemPricePeriodUnit() 
+            {
+                return new EnumFilter<ItemPrice.PeriodUnitEnum, ItemPricesRequest>("item_price[period_unit]", this);        
+            }
+
+            public NumberFilter<int, ItemPricesRequest> ItemPricePeriod() 
+            {
+                return new NumberFilter<int, ItemPricesRequest>("item_price[period]", this);        
+            }
+
+        }
+        public class AttachedItemsRequest : EntityRequest<AttachedItemsRequest> 
+        {
+            public AttachedItemsRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public EnumFilter<ChargeBee.Models.Enums.ItemTypeEnum, AttachedItemsRequest> ItemType() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.ItemTypeEnum, AttachedItemsRequest>("item_type", this);        
+            }
+            public StringFilter<AttachedItemsRequest> AttachedItemId() 
+            {
+                return new StringFilter<AttachedItemsRequest>("attached_item[id]", this).SupportsMultiOperators(true);        
+            }
+
+            public StringFilter<AttachedItemsRequest> AttachedItemItemId() 
+            {
+                return new StringFilter<AttachedItemsRequest>("attached_item[item_id]", this).SupportsMultiOperators(true);        
+            }
+
+            public EnumFilter<AttachedItem.TypeEnum, AttachedItemsRequest> AttachedItemType() 
+            {
+                return new EnumFilter<AttachedItem.TypeEnum, AttachedItemsRequest>("attached_item[type]", this);        
+            }
+
+            public EnumFilter<ChargeBee.Models.Enums.ChargeOnEventEnum, AttachedItemsRequest> AttachedItemChargeOnEvent() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.ChargeOnEventEnum, AttachedItemsRequest>("attached_item[charge_on_event]", this);        
+            }
+
+            public StringFilter<AttachedItemsRequest> AttachedItemParentItemId() 
+            {
+                return new StringFilter<AttachedItemsRequest>("attached_item[parent_item_id]", this).SupportsMultiOperators(true);        
+            }
+
+        }
+        public class DifferentialPricesRequest : EntityRequest<DifferentialPricesRequest> 
+        {
+            public DifferentialPricesRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public StringFilter<DifferentialPricesRequest> ItemId() 
+            {
+                return new StringFilter<DifferentialPricesRequest>("item_id", this).SupportsMultiOperators(true);        
+            }
+            public StringFilter<DifferentialPricesRequest> DifferentialPriceItemPriceId() 
+            {
+                return new StringFilter<DifferentialPricesRequest>("differential_price[item_price_id]", this).SupportsMultiOperators(true);        
+            }
+
+            public StringFilter<DifferentialPricesRequest> DifferentialPriceId() 
+            {
+                return new StringFilter<DifferentialPricesRequest>("differential_price[id]", this).SupportsMultiOperators(true);        
+            }
+
+            public StringFilter<DifferentialPricesRequest> DifferentialPriceParentItemId() 
+            {
+                return new StringFilter<DifferentialPricesRequest>("differential_price[parent_item_id]", this).SupportsMultiOperators(true);        
             }
 
         }

@@ -104,6 +104,14 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<QuotedSubscriptionCoupon>("coupons"); }
         }
+        public List<QuotedSubscriptionSubscriptionItem> SubscriptionItems 
+        {
+            get { return GetResourceList<QuotedSubscriptionSubscriptionItem>("subscription_items"); }
+        }
+        public List<QuotedSubscriptionItemTier> ItemTiers 
+        {
+            get { return GetResourceList<QuotedSubscriptionItemTier>("item_tiers"); }
+        }
         
         #endregion
         
@@ -233,6 +241,113 @@ namespace ChargeBee.Models
 
             public string CouponCode() {
                 return GetValue<string>("coupon_code", false);
+            }
+
+        }
+        public class QuotedSubscriptionSubscriptionItem : Resource
+        {
+            public enum ItemTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "plan")]
+                Plan,
+                [EnumMember(Value = "addon")]
+                Addon,
+                [EnumMember(Value = "charge")]
+                Charge,
+            }
+            public enum ChargeOnOptionEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "immediately")]
+                Immediately,
+                [EnumMember(Value = "on_event")]
+                OnEvent,
+            }
+
+            public string ItemPriceId() {
+                return GetValue<string>("item_price_id", true);
+            }
+
+            public ItemTypeEnum ItemType() {
+                return GetEnum<ItemTypeEnum>("item_type", true);
+            }
+
+            public int? Quantity() {
+                return GetValue<int?>("quantity", false);
+            }
+
+            public int? UnitPrice() {
+                return GetValue<int?>("unit_price", false);
+            }
+
+            public int? Amount() {
+                return GetValue<int?>("amount", false);
+            }
+
+            public int? FreeQuantity() {
+                return GetValue<int?>("free_quantity", false);
+            }
+
+            public DateTime? TrialEnd() {
+                return GetDateTime("trial_end", false);
+            }
+
+            public int? BillingCycles() {
+                return GetValue<int?>("billing_cycles", false);
+            }
+
+            public int? ServicePeriodDays() {
+                return GetValue<int?>("service_period_days", false);
+            }
+
+            public ChargeOnEventEnum? ChargeOnEvent() {
+                return GetEnum<ChargeOnEventEnum>("charge_on_event", false);
+            }
+
+            public bool? ChargeOnce() {
+                return GetValue<bool?>("charge_once", false);
+            }
+
+            public ChargeOnOptionEnum? ChargeOnOption() {
+                return GetEnum<ChargeOnOptionEnum>("charge_on_option", false);
+            }
+
+        }
+        public class QuotedSubscriptionItemTier : Resource
+        {
+
+            public string ItemPriceId() {
+                return GetValue<string>("item_price_id", true);
+            }
+
+            public int StartingUnit() {
+                return GetValue<int>("starting_unit", true);
+            }
+
+            public int? EndingUnit() {
+                return GetValue<int?>("ending_unit", false);
+            }
+
+            public int Price() {
+                return GetValue<int>("price", true);
+            }
+
+            [Obsolete]
+            public string StartingUnitInDecimal() {
+                return GetValue<string>("starting_unit_in_decimal", false);
+            }
+
+            [Obsolete]
+            public string EndingUnitInDecimal() {
+                return GetValue<string>("ending_unit_in_decimal", false);
+            }
+
+            [Obsolete]
+            public string PriceInDecimal() {
+                return GetValue<string>("price_in_decimal", false);
             }
 
         }

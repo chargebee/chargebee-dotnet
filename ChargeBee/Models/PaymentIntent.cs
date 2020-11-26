@@ -91,6 +91,14 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<PaymentMethodTypeEnum>("payment_method_type", false); }
         }
+        public string SuccessUrl 
+        {
+            get { return GetValue<string>("success_url", false); }
+        }
+        public string FailureUrl 
+        {
+            get { return GetValue<string>("failure_url", false); }
+        }
         public DateTime CreatedAt 
         {
             get { return (DateTime)GetDateTime("created_at", true); }
@@ -160,6 +168,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_method_type", paymentMethodType);
                 return this;
             }
+            public CreateRequest SuccessUrl(string successUrl) 
+            {
+                m_params.AddOpt("success_url", successUrl);
+                return this;
+            }
+            public CreateRequest FailureUrl(string failureUrl) 
+            {
+                m_params.AddOpt("failure_url", failureUrl);
+                return this;
+            }
         }
         public class UpdateRequest : EntityRequest<UpdateRequest> 
         {
@@ -186,6 +204,16 @@ namespace ChargeBee.Models
             public UpdateRequest PaymentMethodType(PaymentIntent.PaymentMethodTypeEnum paymentMethodType) 
             {
                 m_params.AddOpt("payment_method_type", paymentMethodType);
+                return this;
+            }
+            public UpdateRequest SuccessUrl(string successUrl) 
+            {
+                m_params.AddOpt("success_url", successUrl);
+                return this;
+            }
+            public UpdateRequest FailureUrl(string failureUrl) 
+            {
+                m_params.AddOpt("failure_url", failureUrl);
                 return this;
             }
         }
