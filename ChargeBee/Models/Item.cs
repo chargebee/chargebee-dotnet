@@ -259,11 +259,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("is_shippable", isShippable);
                 return this;
             }
-            public UpdateRequest IsGiftable(bool isGiftable) 
-            {
-                m_params.AddOpt("is_giftable", isGiftable);
-                return this;
-            }
             public UpdateRequest ItemFamilyId(string itemFamilyId) 
             {
                 m_params.AddOpt("item_family_id", itemFamilyId);

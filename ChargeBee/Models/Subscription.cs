@@ -147,6 +147,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "remove_advance_invoice_schedule");
             return new RemoveAdvanceInvoiceScheduleRequest(url, HttpMethod.POST);
         }
+        public static RegenerateInvoiceRequest RegenerateInvoice(string id)
+        {
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "regenerate_invoice");
+            return new RegenerateInvoiceRequest(url, HttpMethod.POST);
+        }
         public static ImportSubscriptionRequest ImportSubscription()
         {
             string url = ApiUtil.BuildUrl("subscriptions", "import_subscription");
@@ -932,6 +937,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
                 return this;
             }
+            public CreateRequest PaymentIntentAdditionalInfo(JToken paymentIntentAdditionalInfo) 
+            {
+                m_params.AddOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+                return this;
+            }
             public CreateRequest BillingAddressFirstName(string billingAddressFirstName) 
             {
                 m_params.AddOpt("billing_address[first_name]", billingAddressFirstName);
@@ -1422,6 +1432,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
                 return this;
             }
+            public CreateForCustomerRequest PaymentIntentAdditionalInfo(JToken paymentIntentAdditionalInfo) 
+            {
+                m_params.AddOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+                return this;
+            }
             public CreateForCustomerRequest ContractTermActionAtTermEnd(SubscriptionContractTerm.ActionAtTermEndEnum contractTermActionAtTermEnd) 
             {
                 m_params.AddOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
@@ -1721,6 +1736,11 @@ namespace ChargeBee.Models
             public CreateWithItemsRequest PaymentIntentGwPaymentMethodId(string paymentIntentGwPaymentMethodId) 
             {
                 m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+                return this;
+            }
+            public CreateWithItemsRequest PaymentIntentAdditionalInfo(JToken paymentIntentAdditionalInfo) 
+            {
+                m_params.AddOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
                 return this;
             }
             public CreateWithItemsRequest ContractTermActionAtTermEnd(SubscriptionContractTerm.ActionAtTermEndEnum contractTermActionAtTermEnd) 
@@ -2231,6 +2251,11 @@ namespace ChargeBee.Models
             public UpdateRequest PaymentIntentGwPaymentMethodId(string paymentIntentGwPaymentMethodId) 
             {
                 m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+                return this;
+            }
+            public UpdateRequest PaymentIntentAdditionalInfo(JToken paymentIntentAdditionalInfo) 
+            {
+                m_params.AddOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
                 return this;
             }
             public UpdateRequest BillingAddressFirstName(string billingAddressFirstName) 
@@ -2768,6 +2793,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
                 return this;
             }
+            public UpdateForItemsRequest PaymentIntentAdditionalInfo(JToken paymentIntentAdditionalInfo) 
+            {
+                m_params.AddOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+                return this;
+            }
             public UpdateForItemsRequest BillingAddressFirstName(string billingAddressFirstName) 
             {
                 m_params.AddOpt("billing_address[first_name]", billingAddressFirstName);
@@ -3112,6 +3142,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
                 return this;
             }
+            public ReactivateRequest PaymentIntentAdditionalInfo(JToken paymentIntentAdditionalInfo) 
+            {
+                m_params.AddOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+                return this;
+            }
         }
         public class AddChargeAtTermEndRequest : EntityRequest<AddChargeAtTermEndRequest> 
         {
@@ -3320,6 +3355,34 @@ namespace ChargeBee.Models
             public RemoveAdvanceInvoiceScheduleRequest SpecificDatesScheduleId(int index, string specificDatesScheduleId) 
             {
                 m_params.AddOpt("specific_dates_schedule[id][" + index + "]", specificDatesScheduleId);
+                return this;
+            }
+        }
+        public class RegenerateInvoiceRequest : EntityRequest<RegenerateInvoiceRequest> 
+        {
+            public RegenerateInvoiceRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public RegenerateInvoiceRequest DateFrom(long dateFrom) 
+            {
+                m_params.AddOpt("date_from", dateFrom);
+                return this;
+            }
+            public RegenerateInvoiceRequest DateTo(long dateTo) 
+            {
+                m_params.AddOpt("date_to", dateTo);
+                return this;
+            }
+            public RegenerateInvoiceRequest Prorate(bool prorate) 
+            {
+                m_params.AddOpt("prorate", prorate);
+                return this;
+            }
+            public RegenerateInvoiceRequest InvoiceImmediately(bool invoiceImmediately) 
+            {
+                m_params.AddOpt("invoice_immediately", invoiceImmediately);
                 return this;
             }
         }
@@ -4888,6 +4951,11 @@ namespace ChargeBee.Models
             public ResumeRequest PaymentIntentGwPaymentMethodId(string paymentIntentGwPaymentMethodId) 
             {
                 m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+                return this;
+            }
+            public ResumeRequest PaymentIntentAdditionalInfo(JToken paymentIntentAdditionalInfo) 
+            {
+                m_params.AddOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
                 return this;
             }
         }

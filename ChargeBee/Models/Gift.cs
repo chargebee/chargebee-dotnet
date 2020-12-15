@@ -46,6 +46,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("gifts");
             return new CreateRequest(url, HttpMethod.POST);
         }
+        public static CreateForItemsRequest CreateForItems()
+        {
+            string url = ApiUtil.BuildUrl("gifts", "create_for_items");
+            return new CreateForItemsRequest(url, HttpMethod.POST);
+        }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("gifts", CheckNull(id));
@@ -194,21 +199,6 @@ namespace ChargeBee.Models
                 m_params.Add("gift_receiver[email]", giftReceiverEmail);
                 return this;
             }
-            public CreateRequest SubscriptionPlanId(string subscriptionPlanId) 
-            {
-                m_params.Add("subscription[plan_id]", subscriptionPlanId);
-                return this;
-            }
-            public CreateRequest SubscriptionPlanQuantity(int subscriptionPlanQuantity) 
-            {
-                m_params.AddOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
-                return this;
-            }
-            public CreateRequest SubscriptionPlanQuantityInDecimal(string subscriptionPlanQuantityInDecimal) 
-            {
-                m_params.AddOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
-                return this;
-            }
             public CreateRequest PaymentIntentId(string paymentIntentId) 
             {
                 m_params.AddOpt("payment_intent[id]", paymentIntentId);
@@ -233,6 +223,11 @@ namespace ChargeBee.Models
             public CreateRequest PaymentIntentGwPaymentMethodId(string paymentIntentGwPaymentMethodId) 
             {
                 m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+                return this;
+            }
+            public CreateRequest PaymentIntentAdditionalInfo(JToken paymentIntentAdditionalInfo) 
+            {
+                m_params.AddOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
                 return this;
             }
             public CreateRequest ShippingAddressFirstName(string shippingAddressFirstName) 
@@ -305,6 +300,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
             }
+            public CreateRequest SubscriptionPlanId(string subscriptionPlanId) 
+            {
+                m_params.Add("subscription[plan_id]", subscriptionPlanId);
+                return this;
+            }
+            public CreateRequest SubscriptionPlanQuantity(int subscriptionPlanQuantity) 
+            {
+                m_params.AddOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
+                return this;
+            }
+            public CreateRequest SubscriptionPlanQuantityInDecimal(string subscriptionPlanQuantityInDecimal) 
+            {
+                m_params.AddOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
+                return this;
+            }
             public CreateRequest AddonId(int index, string addonId) 
             {
                 m_params.AddOpt("addons[id][" + index + "]", addonId);
@@ -318,6 +328,190 @@ namespace ChargeBee.Models
             public CreateRequest AddonQuantityInDecimal(int index, string addonQuantityInDecimal) 
             {
                 m_params.AddOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+                return this;
+            }
+        }
+        public class CreateForItemsRequest : EntityRequest<CreateForItemsRequest> 
+        {
+            public CreateForItemsRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CreateForItemsRequest ScheduledAt(long scheduledAt) 
+            {
+                m_params.AddOpt("scheduled_at", scheduledAt);
+                return this;
+            }
+            public CreateForItemsRequest AutoClaim(bool autoClaim) 
+            {
+                m_params.AddOpt("auto_claim", autoClaim);
+                return this;
+            }
+            public CreateForItemsRequest NoExpiry(bool noExpiry) 
+            {
+                m_params.AddOpt("no_expiry", noExpiry);
+                return this;
+            }
+            public CreateForItemsRequest ClaimExpiryDate(long claimExpiryDate) 
+            {
+                m_params.AddOpt("claim_expiry_date", claimExpiryDate);
+                return this;
+            }
+            public CreateForItemsRequest CouponIds(List<string> couponIds) 
+            {
+                m_params.AddOpt("coupon_ids", couponIds);
+                return this;
+            }
+            public CreateForItemsRequest GifterCustomerId(string gifterCustomerId) 
+            {
+                m_params.Add("gifter[customer_id]", gifterCustomerId);
+                return this;
+            }
+            public CreateForItemsRequest GifterSignature(string gifterSignature) 
+            {
+                m_params.Add("gifter[signature]", gifterSignature);
+                return this;
+            }
+            public CreateForItemsRequest GifterNote(string gifterNote) 
+            {
+                m_params.AddOpt("gifter[note]", gifterNote);
+                return this;
+            }
+            public CreateForItemsRequest GifterPaymentSrcId(string gifterPaymentSrcId) 
+            {
+                m_params.AddOpt("gifter[payment_src_id]", gifterPaymentSrcId);
+                return this;
+            }
+            public CreateForItemsRequest GiftReceiverCustomerId(string giftReceiverCustomerId) 
+            {
+                m_params.Add("gift_receiver[customer_id]", giftReceiverCustomerId);
+                return this;
+            }
+            public CreateForItemsRequest GiftReceiverFirstName(string giftReceiverFirstName) 
+            {
+                m_params.Add("gift_receiver[first_name]", giftReceiverFirstName);
+                return this;
+            }
+            public CreateForItemsRequest GiftReceiverLastName(string giftReceiverLastName) 
+            {
+                m_params.Add("gift_receiver[last_name]", giftReceiverLastName);
+                return this;
+            }
+            public CreateForItemsRequest GiftReceiverEmail(string giftReceiverEmail) 
+            {
+                m_params.Add("gift_receiver[email]", giftReceiverEmail);
+                return this;
+            }
+            public CreateForItemsRequest PaymentIntentId(string paymentIntentId) 
+            {
+                m_params.AddOpt("payment_intent[id]", paymentIntentId);
+                return this;
+            }
+            public CreateForItemsRequest PaymentIntentGatewayAccountId(string paymentIntentGatewayAccountId) 
+            {
+                m_params.AddOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
+                return this;
+            }
+            public CreateForItemsRequest PaymentIntentGwToken(string paymentIntentGwToken) 
+            {
+                m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
+                return this;
+            }
+            public CreateForItemsRequest PaymentIntentReferenceId(string paymentIntentReferenceId) 
+            {
+                m_params.AddOpt("payment_intent[reference_id]", paymentIntentReferenceId);
+                return this;
+            }
+            [Obsolete]
+            public CreateForItemsRequest PaymentIntentGwPaymentMethodId(string paymentIntentGwPaymentMethodId) 
+            {
+                m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+                return this;
+            }
+            public CreateForItemsRequest PaymentIntentAdditionalInfo(JToken paymentIntentAdditionalInfo) 
+            {
+                m_params.AddOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+                return this;
+            }
+            public CreateForItemsRequest ShippingAddressFirstName(string shippingAddressFirstName) 
+            {
+                m_params.AddOpt("shipping_address[first_name]", shippingAddressFirstName);
+                return this;
+            }
+            public CreateForItemsRequest ShippingAddressLastName(string shippingAddressLastName) 
+            {
+                m_params.AddOpt("shipping_address[last_name]", shippingAddressLastName);
+                return this;
+            }
+            public CreateForItemsRequest ShippingAddressEmail(string shippingAddressEmail) 
+            {
+                m_params.AddOpt("shipping_address[email]", shippingAddressEmail);
+                return this;
+            }
+            public CreateForItemsRequest ShippingAddressCompany(string shippingAddressCompany) 
+            {
+                m_params.AddOpt("shipping_address[company]", shippingAddressCompany);
+                return this;
+            }
+            public CreateForItemsRequest ShippingAddressPhone(string shippingAddressPhone) 
+            {
+                m_params.AddOpt("shipping_address[phone]", shippingAddressPhone);
+                return this;
+            }
+            public CreateForItemsRequest ShippingAddressLine1(string shippingAddressLine1) 
+            {
+                m_params.AddOpt("shipping_address[line1]", shippingAddressLine1);
+                return this;
+            }
+            public CreateForItemsRequest ShippingAddressLine2(string shippingAddressLine2) 
+            {
+                m_params.AddOpt("shipping_address[line2]", shippingAddressLine2);
+                return this;
+            }
+            public CreateForItemsRequest ShippingAddressLine3(string shippingAddressLine3) 
+            {
+                m_params.AddOpt("shipping_address[line3]", shippingAddressLine3);
+                return this;
+            }
+            public CreateForItemsRequest ShippingAddressCity(string shippingAddressCity) 
+            {
+                m_params.AddOpt("shipping_address[city]", shippingAddressCity);
+                return this;
+            }
+            public CreateForItemsRequest ShippingAddressStateCode(string shippingAddressStateCode) 
+            {
+                m_params.AddOpt("shipping_address[state_code]", shippingAddressStateCode);
+                return this;
+            }
+            public CreateForItemsRequest ShippingAddressState(string shippingAddressState) 
+            {
+                m_params.AddOpt("shipping_address[state]", shippingAddressState);
+                return this;
+            }
+            public CreateForItemsRequest ShippingAddressZip(string shippingAddressZip) 
+            {
+                m_params.AddOpt("shipping_address[zip]", shippingAddressZip);
+                return this;
+            }
+            public CreateForItemsRequest ShippingAddressCountry(string shippingAddressCountry) 
+            {
+                m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
+                return this;
+            }
+            public CreateForItemsRequest ShippingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum shippingAddressValidationStatus) 
+            {
+                m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+                return this;
+            }
+            public CreateForItemsRequest SubscriptionItemItemPriceId(int index, string subscriptionItemItemPriceId) 
+            {
+                m_params.AddOpt("subscription_items[item_price_id][" + index + "]", subscriptionItemItemPriceId);
+                return this;
+            }
+            public CreateForItemsRequest SubscriptionItemQuantity(int index, int subscriptionItemQuantity) 
+            {
+                m_params.AddOpt("subscription_items[quantity][" + index + "]", subscriptionItemQuantity);
                 return this;
             }
         }

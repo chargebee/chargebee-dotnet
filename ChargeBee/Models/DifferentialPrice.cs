@@ -287,6 +287,18 @@ namespace ChargeBee.Models
                 return GetValue<int>("price", true);
             }
 
+            public string StartingUnitInDecimal() {
+                return GetValue<string>("starting_unit_in_decimal", false);
+            }
+
+            public string EndingUnitInDecimal() {
+                return GetValue<string>("ending_unit_in_decimal", false);
+            }
+
+            public string PriceInDecimal() {
+                return GetValue<string>("price_in_decimal", false);
+            }
+
         }
         public class DifferentialPriceParentPeriod : Resource
         {

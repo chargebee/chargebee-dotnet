@@ -756,6 +756,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
                 return this;
             }
+            public CreateRequest PaymentIntentAdditionalInfo(JToken paymentIntentAdditionalInfo) 
+            {
+                m_params.AddOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+                return this;
+            }
             public CreateRequest BillingAddressFirstName(string billingAddressFirstName) 
             {
                 m_params.AddOpt("billing_address[first_name]", billingAddressFirstName);
@@ -1577,6 +1582,11 @@ namespace ChargeBee.Models
             public CollectPaymentRequest PaymentIntentReferenceId(string paymentIntentReferenceId) 
             {
                 m_params.AddOpt("payment_intent[reference_id]", paymentIntentReferenceId);
+                return this;
+            }
+            public CollectPaymentRequest PaymentIntentAdditionalInfo(JToken paymentIntentAdditionalInfo) 
+            {
+                m_params.AddOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
                 return this;
             }
             public CollectPaymentRequest InvoiceAllocationInvoiceId(int index, string invoiceAllocationInvoiceId) 

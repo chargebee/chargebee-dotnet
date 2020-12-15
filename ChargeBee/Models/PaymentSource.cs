@@ -328,6 +328,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
                 return this;
             }
+            public CreateUsingPaymentIntentRequest PaymentIntentAdditionalInfo(JToken paymentIntentAdditionalInfo) 
+            {
+                m_params.AddOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+                return this;
+            }
         }
         public class CreateCardRequest : EntityRequest<CreateCardRequest> 
         {

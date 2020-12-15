@@ -1621,6 +1621,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public AcceptQuoteRequest RedirectUrl(string redirectUrl) 
+            {
+                m_params.AddOpt("redirect_url", redirectUrl);
+                return this;
+            }
             public AcceptQuoteRequest QuoteId(string quoteId) 
             {
                 m_params.Add("quote[id]", quoteId);

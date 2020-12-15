@@ -469,9 +469,19 @@ namespace ChargeBee.Models
                 m_params.AddOpt("auto_collection", autoCollection);
                 return this;
             }
+            public CreateRequest TokenId(string tokenId) 
+            {
+                m_params.AddOpt("token_id", tokenId);
+                return this;
+            }
             public CreateRequest ReplacePrimaryPaymentSource(bool replacePrimaryPaymentSource) 
             {
                 m_params.AddOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
+                return this;
+            }
+            public CreateRequest RetainPaymentSource(bool retainPaymentSource) 
+            {
+                m_params.AddOpt("retain_payment_source", retainPaymentSource);
                 return this;
             }
             public CreateRequest ShippingAddressFirstName(string shippingAddressFirstName) 
@@ -544,6 +554,200 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
             }
+            [Obsolete]
+            public CreateRequest CardGateway(ChargeBee.Models.Enums.GatewayEnum cardGateway) 
+            {
+                m_params.AddOpt("card[gateway]", cardGateway);
+                return this;
+            }
+            public CreateRequest CardGatewayAccountId(string cardGatewayAccountId) 
+            {
+                m_params.AddOpt("card[gateway_account_id]", cardGatewayAccountId);
+                return this;
+            }
+            [Obsolete]
+            public CreateRequest CardTmpToken(string cardTmpToken) 
+            {
+                m_params.AddOpt("card[tmp_token]", cardTmpToken);
+                return this;
+            }
+            public CreateRequest BankAccountGatewayAccountId(string bankAccountGatewayAccountId) 
+            {
+                m_params.AddOpt("bank_account[gateway_account_id]", bankAccountGatewayAccountId);
+                return this;
+            }
+            public CreateRequest BankAccountIban(string bankAccountIban) 
+            {
+                m_params.AddOpt("bank_account[iban]", bankAccountIban);
+                return this;
+            }
+            public CreateRequest BankAccountFirstName(string bankAccountFirstName) 
+            {
+                m_params.AddOpt("bank_account[first_name]", bankAccountFirstName);
+                return this;
+            }
+            public CreateRequest BankAccountLastName(string bankAccountLastName) 
+            {
+                m_params.AddOpt("bank_account[last_name]", bankAccountLastName);
+                return this;
+            }
+            public CreateRequest BankAccountCompany(string bankAccountCompany) 
+            {
+                m_params.AddOpt("bank_account[company]", bankAccountCompany);
+                return this;
+            }
+            public CreateRequest BankAccountEmail(string bankAccountEmail) 
+            {
+                m_params.AddOpt("bank_account[email]", bankAccountEmail);
+                return this;
+            }
+            public CreateRequest BankAccountBankName(string bankAccountBankName) 
+            {
+                m_params.AddOpt("bank_account[bank_name]", bankAccountBankName);
+                return this;
+            }
+            public CreateRequest BankAccountAccountNumber(string bankAccountAccountNumber) 
+            {
+                m_params.AddOpt("bank_account[account_number]", bankAccountAccountNumber);
+                return this;
+            }
+            public CreateRequest BankAccountRoutingNumber(string bankAccountRoutingNumber) 
+            {
+                m_params.AddOpt("bank_account[routing_number]", bankAccountRoutingNumber);
+                return this;
+            }
+            public CreateRequest BankAccountBankCode(string bankAccountBankCode) 
+            {
+                m_params.AddOpt("bank_account[bank_code]", bankAccountBankCode);
+                return this;
+            }
+            public CreateRequest BankAccountAccountType(ChargeBee.Models.Enums.AccountTypeEnum bankAccountAccountType) 
+            {
+                m_params.AddOpt("bank_account[account_type]", bankAccountAccountType);
+                return this;
+            }
+            public CreateRequest BankAccountAccountHolderType(ChargeBee.Models.Enums.AccountHolderTypeEnum bankAccountAccountHolderType) 
+            {
+                m_params.AddOpt("bank_account[account_holder_type]", bankAccountAccountHolderType);
+                return this;
+            }
+            public CreateRequest BankAccountEcheckType(ChargeBee.Models.Enums.EcheckTypeEnum bankAccountEcheckType) 
+            {
+                m_params.AddOpt("bank_account[echeck_type]", bankAccountEcheckType);
+                return this;
+            }
+            public CreateRequest BankAccountIssuingCountry(string bankAccountIssuingCountry) 
+            {
+                m_params.AddOpt("bank_account[issuing_country]", bankAccountIssuingCountry);
+                return this;
+            }
+            public CreateRequest BankAccountSwedishIdentityNumber(string bankAccountSwedishIdentityNumber) 
+            {
+                m_params.AddOpt("bank_account[swedish_identity_number]", bankAccountSwedishIdentityNumber);
+                return this;
+            }
+            public CreateRequest PaymentMethodType(ChargeBee.Models.Enums.TypeEnum paymentMethodType) 
+            {
+                m_params.AddOpt("payment_method[type]", paymentMethodType);
+                return this;
+            }
+            [Obsolete]
+            public CreateRequest PaymentMethodGateway(ChargeBee.Models.Enums.GatewayEnum paymentMethodGateway) 
+            {
+                m_params.AddOpt("payment_method[gateway]", paymentMethodGateway);
+                return this;
+            }
+            public CreateRequest PaymentMethodGatewayAccountId(string paymentMethodGatewayAccountId) 
+            {
+                m_params.AddOpt("payment_method[gateway_account_id]", paymentMethodGatewayAccountId);
+                return this;
+            }
+            public CreateRequest PaymentMethodReferenceId(string paymentMethodReferenceId) 
+            {
+                m_params.AddOpt("payment_method[reference_id]", paymentMethodReferenceId);
+                return this;
+            }
+            public CreateRequest PaymentMethodTmpToken(string paymentMethodTmpToken) 
+            {
+                m_params.AddOpt("payment_method[tmp_token]", paymentMethodTmpToken);
+                return this;
+            }
+            public CreateRequest PaymentMethodIssuingCountry(string paymentMethodIssuingCountry) 
+            {
+                m_params.AddOpt("payment_method[issuing_country]", paymentMethodIssuingCountry);
+                return this;
+            }
+            public CreateRequest CardFirstName(string cardFirstName) 
+            {
+                m_params.AddOpt("card[first_name]", cardFirstName);
+                return this;
+            }
+            public CreateRequest CardLastName(string cardLastName) 
+            {
+                m_params.AddOpt("card[last_name]", cardLastName);
+                return this;
+            }
+            public CreateRequest CardNumber(string cardNumber) 
+            {
+                m_params.AddOpt("card[number]", cardNumber);
+                return this;
+            }
+            public CreateRequest CardExpiryMonth(int cardExpiryMonth) 
+            {
+                m_params.AddOpt("card[expiry_month]", cardExpiryMonth);
+                return this;
+            }
+            public CreateRequest CardExpiryYear(int cardExpiryYear) 
+            {
+                m_params.AddOpt("card[expiry_year]", cardExpiryYear);
+                return this;
+            }
+            public CreateRequest CardCvv(string cardCvv) 
+            {
+                m_params.AddOpt("card[cvv]", cardCvv);
+                return this;
+            }
+            public CreateRequest CardBillingAddr1(string cardBillingAddr1) 
+            {
+                m_params.AddOpt("card[billing_addr1]", cardBillingAddr1);
+                return this;
+            }
+            public CreateRequest CardBillingAddr2(string cardBillingAddr2) 
+            {
+                m_params.AddOpt("card[billing_addr2]", cardBillingAddr2);
+                return this;
+            }
+            public CreateRequest CardBillingCity(string cardBillingCity) 
+            {
+                m_params.AddOpt("card[billing_city]", cardBillingCity);
+                return this;
+            }
+            public CreateRequest CardBillingStateCode(string cardBillingStateCode) 
+            {
+                m_params.AddOpt("card[billing_state_code]", cardBillingStateCode);
+                return this;
+            }
+            public CreateRequest CardBillingState(string cardBillingState) 
+            {
+                m_params.AddOpt("card[billing_state]", cardBillingState);
+                return this;
+            }
+            public CreateRequest CardBillingZip(string cardBillingZip) 
+            {
+                m_params.AddOpt("card[billing_zip]", cardBillingZip);
+                return this;
+            }
+            public CreateRequest CardBillingCountry(string cardBillingCountry) 
+            {
+                m_params.AddOpt("card[billing_country]", cardBillingCountry);
+                return this;
+            }
+            [Obsolete]
+            public CreateRequest CardIpAddress(string cardIpAddress) 
+            {
+                m_params.AddOpt("card[ip_address]", cardIpAddress);
+                return this;
+            }
             public CreateRequest PaymentIntentId(string paymentIntentId) 
             {
                 m_params.AddOpt("payment_intent[id]", paymentIntentId);
@@ -568,6 +772,11 @@ namespace ChargeBee.Models
             public CreateRequest PaymentIntentGwPaymentMethodId(string paymentIntentGwPaymentMethodId) 
             {
                 m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+                return this;
+            }
+            public CreateRequest PaymentIntentAdditionalInfo(JToken paymentIntentAdditionalInfo) 
+            {
+                m_params.AddOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
                 return this;
             }
             public CreateRequest AddonId(int index, string addonId) 
@@ -734,9 +943,19 @@ namespace ChargeBee.Models
                 m_params.AddOpt("auto_collection", autoCollection);
                 return this;
             }
+            public CreateForChargeItemsAndChargesRequest TokenId(string tokenId) 
+            {
+                m_params.AddOpt("token_id", tokenId);
+                return this;
+            }
             public CreateForChargeItemsAndChargesRequest ReplacePrimaryPaymentSource(bool replacePrimaryPaymentSource) 
             {
                 m_params.AddOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest RetainPaymentSource(bool retainPaymentSource) 
+            {
+                m_params.AddOpt("retain_payment_source", retainPaymentSource);
                 return this;
             }
             public CreateForChargeItemsAndChargesRequest ShippingAddressFirstName(string shippingAddressFirstName) 
@@ -809,6 +1028,200 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
             }
+            [Obsolete]
+            public CreateForChargeItemsAndChargesRequest CardGateway(ChargeBee.Models.Enums.GatewayEnum cardGateway) 
+            {
+                m_params.AddOpt("card[gateway]", cardGateway);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest CardGatewayAccountId(string cardGatewayAccountId) 
+            {
+                m_params.AddOpt("card[gateway_account_id]", cardGatewayAccountId);
+                return this;
+            }
+            [Obsolete]
+            public CreateForChargeItemsAndChargesRequest CardTmpToken(string cardTmpToken) 
+            {
+                m_params.AddOpt("card[tmp_token]", cardTmpToken);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BankAccountGatewayAccountId(string bankAccountGatewayAccountId) 
+            {
+                m_params.AddOpt("bank_account[gateway_account_id]", bankAccountGatewayAccountId);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BankAccountIban(string bankAccountIban) 
+            {
+                m_params.AddOpt("bank_account[iban]", bankAccountIban);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BankAccountFirstName(string bankAccountFirstName) 
+            {
+                m_params.AddOpt("bank_account[first_name]", bankAccountFirstName);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BankAccountLastName(string bankAccountLastName) 
+            {
+                m_params.AddOpt("bank_account[last_name]", bankAccountLastName);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BankAccountCompany(string bankAccountCompany) 
+            {
+                m_params.AddOpt("bank_account[company]", bankAccountCompany);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BankAccountEmail(string bankAccountEmail) 
+            {
+                m_params.AddOpt("bank_account[email]", bankAccountEmail);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BankAccountBankName(string bankAccountBankName) 
+            {
+                m_params.AddOpt("bank_account[bank_name]", bankAccountBankName);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BankAccountAccountNumber(string bankAccountAccountNumber) 
+            {
+                m_params.AddOpt("bank_account[account_number]", bankAccountAccountNumber);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BankAccountRoutingNumber(string bankAccountRoutingNumber) 
+            {
+                m_params.AddOpt("bank_account[routing_number]", bankAccountRoutingNumber);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BankAccountBankCode(string bankAccountBankCode) 
+            {
+                m_params.AddOpt("bank_account[bank_code]", bankAccountBankCode);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BankAccountAccountType(ChargeBee.Models.Enums.AccountTypeEnum bankAccountAccountType) 
+            {
+                m_params.AddOpt("bank_account[account_type]", bankAccountAccountType);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BankAccountAccountHolderType(ChargeBee.Models.Enums.AccountHolderTypeEnum bankAccountAccountHolderType) 
+            {
+                m_params.AddOpt("bank_account[account_holder_type]", bankAccountAccountHolderType);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BankAccountEcheckType(ChargeBee.Models.Enums.EcheckTypeEnum bankAccountEcheckType) 
+            {
+                m_params.AddOpt("bank_account[echeck_type]", bankAccountEcheckType);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BankAccountIssuingCountry(string bankAccountIssuingCountry) 
+            {
+                m_params.AddOpt("bank_account[issuing_country]", bankAccountIssuingCountry);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BankAccountSwedishIdentityNumber(string bankAccountSwedishIdentityNumber) 
+            {
+                m_params.AddOpt("bank_account[swedish_identity_number]", bankAccountSwedishIdentityNumber);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest PaymentMethodType(ChargeBee.Models.Enums.TypeEnum paymentMethodType) 
+            {
+                m_params.AddOpt("payment_method[type]", paymentMethodType);
+                return this;
+            }
+            [Obsolete]
+            public CreateForChargeItemsAndChargesRequest PaymentMethodGateway(ChargeBee.Models.Enums.GatewayEnum paymentMethodGateway) 
+            {
+                m_params.AddOpt("payment_method[gateway]", paymentMethodGateway);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest PaymentMethodGatewayAccountId(string paymentMethodGatewayAccountId) 
+            {
+                m_params.AddOpt("payment_method[gateway_account_id]", paymentMethodGatewayAccountId);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest PaymentMethodReferenceId(string paymentMethodReferenceId) 
+            {
+                m_params.AddOpt("payment_method[reference_id]", paymentMethodReferenceId);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest PaymentMethodTmpToken(string paymentMethodTmpToken) 
+            {
+                m_params.AddOpt("payment_method[tmp_token]", paymentMethodTmpToken);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest PaymentMethodIssuingCountry(string paymentMethodIssuingCountry) 
+            {
+                m_params.AddOpt("payment_method[issuing_country]", paymentMethodIssuingCountry);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest CardFirstName(string cardFirstName) 
+            {
+                m_params.AddOpt("card[first_name]", cardFirstName);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest CardLastName(string cardLastName) 
+            {
+                m_params.AddOpt("card[last_name]", cardLastName);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest CardNumber(string cardNumber) 
+            {
+                m_params.AddOpt("card[number]", cardNumber);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest CardExpiryMonth(int cardExpiryMonth) 
+            {
+                m_params.AddOpt("card[expiry_month]", cardExpiryMonth);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest CardExpiryYear(int cardExpiryYear) 
+            {
+                m_params.AddOpt("card[expiry_year]", cardExpiryYear);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest CardCvv(string cardCvv) 
+            {
+                m_params.AddOpt("card[cvv]", cardCvv);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest CardBillingAddr1(string cardBillingAddr1) 
+            {
+                m_params.AddOpt("card[billing_addr1]", cardBillingAddr1);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest CardBillingAddr2(string cardBillingAddr2) 
+            {
+                m_params.AddOpt("card[billing_addr2]", cardBillingAddr2);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest CardBillingCity(string cardBillingCity) 
+            {
+                m_params.AddOpt("card[billing_city]", cardBillingCity);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest CardBillingStateCode(string cardBillingStateCode) 
+            {
+                m_params.AddOpt("card[billing_state_code]", cardBillingStateCode);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest CardBillingState(string cardBillingState) 
+            {
+                m_params.AddOpt("card[billing_state]", cardBillingState);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest CardBillingZip(string cardBillingZip) 
+            {
+                m_params.AddOpt("card[billing_zip]", cardBillingZip);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest CardBillingCountry(string cardBillingCountry) 
+            {
+                m_params.AddOpt("card[billing_country]", cardBillingCountry);
+                return this;
+            }
+            [Obsolete]
+            public CreateForChargeItemsAndChargesRequest CardIpAddress(string cardIpAddress) 
+            {
+                m_params.AddOpt("card[ip_address]", cardIpAddress);
+                return this;
+            }
             public CreateForChargeItemsAndChargesRequest PaymentIntentId(string paymentIntentId) 
             {
                 m_params.AddOpt("payment_intent[id]", paymentIntentId);
@@ -833,6 +1246,11 @@ namespace ChargeBee.Models
             public CreateForChargeItemsAndChargesRequest PaymentIntentGwPaymentMethodId(string paymentIntentGwPaymentMethodId) 
             {
                 m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest PaymentIntentAdditionalInfo(JToken paymentIntentAdditionalInfo) 
+            {
+                m_params.AddOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
                 return this;
             }
             public CreateForChargeItemsAndChargesRequest ItemPriceItemPriceId(int index, string itemPriceItemPriceId) 

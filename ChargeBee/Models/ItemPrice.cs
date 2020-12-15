@@ -201,6 +201,14 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("parent_item_id", false); }
         }
+        public bool? ShowDescriptionInInvoices 
+        {
+            get { return GetValue<bool?>("show_description_in_invoices", false); }
+        }
+        public bool? ShowDescriptionInQuotes 
+        {
+            get { return GetValue<bool?>("show_description_in_quotes", false); }
+        }
         
         #endregion
         
@@ -260,6 +268,16 @@ namespace ChargeBee.Models
             public CreateRequest Metadata(JToken metadata) 
             {
                 m_params.AddOpt("metadata", metadata);
+                return this;
+            }
+            public CreateRequest ShowDescriptionInInvoices(bool showDescriptionInInvoices) 
+            {
+                m_params.AddOpt("show_description_in_invoices", showDescriptionInInvoices);
+                return this;
+            }
+            public CreateRequest ShowDescriptionInQuotes(bool showDescriptionInQuotes) 
+            {
+                m_params.AddOpt("show_description_in_quotes", showDescriptionInQuotes);
                 return this;
             }
             public CreateRequest PricingModel(ChargeBee.Models.Enums.PricingModelEnum pricingModel) 
@@ -480,6 +498,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
+            public UpdateRequest ShowDescriptionInInvoices(bool showDescriptionInInvoices) 
+            {
+                m_params.AddOpt("show_description_in_invoices", showDescriptionInInvoices);
+                return this;
+            }
+            public UpdateRequest ShowDescriptionInQuotes(bool showDescriptionInQuotes) 
+            {
+                m_params.AddOpt("show_description_in_quotes", showDescriptionInQuotes);
+                return this;
+            }
             public UpdateRequest TaxDetailTaxProfileId(string taxDetailTaxProfileId) 
             {
                 m_params.AddOpt("tax_detail[tax_profile_id]", taxDetailTaxProfileId);
@@ -687,6 +715,18 @@ namespace ChargeBee.Models
 
             public int Price() {
                 return GetValue<int>("price", true);
+            }
+
+            public string StartingUnitInDecimal() {
+                return GetValue<string>("starting_unit_in_decimal", false);
+            }
+
+            public string EndingUnitInDecimal() {
+                return GetValue<string>("ending_unit_in_decimal", false);
+            }
+
+            public string PriceInDecimal() {
+                return GetValue<string>("price_in_decimal", false);
             }
 
         }
