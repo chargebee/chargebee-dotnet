@@ -2254,6 +2254,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("comment", comment);
                 return this;
             }
+            public AddChargeRequest SubscriptionId(string subscriptionId) 
+            {
+                m_params.AddOpt("subscription_id", subscriptionId);
+                return this;
+            }
             public AddChargeRequest LineItemDateFrom(long lineItemDateFrom) 
             {
                 m_params.AddOpt("line_item[date_from]", lineItemDateFrom);
@@ -2302,6 +2307,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("comment", comment);
                 return this;
             }
+            public AddAddonChargeRequest SubscriptionId(string subscriptionId) 
+            {
+                m_params.AddOpt("subscription_id", subscriptionId);
+                return this;
+            }
             public AddAddonChargeRequest LineItemDateFrom(long lineItemDateFrom) 
             {
                 m_params.AddOpt("line_item[date_from]", lineItemDateFrom);
@@ -2323,6 +2333,11 @@ namespace ChargeBee.Models
             public AddChargeItemRequest Comment(string comment) 
             {
                 m_params.AddOpt("comment", comment);
+                return this;
+            }
+            public AddChargeItemRequest SubscriptionId(string subscriptionId) 
+            {
+                m_params.AddOpt("subscription_id", subscriptionId);
                 return this;
             }
             public AddChargeItemRequest ItemPriceItemPriceId(string itemPriceItemPriceId) 

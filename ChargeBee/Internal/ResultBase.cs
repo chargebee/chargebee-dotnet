@@ -149,6 +149,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<Address>("address"); }
         }
+        public Usage Usage
+        {
+            get {  return GetResource<Usage>("usage"); }
+        }
         public Event Event
         {
             get {  return GetResource<Event>("event"); }

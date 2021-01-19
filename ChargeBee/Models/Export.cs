@@ -365,6 +365,11 @@ namespace ChargeBee.Models
                 return new EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, RevenueRecognitionRequest>("subscription[offline_payment_method]", this);        
             }
 
+            public BooleanFilter<RevenueRecognitionRequest> SubscriptionAutoCloseInvoices() 
+            {
+                return new BooleanFilter<RevenueRecognitionRequest>("subscription[auto_close_invoices]", this);        
+            }
+
             public StringFilter<RevenueRecognitionRequest> CustomerId() 
             {
                 return new StringFilter<RevenueRecognitionRequest>("customer[id]", this).SupportsMultiOperators(true);        
@@ -433,6 +438,11 @@ namespace ChargeBee.Models
             public EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, RevenueRecognitionRequest> CustomerOfflinePaymentMethod() 
             {
                 return new EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, RevenueRecognitionRequest>("customer[offline_payment_method]", this);        
+            }
+
+            public BooleanFilter<RevenueRecognitionRequest> CustomerAutoCloseInvoices() 
+            {
+                return new BooleanFilter<RevenueRecognitionRequest>("customer[auto_close_invoices]", this);        
             }
 
         }
@@ -624,6 +634,11 @@ namespace ChargeBee.Models
                 return new EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, DeferredRevenueRequest>("subscription[offline_payment_method]", this);        
             }
 
+            public BooleanFilter<DeferredRevenueRequest> SubscriptionAutoCloseInvoices() 
+            {
+                return new BooleanFilter<DeferredRevenueRequest>("subscription[auto_close_invoices]", this);        
+            }
+
             public StringFilter<DeferredRevenueRequest> CustomerId() 
             {
                 return new StringFilter<DeferredRevenueRequest>("customer[id]", this).SupportsMultiOperators(true);        
@@ -692,6 +707,11 @@ namespace ChargeBee.Models
             public EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, DeferredRevenueRequest> CustomerOfflinePaymentMethod() 
             {
                 return new EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, DeferredRevenueRequest>("customer[offline_payment_method]", this);        
+            }
+
+            public BooleanFilter<DeferredRevenueRequest> CustomerAutoCloseInvoices() 
+            {
+                return new BooleanFilter<DeferredRevenueRequest>("customer[auto_close_invoices]", this);        
             }
 
         }
@@ -943,6 +963,11 @@ namespace ChargeBee.Models
                 return new EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, CustomersRequest>("customer[offline_payment_method]", this);        
             }
 
+            public BooleanFilter<CustomersRequest> CustomerAutoCloseInvoices() 
+            {
+                return new BooleanFilter<CustomersRequest>("customer[auto_close_invoices]", this);        
+            }
+
         }
         public class SubscriptionsRequest : EntityRequest<SubscriptionsRequest> 
         {
@@ -1026,6 +1051,11 @@ namespace ChargeBee.Models
             public EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, SubscriptionsRequest> SubscriptionOfflinePaymentMethod() 
             {
                 return new EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, SubscriptionsRequest>("subscription[offline_payment_method]", this);        
+            }
+
+            public BooleanFilter<SubscriptionsRequest> SubscriptionAutoCloseInvoices() 
+            {
+                return new BooleanFilter<SubscriptionsRequest>("subscription[auto_close_invoices]", this);        
             }
 
         }
@@ -1442,6 +1472,16 @@ namespace ChargeBee.Models
             public BooleanFilter<ItemsRequest> ItemEnabledInPortal() 
             {
                 return new BooleanFilter<ItemsRequest>("item[enabled_in_portal]", this);        
+            }
+
+            public BooleanFilter<ItemsRequest> ItemMetered() 
+            {
+                return new BooleanFilter<ItemsRequest>("item[metered]", this);        
+            }
+
+            public EnumFilter<Item.UsageCalculationEnum, ItemsRequest> ItemUsageCalculation() 
+            {
+                return new EnumFilter<Item.UsageCalculationEnum, ItemsRequest>("item[usage_calculation]", this);        
             }
 
         }

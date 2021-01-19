@@ -2794,6 +2794,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("coupon", coupon);
                 return this;
             }
+            public CreateInvoiceForItemsRequest CouponIds(List<string> couponIds) 
+            {
+                m_params.AddOpt("coupon_ids", couponIds);
+                return this;
+            }
             public CreateInvoiceForItemsRequest AuthorizationTransactionId(string authorizationTransactionId) 
             {
                 m_params.AddOpt("authorization_transaction_id", authorizationTransactionId);

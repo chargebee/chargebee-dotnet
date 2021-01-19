@@ -137,6 +137,14 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("unit", false); }
         }
+        public bool Metered 
+        {
+            get { return GetValue<bool>("metered", true); }
+        }
+        public UsageCalculationEnum? UsageCalculation 
+        {
+            get { return GetEnum<UsageCalculationEnum>("usage_calculation", false); }
+        }
         public List<ItemApplicableItem> ApplicableItems 
         {
             get { return GetResourceList<ItemApplicableItem>("applicable_items"); }
@@ -229,6 +237,16 @@ namespace ChargeBee.Models
             public CreateRequest IncludedInMrr(bool includedInMrr) 
             {
                 m_params.AddOpt("included_in_mrr", includedInMrr);
+                return this;
+            }
+            public CreateRequest Metered(bool metered) 
+            {
+                m_params.AddOpt("metered", metered);
+                return this;
+            }
+            public CreateRequest UsageCalculation(Item.UsageCalculationEnum usageCalculation) 
+            {
+                m_params.AddOpt("usage_calculation", usageCalculation);
                 return this;
             }
             public CreateRequest Metadata(JToken metadata) 
@@ -363,6 +381,14 @@ namespace ChargeBee.Models
             {
                 return new BooleanFilter<ItemListRequest>("enabled_in_portal", this);        
             }
+            public BooleanFilter<ItemListRequest> Metered() 
+            {
+                return new BooleanFilter<ItemListRequest>("metered", this);        
+            }
+            public EnumFilter<Item.UsageCalculationEnum, ItemListRequest> UsageCalculation() 
+            {
+                return new EnumFilter<Item.UsageCalculationEnum, ItemListRequest>("usage_calculation", this);        
+            }
         }
         #endregion
 
@@ -402,6 +428,17 @@ namespace ChargeBee.Models
             All,
             [EnumMember(Value = "restricted")]
             Restricted,
+
+        }
+        public enum UsageCalculationEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "sum_of_usages")]
+            SumOfUsages,
+            [EnumMember(Value = "last_usage")]
+            LastUsage,
 
         }
 

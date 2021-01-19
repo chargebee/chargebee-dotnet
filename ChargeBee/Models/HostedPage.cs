@@ -46,6 +46,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("hosted_pages", "checkout_new");
             return new CheckoutNewRequest(url, HttpMethod.POST);
         }
+        public static CheckoutOneTimeRequest CheckoutOneTime()
+        {
+            string url = ApiUtil.BuildUrl("hosted_pages", "checkout_one_time");
+            return new CheckoutOneTimeRequest(url, HttpMethod.POST);
+        }
         public static CheckoutNewForItemsRequest CheckoutNewForItems()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "checkout_new_for_items");
@@ -610,6 +615,330 @@ namespace ChargeBee.Models
             public CheckoutNewRequest EventBasedAddonChargeOn(int index, ChargeBee.Models.Enums.ChargeOnEnum eventBasedAddonChargeOn) 
             {
                 m_params.AddOpt("event_based_addons[charge_on][" + index + "]", eventBasedAddonChargeOn);
+                return this;
+            }
+        }
+        public class CheckoutOneTimeRequest : EntityRequest<CheckoutOneTimeRequest> 
+        {
+            public CheckoutOneTimeRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CheckoutOneTimeRequest CurrencyCode(string currencyCode) 
+            {
+                m_params.AddOpt("currency_code", currencyCode);
+                return this;
+            }
+            public CheckoutOneTimeRequest CouponIds(List<string> couponIds) 
+            {
+                m_params.AddOpt("coupon_ids", couponIds);
+                return this;
+            }
+            public CheckoutOneTimeRequest RedirectUrl(string redirectUrl) 
+            {
+                m_params.AddOpt("redirect_url", redirectUrl);
+                return this;
+            }
+            public CheckoutOneTimeRequest CancelUrl(string cancelUrl) 
+            {
+                m_params.AddOpt("cancel_url", cancelUrl);
+                return this;
+            }
+            public CheckoutOneTimeRequest PassThruContent(string passThruContent) 
+            {
+                m_params.AddOpt("pass_thru_content", passThruContent);
+                return this;
+            }
+            public CheckoutOneTimeRequest Embed(bool embed) 
+            {
+                m_params.AddOpt("embed", embed);
+                return this;
+            }
+            public CheckoutOneTimeRequest IframeMessaging(bool iframeMessaging) 
+            {
+                m_params.AddOpt("iframe_messaging", iframeMessaging);
+                return this;
+            }
+            public CheckoutOneTimeRequest CustomerId(string customerId) 
+            {
+                m_params.AddOpt("customer[id]", customerId);
+                return this;
+            }
+            public CheckoutOneTimeRequest CustomerEmail(string customerEmail) 
+            {
+                m_params.AddOpt("customer[email]", customerEmail);
+                return this;
+            }
+            public CheckoutOneTimeRequest CustomerFirstName(string customerFirstName) 
+            {
+                m_params.AddOpt("customer[first_name]", customerFirstName);
+                return this;
+            }
+            public CheckoutOneTimeRequest CustomerLastName(string customerLastName) 
+            {
+                m_params.AddOpt("customer[last_name]", customerLastName);
+                return this;
+            }
+            public CheckoutOneTimeRequest CustomerCompany(string customerCompany) 
+            {
+                m_params.AddOpt("customer[company]", customerCompany);
+                return this;
+            }
+            public CheckoutOneTimeRequest CustomerTaxability(ChargeBee.Models.Enums.TaxabilityEnum customerTaxability) 
+            {
+                m_params.AddOpt("customer[taxability]", customerTaxability);
+                return this;
+            }
+            public CheckoutOneTimeRequest CustomerLocale(string customerLocale) 
+            {
+                m_params.AddOpt("customer[locale]", customerLocale);
+                return this;
+            }
+            public CheckoutOneTimeRequest CustomerPhone(string customerPhone) 
+            {
+                m_params.AddOpt("customer[phone]", customerPhone);
+                return this;
+            }
+            public CheckoutOneTimeRequest InvoicePoNumber(string invoicePoNumber) 
+            {
+                m_params.AddOpt("invoice[po_number]", invoicePoNumber);
+                return this;
+            }
+            [Obsolete]
+            public CheckoutOneTimeRequest CardGateway(ChargeBee.Models.Enums.GatewayEnum cardGateway) 
+            {
+                m_params.AddOpt("card[gateway]", cardGateway);
+                return this;
+            }
+            public CheckoutOneTimeRequest CardGatewayAccountId(string cardGatewayAccountId) 
+            {
+                m_params.AddOpt("card[gateway_account_id]", cardGatewayAccountId);
+                return this;
+            }
+            public CheckoutOneTimeRequest CustomerVatNumber(string customerVatNumber) 
+            {
+                m_params.AddOpt("customer[vat_number]", customerVatNumber);
+                return this;
+            }
+            public CheckoutOneTimeRequest CustomerConsolidatedInvoicing(bool customerConsolidatedInvoicing) 
+            {
+                m_params.AddOpt("customer[consolidated_invoicing]", customerConsolidatedInvoicing);
+                return this;
+            }
+            public CheckoutOneTimeRequest BillingAddressFirstName(string billingAddressFirstName) 
+            {
+                m_params.AddOpt("billing_address[first_name]", billingAddressFirstName);
+                return this;
+            }
+            public CheckoutOneTimeRequest BillingAddressLastName(string billingAddressLastName) 
+            {
+                m_params.AddOpt("billing_address[last_name]", billingAddressLastName);
+                return this;
+            }
+            public CheckoutOneTimeRequest BillingAddressEmail(string billingAddressEmail) 
+            {
+                m_params.AddOpt("billing_address[email]", billingAddressEmail);
+                return this;
+            }
+            public CheckoutOneTimeRequest BillingAddressCompany(string billingAddressCompany) 
+            {
+                m_params.AddOpt("billing_address[company]", billingAddressCompany);
+                return this;
+            }
+            public CheckoutOneTimeRequest BillingAddressPhone(string billingAddressPhone) 
+            {
+                m_params.AddOpt("billing_address[phone]", billingAddressPhone);
+                return this;
+            }
+            public CheckoutOneTimeRequest BillingAddressLine1(string billingAddressLine1) 
+            {
+                m_params.AddOpt("billing_address[line1]", billingAddressLine1);
+                return this;
+            }
+            public CheckoutOneTimeRequest BillingAddressLine2(string billingAddressLine2) 
+            {
+                m_params.AddOpt("billing_address[line2]", billingAddressLine2);
+                return this;
+            }
+            public CheckoutOneTimeRequest BillingAddressLine3(string billingAddressLine3) 
+            {
+                m_params.AddOpt("billing_address[line3]", billingAddressLine3);
+                return this;
+            }
+            public CheckoutOneTimeRequest BillingAddressCity(string billingAddressCity) 
+            {
+                m_params.AddOpt("billing_address[city]", billingAddressCity);
+                return this;
+            }
+            public CheckoutOneTimeRequest BillingAddressStateCode(string billingAddressStateCode) 
+            {
+                m_params.AddOpt("billing_address[state_code]", billingAddressStateCode);
+                return this;
+            }
+            public CheckoutOneTimeRequest BillingAddressState(string billingAddressState) 
+            {
+                m_params.AddOpt("billing_address[state]", billingAddressState);
+                return this;
+            }
+            public CheckoutOneTimeRequest BillingAddressZip(string billingAddressZip) 
+            {
+                m_params.AddOpt("billing_address[zip]", billingAddressZip);
+                return this;
+            }
+            public CheckoutOneTimeRequest BillingAddressCountry(string billingAddressCountry) 
+            {
+                m_params.AddOpt("billing_address[country]", billingAddressCountry);
+                return this;
+            }
+            public CheckoutOneTimeRequest BillingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum billingAddressValidationStatus) 
+            {
+                m_params.AddOpt("billing_address[validation_status]", billingAddressValidationStatus);
+                return this;
+            }
+            public CheckoutOneTimeRequest ShippingAddressFirstName(string shippingAddressFirstName) 
+            {
+                m_params.AddOpt("shipping_address[first_name]", shippingAddressFirstName);
+                return this;
+            }
+            public CheckoutOneTimeRequest ShippingAddressLastName(string shippingAddressLastName) 
+            {
+                m_params.AddOpt("shipping_address[last_name]", shippingAddressLastName);
+                return this;
+            }
+            public CheckoutOneTimeRequest ShippingAddressEmail(string shippingAddressEmail) 
+            {
+                m_params.AddOpt("shipping_address[email]", shippingAddressEmail);
+                return this;
+            }
+            public CheckoutOneTimeRequest ShippingAddressCompany(string shippingAddressCompany) 
+            {
+                m_params.AddOpt("shipping_address[company]", shippingAddressCompany);
+                return this;
+            }
+            public CheckoutOneTimeRequest ShippingAddressPhone(string shippingAddressPhone) 
+            {
+                m_params.AddOpt("shipping_address[phone]", shippingAddressPhone);
+                return this;
+            }
+            public CheckoutOneTimeRequest ShippingAddressLine1(string shippingAddressLine1) 
+            {
+                m_params.AddOpt("shipping_address[line1]", shippingAddressLine1);
+                return this;
+            }
+            public CheckoutOneTimeRequest ShippingAddressLine2(string shippingAddressLine2) 
+            {
+                m_params.AddOpt("shipping_address[line2]", shippingAddressLine2);
+                return this;
+            }
+            public CheckoutOneTimeRequest ShippingAddressLine3(string shippingAddressLine3) 
+            {
+                m_params.AddOpt("shipping_address[line3]", shippingAddressLine3);
+                return this;
+            }
+            public CheckoutOneTimeRequest ShippingAddressCity(string shippingAddressCity) 
+            {
+                m_params.AddOpt("shipping_address[city]", shippingAddressCity);
+                return this;
+            }
+            public CheckoutOneTimeRequest ShippingAddressStateCode(string shippingAddressStateCode) 
+            {
+                m_params.AddOpt("shipping_address[state_code]", shippingAddressStateCode);
+                return this;
+            }
+            public CheckoutOneTimeRequest ShippingAddressState(string shippingAddressState) 
+            {
+                m_params.AddOpt("shipping_address[state]", shippingAddressState);
+                return this;
+            }
+            public CheckoutOneTimeRequest ShippingAddressZip(string shippingAddressZip) 
+            {
+                m_params.AddOpt("shipping_address[zip]", shippingAddressZip);
+                return this;
+            }
+            public CheckoutOneTimeRequest ShippingAddressCountry(string shippingAddressCountry) 
+            {
+                m_params.AddOpt("shipping_address[country]", shippingAddressCountry);
+                return this;
+            }
+            public CheckoutOneTimeRequest ShippingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum shippingAddressValidationStatus) 
+            {
+                m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+                return this;
+            }
+            public CheckoutOneTimeRequest AddonId(int index, string addonId) 
+            {
+                m_params.AddOpt("addons[id][" + index + "]", addonId);
+                return this;
+            }
+            public CheckoutOneTimeRequest AddonQuantity(int index, int addonQuantity) 
+            {
+                m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
+                return this;
+            }
+            public CheckoutOneTimeRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            {
+                m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+                return this;
+            }
+            public CheckoutOneTimeRequest AddonQuantityInDecimal(int index, string addonQuantityInDecimal) 
+            {
+                m_params.AddOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+                return this;
+            }
+            public CheckoutOneTimeRequest AddonUnitPriceInDecimal(int index, string addonUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("addons[unit_price_in_decimal][" + index + "]", addonUnitPriceInDecimal);
+                return this;
+            }
+            public CheckoutOneTimeRequest AddonDateFrom(int index, long addonDateFrom) 
+            {
+                m_params.AddOpt("addons[date_from][" + index + "]", addonDateFrom);
+                return this;
+            }
+            public CheckoutOneTimeRequest AddonDateTo(int index, long addonDateTo) 
+            {
+                m_params.AddOpt("addons[date_to][" + index + "]", addonDateTo);
+                return this;
+            }
+            public CheckoutOneTimeRequest ChargeAmount(int index, int chargeAmount) 
+            {
+                m_params.AddOpt("charges[amount][" + index + "]", chargeAmount);
+                return this;
+            }
+            public CheckoutOneTimeRequest ChargeAmountInDecimal(int index, string chargeAmountInDecimal) 
+            {
+                m_params.AddOpt("charges[amount_in_decimal][" + index + "]", chargeAmountInDecimal);
+                return this;
+            }
+            public CheckoutOneTimeRequest ChargeDescription(int index, string chargeDescription) 
+            {
+                m_params.AddOpt("charges[description][" + index + "]", chargeDescription);
+                return this;
+            }
+            public CheckoutOneTimeRequest ChargeAvalaraSaleType(int index, ChargeBee.Models.Enums.AvalaraSaleTypeEnum chargeAvalaraSaleType) 
+            {
+                m_params.AddOpt("charges[avalara_sale_type][" + index + "]", chargeAvalaraSaleType);
+                return this;
+            }
+            public CheckoutOneTimeRequest ChargeAvalaraTransactionType(int index, int chargeAvalaraTransactionType) 
+            {
+                m_params.AddOpt("charges[avalara_transaction_type][" + index + "]", chargeAvalaraTransactionType);
+                return this;
+            }
+            public CheckoutOneTimeRequest ChargeAvalaraServiceType(int index, int chargeAvalaraServiceType) 
+            {
+                m_params.AddOpt("charges[avalara_service_type][" + index + "]", chargeAvalaraServiceType);
+                return this;
+            }
+            public CheckoutOneTimeRequest ChargeDateFrom(int index, long chargeDateFrom) 
+            {
+                m_params.AddOpt("charges[date_from][" + index + "]", chargeDateFrom);
+                return this;
+            }
+            public CheckoutOneTimeRequest ChargeDateTo(int index, long chargeDateTo) 
+            {
+                m_params.AddOpt("charges[date_to][" + index + "]", chargeDateTo);
                 return this;
             }
         }
@@ -1799,6 +2128,8 @@ namespace ChargeBee.Models
             CheckoutGift,
             [EnumMember(Value = "claim_gift")]
             ClaimGift,
+            [EnumMember(Value = "checkout_one_time")]
+            CheckoutOneTime,
 
         }
         public enum StateEnum

@@ -484,6 +484,14 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<FreePeriodUnitEnum>("free_period_unit", false); }
         }
+        public bool? CreatePendingInvoices 
+        {
+            get { return GetValue<bool?>("create_pending_invoices", false); }
+        }
+        public bool? AutoCloseInvoices 
+        {
+            get { return GetValue<bool?>("auto_close_invoices", false); }
+        }
         
         #endregion
         
@@ -1642,6 +1650,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("contract_term_billing_cycle_on_renewal", contractTermBillingCycleOnRenewal);
                 return this;
             }
+            public CreateWithItemsRequest CreatePendingInvoices(bool createPendingInvoices) 
+            {
+                m_params.AddOpt("create_pending_invoices", createPendingInvoices);
+                return this;
+            }
+            public CreateWithItemsRequest AutoCloseInvoices(bool autoCloseInvoices) 
+            {
+                m_params.AddOpt("auto_close_invoices", autoCloseInvoices);
+                return this;
+            }
+            public CreateWithItemsRequest FirstInvoicePending(bool firstInvoicePending) 
+            {
+                m_params.AddOpt("first_invoice_pending", firstInvoicePending);
+                return this;
+            }
             public CreateWithItemsRequest ShippingAddressFirstName(string shippingAddressFirstName) 
             {
                 m_params.AddOpt("shipping_address[first_name]", shippingAddressFirstName);
@@ -1900,6 +1923,14 @@ namespace ChargeBee.Models
             public EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, SubscriptionListRequest> OfflinePaymentMethod() 
             {
                 return new EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, SubscriptionListRequest>("offline_payment_method", this);        
+            }
+            public BooleanFilter<SubscriptionListRequest> AutoCloseInvoices() 
+            {
+                return new BooleanFilter<SubscriptionListRequest>("auto_close_invoices", this);        
+            }
+            public BooleanFilter<SubscriptionListRequest> CreatePendingInvoices() 
+            {
+                return new BooleanFilter<SubscriptionListRequest>("create_pending_invoices", this);        
             }
             public BooleanFilter<SubscriptionListRequest> OverrideRelationship() 
             {
@@ -2646,6 +2677,16 @@ namespace ChargeBee.Models
             public UpdateForItemsRequest FreePeriodUnit(ChargeBee.Models.Enums.FreePeriodUnitEnum freePeriodUnit) 
             {
                 m_params.AddOpt("free_period_unit", freePeriodUnit);
+                return this;
+            }
+            public UpdateForItemsRequest CreatePendingInvoices(bool createPendingInvoices) 
+            {
+                m_params.AddOpt("create_pending_invoices", createPendingInvoices);
+                return this;
+            }
+            public UpdateForItemsRequest AutoCloseInvoices(bool autoCloseInvoices) 
+            {
+                m_params.AddOpt("auto_close_invoices", autoCloseInvoices);
                 return this;
             }
             [Obsolete]
@@ -4511,6 +4552,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("meta_data", metaData);
                 return this;
             }
+            public ImportForItemsRequest CreatePendingInvoices(bool createPendingInvoices) 
+            {
+                m_params.AddOpt("create_pending_invoices", createPendingInvoices);
+                return this;
+            }
+            public ImportForItemsRequest AutoCloseInvoices(bool autoCloseInvoices) 
+            {
+                m_params.AddOpt("auto_close_invoices", autoCloseInvoices);
+                return this;
+            }
             public ImportForItemsRequest ContractTermId(string contractTermId) 
             {
                 m_params.AddOpt("contract_term[id]", contractTermId);
@@ -5051,6 +5102,14 @@ namespace ChargeBee.Models
 
             public int? Quantity() {
                 return GetValue<int?>("quantity", false);
+            }
+
+            public string MeteredQuantity() {
+                return GetValue<string>("metered_quantity", false);
+            }
+
+            public DateTime? LastCalculatedAt() {
+                return GetDateTime("last_calculated_at", false);
             }
 
             public int? UnitPrice() {

@@ -284,6 +284,10 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<PiiClearedEnum>("pii_cleared", false); }
         }
+        public bool? AutoCloseInvoices 
+        {
+            get { return GetValue<bool?>("auto_close_invoices", false); }
+        }
         [Obsolete]
         public CardStatusEnum? CardStatus 
         {
@@ -513,6 +517,11 @@ namespace ChargeBee.Models
             public CreateRequest OfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum offlinePaymentMethod) 
             {
                 m_params.AddOpt("offline_payment_method", offlinePaymentMethod);
+                return this;
+            }
+            public CreateRequest AutoCloseInvoices(bool autoCloseInvoices) 
+            {
+                m_params.AddOpt("auto_close_invoices", autoCloseInvoices);
                 return this;
             }
             public CreateRequest ConsolidatedInvoicing(bool consolidatedInvoicing) 
@@ -888,6 +897,10 @@ namespace ChargeBee.Models
             {
                 return new EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, CustomerListRequest>("offline_payment_method", this);        
             }
+            public BooleanFilter<CustomerListRequest> AutoCloseInvoices() 
+            {
+                return new BooleanFilter<CustomerListRequest>("auto_close_invoices", this);        
+            }
             public CustomerListRequest SortByCreatedAt(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");
                 return this;
@@ -1012,6 +1025,11 @@ namespace ChargeBee.Models
             public UpdateRequest InvoiceNotes(string invoiceNotes) 
             {
                 m_params.AddOpt("invoice_notes", invoiceNotes);
+                return this;
+            }
+            public UpdateRequest AutoCloseInvoices(bool autoCloseInvoices) 
+            {
+                m_params.AddOpt("auto_close_invoices", autoCloseInvoices);
                 return this;
             }
             public UpdateRequest MetaData(JToken metaData) 
@@ -1591,7 +1609,7 @@ namespace ChargeBee.Models
             }
             public CollectPaymentRequest InvoiceAllocationInvoiceId(int index, string invoiceAllocationInvoiceId) 
             {
-                m_params.AddOpt("invoice_allocations[invoice_id][" + index + "]", invoiceAllocationInvoiceId);
+                m_params.Add("invoice_allocations[invoice_id][" + index + "]", invoiceAllocationInvoiceId);
                 return this;
             }
             public CollectPaymentRequest InvoiceAllocationAllocationAmount(int index, int invoiceAllocationAllocationAmount) 
