@@ -18,7 +18,7 @@ namespace ChargeBee.Api
     public static class ApiUtil
     {
         private static DateTime m_unixTime = new DateTime(1970, 1, 1);
-        private static HttpClient httpClient = new HttpClient() { Timeout = TimeSpan.FromMilliseconds(ApiConfig.ConnectTimeout) };
+        private static HttpClient httpClient = new HttpClient() { Timeout = TimeSpan.FromMilliseconds( ApiConfig.ConnectTimeout > 0 ? ApiConfig.ConnectTimeout : 15000) };
 
         public static string BuildUrl(params string[] paths)
         {
