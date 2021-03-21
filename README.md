@@ -29,16 +29,30 @@ See our [.Net API Reference](https://apidocs.chargebee.com/docs/api?lang=dotnet 
 ## Usage
 
 To create a new subscription:
-  
-    using ChargeBee.Api;
-	using ChargeBee.Models;
-	ApiConfig.Configure("site","api_key");
-	EntityResult result = Subscription.Create()
-                  .PlanId("basic")
-				  .Request();
-	Subscription subscription = result.Subscription;
-	Customer customer = result.Customer;
+```
+using ChargeBee.Api;
+using ChargeBee.Models;
 
+ApiConfig.Configure("site","api_key");
+EntityResult result = Subscription.Create()
+			.PlanId("basic")
+			.Request();
+Subscription subscription = result.Subscription;
+Customer customer = result.Customer;
+```
+
+To create a new subscription with a multi site configuration:
+```
+using ChargeBee.Api;
+using ChargeBee.Models;
+
+ApiConfig env = ApiConfig.Create("site","api_key");
+EntityResult result = await Subscription.Create()
+			.PlanId("basic")
+			.RequestAsync(env);
+Subscription subscription = result.Subscription;
+Customer customer = result.Customer;
+```
 ## License
 
 See the LICENSE file.

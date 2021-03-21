@@ -22,7 +22,7 @@ namespace ChargeBee.Api
 
         public static string BuildUrl(params string[] paths)
         {
-            StringBuilder sb = new StringBuilder(ApiConfig.Instance.ApiBaseUrl);
+            StringBuilder sb = new StringBuilder();
 
             foreach (var path in paths)
             {
@@ -38,14 +38,14 @@ namespace ChargeBee.Api
             {
                 byte[] paramBytes = Encoding.GetEncoding(env.Charset).GetBytes(parameters.GetQuery(false));
                 string postData = Encoding.GetEncoding(env.Charset).GetString(paramBytes, 0, paramBytes.Length);
-                request = new HttpRequestMessage(meth, new Uri(url))
+                request = new HttpRequestMessage(meth, new Uri($"{env.ApiBaseUrl}{url}"))
                 {
                     Content = new StringContent(postData, Encoding.UTF8, "application/x-www-form-urlencoded")
                 };
             }
             else
             {
-                request = new HttpRequestMessage(meth, new Uri(url));
+                request = new HttpRequestMessage(meth, new Uri($"{env.ApiBaseUrl}{url}"));
             }
             return request;
         }

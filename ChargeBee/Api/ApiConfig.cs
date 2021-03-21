@@ -53,13 +53,21 @@ namespace ChargeBee.Api
 
         public static void Configure(string siteName, string apiKey)
         {
+            m_instance = Create(siteName, apiKey);
+        }
+
+        public static ApiConfig Create(string siteName, string apiKey)
+        {
+            if (m_instance != null)
+                throw new Exception("Already configured statically!");
+
             if (String.IsNullOrEmpty(siteName))
                 throw new ArgumentException("Site name can't be empty!");
 
             if (String.IsNullOrEmpty(apiKey))
                 throw new ArgumentException("Api key can't be empty!");
 
-            m_instance = new ApiConfig(siteName, apiKey);
+            return new ApiConfig(siteName, apiKey);
         }
 
         public static ApiConfig Instance
