@@ -15,7 +15,6 @@ namespace ChargeBee.Api
         public string ApiKey { get; set; }
         public string SiteName { get; set; }
         public string Charset { get; set; }
-        public static int ConnectTimeout { get; set; }
 
         public string ApiBaseUrl
         {
@@ -42,7 +41,6 @@ namespace ChargeBee.Api
         private ApiConfig(string siteName, string apiKey)
         {
             Charset = Encoding.UTF8.WebName;
-            ConnectTimeout = 15000; 
             TimeTravelMillis = 3000;
             ExportSleepMillis = 10000;
             SiteName = siteName;
