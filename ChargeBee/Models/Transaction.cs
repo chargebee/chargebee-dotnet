@@ -244,6 +244,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool>("deleted", true); }
         }
+	public string MerchantReferenceId 
+        {
+            get { return GetValue<string>("merchant_reference_id", false); }
+        }
         
         #endregion
         

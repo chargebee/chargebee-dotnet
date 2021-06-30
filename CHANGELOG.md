@@ -1,3 +1,9 @@
+### v2.9.0 (2021-06-30)
+* * *
+
+##### New attributes:
+* merchant_reference_id has been added to transactions resource
+
 ### v2.8.9 (2021-01-19)
 * * *
 ##### New resources:
