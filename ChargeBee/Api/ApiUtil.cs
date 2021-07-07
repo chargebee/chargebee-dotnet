@@ -17,7 +17,6 @@ namespace ChargeBee.Api
 {
     public static class ApiUtil
     {
-        private static DateTime m_unixTime = new DateTime(1970, 1, 1);
         private static HttpClient httpClient = new HttpClient() { Timeout = TimeSpan.FromMilliseconds(ApiConfig.ConnectTimeout) };
 
         public static string BuildUrl(params string[] paths)
@@ -30,6 +29,9 @@ namespace ChargeBee.Api
             }
             return sb.ToString();
         }
+
+        private static DateTime UnixTime => new DateTime(1970, 1, 1);
+
         private static HttpRequestMessage BuildRequest(string url, HttpMethod method, Params parameters, ApiConfig env)
         {
             HttpRequestMessage request;
@@ -186,7 +188,7 @@ namespace ChargeBee.Api
 
         public static DateTime ConvertFromTimestamp(long timestamp)
         {
-            return m_unixTime.AddSeconds(timestamp).ToLocalTime();
+            return UnixTime.AddSeconds(timestamp).ToLocalTime();
         }
 
         public static long? ConvertToTimestamp(DateTime? t)
@@ -195,9 +197,9 @@ namespace ChargeBee.Api
 
             DateTime dtutc = ((DateTime)t).ToUniversalTime();
 
-            if (dtutc < m_unixTime) throw new ArgumentException("Time can't be before 1970, January 1!");
+            if (dtutc < UnixTime) throw new ArgumentException("Time can't be before 1970, January 1!");
 
-            return (long)(dtutc - m_unixTime).TotalSeconds;
+            return (long)(dtutc - UnixTime).TotalSeconds;
         }
     }
 
