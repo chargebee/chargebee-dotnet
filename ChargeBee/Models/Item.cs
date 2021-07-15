@@ -127,7 +127,7 @@ namespace ChargeBee.Models
         }
         public ItemApplicabilityEnum ItemApplicability 
         {
-            get { return GetEnum<ItemApplicabilityEnum>("item_applicability", true); }
+            get { return GetEnum<ItemApplicabilityEnum>("item_applicability", ItemType == TypeEnum.Plan); }
         }
         public string GiftClaimRedirectUrl 
         {
