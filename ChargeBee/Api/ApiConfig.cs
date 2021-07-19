@@ -15,7 +15,6 @@ namespace ChargeBee.Api
         public string ApiKey { get; set; }
         public string SiteName { get; set; }
         public string Charset { get; set; }
-        public static int ConnectTimeout { get; set; }
 
         public string ApiBaseUrl
         {
@@ -42,7 +41,6 @@ namespace ChargeBee.Api
         private ApiConfig(string siteName, string apiKey)
         {
             Charset = Encoding.UTF8.WebName;
-            ConnectTimeout = 15000; 
             TimeTravelMillis = 3000;
             ExportSleepMillis = 10000;
             SiteName = siteName;
@@ -53,13 +51,21 @@ namespace ChargeBee.Api
 
         public static void Configure(string siteName, string apiKey)
         {
+            m_instance = Create(siteName, apiKey);
+        }
+
+        public static ApiConfig Create(string siteName, string apiKey)
+        {
+            if (m_instance != null)
+                throw new Exception("Already configured statically!");
+
             if (String.IsNullOrEmpty(siteName))
                 throw new ArgumentException("Site name can't be empty!");
 
             if (String.IsNullOrEmpty(apiKey))
                 throw new ArgumentException("Api key can't be empty!");
 
-            m_instance = new ApiConfig(siteName, apiKey);
+            return new ApiConfig(siteName, apiKey);
         }
 
         public static ApiConfig Instance
