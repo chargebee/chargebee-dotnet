@@ -140,6 +140,10 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("settled_at", false); }
         }
+        public decimal? ExchangeRate 
+        {
+            get { return GetValue<decimal?>("exchange_rate", false); }
+        }
         public string CurrencyCode 
         {
             get { return GetValue<string>("currency_code", true); }
@@ -244,7 +248,7 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool>("deleted", true); }
         }
-	public string MerchantReferenceId 
+        public string MerchantReferenceId 
         {
             get { return GetValue<string>("merchant_reference_id", false); }
         }

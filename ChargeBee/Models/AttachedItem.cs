@@ -99,6 +99,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int?>("quantity", false); }
         }
+        public string QuantityInDecimal 
+        {
+            get { return GetValue<string>("quantity_in_decimal", false); }
+        }
         public int? BillingCycles 
         {
             get { return GetValue<int?>("billing_cycles", false); }
@@ -154,6 +158,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("quantity", quantity);
                 return this;
             }
+            public CreateRequest QuantityInDecimal(string quantityInDecimal) 
+            {
+                m_params.AddOpt("quantity_in_decimal", quantityInDecimal);
+                return this;
+            }
             public CreateRequest ChargeOnEvent(ChargeBee.Models.Enums.ChargeOnEventEnum chargeOnEvent) 
             {
                 m_params.AddOpt("charge_on_event", chargeOnEvent);
@@ -190,6 +199,11 @@ namespace ChargeBee.Models
             public UpdateRequest Quantity(int quantity) 
             {
                 m_params.AddOpt("quantity", quantity);
+                return this;
+            }
+            public UpdateRequest QuantityInDecimal(string quantityInDecimal) 
+            {
+                m_params.AddOpt("quantity_in_decimal", quantityInDecimal);
                 return this;
             }
             public UpdateRequest ChargeOnEvent(ChargeBee.Models.Enums.ChargeOnEventEnum chargeOnEvent) 

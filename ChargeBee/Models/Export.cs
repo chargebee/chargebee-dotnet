@@ -1398,6 +1398,21 @@ namespace ChargeBee.Models
                 return new TimestampFilter<OrdersRequest>("order[updated_at]", this);        
             }
 
+            public EnumFilter<Order.ResentStatusEnum, OrdersRequest> OrderResentStatus() 
+            {
+                return new EnumFilter<Order.ResentStatusEnum, OrdersRequest>("order[resent_status]", this);        
+            }
+
+            public BooleanFilter<OrdersRequest> OrderIsResent() 
+            {
+                return new BooleanFilter<OrdersRequest>("order[is_resent]", this);        
+            }
+
+            public StringFilter<OrdersRequest> OrderOriginalOrderId() 
+            {
+                return new StringFilter<OrdersRequest>("order[original_order_id]", this);        
+            }
+
         }
         public class ItemFamiliesRequest : EntityRequest<ItemFamiliesRequest> 
         {
@@ -1414,6 +1429,11 @@ namespace ChargeBee.Models
             public StringFilter<ItemFamiliesRequest> ItemFamilyName() 
             {
                 return new StringFilter<ItemFamiliesRequest>("item_family[name]", this);        
+            }
+
+            public TimestampFilter<ItemFamiliesRequest> ItemFamilyUpdatedAt() 
+            {
+                return new TimestampFilter<ItemFamiliesRequest>("item_family[updated_at]", this);        
             }
 
         }

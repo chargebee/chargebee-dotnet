@@ -239,6 +239,10 @@ namespace ChargeBee.Models
                 PromotionalCredits,
                 [EnumMember(Value = "prorated_credits")]
                 ProratedCredits,
+                [EnumMember(Value = "item_level_discount")]
+                ItemLevelDiscount,
+                [EnumMember(Value = "document_level_discount")]
+                DocumentLevelDiscount,
             }
 
             public int Amount() {
@@ -380,6 +384,10 @@ namespace ChargeBee.Models
                 PromotionalCredits,
                 [EnumMember(Value = "prorated_credits")]
                 ProratedCredits,
+                [EnumMember(Value = "item_level_discount")]
+                ItemLevelDiscount,
+                [EnumMember(Value = "document_level_discount")]
+                DocumentLevelDiscount,
             }
 
             public string LineItemId() {
@@ -392,6 +400,10 @@ namespace ChargeBee.Models
 
             public string CouponId() {
                 return GetValue<string>("coupon_id", false);
+            }
+
+            public string EntityId() {
+                return GetValue<string>("entity_id", false);
             }
 
             public int DiscountAmount() {

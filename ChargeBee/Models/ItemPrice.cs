@@ -105,6 +105,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int?>("price", false); }
         }
+        public string PriceInDecimal 
+        {
+            get { return GetValue<string>("price_in_decimal", false); }
+        }
         public int? Period 
         {
             get { return GetValue<int?>("period", false); }
@@ -125,6 +129,10 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<TrialPeriodUnitEnum>("trial_period_unit", false); }
         }
+        public TrialEndActionEnum? TrialEndAction 
+        {
+            get { return GetEnum<TrialEndActionEnum>("trial_end_action", false); }
+        }
         public int? ShippingPeriod 
         {
             get { return GetValue<int?>("shipping_period", false); }
@@ -141,15 +149,9 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int>("free_quantity", true); }
         }
-        [Obsolete]
         public string FreeQuantityInDecimal 
         {
             get { return GetValue<string>("free_quantity_in_decimal", false); }
-        }
-        [Obsolete]
-        public string PriceInDecimal 
-        {
-            get { return GetValue<string>("price_in_decimal", false); }
         }
         public long? ResourceVersion 
         {
@@ -162,6 +164,10 @@ namespace ChargeBee.Models
         public DateTime CreatedAt 
         {
             get { return (DateTime)GetDateTime("created_at", true); }
+        }
+        public DateTime? ArchivedAt 
+        {
+            get { return GetDateTime("archived_at", false); }
         }
         public string InvoiceNotes 
         {
@@ -265,6 +271,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("free_quantity", freeQuantity);
                 return this;
             }
+            public CreateRequest FreeQuantityInDecimal(string freeQuantityInDecimal) 
+            {
+                m_params.AddOpt("free_quantity_in_decimal", freeQuantityInDecimal);
+                return this;
+            }
             public CreateRequest Metadata(JToken metadata) 
             {
                 m_params.AddOpt("metadata", metadata);
@@ -288,6 +299,11 @@ namespace ChargeBee.Models
             public CreateRequest Price(int price) 
             {
                 m_params.AddOpt("price", price);
+                return this;
+            }
+            public CreateRequest PriceInDecimal(string priceInDecimal) 
+            {
+                m_params.AddOpt("price_in_decimal", priceInDecimal);
                 return this;
             }
             public CreateRequest PeriodUnit(ItemPrice.PeriodUnitEnum periodUnit) 
@@ -323,6 +339,11 @@ namespace ChargeBee.Models
             public CreateRequest BillingCycles(int billingCycles) 
             {
                 m_params.AddOpt("billing_cycles", billingCycles);
+                return this;
+            }
+            public CreateRequest TrialEndAction(ItemPrice.TrialEndActionEnum trialEndAction) 
+            {
+                m_params.AddOpt("trial_end_action", trialEndAction);
                 return this;
             }
             public CreateRequest TaxDetailTaxProfileId(string taxDetailTaxProfileId) 
@@ -400,6 +421,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("tiers[price][" + index + "]", tierPrice);
                 return this;
             }
+            public CreateRequest TierStartingUnitInDecimal(int index, string tierStartingUnitInDecimal) 
+            {
+                m_params.AddOpt("tiers[starting_unit_in_decimal][" + index + "]", tierStartingUnitInDecimal);
+                return this;
+            }
+            public CreateRequest TierEndingUnitInDecimal(int index, string tierEndingUnitInDecimal) 
+            {
+                m_params.AddOpt("tiers[ending_unit_in_decimal][" + index + "]", tierEndingUnitInDecimal);
+                return this;
+            }
+            public CreateRequest TierPriceInDecimal(int index, string tierPriceInDecimal) 
+            {
+                m_params.AddOpt("tiers[price_in_decimal][" + index + "]", tierPriceInDecimal);
+                return this;
+            }
         }
         public class UpdateRequest : EntityRequest<UpdateRequest> 
         {
@@ -448,6 +484,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("free_quantity", freeQuantity);
                 return this;
             }
+            public UpdateRequest FreeQuantityInDecimal(string freeQuantityInDecimal) 
+            {
+                m_params.AddOpt("free_quantity_in_decimal", freeQuantityInDecimal);
+                return this;
+            }
             public UpdateRequest Metadata(JToken metadata) 
             {
                 m_params.AddOpt("metadata", metadata);
@@ -461,6 +502,11 @@ namespace ChargeBee.Models
             public UpdateRequest Price(int price) 
             {
                 m_params.AddOpt("price", price);
+                return this;
+            }
+            public UpdateRequest PriceInDecimal(string priceInDecimal) 
+            {
+                m_params.AddOpt("price_in_decimal", priceInDecimal);
                 return this;
             }
             public UpdateRequest PeriodUnit(ItemPrice.PeriodUnitEnum periodUnit) 
@@ -496,6 +542,11 @@ namespace ChargeBee.Models
             public UpdateRequest BillingCycles(int billingCycles) 
             {
                 m_params.AddOpt("billing_cycles", billingCycles);
+                return this;
+            }
+            public UpdateRequest TrialEndAction(ItemPrice.TrialEndActionEnum trialEndAction) 
+            {
+                m_params.AddOpt("trial_end_action", trialEndAction);
                 return this;
             }
             public UpdateRequest ShowDescriptionInInvoices(bool showDescriptionInInvoices) 
@@ -583,6 +634,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("tiers[price][" + index + "]", tierPrice);
                 return this;
             }
+            public UpdateRequest TierStartingUnitInDecimal(int index, string tierStartingUnitInDecimal) 
+            {
+                m_params.AddOpt("tiers[starting_unit_in_decimal][" + index + "]", tierStartingUnitInDecimal);
+                return this;
+            }
+            public UpdateRequest TierEndingUnitInDecimal(int index, string tierEndingUnitInDecimal) 
+            {
+                m_params.AddOpt("tiers[ending_unit_in_decimal][" + index + "]", tierEndingUnitInDecimal);
+                return this;
+            }
+            public UpdateRequest TierPriceInDecimal(int index, string tierPriceInDecimal) 
+            {
+                m_params.AddOpt("tiers[price_in_decimal][" + index + "]", tierPriceInDecimal);
+                return this;
+            }
         }
         public class ItemPriceListRequest : ListRequestBase<ItemPriceListRequest> 
         {
@@ -643,6 +709,18 @@ namespace ChargeBee.Models
             {
                 return new NumberFilter<int, ItemPriceListRequest>("period", this);        
             }
+            public ItemPriceListRequest SortByName(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","name");
+                return this;
+            }
+            public ItemPriceListRequest SortById(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","id");
+                return this;
+            }
+            public ItemPriceListRequest SortByUpdatedAt(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","updated_at");
+                return this;
+            }
         }
         #endregion
 
@@ -683,6 +761,19 @@ namespace ChargeBee.Models
             Day,
             [EnumMember(Value = "month")]
             Month,
+
+        }
+        public enum TrialEndActionEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "site_default")]
+            SiteDefault,
+            [EnumMember(Value = "activate_subscription")]
+            ActivateSubscription,
+            [EnumMember(Value = "cancel_subscription")]
+            CancelSubscription,
 
         }
         public enum ShippingPeriodUnitEnum
@@ -775,6 +866,14 @@ namespace ChargeBee.Models
 
             public string AccountingCategory2() {
                 return GetValue<string>("accounting_category2", false);
+            }
+
+            public string AccountingCategory3() {
+                return GetValue<string>("accounting_category3", false);
+            }
+
+            public string AccountingCategory4() {
+                return GetValue<string>("accounting_category4", false);
             }
 
         }

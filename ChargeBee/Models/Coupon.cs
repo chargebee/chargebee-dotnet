@@ -126,6 +126,7 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<DurationTypeEnum>("duration_type", true); }
         }
+        [Obsolete]
         public int? DurationMonth 
         {
             get { return GetValue<int?>("duration_month", false); }
@@ -178,6 +179,14 @@ namespace ChargeBee.Models
         public bool? IncludedInMrr 
         {
             get { return GetValue<bool?>("included_in_mrr", false); }
+        }
+        public int? Period 
+        {
+            get { return GetValue<int?>("period", false); }
+        }
+        public PeriodUnitEnum? PeriodUnit 
+        {
+            get { return GetEnum<PeriodUnitEnum>("period_unit", false); }
         }
         public List<string> PlanIds 
         {
@@ -299,6 +308,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("included_in_mrr", includedInMrr);
                 return this;
             }
+            public CreateRequest Period(int period) 
+            {
+                m_params.AddOpt("period", period);
+                return this;
+            }
+            public CreateRequest PeriodUnit(ChargeBee.Models.Enums.PeriodUnitEnum periodUnit) 
+            {
+                m_params.AddOpt("period_unit", periodUnit);
+                return this;
+            }
             public CreateRequest PlanConstraint(PlanConstraintEnum planConstraint) 
             {
                 m_params.AddOpt("plan_constraint", planConstraint);
@@ -411,6 +430,16 @@ namespace ChargeBee.Models
             public CreateForItemsRequest IncludedInMrr(bool includedInMrr) 
             {
                 m_params.AddOpt("included_in_mrr", includedInMrr);
+                return this;
+            }
+            public CreateForItemsRequest Period(int period) 
+            {
+                m_params.AddOpt("period", period);
+                return this;
+            }
+            public CreateForItemsRequest PeriodUnit(ChargeBee.Models.Enums.PeriodUnitEnum periodUnit) 
+            {
+                m_params.AddOpt("period_unit", periodUnit);
                 return this;
             }
             public CreateForItemsRequest Status(Coupon.StatusEnum status) 
@@ -529,6 +558,16 @@ namespace ChargeBee.Models
             public UpdateForItemsRequest IncludedInMrr(bool includedInMrr) 
             {
                 m_params.AddOpt("included_in_mrr", includedInMrr);
+                return this;
+            }
+            public UpdateForItemsRequest Period(int period) 
+            {
+                m_params.AddOpt("period", period);
+                return this;
+            }
+            public UpdateForItemsRequest PeriodUnit(ChargeBee.Models.Enums.PeriodUnitEnum periodUnit) 
+            {
+                m_params.AddOpt("period_unit", periodUnit);
                 return this;
             }
             public UpdateForItemsRequest ItemConstraintConstraint(int index, CouponItemConstraint.ConstraintEnum itemConstraintConstraint) 
@@ -690,6 +729,16 @@ namespace ChargeBee.Models
             public UpdateRequest IncludedInMrr(bool includedInMrr) 
             {
                 m_params.AddOpt("included_in_mrr", includedInMrr);
+                return this;
+            }
+            public UpdateRequest Period(int period) 
+            {
+                m_params.AddOpt("period", period);
+                return this;
+            }
+            public UpdateRequest PeriodUnit(ChargeBee.Models.Enums.PeriodUnitEnum periodUnit) 
+            {
+                m_params.AddOpt("period_unit", periodUnit);
                 return this;
             }
             public UpdateRequest PlanConstraint(PlanConstraintEnum planConstraint) 

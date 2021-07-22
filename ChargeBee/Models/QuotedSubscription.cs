@@ -92,6 +92,18 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<AutoCollectionEnum>("auto_collection", false); }
         }
+        public string PlanQuantityInDecimal 
+        {
+            get { return GetValue<string>("plan_quantity_in_decimal", false); }
+        }
+        public string PlanUnitPriceInDecimal 
+        {
+            get { return GetValue<string>("plan_unit_price_in_decimal", false); }
+        }
+        public int? ContractTermBillingCycleOnRenewal 
+        {
+            get { return GetValue<int?>("contract_term_billing_cycle_on_renewal", false); }
+        }
         public List<QuotedSubscriptionAddon> Addons 
         {
             get { return GetResourceList<QuotedSubscriptionAddon>("addons"); }
@@ -104,6 +116,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<QuotedSubscriptionCoupon>("coupons"); }
         }
+        public List<QuotedSubscriptionDiscount> Discounts 
+        {
+            get { return GetResourceList<QuotedSubscriptionDiscount>("discounts"); }
+        }
         public List<QuotedSubscriptionSubscriptionItem> SubscriptionItems 
         {
             get { return GetResourceList<QuotedSubscriptionSubscriptionItem>("subscription_items"); }
@@ -111,6 +127,10 @@ namespace ChargeBee.Models
         public List<QuotedSubscriptionItemTier> ItemTiers 
         {
             get { return GetResourceList<QuotedSubscriptionItemTier>("item_tiers"); }
+        }
+        public QuotedSubscriptionQuotedContractTerm QuotedContractTerm 
+        {
+            get { return GetSubResource<QuotedSubscriptionQuotedContractTerm>("quoted_contract_term"); }
         }
         
         #endregion
@@ -244,6 +264,99 @@ namespace ChargeBee.Models
             }
 
         }
+        public class QuotedSubscriptionDiscount : Resource
+        {
+            public enum TypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "fixed_amount")]
+                FixedAmount,
+                [EnumMember(Value = "percentage")]
+                Percentage,
+            }
+            public enum DurationTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "one_time")]
+                OneTime,
+                [EnumMember(Value = "forever")]
+                Forever,
+                [EnumMember(Value = "limited_period")]
+                LimitedPeriod,
+            }
+            public enum ApplyOnEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "invoice_amount")]
+                InvoiceAmount,
+                [EnumMember(Value = "specific_item_price")]
+                SpecificItemPrice,
+            }
+
+            public string Id() {
+                return GetValue<string>("id", true);
+            }
+
+            public string InvoiceName() {
+                return GetValue<string>("invoice_name", false);
+            }
+
+            public TypeEnum DiscountType() {
+                return GetEnum<TypeEnum>("type", true);
+            }
+
+            public double? Percentage() {
+                return GetValue<double?>("percentage", false);
+            }
+
+            public int? Amount() {
+                return GetValue<int?>("amount", false);
+            }
+
+            public string CurrencyCode() {
+                return GetValue<string>("currency_code", false);
+            }
+
+            public DurationTypeEnum DurationType() {
+                return GetEnum<DurationTypeEnum>("duration_type", true);
+            }
+
+            public int? Period() {
+                return GetValue<int?>("period", false);
+            }
+
+            public PeriodUnitEnum? PeriodUnit() {
+                return GetEnum<PeriodUnitEnum>("period_unit", false);
+            }
+
+            public bool IncludedInMrr() {
+                return GetValue<bool>("included_in_mrr", true);
+            }
+
+            public ApplyOnEnum ApplyOn() {
+                return GetEnum<ApplyOnEnum>("apply_on", true);
+            }
+
+            public string ItemPriceId() {
+                return GetValue<string>("item_price_id", false);
+            }
+
+            public DateTime CreatedAt() {
+                return (DateTime)GetDateTime("created_at", true);
+            }
+
+            public DateTime? ApplyTill() {
+                return GetDateTime("apply_till", false);
+            }
+
+            public int? AppliedCount() {
+                return GetValue<int?>("applied_count", false);
+            }
+
+        }
         public class QuotedSubscriptionSubscriptionItem : Resource
         {
             public enum ItemTypeEnum
@@ -279,16 +392,40 @@ namespace ChargeBee.Models
                 return GetValue<int?>("quantity", false);
             }
 
+            public string QuantityInDecimal() {
+                return GetValue<string>("quantity_in_decimal", false);
+            }
+
+            public string MeteredQuantity() {
+                return GetValue<string>("metered_quantity", false);
+            }
+
+            public DateTime? LastCalculatedAt() {
+                return GetDateTime("last_calculated_at", false);
+            }
+
             public int? UnitPrice() {
                 return GetValue<int?>("unit_price", false);
+            }
+
+            public string UnitPriceInDecimal() {
+                return GetValue<string>("unit_price_in_decimal", false);
             }
 
             public int? Amount() {
                 return GetValue<int?>("amount", false);
             }
 
+            public string AmountInDecimal() {
+                return GetValue<string>("amount_in_decimal", false);
+            }
+
             public int? FreeQuantity() {
                 return GetValue<int?>("free_quantity", false);
+            }
+
+            public string FreeQuantityInDecimal() {
+                return GetValue<string>("free_quantity_in_decimal", false);
             }
 
             public DateTime? TrialEnd() {
@@ -335,19 +472,57 @@ namespace ChargeBee.Models
                 return GetValue<int>("price", true);
             }
 
-            [Obsolete]
             public string StartingUnitInDecimal() {
                 return GetValue<string>("starting_unit_in_decimal", false);
             }
 
-            [Obsolete]
             public string EndingUnitInDecimal() {
                 return GetValue<string>("ending_unit_in_decimal", false);
             }
 
-            [Obsolete]
             public string PriceInDecimal() {
                 return GetValue<string>("price_in_decimal", false);
+            }
+
+        }
+        public class QuotedSubscriptionQuotedContractTerm : Resource
+        {
+            public enum ActionAtTermEndEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "renew")]
+                Renew,
+                [EnumMember(Value = "evergreen")]
+                Evergreen,
+                [EnumMember(Value = "cancel")]
+                Cancel,
+                [EnumMember(Value = "renew_once")]
+                RenewOnce,
+            }
+
+            public DateTime ContractStart() {
+                return (DateTime)GetDateTime("contract_start", true);
+            }
+
+            public DateTime ContractEnd() {
+                return (DateTime)GetDateTime("contract_end", true);
+            }
+
+            public int BillingCycle() {
+                return GetValue<int>("billing_cycle", true);
+            }
+
+            public ActionAtTermEndEnum ActionAtTermEnd() {
+                return GetEnum<ActionAtTermEndEnum>("action_at_term_end", true);
+            }
+
+            public long TotalContractValue() {
+                return GetValue<long>("total_contract_value", true);
+            }
+
+            public int? CancellationCutoffPeriod() {
+                return GetValue<int?>("cancellation_cutoff_period", false);
             }
 
         }

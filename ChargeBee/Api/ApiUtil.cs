@@ -199,6 +199,12 @@ namespace ChargeBee.Api
 
             return (long)(dtutc - m_unixTime).TotalSeconds;
         }
+
+        public static String SerializeObject(Object obj)
+        {
+            return JsonConvert.SerializeObject(obj);
+
+        }
     }
 
     /// <summary>

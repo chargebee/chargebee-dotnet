@@ -145,6 +145,10 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<UsageCalculationEnum>("usage_calculation", false); }
         }
+        public DateTime? ArchivedAt 
+        {
+            get { return GetDateTime("archived_at", false); }
+        }
         public List<ItemApplicableItem> ApplicableItems 
         {
             get { return GetResourceList<ItemApplicableItem>("applicable_items"); }
@@ -333,6 +337,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("included_in_mrr", includedInMrr);
                 return this;
             }
+            public UpdateRequest Status(Item.StatusEnum status) 
+            {
+                m_params.AddOpt("status", status);
+                return this;
+            }
         }
         public class ItemListRequest : ListRequestBase<ItemListRequest> 
         {
@@ -389,6 +398,18 @@ namespace ChargeBee.Models
             {
                 return new EnumFilter<Item.UsageCalculationEnum, ItemListRequest>("usage_calculation", this);        
             }
+            public ItemListRequest SortByName(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","name");
+                return this;
+            }
+            public ItemListRequest SortById(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","id");
+                return this;
+            }
+            public ItemListRequest SortByUpdatedAt(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","updated_at");
+                return this;
+            }
         }
         #endregion
 
@@ -400,7 +421,6 @@ namespace ChargeBee.Models
             [EnumMember(Value = "active")]
             Active,
             [EnumMember(Value = "archived")]
-            [Obsolete]
             Archived,
             [EnumMember(Value = "deleted")]
             Deleted,
@@ -439,6 +459,8 @@ namespace ChargeBee.Models
             SumOfUsages,
             [EnumMember(Value = "last_usage")]
             LastUsage,
+            [EnumMember(Value = "max_usage")]
+            MaxUsage,
 
         }
 

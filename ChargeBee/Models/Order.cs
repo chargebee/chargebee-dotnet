@@ -97,6 +97,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "orders");
             return new ListRequest(url);
         }
+        public static ResendRequest Resend(string id)
+        {
+            string url = ApiUtil.BuildUrl("orders", CheckNull(id), "resend");
+            return new ResendRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -163,6 +168,10 @@ namespace ChargeBee.Models
         public string TrackingId 
         {
             get { return GetValue<string>("tracking_id", false); }
+        }
+        public string TrackingUrl 
+        {
+            get { return GetValue<string>("tracking_url", false); }
         }
         public string BatchId 
         {
@@ -240,6 +249,18 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("cancelled_at", false); }
         }
+        public ResentStatusEnum? ResentStatus 
+        {
+            get { return GetEnum<ResentStatusEnum>("resent_status", false); }
+        }
+        public bool IsResent 
+        {
+            get { return GetValue<bool>("is_resent", true); }
+        }
+        public string OriginalOrderId 
+        {
+            get { return GetValue<string>("original_order_id", false); }
+        }
         public List<OrderOrderLineItem> OrderLineItems 
         {
             get { return GetResourceList<OrderOrderLineItem>("order_line_items"); }
@@ -296,6 +317,14 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("gift_id", false); }
         }
+        public string ResendReason 
+        {
+            get { return GetValue<string>("resend_reason", false); }
+        }
+        public List<OrderResentOrder> ResentOrders 
+        {
+            get { return GetResourceList<OrderResentOrder>("resent_orders"); }
+        }
         
         #endregion
         
@@ -340,6 +369,11 @@ namespace ChargeBee.Models
             public CreateRequest TrackingId(string trackingId) 
             {
                 m_params.AddOpt("tracking_id", trackingId);
+                return this;
+            }
+            public CreateRequest TrackingUrl(string trackingUrl) 
+            {
+                m_params.AddOpt("tracking_url", trackingUrl);
                 return this;
             }
             public CreateRequest BatchId(string batchId) 
@@ -398,6 +432,11 @@ namespace ChargeBee.Models
             public UpdateRequest DeliveredAt(long deliveredAt) 
             {
                 m_params.AddOpt("delivered_at", deliveredAt);
+                return this;
+            }
+            public UpdateRequest TrackingUrl(string trackingUrl) 
+            {
+                m_params.AddOpt("tracking_url", trackingUrl);
                 return this;
             }
             public UpdateRequest TrackingId(string trackingId) 
@@ -576,6 +615,11 @@ namespace ChargeBee.Models
             public ImportOrderRequest TrackingId(string trackingId) 
             {
                 m_params.AddOpt("tracking_id", trackingId);
+                return this;
+            }
+            public ImportOrderRequest TrackingUrl(string trackingUrl) 
+            {
+                m_params.AddOpt("tracking_url", trackingUrl);
                 return this;
             }
             public ImportOrderRequest BatchId(string batchId) 
@@ -880,12 +924,52 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<OrderListRequest>("created_at", this);        
             }
+            public EnumFilter<Order.ResentStatusEnum, OrderListRequest> ResentStatus() 
+            {
+                return new EnumFilter<Order.ResentStatusEnum, OrderListRequest>("resent_status", this);        
+            }
+            public BooleanFilter<OrderListRequest> IsResent() 
+            {
+                return new BooleanFilter<OrderListRequest>("is_resent", this);        
+            }
+            public StringFilter<OrderListRequest> OriginalOrderId() 
+            {
+                return new StringFilter<OrderListRequest>("original_order_id", this);        
+            }
             public OrderListRequest SortByCreatedAt(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");
                 return this;
             }
             public OrderListRequest SortByUpdatedAt(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","updated_at");
+                return this;
+            }
+        }
+        public class ResendRequest : EntityRequest<ResendRequest> 
+        {
+            public ResendRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public ResendRequest ShippingDate(long shippingDate) 
+            {
+                m_params.AddOpt("shipping_date", shippingDate);
+                return this;
+            }
+            public ResendRequest ResendReason(string resendReason) 
+            {
+                m_params.AddOpt("resend_reason", resendReason);
+                return this;
+            }
+            public ResendRequest OrderLineItemId(int index, string orderLineItemId) 
+            {
+                m_params.AddOpt("order_line_items[id][" + index + "]", orderLineItemId);
+                return this;
+            }
+            public ResendRequest OrderLineItemFulfillmentQuantity(int index, int orderLineItemFulfillmentQuantity) 
+            {
+                m_params.AddOpt("order_line_items[fulfillment_quantity][" + index + "]", orderLineItemFulfillmentQuantity);
                 return this;
             }
         }
@@ -953,6 +1037,8 @@ namespace ChargeBee.Models
             ProductNotAvailable,
             [EnumMember(Value = "others")]
             Others,
+            [EnumMember(Value = "order_resent")]
+            OrderResent,
 
         }
         public enum PaymentStatusEnum
@@ -975,6 +1061,17 @@ namespace ChargeBee.Models
             Manual,
             [EnumMember(Value = "system_generated")]
             SystemGenerated,
+
+        }
+        public enum ResentStatusEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "fully_resent")]
+            FullyResent,
+            [EnumMember(Value = "partially_resent")]
+            PartiallyResent,
 
         }
 
@@ -1014,6 +1111,12 @@ namespace ChargeBee.Models
                 Addon,
                 [EnumMember(Value = "adhoc")]
                 Adhoc,
+                [EnumMember(Value = "plan_item_price")]
+                PlanItemPrice,
+                [EnumMember(Value = "addon_item_price")]
+                AddonItemPrice,
+                [EnumMember(Value = "charge_item_price")]
+                ChargeItemPrice,
             }
 
             public string Id() {
@@ -1283,6 +1386,8 @@ namespace ChargeBee.Models
                 PromotionalCredits,
                 [EnumMember(Value = "prorated_credits")]
                 ProratedCredits,
+                [EnumMember(Value = "custom_discount")]
+                CustomDiscount,
             }
 
             public string LineItemId() {
@@ -1349,6 +1454,22 @@ namespace ChargeBee.Models
 
             public int? AmountRefunded() {
                 return GetValue<int?>("amount_refunded", false);
+            }
+
+        }
+        public class OrderResentOrder : Resource
+        {
+
+            public string OrderId() {
+                return GetValue<string>("order_id", true);
+            }
+
+            public string Reason() {
+                return GetValue<string>("reason", false);
+            }
+
+            public int? Amount() {
+                return GetValue<int?>("amount", false);
             }
 
         }

@@ -119,6 +119,10 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<TrialPeriodUnitEnum>("trial_period_unit", false); }
         }
+        public TrialEndActionEnum? TrialEndAction 
+        {
+            get { return GetEnum<TrialEndActionEnum>("trial_end_action", false); }
+        }
         public PricingModelEnum PricingModel 
         {
             get { return GetEnum<PricingModelEnum>("pricing_model", true); }
@@ -204,6 +208,14 @@ namespace ChargeBee.Models
         public string AccountingCategory2 
         {
             get { return GetValue<string>("accounting_category2", false); }
+        }
+        public string AccountingCategory3 
+        {
+            get { return GetValue<string>("accounting_category3", false); }
+        }
+        public string AccountingCategory4 
+        {
+            get { return GetValue<string>("accounting_category4", false); }
         }
         public bool? IsShippable 
         {
@@ -320,6 +332,11 @@ namespace ChargeBee.Models
             public CreateRequest TrialPeriodUnit(Plan.TrialPeriodUnitEnum trialPeriodUnit) 
             {
                 m_params.AddOpt("trial_period_unit", trialPeriodUnit);
+                return this;
+            }
+            public CreateRequest TrialEndAction(Plan.TrialEndActionEnum trialEndAction) 
+            {
+                m_params.AddOpt("trial_end_action", trialEndAction);
                 return this;
             }
             public CreateRequest Period(int period) 
@@ -457,6 +474,16 @@ namespace ChargeBee.Models
             public CreateRequest AccountingCategory2(string accountingCategory2) 
             {
                 m_params.AddOpt("accounting_category2", accountingCategory2);
+                return this;
+            }
+            public CreateRequest AccountingCategory3(string accountingCategory3) 
+            {
+                m_params.AddOpt("accounting_category3", accountingCategory3);
+                return this;
+            }
+            public CreateRequest AccountingCategory4(string accountingCategory4) 
+            {
+                m_params.AddOpt("accounting_category4", accountingCategory4);
                 return this;
             }
             public CreateRequest IsShippable(bool isShippable) 
@@ -627,6 +654,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("trial_period_unit", trialPeriodUnit);
                 return this;
             }
+            public UpdateRequest TrialEndAction(Plan.TrialEndActionEnum trialEndAction) 
+            {
+                m_params.AddOpt("trial_end_action", trialEndAction);
+                return this;
+            }
             public UpdateRequest Period(int period) 
             {
                 m_params.AddOpt("period", period);
@@ -762,6 +794,16 @@ namespace ChargeBee.Models
             public UpdateRequest AccountingCategory2(string accountingCategory2) 
             {
                 m_params.AddOpt("accounting_category2", accountingCategory2);
+                return this;
+            }
+            public UpdateRequest AccountingCategory3(string accountingCategory3) 
+            {
+                m_params.AddOpt("accounting_category3", accountingCategory3);
+                return this;
+            }
+            public UpdateRequest AccountingCategory4(string accountingCategory4) 
+            {
+                m_params.AddOpt("accounting_category4", accountingCategory4);
                 return this;
             }
             public UpdateRequest IsShippable(bool isShippable) 
@@ -1004,6 +1046,19 @@ namespace ChargeBee.Models
             Day,
             [EnumMember(Value = "month")]
             Month,
+
+        }
+        public enum TrialEndActionEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "site_default")]
+            SiteDefault,
+            [EnumMember(Value = "activate_subscription")]
+            ActivateSubscription,
+            [EnumMember(Value = "cancel_subscription")]
+            CancelSubscription,
 
         }
         [Obsolete]

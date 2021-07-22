@@ -223,6 +223,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
                 return this;
             }
+            public CreateUsingTempTokenRequest AdditionalInformation(JToken additionalInformation) 
+            {
+                m_params.AddOpt("additional_information", additionalInformation);
+                return this;
+            }
         }
         public class CreateUsingPermanentTokenRequest : EntityRequest<CreateUsingPermanentTokenRequest> 
         {
@@ -259,6 +264,11 @@ namespace ChargeBee.Models
             public CreateUsingPermanentTokenRequest ReplacePrimaryPaymentSource(bool replacePrimaryPaymentSource) 
             {
                 m_params.AddOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
+                return this;
+            }
+            public CreateUsingPermanentTokenRequest AdditionalInformation(JToken additionalInformation) 
+            {
+                m_params.AddOpt("additional_information", additionalInformation);
                 return this;
             }
         }
@@ -331,6 +341,11 @@ namespace ChargeBee.Models
             public CreateUsingPaymentIntentRequest PaymentIntentAdditionalInfo(JToken paymentIntentAdditionalInfo) 
             {
                 m_params.AddOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+                return this;
+            }
+            public CreateUsingPaymentIntentRequest PaymentIntentAdditionalInformation(JToken paymentIntentAdditionalInformation) 
+            {
+                m_params.AddOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
                 return this;
             }
         }
@@ -419,6 +434,11 @@ namespace ChargeBee.Models
             public CreateCardRequest CardBillingCountry(string cardBillingCountry) 
             {
                 m_params.AddOpt("card[billing_country]", cardBillingCountry);
+                return this;
+            }
+            public CreateCardRequest CardAdditionalInformation(JToken cardAdditionalInformation) 
+            {
+                m_params.AddOpt("card[additional_information]", cardAdditionalInformation);
                 return this;
             }
         }
@@ -512,6 +532,11 @@ namespace ChargeBee.Models
             public CreateBankAccountRequest BankAccountSwedishIdentityNumber(string bankAccountSwedishIdentityNumber) 
             {
                 m_params.AddOpt("bank_account[swedish_identity_number]", bankAccountSwedishIdentityNumber);
+                return this;
+            }
+            public CreateBankAccountRequest BankAccountBillingAddress(JToken bankAccountBillingAddress) 
+            {
+                m_params.AddOpt("bank_account[billing_address]", bankAccountBillingAddress);
                 return this;
             }
         }
@@ -632,6 +657,14 @@ namespace ChargeBee.Models
             public TimestampFilter<PaymentSourceListRequest> CreatedAt() 
             {
                 return new TimestampFilter<PaymentSourceListRequest>("created_at", this);        
+            }
+            public PaymentSourceListRequest SortByCreatedAt(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");
+                return this;
+            }
+            public PaymentSourceListRequest SortByUpdatedAt(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","updated_at");
+                return this;
             }
         }
         public class SwitchGatewayAccountRequest : EntityRequest<SwitchGatewayAccountRequest> 

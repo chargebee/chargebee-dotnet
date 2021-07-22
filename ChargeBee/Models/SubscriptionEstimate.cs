@@ -56,6 +56,10 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<StatusEnum>("status", false); }
         }
+        public TrialEndActionEnum? TrialEndAction 
+        {
+            get { return GetEnum<TrialEndActionEnum>("trial_end_action", false); }
+        }
         public DateTime? NextBillingAt 
         {
             get { return GetDateTime("next_billing_at", false); }

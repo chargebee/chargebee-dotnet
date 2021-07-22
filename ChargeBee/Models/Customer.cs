@@ -393,6 +393,10 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<CustomerChildAccountAccess>("child_account_access"); }
         }
+        public string VatNumberPrefix 
+        {
+            get { return GetValue<string>("vat_number_prefix", false); }
+        }
         
         #endregion
         
@@ -457,6 +461,11 @@ namespace ChargeBee.Models
             public CreateRequest VatNumber(string vatNumber) 
             {
                 m_params.AddOpt("vat_number", vatNumber);
+                return this;
+            }
+            public CreateRequest VatNumberPrefix(string vatNumberPrefix) 
+            {
+                m_params.AddOpt("vat_number_prefix", vatNumberPrefix);
                 return this;
             }
             public CreateRequest RegisteredForGst(bool registeredForGst) 
@@ -637,6 +646,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("bank_account[swedish_identity_number]", bankAccountSwedishIdentityNumber);
                 return this;
             }
+            public CreateRequest BankAccountBillingAddress(JToken bankAccountBillingAddress) 
+            {
+                m_params.AddOpt("bank_account[billing_address]", bankAccountBillingAddress);
+                return this;
+            }
             public CreateRequest PaymentMethodType(ChargeBee.Models.Enums.TypeEnum paymentMethodType) 
             {
                 m_params.AddOpt("payment_method[type]", paymentMethodType);
@@ -666,6 +680,11 @@ namespace ChargeBee.Models
             public CreateRequest PaymentMethodIssuingCountry(string paymentMethodIssuingCountry) 
             {
                 m_params.AddOpt("payment_method[issuing_country]", paymentMethodIssuingCountry);
+                return this;
+            }
+            public CreateRequest PaymentMethodAdditionalInformation(JToken paymentMethodAdditionalInformation) 
+            {
+                m_params.AddOpt("payment_method[additional_information]", paymentMethodAdditionalInformation);
                 return this;
             }
             public CreateRequest CardFirstName(string cardFirstName) 
@@ -739,6 +758,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[ip_address]", cardIpAddress);
                 return this;
             }
+            public CreateRequest CardAdditionalInformation(JToken cardAdditionalInformation) 
+            {
+                m_params.AddOpt("card[additional_information]", cardAdditionalInformation);
+                return this;
+            }
             public CreateRequest PaymentIntentId(string paymentIntentId) 
             {
                 m_params.AddOpt("payment_intent[id]", paymentIntentId);
@@ -765,9 +789,9 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
                 return this;
             }
-            public CreateRequest PaymentIntentAdditionalInfo(JToken paymentIntentAdditionalInfo) 
+            public CreateRequest PaymentIntentAdditionalInformation(JToken paymentIntentAdditionalInformation) 
             {
-                m_params.AddOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+                m_params.AddOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
                 return this;
             }
             public CreateRequest BillingAddressFirstName(string billingAddressFirstName) 
@@ -1086,6 +1110,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_method[issuing_country]", paymentMethodIssuingCountry);
                 return this;
             }
+            public UpdatePaymentMethodRequest PaymentMethodAdditionalInformation(JToken paymentMethodAdditionalInformation) 
+            {
+                m_params.AddOpt("payment_method[additional_information]", paymentMethodAdditionalInformation);
+                return this;
+            }
         }
         public class UpdateBillingInfoRequest : EntityRequest<UpdateBillingInfoRequest> 
         {
@@ -1097,6 +1126,11 @@ namespace ChargeBee.Models
             public UpdateBillingInfoRequest VatNumber(string vatNumber) 
             {
                 m_params.AddOpt("vat_number", vatNumber);
+                return this;
+            }
+            public UpdateBillingInfoRequest VatNumberPrefix(string vatNumberPrefix) 
+            {
+                m_params.AddOpt("vat_number_prefix", vatNumberPrefix);
                 return this;
             }
             public UpdateBillingInfoRequest RegisteredForGst(bool registeredForGst) 
@@ -1506,6 +1540,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_method[tmp_token]", paymentMethodTmpToken);
                 return this;
             }
+            public CollectPaymentRequest PaymentMethodAdditionalInformation(JToken paymentMethodAdditionalInformation) 
+            {
+                m_params.AddOpt("payment_method[additional_information]", paymentMethodAdditionalInformation);
+                return this;
+            }
             public CollectPaymentRequest CardGatewayAccountId(string cardGatewayAccountId) 
             {
                 m_params.AddOpt("card[gateway_account_id]", cardGatewayAccountId);
@@ -1576,6 +1615,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[billing_country]", cardBillingCountry);
                 return this;
             }
+            public CollectPaymentRequest CardAdditionalInformation(JToken cardAdditionalInformation) 
+            {
+                m_params.AddOpt("card[additional_information]", cardAdditionalInformation);
+                return this;
+            }
             public CollectPaymentRequest PaymentIntentId(string paymentIntentId) 
             {
                 m_params.AddOpt("payment_intent[id]", paymentIntentId);
@@ -1602,9 +1646,9 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_intent[reference_id]", paymentIntentReferenceId);
                 return this;
             }
-            public CollectPaymentRequest PaymentIntentAdditionalInfo(JToken paymentIntentAdditionalInfo) 
+            public CollectPaymentRequest PaymentIntentAdditionalInformation(JToken paymentIntentAdditionalInformation) 
             {
-                m_params.AddOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+                m_params.AddOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
                 return this;
             }
             public CollectPaymentRequest InvoiceAllocationInvoiceId(int index, string invoiceAllocationInvoiceId) 
@@ -2168,7 +2212,6 @@ namespace ChargeBee.Models
                 return GetValue<string>("currency_code", true);
             }
 
-            [Obsolete]
             public string BalanceCurrencyCode() {
                 return GetValue<string>("balance_currency_code", true);
             }

@@ -184,9 +184,19 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_prices[quantity][" + index + "]", itemPriceQuantity);
                 return this;
             }
+            public CreateRequest ItemPriceQuantityInDecimal(int index, string itemPriceQuantityInDecimal) 
+            {
+                m_params.AddOpt("item_prices[quantity_in_decimal][" + index + "]", itemPriceQuantityInDecimal);
+                return this;
+            }
             public CreateRequest ItemPriceUnitPrice(int index, int itemPriceUnitPrice) 
             {
                 m_params.AddOpt("item_prices[unit_price][" + index + "]", itemPriceUnitPrice);
+                return this;
+            }
+            public CreateRequest ItemPriceUnitPriceInDecimal(int index, string itemPriceUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("item_prices[unit_price_in_decimal][" + index + "]", itemPriceUnitPriceInDecimal);
                 return this;
             }
             public CreateRequest ItemPriceDateFrom(int index, long itemPriceDateFrom) 
@@ -219,6 +229,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[price][" + index + "]", itemTierPrice);
                 return this;
             }
+            public CreateRequest ItemTierStartingUnitInDecimal(int index, string itemTierStartingUnitInDecimal) 
+            {
+                m_params.AddOpt("item_tiers[starting_unit_in_decimal][" + index + "]", itemTierStartingUnitInDecimal);
+                return this;
+            }
+            public CreateRequest ItemTierEndingUnitInDecimal(int index, string itemTierEndingUnitInDecimal) 
+            {
+                m_params.AddOpt("item_tiers[ending_unit_in_decimal][" + index + "]", itemTierEndingUnitInDecimal);
+                return this;
+            }
+            public CreateRequest ItemTierPriceInDecimal(int index, string itemTierPriceInDecimal) 
+            {
+                m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+                return this;
+            }
             public CreateRequest ChargeAmount(int index, int chargeAmount) 
             {
                 m_params.AddOpt("charges[amount][" + index + "]", chargeAmount);
@@ -232,6 +257,26 @@ namespace ChargeBee.Models
             public CreateRequest ChargeDescription(int index, string chargeDescription) 
             {
                 m_params.AddOpt("charges[description][" + index + "]", chargeDescription);
+                return this;
+            }
+            public CreateRequest ChargeTaxable(int index, bool chargeTaxable) 
+            {
+                m_params.AddOpt("charges[taxable][" + index + "]", chargeTaxable);
+                return this;
+            }
+            public CreateRequest ChargeTaxProfileId(int index, string chargeTaxProfileId) 
+            {
+                m_params.AddOpt("charges[tax_profile_id][" + index + "]", chargeTaxProfileId);
+                return this;
+            }
+            public CreateRequest ChargeAvalaraTaxCode(int index, string chargeAvalaraTaxCode) 
+            {
+                m_params.AddOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
+                return this;
+            }
+            public CreateRequest ChargeTaxjarProductCode(int index, string chargeTaxjarProductCode) 
+            {
+                m_params.AddOpt("charges[taxjar_product_code][" + index + "]", chargeTaxjarProductCode);
                 return this;
             }
             public CreateRequest ChargeAvalaraSaleType(int index, ChargeBee.Models.Enums.AvalaraSaleTypeEnum chargeAvalaraSaleType) 
@@ -257,11 +302,6 @@ namespace ChargeBee.Models
             public CreateRequest ChargeDateTo(int index, long chargeDateTo) 
             {
                 m_params.AddOpt("charges[date_to][" + index + "]", chargeDateTo);
-                return this;
-            }
-            public CreateRequest ChargeTaxable(int index, bool chargeTaxable) 
-            {
-                m_params.AddOpt("charges[taxable][" + index + "]", chargeTaxable);
                 return this;
             }
         }

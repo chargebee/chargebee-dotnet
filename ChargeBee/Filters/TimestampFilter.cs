@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using ChargeBee.Api;
 
 namespace ChargeBee
@@ -34,8 +34,10 @@ namespace ChargeBee
 			return req;
 		}
 
-		public U Between(DateTime value1, DateTime value2) {
-			req.Params().AddOpt(paramName + "[between]", new DateTime[]{value1,value2});
+		public U Between(DateTime value1, DateTime value2)
+		{
+			String serializedObject = Serialize(value1, value2);
+			req.Params().AddOpt(paramName + "[between]", serializedObject);
 			return req;
 		}
 
@@ -45,7 +47,14 @@ namespace ChargeBee
 			}
 			req.Params().AddOpt(paramName + "[is_present]", value);
 			return req;
-		}    
+		}
+
+		private String Serialize(DateTime value1, DateTime value2)
+        	{
+			return ApiUtil.SerializeObject(new Int64[] { (Int64)ApiUtil.ConvertToTimestamp(value1), (Int64)ApiUtil.ConvertToTimestamp(value2) });
+
+		}
+
 	}
 }
 

@@ -267,6 +267,14 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<AutoCollectionEnum>("auto_collection", false); }
         }
+        public string PlanQuantityInDecimal 
+        {
+            get { return GetValue<string>("plan_quantity_in_decimal", false); }
+        }
+        public string PlanUnitPriceInDecimal 
+        {
+            get { return GetValue<string>("plan_unit_price_in_decimal", false); }
+        }
         public string CustomerId 
         {
             get { return GetValue<string>("customer_id", true); }
@@ -286,6 +294,10 @@ namespace ChargeBee.Models
         public DateTime? TrialStart 
         {
             get { return GetDateTime("trial_start", false); }
+        }
+        public TrialEndActionEnum? TrialEndAction 
+        {
+            get { return GetEnum<TrialEndActionEnum>("trial_end_action", false); }
         }
         public DateTime? CurrentTermStart 
         {
@@ -371,17 +383,13 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("plan_free_quantity_in_decimal", false); }
         }
-        public string PlanQuantityInDecimal 
-        {
-            get { return GetValue<string>("plan_quantity_in_decimal", false); }
-        }
-        public string PlanUnitPriceInDecimal 
-        {
-            get { return GetValue<string>("plan_unit_price_in_decimal", false); }
-        }
         public string PlanAmountInDecimal 
         {
             get { return GetValue<string>("plan_amount_in_decimal", false); }
+        }
+        public DateTime? CancelScheduleCreatedAt 
+        {
+            get { return GetDateTime("cancel_schedule_created_at", false); }
         }
         public OfflinePaymentMethodEnum? OfflinePaymentMethod 
         {
@@ -508,16 +516,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("id", id);
                 return this;
             }
-            public CreateRequest PlanUnitPriceInDecimal(string planUnitPriceInDecimal) 
-            {
-                m_params.AddOpt("plan_unit_price_in_decimal", planUnitPriceInDecimal);
-                return this;
-            }
-            public CreateRequest PlanQuantityInDecimal(string planQuantityInDecimal) 
-            {
-                m_params.AddOpt("plan_quantity_in_decimal", planQuantityInDecimal);
-                return this;
-            }
             public CreateRequest PlanId(string planId) 
             {
                 m_params.Add("plan_id", planId);
@@ -528,9 +526,19 @@ namespace ChargeBee.Models
                 m_params.AddOpt("plan_quantity", planQuantity);
                 return this;
             }
+            public CreateRequest PlanQuantityInDecimal(string planQuantityInDecimal) 
+            {
+                m_params.AddOpt("plan_quantity_in_decimal", planQuantityInDecimal);
+                return this;
+            }
             public CreateRequest PlanUnitPrice(int planUnitPrice) 
             {
                 m_params.AddOpt("plan_unit_price", planUnitPrice);
+                return this;
+            }
+            public CreateRequest PlanUnitPriceInDecimal(string planUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("plan_unit_price_in_decimal", planUnitPriceInDecimal);
                 return this;
             }
             public CreateRequest SetupFee(int setupFee) 
@@ -638,6 +646,11 @@ namespace ChargeBee.Models
             public CreateRequest ContractTermBillingCycleOnRenewal(int contractTermBillingCycleOnRenewal) 
             {
                 m_params.AddOpt("contract_term_billing_cycle_on_renewal", contractTermBillingCycleOnRenewal);
+                return this;
+            }
+            public CreateRequest TrialEndAction(ChargeBee.Models.Enums.TrialEndActionEnum trialEndAction) 
+            {
+                m_params.AddOpt("trial_end_action", trialEndAction);
                 return this;
             }
             public CreateRequest ClientProfileId(string clientProfileId) 
@@ -817,6 +830,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("bank_account[swedish_identity_number]", bankAccountSwedishIdentityNumber);
                 return this;
             }
+            public CreateRequest BankAccountBillingAddress(JToken bankAccountBillingAddress) 
+            {
+                m_params.AddOpt("bank_account[billing_address]", bankAccountBillingAddress);
+                return this;
+            }
             public CreateRequest PaymentMethodType(ChargeBee.Models.Enums.TypeEnum paymentMethodType) 
             {
                 m_params.AddOpt("payment_method[type]", paymentMethodType);
@@ -846,6 +864,11 @@ namespace ChargeBee.Models
             public CreateRequest PaymentMethodIssuingCountry(string paymentMethodIssuingCountry) 
             {
                 m_params.AddOpt("payment_method[issuing_country]", paymentMethodIssuingCountry);
+                return this;
+            }
+            public CreateRequest PaymentMethodAdditionalInformation(JToken paymentMethodAdditionalInformation) 
+            {
+                m_params.AddOpt("payment_method[additional_information]", paymentMethodAdditionalInformation);
                 return this;
             }
             public CreateRequest CardFirstName(string cardFirstName) 
@@ -919,6 +942,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[ip_address]", cardIpAddress);
                 return this;
             }
+            public CreateRequest CardAdditionalInformation(JToken cardAdditionalInformation) 
+            {
+                m_params.AddOpt("card[additional_information]", cardAdditionalInformation);
+                return this;
+            }
             public CreateRequest PaymentIntentId(string paymentIntentId) 
             {
                 m_params.AddOpt("payment_intent[id]", paymentIntentId);
@@ -945,9 +973,9 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
                 return this;
             }
-            public CreateRequest PaymentIntentAdditionalInfo(JToken paymentIntentAdditionalInfo) 
+            public CreateRequest PaymentIntentAdditionalInformation(JToken paymentIntentAdditionalInformation) 
             {
-                m_params.AddOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+                m_params.AddOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
                 return this;
             }
             public CreateRequest BillingAddressFirstName(string billingAddressFirstName) 
@@ -1095,6 +1123,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[vat_number]", customerVatNumber);
                 return this;
             }
+            public CreateRequest CustomerVatNumberPrefix(string customerVatNumberPrefix) 
+            {
+                m_params.AddOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
+                return this;
+            }
             public CreateRequest CustomerRegisteredForGst(bool customerRegisteredForGst) 
             {
                 m_params.AddOpt("customer[registered_for_gst]", customerRegisteredForGst);
@@ -1218,16 +1251,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("id", id);
                 return this;
             }
-            public CreateForCustomerRequest PlanUnitPriceInDecimal(string planUnitPriceInDecimal) 
-            {
-                m_params.AddOpt("plan_unit_price_in_decimal", planUnitPriceInDecimal);
-                return this;
-            }
-            public CreateForCustomerRequest PlanQuantityInDecimal(string planQuantityInDecimal) 
-            {
-                m_params.AddOpt("plan_quantity_in_decimal", planQuantityInDecimal);
-                return this;
-            }
             public CreateForCustomerRequest PlanId(string planId) 
             {
                 m_params.Add("plan_id", planId);
@@ -1238,9 +1261,19 @@ namespace ChargeBee.Models
                 m_params.AddOpt("plan_quantity", planQuantity);
                 return this;
             }
+            public CreateForCustomerRequest PlanQuantityInDecimal(string planQuantityInDecimal) 
+            {
+                m_params.AddOpt("plan_quantity_in_decimal", planQuantityInDecimal);
+                return this;
+            }
             public CreateForCustomerRequest PlanUnitPrice(int planUnitPrice) 
             {
                 m_params.AddOpt("plan_unit_price", planUnitPrice);
+                return this;
+            }
+            public CreateForCustomerRequest PlanUnitPriceInDecimal(string planUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("plan_unit_price_in_decimal", planUnitPriceInDecimal);
                 return this;
             }
             public CreateForCustomerRequest SetupFee(int setupFee) 
@@ -1344,6 +1377,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("contract_term_billing_cycle_on_renewal", contractTermBillingCycleOnRenewal);
                 return this;
             }
+            public CreateForCustomerRequest TrialEndAction(ChargeBee.Models.Enums.TrialEndActionEnum trialEndAction) 
+            {
+                m_params.AddOpt("trial_end_action", trialEndAction);
+                return this;
+            }
             public CreateForCustomerRequest ShippingAddressFirstName(string shippingAddressFirstName) 
             {
                 m_params.AddOpt("shipping_address[first_name]", shippingAddressFirstName);
@@ -1440,9 +1478,9 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
                 return this;
             }
-            public CreateForCustomerRequest PaymentIntentAdditionalInfo(JToken paymentIntentAdditionalInfo) 
+            public CreateForCustomerRequest PaymentIntentAdditionalInformation(JToken paymentIntentAdditionalInformation) 
             {
-                m_params.AddOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+                m_params.AddOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
                 return this;
             }
             public CreateForCustomerRequest ContractTermActionAtTermEnd(SubscriptionContractTerm.ActionAtTermEndEnum contractTermActionAtTermEnd) 
@@ -1665,6 +1703,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("first_invoice_pending", firstInvoicePending);
                 return this;
             }
+            public CreateWithItemsRequest TrialEndAction(ChargeBee.Models.Enums.TrialEndActionEnum trialEndAction) 
+            {
+                m_params.AddOpt("trial_end_action", trialEndAction);
+                return this;
+            }
             public CreateWithItemsRequest ShippingAddressFirstName(string shippingAddressFirstName) 
             {
                 m_params.AddOpt("shipping_address[first_name]", shippingAddressFirstName);
@@ -1761,9 +1804,9 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
                 return this;
             }
-            public CreateWithItemsRequest PaymentIntentAdditionalInfo(JToken paymentIntentAdditionalInfo) 
+            public CreateWithItemsRequest PaymentIntentAdditionalInformation(JToken paymentIntentAdditionalInformation) 
             {
-                m_params.AddOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+                m_params.AddOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
                 return this;
             }
             public CreateWithItemsRequest ContractTermActionAtTermEnd(SubscriptionContractTerm.ActionAtTermEndEnum contractTermActionAtTermEnd) 
@@ -1786,9 +1829,19 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_items[quantity][" + index + "]", subscriptionItemQuantity);
                 return this;
             }
+            public CreateWithItemsRequest SubscriptionItemQuantityInDecimal(int index, string subscriptionItemQuantityInDecimal) 
+            {
+                m_params.AddOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
+                return this;
+            }
             public CreateWithItemsRequest SubscriptionItemUnitPrice(int index, int subscriptionItemUnitPrice) 
             {
                 m_params.AddOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
+                return this;
+            }
+            public CreateWithItemsRequest SubscriptionItemUnitPriceInDecimal(int index, string subscriptionItemUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("subscription_items[unit_price_in_decimal][" + index + "]", subscriptionItemUnitPriceInDecimal);
                 return this;
             }
             public CreateWithItemsRequest SubscriptionItemBillingCycles(int index, int subscriptionItemBillingCycles) 
@@ -1845,6 +1898,21 @@ namespace ChargeBee.Models
             public CreateWithItemsRequest ItemTierPrice(int index, int itemTierPrice) 
             {
                 m_params.AddOpt("item_tiers[price][" + index + "]", itemTierPrice);
+                return this;
+            }
+            public CreateWithItemsRequest ItemTierStartingUnitInDecimal(int index, string itemTierStartingUnitInDecimal) 
+            {
+                m_params.AddOpt("item_tiers[starting_unit_in_decimal][" + index + "]", itemTierStartingUnitInDecimal);
+                return this;
+            }
+            public CreateWithItemsRequest ItemTierEndingUnitInDecimal(int index, string itemTierEndingUnitInDecimal) 
+            {
+                m_params.AddOpt("item_tiers[ending_unit_in_decimal][" + index + "]", itemTierEndingUnitInDecimal);
+                return this;
+            }
+            public CreateWithItemsRequest ItemTierPriceInDecimal(int index, string itemTierPriceInDecimal) 
+            {
+                m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
                 return this;
             }
         }
@@ -2139,6 +2207,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("free_period_unit", freePeriodUnit);
                 return this;
             }
+            public UpdateRequest TrialEndAction(ChargeBee.Models.Enums.TrialEndActionEnum trialEndAction) 
+            {
+                m_params.AddOpt("trial_end_action", trialEndAction);
+                return this;
+            }
             [Obsolete]
             public UpdateRequest CardGateway(ChargeBee.Models.Enums.GatewayEnum cardGateway) 
             {
@@ -2185,6 +2258,11 @@ namespace ChargeBee.Models
             public UpdateRequest PaymentMethodIssuingCountry(string paymentMethodIssuingCountry) 
             {
                 m_params.AddOpt("payment_method[issuing_country]", paymentMethodIssuingCountry);
+                return this;
+            }
+            public UpdateRequest PaymentMethodAdditionalInformation(JToken paymentMethodAdditionalInformation) 
+            {
+                m_params.AddOpt("payment_method[additional_information]", paymentMethodAdditionalInformation);
                 return this;
             }
             public UpdateRequest CardFirstName(string cardFirstName) 
@@ -2258,6 +2336,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[ip_address]", cardIpAddress);
                 return this;
             }
+            public UpdateRequest CardAdditionalInformation(JToken cardAdditionalInformation) 
+            {
+                m_params.AddOpt("card[additional_information]", cardAdditionalInformation);
+                return this;
+            }
             public UpdateRequest PaymentIntentId(string paymentIntentId) 
             {
                 m_params.AddOpt("payment_intent[id]", paymentIntentId);
@@ -2284,9 +2367,9 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
                 return this;
             }
-            public UpdateRequest PaymentIntentAdditionalInfo(JToken paymentIntentAdditionalInfo) 
+            public UpdateRequest PaymentIntentAdditionalInformation(JToken paymentIntentAdditionalInformation) 
             {
-                m_params.AddOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+                m_params.AddOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
                 return this;
             }
             public UpdateRequest BillingAddressFirstName(string billingAddressFirstName) 
@@ -2432,6 +2515,11 @@ namespace ChargeBee.Models
             public UpdateRequest CustomerVatNumber(string customerVatNumber) 
             {
                 m_params.AddOpt("customer[vat_number]", customerVatNumber);
+                return this;
+            }
+            public UpdateRequest CustomerVatNumberPrefix(string customerVatNumberPrefix) 
+            {
+                m_params.AddOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
                 return this;
             }
             public UpdateRequest CustomerBusinessCustomerWithoutVatNumber(bool customerBusinessCustomerWithoutVatNumber) 
@@ -2689,6 +2777,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("auto_close_invoices", autoCloseInvoices);
                 return this;
             }
+            public UpdateForItemsRequest TrialEndAction(ChargeBee.Models.Enums.TrialEndActionEnum trialEndAction) 
+            {
+                m_params.AddOpt("trial_end_action", trialEndAction);
+                return this;
+            }
             [Obsolete]
             public UpdateForItemsRequest CardGateway(ChargeBee.Models.Enums.GatewayEnum cardGateway) 
             {
@@ -2735,6 +2828,11 @@ namespace ChargeBee.Models
             public UpdateForItemsRequest PaymentMethodIssuingCountry(string paymentMethodIssuingCountry) 
             {
                 m_params.AddOpt("payment_method[issuing_country]", paymentMethodIssuingCountry);
+                return this;
+            }
+            public UpdateForItemsRequest PaymentMethodAdditionalInformation(JToken paymentMethodAdditionalInformation) 
+            {
+                m_params.AddOpt("payment_method[additional_information]", paymentMethodAdditionalInformation);
                 return this;
             }
             public UpdateForItemsRequest CardFirstName(string cardFirstName) 
@@ -2808,6 +2906,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[ip_address]", cardIpAddress);
                 return this;
             }
+            public UpdateForItemsRequest CardAdditionalInformation(JToken cardAdditionalInformation) 
+            {
+                m_params.AddOpt("card[additional_information]", cardAdditionalInformation);
+                return this;
+            }
             public UpdateForItemsRequest PaymentIntentId(string paymentIntentId) 
             {
                 m_params.AddOpt("payment_intent[id]", paymentIntentId);
@@ -2834,9 +2937,9 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
                 return this;
             }
-            public UpdateForItemsRequest PaymentIntentAdditionalInfo(JToken paymentIntentAdditionalInfo) 
+            public UpdateForItemsRequest PaymentIntentAdditionalInformation(JToken paymentIntentAdditionalInformation) 
             {
-                m_params.AddOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+                m_params.AddOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
                 return this;
             }
             public UpdateForItemsRequest BillingAddressFirstName(string billingAddressFirstName) 
@@ -2984,6 +3087,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[vat_number]", customerVatNumber);
                 return this;
             }
+            public UpdateForItemsRequest CustomerVatNumberPrefix(string customerVatNumberPrefix) 
+            {
+                m_params.AddOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
+                return this;
+            }
             public UpdateForItemsRequest CustomerBusinessCustomerWithoutVatNumber(bool customerBusinessCustomerWithoutVatNumber) 
             {
                 m_params.AddOpt("customer[business_customer_without_vat_number]", customerBusinessCustomerWithoutVatNumber);
@@ -3014,9 +3122,19 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_items[quantity][" + index + "]", subscriptionItemQuantity);
                 return this;
             }
+            public UpdateForItemsRequest SubscriptionItemQuantityInDecimal(int index, string subscriptionItemQuantityInDecimal) 
+            {
+                m_params.AddOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
+                return this;
+            }
             public UpdateForItemsRequest SubscriptionItemUnitPrice(int index, int subscriptionItemUnitPrice) 
             {
                 m_params.AddOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
+                return this;
+            }
+            public UpdateForItemsRequest SubscriptionItemUnitPriceInDecimal(int index, string subscriptionItemUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("subscription_items[unit_price_in_decimal][" + index + "]", subscriptionItemUnitPriceInDecimal);
                 return this;
             }
             public UpdateForItemsRequest SubscriptionItemBillingCycles(int index, int subscriptionItemBillingCycles) 
@@ -3073,6 +3191,21 @@ namespace ChargeBee.Models
             public UpdateForItemsRequest ItemTierPrice(int index, int itemTierPrice) 
             {
                 m_params.AddOpt("item_tiers[price][" + index + "]", itemTierPrice);
+                return this;
+            }
+            public UpdateForItemsRequest ItemTierStartingUnitInDecimal(int index, string itemTierStartingUnitInDecimal) 
+            {
+                m_params.AddOpt("item_tiers[starting_unit_in_decimal][" + index + "]", itemTierStartingUnitInDecimal);
+                return this;
+            }
+            public UpdateForItemsRequest ItemTierEndingUnitInDecimal(int index, string itemTierEndingUnitInDecimal) 
+            {
+                m_params.AddOpt("item_tiers[ending_unit_in_decimal][" + index + "]", itemTierEndingUnitInDecimal);
+                return this;
+            }
+            public UpdateForItemsRequest ItemTierPriceInDecimal(int index, string itemTierPriceInDecimal) 
+            {
+                m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
                 return this;
             }
         }
@@ -3183,9 +3316,9 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
                 return this;
             }
-            public ReactivateRequest PaymentIntentAdditionalInfo(JToken paymentIntentAdditionalInfo) 
+            public ReactivateRequest PaymentIntentAdditionalInformation(JToken paymentIntentAdditionalInformation) 
             {
-                m_params.AddOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+                m_params.AddOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
                 return this;
             }
         }
@@ -3444,16 +3577,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("client_profile_id", clientProfileId);
                 return this;
             }
-            public ImportSubscriptionRequest PlanUnitPriceInDecimal(string planUnitPriceInDecimal) 
-            {
-                m_params.AddOpt("plan_unit_price_in_decimal", planUnitPriceInDecimal);
-                return this;
-            }
-            public ImportSubscriptionRequest PlanQuantityInDecimal(string planQuantityInDecimal) 
-            {
-                m_params.AddOpt("plan_quantity_in_decimal", planQuantityInDecimal);
-                return this;
-            }
             public ImportSubscriptionRequest PlanId(string planId) 
             {
                 m_params.Add("plan_id", planId);
@@ -3464,9 +3587,19 @@ namespace ChargeBee.Models
                 m_params.AddOpt("plan_quantity", planQuantity);
                 return this;
             }
+            public ImportSubscriptionRequest PlanQuantityInDecimal(string planQuantityInDecimal) 
+            {
+                m_params.AddOpt("plan_quantity_in_decimal", planQuantityInDecimal);
+                return this;
+            }
             public ImportSubscriptionRequest PlanUnitPrice(int planUnitPrice) 
             {
                 m_params.AddOpt("plan_unit_price", planUnitPrice);
+                return this;
+            }
+            public ImportSubscriptionRequest PlanUnitPriceInDecimal(string planUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("plan_unit_price_in_decimal", planUnitPriceInDecimal);
                 return this;
             }
             public ImportSubscriptionRequest SetupFee(int setupFee) 
@@ -3722,6 +3855,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_method[issuing_country]", paymentMethodIssuingCountry);
                 return this;
             }
+            public ImportSubscriptionRequest PaymentMethodAdditionalInformation(JToken paymentMethodAdditionalInformation) 
+            {
+                m_params.AddOpt("payment_method[additional_information]", paymentMethodAdditionalInformation);
+                return this;
+            }
             public ImportSubscriptionRequest CardFirstName(string cardFirstName) 
             {
                 m_params.AddOpt("card[first_name]", cardFirstName);
@@ -3785,6 +3923,11 @@ namespace ChargeBee.Models
             public ImportSubscriptionRequest CardBillingCountry(string cardBillingCountry) 
             {
                 m_params.AddOpt("card[billing_country]", cardBillingCountry);
+                return this;
+            }
+            public ImportSubscriptionRequest CardAdditionalInformation(JToken cardAdditionalInformation) 
+            {
+                m_params.AddOpt("card[additional_information]", cardAdditionalInformation);
                 return this;
             }
             public ImportSubscriptionRequest BillingAddressFirstName(string billingAddressFirstName) 
@@ -3932,6 +4075,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[vat_number]", customerVatNumber);
                 return this;
             }
+            public ImportSubscriptionRequest CustomerVatNumberPrefix(string customerVatNumberPrefix) 
+            {
+                m_params.AddOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
+                return this;
+            }
             public ImportSubscriptionRequest TransactionAmount(int transactionAmount) 
             {
                 m_params.AddOpt("transaction[amount]", transactionAmount);
@@ -4045,16 +4193,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("id", id);
                 return this;
             }
-            public ImportForCustomerRequest PlanUnitPriceInDecimal(string planUnitPriceInDecimal) 
-            {
-                m_params.AddOpt("plan_unit_price_in_decimal", planUnitPriceInDecimal);
-                return this;
-            }
-            public ImportForCustomerRequest PlanQuantityInDecimal(string planQuantityInDecimal) 
-            {
-                m_params.AddOpt("plan_quantity_in_decimal", planQuantityInDecimal);
-                return this;
-            }
             public ImportForCustomerRequest PlanId(string planId) 
             {
                 m_params.Add("plan_id", planId);
@@ -4065,9 +4203,19 @@ namespace ChargeBee.Models
                 m_params.AddOpt("plan_quantity", planQuantity);
                 return this;
             }
+            public ImportForCustomerRequest PlanQuantityInDecimal(string planQuantityInDecimal) 
+            {
+                m_params.AddOpt("plan_quantity_in_decimal", planQuantityInDecimal);
+                return this;
+            }
             public ImportForCustomerRequest PlanUnitPrice(int planUnitPrice) 
             {
                 m_params.AddOpt("plan_unit_price", planUnitPrice);
+                return this;
+            }
+            public ImportForCustomerRequest PlanUnitPriceInDecimal(string planUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("plan_unit_price_in_decimal", planUnitPriceInDecimal);
                 return this;
             }
             public ImportForCustomerRequest SetupFee(int setupFee) 
@@ -4697,9 +4845,19 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_items[quantity][" + index + "]", subscriptionItemQuantity);
                 return this;
             }
+            public ImportForItemsRequest SubscriptionItemQuantityInDecimal(int index, string subscriptionItemQuantityInDecimal) 
+            {
+                m_params.AddOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
+                return this;
+            }
             public ImportForItemsRequest SubscriptionItemUnitPrice(int index, int subscriptionItemUnitPrice) 
             {
                 m_params.AddOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
+                return this;
+            }
+            public ImportForItemsRequest SubscriptionItemUnitPriceInDecimal(int index, string subscriptionItemUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("subscription_items[unit_price_in_decimal][" + index + "]", subscriptionItemUnitPriceInDecimal);
                 return this;
             }
             public ImportForItemsRequest SubscriptionItemBillingCycles(int index, int subscriptionItemBillingCycles) 
@@ -4761,6 +4919,21 @@ namespace ChargeBee.Models
             public ImportForItemsRequest ItemTierPrice(int index, int itemTierPrice) 
             {
                 m_params.AddOpt("item_tiers[price][" + index + "]", itemTierPrice);
+                return this;
+            }
+            public ImportForItemsRequest ItemTierStartingUnitInDecimal(int index, string itemTierStartingUnitInDecimal) 
+            {
+                m_params.AddOpt("item_tiers[starting_unit_in_decimal][" + index + "]", itemTierStartingUnitInDecimal);
+                return this;
+            }
+            public ImportForItemsRequest ItemTierEndingUnitInDecimal(int index, string itemTierEndingUnitInDecimal) 
+            {
+                m_params.AddOpt("item_tiers[ending_unit_in_decimal][" + index + "]", itemTierEndingUnitInDecimal);
+                return this;
+            }
+            public ImportForItemsRequest ItemTierPriceInDecimal(int index, string itemTierPriceInDecimal) 
+            {
+                m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
                 return this;
             }
         }
@@ -4940,9 +5113,19 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_items[quantity][" + index + "]", subscriptionItemQuantity);
                 return this;
             }
+            public CancelForItemsRequest SubscriptionItemQuantityInDecimal(int index, string subscriptionItemQuantityInDecimal) 
+            {
+                m_params.AddOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
+                return this;
+            }
             public CancelForItemsRequest SubscriptionItemUnitPrice(int index, int subscriptionItemUnitPrice) 
             {
                 m_params.AddOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
+                return this;
+            }
+            public CancelForItemsRequest SubscriptionItemUnitPriceInDecimal(int index, string subscriptionItemUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("subscription_items[unit_price_in_decimal][" + index + "]", subscriptionItemUnitPriceInDecimal);
                 return this;
             }
             public CancelForItemsRequest SubscriptionItemServicePeriodDays(int index, int subscriptionItemServicePeriodDays) 
@@ -5004,9 +5187,9 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
                 return this;
             }
-            public ResumeRequest PaymentIntentAdditionalInfo(JToken paymentIntentAdditionalInfo) 
+            public ResumeRequest PaymentIntentAdditionalInformation(JToken paymentIntentAdditionalInformation) 
             {
-                m_params.AddOpt("payment_intent[additional_info]", paymentIntentAdditionalInfo);
+                m_params.AddOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
                 return this;
             }
         }
@@ -5104,6 +5287,10 @@ namespace ChargeBee.Models
                 return GetValue<int?>("quantity", false);
             }
 
+            public string QuantityInDecimal() {
+                return GetValue<string>("quantity_in_decimal", false);
+            }
+
             public string MeteredQuantity() {
                 return GetValue<string>("metered_quantity", false);
             }
@@ -5116,12 +5303,24 @@ namespace ChargeBee.Models
                 return GetValue<int?>("unit_price", false);
             }
 
+            public string UnitPriceInDecimal() {
+                return GetValue<string>("unit_price_in_decimal", false);
+            }
+
             public int? Amount() {
                 return GetValue<int?>("amount", false);
             }
 
+            public string AmountInDecimal() {
+                return GetValue<string>("amount_in_decimal", false);
+            }
+
             public int? FreeQuantity() {
                 return GetValue<int?>("free_quantity", false);
+            }
+
+            public string FreeQuantityInDecimal() {
+                return GetValue<string>("free_quantity_in_decimal", false);
             }
 
             public DateTime? TrialEnd() {

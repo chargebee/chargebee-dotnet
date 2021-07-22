@@ -209,7 +209,6 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<DifferentialPrice>("differential_price"); }
         }
-
         public List<UnbilledCharge> UnbilledCharges
         {
             get {  return (List<UnbilledCharge>)GetResourceList<UnbilledCharge>("unbilled_charges", "unbilled_charge"); }
@@ -239,7 +238,6 @@ namespace ChargeBee.Internal
         {
             get {  return (List<DifferentialPrice>)GetResourceList<DifferentialPrice>("differential_prices", "differential_price"); }
         }
-
 
         private List<T> GetResourceList<T>(string property, string propertySingularName) where T : Resource, new() 
         {

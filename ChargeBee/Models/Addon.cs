@@ -176,6 +176,14 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("accounting_category2", false); }
         }
+        public string AccountingCategory3 
+        {
+            get { return GetValue<string>("accounting_category3", false); }
+        }
+        public string AccountingCategory4 
+        {
+            get { return GetValue<string>("accounting_category4", false); }
+        }
         public bool? IsShippable 
         {
             get { return GetValue<bool?>("is_shippable", false); }
@@ -372,6 +380,16 @@ namespace ChargeBee.Models
             public CreateRequest AccountingCategory2(string accountingCategory2) 
             {
                 m_params.AddOpt("accounting_category2", accountingCategory2);
+                return this;
+            }
+            public CreateRequest AccountingCategory3(string accountingCategory3) 
+            {
+                m_params.AddOpt("accounting_category3", accountingCategory3);
+                return this;
+            }
+            public CreateRequest AccountingCategory4(string accountingCategory4) 
+            {
+                m_params.AddOpt("accounting_category4", accountingCategory4);
                 return this;
             }
             public CreateRequest IsShippable(bool isShippable) 
@@ -576,6 +594,16 @@ namespace ChargeBee.Models
             public UpdateRequest AccountingCategory2(string accountingCategory2) 
             {
                 m_params.AddOpt("accounting_category2", accountingCategory2);
+                return this;
+            }
+            public UpdateRequest AccountingCategory3(string accountingCategory3) 
+            {
+                m_params.AddOpt("accounting_category3", accountingCategory3);
+                return this;
+            }
+            public UpdateRequest AccountingCategory4(string accountingCategory4) 
+            {
+                m_params.AddOpt("accounting_category4", accountingCategory4);
                 return this;
             }
             public UpdateRequest IsShippable(bool isShippable) 

@@ -350,6 +350,8 @@ namespace ChargeBee.Models
             Jcb,
             [EnumMember(Value = "diners_club")]
             DinersClub,
+            [EnumMember(Value = "bancontact")]
+            Bancontact,
             [EnumMember(Value = "other")]
             Other,
             [EnumMember(Value = "not_applicable")]
@@ -386,6 +388,10 @@ namespace ChargeBee.Models
             Bancontact,
             [EnumMember(Value = "giropay")]
             Giropay,
+            [EnumMember(Value = "card")]
+            Card,
+            [EnumMember(Value = "latam_local_card")]
+            LatamLocalCard,
             [EnumMember(Value = "not_applicable")]
             NotApplicable,
 

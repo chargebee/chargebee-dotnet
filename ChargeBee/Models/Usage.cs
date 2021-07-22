@@ -17,6 +17,28 @@ namespace ChargeBee.Models
     public class Usage : Resource 
     {
     
+        public Usage() { }
+
+        public Usage(Stream stream)
+        {
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                JObj = JToken.Parse(reader.ReadToEnd());
+                apiVersionCheck (JObj);
+            }
+        }
+
+        public Usage(TextReader reader)
+        {
+            JObj = JToken.Parse(reader.ReadToEnd());
+            apiVersionCheck (JObj);    
+        }
+
+        public Usage(String jsonString)
+        {
+            JObj = JToken.Parse(jsonString);
+            apiVersionCheck (JObj);
+        }
 
         #region Methods
         public static CreateRequest Create(string id)
@@ -26,7 +48,7 @@ namespace ChargeBee.Models
         }
         public static RetrieveRequest Retrieve(string id)
         {
-            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "usage");
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "usages");
             return new RetrieveRequest(url, HttpMethod.GET);
         }
         public static DeleteRequest Delete(string id)
@@ -194,6 +216,10 @@ namespace ChargeBee.Models
             public EnumFilter<ChargeBee.Models.Enums.SourceEnum, UsageListRequest> Source() 
             {
                 return new EnumFilter<ChargeBee.Models.Enums.SourceEnum, UsageListRequest>("source", this);        
+            }
+            public UsageListRequest SortByUsageDate(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","usage_date");
+                return this;
             }
         }
         public class PdfRequest : EntityRequest<PdfRequest> 

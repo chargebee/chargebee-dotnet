@@ -135,6 +135,10 @@ namespace ChargeBee.Models
             {
                 return new StringFilter<ItemFamilyListRequest>("name", this);        
             }
+            public TimestampFilter<ItemFamilyListRequest> UpdatedAt() 
+            {
+                return new TimestampFilter<ItemFamilyListRequest>("updated_at", this);        
+            }
         }
         public class UpdateRequest : EntityRequest<UpdateRequest> 
         {

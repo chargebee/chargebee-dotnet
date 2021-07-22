@@ -178,6 +178,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "subscription_renewal_reminder")]
          SubscriptionRenewalReminder,
 
+        [EnumMember(Value = "add_usages_reminder")]
+         AddUsagesReminder,
+
         [EnumMember(Value = "transaction_created")]
          TransactionCreated,
 
@@ -294,6 +297,9 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "order_deleted")]
          OrderDeleted,
+
+        [EnumMember(Value = "order_resent")]
+         OrderResent,
 
         [EnumMember(Value = "quote_created")]
          QuoteCreated,

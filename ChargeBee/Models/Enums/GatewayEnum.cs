@@ -118,6 +118,12 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "paypal")]
          Paypal,
 
+        [EnumMember(Value = "ingenico_direct")]
+         IngenicoDirect,
+
+        [EnumMember(Value = "exact")]
+         Exact,
+
         [EnumMember(Value = "not_applicable")]
          NotApplicable,
 
