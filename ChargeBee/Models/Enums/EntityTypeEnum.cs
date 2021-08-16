@@ -37,6 +37,12 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "coupon")]
          Coupon,
 
+        [EnumMember(Value = "order")]
+         Order,
+
+        [EnumMember(Value = "feature")]
+         Feature,
+
         [EnumMember(Value = "item_family")]
          ItemFamily,
 
@@ -45,30 +51,6 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "item_price")]
          ItemPrice,
-
-        [EnumMember(Value = "plan_item")]
-         PlanItem,
-
-        [EnumMember(Value = "addon_item")]
-         AddonItem,
-
-        [EnumMember(Value = "charge_item")]
-         ChargeItem,
-
-        [EnumMember(Value = "plan_price")]
-         PlanPrice,
-
-        [EnumMember(Value = "addon_price")]
-         AddonPrice,
-
-        [EnumMember(Value = "charge_price")]
-         ChargePrice,
-
-        [EnumMember(Value = "differential_price")]
-         DifferentialPrice,
-
-        [EnumMember(Value = "attached_item")]
-         AttachedItem,
 
     }
 }

@@ -248,6 +248,14 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool>("deleted", true); }
         }
+        public string Iin 
+        {
+            get { return GetValue<string>("iin", false); }
+        }
+        public string Last4 
+        {
+            get { return GetValue<string>("last4", false); }
+        }
         public string MerchantReferenceId 
         {
             get { return GetValue<string>("merchant_reference_id", false); }

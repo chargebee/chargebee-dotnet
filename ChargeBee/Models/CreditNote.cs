@@ -158,6 +158,10 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("voided_at", false); }
         }
+        public DateTime? GeneratedAt 
+        {
+            get { return GetDateTime("generated_at", false); }
+        }
         public long? ResourceVersion 
         {
             get { return GetValue<long?>("resource_version", false); }

@@ -119,6 +119,8 @@ namespace ChargeBee.Models
             SubscriptionChange,
             [EnumMember(Value = "subscription_renewal")]
             SubscriptionRenewal,
+            [EnumMember(Value = "subscription_cancel")]
+            SubscriptionCancel,
 
         }
 

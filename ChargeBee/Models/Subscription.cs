@@ -476,6 +476,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool>("deleted", true); }
         }
+        public DateTime? ChangesScheduledAt 
+        {
+            get { return GetDateTime("changes_scheduled_at", false); }
+        }
         public SubscriptionContractTerm ContractTerm 
         {
             get { return GetSubResource<SubscriptionContractTerm>("contract_term"); }
@@ -621,6 +625,11 @@ namespace ChargeBee.Models
             public CreateRequest InvoiceNotes(string invoiceNotes) 
             {
                 m_params.AddOpt("invoice_notes", invoiceNotes);
+                return this;
+            }
+            public CreateRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
                 return this;
             }
             public CreateRequest MetaData(JToken metaData) 
@@ -1352,6 +1361,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("invoice_notes", invoiceNotes);
                 return this;
             }
+            public CreateForCustomerRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
+                return this;
+            }
             public CreateForCustomerRequest MetaData(JToken metaData) 
             {
                 m_params.AddOpt("meta_data", metaData);
@@ -1661,6 +1675,11 @@ namespace ChargeBee.Models
             public CreateWithItemsRequest InvoiceNotes(string invoiceNotes) 
             {
                 m_params.AddOpt("invoice_notes", invoiceNotes);
+                return this;
+            }
+            public CreateWithItemsRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
                 return this;
             }
             public CreateWithItemsRequest MetaData(JToken metaData) 
@@ -2086,6 +2105,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("plan_unit_price_in_decimal", planUnitPriceInDecimal);
                 return this;
             }
+            public UpdateRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
+                return this;
+            }
             public UpdateRequest StartDate(long startDate) 
             {
                 m_params.AddOpt("start_date", startDate);
@@ -2190,6 +2214,16 @@ namespace ChargeBee.Models
             public UpdateRequest OverrideRelationship(bool overrideRelationship) 
             {
                 m_params.AddOpt("override_relationship", overrideRelationship);
+                return this;
+            }
+            public UpdateRequest ChangesScheduledAt(long changesScheduledAt) 
+            {
+                m_params.AddOpt("changes_scheduled_at", changesScheduledAt);
+                return this;
+            }
+            public UpdateRequest ChangeOption(ChargeBee.Models.Enums.ChangeOptionEnum changeOption) 
+            {
+                m_params.AddOpt("change_option", changeOption);
                 return this;
             }
             public UpdateRequest ContractTermBillingCycleOnRenewal(int contractTermBillingCycleOnRenewal) 
@@ -2646,6 +2680,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("setup_fee", setupFee);
                 return this;
             }
+            public UpdateForItemsRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
+                return this;
+            }
             public UpdateForItemsRequest StartDate(long startDate) 
             {
                 m_params.AddOpt("start_date", startDate);
@@ -2750,6 +2789,16 @@ namespace ChargeBee.Models
             public UpdateForItemsRequest OverrideRelationship(bool overrideRelationship) 
             {
                 m_params.AddOpt("override_relationship", overrideRelationship);
+                return this;
+            }
+            public UpdateForItemsRequest ChangesScheduledAt(long changesScheduledAt) 
+            {
+                m_params.AddOpt("changes_scheduled_at", changesScheduledAt);
+                return this;
+            }
+            public UpdateForItemsRequest ChangeOption(ChargeBee.Models.Enums.ChangeOptionEnum changeOption) 
+            {
+                m_params.AddOpt("change_option", changeOption);
                 return this;
             }
             public UpdateForItemsRequest ContractTermBillingCycleOnRenewal(int contractTermBillingCycleOnRenewal) 
@@ -3273,6 +3322,11 @@ namespace ChargeBee.Models
             public ReactivateRequest TermsToCharge(int termsToCharge) 
             {
                 m_params.AddOpt("terms_to_charge", termsToCharge);
+                return this;
+            }
+            public ReactivateRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
                 return this;
             }
             public ReactivateRequest ContractTermBillingCycleOnRenewal(int contractTermBillingCycleOnRenewal) 
@@ -5030,6 +5084,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("contract_term_cancel_option", contractTermCancelOption);
                 return this;
             }
+            public CancelRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
+                return this;
+            }
             public CancelRequest CancelReasonCode(string cancelReasonCode) 
             {
                 m_params.AddOpt("cancel_reason_code", cancelReasonCode);
@@ -5096,6 +5155,11 @@ namespace ChargeBee.Models
             public CancelForItemsRequest ContractTermCancelOption(ChargeBee.Models.Enums.ContractTermCancelOptionEnum contractTermCancelOption) 
             {
                 m_params.AddOpt("contract_term_cancel_option", contractTermCancelOption);
+                return this;
+            }
+            public CancelForItemsRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
                 return this;
             }
             public CancelForItemsRequest CancelReasonCode(string cancelReasonCode) 

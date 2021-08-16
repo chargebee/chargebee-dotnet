@@ -31,7 +31,7 @@ namespace ChargeBee.Models
         public AttachedItem(TextReader reader)
         {
             JObj = JToken.Parse(reader.ReadToEnd());
-            apiVersionCheck (JObj);
+            apiVersionCheck (JObj);    
         }
 
         public AttachedItem(String jsonString)
@@ -65,12 +65,6 @@ namespace ChargeBee.Models
         {
             string url = ApiUtil.BuildUrl("items", CheckNull(id), "attached_items");
             return new AttachedItemListRequest(url);
-        }
-        [Obsolete]
-        public static AttachedItemListInternalRequest ListInternal()
-        {
-            string url = ApiUtil.BuildUrl("attached_items", "list_internal");
-            return new AttachedItemListInternalRequest(url);
         }
         #endregion
         
@@ -269,38 +263,6 @@ namespace ChargeBee.Models
             public EnumFilter<ChargeBee.Models.Enums.ChargeOnEventEnum, AttachedItemListRequest> ChargeOnEvent() 
             {
                 return new EnumFilter<ChargeBee.Models.Enums.ChargeOnEventEnum, AttachedItemListRequest>("charge_on_event", this);        
-            }
-        }
-        public class AttachedItemListInternalRequest : ListRequestBase<AttachedItemListInternalRequest> 
-        {
-            public AttachedItemListInternalRequest(string url) 
-                    : base(url)
-            {
-            }
-
-            public StringFilter<AttachedItemListInternalRequest> Id() 
-            {
-                return new StringFilter<AttachedItemListInternalRequest>("id", this).SupportsMultiOperators(true);        
-            }
-            public StringFilter<AttachedItemListInternalRequest> ItemId() 
-            {
-                return new StringFilter<AttachedItemListInternalRequest>("item_id", this).SupportsMultiOperators(true);        
-            }
-            public EnumFilter<AttachedItem.TypeEnum, AttachedItemListInternalRequest> Type() 
-            {
-                return new EnumFilter<AttachedItem.TypeEnum, AttachedItemListInternalRequest>("type", this);        
-            }
-            public EnumFilter<ChargeBee.Models.Enums.ItemTypeEnum, AttachedItemListInternalRequest> ItemType() 
-            {
-                return new EnumFilter<ChargeBee.Models.Enums.ItemTypeEnum, AttachedItemListInternalRequest>("item_type", this);        
-            }
-            public EnumFilter<ChargeBee.Models.Enums.ChargeOnEventEnum, AttachedItemListInternalRequest> ChargeOnEvent() 
-            {
-                return new EnumFilter<ChargeBee.Models.Enums.ChargeOnEventEnum, AttachedItemListInternalRequest>("charge_on_event", this);        
-            }
-            public StringFilter<AttachedItemListInternalRequest> ParentItemId() 
-            {
-                return new StringFilter<AttachedItemListInternalRequest>("parent_item_id", this).SupportsMultiOperators(true);        
             }
         }
         #endregion

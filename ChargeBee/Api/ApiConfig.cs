@@ -7,7 +7,7 @@ namespace ChargeBee.Api
     {
 		public static string DomainSuffix = "chargebee.com";
 		public static string Proto = "https";
-		public static string Version = "2.9.1";
+		public static string Version = "2.10.0";
 		public static readonly string API_VERSION = "v2";
         public static int TimeTravelMillis { get; set; }
         public static int ExportSleepMillis { get; set;}
@@ -39,8 +39,15 @@ namespace ChargeBee.Api
             }
         }
 
-        private ApiConfig(string siteName, string apiKey)
+        public ApiConfig(string siteName, string apiKey)
         {
+
+            if (String.IsNullOrEmpty(siteName))
+                throw new ArgumentException("Site name can't be empty!");
+
+            if (String.IsNullOrEmpty(apiKey))
+                throw new ArgumentException("Api key can't be empty!");
+
             Charset = Encoding.UTF8.WebName;
             ConnectTimeout = 15000; 
             TimeTravelMillis = 3000;
@@ -52,13 +59,7 @@ namespace ChargeBee.Api
         private static volatile ApiConfig m_instance;
 
         public static void Configure(string siteName, string apiKey)
-        {
-            if (String.IsNullOrEmpty(siteName))
-                throw new ArgumentException("Site name can't be empty!");
-
-            if (String.IsNullOrEmpty(apiKey))
-                throw new ArgumentException("Api key can't be empty!");
-
+        {         
             m_instance = new ApiConfig(siteName, apiKey);
         }
 

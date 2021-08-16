@@ -31,7 +31,7 @@ namespace ChargeBee.Models
         public DifferentialPrice(TextReader reader)
         {
             JObj = JToken.Parse(reader.ReadToEnd());
-            apiVersionCheck (JObj);
+            apiVersionCheck (JObj);    
         }
 
         public DifferentialPrice(String jsonString)

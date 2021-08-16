@@ -1794,6 +1794,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
                 return this;
             }
+            public CheckoutExistingRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
+                return this;
+            }
             public CheckoutExistingRequest BillingCycles(int billingCycles) 
             {
                 m_params.AddOpt("billing_cycles", billingCycles);
@@ -2052,6 +2057,11 @@ namespace ChargeBee.Models
             public CheckoutExistingForItemsRequest ReplaceItemsList(bool replaceItemsList) 
             {
                 m_params.AddOpt("replace_items_list", replaceItemsList);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
                 return this;
             }
             public CheckoutExistingForItemsRequest BillingCycles(int billingCycles) 

@@ -31,7 +31,7 @@ namespace ChargeBee.Models
         public ItemFamily(TextReader reader)
         {
             JObj = JToken.Parse(reader.ReadToEnd());
-            apiVersionCheck (JObj);
+            apiVersionCheck (JObj);    
         }
 
         public ItemFamily(String jsonString)

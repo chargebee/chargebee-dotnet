@@ -31,7 +31,7 @@ namespace ChargeBee.Models
         public ItemPrice(TextReader reader)
         {
             JObj = JToken.Parse(reader.ReadToEnd());
-            apiVersionCheck (JObj);
+            apiVersionCheck (JObj);    
         }
 
         public ItemPrice(String jsonString)

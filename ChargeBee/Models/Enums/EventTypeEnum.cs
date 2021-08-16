@@ -79,6 +79,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "subscription_created")]
          SubscriptionCreated,
 
+        [EnumMember(Value = "subscription_created_with_backdating")]
+         SubscriptionCreatedWithBackdating,
+
         [EnumMember(Value = "subscription_started")]
          SubscriptionStarted,
 
@@ -94,6 +97,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "mrr_updated")]
          MrrUpdated,
 
+        [EnumMember(Value = "subscription_changed_with_backdating")]
+         SubscriptionChangedWithBackdating,
+
         [EnumMember(Value = "subscription_cancellation_scheduled")]
          SubscriptionCancellationScheduled,
 
@@ -103,8 +109,14 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "subscription_cancelled")]
          SubscriptionCancelled,
 
+        [EnumMember(Value = "subscription_canceled_with_backdating")]
+         SubscriptionCanceledWithBackdating,
+
         [EnumMember(Value = "subscription_reactivated")]
          SubscriptionReactivated,
+
+        [EnumMember(Value = "subscription_reactivated_with_backdating")]
+         SubscriptionReactivatedWithBackdating,
 
         [EnumMember(Value = "subscription_renewed")]
          SubscriptionRenewed,
@@ -160,6 +172,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "invoice_generated")]
          InvoiceGenerated,
 
+        [EnumMember(Value = "invoice_generated_with_backdating")]
+         InvoiceGeneratedWithBackdating,
+
         [EnumMember(Value = "invoice_updated")]
          InvoiceUpdated,
 
@@ -168,6 +183,9 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "credit_note_created")]
          CreditNoteCreated,
+
+        [EnumMember(Value = "credit_note_created_with_backdating")]
+         CreditNoteCreatedWithBackdating,
 
         [EnumMember(Value = "credit_note_updated")]
          CreditNoteUpdated,

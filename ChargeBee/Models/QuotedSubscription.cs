@@ -100,6 +100,14 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("plan_unit_price_in_decimal", false); }
         }
+        public DateTime? ChangesScheduledAt 
+        {
+            get { return GetDateTime("changes_scheduled_at", false); }
+        }
+        public ChangeOptionEnum? ChangeOption 
+        {
+            get { return GetEnum<ChangeOptionEnum>("change_option", false); }
+        }
         public int? ContractTermBillingCycleOnRenewal 
         {
             get { return GetValue<int?>("contract_term_billing_cycle_on_renewal", false); }
@@ -115,10 +123,6 @@ namespace ChargeBee.Models
         public List<QuotedSubscriptionCoupon> Coupons 
         {
             get { return GetResourceList<QuotedSubscriptionCoupon>("coupons"); }
-        }
-        public List<QuotedSubscriptionDiscount> Discounts 
-        {
-            get { return GetResourceList<QuotedSubscriptionDiscount>("discounts"); }
         }
         public List<QuotedSubscriptionSubscriptionItem> SubscriptionItems 
         {
@@ -149,6 +153,19 @@ namespace ChargeBee.Models
             Month,
             [EnumMember(Value = "year")]
             Year,
+
+        }
+        public enum ChangeOptionEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "end_of_term")]
+            EndOfTerm,
+            [EnumMember(Value = "specific_date")]
+            SpecificDate,
+            [EnumMember(Value = "immediately")]
+            Immediately,
 
         }
 
@@ -249,111 +266,6 @@ namespace ChargeBee.Models
 
             public string CouponId() {
                 return GetValue<string>("coupon_id", true);
-            }
-
-            public DateTime? ApplyTill() {
-                return GetDateTime("apply_till", false);
-            }
-
-            public int AppliedCount() {
-                return GetValue<int>("applied_count", true);
-            }
-
-            public string CouponCode() {
-                return GetValue<string>("coupon_code", false);
-            }
-
-        }
-        public class QuotedSubscriptionDiscount : Resource
-        {
-            public enum TypeEnum
-            {
-                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
-                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [EnumMember(Value = "fixed_amount")]
-                FixedAmount,
-                [EnumMember(Value = "percentage")]
-                Percentage,
-            }
-            public enum DurationTypeEnum
-            {
-                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
-                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [EnumMember(Value = "one_time")]
-                OneTime,
-                [EnumMember(Value = "forever")]
-                Forever,
-                [EnumMember(Value = "limited_period")]
-                LimitedPeriod,
-            }
-            public enum ApplyOnEnum
-            {
-                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
-                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [EnumMember(Value = "invoice_amount")]
-                InvoiceAmount,
-                [EnumMember(Value = "specific_item_price")]
-                SpecificItemPrice,
-            }
-
-            public string Id() {
-                return GetValue<string>("id", true);
-            }
-
-            public string InvoiceName() {
-                return GetValue<string>("invoice_name", false);
-            }
-
-            public TypeEnum DiscountType() {
-                return GetEnum<TypeEnum>("type", true);
-            }
-
-            public double? Percentage() {
-                return GetValue<double?>("percentage", false);
-            }
-
-            public int? Amount() {
-                return GetValue<int?>("amount", false);
-            }
-
-            public string CurrencyCode() {
-                return GetValue<string>("currency_code", false);
-            }
-
-            public DurationTypeEnum DurationType() {
-                return GetEnum<DurationTypeEnum>("duration_type", true);
-            }
-
-            public int? Period() {
-                return GetValue<int?>("period", false);
-            }
-
-            public PeriodUnitEnum? PeriodUnit() {
-                return GetEnum<PeriodUnitEnum>("period_unit", false);
-            }
-
-            public bool IncludedInMrr() {
-                return GetValue<bool>("included_in_mrr", true);
-            }
-
-            public ApplyOnEnum ApplyOn() {
-                return GetEnum<ApplyOnEnum>("apply_on", true);
-            }
-
-            public string ItemPriceId() {
-                return GetValue<string>("item_price_id", false);
-            }
-
-            public DateTime CreatedAt() {
-                return (DateTime)GetDateTime("created_at", true);
-            }
-
-            public DateTime? ApplyTill() {
-                return GetDateTime("apply_till", false);
-            }
-
-            public int? AppliedCount() {
-                return GetValue<int?>("applied_count", false);
             }
 
         }

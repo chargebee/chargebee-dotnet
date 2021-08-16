@@ -208,6 +208,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("invoice_immediately", invoiceImmediately);
                 return this;
             }
+            public CreateSubscriptionRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
+                return this;
+            }
             public CreateSubscriptionRequest ClientProfileId(string clientProfileId) 
             {
                 m_params.AddOpt("client_profile_id", clientProfileId);
@@ -537,6 +542,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("invoice_immediately", invoiceImmediately);
                 return this;
             }
+            public CreateSubItemEstimateRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
+                return this;
+            }
             public CreateSubItemEstimateRequest ClientProfileId(string clientProfileId) 
             {
                 m_params.AddOpt("client_profile_id", clientProfileId);
@@ -858,6 +868,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_alignment_mode", billingAlignmentMode);
                 return this;
             }
+            public CreateSubForCustomerEstimateRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
+                return this;
+            }
             public CreateSubForCustomerEstimateRequest CouponIds(List<string> couponIds) 
             {
                 m_params.AddOpt("coupon_ids", couponIds);
@@ -1101,6 +1116,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_alignment_mode", billingAlignmentMode);
                 return this;
             }
+            public CreateSubItemForCustomerEstimateRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
+                return this;
+            }
             public CreateSubItemForCustomerEstimateRequest CouponIds(List<string> couponIds) 
             {
                 m_params.AddOpt("coupon_ids", couponIds);
@@ -1314,6 +1334,11 @@ namespace ChargeBee.Models
             public UpdateSubscriptionRequest MandatoryAddonsToRemove(List<string> mandatoryAddonsToRemove) 
             {
                 m_params.AddOpt("mandatory_addons_to_remove", mandatoryAddonsToRemove);
+                return this;
+            }
+            public UpdateSubscriptionRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
                 return this;
             }
             public UpdateSubscriptionRequest BillingCycles(int billingCycles) 
@@ -1654,6 +1679,11 @@ namespace ChargeBee.Models
             public UpdateSubscriptionForItemsRequest ReplaceItemsList(bool replaceItemsList) 
             {
                 m_params.AddOpt("replace_items_list", replaceItemsList);
+                return this;
+            }
+            public UpdateSubscriptionForItemsRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
                 return this;
             }
             public UpdateSubscriptionForItemsRequest BillingCycles(int billingCycles) 
@@ -2145,6 +2175,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("contract_term_cancel_option", contractTermCancelOption);
                 return this;
             }
+            public CancelSubscriptionRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
+                return this;
+            }
             public CancelSubscriptionRequest CancelReasonCode(string cancelReasonCode) 
             {
                 m_params.AddOpt("cancel_reason_code", cancelReasonCode);
@@ -2211,6 +2246,11 @@ namespace ChargeBee.Models
             public CancelSubscriptionForItemsRequest ContractTermCancelOption(ChargeBee.Models.Enums.ContractTermCancelOptionEnum contractTermCancelOption) 
             {
                 m_params.AddOpt("contract_term_cancel_option", contractTermCancelOption);
+                return this;
+            }
+            public CancelSubscriptionForItemsRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
                 return this;
             }
             public CancelSubscriptionForItemsRequest CancelReasonCode(string cancelReasonCode) 
@@ -2741,6 +2781,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("auto_collection", autoCollection);
                 return this;
             }
+            public CreateInvoiceRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
+                return this;
+            }
             public CreateInvoiceRequest InvoiceCustomerId(string invoiceCustomerId) 
             {
                 m_params.AddOpt("invoice[customer_id]", invoiceCustomerId);
@@ -2978,6 +3023,11 @@ namespace ChargeBee.Models
             public CreateInvoiceForItemsRequest AutoCollection(ChargeBee.Models.Enums.AutoCollectionEnum autoCollection) 
             {
                 m_params.AddOpt("auto_collection", autoCollection);
+                return this;
+            }
+            public CreateInvoiceForItemsRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
                 return this;
             }
             public CreateInvoiceForItemsRequest InvoiceCustomerId(string invoiceCustomerId) 

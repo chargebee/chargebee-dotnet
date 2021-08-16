@@ -875,6 +875,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("replace_coupon_list", replaceCouponList);
                 return this;
             }
+            public UpdateSubscriptionQuoteRequest ChangeOption(ChargeBee.Models.Enums.ChangeOptionEnum changeOption) 
+            {
+                m_params.AddOpt("change_option", changeOption);
+                return this;
+            }
+            public UpdateSubscriptionQuoteRequest ChangesScheduledAt(long changesScheduledAt) 
+            {
+                m_params.AddOpt("changes_scheduled_at", changesScheduledAt);
+                return this;
+            }
             public UpdateSubscriptionQuoteRequest ForceTermReset(bool forceTermReset) 
             {
                 m_params.AddOpt("force_term_reset", forceTermReset);
@@ -1254,6 +1264,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("replace_coupon_list", replaceCouponList);
                 return this;
             }
+            public EditUpdateSubscriptionQuoteRequest ChangeOption(ChargeBee.Models.Enums.ChangeOptionEnum changeOption) 
+            {
+                m_params.AddOpt("change_option", changeOption);
+                return this;
+            }
+            public EditUpdateSubscriptionQuoteRequest ChangesScheduledAt(long changesScheduledAt) 
+            {
+                m_params.AddOpt("changes_scheduled_at", changesScheduledAt);
+                return this;
+            }
             public EditUpdateSubscriptionQuoteRequest ForceTermReset(bool forceTermReset) 
             {
                 m_params.AddOpt("force_term_reset", forceTermReset);
@@ -1613,6 +1633,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("coupon", coupon);
                 return this;
             }
+            public CreateForOnetimeChargesRequest CouponIds(List<string> couponIds) 
+            {
+                m_params.AddOpt("coupon_ids", couponIds);
+                return this;
+            }
             public CreateForOnetimeChargesRequest ShippingAddressFirstName(string shippingAddressFirstName) 
             {
                 m_params.AddOpt("shipping_address[first_name]", shippingAddressFirstName);
@@ -1779,6 +1804,11 @@ namespace ChargeBee.Models
             public EditOneTimeQuoteRequest Coupon(string coupon) 
             {
                 m_params.AddOpt("coupon", coupon);
+                return this;
+            }
+            public EditOneTimeQuoteRequest CouponIds(List<string> couponIds) 
+            {
+                m_params.AddOpt("coupon_ids", couponIds);
                 return this;
             }
             public EditOneTimeQuoteRequest ShippingAddressFirstName(string shippingAddressFirstName) 
@@ -2484,6 +2514,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("replace_coupon_list", replaceCouponList);
                 return this;
             }
+            public UpdateSubscriptionQuoteForItemsRequest ChangeOption(ChargeBee.Models.Enums.ChangeOptionEnum changeOption) 
+            {
+                m_params.AddOpt("change_option", changeOption);
+                return this;
+            }
+            public UpdateSubscriptionQuoteForItemsRequest ChangesScheduledAt(long changesScheduledAt) 
+            {
+                m_params.AddOpt("changes_scheduled_at", changesScheduledAt);
+                return this;
+            }
             public UpdateSubscriptionQuoteForItemsRequest ForceTermReset(bool forceTermReset) 
             {
                 m_params.AddOpt("force_term_reset", forceTermReset);
@@ -2855,6 +2895,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("replace_coupon_list", replaceCouponList);
                 return this;
             }
+            public EditUpdateSubscriptionQuoteForItemsRequest ChangeOption(ChargeBee.Models.Enums.ChangeOptionEnum changeOption) 
+            {
+                m_params.AddOpt("change_option", changeOption);
+                return this;
+            }
+            public EditUpdateSubscriptionQuoteForItemsRequest ChangesScheduledAt(long changesScheduledAt) 
+            {
+                m_params.AddOpt("changes_scheduled_at", changesScheduledAt);
+                return this;
+            }
             public EditUpdateSubscriptionQuoteForItemsRequest ForceTermReset(bool forceTermReset) 
             {
                 m_params.AddOpt("force_term_reset", forceTermReset);
@@ -3206,6 +3256,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("coupon", coupon);
                 return this;
             }
+            public CreateForChargeItemsAndChargesRequest CouponIds(List<string> couponIds) 
+            {
+                m_params.AddOpt("coupon_ids", couponIds);
+                return this;
+            }
             public CreateForChargeItemsAndChargesRequest ShippingAddressFirstName(string shippingAddressFirstName) 
             {
                 m_params.AddOpt("shipping_address[first_name]", shippingAddressFirstName);
@@ -3407,6 +3462,11 @@ namespace ChargeBee.Models
             public EditForChargeItemsAndChargesRequest Coupon(string coupon) 
             {
                 m_params.AddOpt("coupon", coupon);
+                return this;
+            }
+            public EditForChargeItemsAndChargesRequest CouponIds(List<string> couponIds) 
+            {
+                m_params.AddOpt("coupon_ids", couponIds);
                 return this;
             }
             public EditForChargeItemsAndChargesRequest ShippingAddressFirstName(string shippingAddressFirstName) 
@@ -3628,6 +3688,21 @@ namespace ChargeBee.Models
             {
             }
 
+            public ConvertRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
+                return this;
+            }
+            public ConvertRequest CreatePendingInvoices(bool createPendingInvoices) 
+            {
+                m_params.AddOpt("create_pending_invoices", createPendingInvoices);
+                return this;
+            }
+            public ConvertRequest FirstInvoicePending(bool firstInvoicePending) 
+            {
+                m_params.AddOpt("first_invoice_pending", firstInvoicePending);
+                return this;
+            }
             public ConvertRequest SubscriptionId(string subscriptionId) 
             {
                 m_params.AddOpt("subscription[id]", subscriptionId);
@@ -3641,6 +3716,11 @@ namespace ChargeBee.Models
             public ConvertRequest SubscriptionPoNumber(string subscriptionPoNumber) 
             {
                 m_params.AddOpt("subscription[po_number]", subscriptionPoNumber);
+                return this;
+            }
+            public ConvertRequest SubscriptionAutoCloseInvoices(bool subscriptionAutoCloseInvoices) 
+            {
+                m_params.AddOpt("subscription[auto_close_invoices]", subscriptionAutoCloseInvoices);
                 return this;
             }
         }

@@ -327,6 +327,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool>("is_gifted", true); }
         }
+        public DateTime? GeneratedAt 
+        {
+            get { return GetDateTime("generated_at", false); }
+        }
         public DateTime? ExpectedPaymentDate 
         {
             get { return GetDateTime("expected_payment_date", false); }
@@ -439,6 +443,11 @@ namespace ChargeBee.Models
             public CreateRequest CurrencyCode(string currencyCode) 
             {
                 m_params.AddOpt("currency_code", currencyCode);
+                return this;
+            }
+            public CreateRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
                 return this;
             }
             public CreateRequest InvoiceNote(string invoiceNote) 
@@ -974,6 +983,11 @@ namespace ChargeBee.Models
             public CreateForChargeItemsAndChargesRequest AutoCollection(ChargeBee.Models.Enums.AutoCollectionEnum autoCollection) 
             {
                 m_params.AddOpt("auto_collection", autoCollection);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
                 return this;
             }
             public CreateForChargeItemsAndChargesRequest TokenId(string tokenId) 
@@ -1520,6 +1534,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("po_number", poNumber);
                 return this;
             }
+            public ChargeRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
+                return this;
+            }
             public ChargeRequest PaymentSourceId(string paymentSourceId) 
             {
                 m_params.AddOpt("payment_source_id", paymentSourceId);
@@ -1594,6 +1613,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("po_number", poNumber);
                 return this;
             }
+            public ChargeAddonRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
+                return this;
+            }
             public ChargeAddonRequest PaymentSourceId(string paymentSourceId) 
             {
                 m_params.AddOpt("payment_source_id", paymentSourceId);
@@ -1630,6 +1654,11 @@ namespace ChargeBee.Models
             public CreateForChargeItemRequest PaymentSourceId(string paymentSourceId) 
             {
                 m_params.AddOpt("payment_source_id", paymentSourceId);
+                return this;
+            }
+            public CreateForChargeItemRequest InvoiceDate(long invoiceDate) 
+            {
+                m_params.AddOpt("invoice_date", invoiceDate);
                 return this;
             }
             public CreateForChargeItemRequest ItemPriceItemPriceId(string itemPriceItemPriceId) 
