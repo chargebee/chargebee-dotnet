@@ -346,7 +346,7 @@ namespace ChargeBee.Models
                 m_params.Add("invoice_id", invoiceId);
                 return this;
             }
-            public CreateRequest Status(StatusEnum status) 
+            public CreateRequest Status(StatusEnum status)
             {
                 m_params.AddOpt("status", status);
                 return this;
@@ -820,6 +820,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer_notes", customerNotes);
                 return this;
             }
+            public CancelRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
+                return this;
+            }
             public CancelRequest CancelledAt(long cancelledAt) 
             {
                 m_params.AddOpt("cancelled_at", cancelledAt);
@@ -841,6 +846,11 @@ namespace ChargeBee.Models
             public CreateRefundableCreditNoteRequest CustomerNotes(string customerNotes) 
             {
                 m_params.AddOpt("customer_notes", customerNotes);
+                return this;
+            }
+            public CreateRefundableCreditNoteRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
                 return this;
             }
             public CreateRefundableCreditNoteRequest CreditNoteReasonCode(CreditNote.ReasonCodeEnum creditNoteReasonCode) 
@@ -1388,6 +1398,10 @@ namespace ChargeBee.Models
                 ProratedCredits,
                 [EnumMember(Value = "custom_discount")]
                 CustomDiscount,
+                [EnumMember(Value = "item_level_discount")]
+                ItemLevelDiscount,
+                [EnumMember(Value = "document_level_discount")]
+                DocumentLevelDiscount,
             }
 
             public string LineItemId() {
@@ -1400,6 +1414,10 @@ namespace ChargeBee.Models
 
             public string CouponId() {
                 return GetValue<string>("coupon_id", false);
+            }
+
+            public string EntityId() {
+                return GetValue<string>("entity_id", false);
             }
 
             public int DiscountAmount() {

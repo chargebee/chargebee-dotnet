@@ -124,6 +124,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "exact")]
          Exact,
 
+        [EnumMember(Value = "mollie")]
+         Mollie,
+
         [EnumMember(Value = "not_applicable")]
          NotApplicable,
 

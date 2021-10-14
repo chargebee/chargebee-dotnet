@@ -2087,6 +2087,66 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_items[tax4_amount][" + index + "]", lineItemTax4Amount);
                 return this;
             }
+            public ImportInvoiceRequest LineItemTax5Name(int index, string lineItemTax5Name) 
+            {
+                m_params.AddOpt("line_items[tax5_name][" + index + "]", lineItemTax5Name);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTax5Amount(int index, int lineItemTax5Amount) 
+            {
+                m_params.AddOpt("line_items[tax5_amount][" + index + "]", lineItemTax5Amount);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTax6Name(int index, string lineItemTax6Name) 
+            {
+                m_params.AddOpt("line_items[tax6_name][" + index + "]", lineItemTax6Name);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTax6Amount(int index, int lineItemTax6Amount) 
+            {
+                m_params.AddOpt("line_items[tax6_amount][" + index + "]", lineItemTax6Amount);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTax7Name(int index, string lineItemTax7Name) 
+            {
+                m_params.AddOpt("line_items[tax7_name][" + index + "]", lineItemTax7Name);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTax7Amount(int index, int lineItemTax7Amount) 
+            {
+                m_params.AddOpt("line_items[tax7_amount][" + index + "]", lineItemTax7Amount);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTax8Name(int index, string lineItemTax8Name) 
+            {
+                m_params.AddOpt("line_items[tax8_name][" + index + "]", lineItemTax8Name);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTax8Amount(int index, int lineItemTax8Amount) 
+            {
+                m_params.AddOpt("line_items[tax8_amount][" + index + "]", lineItemTax8Amount);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTax9Name(int index, string lineItemTax9Name) 
+            {
+                m_params.AddOpt("line_items[tax9_name][" + index + "]", lineItemTax9Name);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTax9Amount(int index, int lineItemTax9Amount) 
+            {
+                m_params.AddOpt("line_items[tax9_amount][" + index + "]", lineItemTax9Amount);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTax10Name(int index, string lineItemTax10Name) 
+            {
+                m_params.AddOpt("line_items[tax10_name][" + index + "]", lineItemTax10Name);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTax10Amount(int index, int lineItemTax10Amount) 
+            {
+                m_params.AddOpt("line_items[tax10_amount][" + index + "]", lineItemTax10Amount);
+                return this;
+            }
             public ImportInvoiceRequest LineItemTierLineItemId(int index, string lineItemTierLineItemId) 
             {
                 m_params.Add("line_item_tiers[line_item_id][" + index + "]", lineItemTierLineItemId);

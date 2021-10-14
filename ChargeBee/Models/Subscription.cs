@@ -1376,6 +1376,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("invoice_immediately", invoiceImmediately);
                 return this;
             }
+            public CreateForCustomerRequest ReplacePrimaryPaymentSource(bool replacePrimaryPaymentSource) 
+            {
+                m_params.AddOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
+                return this;
+            }
             public CreateForCustomerRequest FreePeriod(int freePeriod) 
             {
                 m_params.AddOpt("free_period", freePeriod);
@@ -1690,6 +1695,11 @@ namespace ChargeBee.Models
             public CreateWithItemsRequest InvoiceImmediately(bool invoiceImmediately) 
             {
                 m_params.AddOpt("invoice_immediately", invoiceImmediately);
+                return this;
+            }
+            public CreateWithItemsRequest ReplacePrimaryPaymentSource(bool replacePrimaryPaymentSource) 
+            {
+                m_params.AddOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
                 return this;
             }
             public CreateWithItemsRequest FreePeriod(int freePeriod) 
