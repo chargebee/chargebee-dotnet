@@ -369,7 +369,7 @@ namespace ChargeBee.Models
         }
         public bool HasScheduledAdvanceInvoices 
         {
-            get { return GetValue<bool>("has_scheduled_advance_invoices", true); }
+            get { return GetValue<bool>("has_scheduled_advance_invoices", false); }
         }
         public bool HasScheduledChanges 
         {
