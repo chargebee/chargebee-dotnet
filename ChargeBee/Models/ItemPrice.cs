@@ -66,6 +66,16 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("item_prices", CheckNull(id), "delete");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
+        public static ItemPriceFindApplicableItemsRequest FindApplicableItems(string id)
+        {
+            string url = ApiUtil.BuildUrl("item_prices", CheckNull(id), "applicable_items");
+            return new ItemPriceFindApplicableItemsRequest(url);
+        }
+        public static ItemPriceFindApplicableItemPricesRequest FindApplicableItemPrices(string id)
+        {
+            string url = ApiUtil.BuildUrl("item_prices", CheckNull(id), "applicable_item_prices");
+            return new ItemPriceFindApplicableItemPricesRequest(url);
+        }
         #endregion
         
         #region Properties
@@ -356,6 +366,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("tax_detail[avalara_tax_code]", taxDetailAvalaraTaxCode);
                 return this;
             }
+            public CreateRequest TaxDetailHsnCode(string taxDetailHsnCode) 
+            {
+                m_params.AddOpt("tax_detail[hsn_code]", taxDetailHsnCode);
+                return this;
+            }
             public CreateRequest TaxDetailAvalaraSaleType(ChargeBee.Models.Enums.AvalaraSaleTypeEnum taxDetailAvalaraSaleType) 
             {
                 m_params.AddOpt("tax_detail[avalara_sale_type]", taxDetailAvalaraSaleType);
@@ -569,6 +584,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("tax_detail[avalara_tax_code]", taxDetailAvalaraTaxCode);
                 return this;
             }
+            public UpdateRequest TaxDetailHsnCode(string taxDetailHsnCode) 
+            {
+                m_params.AddOpt("tax_detail[hsn_code]", taxDetailHsnCode);
+                return this;
+            }
             public UpdateRequest TaxDetailAvalaraSaleType(ChargeBee.Models.Enums.AvalaraSaleTypeEnum taxDetailAvalaraSaleType) 
             {
                 m_params.AddOpt("tax_detail[avalara_sale_type]", taxDetailAvalaraSaleType);
@@ -722,6 +742,51 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class ItemPriceFindApplicableItemsRequest : ListRequestBase<ItemPriceFindApplicableItemsRequest> 
+        {
+            public ItemPriceFindApplicableItemsRequest(string url) 
+                    : base(url)
+            {
+            }
+
+            public ItemPriceFindApplicableItemsRequest SortByName(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","name");
+                return this;
+            }
+            public ItemPriceFindApplicableItemsRequest SortById(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","id");
+                return this;
+            }
+            public ItemPriceFindApplicableItemsRequest SortByUpdatedAt(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","updated_at");
+                return this;
+            }
+        }
+        public class ItemPriceFindApplicableItemPricesRequest : ListRequestBase<ItemPriceFindApplicableItemPricesRequest> 
+        {
+            public ItemPriceFindApplicableItemPricesRequest(string url) 
+                    : base(url)
+            {
+            }
+
+            public ItemPriceFindApplicableItemPricesRequest ItemId(string itemId) 
+            {
+                m_params.AddOpt("item_id", itemId);
+                return this;
+            }
+            public ItemPriceFindApplicableItemPricesRequest SortByName(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","name");
+                return this;
+            }
+            public ItemPriceFindApplicableItemPricesRequest SortById(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","id");
+                return this;
+            }
+            public ItemPriceFindApplicableItemPricesRequest SortByUpdatedAt(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","updated_at");
+                return this;
+            }
+        }
         #endregion
 
         public enum StatusEnum
@@ -842,6 +907,10 @@ namespace ChargeBee.Models
 
             public string AvalaraTaxCode() {
                 return GetValue<string>("avalara_tax_code", false);
+            }
+
+            public string HsnCode() {
+                return GetValue<string>("hsn_code", false);
             }
 
             public string TaxjarProductCode() {

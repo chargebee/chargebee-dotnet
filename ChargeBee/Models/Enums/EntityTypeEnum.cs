@@ -40,9 +40,6 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "order")]
          Order,
 
-        [EnumMember(Value = "feature")]
-         Feature,
-
         [EnumMember(Value = "item_family")]
          ItemFamily,
 

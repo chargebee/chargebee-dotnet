@@ -167,7 +167,7 @@ namespace ChargeBee.Models
         }
         public bool Embed 
         {
-            get { return GetValue<bool>("embed", true); }
+            get { return GetValue<bool>("embed", false); }
         }
         public DateTime? CreatedAt 
         {
@@ -956,6 +956,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
                 return this;
             }
+            public CheckoutOneTimeRequest ChargeHsnCode(int index, string chargeHsnCode) 
+            {
+                m_params.AddOpt("charges[hsn_code][" + index + "]", chargeHsnCode);
+                return this;
+            }
             public CheckoutOneTimeRequest ChargeTaxjarProductCode(int index, string chargeTaxjarProductCode) 
             {
                 m_params.AddOpt("charges[taxjar_product_code][" + index + "]", chargeTaxjarProductCode);
@@ -1333,6 +1338,11 @@ namespace ChargeBee.Models
             public CheckoutOneTimeForItemsRequest ChargeAvalaraTaxCode(int index, string chargeAvalaraTaxCode) 
             {
                 m_params.AddOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
+                return this;
+            }
+            public CheckoutOneTimeForItemsRequest ChargeHsnCode(int index, string chargeHsnCode) 
+            {
+                m_params.AddOpt("charges[hsn_code][" + index + "]", chargeHsnCode);
                 return this;
             }
             public CheckoutOneTimeForItemsRequest ChargeTaxjarProductCode(int index, string chargeTaxjarProductCode) 

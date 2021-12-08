@@ -94,6 +94,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "subscription_activated")]
          SubscriptionActivated,
 
+        [EnumMember(Value = "subscription_activated_with_backdating")]
+         SubscriptionActivatedWithBackdating,
+
         [EnumMember(Value = "subscription_changed")]
          SubscriptionChanged,
 
@@ -330,6 +333,15 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "quote_deleted")]
          QuoteDeleted,
+
+        [EnumMember(Value = "tax_withheld_recorded")]
+         TaxWithheldRecorded,
+
+        [EnumMember(Value = "tax_withheld_deleted")]
+         TaxWithheldDeleted,
+
+        [EnumMember(Value = "tax_withheld_refunded")]
+         TaxWithheldRefunded,
 
         [EnumMember(Value = "gift_scheduled")]
          GiftScheduled,

@@ -85,6 +85,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<Invoice>("invoice"); }
         }
+        public TaxWithheld TaxWithheld
+        {
+            get {  return GetResource<TaxWithheld>("tax_withheld"); }
+        }
         public CreditNote CreditNote
         {
             get {  return GetResource<CreditNote>("credit_note"); }

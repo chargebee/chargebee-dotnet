@@ -225,11 +225,11 @@ namespace ChargeBee.Models
         }
         public string PlanId 
         {
-            get { return GetValue<string>("plan_id", true); }
+            get { return GetValue<string>("plan_id", false); }
         }
         public int PlanQuantity 
         {
-            get { return GetValue<int>("plan_quantity", true); }
+            get { return GetValue<int>("plan_quantity", false); }
         }
         public int? PlanUnitPrice 
         {

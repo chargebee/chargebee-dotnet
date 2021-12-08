@@ -76,6 +76,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("payment_sources", CheckNull(id), "update_card");
             return new UpdateCardRequest(url, HttpMethod.POST);
         }
+        public static UpdateBankAccountRequest UpdateBankAccount(string id)
+        {
+            string url = ApiUtil.BuildUrl("payment_sources", CheckNull(id), "update_bank_account");
+            return new UpdateBankAccountRequest(url, HttpMethod.POST);
+        }
         public static VerifyBankAccountRequest VerifyBankAccount(string id)
         {
             string url = ApiUtil.BuildUrl("payment_sources", CheckNull(id), "verify_bank_account");
@@ -613,6 +618,29 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class UpdateBankAccountRequest : EntityRequest<UpdateBankAccountRequest> 
+        {
+            public UpdateBankAccountRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public UpdateBankAccountRequest BankAccountFirstName(string bankAccountFirstName) 
+            {
+                m_params.AddOpt("bank_account[first_name]", bankAccountFirstName);
+                return this;
+            }
+            public UpdateBankAccountRequest BankAccountLastName(string bankAccountLastName) 
+            {
+                m_params.AddOpt("bank_account[last_name]", bankAccountLastName);
+                return this;
+            }
+            public UpdateBankAccountRequest BankAccountEmail(string bankAccountEmail) 
+            {
+                m_params.AddOpt("bank_account[email]", bankAccountEmail);
+                return this;
+            }
+        }
         public class VerifyBankAccountRequest : EntityRequest<VerifyBankAccountRequest> 
         {
             public VerifyBankAccountRequest(string url, HttpMethod method) 
@@ -858,6 +886,14 @@ namespace ChargeBee.Models
                 return GetValue<string>("name_on_account", false);
             }
 
+            public string FirstName() {
+                return GetValue<string>("first_name", false);
+            }
+
+            public string LastName() {
+                return GetValue<string>("last_name", false);
+            }
+
             public string BankName() {
                 return GetValue<string>("bank_name", false);
             }
@@ -876,6 +912,10 @@ namespace ChargeBee.Models
 
             public AccountHolderTypeEnum? AccountHolderType() {
                 return GetEnum<AccountHolderTypeEnum>("account_holder_type", false);
+            }
+
+            public string Email() {
+                return GetValue<string>("email", false);
             }
 
         }

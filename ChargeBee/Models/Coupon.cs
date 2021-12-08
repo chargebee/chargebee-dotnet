@@ -154,11 +154,11 @@ namespace ChargeBee.Models
         }
         public PlanConstraintEnum PlanConstraint 
         {
-            get { return GetEnum<PlanConstraintEnum>("plan_constraint", true); }
+            get { return GetEnum<PlanConstraintEnum>("plan_constraint", false); }
         }
         public AddonConstraintEnum AddonConstraint 
         {
-            get { return GetEnum<AddonConstraintEnum>("addon_constraint", true); }
+            get { return GetEnum<AddonConstraintEnum>("addon_constraint", false); }
         }
         public DateTime CreatedAt 
         {

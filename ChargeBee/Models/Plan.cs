@@ -177,6 +177,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("tax_code", false); }
         }
+        public string HsnCode 
+        {
+            get { return GetValue<string>("hsn_code", false); }
+        }
         public string TaxjarProductCode 
         {
             get { return GetValue<string>("taxjar_product_code", false); }
@@ -434,6 +438,11 @@ namespace ChargeBee.Models
             public CreateRequest TaxCode(string taxCode) 
             {
                 m_params.AddOpt("tax_code", taxCode);
+                return this;
+            }
+            public CreateRequest HsnCode(string hsnCode) 
+            {
+                m_params.AddOpt("hsn_code", hsnCode);
                 return this;
             }
             public CreateRequest TaxjarProductCode(string taxjarProductCode) 
@@ -756,6 +765,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("tax_code", taxCode);
                 return this;
             }
+            public UpdateRequest HsnCode(string hsnCode) 
+            {
+                m_params.AddOpt("hsn_code", hsnCode);
+                return this;
+            }
             public UpdateRequest TaxjarProductCode(string taxjarProductCode) 
             {
                 m_params.AddOpt("taxjar_product_code", taxjarProductCode);
@@ -990,6 +1004,11 @@ namespace ChargeBee.Models
             public StringFilter<PlanListRequest> CurrencyCode() 
             {
                 return new StringFilter<PlanListRequest>("currency_code", this).SupportsMultiOperators(true);        
+            }
+            public PlanListRequest IncludeDeleted(bool includeDeleted) 
+            {
+                m_params.AddOpt("include_deleted", includeDeleted);
+                return this;
             }
         }
         public class CopyRequest : EntityRequest<CopyRequest> 

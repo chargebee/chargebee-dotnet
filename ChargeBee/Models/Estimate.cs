@@ -2936,6 +2936,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
                 return this;
             }
+            public CreateInvoiceRequest ChargeHsnCode(int index, string chargeHsnCode) 
+            {
+                m_params.AddOpt("charges[hsn_code][" + index + "]", chargeHsnCode);
+                return this;
+            }
             public CreateInvoiceRequest ChargeTaxjarProductCode(int index, string chargeTaxjarProductCode) 
             {
                 m_params.AddOpt("charges[taxjar_product_code][" + index + "]", chargeTaxjarProductCode);
@@ -3213,6 +3218,11 @@ namespace ChargeBee.Models
             public CreateInvoiceForItemsRequest ChargeAvalaraTaxCode(int index, string chargeAvalaraTaxCode) 
             {
                 m_params.AddOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
+                return this;
+            }
+            public CreateInvoiceForItemsRequest ChargeHsnCode(int index, string chargeHsnCode) 
+            {
+                m_params.AddOpt("charges[hsn_code][" + index + "]", chargeHsnCode);
                 return this;
             }
             public CreateInvoiceForItemsRequest ChargeTaxjarProductCode(int index, string chargeTaxjarProductCode) 

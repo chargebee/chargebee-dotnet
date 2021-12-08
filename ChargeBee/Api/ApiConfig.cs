@@ -7,7 +7,7 @@ namespace ChargeBee.Api
     {
 		public static string DomainSuffix = "chargebee.com";
 		public static string Proto = "https";
-		public static string Version = "2.11.0";
+		public static string Version = "2.12.0";
 		public static readonly string API_VERSION = "v2";
         public static int TimeTravelMillis { get; set; }
         public static int ExportSleepMillis { get; set;}
@@ -49,7 +49,7 @@ namespace ChargeBee.Api
                 throw new ArgumentException("Api key can't be empty!");
 
             Charset = Encoding.UTF8.WebName;
-            ConnectTimeout = 15000; 
+            ConnectTimeout = 30000;
             TimeTravelMillis = 3000;
             ExportSleepMillis = 10000;
             SiteName = siteName;
@@ -72,6 +72,10 @@ namespace ChargeBee.Api
 
                 return m_instance;
             }
+        }
+
+        public static void updateConnectTimeoutInMillis(int timeout) {
+                    ConnectTimeout = timeout;
         }
     }
 }
