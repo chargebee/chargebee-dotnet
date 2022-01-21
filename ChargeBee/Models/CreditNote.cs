@@ -56,6 +56,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "pdf");
             return new PdfRequest(url, HttpMethod.POST);
         }
+        public static EntityRequest<Type> DownloadEinvoice(string id)
+        {
+            string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "download_einvoice");
+            return new EntityRequest<Type>(url, HttpMethod.GET);
+        }
         public static RefundRequest Refund(string id)
         {
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "refund");
@@ -169,6 +174,10 @@ namespace ChargeBee.Models
         public DateTime? UpdatedAt 
         {
             get { return GetDateTime("updated_at", false); }
+        }
+        public CreditNoteEinvoice Einvoice 
+        {
+            get { return GetSubResource<CreditNoteEinvoice>("einvoice"); }
         }
         public int SubTotal 
         {
@@ -577,6 +586,37 @@ namespace ChargeBee.Models
         }
 
         #region Subclasses
+        public class CreditNoteEinvoice : Resource
+        {
+            public enum StatusEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "scheduled")]
+                Scheduled,
+                [EnumMember(Value = "skipped")]
+                Skipped,
+                [EnumMember(Value = "in_progress")]
+                InProgress,
+                [EnumMember(Value = "success")]
+                Success,
+                [EnumMember(Value = "failed")]
+                Failed,
+            }
+
+            public string Id() {
+                return GetValue<string>("id", true);
+            }
+
+            public StatusEnum Status() {
+                return GetEnum<StatusEnum>("status", true);
+            }
+
+            public string Message() {
+                return GetValue<string>("message", false);
+            }
+
+        }
         public class CreditNoteLineItem : Resource
         {
             public enum EntityTypeEnum

@@ -1137,6 +1137,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
                 return this;
             }
+            public CreateRequest CustomerEntityIdentifierScheme(string customerEntityIdentifierScheme) 
+            {
+                m_params.AddOpt("customer[entity_identifier_scheme]", customerEntityIdentifierScheme);
+                return this;
+            }
+            public CreateRequest CustomerEntityIdentifierStandard(string customerEntityIdentifierStandard) 
+            {
+                m_params.AddOpt("customer[entity_identifier_standard]", customerEntityIdentifierStandard);
+                return this;
+            }
+            public CreateRequest CustomerIsEinvoiceEnabled(bool customerIsEinvoiceEnabled) 
+            {
+                m_params.AddOpt("customer[is_einvoice_enabled]", customerIsEinvoiceEnabled);
+                return this;
+            }
             public CreateRequest CustomerRegisteredForGst(bool customerRegisteredForGst) 
             {
                 m_params.AddOpt("customer[registered_for_gst]", customerRegisteredForGst);
@@ -1165,6 +1180,26 @@ namespace ChargeBee.Models
             public CreateRequest CustomerCustomerType(ChargeBee.Models.Enums.CustomerTypeEnum customerCustomerType) 
             {
                 m_params.AddOpt("customer[customer_type]", customerCustomerType);
+                return this;
+            }
+            public CreateRequest EntityIdentifierId(int index, string entityIdentifierId) 
+            {
+                m_params.AddOpt("entity_identifiers[id][" + index + "]", entityIdentifierId);
+                return this;
+            }
+            public CreateRequest EntityIdentifierScheme(int index, string entityIdentifierScheme) 
+            {
+                m_params.AddOpt("entity_identifiers[scheme][" + index + "]", entityIdentifierScheme);
+                return this;
+            }
+            public CreateRequest EntityIdentifierValue(int index, string entityIdentifierValue) 
+            {
+                m_params.AddOpt("entity_identifiers[value][" + index + "]", entityIdentifierValue);
+                return this;
+            }
+            public CreateRequest EntityIdentifierStandard(int index, string entityIdentifierStandard) 
+            {
+                m_params.AddOpt("entity_identifiers[standard][" + index + "]", entityIdentifierStandard);
                 return this;
             }
             public CreateRequest AddonId(int index, string addonId) 
@@ -2025,10 +2060,6 @@ namespace ChargeBee.Models
             {
                 return new BooleanFilter<SubscriptionListRequest>("auto_close_invoices", this);        
             }
-            public BooleanFilter<SubscriptionListRequest> CreatePendingInvoices() 
-            {
-                return new BooleanFilter<SubscriptionListRequest>("create_pending_invoices", this);        
-            }
             public BooleanFilter<SubscriptionListRequest> OverrideRelationship() 
             {
                 return new BooleanFilter<SubscriptionListRequest>("override_relationship", this);        
@@ -2564,6 +2595,21 @@ namespace ChargeBee.Models
             public UpdateRequest CustomerVatNumberPrefix(string customerVatNumberPrefix) 
             {
                 m_params.AddOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
+                return this;
+            }
+            public UpdateRequest CustomerEntityIdentifierScheme(string customerEntityIdentifierScheme) 
+            {
+                m_params.AddOpt("customer[entity_identifier_scheme]", customerEntityIdentifierScheme);
+                return this;
+            }
+            public UpdateRequest CustomerIsEinvoiceEnabled(bool customerIsEinvoiceEnabled) 
+            {
+                m_params.AddOpt("customer[is_einvoice_enabled]", customerIsEinvoiceEnabled);
+                return this;
+            }
+            public UpdateRequest CustomerEntityIdentifierStandard(string customerEntityIdentifierStandard) 
+            {
+                m_params.AddOpt("customer[entity_identifier_standard]", customerEntityIdentifierStandard);
                 return this;
             }
             public UpdateRequest CustomerBusinessCustomerWithoutVatNumber(bool customerBusinessCustomerWithoutVatNumber) 
@@ -3149,6 +3195,21 @@ namespace ChargeBee.Models
             public UpdateForItemsRequest CustomerVatNumberPrefix(string customerVatNumberPrefix) 
             {
                 m_params.AddOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
+                return this;
+            }
+            public UpdateForItemsRequest CustomerEntityIdentifierScheme(string customerEntityIdentifierScheme) 
+            {
+                m_params.AddOpt("customer[entity_identifier_scheme]", customerEntityIdentifierScheme);
+                return this;
+            }
+            public UpdateForItemsRequest CustomerIsEinvoiceEnabled(bool customerIsEinvoiceEnabled) 
+            {
+                m_params.AddOpt("customer[is_einvoice_enabled]", customerIsEinvoiceEnabled);
+                return this;
+            }
+            public UpdateForItemsRequest CustomerEntityIdentifierStandard(string customerEntityIdentifierStandard) 
+            {
+                m_params.AddOpt("customer[entity_identifier_standard]", customerEntityIdentifierStandard);
                 return this;
             }
             public UpdateForItemsRequest CustomerBusinessCustomerWithoutVatNumber(bool customerBusinessCustomerWithoutVatNumber) 

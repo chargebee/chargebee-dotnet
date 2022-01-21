@@ -1144,7 +1144,7 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<InvoicesRequest>("invoice[updated_at]", this);        
             }
-
+            
         }
         public class CreditNotesRequest : EntityRequest<CreditNotesRequest> 
         {
@@ -1676,6 +1676,10 @@ namespace ChargeBee.Models
 
             public DateTime ValidTill() {
                 return (DateTime)GetDateTime("valid_till", true);
+            }
+
+            public string MimeType() {
+                return GetValue<string>("mime_type", false);
             }
 
         }

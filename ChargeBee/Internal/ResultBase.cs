@@ -238,6 +238,11 @@ namespace ChargeBee.Internal
             get {  return (List<Hierarchy>)GetResourceList<Hierarchy>("hierarchies", "hierarchy"); }
         }
 
+        public List<Download> Downloads
+        {
+            get {  return (List<Download>)GetResourceList<Download>("downloads", "download"); }
+        }
+
         public List<Invoice> Invoices
         {
             get {  return (List<Invoice>)GetResourceList<Invoice>("invoices", "invoice"); }

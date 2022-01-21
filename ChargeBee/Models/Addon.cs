@@ -14,9 +14,9 @@ using ChargeBee.Filters.Enums;
 namespace ChargeBee.Models
 {
 
-    public class Addon : Resource 
+    public class Addon : Resource
     {
-    
+
         public Addon() { }
 
         public Addon(Stream stream)

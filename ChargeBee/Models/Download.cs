@@ -52,6 +52,10 @@ namespace ChargeBee.Models
         {
             get { return (DateTime)GetDateTime("valid_till", true); }
         }
+        public string MimeType 
+        {
+            get { return GetValue<string>("mime_type", false); }
+        }
         
         #endregion
         

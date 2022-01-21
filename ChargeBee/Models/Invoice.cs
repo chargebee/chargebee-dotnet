@@ -114,6 +114,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "pdf");
             return new PdfRequest(url, HttpMethod.POST);
         }
+        public static EntityRequest<Type> DownloadEinvoice(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "download_einvoice");
+            return new EntityRequest<Type>(url, HttpMethod.GET);
+        }
         public static AddChargeRequest AddCharge(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "add_charge");
@@ -402,6 +407,10 @@ namespace ChargeBee.Models
         public InvoiceBillingAddress BillingAddress 
         {
             get { return GetSubResource<InvoiceBillingAddress>("billing_address"); }
+        }
+        public InvoiceEinvoice Einvoice 
+        {
+            get { return GetSubResource<InvoiceEinvoice>("einvoice"); }
         }
         public string PaymentOwner 
         {
@@ -3785,6 +3794,37 @@ namespace ChargeBee.Models
 
             public ValidationStatusEnum? ValidationStatus() {
                 return GetEnum<ValidationStatusEnum>("validation_status", false);
+            }
+
+        }
+        public class InvoiceEinvoice : Resource
+        {
+            public enum StatusEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "scheduled")]
+                Scheduled,
+                [EnumMember(Value = "skipped")]
+                Skipped,
+                [EnumMember(Value = "in_progress")]
+                InProgress,
+                [EnumMember(Value = "success")]
+                Success,
+                [EnumMember(Value = "failed")]
+                Failed,
+            }
+
+            public string Id() {
+                return GetValue<string>("id", true);
+            }
+
+            public StatusEnum Status() {
+                return GetEnum<StatusEnum>("status", true);
+            }
+
+            public string Message() {
+                return GetValue<string>("message", false);
             }
 
         }

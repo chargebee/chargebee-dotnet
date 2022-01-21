@@ -48,6 +48,11 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("id", true); }
         }
+        [Obsolete]
+        public string User 
+        {
+            get { return GetValue<string>("user", false); }
+        }
         public string ReferenceNumber 
         {
             get { return GetValue<string>("reference_number", false); }
@@ -55,6 +60,16 @@ namespace ChargeBee.Models
         public string Description 
         {
             get { return GetValue<string>("description", false); }
+        }
+        [Obsolete]
+        public TypeEnum TaxWithheldType 
+        {
+            get { return GetEnum<TypeEnum>("type", true); }
+        }
+        [Obsolete]
+        public PaymentMethodEnum PaymentMethod 
+        {
+            get { return GetEnum<PaymentMethodEnum>("payment_method", true); }
         }
         public DateTime? Date 
         {
@@ -69,10 +84,45 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int?>("amount", false); }
         }
+        [Obsolete]
+        public decimal? ExchangeRate 
+        {
+            get { return GetValue<decimal?>("exchange_rate", false); }
+        }
         
         #endregion
         
 
+        [Obsolete]
+        public enum TypeEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "payment")]
+            Payment,
+            [EnumMember(Value = "refund")]
+            Refund,
+
+        }
+        [Obsolete]
+        public enum PaymentMethodEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "cash")]
+            Cash,
+            [EnumMember(Value = "check")]
+            Check,
+            [EnumMember(Value = "chargeback")]
+            Chargeback,
+            [EnumMember(Value = "bank_transfer")]
+            BankTransfer,
+            [EnumMember(Value = "other")]
+            Other,
+
+        }
 
         #region Subclasses
 
