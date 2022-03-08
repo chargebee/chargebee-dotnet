@@ -179,9 +179,17 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<PaymentSourceAmazonPayment>("amazon_payment"); }
         }
+        public PaymentSourceUpi Upi 
+        {
+            get { return GetSubResource<PaymentSourceUpi>("upi"); }
+        }
         public PaymentSourcePaypal Paypal 
         {
             get { return GetSubResource<PaymentSourcePaypal>("paypal"); }
+        }
+        public List<PaymentSourceMandate> Mandates 
+        {
+            get { return GetResourceList<PaymentSourceMandate>("mandates"); }
         }
         public bool Deleted 
         {
@@ -330,6 +338,11 @@ namespace ChargeBee.Models
             public CreateUsingPaymentIntentRequest PaymentIntentGwToken(string paymentIntentGwToken) 
             {
                 m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
+                return this;
+            }
+            public CreateUsingPaymentIntentRequest PaymentIntentPaymentMethodType(PaymentIntent.PaymentMethodTypeEnum paymentIntentPaymentMethodType) 
+            {
+                m_params.AddOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
                 return this;
             }
             public CreateUsingPaymentIntentRequest PaymentIntentReferenceId(string paymentIntentReferenceId) 
@@ -499,6 +512,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("bank_account[email]", bankAccountEmail);
                 return this;
             }
+            public CreateBankAccountRequest BankAccountPhone(string bankAccountPhone) 
+            {
+                m_params.AddOpt("bank_account[phone]", bankAccountPhone);
+                return this;
+            }
             public CreateBankAccountRequest BankAccountBankName(string bankAccountBankName) 
             {
                 m_params.AddOpt("bank_account[bank_name]", bankAccountBankName);
@@ -666,6 +684,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public PaymentSourceListRequest SubscriptionId(string subscriptionId) 
+            {
+                m_params.AddOpt("subscription_id", subscriptionId);
+                return this;
+            }
             public StringFilter<PaymentSourceListRequest> CustomerId() 
             {
                 return new StringFilter<PaymentSourceListRequest>("customer_id", this).SupportsMultiOperators(true);        
@@ -779,68 +802,68 @@ namespace ChargeBee.Models
                 NotApplicable,
             }
 
-            public string FirstName() {
-                return GetValue<string>("first_name", false);
+            public string FirstName {
+                get { return GetValue<string>("first_name", false); }
             }
 
-            public string LastName() {
-                return GetValue<string>("last_name", false);
+            public string LastName {
+                get { return GetValue<string>("last_name", false); }
             }
 
-            public string Iin() {
-                return GetValue<string>("iin", true);
+            public string Iin {
+                get { return GetValue<string>("iin", true); }
             }
 
-            public string Last4() {
-                return GetValue<string>("last4", true);
+            public string Last4 {
+                get { return GetValue<string>("last4", true); }
             }
 
-            public BrandEnum Brand() {
-                return GetEnum<BrandEnum>("brand", true);
+            public BrandEnum Brand {
+                get { return GetEnum<BrandEnum>("brand", true); }
             }
 
-            public FundingTypeEnum FundingType() {
-                return GetEnum<FundingTypeEnum>("funding_type", true);
+            public FundingTypeEnum FundingType {
+                get { return GetEnum<FundingTypeEnum>("funding_type", true); }
             }
 
-            public int ExpiryMonth() {
-                return GetValue<int>("expiry_month", true);
+            public int ExpiryMonth {
+                get { return GetValue<int>("expiry_month", true); }
             }
 
-            public int ExpiryYear() {
-                return GetValue<int>("expiry_year", true);
+            public int ExpiryYear {
+                get { return GetValue<int>("expiry_year", true); }
             }
 
-            public string BillingAddr1() {
-                return GetValue<string>("billing_addr1", false);
+            public string BillingAddr1 {
+                get { return GetValue<string>("billing_addr1", false); }
             }
 
-            public string BillingAddr2() {
-                return GetValue<string>("billing_addr2", false);
+            public string BillingAddr2 {
+                get { return GetValue<string>("billing_addr2", false); }
             }
 
-            public string BillingCity() {
-                return GetValue<string>("billing_city", false);
+            public string BillingCity {
+                get { return GetValue<string>("billing_city", false); }
             }
 
-            public string BillingStateCode() {
-                return GetValue<string>("billing_state_code", false);
+            public string BillingStateCode {
+                get { return GetValue<string>("billing_state_code", false); }
             }
 
-            public string BillingState() {
-                return GetValue<string>("billing_state", false);
+            public string BillingState {
+                get { return GetValue<string>("billing_state", false); }
             }
 
-            public string BillingCountry() {
-                return GetValue<string>("billing_country", false);
+            public string BillingCountry {
+                get { return GetValue<string>("billing_country", false); }
             }
 
-            public string BillingZip() {
-                return GetValue<string>("billing_zip", false);
+            public string BillingZip {
+                get { return GetValue<string>("billing_zip", false); }
             }
 
-            public string MaskedNumber() {
-                return GetValue<string>("masked_number", false);
+            public string MaskedNumber {
+                get { return GetValue<string>("masked_number", false); }
             }
 
         }
@@ -856,6 +879,8 @@ namespace ChargeBee.Models
                 Savings,
                 [EnumMember(Value = "business_checking")]
                 BusinessChecking,
+                [EnumMember(Value = "current")]
+                Current,
             }
             public enum EcheckTypeEnum
             {
@@ -878,68 +903,92 @@ namespace ChargeBee.Models
                 Company,
             }
 
-            public string Last4() {
-                return GetValue<string>("last4", true);
+            public string Last4 {
+                get { return GetValue<string>("last4", true); }
             }
 
-            public string NameOnAccount() {
-                return GetValue<string>("name_on_account", false);
+            public string NameOnAccount {
+                get { return GetValue<string>("name_on_account", false); }
             }
 
-            public string FirstName() {
-                return GetValue<string>("first_name", false);
+            public string FirstName {
+                get { return GetValue<string>("first_name", false); }
             }
 
-            public string LastName() {
-                return GetValue<string>("last_name", false);
+            public string LastName {
+                get { return GetValue<string>("last_name", false); }
             }
 
-            public string BankName() {
-                return GetValue<string>("bank_name", false);
+            public string BankName {
+                get { return GetValue<string>("bank_name", false); }
             }
 
-            public string MandateId() {
-                return GetValue<string>("mandate_id", false);
+            public string MandateId {
+                get { return GetValue<string>("mandate_id", false); }
             }
 
-            public AccountTypeEnum? AccountType() {
-                return GetEnum<AccountTypeEnum>("account_type", false);
+            public AccountTypeEnum? AccountType {
+                get { return GetEnum<AccountTypeEnum>("account_type", false); }
             }
 
-            public EcheckTypeEnum? EcheckType() {
-                return GetEnum<EcheckTypeEnum>("echeck_type", false);
+            public EcheckTypeEnum? EcheckType {
+                get { return GetEnum<EcheckTypeEnum>("echeck_type", false); }
             }
 
-            public AccountHolderTypeEnum? AccountHolderType() {
-                return GetEnum<AccountHolderTypeEnum>("account_holder_type", false);
+            public AccountHolderTypeEnum? AccountHolderType {
+                get { return GetEnum<AccountHolderTypeEnum>("account_holder_type", false); }
             }
 
-            public string Email() {
-                return GetValue<string>("email", false);
+            public string Email {
+                get { return GetValue<string>("email", false); }
             }
 
         }
         public class PaymentSourceAmazonPayment : Resource
         {
 
-            public string Email() {
-                return GetValue<string>("email", false);
+            public string Email {
+                get { return GetValue<string>("email", false); }
             }
 
-            public string AgreementId() {
-                return GetValue<string>("agreement_id", false);
+            public string AgreementId {
+                get { return GetValue<string>("agreement_id", false); }
+            }
+
+        }
+        public class PaymentSourceUpi : Resource
+        {
+
+            public string Vpa {
+                get { return GetValue<string>("vpa", false); }
             }
 
         }
         public class PaymentSourcePaypal : Resource
         {
 
-            public string Email() {
-                return GetValue<string>("email", false);
+            public string Email {
+                get { return GetValue<string>("email", false); }
             }
 
-            public string AgreementId() {
-                return GetValue<string>("agreement_id", false);
+            public string AgreementId {
+                get { return GetValue<string>("agreement_id", false); }
+            }
+
+        }
+        public class PaymentSourceMandate : Resource
+        {
+
+            public string Id {
+                get { return GetValue<string>("id", true); }
+            }
+
+            public string SubscriptionId {
+                get { return GetValue<string>("subscription_id", true); }
+            }
+
+            public DateTime CreatedAt {
+                get { return (DateTime)GetDateTime("created_at", true); }
             }
 
         }

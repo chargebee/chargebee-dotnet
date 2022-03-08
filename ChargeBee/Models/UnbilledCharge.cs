@@ -400,36 +400,36 @@ namespace ChargeBee.Models
         public class UnbilledChargeTier : Resource
         {
 
-            public int StartingUnit() {
-                return GetValue<int>("starting_unit", true);
+            public int StartingUnit {
+                get { return GetValue<int>("starting_unit", true); }
             }
 
-            public int? EndingUnit() {
-                return GetValue<int?>("ending_unit", false);
+            public int? EndingUnit {
+                get { return GetValue<int?>("ending_unit", false); }
             }
 
-            public int QuantityUsed() {
-                return GetValue<int>("quantity_used", true);
+            public int QuantityUsed {
+                get { return GetValue<int>("quantity_used", true); }
             }
 
-            public int UnitAmount() {
-                return GetValue<int>("unit_amount", true);
+            public int UnitAmount {
+                get { return GetValue<int>("unit_amount", true); }
             }
 
-            public string StartingUnitInDecimal() {
-                return GetValue<string>("starting_unit_in_decimal", false);
+            public string StartingUnitInDecimal {
+                get { return GetValue<string>("starting_unit_in_decimal", false); }
             }
 
-            public string EndingUnitInDecimal() {
-                return GetValue<string>("ending_unit_in_decimal", false);
+            public string EndingUnitInDecimal {
+                get { return GetValue<string>("ending_unit_in_decimal", false); }
             }
 
-            public string QuantityUsedInDecimal() {
-                return GetValue<string>("quantity_used_in_decimal", false);
+            public string QuantityUsedInDecimal {
+                get { return GetValue<string>("quantity_used_in_decimal", false); }
             }
 
-            public string UnitAmountInDecimal() {
-                return GetValue<string>("unit_amount_in_decimal", false);
+            public string UnitAmountInDecimal {
+                get { return GetValue<string>("unit_amount_in_decimal", false); }
             }
 
         }

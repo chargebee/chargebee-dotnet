@@ -632,6 +632,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("bank_account[email]", bankAccountEmail);
                 return this;
             }
+            public CreateRequest BankAccountPhone(string bankAccountPhone) 
+            {
+                m_params.AddOpt("bank_account[phone]", bankAccountPhone);
+                return this;
+            }
             public CreateRequest BankAccountBankName(string bankAccountBankName) 
             {
                 m_params.AddOpt("bank_account[bank_name]", bankAccountBankName);
@@ -807,6 +812,11 @@ namespace ChargeBee.Models
             public CreateRequest PaymentIntentGwToken(string paymentIntentGwToken) 
             {
                 m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
+                return this;
+            }
+            public CreateRequest PaymentIntentPaymentMethodType(PaymentIntent.PaymentMethodTypeEnum paymentIntentPaymentMethodType) 
+            {
+                m_params.AddOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
                 return this;
             }
             public CreateRequest PaymentIntentReferenceId(string paymentIntentReferenceId) 
@@ -1136,6 +1146,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("bank_account[email]", bankAccountEmail);
                 return this;
             }
+            public CreateForChargeItemsAndChargesRequest BankAccountPhone(string bankAccountPhone) 
+            {
+                m_params.AddOpt("bank_account[phone]", bankAccountPhone);
+                return this;
+            }
             public CreateForChargeItemsAndChargesRequest BankAccountBankName(string bankAccountBankName) 
             {
                 m_params.AddOpt("bank_account[bank_name]", bankAccountBankName);
@@ -1311,6 +1326,11 @@ namespace ChargeBee.Models
             public CreateForChargeItemsAndChargesRequest PaymentIntentGwToken(string paymentIntentGwToken) 
             {
                 m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest PaymentIntentPaymentMethodType(PaymentIntent.PaymentMethodTypeEnum paymentIntentPaymentMethodType) 
+            {
+                m_params.AddOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
                 return this;
             }
             public CreateForChargeItemsAndChargesRequest PaymentIntentReferenceId(string paymentIntentReferenceId) 
@@ -3147,92 +3167,92 @@ namespace ChargeBee.Models
                 ChargeItemPrice,
             }
 
-            public string Id() {
-                return GetValue<string>("id", false);
+            public string Id {
+                get { return GetValue<string>("id", false); }
             }
 
-            public string SubscriptionId() {
-                return GetValue<string>("subscription_id", false);
+            public string SubscriptionId {
+                get { return GetValue<string>("subscription_id", false); }
             }
 
-            public DateTime DateFrom() {
-                return (DateTime)GetDateTime("date_from", true);
+            public DateTime DateFrom {
+                get { return (DateTime)GetDateTime("date_from", true); }
             }
 
-            public DateTime DateTo() {
-                return (DateTime)GetDateTime("date_to", true);
+            public DateTime DateTo {
+                get { return (DateTime)GetDateTime("date_to", true); }
             }
 
-            public int UnitAmount() {
-                return GetValue<int>("unit_amount", true);
+            public int UnitAmount {
+                get { return GetValue<int>("unit_amount", true); }
             }
 
-            public int? Quantity() {
-                return GetValue<int?>("quantity", false);
+            public int? Quantity {
+                get { return GetValue<int?>("quantity", false); }
             }
 
-            public int? Amount() {
-                return GetValue<int?>("amount", false);
+            public int? Amount {
+                get { return GetValue<int?>("amount", false); }
             }
 
-            public PricingModelEnum? PricingModel() {
-                return GetEnum<PricingModelEnum>("pricing_model", false);
+            public PricingModelEnum? PricingModel {
+                get { return GetEnum<PricingModelEnum>("pricing_model", false); }
             }
 
-            public bool IsTaxed() {
-                return GetValue<bool>("is_taxed", true);
+            public bool IsTaxed {
+                get { return GetValue<bool>("is_taxed", true); }
             }
 
-            public int? TaxAmount() {
-                return GetValue<int?>("tax_amount", false);
+            public int? TaxAmount {
+                get { return GetValue<int?>("tax_amount", false); }
             }
 
-            public double? TaxRate() {
-                return GetValue<double?>("tax_rate", false);
+            public double? TaxRate {
+                get { return GetValue<double?>("tax_rate", false); }
             }
 
-            public string UnitAmountInDecimal() {
-                return GetValue<string>("unit_amount_in_decimal", false);
+            public string UnitAmountInDecimal {
+                get { return GetValue<string>("unit_amount_in_decimal", false); }
             }
 
-            public string QuantityInDecimal() {
-                return GetValue<string>("quantity_in_decimal", false);
+            public string QuantityInDecimal {
+                get { return GetValue<string>("quantity_in_decimal", false); }
             }
 
-            public string AmountInDecimal() {
-                return GetValue<string>("amount_in_decimal", false);
+            public string AmountInDecimal {
+                get { return GetValue<string>("amount_in_decimal", false); }
             }
 
-            public int? DiscountAmount() {
-                return GetValue<int?>("discount_amount", false);
+            public int? DiscountAmount {
+                get { return GetValue<int?>("discount_amount", false); }
             }
 
-            public int? ItemLevelDiscountAmount() {
-                return GetValue<int?>("item_level_discount_amount", false);
+            public int? ItemLevelDiscountAmount {
+                get { return GetValue<int?>("item_level_discount_amount", false); }
             }
 
-            public string Description() {
-                return GetValue<string>("description", true);
+            public string Description {
+                get { return GetValue<string>("description", true); }
             }
 
-            public string EntityDescription() {
-                return GetValue<string>("entity_description", true);
+            public string EntityDescription {
+                get { return GetValue<string>("entity_description", true); }
             }
 
-            public EntityTypeEnum EntityType() {
-                return GetEnum<EntityTypeEnum>("entity_type", true);
+            public EntityTypeEnum EntityType {
+                get { return GetEnum<EntityTypeEnum>("entity_type", true); }
             }
 
-            public TaxExemptReasonEnum? TaxExemptReason() {
-                return GetEnum<TaxExemptReasonEnum>("tax_exempt_reason", false);
+            public TaxExemptReasonEnum? TaxExemptReason {
+                get { return GetEnum<TaxExemptReasonEnum>("tax_exempt_reason", false); }
             }
 
-            public string EntityId() {
-                return GetValue<string>("entity_id", false);
+            public string EntityId {
+                get { return GetValue<string>("entity_id", false); }
             }
 
-            public string CustomerId() {
-                return GetValue<string>("customer_id", false);
+            public string CustomerId {
+                get { return GetValue<string>("customer_id", false); }
             }
 
         }
@@ -3256,20 +3276,20 @@ namespace ChargeBee.Models
                 DocumentLevelDiscount,
             }
 
-            public int Amount() {
-                return GetValue<int>("amount", true);
+            public int Amount {
+                get { return GetValue<int>("amount", true); }
             }
 
-            public string Description() {
-                return GetValue<string>("description", false);
+            public string Description {
+                get { return GetValue<string>("description", false); }
             }
 
-            public EntityTypeEnum EntityType() {
-                return GetEnum<EntityTypeEnum>("entity_type", true);
+            public EntityTypeEnum EntityType {
+                get { return GetEnum<EntityTypeEnum>("entity_type", true); }
             }
 
-            public string EntityId() {
-                return GetValue<string>("entity_id", false);
+            public string EntityId {
+                get { return GetValue<string>("entity_id", false); }
             }
 
         }
@@ -3293,276 +3313,276 @@ namespace ChargeBee.Models
                 DocumentLevelDiscount,
             }
 
-            public string LineItemId() {
-                return GetValue<string>("line_item_id", true);
+            public string LineItemId {
+                get { return GetValue<string>("line_item_id", true); }
             }
 
-            public DiscountTypeEnum DiscountType() {
-                return GetEnum<DiscountTypeEnum>("discount_type", true);
+            public DiscountTypeEnum DiscountType {
+                get { return GetEnum<DiscountTypeEnum>("discount_type", true); }
             }
 
-            public string CouponId() {
-                return GetValue<string>("coupon_id", false);
+            public string CouponId {
+                get { return GetValue<string>("coupon_id", false); }
             }
 
-            public string EntityId() {
-                return GetValue<string>("entity_id", false);
+            public string EntityId {
+                get { return GetValue<string>("entity_id", false); }
             }
 
-            public int DiscountAmount() {
-                return GetValue<int>("discount_amount", true);
+            public int DiscountAmount {
+                get { return GetValue<int>("discount_amount", true); }
             }
 
         }
         public class InvoiceTax : Resource
         {
 
-            public string Name() {
-                return GetValue<string>("name", true);
+            public string Name {
+                get { return GetValue<string>("name", true); }
             }
 
-            public int Amount() {
-                return GetValue<int>("amount", true);
+            public int Amount {
+                get { return GetValue<int>("amount", true); }
             }
 
-            public string Description() {
-                return GetValue<string>("description", false);
+            public string Description {
+                get { return GetValue<string>("description", false); }
             }
 
         }
         public class InvoiceLineItemTax : Resource
         {
 
-            public string LineItemId() {
-                return GetValue<string>("line_item_id", false);
+            public string LineItemId {
+                get { return GetValue<string>("line_item_id", false); }
             }
 
-            public string TaxName() {
-                return GetValue<string>("tax_name", true);
+            public string TaxName {
+                get { return GetValue<string>("tax_name", true); }
             }
 
-            public double TaxRate() {
-                return GetValue<double>("tax_rate", true);
+            public double TaxRate {
+                get { return GetValue<double>("tax_rate", true); }
             }
 
-            public bool? IsPartialTaxApplied() {
-                return GetValue<bool?>("is_partial_tax_applied", false);
+            public bool? IsPartialTaxApplied {
+                get { return GetValue<bool?>("is_partial_tax_applied", false); }
             }
 
-            public bool? IsNonComplianceTax() {
-                return GetValue<bool?>("is_non_compliance_tax", false);
+            public bool? IsNonComplianceTax {
+                get { return GetValue<bool?>("is_non_compliance_tax", false); }
             }
 
-            public int TaxableAmount() {
-                return GetValue<int>("taxable_amount", true);
+            public int TaxableAmount {
+                get { return GetValue<int>("taxable_amount", true); }
             }
 
-            public int TaxAmount() {
-                return GetValue<int>("tax_amount", true);
+            public int TaxAmount {
+                get { return GetValue<int>("tax_amount", true); }
             }
 
-            public TaxJurisTypeEnum? TaxJurisType() {
-                return GetEnum<TaxJurisTypeEnum>("tax_juris_type", false);
+            public TaxJurisTypeEnum? TaxJurisType {
+                get { return GetEnum<TaxJurisTypeEnum>("tax_juris_type", false); }
             }
 
-            public string TaxJurisName() {
-                return GetValue<string>("tax_juris_name", false);
+            public string TaxJurisName {
+                get { return GetValue<string>("tax_juris_name", false); }
             }
 
-            public string TaxJurisCode() {
-                return GetValue<string>("tax_juris_code", false);
+            public string TaxJurisCode {
+                get { return GetValue<string>("tax_juris_code", false); }
             }
 
-            public int? TaxAmountInLocalCurrency() {
-                return GetValue<int?>("tax_amount_in_local_currency", false);
+            public int? TaxAmountInLocalCurrency {
+                get { return GetValue<int?>("tax_amount_in_local_currency", false); }
             }
 
-            public string LocalCurrencyCode() {
-                return GetValue<string>("local_currency_code", false);
+            public string LocalCurrencyCode {
+                get { return GetValue<string>("local_currency_code", false); }
             }
 
         }
         public class InvoiceLineItemTier : Resource
         {
 
-            public string LineItemId() {
-                return GetValue<string>("line_item_id", false);
+            public string LineItemId {
+                get { return GetValue<string>("line_item_id", false); }
             }
 
-            public int StartingUnit() {
-                return GetValue<int>("starting_unit", true);
+            public int StartingUnit {
+                get { return GetValue<int>("starting_unit", true); }
             }
 
-            public int? EndingUnit() {
-                return GetValue<int?>("ending_unit", false);
+            public int? EndingUnit {
+                get { return GetValue<int?>("ending_unit", false); }
             }
 
-            public int QuantityUsed() {
-                return GetValue<int>("quantity_used", true);
+            public int QuantityUsed {
+                get { return GetValue<int>("quantity_used", true); }
             }
 
-            public int UnitAmount() {
-                return GetValue<int>("unit_amount", true);
+            public int UnitAmount {
+                get { return GetValue<int>("unit_amount", true); }
             }
 
-            public string StartingUnitInDecimal() {
-                return GetValue<string>("starting_unit_in_decimal", false);
+            public string StartingUnitInDecimal {
+                get { return GetValue<string>("starting_unit_in_decimal", false); }
             }
 
-            public string EndingUnitInDecimal() {
-                return GetValue<string>("ending_unit_in_decimal", false);
+            public string EndingUnitInDecimal {
+                get { return GetValue<string>("ending_unit_in_decimal", false); }
             }
 
-            public string QuantityUsedInDecimal() {
-                return GetValue<string>("quantity_used_in_decimal", false);
+            public string QuantityUsedInDecimal {
+                get { return GetValue<string>("quantity_used_in_decimal", false); }
             }
 
-            public string UnitAmountInDecimal() {
-                return GetValue<string>("unit_amount_in_decimal", false);
+            public string UnitAmountInDecimal {
+                get { return GetValue<string>("unit_amount_in_decimal", false); }
             }
 
         }
         public class InvoiceLinkedPayment : Resource
         {
 
-            public string TxnId() {
-                return GetValue<string>("txn_id", true);
+            public string TxnId {
+                get { return GetValue<string>("txn_id", true); }
             }
 
-            public int AppliedAmount() {
-                return GetValue<int>("applied_amount", true);
+            public int AppliedAmount {
+                get { return GetValue<int>("applied_amount", true); }
             }
 
-            public DateTime AppliedAt() {
-                return (DateTime)GetDateTime("applied_at", true);
+            public DateTime AppliedAt {
+                get { return (DateTime)GetDateTime("applied_at", true); }
             }
 
-            public Transaction.StatusEnum? TxnStatus() {
-                return GetEnum<Transaction.StatusEnum>("txn_status", false);
+            public Transaction.StatusEnum? TxnStatus {
+                get { return GetEnum<Transaction.StatusEnum>("txn_status", false); }
             }
 
-            public DateTime? TxnDate() {
-                return GetDateTime("txn_date", false);
+            public DateTime? TxnDate {
+                get { return GetDateTime("txn_date", false); }
             }
 
-            public int? TxnAmount() {
-                return GetValue<int?>("txn_amount", false);
+            public int? TxnAmount {
+                get { return GetValue<int?>("txn_amount", false); }
             }
 
         }
         public class InvoiceDunningAttempt : Resource
         {
 
-            public int Attempt() {
-                return GetValue<int>("attempt", true);
+            public int Attempt {
+                get { return GetValue<int>("attempt", true); }
             }
 
-            public string TransactionId() {
-                return GetValue<string>("transaction_id", false);
+            public string TransactionId {
+                get { return GetValue<string>("transaction_id", false); }
             }
 
-            public DunningTypeEnum DunningType() {
-                return GetEnum<DunningTypeEnum>("dunning_type", true);
+            public DunningTypeEnum DunningType {
+                get { return GetEnum<DunningTypeEnum>("dunning_type", true); }
             }
 
-            public DateTime? CreatedAt() {
-                return GetDateTime("created_at", false);
+            public DateTime? CreatedAt {
+                get { return GetDateTime("created_at", false); }
             }
 
-            public Transaction.StatusEnum? TxnStatus() {
-                return GetEnum<Transaction.StatusEnum>("txn_status", false);
+            public Transaction.StatusEnum? TxnStatus {
+                get { return GetEnum<Transaction.StatusEnum>("txn_status", false); }
             }
 
-            public int? TxnAmount() {
-                return GetValue<int?>("txn_amount", false);
+            public int? TxnAmount {
+                get { return GetValue<int?>("txn_amount", false); }
             }
 
         }
         public class InvoiceAppliedCredit : Resource
         {
 
-            public string CnId() {
-                return GetValue<string>("cn_id", true);
+            public string CnId {
+                get { return GetValue<string>("cn_id", true); }
             }
 
-            public int AppliedAmount() {
-                return GetValue<int>("applied_amount", true);
+            public int AppliedAmount {
+                get { return GetValue<int>("applied_amount", true); }
             }
 
-            public DateTime AppliedAt() {
-                return (DateTime)GetDateTime("applied_at", true);
+            public DateTime AppliedAt {
+                get { return (DateTime)GetDateTime("applied_at", true); }
             }
 
-            public CreditNote.ReasonCodeEnum? CnReasonCode() {
-                return GetEnum<CreditNote.ReasonCodeEnum>("cn_reason_code", false);
+            public CreditNote.ReasonCodeEnum? CnReasonCode {
+                get { return GetEnum<CreditNote.ReasonCodeEnum>("cn_reason_code", false); }
             }
 
-            public string CnCreateReasonCode() {
-                return GetValue<string>("cn_create_reason_code", false);
+            public string CnCreateReasonCode {
+                get { return GetValue<string>("cn_create_reason_code", false); }
             }
 
-            public DateTime? CnDate() {
-                return GetDateTime("cn_date", false);
+            public DateTime? CnDate {
+                get { return GetDateTime("cn_date", false); }
             }
 
-            public CreditNote.StatusEnum CnStatus() {
-                return GetEnum<CreditNote.StatusEnum>("cn_status", true);
+            public CreditNote.StatusEnum CnStatus {
+                get { return GetEnum<CreditNote.StatusEnum>("cn_status", true); }
             }
 
         }
         public class InvoiceAdjustmentCreditNote : Resource
         {
 
-            public string CnId() {
-                return GetValue<string>("cn_id", true);
+            public string CnId {
+                get { return GetValue<string>("cn_id", true); }
             }
 
-            public CreditNote.ReasonCodeEnum? CnReasonCode() {
-                return GetEnum<CreditNote.ReasonCodeEnum>("cn_reason_code", false);
+            public CreditNote.ReasonCodeEnum? CnReasonCode {
+                get { return GetEnum<CreditNote.ReasonCodeEnum>("cn_reason_code", false); }
             }
 
-            public string CnCreateReasonCode() {
-                return GetValue<string>("cn_create_reason_code", false);
+            public string CnCreateReasonCode {
+                get { return GetValue<string>("cn_create_reason_code", false); }
             }
 
-            public DateTime? CnDate() {
-                return GetDateTime("cn_date", false);
+            public DateTime? CnDate {
+                get { return GetDateTime("cn_date", false); }
             }
 
-            public int? CnTotal() {
-                return GetValue<int?>("cn_total", false);
+            public int? CnTotal {
+                get { return GetValue<int?>("cn_total", false); }
             }
 
-            public CreditNote.StatusEnum CnStatus() {
-                return GetEnum<CreditNote.StatusEnum>("cn_status", true);
+            public CreditNote.StatusEnum CnStatus {
+                get { return GetEnum<CreditNote.StatusEnum>("cn_status", true); }
             }
 
         }
         public class InvoiceIssuedCreditNote : Resource
         {
 
-            public string CnId() {
-                return GetValue<string>("cn_id", true);
+            public string CnId {
+                get { return GetValue<string>("cn_id", true); }
             }
 
-            public CreditNote.ReasonCodeEnum? CnReasonCode() {
-                return GetEnum<CreditNote.ReasonCodeEnum>("cn_reason_code", false);
+            public CreditNote.ReasonCodeEnum? CnReasonCode {
+                get { return GetEnum<CreditNote.ReasonCodeEnum>("cn_reason_code", false); }
             }
 
-            public string CnCreateReasonCode() {
-                return GetValue<string>("cn_create_reason_code", false);
+            public string CnCreateReasonCode {
+                get { return GetValue<string>("cn_create_reason_code", false); }
             }
 
-            public DateTime? CnDate() {
-                return GetDateTime("cn_date", false);
+            public DateTime? CnDate {
+                get { return GetDateTime("cn_date", false); }
             }
 
-            public int? CnTotal() {
-                return GetValue<int?>("cn_total", false);
+            public int? CnTotal {
+                get { return GetValue<int?>("cn_total", false); }
             }
 
-            public CreditNote.StatusEnum CnStatus() {
-                return GetEnum<CreditNote.StatusEnum>("cn_status", true);
+            public CreditNote.StatusEnum CnStatus {
+                get { return GetEnum<CreditNote.StatusEnum>("cn_status", true); }
             }
 
         }
@@ -3607,36 +3627,36 @@ namespace ChargeBee.Models
                 SystemGenerated,
             }
 
-            public string Id() {
-                return GetValue<string>("id", true);
+            public string Id {
+                get { return GetValue<string>("id", true); }
             }
 
-            public string DocumentNumber() {
-                return GetValue<string>("document_number", false);
+            public string DocumentNumber {
+                get { return GetValue<string>("document_number", false); }
             }
 
-            public StatusEnum? Status() {
-                return GetEnum<StatusEnum>("status", false);
+            public StatusEnum? Status {
+                get { return GetEnum<StatusEnum>("status", false); }
             }
 
-            public OrderTypeEnum? OrderType() {
-                return GetEnum<OrderTypeEnum>("order_type", false);
+            public OrderTypeEnum? OrderType {
+                get { return GetEnum<OrderTypeEnum>("order_type", false); }
             }
 
-            public string ReferenceId() {
-                return GetValue<string>("reference_id", false);
+            public string ReferenceId {
+                get { return GetValue<string>("reference_id", false); }
             }
 
-            public string FulfillmentStatus() {
-                return GetValue<string>("fulfillment_status", false);
+            public string FulfillmentStatus {
+                get { return GetValue<string>("fulfillment_status", false); }
             }
 
-            public string BatchId() {
-                return GetValue<string>("batch_id", false);
+            public string BatchId {
+                get { return GetValue<string>("batch_id", false); }
             }
 
-            public DateTime CreatedAt() {
-                return (DateTime)GetDateTime("created_at", true);
+            public DateTime CreatedAt {
+                get { return (DateTime)GetDateTime("created_at", true); }
             }
 
         }
@@ -3664,136 +3684,136 @@ namespace ChargeBee.Models
                 ChargeItemPrice,
             }
 
-            public EntityTypeEnum EntityType() {
-                return GetEnum<EntityTypeEnum>("entity_type", true);
+            public EntityTypeEnum EntityType {
+                get { return GetEnum<EntityTypeEnum>("entity_type", true); }
             }
 
-            public string Note() {
-                return GetValue<string>("note", true);
+            public string Note {
+                get { return GetValue<string>("note", true); }
             }
 
-            public string EntityId() {
-                return GetValue<string>("entity_id", false);
+            public string EntityId {
+                get { return GetValue<string>("entity_id", false); }
             }
 
         }
         public class InvoiceShippingAddress : Resource
         {
 
-            public string FirstName() {
-                return GetValue<string>("first_name", false);
+            public string FirstName {
+                get { return GetValue<string>("first_name", false); }
             }
 
-            public string LastName() {
-                return GetValue<string>("last_name", false);
+            public string LastName {
+                get { return GetValue<string>("last_name", false); }
             }
 
-            public string Email() {
-                return GetValue<string>("email", false);
+            public string Email {
+                get { return GetValue<string>("email", false); }
             }
 
-            public string Company() {
-                return GetValue<string>("company", false);
+            public string Company {
+                get { return GetValue<string>("company", false); }
             }
 
-            public string Phone() {
-                return GetValue<string>("phone", false);
+            public string Phone {
+                get { return GetValue<string>("phone", false); }
             }
 
-            public string Line1() {
-                return GetValue<string>("line1", false);
+            public string Line1 {
+                get { return GetValue<string>("line1", false); }
             }
 
-            public string Line2() {
-                return GetValue<string>("line2", false);
+            public string Line2 {
+                get { return GetValue<string>("line2", false); }
             }
 
-            public string Line3() {
-                return GetValue<string>("line3", false);
+            public string Line3 {
+                get { return GetValue<string>("line3", false); }
             }
 
-            public string City() {
-                return GetValue<string>("city", false);
+            public string City {
+                get { return GetValue<string>("city", false); }
             }
 
-            public string StateCode() {
-                return GetValue<string>("state_code", false);
+            public string StateCode {
+                get { return GetValue<string>("state_code", false); }
             }
 
-            public string State() {
-                return GetValue<string>("state", false);
+            public string State {
+                get { return GetValue<string>("state", false); }
             }
 
-            public string Country() {
-                return GetValue<string>("country", false);
+            public string Country {
+                get { return GetValue<string>("country", false); }
             }
 
-            public string Zip() {
-                return GetValue<string>("zip", false);
+            public string Zip {
+                get { return GetValue<string>("zip", false); }
             }
 
-            public ValidationStatusEnum? ValidationStatus() {
-                return GetEnum<ValidationStatusEnum>("validation_status", false);
+            public ValidationStatusEnum? ValidationStatus {
+                get { return GetEnum<ValidationStatusEnum>("validation_status", false); }
             }
 
         }
         public class InvoiceBillingAddress : Resource
         {
 
-            public string FirstName() {
-                return GetValue<string>("first_name", false);
+            public string FirstName {
+                get { return GetValue<string>("first_name", false); }
             }
 
-            public string LastName() {
-                return GetValue<string>("last_name", false);
+            public string LastName {
+                get { return GetValue<string>("last_name", false); }
             }
 
-            public string Email() {
-                return GetValue<string>("email", false);
+            public string Email {
+                get { return GetValue<string>("email", false); }
             }
 
-            public string Company() {
-                return GetValue<string>("company", false);
+            public string Company {
+                get { return GetValue<string>("company", false); }
             }
 
-            public string Phone() {
-                return GetValue<string>("phone", false);
+            public string Phone {
+                get { return GetValue<string>("phone", false); }
             }
 
-            public string Line1() {
-                return GetValue<string>("line1", false);
+            public string Line1 {
+                get { return GetValue<string>("line1", false); }
             }
 
-            public string Line2() {
-                return GetValue<string>("line2", false);
+            public string Line2 {
+                get { return GetValue<string>("line2", false); }
             }
 
-            public string Line3() {
-                return GetValue<string>("line3", false);
+            public string Line3 {
+                get { return GetValue<string>("line3", false); }
             }
 
-            public string City() {
-                return GetValue<string>("city", false);
+            public string City {
+                get { return GetValue<string>("city", false); }
             }
 
-            public string StateCode() {
-                return GetValue<string>("state_code", false);
+            public string StateCode {
+                get { return GetValue<string>("state_code", false); }
             }
 
-            public string State() {
-                return GetValue<string>("state", false);
+            public string State {
+                get { return GetValue<string>("state", false); }
             }
 
-            public string Country() {
-                return GetValue<string>("country", false);
+            public string Country {
+                get { return GetValue<string>("country", false); }
             }
 
-            public string Zip() {
-                return GetValue<string>("zip", false);
+            public string Zip {
+                get { return GetValue<string>("zip", false); }
             }
 
-            public ValidationStatusEnum? ValidationStatus() {
-                return GetEnum<ValidationStatusEnum>("validation_status", false);
+            public ValidationStatusEnum? ValidationStatus {
+                get { return GetEnum<ValidationStatusEnum>("validation_status", false); }
             }
 
         }
@@ -3815,16 +3835,16 @@ namespace ChargeBee.Models
                 Failed,
             }
 
-            public string Id() {
-                return GetValue<string>("id", true);
+            public string Id {
+                get { return GetValue<string>("id", true); }
             }
 
-            public StatusEnum Status() {
-                return GetEnum<StatusEnum>("status", true);
+            public StatusEnum Status {
+                get { return GetEnum<StatusEnum>("status", true); }
             }
 
-            public string Message() {
-                return GetValue<string>("message", false);
+            public string Message {
+                get { return GetValue<string>("message", false); }
             }
 
         }

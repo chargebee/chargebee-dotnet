@@ -180,24 +180,24 @@ namespace ChargeBee.Models
         public class PortalSessionLinkedCustomer : Resource
         {
 
-            public string CustomerId() {
-                return GetValue<string>("customer_id", true);
+            public string CustomerId {
+                get { return GetValue<string>("customer_id", true); }
             }
 
-            public string Email() {
-                return GetValue<string>("email", false);
+            public string Email {
+                get { return GetValue<string>("email", false); }
             }
 
-            public bool HasBillingAddress() {
-                return GetValue<bool>("has_billing_address", true);
+            public bool HasBillingAddress {
+                get { return GetValue<bool>("has_billing_address", true); }
             }
 
-            public bool HasPaymentMethod() {
-                return GetValue<bool>("has_payment_method", true);
+            public bool HasPaymentMethod {
+                get { return GetValue<bool>("has_payment_method", true); }
             }
 
-            public bool HasActiveSubscription() {
-                return GetValue<bool>("has_active_subscription", true);
+            public bool HasActiveSubscription {
+                get { return GetValue<bool>("has_active_subscription", true); }
             }
 
         }

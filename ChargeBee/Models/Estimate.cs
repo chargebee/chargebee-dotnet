@@ -2427,6 +2427,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
                 return this;
             }
+            public GiftSubscriptionRequest PaymentIntentPaymentMethodType(PaymentIntent.PaymentMethodTypeEnum paymentIntentPaymentMethodType) 
+            {
+                m_params.AddOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
+                return this;
+            }
             public GiftSubscriptionRequest PaymentIntentReferenceId(string paymentIntentReferenceId) 
             {
                 m_params.AddOpt("payment_intent[reference_id]", paymentIntentReferenceId);
@@ -2629,6 +2634,11 @@ namespace ChargeBee.Models
             public GiftSubscriptionForItemsRequest PaymentIntentGwToken(string paymentIntentGwToken) 
             {
                 m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
+                return this;
+            }
+            public GiftSubscriptionForItemsRequest PaymentIntentPaymentMethodType(PaymentIntent.PaymentMethodTypeEnum paymentIntentPaymentMethodType) 
+            {
+                m_params.AddOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
                 return this;
             }
             public GiftSubscriptionForItemsRequest PaymentIntentReferenceId(string paymentIntentReferenceId) 

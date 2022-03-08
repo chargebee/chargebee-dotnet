@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 using System.Runtime.Serialization;
 
@@ -230,7 +231,7 @@ namespace ChargeBee.Models.Enums
          RefundInitiated,
 
         [EnumMember(Value = "netd_payment_due_reminder")]
-         NetdPaymentDueReminder,
+        [Obsolete] NetdPaymentDueReminder,
 
         [EnumMember(Value = "authorization_succeeded")]
          AuthorizationSucceeded,

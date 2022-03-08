@@ -568,7 +568,7 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<DeferredRevenueRequest>("invoice[updated_at]", this);        
             }
-
+            
             public StringFilter<DeferredRevenueRequest> SubscriptionId() 
             {
                 return new StringFilter<DeferredRevenueRequest>("subscription[id]", this).SupportsMultiOperators(true);        
@@ -1144,7 +1144,7 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<InvoicesRequest>("invoice[updated_at]", this);        
             }
-            
+
         }
         public class CreditNotesRequest : EntityRequest<CreditNotesRequest> 
         {
@@ -1670,16 +1670,16 @@ namespace ChargeBee.Models
         public class ExportDownload : Resource
         {
 
-            public string DownloadUrl() {
-                return GetValue<string>("download_url", true);
+            public string DownloadUrl {
+                get { return GetValue<string>("download_url", true); }
             }
 
-            public DateTime ValidTill() {
-                return (DateTime)GetDateTime("valid_till", true);
+            public DateTime ValidTill {
+                get { return (DateTime)GetDateTime("valid_till", true); }
             }
 
-            public string MimeType() {
-                return GetValue<string>("mime_type", false);
+            public string MimeType {
+                get { return GetValue<string>("mime_type", false); }
             }
 
         }

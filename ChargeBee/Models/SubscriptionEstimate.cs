@@ -108,60 +108,60 @@ namespace ChargeBee.Models
         public class SubscriptionEstimateShippingAddress : Resource
         {
 
-            public string FirstName() {
-                return GetValue<string>("first_name", false);
+            public string FirstName {
+                get { return GetValue<string>("first_name", false); }
             }
 
-            public string LastName() {
-                return GetValue<string>("last_name", false);
+            public string LastName {
+                get { return GetValue<string>("last_name", false); }
             }
 
-            public string Email() {
-                return GetValue<string>("email", false);
+            public string Email {
+                get { return GetValue<string>("email", false); }
             }
 
-            public string Company() {
-                return GetValue<string>("company", false);
+            public string Company {
+                get { return GetValue<string>("company", false); }
             }
 
-            public string Phone() {
-                return GetValue<string>("phone", false);
+            public string Phone {
+                get { return GetValue<string>("phone", false); }
             }
 
-            public string Line1() {
-                return GetValue<string>("line1", false);
+            public string Line1 {
+                get { return GetValue<string>("line1", false); }
             }
 
-            public string Line2() {
-                return GetValue<string>("line2", false);
+            public string Line2 {
+                get { return GetValue<string>("line2", false); }
             }
 
-            public string Line3() {
-                return GetValue<string>("line3", false);
+            public string Line3 {
+                get { return GetValue<string>("line3", false); }
             }
 
-            public string City() {
-                return GetValue<string>("city", false);
+            public string City {
+                get { return GetValue<string>("city", false); }
             }
 
-            public string StateCode() {
-                return GetValue<string>("state_code", false);
+            public string StateCode {
+                get { return GetValue<string>("state_code", false); }
             }
 
-            public string State() {
-                return GetValue<string>("state", false);
+            public string State {
+                get { return GetValue<string>("state", false); }
             }
 
-            public string Country() {
-                return GetValue<string>("country", false);
+            public string Country {
+                get { return GetValue<string>("country", false); }
             }
 
-            public string Zip() {
-                return GetValue<string>("zip", false);
+            public string Zip {
+                get { return GetValue<string>("zip", false); }
             }
 
-            public ValidationStatusEnum? ValidationStatus() {
-                return GetEnum<ValidationStatusEnum>("validation_status", false);
+            public ValidationStatusEnum? ValidationStatus {
+                get { return GetEnum<ValidationStatusEnum>("validation_status", false); }
             }
 
         }
@@ -194,48 +194,48 @@ namespace ChargeBee.Models
                 RenewOnce,
             }
 
-            public string Id() {
-                return GetValue<string>("id", true);
+            public string Id {
+                get { return GetValue<string>("id", true); }
             }
 
-            public StatusEnum Status() {
-                return GetEnum<StatusEnum>("status", true);
+            public StatusEnum Status {
+                get { return GetEnum<StatusEnum>("status", true); }
             }
 
-            public DateTime ContractStart() {
-                return (DateTime)GetDateTime("contract_start", true);
+            public DateTime ContractStart {
+                get { return (DateTime)GetDateTime("contract_start", true); }
             }
 
-            public DateTime ContractEnd() {
-                return (DateTime)GetDateTime("contract_end", true);
+            public DateTime ContractEnd {
+                get { return (DateTime)GetDateTime("contract_end", true); }
             }
 
-            public int BillingCycle() {
-                return GetValue<int>("billing_cycle", true);
+            public int BillingCycle {
+                get { return GetValue<int>("billing_cycle", true); }
             }
 
-            public ActionAtTermEndEnum ActionAtTermEnd() {
-                return GetEnum<ActionAtTermEndEnum>("action_at_term_end", true);
+            public ActionAtTermEndEnum ActionAtTermEnd {
+                get { return GetEnum<ActionAtTermEndEnum>("action_at_term_end", true); }
             }
 
-            public long TotalContractValue() {
-                return GetValue<long>("total_contract_value", true);
+            public long TotalContractValue {
+                get { return GetValue<long>("total_contract_value", true); }
             }
 
-            public int? CancellationCutoffPeriod() {
-                return GetValue<int?>("cancellation_cutoff_period", false);
+            public int? CancellationCutoffPeriod {
+                get { return GetValue<int?>("cancellation_cutoff_period", false); }
             }
 
-            public DateTime CreatedAt() {
-                return (DateTime)GetDateTime("created_at", true);
+            public DateTime CreatedAt {
+                get { return (DateTime)GetDateTime("created_at", true); }
             }
 
-            public string SubscriptionId() {
-                return GetValue<string>("subscription_id", true);
+            public string SubscriptionId {
+                get { return GetValue<string>("subscription_id", true); }
             }
 
-            public int? RemainingBillingCycles() {
-                return GetValue<int?>("remaining_billing_cycles", false);
+            public int? RemainingBillingCycles {
+                get { return GetValue<int?>("remaining_billing_cycles", false); }
             }
 
         }

@@ -926,16 +926,16 @@ namespace ChargeBee.Models
                 Criteria,
             }
 
-            public ItemTypeEnum ItemType() {
-                return GetEnum<ItemTypeEnum>("item_type", true);
+            public ItemTypeEnum ItemType {
+                get { return GetEnum<ItemTypeEnum>("item_type", true); }
             }
 
-            public ConstraintEnum Constraint() {
-                return GetEnum<ConstraintEnum>("constraint", true);
+            public ConstraintEnum Constraint {
+                get { return GetEnum<ConstraintEnum>("constraint", true); }
             }
 
-            public JArray ItemPriceIds() {
-                return GetJArray("item_price_ids", false);
+            public JArray ItemPriceIds {
+                get { return GetJArray("item_price_ids", false); }
             }
 
         }
@@ -953,20 +953,20 @@ namespace ChargeBee.Models
                 Charge,
             }
 
-            public ItemTypeEnum ItemType() {
-                return GetEnum<ItemTypeEnum>("item_type", true);
+            public ItemTypeEnum ItemType {
+                get { return GetEnum<ItemTypeEnum>("item_type", true); }
             }
 
-            public JArray Currencies() {
-                return GetJArray("currencies", false);
+            public JArray Currencies {
+                get { return GetJArray("currencies", false); }
             }
 
-            public JArray ItemFamilyIds() {
-                return GetJArray("item_family_ids", false);
+            public JArray ItemFamilyIds {
+                get { return GetJArray("item_family_ids", false); }
             }
 
-            public JArray ItemPricePeriods() {
-                return GetJArray("item_price_periods", false);
+            public JArray ItemPricePeriods {
+                get { return GetJArray("item_price_periods", false); }
             }
 
         }

@@ -513,88 +513,88 @@ namespace ChargeBee.Models
         public class TransactionLinkedInvoice : Resource
         {
 
-            public string InvoiceId() {
-                return GetValue<string>("invoice_id", true);
+            public string InvoiceId {
+                get { return GetValue<string>("invoice_id", true); }
             }
 
-            public int AppliedAmount() {
-                return GetValue<int>("applied_amount", true);
+            public int AppliedAmount {
+                get { return GetValue<int>("applied_amount", true); }
             }
 
-            public DateTime AppliedAt() {
-                return (DateTime)GetDateTime("applied_at", true);
+            public DateTime AppliedAt {
+                get { return (DateTime)GetDateTime("applied_at", true); }
             }
 
-            public DateTime? InvoiceDate() {
-                return GetDateTime("invoice_date", false);
+            public DateTime? InvoiceDate {
+                get { return GetDateTime("invoice_date", false); }
             }
 
-            public int? InvoiceTotal() {
-                return GetValue<int?>("invoice_total", false);
+            public int? InvoiceTotal {
+                get { return GetValue<int?>("invoice_total", false); }
             }
 
-            public Invoice.StatusEnum InvoiceStatus() {
-                return GetEnum<Invoice.StatusEnum>("invoice_status", true);
+            public Invoice.StatusEnum InvoiceStatus {
+                get { return GetEnum<Invoice.StatusEnum>("invoice_status", true); }
             }
 
         }
         public class TransactionLinkedCreditNote : Resource
         {
 
-            public string CnId() {
-                return GetValue<string>("cn_id", true);
+            public string CnId {
+                get { return GetValue<string>("cn_id", true); }
             }
 
-            public int AppliedAmount() {
-                return GetValue<int>("applied_amount", true);
+            public int AppliedAmount {
+                get { return GetValue<int>("applied_amount", true); }
             }
 
-            public DateTime AppliedAt() {
-                return (DateTime)GetDateTime("applied_at", true);
+            public DateTime AppliedAt {
+                get { return (DateTime)GetDateTime("applied_at", true); }
             }
 
-            public CreditNote.ReasonCodeEnum? CnReasonCode() {
-                return GetEnum<CreditNote.ReasonCodeEnum>("cn_reason_code", false);
+            public CreditNote.ReasonCodeEnum? CnReasonCode {
+                get { return GetEnum<CreditNote.ReasonCodeEnum>("cn_reason_code", false); }
             }
 
-            public string CnCreateReasonCode() {
-                return GetValue<string>("cn_create_reason_code", false);
+            public string CnCreateReasonCode {
+                get { return GetValue<string>("cn_create_reason_code", false); }
             }
 
-            public DateTime? CnDate() {
-                return GetDateTime("cn_date", false);
+            public DateTime? CnDate {
+                get { return GetDateTime("cn_date", false); }
             }
 
-            public int? CnTotal() {
-                return GetValue<int?>("cn_total", false);
+            public int? CnTotal {
+                get { return GetValue<int?>("cn_total", false); }
             }
 
-            public CreditNote.StatusEnum CnStatus() {
-                return GetEnum<CreditNote.StatusEnum>("cn_status", true);
+            public CreditNote.StatusEnum CnStatus {
+                get { return GetEnum<CreditNote.StatusEnum>("cn_status", true); }
             }
 
-            public string CnReferenceInvoiceId() {
-                return GetValue<string>("cn_reference_invoice_id", true);
+            public string CnReferenceInvoiceId {
+                get { return GetValue<string>("cn_reference_invoice_id", true); }
             }
 
         }
         public class TransactionLinkedRefund : Resource
         {
 
-            public string TxnId() {
-                return GetValue<string>("txn_id", true);
+            public string TxnId {
+                get { return GetValue<string>("txn_id", true); }
             }
 
-            public Transaction.StatusEnum TxnStatus() {
-                return GetEnum<Transaction.StatusEnum>("txn_status", true);
+            public Transaction.StatusEnum TxnStatus {
+                get { return GetEnum<Transaction.StatusEnum>("txn_status", true); }
             }
 
-            public DateTime TxnDate() {
-                return (DateTime)GetDateTime("txn_date", true);
+            public DateTime TxnDate {
+                get { return (DateTime)GetDateTime("txn_date", true); }
             }
 
-            public int TxnAmount() {
-                return GetValue<int>("txn_amount", true);
+            public int TxnAmount {
+                get { return GetValue<int>("txn_amount", true); }
             }
 
         }
@@ -618,20 +618,20 @@ namespace ChargeBee.Models
                 NeedsAttention,
             }
 
-            public string Id() {
-                return GetValue<string>("id", true);
+            public string Id {
+                get { return GetValue<string>("id", true); }
             }
 
-            public StatusEnum? Status() {
-                return GetEnum<StatusEnum>("status", false);
+            public StatusEnum? Status {
+                get { return GetEnum<StatusEnum>("status", false); }
             }
 
-            public int? Amount() {
-                return GetValue<int?>("amount", false);
+            public int? Amount {
+                get { return GetValue<int?>("amount", false); }
             }
 
-            public DateTime? Date() {
-                return GetDateTime("date", false);
+            public DateTime? Date {
+                get { return GetDateTime("date", false); }
             }
 
         }

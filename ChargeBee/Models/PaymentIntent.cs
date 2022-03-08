@@ -255,6 +255,12 @@ namespace ChargeBee.Models
             Dotpay,
             [EnumMember(Value = "giropay")]
             Giropay,
+            [EnumMember(Value = "apple_pay")]
+            ApplePay,
+            [EnumMember(Value = "upi")]
+            Upi,
+            [EnumMember(Value = "netbanking_emandates")]
+            NetbankingEmandates,
 
         }
 
@@ -279,36 +285,36 @@ namespace ChargeBee.Models
                 Refused,
             }
 
-            public string Id() {
-                return GetValue<string>("id", false);
+            public string Id {
+                get { return GetValue<string>("id", false); }
             }
 
-            public StatusEnum Status() {
-                return GetEnum<StatusEnum>("status", true);
+            public StatusEnum Status {
+                get { return GetEnum<StatusEnum>("status", true); }
             }
 
-            public PaymentMethodTypeEnum? PaymentMethodType() {
-                return GetEnum<PaymentMethodTypeEnum>("payment_method_type", false);
+            public PaymentMethodTypeEnum? PaymentMethodType {
+                get { return GetEnum<PaymentMethodTypeEnum>("payment_method_type", false); }
             }
 
-            public string IdAtGateway() {
-                return GetValue<string>("id_at_gateway", false);
+            public string IdAtGateway {
+                get { return GetValue<string>("id_at_gateway", false); }
             }
 
-            public string ErrorCode() {
-                return GetValue<string>("error_code", false);
+            public string ErrorCode {
+                get { return GetValue<string>("error_code", false); }
             }
 
-            public string ErrorText() {
-                return GetValue<string>("error_text", false);
+            public string ErrorText {
+                get { return GetValue<string>("error_text", false); }
             }
 
-            public DateTime CreatedAt() {
-                return (DateTime)GetDateTime("created_at", true);
+            public DateTime CreatedAt {
+                get { return (DateTime)GetDateTime("created_at", true); }
             }
 
-            public DateTime ModifiedAt() {
-                return (DateTime)GetDateTime("modified_at", true);
+            public DateTime ModifiedAt {
+                get { return (DateTime)GetDateTime("modified_at", true); }
             }
 
         }

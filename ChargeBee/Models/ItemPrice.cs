@@ -861,88 +861,88 @@ namespace ChargeBee.Models
         public class ItemPriceTier : Resource
         {
 
-            public int StartingUnit() {
-                return GetValue<int>("starting_unit", true);
+            public int StartingUnit {
+                get { return GetValue<int>("starting_unit", true); }
             }
 
-            public int? EndingUnit() {
-                return GetValue<int?>("ending_unit", false);
+            public int? EndingUnit {
+                get { return GetValue<int?>("ending_unit", false); }
             }
 
-            public int Price() {
-                return GetValue<int>("price", true);
+            public int Price {
+                get { return GetValue<int>("price", true); }
             }
 
-            public string StartingUnitInDecimal() {
-                return GetValue<string>("starting_unit_in_decimal", false);
+            public string StartingUnitInDecimal {
+                get { return GetValue<string>("starting_unit_in_decimal", false); }
             }
 
-            public string EndingUnitInDecimal() {
-                return GetValue<string>("ending_unit_in_decimal", false);
+            public string EndingUnitInDecimal {
+                get { return GetValue<string>("ending_unit_in_decimal", false); }
             }
 
-            public string PriceInDecimal() {
-                return GetValue<string>("price_in_decimal", false);
+            public string PriceInDecimal {
+                get { return GetValue<string>("price_in_decimal", false); }
             }
 
         }
         public class ItemPriceTaxDetail : Resource
         {
 
-            public string TaxProfileId() {
-                return GetValue<string>("tax_profile_id", false);
+            public string TaxProfileId {
+                get { return GetValue<string>("tax_profile_id", false); }
             }
 
-            public AvalaraSaleTypeEnum? AvalaraSaleType() {
-                return GetEnum<AvalaraSaleTypeEnum>("avalara_sale_type", false);
+            public AvalaraSaleTypeEnum? AvalaraSaleType {
+                get { return GetEnum<AvalaraSaleTypeEnum>("avalara_sale_type", false); }
             }
 
-            public int? AvalaraTransactionType() {
-                return GetValue<int?>("avalara_transaction_type", false);
+            public int? AvalaraTransactionType {
+                get { return GetValue<int?>("avalara_transaction_type", false); }
             }
 
-            public int? AvalaraServiceType() {
-                return GetValue<int?>("avalara_service_type", false);
+            public int? AvalaraServiceType {
+                get { return GetValue<int?>("avalara_service_type", false); }
             }
 
-            public string AvalaraTaxCode() {
-                return GetValue<string>("avalara_tax_code", false);
+            public string AvalaraTaxCode {
+                get { return GetValue<string>("avalara_tax_code", false); }
             }
 
-            public string HsnCode() {
-                return GetValue<string>("hsn_code", false);
+            public string HsnCode {
+                get { return GetValue<string>("hsn_code", false); }
             }
 
-            public string TaxjarProductCode() {
-                return GetValue<string>("taxjar_product_code", false);
+            public string TaxjarProductCode {
+                get { return GetValue<string>("taxjar_product_code", false); }
             }
 
         }
         public class ItemPriceAccountingDetail : Resource
         {
 
-            public string Sku() {
-                return GetValue<string>("sku", false);
+            public string Sku {
+                get { return GetValue<string>("sku", false); }
             }
 
-            public string AccountingCode() {
-                return GetValue<string>("accounting_code", false);
+            public string AccountingCode {
+                get { return GetValue<string>("accounting_code", false); }
             }
 
-            public string AccountingCategory1() {
-                return GetValue<string>("accounting_category1", false);
+            public string AccountingCategory1 {
+                get { return GetValue<string>("accounting_category1", false); }
             }
 
-            public string AccountingCategory2() {
-                return GetValue<string>("accounting_category2", false);
+            public string AccountingCategory2 {
+                get { return GetValue<string>("accounting_category2", false); }
             }
 
-            public string AccountingCategory3() {
-                return GetValue<string>("accounting_category3", false);
+            public string AccountingCategory3 {
+                get { return GetValue<string>("accounting_category3", false); }
             }
 
-            public string AccountingCategory4() {
-                return GetValue<string>("accounting_category4", false);
+            public string AccountingCategory4 {
+                get { return GetValue<string>("accounting_category4", false); }
             }
 
         }

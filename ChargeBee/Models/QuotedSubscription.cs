@@ -173,40 +173,40 @@ namespace ChargeBee.Models
         public class QuotedSubscriptionAddon : Resource
         {
 
-            public string Id() {
-                return GetValue<string>("id", true);
+            public string Id {
+                get { return GetValue<string>("id", true); }
             }
 
-            public int? Quantity() {
-                return GetValue<int?>("quantity", false);
+            public int? Quantity {
+                get { return GetValue<int?>("quantity", false); }
             }
 
-            public int? UnitPrice() {
-                return GetValue<int?>("unit_price", false);
+            public int? UnitPrice {
+                get { return GetValue<int?>("unit_price", false); }
             }
 
-            public int? Amount() {
-                return GetValue<int?>("amount", false);
+            public int? Amount {
+                get { return GetValue<int?>("amount", false); }
             }
 
-            public DateTime? TrialEnd() {
-                return GetDateTime("trial_end", false);
+            public DateTime? TrialEnd {
+                get { return GetDateTime("trial_end", false); }
             }
 
-            public int? RemainingBillingCycles() {
-                return GetValue<int?>("remaining_billing_cycles", false);
+            public int? RemainingBillingCycles {
+                get { return GetValue<int?>("remaining_billing_cycles", false); }
             }
 
-            public string QuantityInDecimal() {
-                return GetValue<string>("quantity_in_decimal", false);
+            public string QuantityInDecimal {
+                get { return GetValue<string>("quantity_in_decimal", false); }
             }
 
-            public string UnitPriceInDecimal() {
-                return GetValue<string>("unit_price_in_decimal", false);
+            public string UnitPriceInDecimal {
+                get { return GetValue<string>("unit_price_in_decimal", false); }
             }
 
-            public string AmountInDecimal() {
-                return GetValue<string>("amount_in_decimal", false);
+            public string AmountInDecimal {
+                get { return GetValue<string>("amount_in_decimal", false); }
             }
 
         }
@@ -228,44 +228,44 @@ namespace ChargeBee.Models
                 ContractTermination,
             }
 
-            public string Id() {
-                return GetValue<string>("id", true);
+            public string Id {
+                get { return GetValue<string>("id", true); }
             }
 
-            public int Quantity() {
-                return GetValue<int>("quantity", true);
+            public int Quantity {
+                get { return GetValue<int>("quantity", true); }
             }
 
-            public int UnitPrice() {
-                return GetValue<int>("unit_price", true);
+            public int UnitPrice {
+                get { return GetValue<int>("unit_price", true); }
             }
 
-            public int? ServicePeriodInDays() {
-                return GetValue<int?>("service_period_in_days", false);
+            public int? ServicePeriodInDays {
+                get { return GetValue<int?>("service_period_in_days", false); }
             }
 
-            public OnEventEnum OnEvent() {
-                return GetEnum<OnEventEnum>("on_event", true);
+            public OnEventEnum OnEvent {
+                get { return GetEnum<OnEventEnum>("on_event", true); }
             }
 
-            public bool ChargeOnce() {
-                return GetValue<bool>("charge_once", true);
+            public bool ChargeOnce {
+                get { return GetValue<bool>("charge_once", true); }
             }
 
-            public string QuantityInDecimal() {
-                return GetValue<string>("quantity_in_decimal", false);
+            public string QuantityInDecimal {
+                get { return GetValue<string>("quantity_in_decimal", false); }
             }
 
-            public string UnitPriceInDecimal() {
-                return GetValue<string>("unit_price_in_decimal", false);
+            public string UnitPriceInDecimal {
+                get { return GetValue<string>("unit_price_in_decimal", false); }
             }
 
         }
         public class QuotedSubscriptionCoupon : Resource
         {
 
-            public string CouponId() {
-                return GetValue<string>("coupon_id", true);
+            public string CouponId {
+                get { return GetValue<string>("coupon_id", true); }
             }
 
         }
@@ -292,108 +292,108 @@ namespace ChargeBee.Models
                 OnEvent,
             }
 
-            public string ItemPriceId() {
-                return GetValue<string>("item_price_id", true);
+            public string ItemPriceId {
+                get { return GetValue<string>("item_price_id", true); }
             }
 
-            public ItemTypeEnum ItemType() {
-                return GetEnum<ItemTypeEnum>("item_type", true);
+            public ItemTypeEnum ItemType {
+                get { return GetEnum<ItemTypeEnum>("item_type", true); }
             }
 
-            public int? Quantity() {
-                return GetValue<int?>("quantity", false);
+            public int? Quantity {
+                get { return GetValue<int?>("quantity", false); }
             }
 
-            public string QuantityInDecimal() {
-                return GetValue<string>("quantity_in_decimal", false);
+            public string QuantityInDecimal {
+                get { return GetValue<string>("quantity_in_decimal", false); }
             }
 
-            public string MeteredQuantity() {
-                return GetValue<string>("metered_quantity", false);
+            public string MeteredQuantity {
+                get { return GetValue<string>("metered_quantity", false); }
             }
 
-            public DateTime? LastCalculatedAt() {
-                return GetDateTime("last_calculated_at", false);
+            public DateTime? LastCalculatedAt {
+                get { return GetDateTime("last_calculated_at", false); }
             }
 
-            public int? UnitPrice() {
-                return GetValue<int?>("unit_price", false);
+            public int? UnitPrice {
+                get { return GetValue<int?>("unit_price", false); }
             }
 
-            public string UnitPriceInDecimal() {
-                return GetValue<string>("unit_price_in_decimal", false);
+            public string UnitPriceInDecimal {
+                get { return GetValue<string>("unit_price_in_decimal", false); }
             }
 
-            public int? Amount() {
-                return GetValue<int?>("amount", false);
+            public int? Amount {
+                get { return GetValue<int?>("amount", false); }
             }
 
-            public string AmountInDecimal() {
-                return GetValue<string>("amount_in_decimal", false);
+            public string AmountInDecimal {
+                get { return GetValue<string>("amount_in_decimal", false); }
             }
 
-            public int? FreeQuantity() {
-                return GetValue<int?>("free_quantity", false);
+            public int? FreeQuantity {
+                get { return GetValue<int?>("free_quantity", false); }
             }
 
-            public string FreeQuantityInDecimal() {
-                return GetValue<string>("free_quantity_in_decimal", false);
+            public string FreeQuantityInDecimal {
+                get { return GetValue<string>("free_quantity_in_decimal", false); }
             }
 
-            public DateTime? TrialEnd() {
-                return GetDateTime("trial_end", false);
+            public DateTime? TrialEnd {
+                get { return GetDateTime("trial_end", false); }
             }
 
-            public int? BillingCycles() {
-                return GetValue<int?>("billing_cycles", false);
+            public int? BillingCycles {
+                get { return GetValue<int?>("billing_cycles", false); }
             }
 
-            public int? ServicePeriodDays() {
-                return GetValue<int?>("service_period_days", false);
+            public int? ServicePeriodDays {
+                get { return GetValue<int?>("service_period_days", false); }
             }
 
-            public ChargeOnEventEnum? ChargeOnEvent() {
-                return GetEnum<ChargeOnEventEnum>("charge_on_event", false);
+            public ChargeOnEventEnum? ChargeOnEvent {
+                get { return GetEnum<ChargeOnEventEnum>("charge_on_event", false); }
             }
 
-            public bool? ChargeOnce() {
-                return GetValue<bool?>("charge_once", false);
+            public bool? ChargeOnce {
+                get { return GetValue<bool?>("charge_once", false); }
             }
 
-            public ChargeOnOptionEnum? ChargeOnOption() {
-                return GetEnum<ChargeOnOptionEnum>("charge_on_option", false);
+            public ChargeOnOptionEnum? ChargeOnOption {
+                get { return GetEnum<ChargeOnOptionEnum>("charge_on_option", false); }
             }
 
         }
         public class QuotedSubscriptionItemTier : Resource
         {
 
-            public string ItemPriceId() {
-                return GetValue<string>("item_price_id", true);
+            public string ItemPriceId {
+                get { return GetValue<string>("item_price_id", true); }
             }
 
-            public int StartingUnit() {
-                return GetValue<int>("starting_unit", true);
+            public int StartingUnit {
+                get { return GetValue<int>("starting_unit", true); }
             }
 
-            public int? EndingUnit() {
-                return GetValue<int?>("ending_unit", false);
+            public int? EndingUnit {
+                get { return GetValue<int?>("ending_unit", false); }
             }
 
-            public int Price() {
-                return GetValue<int>("price", true);
+            public int Price {
+                get { return GetValue<int>("price", true); }
             }
 
-            public string StartingUnitInDecimal() {
-                return GetValue<string>("starting_unit_in_decimal", false);
+            public string StartingUnitInDecimal {
+                get { return GetValue<string>("starting_unit_in_decimal", false); }
             }
 
-            public string EndingUnitInDecimal() {
-                return GetValue<string>("ending_unit_in_decimal", false);
+            public string EndingUnitInDecimal {
+                get { return GetValue<string>("ending_unit_in_decimal", false); }
             }
 
-            public string PriceInDecimal() {
-                return GetValue<string>("price_in_decimal", false);
+            public string PriceInDecimal {
+                get { return GetValue<string>("price_in_decimal", false); }
             }
 
         }
@@ -413,28 +413,28 @@ namespace ChargeBee.Models
                 RenewOnce,
             }
 
-            public DateTime ContractStart() {
-                return (DateTime)GetDateTime("contract_start", true);
+            public DateTime ContractStart {
+                get { return (DateTime)GetDateTime("contract_start", true); }
             }
 
-            public DateTime ContractEnd() {
-                return (DateTime)GetDateTime("contract_end", true);
+            public DateTime ContractEnd {
+                get { return (DateTime)GetDateTime("contract_end", true); }
             }
 
-            public int BillingCycle() {
-                return GetValue<int>("billing_cycle", true);
+            public int BillingCycle {
+                get { return GetValue<int>("billing_cycle", true); }
             }
 
-            public ActionAtTermEndEnum ActionAtTermEnd() {
-                return GetEnum<ActionAtTermEndEnum>("action_at_term_end", true);
+            public ActionAtTermEndEnum ActionAtTermEnd {
+                get { return GetEnum<ActionAtTermEndEnum>("action_at_term_end", true); }
             }
 
-            public long TotalContractValue() {
-                return GetValue<long>("total_contract_value", true);
+            public long TotalContractValue {
+                get { return GetValue<long>("total_contract_value", true); }
             }
 
-            public int? CancellationCutoffPeriod() {
-                return GetValue<int?>("cancellation_cutoff_period", false);
+            public int? CancellationCutoffPeriod {
+                get { return GetValue<int?>("cancellation_cutoff_period", false); }
             }
 
         }

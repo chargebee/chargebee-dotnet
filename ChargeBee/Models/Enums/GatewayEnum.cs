@@ -127,6 +127,12 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "mollie")]
          Mollie,
 
+        [EnumMember(Value = "quickbooks")]
+         Quickbooks,
+
+        [EnumMember(Value = "razorpay")]
+         Razorpay,
+
         [EnumMember(Value = "not_applicable")]
          NotApplicable,
 

@@ -214,6 +214,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
                 return this;
             }
+            public CreateRequest PaymentIntentPaymentMethodType(PaymentIntent.PaymentMethodTypeEnum paymentIntentPaymentMethodType) 
+            {
+                m_params.AddOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
+                return this;
+            }
             public CreateRequest PaymentIntentReferenceId(string paymentIntentReferenceId) 
             {
                 m_params.AddOpt("payment_intent[reference_id]", paymentIntentReferenceId);
@@ -418,6 +423,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
                 return this;
             }
+            public CreateForItemsRequest PaymentIntentPaymentMethodType(PaymentIntent.PaymentMethodTypeEnum paymentIntentPaymentMethodType) 
+            {
+                m_params.AddOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
+                return this;
+            }
             public CreateForItemsRequest PaymentIntentReferenceId(string paymentIntentReferenceId) 
             {
                 m_params.AddOpt("payment_intent[reference_id]", paymentIntentReferenceId);
@@ -589,56 +599,56 @@ namespace ChargeBee.Models
         public class GiftGifter : Resource
         {
 
-            public string CustomerId() {
-                return GetValue<string>("customer_id", true);
+            public string CustomerId {
+                get { return GetValue<string>("customer_id", true); }
             }
 
-            public string InvoiceId() {
-                return GetValue<string>("invoice_id", false);
+            public string InvoiceId {
+                get { return GetValue<string>("invoice_id", false); }
             }
 
-            public string Signature() {
-                return GetValue<string>("signature", false);
+            public string Signature {
+                get { return GetValue<string>("signature", false); }
             }
 
-            public string Note() {
-                return GetValue<string>("note", false);
+            public string Note {
+                get { return GetValue<string>("note", false); }
             }
 
         }
         public class GiftGiftReceiver : Resource
         {
 
-            public string CustomerId() {
-                return GetValue<string>("customer_id", true);
+            public string CustomerId {
+                get { return GetValue<string>("customer_id", true); }
             }
 
-            public string SubscriptionId() {
-                return GetValue<string>("subscription_id", true);
+            public string SubscriptionId {
+                get { return GetValue<string>("subscription_id", true); }
             }
 
-            public string FirstName() {
-                return GetValue<string>("first_name", false);
+            public string FirstName {
+                get { return GetValue<string>("first_name", false); }
             }
 
-            public string LastName() {
-                return GetValue<string>("last_name", false);
+            public string LastName {
+                get { return GetValue<string>("last_name", false); }
             }
 
-            public string Email() {
-                return GetValue<string>("email", false);
+            public string Email {
+                get { return GetValue<string>("email", false); }
             }
 
         }
         public class GiftGiftTimeline : Resource
         {
 
-            public StatusEnum Status() {
-                return GetEnum<StatusEnum>("status", true);
+            public StatusEnum Status {
+                get { return GetEnum<StatusEnum>("status", true); }
             }
 
-            public DateTime? OccurredAt() {
-                return GetDateTime("occurred_at", false);
+            public DateTime? OccurredAt {
+                get { return GetDateTime("occurred_at", false); }
             }
 
         }

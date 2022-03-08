@@ -1142,36 +1142,36 @@ namespace ChargeBee.Models
         public class PlanTier : Resource
         {
 
-            public int StartingUnit() {
-                return GetValue<int>("starting_unit", true);
+            public int StartingUnit {
+                get { return GetValue<int>("starting_unit", true); }
             }
 
-            public int? EndingUnit() {
-                return GetValue<int?>("ending_unit", false);
+            public int? EndingUnit {
+                get { return GetValue<int?>("ending_unit", false); }
             }
 
-            public int Price() {
-                return GetValue<int>("price", true);
+            public int Price {
+                get { return GetValue<int>("price", true); }
             }
 
-            public string StartingUnitInDecimal() {
-                return GetValue<string>("starting_unit_in_decimal", false);
+            public string StartingUnitInDecimal {
+                get { return GetValue<string>("starting_unit_in_decimal", false); }
             }
 
-            public string EndingUnitInDecimal() {
-                return GetValue<string>("ending_unit_in_decimal", false);
+            public string EndingUnitInDecimal {
+                get { return GetValue<string>("ending_unit_in_decimal", false); }
             }
 
-            public string PriceInDecimal() {
-                return GetValue<string>("price_in_decimal", false);
+            public string PriceInDecimal {
+                get { return GetValue<string>("price_in_decimal", false); }
             }
 
         }
         public class PlanApplicableAddon : Resource
         {
 
-            public string Id() {
-                return GetValue<string>("id", true);
+            public string Id {
+                get { return GetValue<string>("id", true); }
             }
 
         }
@@ -1187,24 +1187,24 @@ namespace ChargeBee.Models
                 Mandatory,
             }
 
-            public string Id() {
-                return GetValue<string>("id", true);
+            public string Id {
+                get { return GetValue<string>("id", true); }
             }
 
-            public int Quantity() {
-                return GetValue<int>("quantity", true);
+            public int Quantity {
+                get { return GetValue<int>("quantity", true); }
             }
 
-            public int? BillingCycles() {
-                return GetValue<int?>("billing_cycles", false);
+            public int? BillingCycles {
+                get { return GetValue<int?>("billing_cycles", false); }
             }
 
-            public TypeEnum AttachedAddonType() {
-                return GetEnum<TypeEnum>("type", true);
+            public TypeEnum AttachedAddonType {
+                get { return GetEnum<TypeEnum>("type", true); }
             }
 
-            public string QuantityInDecimal() {
-                return GetValue<string>("quantity_in_decimal", false);
+            public string QuantityInDecimal {
+                get { return GetValue<string>("quantity_in_decimal", false); }
             }
 
         }
@@ -1226,24 +1226,24 @@ namespace ChargeBee.Models
                 ContractTermination,
             }
 
-            public string Id() {
-                return GetValue<string>("id", true);
+            public string Id {
+                get { return GetValue<string>("id", true); }
             }
 
-            public int Quantity() {
-                return GetValue<int>("quantity", true);
+            public int Quantity {
+                get { return GetValue<int>("quantity", true); }
             }
 
-            public OnEventEnum OnEvent() {
-                return GetEnum<OnEventEnum>("on_event", true);
+            public OnEventEnum OnEvent {
+                get { return GetEnum<OnEventEnum>("on_event", true); }
             }
 
-            public bool ChargeOnce() {
-                return GetValue<bool>("charge_once", true);
+            public bool ChargeOnce {
+                get { return GetValue<bool>("charge_once", true); }
             }
 
-            public string QuantityInDecimal() {
-                return GetValue<string>("quantity_in_decimal", false);
+            public string QuantityInDecimal {
+                get { return GetValue<string>("quantity_in_decimal", false); }
             }
 
         }

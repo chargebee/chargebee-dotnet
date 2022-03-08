@@ -73,5 +73,11 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "other")]
          Other,
 
+        [EnumMember(Value = "upi")]
+         Upi,
+
+        [EnumMember(Value = "netbanking_emandates")]
+         NetbankingEmandates,
+
     }
 }

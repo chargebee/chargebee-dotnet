@@ -91,44 +91,44 @@ namespace ChargeBee.Models
                 SubscriptionEnd,
             }
 
-            public EndScheduleOnEnum? EndScheduleOn() {
-                return GetEnum<EndScheduleOnEnum>("end_schedule_on", false);
+            public EndScheduleOnEnum? EndScheduleOn {
+                get { return GetEnum<EndScheduleOnEnum>("end_schedule_on", false); }
             }
 
-            public int? NumberOfOccurrences() {
-                return GetValue<int?>("number_of_occurrences", false);
+            public int? NumberOfOccurrences {
+                get { return GetValue<int?>("number_of_occurrences", false); }
             }
 
-            public int? DaysBeforeRenewal() {
-                return GetValue<int?>("days_before_renewal", false);
+            public int? DaysBeforeRenewal {
+                get { return GetValue<int?>("days_before_renewal", false); }
             }
 
-            public DateTime? EndDate() {
-                return GetDateTime("end_date", false);
+            public DateTime? EndDate {
+                get { return GetDateTime("end_date", false); }
             }
 
-            public DateTime CreatedAt() {
-                return (DateTime)GetDateTime("created_at", true);
+            public DateTime CreatedAt {
+                get { return (DateTime)GetDateTime("created_at", true); }
             }
 
-            public int? TermsToCharge() {
-                return GetValue<int?>("terms_to_charge", false);
+            public int? TermsToCharge {
+                get { return GetValue<int?>("terms_to_charge", false); }
             }
 
         }
         public class AdvanceInvoiceScheduleSpecificDatesSchedule : Resource
         {
 
-            public int? TermsToCharge() {
-                return GetValue<int?>("terms_to_charge", false);
+            public int? TermsToCharge {
+                get { return GetValue<int?>("terms_to_charge", false); }
             }
 
-            public DateTime? Date() {
-                return GetDateTime("date", false);
+            public DateTime? Date {
+                get { return GetDateTime("date", false); }
             }
 
-            public DateTime CreatedAt() {
-                return (DateTime)GetDateTime("created_at", true);
+            public DateTime CreatedAt {
+                get { return (DateTime)GetDateTime("created_at", true); }
             }
 
         }

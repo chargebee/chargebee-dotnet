@@ -650,6 +650,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("invoice_note", invoiceNote);
                 return this;
             }
+            [Obsolete]
+            public CheckoutOneTimeRequest Coupon(string coupon) 
+            {
+                m_params.AddOpt("coupon", coupon);
+                return this;
+            }
             public CheckoutOneTimeRequest CouponIds(List<string> couponIds) 
             {
                 m_params.AddOpt("coupon_ids", couponIds);
@@ -1004,6 +1010,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("invoice_note", invoiceNote);
                 return this;
             }
+            [Obsolete]
+            public CheckoutOneTimeForItemsRequest Coupon(string coupon) 
+            {
+                m_params.AddOpt("coupon", coupon);
+                return this;
+            }
             public CheckoutOneTimeForItemsRequest CouponIds(List<string> couponIds) 
             {
                 m_params.AddOpt("coupon_ids", couponIds);
@@ -1093,6 +1105,21 @@ namespace ChargeBee.Models
             public CheckoutOneTimeForItemsRequest CustomerVatNumberPrefix(string customerVatNumberPrefix) 
             {
                 m_params.AddOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
+                return this;
+            }
+            public CheckoutOneTimeForItemsRequest CustomerIsEinvoiceEnabled(bool customerIsEinvoiceEnabled) 
+            {
+                m_params.AddOpt("customer[is_einvoice_enabled]", customerIsEinvoiceEnabled);
+                return this;
+            }
+            public CheckoutOneTimeForItemsRequest CustomerEntityIdentifierScheme(string customerEntityIdentifierScheme) 
+            {
+                m_params.AddOpt("customer[entity_identifier_scheme]", customerEntityIdentifierScheme);
+                return this;
+            }
+            public CheckoutOneTimeForItemsRequest CustomerEntityIdentifierStandard(string customerEntityIdentifierStandard) 
+            {
+                m_params.AddOpt("customer[entity_identifier_standard]", customerEntityIdentifierStandard);
                 return this;
             }
             public CheckoutOneTimeForItemsRequest CustomerConsolidatedInvoicing(bool customerConsolidatedInvoicing) 
@@ -1375,6 +1402,31 @@ namespace ChargeBee.Models
                 m_params.AddOpt("charges[date_to][" + index + "]", chargeDateTo);
                 return this;
             }
+            public CheckoutOneTimeForItemsRequest EntityIdentifierId(int index, string entityIdentifierId) 
+            {
+                m_params.AddOpt("entity_identifiers[id][" + index + "]", entityIdentifierId);
+                return this;
+            }
+            public CheckoutOneTimeForItemsRequest EntityIdentifierScheme(int index, string entityIdentifierScheme) 
+            {
+                m_params.AddOpt("entity_identifiers[scheme][" + index + "]", entityIdentifierScheme);
+                return this;
+            }
+            public CheckoutOneTimeForItemsRequest EntityIdentifierValue(int index, string entityIdentifierValue) 
+            {
+                m_params.AddOpt("entity_identifiers[value][" + index + "]", entityIdentifierValue);
+                return this;
+            }
+            public CheckoutOneTimeForItemsRequest EntityIdentifierOperation(int index, ChargeBee.Models.Enums.OperationEnum entityIdentifierOperation) 
+            {
+                m_params.AddOpt("entity_identifiers[operation][" + index + "]", entityIdentifierOperation);
+                return this;
+            }
+            public CheckoutOneTimeForItemsRequest EntityIdentifierStandard(int index, string entityIdentifierStandard) 
+            {
+                m_params.AddOpt("entity_identifiers[standard][" + index + "]", entityIdentifierStandard);
+                return this;
+            }
         }
         public class CheckoutNewForItemsRequest : EntityRequest<CheckoutNewForItemsRequest> 
         {
@@ -1528,6 +1580,21 @@ namespace ChargeBee.Models
             public CheckoutNewForItemsRequest CustomerVatNumberPrefix(string customerVatNumberPrefix) 
             {
                 m_params.AddOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
+                return this;
+            }
+            public CheckoutNewForItemsRequest CustomerIsEinvoiceEnabled(bool customerIsEinvoiceEnabled) 
+            {
+                m_params.AddOpt("customer[is_einvoice_enabled]", customerIsEinvoiceEnabled);
+                return this;
+            }
+            public CheckoutNewForItemsRequest CustomerEntityIdentifierScheme(string customerEntityIdentifierScheme) 
+            {
+                m_params.AddOpt("customer[entity_identifier_scheme]", customerEntityIdentifierScheme);
+                return this;
+            }
+            public CheckoutNewForItemsRequest CustomerEntityIdentifierStandard(string customerEntityIdentifierStandard) 
+            {
+                m_params.AddOpt("customer[entity_identifier_standard]", customerEntityIdentifierStandard);
                 return this;
             }
             public CheckoutNewForItemsRequest BillingAddressFirstName(string billingAddressFirstName) 
@@ -1784,6 +1851,31 @@ namespace ChargeBee.Models
             public CheckoutNewForItemsRequest ItemTierPriceInDecimal(int index, string itemTierPriceInDecimal) 
             {
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+                return this;
+            }
+            public CheckoutNewForItemsRequest EntityIdentifierId(int index, string entityIdentifierId) 
+            {
+                m_params.AddOpt("entity_identifiers[id][" + index + "]", entityIdentifierId);
+                return this;
+            }
+            public CheckoutNewForItemsRequest EntityIdentifierScheme(int index, string entityIdentifierScheme) 
+            {
+                m_params.AddOpt("entity_identifiers[scheme][" + index + "]", entityIdentifierScheme);
+                return this;
+            }
+            public CheckoutNewForItemsRequest EntityIdentifierValue(int index, string entityIdentifierValue) 
+            {
+                m_params.AddOpt("entity_identifiers[value][" + index + "]", entityIdentifierValue);
+                return this;
+            }
+            public CheckoutNewForItemsRequest EntityIdentifierOperation(int index, ChargeBee.Models.Enums.OperationEnum entityIdentifierOperation) 
+            {
+                m_params.AddOpt("entity_identifiers[operation][" + index + "]", entityIdentifierOperation);
+                return this;
+            }
+            public CheckoutNewForItemsRequest EntityIdentifierStandard(int index, string entityIdentifierStandard) 
+            {
+                m_params.AddOpt("entity_identifiers[standard][" + index + "]", entityIdentifierStandard);
                 return this;
             }
         }
@@ -2181,6 +2273,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
                 return this;
             }
+            public CheckoutExistingForItemsRequest CustomerIsEinvoiceEnabled(bool customerIsEinvoiceEnabled) 
+            {
+                m_params.AddOpt("customer[is_einvoice_enabled]", customerIsEinvoiceEnabled);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest CustomerEntityIdentifierScheme(string customerEntityIdentifierScheme) 
+            {
+                m_params.AddOpt("customer[entity_identifier_scheme]", customerEntityIdentifierScheme);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest CustomerEntityIdentifierStandard(string customerEntityIdentifierStandard) 
+            {
+                m_params.AddOpt("customer[entity_identifier_standard]", customerEntityIdentifierStandard);
+                return this;
+            }
             [Obsolete]
             public CheckoutExistingForItemsRequest CardGateway(ChargeBee.Models.Enums.GatewayEnum cardGateway) 
             {
@@ -2301,6 +2408,31 @@ namespace ChargeBee.Models
             public CheckoutExistingForItemsRequest ItemTierPriceInDecimal(int index, string itemTierPriceInDecimal) 
             {
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest EntityIdentifierId(int index, string entityIdentifierId) 
+            {
+                m_params.AddOpt("entity_identifiers[id][" + index + "]", entityIdentifierId);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest EntityIdentifierScheme(int index, string entityIdentifierScheme) 
+            {
+                m_params.AddOpt("entity_identifiers[scheme][" + index + "]", entityIdentifierScheme);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest EntityIdentifierValue(int index, string entityIdentifierValue) 
+            {
+                m_params.AddOpt("entity_identifiers[value][" + index + "]", entityIdentifierValue);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest EntityIdentifierOperation(int index, ChargeBee.Models.Enums.OperationEnum entityIdentifierOperation) 
+            {
+                m_params.AddOpt("entity_identifiers[operation][" + index + "]", entityIdentifierOperation);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest EntityIdentifierStandard(int index, string entityIdentifierStandard) 
+            {
+                m_params.AddOpt("entity_identifiers[standard][" + index + "]", entityIdentifierStandard);
                 return this;
             }
         }

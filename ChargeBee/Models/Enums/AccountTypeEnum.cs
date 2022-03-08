@@ -19,5 +19,8 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "business_checking")]
          BusinessChecking,
 
+        [EnumMember(Value = "current")]
+         Current,
+
     }
 }

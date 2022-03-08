@@ -26,7 +26,7 @@ namespace ChargeBee.Api
 
             foreach (var path in paths)
             {
-                sb.Append('/').Append(Uri.EscapeUriString(path));
+                sb.Append('/').Append(Uri.EscapeDataString(path));
             }
             return sb.ToString();
         }

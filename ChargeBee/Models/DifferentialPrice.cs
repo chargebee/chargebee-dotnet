@@ -319,28 +319,28 @@ namespace ChargeBee.Models
         public class DifferentialPriceTier : Resource
         {
 
-            public int StartingUnit() {
-                return GetValue<int>("starting_unit", true);
+            public int StartingUnit {
+                get { return GetValue<int>("starting_unit", true); }
             }
 
-            public int? EndingUnit() {
-                return GetValue<int?>("ending_unit", false);
+            public int? EndingUnit {
+                get { return GetValue<int?>("ending_unit", false); }
             }
 
-            public int Price() {
-                return GetValue<int>("price", true);
+            public int Price {
+                get { return GetValue<int>("price", true); }
             }
 
-            public string StartingUnitInDecimal() {
-                return GetValue<string>("starting_unit_in_decimal", false);
+            public string StartingUnitInDecimal {
+                get { return GetValue<string>("starting_unit_in_decimal", false); }
             }
 
-            public string EndingUnitInDecimal() {
-                return GetValue<string>("ending_unit_in_decimal", false);
+            public string EndingUnitInDecimal {
+                get { return GetValue<string>("ending_unit_in_decimal", false); }
             }
 
-            public string PriceInDecimal() {
-                return GetValue<string>("price_in_decimal", false);
+            public string PriceInDecimal {
+                get { return GetValue<string>("price_in_decimal", false); }
             }
 
         }
@@ -360,12 +360,12 @@ namespace ChargeBee.Models
                 Year,
             }
 
-            public PeriodUnitEnum PeriodUnit() {
-                return GetEnum<PeriodUnitEnum>("period_unit", true);
+            public PeriodUnitEnum PeriodUnit {
+                get { return GetEnum<PeriodUnitEnum>("period_unit", true); }
             }
 
-            public JArray Period() {
-                return GetJArray("period", false);
+            public JArray Period {
+                get { return GetJArray("period", false); }
             }
 
         }

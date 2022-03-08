@@ -203,12 +203,12 @@ namespace ChargeBee.Models
                 NotApplicable,
             }
 
-            public string Id() {
-                return GetValue<string>("id", true);
+            public string Id {
+                get { return GetValue<string>("id", true); }
             }
 
-            public WebhookStatusEnum WebhookStatus() {
-                return GetEnum<WebhookStatusEnum>("webhook_status", true);
+            public WebhookStatusEnum WebhookStatus {
+                get { return GetEnum<WebhookStatusEnum>("webhook_status", true); }
             }
 
         }

@@ -632,6 +632,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("bank_account[email]", bankAccountEmail);
                 return this;
             }
+            public CreateRequest BankAccountPhone(string bankAccountPhone) 
+            {
+                m_params.AddOpt("bank_account[phone]", bankAccountPhone);
+                return this;
+            }
             public CreateRequest BankAccountBankName(string bankAccountBankName) 
             {
                 m_params.AddOpt("bank_account[bank_name]", bankAccountBankName);
@@ -807,6 +812,11 @@ namespace ChargeBee.Models
             public CreateRequest PaymentIntentGwToken(string paymentIntentGwToken) 
             {
                 m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
+                return this;
+            }
+            public CreateRequest PaymentIntentPaymentMethodType(PaymentIntent.PaymentMethodTypeEnum paymentIntentPaymentMethodType) 
+            {
+                m_params.AddOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
                 return this;
             }
             public CreateRequest PaymentIntentReferenceId(string paymentIntentReferenceId) 
@@ -1726,6 +1736,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
                 return this;
             }
+            public CollectPaymentRequest PaymentIntentPaymentMethodType(PaymentIntent.PaymentMethodTypeEnum paymentIntentPaymentMethodType) 
+            {
+                m_params.AddOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
+                return this;
+            }
             [Obsolete]
             public CollectPaymentRequest PaymentIntentGwPaymentMethodId(string paymentIntentGwPaymentMethodId) 
             {
@@ -2073,136 +2088,136 @@ namespace ChargeBee.Models
         public class CustomerBillingAddress : Resource
         {
 
-            public string FirstName() {
-                return GetValue<string>("first_name", false);
+            public string FirstName {
+                get { return GetValue<string>("first_name", false); }
             }
 
-            public string LastName() {
-                return GetValue<string>("last_name", false);
+            public string LastName {
+                get { return GetValue<string>("last_name", false); }
             }
 
-            public string Email() {
-                return GetValue<string>("email", false);
+            public string Email {
+                get { return GetValue<string>("email", false); }
             }
 
-            public string Company() {
-                return GetValue<string>("company", false);
+            public string Company {
+                get { return GetValue<string>("company", false); }
             }
 
-            public string Phone() {
-                return GetValue<string>("phone", false);
+            public string Phone {
+                get { return GetValue<string>("phone", false); }
             }
 
-            public string Line1() {
-                return GetValue<string>("line1", false);
+            public string Line1 {
+                get { return GetValue<string>("line1", false); }
             }
 
-            public string Line2() {
-                return GetValue<string>("line2", false);
+            public string Line2 {
+                get { return GetValue<string>("line2", false); }
             }
 
-            public string Line3() {
-                return GetValue<string>("line3", false);
+            public string Line3 {
+                get { return GetValue<string>("line3", false); }
             }
 
-            public string City() {
-                return GetValue<string>("city", false);
+            public string City {
+                get { return GetValue<string>("city", false); }
             }
 
-            public string StateCode() {
-                return GetValue<string>("state_code", false);
+            public string StateCode {
+                get { return GetValue<string>("state_code", false); }
             }
 
-            public string State() {
-                return GetValue<string>("state", false);
+            public string State {
+                get { return GetValue<string>("state", false); }
             }
 
-            public string Country() {
-                return GetValue<string>("country", false);
+            public string Country {
+                get { return GetValue<string>("country", false); }
             }
 
-            public string Zip() {
-                return GetValue<string>("zip", false);
+            public string Zip {
+                get { return GetValue<string>("zip", false); }
             }
 
-            public ValidationStatusEnum? ValidationStatus() {
-                return GetEnum<ValidationStatusEnum>("validation_status", false);
+            public ValidationStatusEnum? ValidationStatus {
+                get { return GetEnum<ValidationStatusEnum>("validation_status", false); }
             }
 
         }
         public class CustomerReferralUrl : Resource
         {
 
-            public string ExternalCustomerId() {
-                return GetValue<string>("external_customer_id", false);
+            public string ExternalCustomerId {
+                get { return GetValue<string>("external_customer_id", false); }
             }
 
-            public string ReferralSharingUrl() {
-                return GetValue<string>("referral_sharing_url", true);
+            public string ReferralSharingUrl {
+                get { return GetValue<string>("referral_sharing_url", true); }
             }
 
-            public DateTime CreatedAt() {
-                return (DateTime)GetDateTime("created_at", true);
+            public DateTime CreatedAt {
+                get { return (DateTime)GetDateTime("created_at", true); }
             }
 
-            public DateTime UpdatedAt() {
-                return (DateTime)GetDateTime("updated_at", true);
+            public DateTime UpdatedAt {
+                get { return (DateTime)GetDateTime("updated_at", true); }
             }
 
-            public string ReferralCampaignId() {
-                return GetValue<string>("referral_campaign_id", true);
+            public string ReferralCampaignId {
+                get { return GetValue<string>("referral_campaign_id", true); }
             }
 
-            public string ReferralAccountId() {
-                return GetValue<string>("referral_account_id", true);
+            public string ReferralAccountId {
+                get { return GetValue<string>("referral_account_id", true); }
             }
 
-            public string ReferralExternalCampaignId() {
-                return GetValue<string>("referral_external_campaign_id", false);
+            public string ReferralExternalCampaignId {
+                get { return GetValue<string>("referral_external_campaign_id", false); }
             }
 
-            public ReferralSystemEnum ReferralSystem() {
-                return GetEnum<ReferralSystemEnum>("referral_system", true);
+            public ReferralSystemEnum ReferralSystem {
+                get { return GetEnum<ReferralSystemEnum>("referral_system", true); }
             }
 
         }
         public class CustomerContact : Resource
         {
 
-            public string Id() {
-                return GetValue<string>("id", true);
+            public string Id {
+                get { return GetValue<string>("id", true); }
             }
 
-            public string FirstName() {
-                return GetValue<string>("first_name", false);
+            public string FirstName {
+                get { return GetValue<string>("first_name", false); }
             }
 
-            public string LastName() {
-                return GetValue<string>("last_name", false);
+            public string LastName {
+                get { return GetValue<string>("last_name", false); }
             }
 
-            public string Email() {
-                return GetValue<string>("email", true);
+            public string Email {
+                get { return GetValue<string>("email", true); }
             }
 
-            public string Phone() {
-                return GetValue<string>("phone", false);
+            public string Phone {
+                get { return GetValue<string>("phone", false); }
             }
 
-            public string Label() {
-                return GetValue<string>("label", false);
+            public string Label {
+                get { return GetValue<string>("label", false); }
             }
 
-            public bool Enabled() {
-                return GetValue<bool>("enabled", true);
+            public bool Enabled {
+                get { return GetValue<bool>("enabled", true); }
             }
 
-            public bool SendAccountEmail() {
-                return GetValue<bool>("send_account_email", true);
+            public bool SendAccountEmail {
+                get { return GetValue<bool>("send_account_email", true); }
             }
 
-            public bool SendBillingEmail() {
-                return GetValue<bool>("send_billing_email", true);
+            public bool SendBillingEmail {
+                get { return GetValue<bool>("send_billing_email", true); }
             }
 
         }
@@ -2242,6 +2257,10 @@ namespace ChargeBee.Models
                 Giropay,
                 [EnumMember(Value = "dotpay")]
                 Dotpay,
+                [EnumMember(Value = "upi")]
+                Upi,
+                [EnumMember(Value = "netbanking_emandates")]
+                NetbankingEmandates,
             }
             public enum StatusEnum
             {
@@ -2259,88 +2278,88 @@ namespace ChargeBee.Models
                 PendingVerification,
             }
 
-            public TypeEnum PaymentMethodType() {
-                return GetEnum<TypeEnum>("type", true);
+            public TypeEnum PaymentMethodType {
+                get { return GetEnum<TypeEnum>("type", true); }
             }
 
-            public GatewayEnum Gateway() {
-                return GetEnum<GatewayEnum>("gateway", true);
+            public GatewayEnum Gateway {
+                get { return GetEnum<GatewayEnum>("gateway", true); }
             }
 
-            public string GatewayAccountId() {
-                return GetValue<string>("gateway_account_id", false);
+            public string GatewayAccountId {
+                get { return GetValue<string>("gateway_account_id", false); }
             }
 
-            public StatusEnum Status() {
-                return GetEnum<StatusEnum>("status", true);
+            public StatusEnum Status {
+                get { return GetEnum<StatusEnum>("status", true); }
             }
 
-            public string ReferenceId() {
-                return GetValue<string>("reference_id", true);
+            public string ReferenceId {
+                get { return GetValue<string>("reference_id", true); }
             }
 
         }
         public class CustomerBalance : Resource
         {
 
-            public int PromotionalCredits() {
-                return GetValue<int>("promotional_credits", true);
+            public int PromotionalCredits {
+                get { return GetValue<int>("promotional_credits", true); }
             }
 
-            public int ExcessPayments() {
-                return GetValue<int>("excess_payments", true);
+            public int ExcessPayments {
+                get { return GetValue<int>("excess_payments", true); }
             }
 
-            public int RefundableCredits() {
-                return GetValue<int>("refundable_credits", true);
+            public int RefundableCredits {
+                get { return GetValue<int>("refundable_credits", true); }
             }
 
-            public int UnbilledCharges() {
-                return GetValue<int>("unbilled_charges", true);
+            public int UnbilledCharges {
+                get { return GetValue<int>("unbilled_charges", true); }
             }
 
-            public string CurrencyCode() {
-                return GetValue<string>("currency_code", true);
+            public string CurrencyCode {
+                get { return GetValue<string>("currency_code", true); }
             }
 
-            public string BalanceCurrencyCode() {
-                return GetValue<string>("balance_currency_code", true);
+            public string BalanceCurrencyCode {
+                get { return GetValue<string>("balance_currency_code", true); }
             }
 
         }
         public class CustomerEntityIdentifier : Resource
         {
 
-            public string Id() {
-                return GetValue<string>("id", true);
+            public string Id {
+                get { return GetValue<string>("id", true); }
             }
 
-            public string Value() {
-                return GetValue<string>("value", false);
+            public string Value {
+                get { return GetValue<string>("value", false); }
             }
 
-            public string Scheme() {
-                return GetValue<string>("scheme", true);
+            public string Scheme {
+                get { return GetValue<string>("scheme", true); }
             }
 
-            public string Standard() {
-                return GetValue<string>("standard", false);
+            public string Standard {
+                get { return GetValue<string>("standard", false); }
             }
 
         }
         public class CustomerRelationship : Resource
         {
 
-            public string ParentId() {
-                return GetValue<string>("parent_id", false);
+            public string ParentId {
+                get { return GetValue<string>("parent_id", false); }
             }
 
-            public string PaymentOwnerId() {
-                return GetValue<string>("payment_owner_id", true);
+            public string PaymentOwnerId {
+                get { return GetValue<string>("payment_owner_id", true); }
             }
 
-            public string InvoiceOwnerId() {
-                return GetValue<string>("invoice_owner_id", true);
+            public string InvoiceOwnerId {
+                get { return GetValue<string>("invoice_owner_id", true); }
             }
 
         }
@@ -2369,24 +2388,24 @@ namespace ChargeBee.Models
                 No,
             }
 
-            public PortalEditChildSubscriptionsEnum? PortalEditChildSubscriptions() {
-                return GetEnum<PortalEditChildSubscriptionsEnum>("portal_edit_child_subscriptions", false);
+            public PortalEditChildSubscriptionsEnum? PortalEditChildSubscriptions {
+                get { return GetEnum<PortalEditChildSubscriptionsEnum>("portal_edit_child_subscriptions", false); }
             }
 
-            public PortalDownloadChildInvoicesEnum? PortalDownloadChildInvoices() {
-                return GetEnum<PortalDownloadChildInvoicesEnum>("portal_download_child_invoices", false);
+            public PortalDownloadChildInvoicesEnum? PortalDownloadChildInvoices {
+                get { return GetEnum<PortalDownloadChildInvoicesEnum>("portal_download_child_invoices", false); }
             }
 
-            public bool SendSubscriptionEmails() {
-                return GetValue<bool>("send_subscription_emails", true);
+            public bool SendSubscriptionEmails {
+                get { return GetValue<bool>("send_subscription_emails", true); }
             }
 
-            public bool SendInvoiceEmails() {
-                return GetValue<bool>("send_invoice_emails", true);
+            public bool SendInvoiceEmails {
+                get { return GetValue<bool>("send_invoice_emails", true); }
             }
 
-            public bool SendPaymentEmails() {
-                return GetValue<bool>("send_payment_emails", true);
+            public bool SendPaymentEmails {
+                get { return GetValue<bool>("send_payment_emails", true); }
             }
 
         }
@@ -2413,24 +2432,24 @@ namespace ChargeBee.Models
                 No,
             }
 
-            public PortalEditSubscriptionsEnum? PortalEditSubscriptions() {
-                return GetEnum<PortalEditSubscriptionsEnum>("portal_edit_subscriptions", false);
+            public PortalEditSubscriptionsEnum? PortalEditSubscriptions {
+                get { return GetEnum<PortalEditSubscriptionsEnum>("portal_edit_subscriptions", false); }
             }
 
-            public PortalDownloadInvoicesEnum? PortalDownloadInvoices() {
-                return GetEnum<PortalDownloadInvoicesEnum>("portal_download_invoices", false);
+            public PortalDownloadInvoicesEnum? PortalDownloadInvoices {
+                get { return GetEnum<PortalDownloadInvoicesEnum>("portal_download_invoices", false); }
             }
 
-            public bool SendSubscriptionEmails() {
-                return GetValue<bool>("send_subscription_emails", true);
+            public bool SendSubscriptionEmails {
+                get { return GetValue<bool>("send_subscription_emails", true); }
             }
 
-            public bool SendInvoiceEmails() {
-                return GetValue<bool>("send_invoice_emails", true);
+            public bool SendInvoiceEmails {
+                get { return GetValue<bool>("send_invoice_emails", true); }
             }
 
-            public bool SendPaymentEmails() {
-                return GetValue<bool>("send_payment_emails", true);
+            public bool SendPaymentEmails {
+                get { return GetValue<bool>("send_payment_emails", true); }
             }
 
         }

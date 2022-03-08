@@ -794,6 +794,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("bank_account[email]", bankAccountEmail);
                 return this;
             }
+            public CreateRequest BankAccountPhone(string bankAccountPhone) 
+            {
+                m_params.AddOpt("bank_account[phone]", bankAccountPhone);
+                return this;
+            }
             public CreateRequest BankAccountBankName(string bankAccountBankName) 
             {
                 m_params.AddOpt("bank_account[bank_name]", bankAccountBankName);
@@ -969,6 +974,11 @@ namespace ChargeBee.Models
             public CreateRequest PaymentIntentGwToken(string paymentIntentGwToken) 
             {
                 m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
+                return this;
+            }
+            public CreateRequest PaymentIntentPaymentMethodType(PaymentIntent.PaymentMethodTypeEnum paymentIntentPaymentMethodType) 
+            {
+                m_params.AddOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
                 return this;
             }
             public CreateRequest PaymentIntentReferenceId(string paymentIntentReferenceId) 
@@ -1521,6 +1531,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
                 return this;
             }
+            public CreateForCustomerRequest PaymentIntentPaymentMethodType(PaymentIntent.PaymentMethodTypeEnum paymentIntentPaymentMethodType) 
+            {
+                m_params.AddOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
+                return this;
+            }
             public CreateForCustomerRequest PaymentIntentReferenceId(string paymentIntentReferenceId) 
             {
                 m_params.AddOpt("payment_intent[reference_id]", paymentIntentReferenceId);
@@ -1855,6 +1870,11 @@ namespace ChargeBee.Models
             public CreateWithItemsRequest PaymentIntentGwToken(string paymentIntentGwToken) 
             {
                 m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
+                return this;
+            }
+            public CreateWithItemsRequest PaymentIntentPaymentMethodType(PaymentIntent.PaymentMethodTypeEnum paymentIntentPaymentMethodType) 
+            {
+                m_params.AddOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
                 return this;
             }
             public CreateWithItemsRequest PaymentIntentReferenceId(string paymentIntentReferenceId) 
@@ -2429,6 +2449,11 @@ namespace ChargeBee.Models
             public UpdateRequest PaymentIntentGwToken(string paymentIntentGwToken) 
             {
                 m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
+                return this;
+            }
+            public UpdateRequest PaymentIntentPaymentMethodType(PaymentIntent.PaymentMethodTypeEnum paymentIntentPaymentMethodType) 
+            {
+                m_params.AddOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
                 return this;
             }
             public UpdateRequest PaymentIntentReferenceId(string paymentIntentReferenceId) 
@@ -3031,6 +3056,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
                 return this;
             }
+            public UpdateForItemsRequest PaymentIntentPaymentMethodType(PaymentIntent.PaymentMethodTypeEnum paymentIntentPaymentMethodType) 
+            {
+                m_params.AddOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
+                return this;
+            }
             public UpdateForItemsRequest PaymentIntentReferenceId(string paymentIntentReferenceId) 
             {
                 m_params.AddOpt("payment_intent[reference_id]", paymentIntentReferenceId);
@@ -3430,6 +3460,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
                 return this;
             }
+            public ReactivateRequest PaymentIntentPaymentMethodType(PaymentIntent.PaymentMethodTypeEnum paymentIntentPaymentMethodType) 
+            {
+                m_params.AddOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
+                return this;
+            }
             public ReactivateRequest PaymentIntentReferenceId(string paymentIntentReferenceId) 
             {
                 m_params.AddOpt("payment_intent[reference_id]", paymentIntentReferenceId);
@@ -3795,6 +3830,11 @@ namespace ChargeBee.Models
             public ImportSubscriptionRequest StartedAt(long startedAt) 
             {
                 m_params.AddOpt("started_at", startedAt);
+                return this;
+            }
+            public ImportSubscriptionRequest ActivatedAt(long activatedAt) 
+            {
+                m_params.AddOpt("activated_at", activatedAt);
                 return this;
             }
             public ImportSubscriptionRequest PauseDate(long pauseDate) 
@@ -4413,6 +4453,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("started_at", startedAt);
                 return this;
             }
+            public ImportForCustomerRequest ActivatedAt(long activatedAt) 
+            {
+                m_params.AddOpt("activated_at", activatedAt);
+                return this;
+            }
             public ImportForCustomerRequest PauseDate(long pauseDate) 
             {
                 m_params.AddOpt("pause_date", pauseDate);
@@ -4793,6 +4838,11 @@ namespace ChargeBee.Models
             public ImportForItemsRequest StartedAt(long startedAt) 
             {
                 m_params.AddOpt("started_at", startedAt);
+                return this;
+            }
+            public ImportForItemsRequest ActivatedAt(long activatedAt) 
+            {
+                m_params.AddOpt("activated_at", activatedAt);
                 return this;
             }
             public ImportForItemsRequest PauseDate(long pauseDate) 
@@ -5311,6 +5361,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
                 return this;
             }
+            public ResumeRequest PaymentIntentPaymentMethodType(PaymentIntent.PaymentMethodTypeEnum paymentIntentPaymentMethodType) 
+            {
+                m_params.AddOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
+                return this;
+            }
             public ResumeRequest PaymentIntentReferenceId(string paymentIntentReferenceId) 
             {
                 m_params.AddOpt("payment_intent[reference_id]", paymentIntentReferenceId);
@@ -5410,160 +5465,160 @@ namespace ChargeBee.Models
                 OnEvent,
             }
 
-            public string ItemPriceId() {
-                return GetValue<string>("item_price_id", true);
+            public string ItemPriceId {
+                get { return GetValue<string>("item_price_id", true); }
             }
 
-            public ItemTypeEnum ItemType() {
-                return GetEnum<ItemTypeEnum>("item_type", true);
+            public ItemTypeEnum ItemType {
+                get { return GetEnum<ItemTypeEnum>("item_type", true); }
             }
 
-            public int? Quantity() {
-                return GetValue<int?>("quantity", false);
+            public int? Quantity {
+                get { return GetValue<int?>("quantity", false); }
             }
 
-            public string QuantityInDecimal() {
-                return GetValue<string>("quantity_in_decimal", false);
+            public string QuantityInDecimal {
+                get { return GetValue<string>("quantity_in_decimal", false); }
             }
 
-            public string MeteredQuantity() {
-                return GetValue<string>("metered_quantity", false);
+            public string MeteredQuantity {
+                get { return GetValue<string>("metered_quantity", false); }
             }
 
-            public DateTime? LastCalculatedAt() {
-                return GetDateTime("last_calculated_at", false);
+            public DateTime? LastCalculatedAt {
+                get { return GetDateTime("last_calculated_at", false); }
             }
 
-            public int? UnitPrice() {
-                return GetValue<int?>("unit_price", false);
+            public int? UnitPrice {
+                get { return GetValue<int?>("unit_price", false); }
             }
 
-            public string UnitPriceInDecimal() {
-                return GetValue<string>("unit_price_in_decimal", false);
+            public string UnitPriceInDecimal {
+                get { return GetValue<string>("unit_price_in_decimal", false); }
             }
 
-            public int? Amount() {
-                return GetValue<int?>("amount", false);
+            public int? Amount {
+                get { return GetValue<int?>("amount", false); }
             }
 
-            public string AmountInDecimal() {
-                return GetValue<string>("amount_in_decimal", false);
+            public string AmountInDecimal {
+                get { return GetValue<string>("amount_in_decimal", false); }
             }
 
-            public int? FreeQuantity() {
-                return GetValue<int?>("free_quantity", false);
+            public int? FreeQuantity {
+                get { return GetValue<int?>("free_quantity", false); }
             }
 
-            public string FreeQuantityInDecimal() {
-                return GetValue<string>("free_quantity_in_decimal", false);
+            public string FreeQuantityInDecimal {
+                get { return GetValue<string>("free_quantity_in_decimal", false); }
             }
 
-            public DateTime? TrialEnd() {
-                return GetDateTime("trial_end", false);
+            public DateTime? TrialEnd {
+                get { return GetDateTime("trial_end", false); }
             }
 
-            public int? BillingCycles() {
-                return GetValue<int?>("billing_cycles", false);
+            public int? BillingCycles {
+                get { return GetValue<int?>("billing_cycles", false); }
             }
 
-            public int? ServicePeriodDays() {
-                return GetValue<int?>("service_period_days", false);
+            public int? ServicePeriodDays {
+                get { return GetValue<int?>("service_period_days", false); }
             }
 
-            public ChargeOnEventEnum? ChargeOnEvent() {
-                return GetEnum<ChargeOnEventEnum>("charge_on_event", false);
+            public ChargeOnEventEnum? ChargeOnEvent {
+                get { return GetEnum<ChargeOnEventEnum>("charge_on_event", false); }
             }
 
-            public bool? ChargeOnce() {
-                return GetValue<bool?>("charge_once", false);
+            public bool? ChargeOnce {
+                get { return GetValue<bool?>("charge_once", false); }
             }
 
-            public ChargeOnOptionEnum? ChargeOnOption() {
-                return GetEnum<ChargeOnOptionEnum>("charge_on_option", false);
+            public ChargeOnOptionEnum? ChargeOnOption {
+                get { return GetEnum<ChargeOnOptionEnum>("charge_on_option", false); }
             }
 
         }
         public class SubscriptionItemTier : Resource
         {
 
-            public string ItemPriceId() {
-                return GetValue<string>("item_price_id", true);
+            public string ItemPriceId {
+                get { return GetValue<string>("item_price_id", true); }
             }
 
-            public int StartingUnit() {
-                return GetValue<int>("starting_unit", true);
+            public int StartingUnit {
+                get { return GetValue<int>("starting_unit", true); }
             }
 
-            public int? EndingUnit() {
-                return GetValue<int?>("ending_unit", false);
+            public int? EndingUnit {
+                get { return GetValue<int?>("ending_unit", false); }
             }
 
-            public int Price() {
-                return GetValue<int>("price", true);
+            public int Price {
+                get { return GetValue<int>("price", true); }
             }
 
-            public string StartingUnitInDecimal() {
-                return GetValue<string>("starting_unit_in_decimal", false);
+            public string StartingUnitInDecimal {
+                get { return GetValue<string>("starting_unit_in_decimal", false); }
             }
 
-            public string EndingUnitInDecimal() {
-                return GetValue<string>("ending_unit_in_decimal", false);
+            public string EndingUnitInDecimal {
+                get { return GetValue<string>("ending_unit_in_decimal", false); }
             }
 
-            public string PriceInDecimal() {
-                return GetValue<string>("price_in_decimal", false);
+            public string PriceInDecimal {
+                get { return GetValue<string>("price_in_decimal", false); }
             }
 
         }
         public class SubscriptionChargedItem : Resource
         {
 
-            public string ItemPriceId() {
-                return GetValue<string>("item_price_id", true);
+            public string ItemPriceId {
+                get { return GetValue<string>("item_price_id", true); }
             }
 
-            public DateTime LastChargedAt() {
-                return (DateTime)GetDateTime("last_charged_at", true);
+            public DateTime LastChargedAt {
+                get { return (DateTime)GetDateTime("last_charged_at", true); }
             }
 
         }
         public class SubscriptionAddon : Resource
         {
 
-            public string Id() {
-                return GetValue<string>("id", true);
+            public string Id {
+                get { return GetValue<string>("id", true); }
             }
 
-            public int? Quantity() {
-                return GetValue<int?>("quantity", false);
+            public int? Quantity {
+                get { return GetValue<int?>("quantity", false); }
             }
 
-            public int? UnitPrice() {
-                return GetValue<int?>("unit_price", false);
+            public int? UnitPrice {
+                get { return GetValue<int?>("unit_price", false); }
             }
 
-            public int? Amount() {
-                return GetValue<int?>("amount", false);
+            public int? Amount {
+                get { return GetValue<int?>("amount", false); }
             }
 
-            public DateTime? TrialEnd() {
-                return GetDateTime("trial_end", false);
+            public DateTime? TrialEnd {
+                get { return GetDateTime("trial_end", false); }
             }
 
-            public int? RemainingBillingCycles() {
-                return GetValue<int?>("remaining_billing_cycles", false);
+            public int? RemainingBillingCycles {
+                get { return GetValue<int?>("remaining_billing_cycles", false); }
             }
 
-            public string QuantityInDecimal() {
-                return GetValue<string>("quantity_in_decimal", false);
+            public string QuantityInDecimal {
+                get { return GetValue<string>("quantity_in_decimal", false); }
             }
 
-            public string UnitPriceInDecimal() {
-                return GetValue<string>("unit_price_in_decimal", false);
+            public string UnitPriceInDecimal {
+                get { return GetValue<string>("unit_price_in_decimal", false); }
             }
 
-            public string AmountInDecimal() {
-                return GetValue<string>("amount_in_decimal", false);
+            public string AmountInDecimal {
+                get { return GetValue<string>("amount_in_decimal", false); }
             }
 
         }
@@ -5585,128 +5640,128 @@ namespace ChargeBee.Models
                 ContractTermination,
             }
 
-            public string Id() {
-                return GetValue<string>("id", true);
+            public string Id {
+                get { return GetValue<string>("id", true); }
             }
 
-            public int Quantity() {
-                return GetValue<int>("quantity", true);
+            public int Quantity {
+                get { return GetValue<int>("quantity", true); }
             }
 
-            public int UnitPrice() {
-                return GetValue<int>("unit_price", true);
+            public int UnitPrice {
+                get { return GetValue<int>("unit_price", true); }
             }
 
-            public int? ServicePeriodInDays() {
-                return GetValue<int?>("service_period_in_days", false);
+            public int? ServicePeriodInDays {
+                get { return GetValue<int?>("service_period_in_days", false); }
             }
 
-            public OnEventEnum OnEvent() {
-                return GetEnum<OnEventEnum>("on_event", true);
+            public OnEventEnum OnEvent {
+                get { return GetEnum<OnEventEnum>("on_event", true); }
             }
 
-            public bool ChargeOnce() {
-                return GetValue<bool>("charge_once", true);
+            public bool ChargeOnce {
+                get { return GetValue<bool>("charge_once", true); }
             }
 
-            public string QuantityInDecimal() {
-                return GetValue<string>("quantity_in_decimal", false);
+            public string QuantityInDecimal {
+                get { return GetValue<string>("quantity_in_decimal", false); }
             }
 
-            public string UnitPriceInDecimal() {
-                return GetValue<string>("unit_price_in_decimal", false);
+            public string UnitPriceInDecimal {
+                get { return GetValue<string>("unit_price_in_decimal", false); }
             }
 
         }
         public class SubscriptionChargedEventBasedAddon : Resource
         {
 
-            public string Id() {
-                return GetValue<string>("id", true);
+            public string Id {
+                get { return GetValue<string>("id", true); }
             }
 
-            public DateTime LastChargedAt() {
-                return (DateTime)GetDateTime("last_charged_at", true);
+            public DateTime LastChargedAt {
+                get { return (DateTime)GetDateTime("last_charged_at", true); }
             }
 
         }
         public class SubscriptionCoupon : Resource
         {
 
-            public string CouponId() {
-                return GetValue<string>("coupon_id", true);
+            public string CouponId {
+                get { return GetValue<string>("coupon_id", true); }
             }
 
-            public DateTime? ApplyTill() {
-                return GetDateTime("apply_till", false);
+            public DateTime? ApplyTill {
+                get { return GetDateTime("apply_till", false); }
             }
 
-            public int AppliedCount() {
-                return GetValue<int>("applied_count", true);
+            public int AppliedCount {
+                get { return GetValue<int>("applied_count", true); }
             }
 
-            public string CouponCode() {
-                return GetValue<string>("coupon_code", false);
+            public string CouponCode {
+                get { return GetValue<string>("coupon_code", false); }
             }
 
         }
         public class SubscriptionShippingAddress : Resource
         {
 
-            public string FirstName() {
-                return GetValue<string>("first_name", false);
+            public string FirstName {
+                get { return GetValue<string>("first_name", false); }
             }
 
-            public string LastName() {
-                return GetValue<string>("last_name", false);
+            public string LastName {
+                get { return GetValue<string>("last_name", false); }
             }
 
-            public string Email() {
-                return GetValue<string>("email", false);
+            public string Email {
+                get { return GetValue<string>("email", false); }
             }
 
-            public string Company() {
-                return GetValue<string>("company", false);
+            public string Company {
+                get { return GetValue<string>("company", false); }
             }
 
-            public string Phone() {
-                return GetValue<string>("phone", false);
+            public string Phone {
+                get { return GetValue<string>("phone", false); }
             }
 
-            public string Line1() {
-                return GetValue<string>("line1", false);
+            public string Line1 {
+                get { return GetValue<string>("line1", false); }
             }
 
-            public string Line2() {
-                return GetValue<string>("line2", false);
+            public string Line2 {
+                get { return GetValue<string>("line2", false); }
             }
 
-            public string Line3() {
-                return GetValue<string>("line3", false);
+            public string Line3 {
+                get { return GetValue<string>("line3", false); }
             }
 
-            public string City() {
-                return GetValue<string>("city", false);
+            public string City {
+                get { return GetValue<string>("city", false); }
             }
 
-            public string StateCode() {
-                return GetValue<string>("state_code", false);
+            public string StateCode {
+                get { return GetValue<string>("state_code", false); }
             }
 
-            public string State() {
-                return GetValue<string>("state", false);
+            public string State {
+                get { return GetValue<string>("state", false); }
             }
 
-            public string Country() {
-                return GetValue<string>("country", false);
+            public string Country {
+                get { return GetValue<string>("country", false); }
             }
 
-            public string Zip() {
-                return GetValue<string>("zip", false);
+            public string Zip {
+                get { return GetValue<string>("zip", false); }
             }
 
-            public ValidationStatusEnum? ValidationStatus() {
-                return GetEnum<ValidationStatusEnum>("validation_status", false);
+            public ValidationStatusEnum? ValidationStatus {
+                get { return GetEnum<ValidationStatusEnum>("validation_status", false); }
             }
 
         }
@@ -5724,60 +5779,60 @@ namespace ChargeBee.Models
                 Invalid,
             }
 
-            public string ReferralCode() {
-                return GetValue<string>("referral_code", false);
+            public string ReferralCode {
+                get { return GetValue<string>("referral_code", false); }
             }
 
-            public string CouponCode() {
-                return GetValue<string>("coupon_code", false);
+            public string CouponCode {
+                get { return GetValue<string>("coupon_code", false); }
             }
 
-            public string ReferrerId() {
-                return GetValue<string>("referrer_id", false);
+            public string ReferrerId {
+                get { return GetValue<string>("referrer_id", false); }
             }
 
-            public string ExternalReferenceId() {
-                return GetValue<string>("external_reference_id", false);
+            public string ExternalReferenceId {
+                get { return GetValue<string>("external_reference_id", false); }
             }
 
-            public RewardStatusEnum? RewardStatus() {
-                return GetEnum<RewardStatusEnum>("reward_status", false);
+            public RewardStatusEnum? RewardStatus {
+                get { return GetEnum<RewardStatusEnum>("reward_status", false); }
             }
 
-            public ReferralSystemEnum? ReferralSystem() {
-                return GetEnum<ReferralSystemEnum>("referral_system", false);
+            public ReferralSystemEnum? ReferralSystem {
+                get { return GetEnum<ReferralSystemEnum>("referral_system", false); }
             }
 
-            public string AccountId() {
-                return GetValue<string>("account_id", true);
+            public string AccountId {
+                get { return GetValue<string>("account_id", true); }
             }
 
-            public string CampaignId() {
-                return GetValue<string>("campaign_id", true);
+            public string CampaignId {
+                get { return GetValue<string>("campaign_id", true); }
             }
 
-            public string ExternalCampaignId() {
-                return GetValue<string>("external_campaign_id", false);
+            public string ExternalCampaignId {
+                get { return GetValue<string>("external_campaign_id", false); }
             }
 
-            public FriendOfferTypeEnum? FriendOfferType() {
-                return GetEnum<FriendOfferTypeEnum>("friend_offer_type", false);
+            public FriendOfferTypeEnum? FriendOfferType {
+                get { return GetEnum<FriendOfferTypeEnum>("friend_offer_type", false); }
             }
 
-            public ReferrerRewardTypeEnum? ReferrerRewardType() {
-                return GetEnum<ReferrerRewardTypeEnum>("referrer_reward_type", false);
+            public ReferrerRewardTypeEnum? ReferrerRewardType {
+                get { return GetEnum<ReferrerRewardTypeEnum>("referrer_reward_type", false); }
             }
 
-            public NotifyReferralSystemEnum? NotifyReferralSystem() {
-                return GetEnum<NotifyReferralSystemEnum>("notify_referral_system", false);
+            public NotifyReferralSystemEnum? NotifyReferralSystem {
+                get { return GetEnum<NotifyReferralSystemEnum>("notify_referral_system", false); }
             }
 
-            public string DestinationUrl() {
-                return GetValue<string>("destination_url", false);
+            public string DestinationUrl {
+                get { return GetValue<string>("destination_url", false); }
             }
 
-            public bool PostPurchaseWidgetEnabled() {
-                return GetValue<bool>("post_purchase_widget_enabled", true);
+            public bool PostPurchaseWidgetEnabled {
+                get { return GetValue<bool>("post_purchase_widget_enabled", true); }
             }
 
         }
@@ -5810,48 +5865,48 @@ namespace ChargeBee.Models
                 RenewOnce,
             }
 
-            public string Id() {
-                return GetValue<string>("id", true);
+            public string Id {
+                get { return GetValue<string>("id", true); }
             }
 
-            public StatusEnum Status() {
-                return GetEnum<StatusEnum>("status", true);
+            public StatusEnum Status {
+                get { return GetEnum<StatusEnum>("status", true); }
             }
 
-            public DateTime ContractStart() {
-                return (DateTime)GetDateTime("contract_start", true);
+            public DateTime ContractStart {
+                get { return (DateTime)GetDateTime("contract_start", true); }
             }
 
-            public DateTime ContractEnd() {
-                return (DateTime)GetDateTime("contract_end", true);
+            public DateTime ContractEnd {
+                get { return (DateTime)GetDateTime("contract_end", true); }
             }
 
-            public int BillingCycle() {
-                return GetValue<int>("billing_cycle", true);
+            public int BillingCycle {
+                get { return GetValue<int>("billing_cycle", true); }
             }
 
-            public ActionAtTermEndEnum ActionAtTermEnd() {
-                return GetEnum<ActionAtTermEndEnum>("action_at_term_end", true);
+            public ActionAtTermEndEnum ActionAtTermEnd {
+                get { return GetEnum<ActionAtTermEndEnum>("action_at_term_end", true); }
             }
 
-            public long TotalContractValue() {
-                return GetValue<long>("total_contract_value", true);
+            public long TotalContractValue {
+                get { return GetValue<long>("total_contract_value", true); }
             }
 
-            public int? CancellationCutoffPeriod() {
-                return GetValue<int?>("cancellation_cutoff_period", false);
+            public int? CancellationCutoffPeriod {
+                get { return GetValue<int?>("cancellation_cutoff_period", false); }
             }
 
-            public DateTime CreatedAt() {
-                return (DateTime)GetDateTime("created_at", true);
+            public DateTime CreatedAt {
+                get { return (DateTime)GetDateTime("created_at", true); }
             }
 
-            public string SubscriptionId() {
-                return GetValue<string>("subscription_id", true);
+            public string SubscriptionId {
+                get { return GetValue<string>("subscription_id", true); }
             }
 
-            public int? RemainingBillingCycles() {
-                return GetValue<int?>("remaining_billing_cycles", false);
+            public int? RemainingBillingCycles {
+                get { return GetValue<int?>("remaining_billing_cycles", false); }
             }
 
         }

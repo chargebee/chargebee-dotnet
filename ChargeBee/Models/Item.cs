@@ -468,8 +468,8 @@ namespace ChargeBee.Models
         public class ItemApplicableItem : Resource
         {
 
-            public string Id() {
-                return GetValue<string>("id", false);
+            public string Id {
+                get { return GetValue<string>("id", false); }
             }
 
         }
