@@ -395,6 +395,10 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<OfflinePaymentMethodEnum>("offline_payment_method", false); }
         }
+        public int? NetTermDays 
+        {
+            get { return GetValue<int?>("net_term_days", false); }
+        }
         public List<SubscriptionSubscriptionItem> SubscriptionItems 
         {
             get { return GetResourceList<SubscriptionSubscriptionItem>("subscription_items"); }
@@ -1676,6 +1680,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("mandatory_items_to_remove", mandatoryItemsToRemove);
                 return this;
             }
+            public CreateWithItemsRequest NetTermDays(int netTermDays) 
+            {
+                m_params.AddOpt("net_term_days", netTermDays);
+                return this;
+            }
             public CreateWithItemsRequest StartDate(long startDate) 
             {
                 m_params.AddOpt("start_date", startDate);
@@ -2759,6 +2768,11 @@ namespace ChargeBee.Models
             public UpdateForItemsRequest SetupFee(int setupFee) 
             {
                 m_params.AddOpt("setup_fee", setupFee);
+                return this;
+            }
+            public UpdateForItemsRequest NetTermDays(int netTermDays) 
+            {
+                m_params.AddOpt("net_term_days", netTermDays);
                 return this;
             }
             public UpdateForItemsRequest InvoiceDate(long invoiceDate) 
@@ -4783,6 +4797,11 @@ namespace ChargeBee.Models
             public ImportForItemsRequest SetupFee(int setupFee) 
             {
                 m_params.AddOpt("setup_fee", setupFee);
+                return this;
+            }
+            public ImportForItemsRequest NetTermDays(int netTermDays) 
+            {
+                m_params.AddOpt("net_term_days", netTermDays);
                 return this;
             }
             public ImportForItemsRequest StartDate(long startDate) 
