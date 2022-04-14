@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.2;netstandard2.0;net45</TargetFrameworks>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <Version>2.15.0</Version>
     <PackageId>chargebee</PackageId>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -59,6 +59,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="lib\" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.24" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

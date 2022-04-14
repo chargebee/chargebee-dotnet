@@ -1,4 +1,5 @@
 using System;
+using System.Net.Http;
 using System.Text;
 
 namespace ChargeBee.Api
@@ -16,30 +17,22 @@ namespace ChargeBee.Api
         public string SiteName { get; set; }
         public string Charset { get; set; }
         public static int ConnectTimeout { get; set; }
+        
+        public static HttpMessageHandler HttpMessageHandler { get; set; }
 
-        public string ApiBaseUrl
-        {
-            get
-            {
-				return String.Format("{0}://{1}.{2}/api/{3}",
-                    Proto,
-                    SiteName,
-                    DomainSuffix,
-					API_VERSION);
-            }
-        }
+        public string ApiBaseUrl =>
+            String.Format("{0}://{1}.{2}/api/{3}",
+                Proto,
+                SiteName,
+                DomainSuffix,
+                API_VERSION);
 
-        public string AuthValue
-        {
-            get
-            {
-                return String.Format("Basic {0}",
-                    Convert.ToBase64String(Encoding.UTF8.GetBytes(
+        public string AuthValue =>
+            String.Format("Basic {0}",
+                Convert.ToBase64String(Encoding.UTF8.GetBytes(
                     String.Format("{0}:", ApiKey))));
-            }
-        }
 
-        public ApiConfig(string siteName, string apiKey)
+        public ApiConfig(string siteName, string apiKey, HttpMessageHandler httpMessageHandler = null)
         {
 
             if (String.IsNullOrEmpty(siteName))
@@ -54,13 +47,14 @@ namespace ChargeBee.Api
             ExportSleepMillis = 10000;
             SiteName = siteName;
             ApiKey = apiKey;
+            HttpMessageHandler = httpMessageHandler;
         }
 
         private static volatile ApiConfig m_instance;
 
-        public static void Configure(string siteName, string apiKey)
+        public static void Configure(string siteName, string apiKey, HttpMessageHandler httpMessageHandler = null)
         {         
-            m_instance = new ApiConfig(siteName, apiKey);
+            m_instance = new ApiConfig(siteName, apiKey, httpMessageHandler);
         }
 
         public static ApiConfig Instance
