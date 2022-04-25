@@ -39,6 +39,14 @@ To create a new subscription:
 	Subscription subscription = result.Subscription;
 	Customer customer = result.Customer;
 
+To serialise an object:
+    
+	ApiConfig.SerialiseObject(obj);
+
+To Deserialise an object:
+  
+    ApiConfig.DeserialiseObject<T>(jsonString);
+
 ## License
 
 See the LICENSE file.

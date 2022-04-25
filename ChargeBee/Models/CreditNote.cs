@@ -175,6 +175,10 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("updated_at", false); }
         }
+        public ChannelEnum? Channel 
+        {
+            get { return GetEnum<ChannelEnum>("channel", false); }
+        }
         public CreditNoteEinvoice Einvoice 
         {
             get { return GetSubResource<CreditNoteEinvoice>("einvoice"); }
@@ -510,6 +514,10 @@ namespace ChargeBee.Models
             public CreditNoteListRequest SortByDate(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","date");
                 return this;
+            }
+            public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, CreditNoteListRequest> Channel() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, CreditNoteListRequest>("channel", this);        
             }
         }
         public class DeleteRequest : EntityRequest<DeleteRequest> 

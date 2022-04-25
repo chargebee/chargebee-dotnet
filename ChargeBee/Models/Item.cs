@@ -77,6 +77,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("name", true); }
         }
+        public string ExternalName 
+        {
+            get { return GetValue<string>("external_name", false); }
+        }
         public string Description 
         {
             get { return GetValue<string>("description", false); }
@@ -149,6 +153,10 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("archived_at", false); }
         }
+        public ChannelEnum? Channel 
+        {
+            get { return GetEnum<ChannelEnum>("channel", false); }
+        }
         public List<ItemApplicableItem> ApplicableItems 
         {
             get { return GetResourceList<ItemApplicableItem>("applicable_items"); }
@@ -190,7 +198,7 @@ namespace ChargeBee.Models
             }
             public CreateRequest ItemFamilyId(string itemFamilyId) 
             {
-                m_params.AddOpt("item_family_id", itemFamilyId);
+                m_params.Add("item_family_id", itemFamilyId);
                 return this;
             }
             public CreateRequest IsGiftable(bool isGiftable) 
@@ -201,6 +209,11 @@ namespace ChargeBee.Models
             public CreateRequest IsShippable(bool isShippable) 
             {
                 m_params.AddOpt("is_shippable", isShippable);
+                return this;
+            }
+            public CreateRequest ExternalName(string externalName) 
+            {
+                m_params.AddOpt("external_name", externalName);
                 return this;
             }
             public CreateRequest EnabledInPortal(bool enabledInPortal) 
@@ -279,6 +292,11 @@ namespace ChargeBee.Models
             public UpdateRequest IsShippable(bool isShippable) 
             {
                 m_params.AddOpt("is_shippable", isShippable);
+                return this;
+            }
+            public UpdateRequest ExternalName(string externalName) 
+            {
+                m_params.AddOpt("external_name", externalName);
                 return this;
             }
             public UpdateRequest ItemFamilyId(string itemFamilyId) 
@@ -397,6 +415,10 @@ namespace ChargeBee.Models
             public EnumFilter<Item.UsageCalculationEnum, ItemListRequest> UsageCalculation() 
             {
                 return new EnumFilter<Item.UsageCalculationEnum, ItemListRequest>("usage_calculation", this);        
+            }
+            public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, ItemListRequest> Channel() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, ItemListRequest>("channel", this);        
             }
             public ItemListRequest SortByName(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","name");

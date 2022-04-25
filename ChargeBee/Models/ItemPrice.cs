@@ -163,6 +163,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("free_quantity_in_decimal", false); }
         }
+        public ChannelEnum? Channel 
+        {
+            get { return GetEnum<ChannelEnum>("channel", false); }
+        }
         public long? ResourceVersion 
         {
             get { return GetValue<long?>("resource_version", false); }
@@ -728,6 +732,10 @@ namespace ChargeBee.Models
             public NumberFilter<int, ItemPriceListRequest> Period() 
             {
                 return new NumberFilter<int, ItemPriceListRequest>("period", this);        
+            }
+            public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, ItemPriceListRequest> Channel() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, ItemPriceListRequest>("channel", this);        
             }
             public ItemPriceListRequest SortByName(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","name");
