@@ -395,10 +395,6 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<OfflinePaymentMethodEnum>("offline_payment_method", false); }
         }
-        public ChannelEnum? Channel 
-        {
-            get { return GetEnum<ChannelEnum>("channel", false); }
-        }
         public int? NetTermDays 
         {
             get { return GetValue<int?>("net_term_days", false); }
@@ -2104,10 +2100,6 @@ namespace ChargeBee.Models
             public SubscriptionListRequest SortByUpdatedAt(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","updated_at");
                 return this;
-            }
-            public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, SubscriptionListRequest> Channel() 
-            {
-                return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, SubscriptionListRequest>("channel", this);        
             }
         }
         public class RemoveScheduledCancellationRequest : EntityRequest<RemoveScheduledCancellationRequest> 

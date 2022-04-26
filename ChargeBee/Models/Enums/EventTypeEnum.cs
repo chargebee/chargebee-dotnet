@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 using System.Runtime.Serialization;
 
@@ -36,6 +37,9 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "coupon_deleted")]
          CouponDeleted,
+
+        [EnumMember(Value = "coupon_expired")]
+         CouponExpired,
 
         [EnumMember(Value = "coupon_set_created")]
          CouponSetCreated,

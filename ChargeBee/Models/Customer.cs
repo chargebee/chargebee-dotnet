@@ -288,10 +288,6 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool?>("auto_close_invoices", false); }
         }
-        public ChannelEnum? Channel 
-        {
-            get { return GetEnum<ChannelEnum>("channel", false); }
-        }
         [Obsolete]
         public CardStatusEnum? CardStatus 
         {
@@ -989,10 +985,6 @@ namespace ChargeBee.Models
             public BooleanFilter<CustomerListRequest> AutoCloseInvoices() 
             {
                 return new BooleanFilter<CustomerListRequest>("auto_close_invoices", this);        
-            }
-            public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, CustomerListRequest> Channel() 
-            {
-                return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, CustomerListRequest>("channel", this);        
             }
             public CustomerListRequest SortByCreatedAt(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");

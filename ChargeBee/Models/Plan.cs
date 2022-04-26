@@ -257,10 +257,6 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("price_in_decimal", false); }
         }
-        public ChannelEnum? Channel 
-        {
-            get { return GetEnum<ChannelEnum>("channel", false); }
-        }
         public string InvoiceNotes 
         {
             get { return GetValue<string>("invoice_notes", false); }
@@ -1008,10 +1004,6 @@ namespace ChargeBee.Models
             public StringFilter<PlanListRequest> CurrencyCode() 
             {
                 return new StringFilter<PlanListRequest>("currency_code", this).SupportsMultiOperators(true);        
-            }
-            public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, PlanListRequest> Channel() 
-            {
-                return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, PlanListRequest>("channel", this);        
             }
             public PlanListRequest IncludeDeleted(bool includeDeleted) 
             {
