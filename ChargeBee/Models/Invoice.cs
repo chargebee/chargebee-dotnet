@@ -428,6 +428,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("vat_number_prefix", false); }
         }
+        public ChannelEnum? Channel 
+        {
+            get { return GetEnum<ChannelEnum>("channel", false); }
+        }
         
         #endregion
         
@@ -2444,6 +2448,10 @@ namespace ChargeBee.Models
             public TimestampFilter<InvoiceListRequest> UpdatedAt() 
             {
                 return new TimestampFilter<InvoiceListRequest>("updated_at", this);        
+            }
+            public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, InvoiceListRequest> Channel() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, InvoiceListRequest>("channel", this);        
             }
             public TimestampFilter<InvoiceListRequest> VoidedAt() 
             {

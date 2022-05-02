@@ -48,7 +48,6 @@ namespace ChargeBee.Api
 			}
 		}
 
-        [System.Obsolete("Use Code")]
 		public string ApiCode { get; set; }
 
         [System.Obsolete("Use Param")]
@@ -58,7 +57,6 @@ namespace ChargeBee.Api
 			} 
 		}
 
-        [System.Obsolete("Use Message")]
         public string ApiMessage { get; set; }
 
     }

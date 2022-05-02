@@ -93,6 +93,10 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("updated_at", false); }
         }
+        public ChannelEnum? Channel 
+        {
+            get { return GetEnum<ChannelEnum>("channel", false); }
+        }
         
         #endregion
         
