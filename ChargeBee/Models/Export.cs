@@ -583,7 +583,7 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<DeferredRevenueRequest>("invoice[updated_at]", this);        
             }
-            
+
             public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, DeferredRevenueRequest> InvoiceChannel() 
             {
                 return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, DeferredRevenueRequest>("invoice[channel]", this);        

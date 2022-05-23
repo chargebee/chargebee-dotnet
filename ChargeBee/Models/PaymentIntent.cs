@@ -261,6 +261,8 @@ namespace ChargeBee.Models
             Upi,
             [EnumMember(Value = "netbanking_emandates")]
             NetbankingEmandates,
+            [EnumMember(Value = "paypal_express_checkout")]
+            PaypalExpressCheckout,
 
         }
 

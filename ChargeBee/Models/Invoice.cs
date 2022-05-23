@@ -82,6 +82,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "apply_payments");
             return new ApplyPaymentsRequest(url, HttpMethod.POST);
         }
+        public static EntityRequest<Type> SyncUsages(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "sync_usages");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
         public static ApplyCreditsRequest ApplyCredits(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "apply_credits");
@@ -188,6 +193,11 @@ namespace ChargeBee.Models
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "update_details");
             return new UpdateDetailsRequest(url, HttpMethod.POST);
+        }
+        public static EntityRequest<Type> ResendEinvoice(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "resend_einvoice");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
         }
         #endregion
         
@@ -2469,6 +2479,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","updated_at");
                 return this;
             }
+            public EnumFilter<InvoiceEinvoice.StatusEnum, InvoiceListRequest> EinvoiceStatus() 
+            {
+                return new EnumFilter<InvoiceEinvoice.StatusEnum, InvoiceListRequest>("einvoice[status]", this);        
+            }
+
         }
         public class PdfRequest : EntityRequest<PdfRequest> 
         {

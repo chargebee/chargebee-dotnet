@@ -92,6 +92,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "delete");
             return new DeleteRequest(url, HttpMethod.POST);
         }
+        public static EntityRequest<Type> ResendEinvoice(string id)
+        {
+            string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "resend_einvoice");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -519,6 +524,11 @@ namespace ChargeBee.Models
             {
                 return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, CreditNoteListRequest>("channel", this);        
             }
+            public EnumFilter<CreditNoteEinvoice.StatusEnum, CreditNoteListRequest> EinvoiceStatus() 
+            {
+                return new EnumFilter<CreditNoteEinvoice.StatusEnum, CreditNoteListRequest>("einvoice[status]", this);        
+            }
+
         }
         public class DeleteRequest : EntityRequest<DeleteRequest> 
         {

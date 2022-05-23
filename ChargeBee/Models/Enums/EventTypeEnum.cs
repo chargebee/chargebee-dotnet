@@ -1,4 +1,3 @@
-using System;
 using System.ComponentModel;
 using System.Runtime.Serialization;
 
@@ -430,6 +429,39 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "differential_price_deleted")]
          DifferentialPriceDeleted,
+
+        [EnumMember(Value = "feature_created")]
+         FeatureCreated,
+
+        [EnumMember(Value = "feature_updated")]
+         FeatureUpdated,
+
+        [EnumMember(Value = "feature_deleted")]
+         FeatureDeleted,
+
+        [EnumMember(Value = "feature_activated")]
+         FeatureActivated,
+
+        [EnumMember(Value = "feature_reactivated")]
+         FeatureReactivated,
+
+        [EnumMember(Value = "feature_archived")]
+         FeatureArchived,
+
+        [EnumMember(Value = "item_entitlements_updated")]
+         ItemEntitlementsUpdated,
+
+        [EnumMember(Value = "entitlement_overrides_updated")]
+         EntitlementOverridesUpdated,
+
+        [EnumMember(Value = "entitlement_overrides_removed")]
+         EntitlementOverridesRemoved,
+
+        [EnumMember(Value = "item_entitlements_removed")]
+         ItemEntitlementsRemoved,
+
+        [EnumMember(Value = "entitlement_overrides_auto_removed")]
+         EntitlementOverridesAutoRemoved,
 
     }
 }

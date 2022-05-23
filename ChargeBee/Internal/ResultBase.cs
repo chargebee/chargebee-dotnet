@@ -217,6 +217,22 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<DifferentialPrice>("differential_price"); }
         }
+        public Feature Feature
+        {
+            get {  return GetResource<Feature>("feature"); }
+        }
+        public SubscriptionEntitlement SubscriptionEntitlement
+        {
+            get {  return GetResource<SubscriptionEntitlement>("subscription_entitlement"); }
+        }
+        public ItemEntitlement ItemEntitlement
+        {
+            get {  return GetResource<ItemEntitlement>("item_entitlement"); }
+        }
+        public EntitlementOverride EntitlementOverride
+        {
+            get {  return GetResource<EntitlementOverride>("entitlement_override"); }
+        }
 
         public List<UnbilledCharge> UnbilledCharges
         {
