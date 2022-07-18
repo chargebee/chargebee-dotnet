@@ -256,6 +256,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("vat_number_prefix", false); }
         }
+        public string BusinessEntityId 
+        {
+            get { return GetValue<string>("business_entity_id", true); }
+        }
         
         #endregion
         
@@ -780,6 +784,10 @@ namespace ChargeBee.Models
 
             public string EntityId {
                 get { return GetValue<string>("entity_id", false); }
+            }
+
+            public string CouponSetCode {
+                get { return GetValue<string>("coupon_set_code", false); }
             }
 
         }

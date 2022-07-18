@@ -92,11 +92,6 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("name", false); }
         }
-        [Obsolete]
-        public ItemEntitlementEmbeddedResource Embedded 
-        {
-            get { return GetSubResource<ItemEntitlementEmbeddedResource>("embedded"); }
-        }
         
         #endregion
         
@@ -207,10 +202,6 @@ namespace ChargeBee.Models
         }
 
         #region Subclasses
-        public class ItemEntitlementEmbeddedResource : Resource
-        {
-
-        }
 
         #endregion
     }

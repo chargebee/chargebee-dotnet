@@ -86,11 +86,6 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("expires_at", false); }
         }
-        [Obsolete]
-        public EntitlementOverrideEmbeddedResource Embedded 
-        {
-            get { return GetSubResource<EntitlementOverrideEmbeddedResource>("embedded"); }
-        }
         
         #endregion
         
@@ -147,10 +142,6 @@ namespace ChargeBee.Models
 
 
         #region Subclasses
-        public class EntitlementOverrideEmbeddedResource : Resource
-        {
-
-        }
 
         #endregion
     }

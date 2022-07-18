@@ -221,6 +221,14 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<Feature>("feature"); }
         }
+        public ImpactedSubscription ImpactedSubscription
+        {
+            get {  return GetResource<ImpactedSubscription>("impacted_subscription"); }
+        }
+        public ImpactedItem ImpactedItem
+        {
+            get {  return GetResource<ImpactedItem>("impacted_item"); }
+        }
         public SubscriptionEntitlement SubscriptionEntitlement
         {
             get {  return GetResource<SubscriptionEntitlement>("subscription_entitlement"); }
@@ -232,6 +240,10 @@ namespace ChargeBee.Internal
         public EntitlementOverride EntitlementOverride
         {
             get {  return GetResource<EntitlementOverride>("entitlement_override"); }
+        }
+        public Purchase Purchase
+        {
+            get {  return GetResource<Purchase>("purchase"); }
         }
 
         public List<UnbilledCharge> UnbilledCharges

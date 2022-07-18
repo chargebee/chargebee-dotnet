@@ -195,6 +195,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool>("deleted", true); }
         }
+        public string BusinessEntityId 
+        {
+            get { return GetValue<string>("business_entity_id", false); }
+        }
         
         #endregion
         
@@ -785,6 +789,10 @@ namespace ChargeBee.Models
                 DinersClub,
                 [EnumMember(Value = "other")]
                 Other,
+                [EnumMember(Value = "bancontact")]
+                Bancontact,
+                [EnumMember(Value = "not_applicable")]
+                NotApplicable,
             }
             public enum FundingTypeEnum
             {

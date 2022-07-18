@@ -127,6 +127,10 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<PaymentIntentPaymentAttempt>("active_payment_attempt"); }
         }
+        public string BusinessEntityId 
+        {
+            get { return GetValue<string>("business_entity_id", false); }
+        }
         
         #endregion
         
@@ -138,6 +142,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public CreateRequest BusinessEntityId(string businessEntityId) 
+            {
+                m_params.AddOpt("business_entity_id", businessEntityId);
+                return this;
+            }
             public CreateRequest CustomerId(string customerId) 
             {
                 m_params.AddOpt("customer_id", customerId);
@@ -263,6 +272,8 @@ namespace ChargeBee.Models
             NetbankingEmandates,
             [EnumMember(Value = "paypal_express_checkout")]
             PaypalExpressCheckout,
+            [EnumMember(Value = "direct_debit")]
+            DirectDebit,
 
         }
 

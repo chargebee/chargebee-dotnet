@@ -512,6 +512,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool?>("auto_close_invoices", false); }
         }
+        public string BusinessEntityId 
+        {
+            get { return GetValue<string>("business_entity_id", false); }
+        }
         
         #endregion
         
@@ -526,6 +530,11 @@ namespace ChargeBee.Models
             public CreateRequest Id(string id) 
             {
                 m_params.AddOpt("id", id);
+                return this;
+            }
+            public CreateRequest BusinessEntityId(string businessEntityId) 
+            {
+                m_params.AddOpt("business_entity_id", businessEntityId);
                 return this;
             }
             public CreateRequest PlanId(string planId) 
@@ -1313,6 +1322,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("id", id);
                 return this;
             }
+            public CreateForCustomerRequest BusinessEntityId(string businessEntityId) 
+            {
+                m_params.AddOpt("business_entity_id", businessEntityId);
+                return this;
+            }
             public CreateForCustomerRequest PlanId(string planId) 
             {
                 m_params.Add("plan_id", planId);
@@ -1661,6 +1675,11 @@ namespace ChargeBee.Models
             public CreateWithItemsRequest Id(string id) 
             {
                 m_params.AddOpt("id", id);
+                return this;
+            }
+            public CreateWithItemsRequest BusinessEntityId(string businessEntityId) 
+            {
+                m_params.AddOpt("business_entity_id", businessEntityId);
                 return this;
             }
             public CreateWithItemsRequest TrialEnd(long trialEnd) 
@@ -3660,7 +3679,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("terms_to_charge", termsToCharge);
                 return this;
             }
-            public EditAdvanceInvoiceScheduleRequest ScheduleType(ScheduleTypeEnum scheduleType) 
+            public EditAdvanceInvoiceScheduleRequest ScheduleType(ChargeBee.Models.Enums.ScheduleTypeEnum scheduleType) 
             {
                 m_params.AddOpt("schedule_type", scheduleType);
                 return this;

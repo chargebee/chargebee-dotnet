@@ -272,6 +272,10 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("entity_id", false); }
             }
 
+            public string CouponSetCode {
+                get { return GetValue<string>("coupon_set_code", false); }
+            }
+
         }
         public class CreditNoteEstimateTax : Resource
         {

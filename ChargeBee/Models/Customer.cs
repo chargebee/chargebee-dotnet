@@ -329,6 +329,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("invoice_notes", false); }
         }
+        public string BusinessEntityId 
+        {
+            get { return GetValue<string>("business_entity_id", false); }
+        }
         public string PreferredCurrencyCode 
         {
             get { return GetValue<string>("preferred_currency_code", false); }
@@ -576,6 +580,11 @@ namespace ChargeBee.Models
             public CreateRequest TokenId(string tokenId) 
             {
                 m_params.AddOpt("token_id", tokenId);
+                return this;
+            }
+            public CreateRequest BusinessEntityId(string businessEntityId) 
+            {
+                m_params.AddOpt("business_entity_id", businessEntityId);
                 return this;
             }
             [Obsolete]

@@ -288,6 +288,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int?>("contract_term_termination_fee", false); }
         }
+        public string BusinessEntityId 
+        {
+            get { return GetValue<string>("business_entity_id", true); }
+        }
         
         #endregion
         
@@ -3965,6 +3969,10 @@ namespace ChargeBee.Models
 
             public string EntityId {
                 get { return GetValue<string>("entity_id", false); }
+            }
+
+            public string CouponSetCode {
+                get { return GetValue<string>("coupon_set_code", false); }
             }
 
         }
