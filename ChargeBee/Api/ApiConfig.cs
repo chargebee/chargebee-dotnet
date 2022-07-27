@@ -1,8 +1,8 @@
+using ChargeBee.Internal;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Net.Http;
 using System.Text;
-using ChargeBee.Internal;
-using Newtonsoft.Json.Linq;
 
 namespace ChargeBee.Api
 {
@@ -63,7 +63,6 @@ namespace ChargeBee.Api
                 throw new ArgumentException("Api key can't be empty!");
 
             Charset = Encoding.UTF8.WebName;
-            ConnectTimeout = 30000;
             TimeTravelMillis = 3000;
             ExportSleepMillis = 10000;
             SiteName = siteName;
@@ -73,12 +72,12 @@ namespace ChargeBee.Api
             {
                 HttpClient = new HttpClient
                 {
-                    Timeout = TimeSpan.FromMilliseconds(0 < ConnectTimeout ? ConnectTimeout : 30000)
+                    Timeout = TimeSpan.FromMilliseconds(30000)
                 };
             }
             else
             {
-                client.Timeout = TimeSpan.FromMilliseconds(0 < ConnectTimeout ? ConnectTimeout : 30000);
+                client.Timeout = TimeSpan.FromMilliseconds(30000);
                 HttpClient = client;
             }
         }
