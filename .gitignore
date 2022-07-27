@@ -113,3 +113,4 @@ UpgradeLog*.XML
 Icon?
 G# Thumbnails
 ._*
+/.vs
