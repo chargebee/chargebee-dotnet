@@ -1,24 +1,17 @@
 using System;
-using System.ComponentModel;
-using System.IO;
-using System.Net;
-using System.Reflection;
-using System.Text;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
-
-using Newtonsoft.Json;
-
-using ChargeBee.Exceptions;
 using System.Net.Http;
+using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading.Tasks;
+using ChargeBee.Exceptions;
+using Newtonsoft.Json;
 
 namespace ChargeBee.Api
 {
     public static class ApiUtil
     {
         private static DateTime m_unixTime = new DateTime(1970, 1, 1);
-        private static HttpClient httpClient = new HttpClient() { Timeout = TimeSpan.FromMilliseconds(0 < ApiConfig.ConnectTimeout ? ApiConfig.ConnectTimeout : 30000) };
 
         public static string BuildUrl(params string[] paths)
         {
@@ -62,7 +55,7 @@ namespace ChargeBee.Api
             request.Headers.Add("Authorization", env.AuthValue);
             request.Headers.Add("Accept", "application/json");
             request.Headers.UserAgent.ParseAdd("ChargeBee-DotNet-Client v" + ApiConfig.Version);
-#if NET45
+#if NET462
             request.Headers.Add("Lang-Version",Environment.Version.ToString());
             request.Headers.Add("OS-Version",Environment.OSVersion.ToString());
 
@@ -96,12 +89,17 @@ namespace ChargeBee.Api
             }
             catch (JsonException e)
             {
-                if(content.Contains("503")){
-                   throw new ArgumentException("Sorry, the server is currently unable to handle the request due to a temporary overload or scheduled maintenance. Please retry after sometime. \n type: internal_temporary_error, \n http_status_code: 503, \n error_code: internal_temporary_error,\n content: " + content,e);
-                }else if(content.Contains("504")){
-                   throw new ArgumentException("The server did not receive a timely response from an upstream server, request aborted. If this problem persists, contact us at support@chargebee.com. \n type: gateway_timeout, \n http_status_code: 504, \n error_code: gateway_timeout,\n content: " + content, e);
-                }else{
-                   throw new ArgumentException("Sorry, something went wrong when trying to process the request. If this problem persists, contact us at support@chargebee.com. \n type: internal_error, \n http_status_code: 500, \n error_code: internal_error,\n content: " + content,e);
+                if (content.Contains("503"))
+                {
+                    throw new ArgumentException("Sorry, the server is currently unable to handle the request due to a temporary overload or scheduled maintenance. Please retry after sometime. \n type: internal_temporary_error, \n http_status_code: 503, \n error_code: internal_temporary_error,\n content: " + content, e);
+                }
+                else if (content.Contains("504"))
+                {
+                    throw new ArgumentException("The server did not receive a timely response from an upstream server, request aborted. If this problem persists, contact us at support@chargebee.com. \n type: gateway_timeout, \n http_status_code: 504, \n error_code: gateway_timeout,\n content: " + content, e);
+                }
+                else
+                {
+                    throw new ArgumentException("Sorry, something went wrong when trying to process the request. If this problem persists, contact us at support@chargebee.com. \n type: internal_error, \n http_status_code: 500, \n error_code: internal_error,\n content: " + content, e);
                 }
             }
             string type = "";
@@ -132,7 +130,7 @@ namespace ChargeBee.Api
         private static async Task<EntityResult> GetEntityResultAsync(String url, Params parameters, Dictionary<string, string> headers, ApiConfig env, HttpMethod meth)
         {
             HttpRequestMessage request = GetRequestMessage(url, meth, parameters, headers, env);
-            var response = await httpClient.SendAsync(request).ConfigureAwait(false);
+            var response = await env.HttpClient.SendAsync(request).ConfigureAwait(false);
             var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             if (response.IsSuccessStatusCode)
             {
@@ -176,7 +174,7 @@ namespace ChargeBee.Api
         {
             url = String.Format("{0}?{1}", url, parameters.GetQuery(true));
             HttpRequestMessage request = GetRequestMessage(url, HttpMethod.GET, parameters, headers, env);
-            var response = await httpClient.SendAsync(request).ConfigureAwait(false);
+            var response = await env.HttpClient.SendAsync(request).ConfigureAwait(false);
             var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             if (response.IsSuccessStatusCode)
             {
