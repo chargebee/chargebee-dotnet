@@ -5615,6 +5615,10 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("price_in_decimal", false); }
             }
 
+            public int Index {
+                get { return GetValue<int>("index", true); }
+            }
+
         }
         public class SubscriptionChargedItem : Resource
         {
@@ -5808,6 +5812,10 @@ namespace ChargeBee.Models
 
             public ValidationStatusEnum? ValidationStatus {
                 get { return GetEnum<ValidationStatusEnum>("validation_status", false); }
+            }
+
+            public int Index {
+                get { return GetValue<int>("index", true); }
             }
 
         }

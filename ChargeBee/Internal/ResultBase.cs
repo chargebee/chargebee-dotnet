@@ -237,6 +237,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<ItemEntitlement>("item_entitlement"); }
         }
+        public InAppSubscription InAppSubscription
+        {
+            get {  return GetResource<InAppSubscription>("in_app_subscription"); }
+        }
         public EntitlementOverride EntitlementOverride
         {
             get {  return GetResource<EntitlementOverride>("entitlement_override"); }
@@ -279,6 +283,11 @@ namespace ChargeBee.Internal
         public List<DifferentialPrice> DifferentialPrices
         {
             get {  return (List<DifferentialPrice>)GetResourceList<DifferentialPrice>("differential_prices", "differential_price"); }
+        }
+
+        public List<InAppSubscription> InAppSubscriptions
+        {
+            get {  return (List<InAppSubscription>)GetResourceList<InAppSubscription>("in_app_subscriptions", "in_app_subscription"); }
         }
 
 

@@ -147,7 +147,6 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<SubscriptionEstimate>("subscription_estimate"); }
         }
-        [Obsolete]
         public List<SubscriptionEstimate> SubscriptionEstimates 
         {
             get { return GetResourceList<SubscriptionEstimate>("subscription_estimates"); }

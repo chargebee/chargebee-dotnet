@@ -3910,6 +3910,10 @@ namespace ChargeBee.Models
                 get { return GetValue<int?>("item_level_discount_amount", false); }
             }
 
+            public string ReferenceLineItemId {
+                get { return GetValue<string>("reference_line_item_id", false); }
+            }
+
             public string Description {
                 get { return GetValue<string>("description", true); }
             }
@@ -4182,6 +4186,10 @@ namespace ChargeBee.Models
 
             public ValidationStatusEnum? ValidationStatus {
                 get { return GetEnum<ValidationStatusEnum>("validation_status", false); }
+            }
+
+            public int Index {
+                get { return GetValue<int>("index", true); }
             }
 
         }

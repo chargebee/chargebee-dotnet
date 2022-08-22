@@ -1,4 +1,28 @@
-### v2.18.0 (2022-07-18)
+### v2.19.0 (2022-08-22)
+* * *
+
+### Fixes:
+* Fixed Serialization issue for has_scheduled_advance_invoices attribute in Subscription Model.
+
+#### New endpoints:
+* Purchase#Retrieve has been added to the Purchase resource.
+
+#### New attributes:
+* ResourceVersion has been added to the Token resource.
+* UpdatedAt has been added to the Token and UnbilledCharge resources.
+* ReferenceLineItemId has been added to the CreditNote#CreditNoteLineItem, CreditNoteEstimate#CreditNoteEstimateLineItem, Quote#QuoteLineItem, QuoteLineGroup#QuoteLineGroupLineItem, InvoiceEstimate#InvoiceEstimateLineItem and Invoice#InvoiceLineItem subResources.
+* Index has been added to the Order#OrderShippingAddress, Invoice#InvoiceShippingAddress, Quote#QuoteShippingAddress, QuotedCharge#QuotedChargeItemTier, QuotedSubscription#QuotedSubscriptionItemTier, Subscription#SubscriptionItemTier, Subscription#SubscriptionShippingAddress and SubscriptionEstimate#SubscriptionEstimateShippingAddress subResources.
+* VoidWithCreditNote has been added to the Invoice#VoidInvoiceRequest subresources.
+* PaymentMethodDetails has been added to the Transaction resource.
+
+#### New Resource:
+* InAppSubscription have been added.
+
+### Removed input parameters:
+* BusinessEntityId has been removed from Purchase#CreateRequest and Purchase#EstimateRequest.
+
+
+### v2.18.0 (2022-07-08)
 * * *
 
 ### Fixes:

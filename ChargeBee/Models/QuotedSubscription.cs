@@ -396,6 +396,10 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("price_in_decimal", false); }
             }
 
+            public int Index {
+                get { return GetValue<int>("index", true); }
+            }
+
         }
         public class QuotedSubscriptionQuotedContractTerm : Resource
         {

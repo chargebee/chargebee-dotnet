@@ -2934,6 +2934,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("void_reason_code", voidReasonCode);
                 return this;
             }
+            [Obsolete]
+            public VoidInvoiceRequest VoidWithCreditNote(bool voidWithCreditNote) 
+            {
+                m_params.AddOpt("void_with_credit_note", voidWithCreditNote);
+                return this;
+            }
         }
         public class WriteOffRequest : EntityRequest<WriteOffRequest> 
         {
@@ -3256,6 +3262,10 @@ namespace ChargeBee.Models
 
             public int? ItemLevelDiscountAmount {
                 get { return GetValue<int?>("item_level_discount_amount", false); }
+            }
+
+            public string ReferenceLineItemId {
+                get { return GetValue<string>("reference_line_item_id", false); }
             }
 
             public string Description {
@@ -3785,6 +3795,10 @@ namespace ChargeBee.Models
 
             public ValidationStatusEnum? ValidationStatus {
                 get { return GetEnum<ValidationStatusEnum>("validation_status", false); }
+            }
+
+            public int Index {
+                get { return GetValue<int>("index", true); }
             }
 
         }

@@ -46,6 +46,12 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("purchases");
             return new CreateRequest(url, HttpMethod.POST);
         }
+        [Obsolete]
+        public static EntityRequest<Type> Retrieve(string id)
+        {
+            string url = ApiUtil.BuildUrl("purchases", CheckNull(id));
+            return new EntityRequest<Type>(url, HttpMethod.GET);
+        }
         public static EstimateRequest Estimate()
         {
             string url = ApiUtil.BuildUrl("purchases", "estimate");
@@ -89,11 +95,6 @@ namespace ChargeBee.Models
             {
             }
 
-            public CreateRequest BusinessEntityId(string businessEntityId) 
-            {
-                m_params.AddOpt("business_entity_id", businessEntityId);
-                return this;
-            }
             public CreateRequest CustomerId(string customerId) 
             {
                 m_params.Add("customer_id", customerId);
@@ -297,11 +298,6 @@ namespace ChargeBee.Models
             {
             }
 
-            public EstimateRequest BusinessEntityId(string businessEntityId) 
-            {
-                m_params.AddOpt("business_entity_id", businessEntityId);
-                return this;
-            }
             public EstimateRequest ClientProfileId(string clientProfileId) 
             {
                 m_params.AddOpt("client_profile_id", clientProfileId);
