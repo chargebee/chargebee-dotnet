@@ -217,6 +217,38 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<DifferentialPrice>("differential_price"); }
         }
+        public Feature Feature
+        {
+            get {  return GetResource<Feature>("feature"); }
+        }
+        public ImpactedSubscription ImpactedSubscription
+        {
+            get {  return GetResource<ImpactedSubscription>("impacted_subscription"); }
+        }
+        public ImpactedItem ImpactedItem
+        {
+            get {  return GetResource<ImpactedItem>("impacted_item"); }
+        }
+        public SubscriptionEntitlement SubscriptionEntitlement
+        {
+            get {  return GetResource<SubscriptionEntitlement>("subscription_entitlement"); }
+        }
+        public ItemEntitlement ItemEntitlement
+        {
+            get {  return GetResource<ItemEntitlement>("item_entitlement"); }
+        }
+        public InAppSubscription InAppSubscription
+        {
+            get {  return GetResource<InAppSubscription>("in_app_subscription"); }
+        }
+        public EntitlementOverride EntitlementOverride
+        {
+            get {  return GetResource<EntitlementOverride>("entitlement_override"); }
+        }
+        public Purchase Purchase
+        {
+            get {  return GetResource<Purchase>("purchase"); }
+        }
 
         public List<UnbilledCharge> UnbilledCharges
         {
@@ -251,6 +283,11 @@ namespace ChargeBee.Internal
         public List<DifferentialPrice> DifferentialPrices
         {
             get {  return (List<DifferentialPrice>)GetResourceList<DifferentialPrice>("differential_prices", "differential_price"); }
+        }
+
+        public List<InAppSubscription> InAppSubscriptions
+        {
+            get {  return (List<InAppSubscription>)GetResourceList<InAppSubscription>("in_app_subscriptions", "in_app_subscription"); }
         }
 
 

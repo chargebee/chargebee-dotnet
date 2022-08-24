@@ -13,6 +13,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "chargebee")]
          Chargebee,
 
+        [EnumMember(Value = "chargebee_payments")]
+         ChargebeePayments,
+
         [EnumMember(Value = "stripe")]
          Stripe,
 

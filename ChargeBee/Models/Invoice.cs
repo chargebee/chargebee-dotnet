@@ -82,6 +82,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "apply_payments");
             return new ApplyPaymentsRequest(url, HttpMethod.POST);
         }
+        public static EntityRequest<Type> SyncUsages(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "sync_usages");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
         public static ApplyCreditsRequest ApplyCredits(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "apply_credits");
@@ -188,6 +193,11 @@ namespace ChargeBee.Models
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "update_details");
             return new UpdateDetailsRequest(url, HttpMethod.POST);
+        }
+        public static EntityRequest<Type> ResendEinvoice(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "resend_einvoice");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
         }
         #endregion
         
@@ -427,6 +437,14 @@ namespace ChargeBee.Models
         public string VatNumberPrefix 
         {
             get { return GetValue<string>("vat_number_prefix", false); }
+        }
+        public ChannelEnum? Channel 
+        {
+            get { return GetEnum<ChannelEnum>("channel", false); }
+        }
+        public string BusinessEntityId 
+        {
+            get { return GetValue<string>("business_entity_id", true); }
         }
         
         #endregion
@@ -2445,6 +2463,10 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<InvoiceListRequest>("updated_at", this);        
             }
+            public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, InvoiceListRequest> Channel() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, InvoiceListRequest>("channel", this);        
+            }
             public TimestampFilter<InvoiceListRequest> VoidedAt() 
             {
                 return new TimestampFilter<InvoiceListRequest>("voided_at", this);        
@@ -2461,6 +2483,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","updated_at");
                 return this;
             }
+            public EnumFilter<InvoiceEinvoice.StatusEnum, InvoiceListRequest> EinvoiceStatus() 
+            {
+                return new EnumFilter<InvoiceEinvoice.StatusEnum, InvoiceListRequest>("einvoice[status]", this);        
+            }
+
         }
         public class PdfRequest : EntityRequest<PdfRequest> 
         {
@@ -2907,6 +2934,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("void_reason_code", voidReasonCode);
                 return this;
             }
+            [Obsolete]
+            public VoidInvoiceRequest VoidWithCreditNote(bool voidWithCreditNote) 
+            {
+                m_params.AddOpt("void_with_credit_note", voidWithCreditNote);
+                return this;
+            }
         }
         public class WriteOffRequest : EntityRequest<WriteOffRequest> 
         {
@@ -3231,6 +3264,10 @@ namespace ChargeBee.Models
                 get { return GetValue<int?>("item_level_discount_amount", false); }
             }
 
+            public string ReferenceLineItemId {
+                get { return GetValue<string>("reference_line_item_id", false); }
+            }
+
             public string Description {
                 get { return GetValue<string>("description", true); }
             }
@@ -3290,6 +3327,10 @@ namespace ChargeBee.Models
 
             public string EntityId {
                 get { return GetValue<string>("entity_id", false); }
+            }
+
+            public string CouponSetCode {
+                get { return GetValue<string>("coupon_set_code", false); }
             }
 
         }
@@ -3754,6 +3795,10 @@ namespace ChargeBee.Models
 
             public ValidationStatusEnum? ValidationStatus {
                 get { return GetEnum<ValidationStatusEnum>("validation_status", false); }
+            }
+
+            public int Index {
+                get { return GetValue<int>("index", true); }
             }
 
         }

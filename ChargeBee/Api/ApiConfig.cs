@@ -1,6 +1,8 @@
 using System;
 using System.Net.Http;
 using System.Text;
+using ChargeBee.Internal;
+using Newtonsoft.Json.Linq;
 
 namespace ChargeBee.Api
 {
@@ -8,7 +10,7 @@ namespace ChargeBee.Api
     {
 		public static string DomainSuffix = "chargebee.com";
 		public static string Proto = "https";
-		public static string Version = "2.15.0";
+		public static string Version = "2.19.0";
 		public static readonly string API_VERSION = "v2";
         public static int TimeTravelMillis { get; set; }
         public static int ExportSleepMillis { get; set;}
@@ -55,6 +57,19 @@ namespace ChargeBee.Api
         public static void Configure(string siteName, string apiKey, HttpMessageHandler httpMessageHandler = null)
         {         
             m_instance = new ApiConfig(siteName, apiKey, httpMessageHandler);
+        }
+
+        public static string SerializeObject<T>(T t)where T : Resource
+        {
+            return t.GetJToken().ToString();
+        }
+
+        public static T DeserializeObject<T>(string str)where T : Resource, new()
+        {
+            JToken JObj = JToken.Parse(str);	
+            T t = new T();
+            t.JObj = JObj;
+            return t;
         }
 
         public static ApiConfig Instance

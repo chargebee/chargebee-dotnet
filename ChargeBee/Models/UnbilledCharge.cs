@@ -41,6 +41,11 @@ namespace ChargeBee.Models
         }
 
         #region Methods
+        public static CreateUnbilledChargeRequest CreateUnbilledCharge()
+        {
+            string url = ApiUtil.BuildUrl("unbilled_charges", "create");
+            return new CreateUnbilledChargeRequest(url, HttpMethod.POST);
+        }
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("unbilled_charges");
@@ -145,6 +150,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("amount_in_decimal", false); }
         }
+        public DateTime UpdatedAt 
+        {
+            get { return (DateTime)GetDateTime("updated_at", true); }
+        }
         public List<UnbilledChargeTier> Tiers 
         {
             get { return GetResourceList<UnbilledChargeTier>("tiers"); }
@@ -157,6 +166,124 @@ namespace ChargeBee.Models
         #endregion
         
         #region Requests
+        public class CreateUnbilledChargeRequest : EntityRequest<CreateUnbilledChargeRequest> 
+        {
+            public CreateUnbilledChargeRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CreateUnbilledChargeRequest SubscriptionId(string subscriptionId) 
+            {
+                m_params.Add("subscription_id", subscriptionId);
+                return this;
+            }
+            public CreateUnbilledChargeRequest CurrencyCode(string currencyCode) 
+            {
+                m_params.AddOpt("currency_code", currencyCode);
+                return this;
+            }
+            public CreateUnbilledChargeRequest AddonId(int index, string addonId) 
+            {
+                m_params.AddOpt("addons[id][" + index + "]", addonId);
+                return this;
+            }
+            public CreateUnbilledChargeRequest AddonQuantity(int index, int addonQuantity) 
+            {
+                m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
+                return this;
+            }
+            public CreateUnbilledChargeRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            {
+                m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
+                return this;
+            }
+            public CreateUnbilledChargeRequest AddonQuantityInDecimal(int index, string addonQuantityInDecimal) 
+            {
+                m_params.AddOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
+                return this;
+            }
+            public CreateUnbilledChargeRequest AddonUnitPriceInDecimal(int index, string addonUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("addons[unit_price_in_decimal][" + index + "]", addonUnitPriceInDecimal);
+                return this;
+            }
+            public CreateUnbilledChargeRequest AddonDateFrom(int index, long addonDateFrom) 
+            {
+                m_params.AddOpt("addons[date_from][" + index + "]", addonDateFrom);
+                return this;
+            }
+            public CreateUnbilledChargeRequest AddonDateTo(int index, long addonDateTo) 
+            {
+                m_params.AddOpt("addons[date_to][" + index + "]", addonDateTo);
+                return this;
+            }
+            public CreateUnbilledChargeRequest ChargeAmount(int index, int chargeAmount) 
+            {
+                m_params.AddOpt("charges[amount][" + index + "]", chargeAmount);
+                return this;
+            }
+            public CreateUnbilledChargeRequest ChargeAmountInDecimal(int index, string chargeAmountInDecimal) 
+            {
+                m_params.AddOpt("charges[amount_in_decimal][" + index + "]", chargeAmountInDecimal);
+                return this;
+            }
+            public CreateUnbilledChargeRequest ChargeDescription(int index, string chargeDescription) 
+            {
+                m_params.AddOpt("charges[description][" + index + "]", chargeDescription);
+                return this;
+            }
+            public CreateUnbilledChargeRequest ChargeTaxable(int index, bool chargeTaxable) 
+            {
+                m_params.AddOpt("charges[taxable][" + index + "]", chargeTaxable);
+                return this;
+            }
+            public CreateUnbilledChargeRequest ChargeTaxProfileId(int index, string chargeTaxProfileId) 
+            {
+                m_params.AddOpt("charges[tax_profile_id][" + index + "]", chargeTaxProfileId);
+                return this;
+            }
+            public CreateUnbilledChargeRequest ChargeAvalaraTaxCode(int index, string chargeAvalaraTaxCode) 
+            {
+                m_params.AddOpt("charges[avalara_tax_code][" + index + "]", chargeAvalaraTaxCode);
+                return this;
+            }
+            public CreateUnbilledChargeRequest ChargeHsnCode(int index, string chargeHsnCode) 
+            {
+                m_params.AddOpt("charges[hsn_code][" + index + "]", chargeHsnCode);
+                return this;
+            }
+            public CreateUnbilledChargeRequest ChargeTaxjarProductCode(int index, string chargeTaxjarProductCode) 
+            {
+                m_params.AddOpt("charges[taxjar_product_code][" + index + "]", chargeTaxjarProductCode);
+                return this;
+            }
+            public CreateUnbilledChargeRequest ChargeAvalaraSaleType(int index, ChargeBee.Models.Enums.AvalaraSaleTypeEnum chargeAvalaraSaleType) 
+            {
+                m_params.AddOpt("charges[avalara_sale_type][" + index + "]", chargeAvalaraSaleType);
+                return this;
+            }
+            public CreateUnbilledChargeRequest ChargeAvalaraTransactionType(int index, int chargeAvalaraTransactionType) 
+            {
+                m_params.AddOpt("charges[avalara_transaction_type][" + index + "]", chargeAvalaraTransactionType);
+                return this;
+            }
+            public CreateUnbilledChargeRequest ChargeAvalaraServiceType(int index, int chargeAvalaraServiceType) 
+            {
+                m_params.AddOpt("charges[avalara_service_type][" + index + "]", chargeAvalaraServiceType);
+                return this;
+            }
+            public CreateUnbilledChargeRequest ChargeDateFrom(int index, long chargeDateFrom) 
+            {
+                m_params.AddOpt("charges[date_from][" + index + "]", chargeDateFrom);
+                return this;
+            }
+            public CreateUnbilledChargeRequest ChargeDateTo(int index, long chargeDateTo) 
+            {
+                m_params.AddOpt("charges[date_to][" + index + "]", chargeDateTo);
+                return this;
+            }
+        }
         public class CreateRequest : EntityRequest<CreateRequest> 
         {
             public CreateRequest(string url, HttpMethod method) 

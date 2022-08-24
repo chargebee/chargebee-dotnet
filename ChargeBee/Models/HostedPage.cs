@@ -137,6 +137,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("hosted_pages");
             return new HostedPageListRequest(url);
         }
+        public static PreCancelRequest PreCancel()
+        {
+            string url = ApiUtil.BuildUrl("hosted_pages", "pre_cancel");
+            return new PreCancelRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -188,6 +193,10 @@ namespace ChargeBee.Models
         public JToken CheckoutInfo 
         {
             get { return GetJToken("checkout_info", false); }
+        }
+        public string BusinessEntityId 
+        {
+            get { return GetValue<string>("business_entity_id", false); }
         }
         public HostedPageContent Content
         {
@@ -1005,6 +1014,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public CheckoutOneTimeForItemsRequest BusinessEntityId(string businessEntityId) 
+            {
+                m_params.AddOpt("business_entity_id", businessEntityId);
+                return this;
+            }
             public CheckoutOneTimeForItemsRequest InvoiceNote(string invoiceNote) 
             {
                 m_params.AddOpt("invoice_note", invoiceNote);
@@ -1435,6 +1449,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public CheckoutNewForItemsRequest BusinessEntityId(string businessEntityId) 
+            {
+                m_params.AddOpt("business_entity_id", businessEntityId);
+                return this;
+            }
             public CheckoutNewForItemsRequest BillingCycles(int billingCycles) 
             {
                 m_params.AddOpt("billing_cycles", billingCycles);
@@ -2727,6 +2746,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public CheckoutGiftForItemsRequest BusinessEntityId(string businessEntityId) 
+            {
+                m_params.AddOpt("business_entity_id", businessEntityId);
+                return this;
+            }
             public CheckoutGiftForItemsRequest RedirectUrl(string redirectUrl) 
             {
                 m_params.AddOpt("redirect_url", redirectUrl);
@@ -2823,6 +2847,34 @@ namespace ChargeBee.Models
                 return new TimestampFilter<HostedPageListRequest>("updated_at", this);        
             }
         }
+        public class PreCancelRequest : EntityRequest<PreCancelRequest> 
+        {
+            public PreCancelRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public PreCancelRequest PassThruContent(string passThruContent) 
+            {
+                m_params.AddOpt("pass_thru_content", passThruContent);
+                return this;
+            }
+            public PreCancelRequest CancelUrl(string cancelUrl) 
+            {
+                m_params.AddOpt("cancel_url", cancelUrl);
+                return this;
+            }
+            public PreCancelRequest RedirectUrl(string redirectUrl) 
+            {
+                m_params.AddOpt("redirect_url", redirectUrl);
+                return this;
+            }
+            public PreCancelRequest SubscriptionId(string subscriptionId) 
+            {
+                m_params.Add("subscription[id]", subscriptionId);
+                return this;
+            }
+        }
         #endregion
 
         public enum TypeEnum
@@ -2851,6 +2903,8 @@ namespace ChargeBee.Models
             ClaimGift,
             [EnumMember(Value = "checkout_one_time")]
             CheckoutOneTime,
+            [EnumMember(Value = "pre_cancel")]
+            PreCancel,
 
         }
         public enum StateEnum

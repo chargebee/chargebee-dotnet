@@ -40,6 +40,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "order")]
          Order,
 
+        [EnumMember(Value = "business_entity")]
+         BusinessEntity,
+
         [EnumMember(Value = "item_family")]
          ItemFamily,
 

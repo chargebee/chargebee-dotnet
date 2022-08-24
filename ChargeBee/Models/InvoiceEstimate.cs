@@ -200,6 +200,10 @@ namespace ChargeBee.Models
                 get { return GetValue<int?>("item_level_discount_amount", false); }
             }
 
+            public string ReferenceLineItemId {
+                get { return GetValue<string>("reference_line_item_id", false); }
+            }
+
             public string Description {
                 get { return GetValue<string>("description", true); }
             }
@@ -259,6 +263,10 @@ namespace ChargeBee.Models
 
             public string EntityId {
                 get { return GetValue<string>("entity_id", false); }
+            }
+
+            public string CouponSetCode {
+                get { return GetValue<string>("coupon_set_code", false); }
             }
 
         }

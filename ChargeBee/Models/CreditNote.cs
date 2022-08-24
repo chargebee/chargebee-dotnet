@@ -92,6 +92,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "delete");
             return new DeleteRequest(url, HttpMethod.POST);
         }
+        public static EntityRequest<Type> ResendEinvoice(string id)
+        {
+            string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "resend_einvoice");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -175,6 +180,10 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("updated_at", false); }
         }
+        public ChannelEnum? Channel 
+        {
+            get { return GetEnum<ChannelEnum>("channel", false); }
+        }
         public CreditNoteEinvoice Einvoice 
         {
             get { return GetSubResource<CreditNoteEinvoice>("einvoice"); }
@@ -246,6 +255,10 @@ namespace ChargeBee.Models
         public string VatNumberPrefix 
         {
             get { return GetValue<string>("vat_number_prefix", false); }
+        }
+        public string BusinessEntityId 
+        {
+            get { return GetValue<string>("business_entity_id", true); }
         }
         
         #endregion
@@ -511,6 +524,15 @@ namespace ChargeBee.Models
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","date");
                 return this;
             }
+            public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, CreditNoteListRequest> Channel() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, CreditNoteListRequest>("channel", this);        
+            }
+            public EnumFilter<CreditNoteEinvoice.StatusEnum, CreditNoteListRequest> EinvoiceStatus() 
+            {
+                return new EnumFilter<CreditNoteEinvoice.StatusEnum, CreditNoteListRequest>("einvoice[status]", this);        
+            }
+
         }
         public class DeleteRequest : EntityRequest<DeleteRequest> 
         {
@@ -703,6 +725,10 @@ namespace ChargeBee.Models
                 get { return GetValue<int?>("item_level_discount_amount", false); }
             }
 
+            public string ReferenceLineItemId {
+                get { return GetValue<string>("reference_line_item_id", false); }
+            }
+
             public string Description {
                 get { return GetValue<string>("description", true); }
             }
@@ -762,6 +788,10 @@ namespace ChargeBee.Models
 
             public string EntityId {
                 get { return GetValue<string>("entity_id", false); }
+            }
+
+            public string CouponSetCode {
+                get { return GetValue<string>("coupon_set_code", false); }
             }
 
         }

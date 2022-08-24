@@ -147,6 +147,10 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<SubscriptionEstimate>("subscription_estimate"); }
         }
+        public List<SubscriptionEstimate> SubscriptionEstimates 
+        {
+            get { return GetResourceList<SubscriptionEstimate>("subscription_estimates"); }
+        }
         public InvoiceEstimate InvoiceEstimate 
         {
             get { return GetSubResource<InvoiceEstimate>("invoice_estimate"); }
@@ -3047,7 +3051,7 @@ namespace ChargeBee.Models
             }
             public CreateInvoiceForItemsRequest InvoiceCustomerId(string invoiceCustomerId) 
             {
-                m_params.Add("invoice[customer_id]", invoiceCustomerId);
+                m_params.AddOpt("invoice[customer_id]", invoiceCustomerId);
                 return this;
             }
             public CreateInvoiceForItemsRequest InvoiceSubscriptionId(string invoiceSubscriptionId) 

@@ -300,6 +300,11 @@ namespace ChargeBee.Models
                 return new TimestampFilter<RevenueRecognitionRequest>("invoice[updated_at]", this);        
             }
 
+            public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, RevenueRecognitionRequest> InvoiceChannel() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, RevenueRecognitionRequest>("invoice[channel]", this);        
+            }
+
             public StringFilter<RevenueRecognitionRequest> SubscriptionId() 
             {
                 return new StringFilter<RevenueRecognitionRequest>("subscription[id]", this).SupportsMultiOperators(true);        
@@ -368,6 +373,11 @@ namespace ChargeBee.Models
             public BooleanFilter<RevenueRecognitionRequest> SubscriptionAutoCloseInvoices() 
             {
                 return new BooleanFilter<RevenueRecognitionRequest>("subscription[auto_close_invoices]", this);        
+            }
+
+            public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, RevenueRecognitionRequest> SubscriptionChannel() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, RevenueRecognitionRequest>("subscription[channel]", this);        
             }
 
             public StringFilter<RevenueRecognitionRequest> CustomerId() 
@@ -443,6 +453,11 @@ namespace ChargeBee.Models
             public BooleanFilter<RevenueRecognitionRequest> CustomerAutoCloseInvoices() 
             {
                 return new BooleanFilter<RevenueRecognitionRequest>("customer[auto_close_invoices]", this);        
+            }
+
+            public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, RevenueRecognitionRequest> CustomerChannel() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, RevenueRecognitionRequest>("customer[channel]", this);        
             }
 
         }
@@ -568,7 +583,12 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<DeferredRevenueRequest>("invoice[updated_at]", this);        
             }
-            
+
+            public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, DeferredRevenueRequest> InvoiceChannel() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, DeferredRevenueRequest>("invoice[channel]", this);        
+            }
+
             public StringFilter<DeferredRevenueRequest> SubscriptionId() 
             {
                 return new StringFilter<DeferredRevenueRequest>("subscription[id]", this).SupportsMultiOperators(true);        
@@ -637,6 +657,11 @@ namespace ChargeBee.Models
             public BooleanFilter<DeferredRevenueRequest> SubscriptionAutoCloseInvoices() 
             {
                 return new BooleanFilter<DeferredRevenueRequest>("subscription[auto_close_invoices]", this);        
+            }
+
+            public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, DeferredRevenueRequest> SubscriptionChannel() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, DeferredRevenueRequest>("subscription[channel]", this);        
             }
 
             public StringFilter<DeferredRevenueRequest> CustomerId() 
@@ -714,6 +739,11 @@ namespace ChargeBee.Models
                 return new BooleanFilter<DeferredRevenueRequest>("customer[auto_close_invoices]", this);        
             }
 
+            public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, DeferredRevenueRequest> CustomerChannel() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, DeferredRevenueRequest>("customer[channel]", this);        
+            }
+
         }
         public class PlansRequest : EntityRequest<PlansRequest> 
         {
@@ -781,6 +811,11 @@ namespace ChargeBee.Models
                 return new TimestampFilter<PlansRequest>("plan[updated_at]", this);        
             }
 
+            public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, PlansRequest> PlanChannel() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, PlansRequest>("plan[channel]", this);        
+            }
+
         }
         public class AddonsRequest : EntityRequest<AddonsRequest> 
         {
@@ -831,6 +866,11 @@ namespace ChargeBee.Models
             public TimestampFilter<AddonsRequest> AddonUpdatedAt() 
             {
                 return new TimestampFilter<AddonsRequest>("addon[updated_at]", this);        
+            }
+
+            public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, AddonsRequest> AddonChannel() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, AddonsRequest>("addon[channel]", this);        
             }
 
         }
@@ -968,6 +1008,11 @@ namespace ChargeBee.Models
                 return new BooleanFilter<CustomersRequest>("customer[auto_close_invoices]", this);        
             }
 
+            public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, CustomersRequest> CustomerChannel() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, CustomersRequest>("customer[channel]", this);        
+            }
+
         }
         public class SubscriptionsRequest : EntityRequest<SubscriptionsRequest> 
         {
@@ -1058,6 +1103,11 @@ namespace ChargeBee.Models
                 return new BooleanFilter<SubscriptionsRequest>("subscription[auto_close_invoices]", this);        
             }
 
+            public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, SubscriptionsRequest> SubscriptionChannel() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, SubscriptionsRequest>("subscription[channel]", this);        
+            }
+
         }
         public class InvoicesRequest : EntityRequest<InvoicesRequest> 
         {
@@ -1143,6 +1193,11 @@ namespace ChargeBee.Models
             public TimestampFilter<InvoicesRequest> InvoiceUpdatedAt() 
             {
                 return new TimestampFilter<InvoicesRequest>("invoice[updated_at]", this);        
+            }
+
+            public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, InvoicesRequest> InvoiceChannel() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, InvoicesRequest>("invoice[channel]", this);        
             }
 
         }
@@ -1231,6 +1286,11 @@ namespace ChargeBee.Models
             public TimestampFilter<CreditNotesRequest> CreditNoteUpdatedAt() 
             {
                 return new TimestampFilter<CreditNotesRequest>("credit_note[updated_at]", this);        
+            }
+
+            public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, CreditNotesRequest> CreditNoteChannel() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, CreditNotesRequest>("credit_note[channel]", this);        
             }
 
         }
@@ -1504,6 +1564,11 @@ namespace ChargeBee.Models
                 return new EnumFilter<Item.UsageCalculationEnum, ItemsRequest>("item[usage_calculation]", this);        
             }
 
+            public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, ItemsRequest> ItemChannel() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, ItemsRequest>("item[channel]", this);        
+            }
+
         }
         public class ItemPricesRequest : EntityRequest<ItemPricesRequest> 
         {
@@ -1572,6 +1637,11 @@ namespace ChargeBee.Models
             public NumberFilter<int, ItemPricesRequest> ItemPricePeriod() 
             {
                 return new NumberFilter<int, ItemPricesRequest>("item_price[period]", this);        
+            }
+
+            public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, ItemPricesRequest> ItemPriceChannel() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, ItemPricesRequest>("item_price[channel]", this);        
             }
 
         }

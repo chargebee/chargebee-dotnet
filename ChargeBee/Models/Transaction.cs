@@ -260,6 +260,14 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("merchant_reference_id", false); }
         }
+        public string BusinessEntityId 
+        {
+            get { return GetValue<string>("business_entity_id", false); }
+        }
+        public string PaymentMethodDetails 
+        {
+            get { return GetValue<string>("payment_method_details", false); }
+        }
         
         #endregion
         

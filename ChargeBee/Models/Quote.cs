@@ -288,6 +288,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int?>("contract_term_termination_fee", false); }
         }
+        public string BusinessEntityId 
+        {
+            get { return GetValue<string>("business_entity_id", true); }
+        }
         
         #endregion
         
@@ -3906,6 +3910,10 @@ namespace ChargeBee.Models
                 get { return GetValue<int?>("item_level_discount_amount", false); }
             }
 
+            public string ReferenceLineItemId {
+                get { return GetValue<string>("reference_line_item_id", false); }
+            }
+
             public string Description {
                 get { return GetValue<string>("description", true); }
             }
@@ -3965,6 +3973,10 @@ namespace ChargeBee.Models
 
             public string EntityId {
                 get { return GetValue<string>("entity_id", false); }
+            }
+
+            public string CouponSetCode {
+                get { return GetValue<string>("coupon_set_code", false); }
             }
 
         }
@@ -4174,6 +4186,10 @@ namespace ChargeBee.Models
 
             public ValidationStatusEnum? ValidationStatus {
                 get { return GetEnum<ValidationStatusEnum>("validation_status", false); }
+            }
+
+            public int Index {
+                get { return GetValue<int>("index", true); }
             }
 
         }

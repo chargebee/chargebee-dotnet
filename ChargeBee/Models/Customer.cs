@@ -288,6 +288,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool?>("auto_close_invoices", false); }
         }
+        public ChannelEnum? Channel 
+        {
+            get { return GetEnum<ChannelEnum>("channel", false); }
+        }
         [Obsolete]
         public CardStatusEnum? CardStatus 
         {
@@ -324,6 +328,10 @@ namespace ChargeBee.Models
         public string InvoiceNotes 
         {
             get { return GetValue<string>("invoice_notes", false); }
+        }
+        public string BusinessEntityId 
+        {
+            get { return GetValue<string>("business_entity_id", false); }
         }
         public string PreferredCurrencyCode 
         {
@@ -572,6 +580,11 @@ namespace ChargeBee.Models
             public CreateRequest TokenId(string tokenId) 
             {
                 m_params.AddOpt("token_id", tokenId);
+                return this;
+            }
+            public CreateRequest BusinessEntityId(string businessEntityId) 
+            {
+                m_params.AddOpt("business_entity_id", businessEntityId);
                 return this;
             }
             [Obsolete]
@@ -985,6 +998,10 @@ namespace ChargeBee.Models
             public BooleanFilter<CustomerListRequest> AutoCloseInvoices() 
             {
                 return new BooleanFilter<CustomerListRequest>("auto_close_invoices", this);        
+            }
+            public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, CustomerListRequest> Channel() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, CustomerListRequest>("channel", this);        
             }
             public CustomerListRequest SortByCreatedAt(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");

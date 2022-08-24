@@ -38,9 +38,6 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "coupon_deleted")]
          CouponDeleted,
 
-        [EnumMember(Value = "coupon_expired")]
-         CouponExpired,
-
         [EnumMember(Value = "coupon_set_created")]
          CouponSetCreated,
 
@@ -433,6 +430,51 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "differential_price_deleted")]
          DifferentialPriceDeleted,
+
+        [EnumMember(Value = "feature_created")]
+         FeatureCreated,
+
+        [EnumMember(Value = "feature_updated")]
+         FeatureUpdated,
+
+        [EnumMember(Value = "feature_deleted")]
+         FeatureDeleted,
+
+        [EnumMember(Value = "feature_activated")]
+         FeatureActivated,
+
+        [EnumMember(Value = "feature_reactivated")]
+         FeatureReactivated,
+
+        [EnumMember(Value = "feature_archived")]
+         FeatureArchived,
+
+        [EnumMember(Value = "item_entitlements_updated")]
+         ItemEntitlementsUpdated,
+
+        [EnumMember(Value = "entitlement_overrides_updated")]
+         EntitlementOverridesUpdated,
+
+        [EnumMember(Value = "entitlement_overrides_removed")]
+         EntitlementOverridesRemoved,
+
+        [EnumMember(Value = "item_entitlements_removed")]
+         ItemEntitlementsRemoved,
+
+        [EnumMember(Value = "entitlement_overrides_auto_removed")]
+         EntitlementOverridesAutoRemoved,
+
+        [EnumMember(Value = "business_entity_created")]
+         BusinessEntityCreated,
+
+        [EnumMember(Value = "business_entity_updated")]
+         BusinessEntityUpdated,
+
+        [EnumMember(Value = "business_entity_deleted")]
+         BusinessEntityDeleted,
+
+        [EnumMember(Value = "purchase_created")]
+         PurchaseCreated,
 
     }
 }
