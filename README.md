@@ -20,7 +20,7 @@ To install the ChargeBee .Net Client Library, run the following command in the P
 
 If you would prefer to build it from source, checkout this RC version:
   
-    $ git checkout 2.19.1-rc1
+    $ git checkout v2.19.1-rc1
   
 ## Documentation
 
