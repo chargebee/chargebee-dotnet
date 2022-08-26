@@ -1,3 +1,9 @@
+### v2.19.1-rc1 (2022-08-26)
+* * *
+
+### Fixes:
+* Upgraded the NewtonSoft library to 13.0.1
+
 ### v2.19.0 (2022-08-22)
 * * *
 

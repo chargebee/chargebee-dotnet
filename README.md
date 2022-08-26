@@ -10,17 +10,17 @@ Chargebee now supports two API versions - [V1](https://apidocs.chargebee.com/doc
 
 ## Installation
 
-Install the latest version of the 2.x.x library with the following commands:
+Install this RC version with the following commands:
 
 Use NuGet: [NuGet](https://nuget.org) is a package manager for Visual Studio.
 
 To install the ChargeBee .Net Client Library, run the following command in the Package Manager Console:
 	
-	$ Install-Package ChargeBee -Version 2.x.x
+	$ Install-Package ChargeBee -Version 2.19.1-rc1
 
-If you would prefer to build it from source, checkout latest version of 2.x.x release tag:
+If you would prefer to build it from source, checkout this RC version:
   
-    $ git checkout [latest 2.x.x release tag]
+    $ git checkout 2.19.1-rc1
   
 ## Documentation
 
