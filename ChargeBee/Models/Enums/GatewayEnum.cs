@@ -136,6 +136,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "razorpay")]
          Razorpay,
 
+        [EnumMember(Value = "global_payments")]
+         GlobalPayments,
+
         [EnumMember(Value = "not_applicable")]
          NotApplicable,
 

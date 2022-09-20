@@ -1019,6 +1019,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("business_entity_id", businessEntityId);
                 return this;
             }
+            public CheckoutOneTimeForItemsRequest Layout(ChargeBee.Models.Enums.LayoutEnum layout) 
+            {
+                m_params.AddOpt("layout", layout);
+                return this;
+            }
             public CheckoutOneTimeForItemsRequest InvoiceNote(string invoiceNote) 
             {
                 m_params.AddOpt("invoice_note", invoiceNote);
@@ -1416,6 +1421,26 @@ namespace ChargeBee.Models
                 m_params.AddOpt("charges[date_to][" + index + "]", chargeDateTo);
                 return this;
             }
+            public CheckoutOneTimeForItemsRequest DiscountPercentage(int index, double discountPercentage) 
+            {
+                m_params.AddOpt("discounts[percentage][" + index + "]", discountPercentage);
+                return this;
+            }
+            public CheckoutOneTimeForItemsRequest DiscountAmount(int index, int discountAmount) 
+            {
+                m_params.AddOpt("discounts[amount][" + index + "]", discountAmount);
+                return this;
+            }
+            public CheckoutOneTimeForItemsRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
+            {
+                m_params.Add("discounts[apply_on][" + index + "]", discountApplyOn);
+                return this;
+            }
+            public CheckoutOneTimeForItemsRequest DiscountItemPriceId(int index, string discountItemPriceId) 
+            {
+                m_params.AddOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+                return this;
+            }
             public CheckoutOneTimeForItemsRequest EntityIdentifierId(int index, string entityIdentifierId) 
             {
                 m_params.AddOpt("entity_identifiers[id][" + index + "]", entityIdentifierId);
@@ -1449,6 +1474,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public CheckoutNewForItemsRequest Layout(ChargeBee.Models.Enums.LayoutEnum layout) 
+            {
+                m_params.AddOpt("layout", layout);
+                return this;
+            }
             public CheckoutNewForItemsRequest BusinessEntityId(string businessEntityId) 
             {
                 m_params.AddOpt("business_entity_id", businessEntityId);
@@ -1832,6 +1862,46 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_items[item_type][" + index + "]", subscriptionItemItemType);
                 return this;
             }
+            public CheckoutNewForItemsRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
+            {
+                m_params.Add("discounts[apply_on][" + index + "]", discountApplyOn);
+                return this;
+            }
+            public CheckoutNewForItemsRequest DiscountDurationType(int index, ChargeBee.Models.Enums.DurationTypeEnum discountDurationType) 
+            {
+                m_params.Add("discounts[duration_type][" + index + "]", discountDurationType);
+                return this;
+            }
+            public CheckoutNewForItemsRequest DiscountPercentage(int index, double discountPercentage) 
+            {
+                m_params.AddOpt("discounts[percentage][" + index + "]", discountPercentage);
+                return this;
+            }
+            public CheckoutNewForItemsRequest DiscountAmount(int index, int discountAmount) 
+            {
+                m_params.AddOpt("discounts[amount][" + index + "]", discountAmount);
+                return this;
+            }
+            public CheckoutNewForItemsRequest DiscountPeriod(int index, int discountPeriod) 
+            {
+                m_params.AddOpt("discounts[period][" + index + "]", discountPeriod);
+                return this;
+            }
+            public CheckoutNewForItemsRequest DiscountPeriodUnit(int index, ChargeBee.Models.Enums.PeriodUnitEnum discountPeriodUnit) 
+            {
+                m_params.AddOpt("discounts[period_unit][" + index + "]", discountPeriodUnit);
+                return this;
+            }
+            public CheckoutNewForItemsRequest DiscountIncludedInMrr(int index, bool discountIncludedInMrr) 
+            {
+                m_params.AddOpt("discounts[included_in_mrr][" + index + "]", discountIncludedInMrr);
+                return this;
+            }
+            public CheckoutNewForItemsRequest DiscountItemPriceId(int index, string discountItemPriceId) 
+            {
+                m_params.AddOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+                return this;
+            }
             public CheckoutNewForItemsRequest SubscriptionItemChargeOnOption(int index, ChargeBee.Models.Enums.ChargeOnOptionEnum subscriptionItemChargeOnOption) 
             {
                 m_params.AddOpt("subscription_items[charge_on_option][" + index + "]", subscriptionItemChargeOnOption);
@@ -2170,6 +2240,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public CheckoutExistingForItemsRequest Layout(ChargeBee.Models.Enums.LayoutEnum layout) 
+            {
+                m_params.AddOpt("layout", layout);
+                return this;
+            }
             public CheckoutExistingForItemsRequest MandatoryItemsToRemove(List<string> mandatoryItemsToRemove) 
             {
                 m_params.AddOpt("mandatory_items_to_remove", mandatoryItemsToRemove);
@@ -2392,6 +2467,56 @@ namespace ChargeBee.Models
             public CheckoutExistingForItemsRequest SubscriptionItemItemType(int index, ChargeBee.Models.Enums.ItemTypeEnum subscriptionItemItemType) 
             {
                 m_params.AddOpt("subscription_items[item_type][" + index + "]", subscriptionItemItemType);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
+            {
+                m_params.Add("discounts[apply_on][" + index + "]", discountApplyOn);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest DiscountDurationType(int index, ChargeBee.Models.Enums.DurationTypeEnum discountDurationType) 
+            {
+                m_params.Add("discounts[duration_type][" + index + "]", discountDurationType);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest DiscountPercentage(int index, double discountPercentage) 
+            {
+                m_params.AddOpt("discounts[percentage][" + index + "]", discountPercentage);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest DiscountAmount(int index, int discountAmount) 
+            {
+                m_params.AddOpt("discounts[amount][" + index + "]", discountAmount);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest DiscountPeriod(int index, int discountPeriod) 
+            {
+                m_params.AddOpt("discounts[period][" + index + "]", discountPeriod);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest DiscountPeriodUnit(int index, ChargeBee.Models.Enums.PeriodUnitEnum discountPeriodUnit) 
+            {
+                m_params.AddOpt("discounts[period_unit][" + index + "]", discountPeriodUnit);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest DiscountIncludedInMrr(int index, bool discountIncludedInMrr) 
+            {
+                m_params.AddOpt("discounts[included_in_mrr][" + index + "]", discountIncludedInMrr);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest DiscountItemPriceId(int index, string discountItemPriceId) 
+            {
+                m_params.AddOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest DiscountOperationType(int index, ChargeBee.Models.Enums.OperationTypeEnum discountOperationType) 
+            {
+                m_params.Add("discounts[operation_type][" + index + "]", discountOperationType);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest DiscountId(int index, string discountId) 
+            {
+                m_params.AddOpt("discounts[id][" + index + "]", discountId);
                 return this;
             }
             public CheckoutExistingForItemsRequest ItemTierItemPriceId(int index, string itemTierItemPriceId) 

@@ -1512,6 +1512,26 @@ namespace ChargeBee.Models
                 m_params.AddOpt("notes_to_remove[entity_id][" + index + "]", notesToRemoveEntityId);
                 return this;
             }
+            public CreateForChargeItemsAndChargesRequest DiscountPercentage(int index, double discountPercentage) 
+            {
+                m_params.AddOpt("discounts[percentage][" + index + "]", discountPercentage);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest DiscountAmount(int index, int discountAmount) 
+            {
+                m_params.AddOpt("discounts[amount][" + index + "]", discountAmount);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
+            {
+                m_params.Add("discounts[apply_on][" + index + "]", discountApplyOn);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest DiscountItemPriceId(int index, string discountItemPriceId) 
+            {
+                m_params.AddOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+                return this;
+            }
         }
         public class ChargeRequest : EntityRequest<ChargeRequest> 
         {
@@ -2037,6 +2057,11 @@ namespace ChargeBee.Models
             public ImportInvoiceRequest LineItemDateTo(int index, long lineItemDateTo) 
             {
                 m_params.AddOpt("line_items[date_to][" + index + "]", lineItemDateTo);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemSubscriptionId(int index, string lineItemSubscriptionId) 
+            {
+                m_params.AddOpt("line_items[subscription_id][" + index + "]", lineItemSubscriptionId);
                 return this;
             }
             public ImportInvoiceRequest LineItemDescription(int index, string lineItemDescription) 

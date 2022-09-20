@@ -268,6 +268,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int?>("billing_date", false); }
         }
+        public int? BillingMonth 
+        {
+            get { return GetValue<int?>("billing_month", false); }
+        }
         public BillingDateModeEnum? BillingDateMode 
         {
             get { return GetEnum<BillingDateModeEnum>("billing_date_mode", false); }
@@ -1826,6 +1830,11 @@ namespace ChargeBee.Models
             public ChangeBillingDateRequest BillingDate(int billingDate) 
             {
                 m_params.AddOpt("billing_date", billingDate);
+                return this;
+            }
+            public ChangeBillingDateRequest BillingMonth(int billingMonth) 
+            {
+                m_params.AddOpt("billing_month", billingMonth);
                 return this;
             }
             public ChangeBillingDateRequest BillingDateMode(ChargeBee.Models.Enums.BillingDateModeEnum billingDateMode) 

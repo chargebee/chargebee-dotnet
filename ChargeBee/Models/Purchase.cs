@@ -46,12 +46,6 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("purchases");
             return new CreateRequest(url, HttpMethod.POST);
         }
-        [Obsolete]
-        public static EntityRequest<Type> Retrieve(string id)
-        {
-            string url = ApiUtil.BuildUrl("purchases", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
-        }
         public static EstimateRequest Estimate()
         {
             string url = ApiUtil.BuildUrl("purchases", "estimate");
