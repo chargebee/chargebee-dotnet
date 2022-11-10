@@ -172,6 +172,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "import_contract_term");
             return new ImportContractTermRequest(url, HttpMethod.POST);
         }
+        public static ImportUnbilledChargesRequest ImportUnbilledCharges(string id)
+        {
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "import_unbilled_charges");
+            return new ImportUnbilledChargesRequest(url, HttpMethod.POST);
+        }
         public static ImportForItemsRequest ImportForItems(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "import_for_items");
@@ -4897,6 +4902,154 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class ImportUnbilledChargesRequest : EntityRequest<ImportUnbilledChargesRequest> 
+        {
+            public ImportUnbilledChargesRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public ImportUnbilledChargesRequest UnbilledChargeId(int index, string unbilledChargeId) 
+            {
+                m_params.AddOpt("unbilled_charges[id][" + index + "]", unbilledChargeId);
+                return this;
+            }
+            public ImportUnbilledChargesRequest UnbilledChargeDateFrom(int index, long unbilledChargeDateFrom) 
+            {
+                m_params.Add("unbilled_charges[date_from][" + index + "]", unbilledChargeDateFrom);
+                return this;
+            }
+            public ImportUnbilledChargesRequest UnbilledChargeDateTo(int index, long unbilledChargeDateTo) 
+            {
+                m_params.Add("unbilled_charges[date_to][" + index + "]", unbilledChargeDateTo);
+                return this;
+            }
+            public ImportUnbilledChargesRequest UnbilledChargeEntityType(int index, UnbilledCharge.EntityTypeEnum unbilledChargeEntityType) 
+            {
+                m_params.Add("unbilled_charges[entity_type][" + index + "]", unbilledChargeEntityType);
+                return this;
+            }
+            public ImportUnbilledChargesRequest UnbilledChargeEntityId(int index, string unbilledChargeEntityId) 
+            {
+                m_params.AddOpt("unbilled_charges[entity_id][" + index + "]", unbilledChargeEntityId);
+                return this;
+            }
+            public ImportUnbilledChargesRequest UnbilledChargeDescription(int index, string unbilledChargeDescription) 
+            {
+                m_params.AddOpt("unbilled_charges[description][" + index + "]", unbilledChargeDescription);
+                return this;
+            }
+            public ImportUnbilledChargesRequest UnbilledChargeUnitAmount(int index, int unbilledChargeUnitAmount) 
+            {
+                m_params.AddOpt("unbilled_charges[unit_amount][" + index + "]", unbilledChargeUnitAmount);
+                return this;
+            }
+            public ImportUnbilledChargesRequest UnbilledChargeQuantity(int index, int unbilledChargeQuantity) 
+            {
+                m_params.AddOpt("unbilled_charges[quantity][" + index + "]", unbilledChargeQuantity);
+                return this;
+            }
+            public ImportUnbilledChargesRequest UnbilledChargeAmount(int index, int unbilledChargeAmount) 
+            {
+                m_params.AddOpt("unbilled_charges[amount][" + index + "]", unbilledChargeAmount);
+                return this;
+            }
+            public ImportUnbilledChargesRequest UnbilledChargeUnitAmountInDecimal(int index, string unbilledChargeUnitAmountInDecimal) 
+            {
+                m_params.AddOpt("unbilled_charges[unit_amount_in_decimal][" + index + "]", unbilledChargeUnitAmountInDecimal);
+                return this;
+            }
+            public ImportUnbilledChargesRequest UnbilledChargeQuantityInDecimal(int index, string unbilledChargeQuantityInDecimal) 
+            {
+                m_params.AddOpt("unbilled_charges[quantity_in_decimal][" + index + "]", unbilledChargeQuantityInDecimal);
+                return this;
+            }
+            public ImportUnbilledChargesRequest UnbilledChargeAmountInDecimal(int index, string unbilledChargeAmountInDecimal) 
+            {
+                m_params.AddOpt("unbilled_charges[amount_in_decimal][" + index + "]", unbilledChargeAmountInDecimal);
+                return this;
+            }
+            public ImportUnbilledChargesRequest UnbilledChargeDiscountAmount(int index, int unbilledChargeDiscountAmount) 
+            {
+                m_params.AddOpt("unbilled_charges[discount_amount][" + index + "]", unbilledChargeDiscountAmount);
+                return this;
+            }
+            public ImportUnbilledChargesRequest UnbilledChargeUseForProration(int index, bool unbilledChargeUseForProration) 
+            {
+                m_params.AddOpt("unbilled_charges[use_for_proration][" + index + "]", unbilledChargeUseForProration);
+                return this;
+            }
+            public ImportUnbilledChargesRequest DiscountUnbilledChargeId(int index, string discountUnbilledChargeId) 
+            {
+                m_params.AddOpt("discounts[unbilled_charge_id][" + index + "]", discountUnbilledChargeId);
+                return this;
+            }
+            public ImportUnbilledChargesRequest DiscountEntityType(int index, Invoice.InvoiceDiscount.EntityTypeEnum discountEntityType) 
+            {
+                m_params.AddOpt("discounts[entity_type][" + index + "]", discountEntityType);
+                return this;
+            }
+            public ImportUnbilledChargesRequest DiscountEntityId(int index, string discountEntityId) 
+            {
+                m_params.AddOpt("discounts[entity_id][" + index + "]", discountEntityId);
+                return this;
+            }
+            public ImportUnbilledChargesRequest DiscountDescription(int index, string discountDescription) 
+            {
+                m_params.AddOpt("discounts[description][" + index + "]", discountDescription);
+                return this;
+            }
+            public ImportUnbilledChargesRequest DiscountAmount(int index, int discountAmount) 
+            {
+                m_params.Add("discounts[amount][" + index + "]", discountAmount);
+                return this;
+            }
+            public ImportUnbilledChargesRequest TierUnbilledChargeId(int index, string tierUnbilledChargeId) 
+            {
+                m_params.Add("tiers[unbilled_charge_id][" + index + "]", tierUnbilledChargeId);
+                return this;
+            }
+            public ImportUnbilledChargesRequest TierStartingUnit(int index, int tierStartingUnit) 
+            {
+                m_params.AddOpt("tiers[starting_unit][" + index + "]", tierStartingUnit);
+                return this;
+            }
+            public ImportUnbilledChargesRequest TierEndingUnit(int index, int tierEndingUnit) 
+            {
+                m_params.AddOpt("tiers[ending_unit][" + index + "]", tierEndingUnit);
+                return this;
+            }
+            public ImportUnbilledChargesRequest TierQuantityUsed(int index, int tierQuantityUsed) 
+            {
+                m_params.AddOpt("tiers[quantity_used][" + index + "]", tierQuantityUsed);
+                return this;
+            }
+            public ImportUnbilledChargesRequest TierUnitAmount(int index, int tierUnitAmount) 
+            {
+                m_params.AddOpt("tiers[unit_amount][" + index + "]", tierUnitAmount);
+                return this;
+            }
+            public ImportUnbilledChargesRequest TierStartingUnitInDecimal(int index, string tierStartingUnitInDecimal) 
+            {
+                m_params.AddOpt("tiers[starting_unit_in_decimal][" + index + "]", tierStartingUnitInDecimal);
+                return this;
+            }
+            public ImportUnbilledChargesRequest TierEndingUnitInDecimal(int index, string tierEndingUnitInDecimal) 
+            {
+                m_params.AddOpt("tiers[ending_unit_in_decimal][" + index + "]", tierEndingUnitInDecimal);
+                return this;
+            }
+            public ImportUnbilledChargesRequest TierQuantityUsedInDecimal(int index, string tierQuantityUsedInDecimal) 
+            {
+                m_params.AddOpt("tiers[quantity_used_in_decimal][" + index + "]", tierQuantityUsedInDecimal);
+                return this;
+            }
+            public ImportUnbilledChargesRequest TierUnitAmountInDecimal(int index, string tierUnitAmountInDecimal) 
+            {
+                m_params.AddOpt("tiers[unit_amount_in_decimal][" + index + "]", tierUnitAmountInDecimal);
+                return this;
+            }
+        }
         public class ImportForItemsRequest : EntityRequest<ImportForItemsRequest> 
         {
             public ImportForItemsRequest(string url, HttpMethod method) 
@@ -6105,6 +6258,15 @@ namespace ChargeBee.Models
         }
         public class SubscriptionDiscount : Resource
         {
+            public enum TypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "fixed_amount")]
+                FixedAmount,
+                [EnumMember(Value = "percentage")]
+                Percentage,
+            }
             public enum DurationTypeEnum
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
@@ -6132,6 +6294,10 @@ namespace ChargeBee.Models
 
             public string InvoiceName {
                 get { return GetValue<string>("invoice_name", false); }
+            }
+
+            public TypeEnum DiscountType {
+                get { return GetEnum<TypeEnum>("type", true); }
             }
 
             public double? Percentage {

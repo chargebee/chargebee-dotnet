@@ -41,10 +41,6 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<ContractTerm>("contract_term"); }
         }
-        public Discount Discount
-        {
-            get {  return GetResource<Discount>("discount"); }
-        }
         public AdvanceInvoiceSchedule AdvanceInvoiceSchedule
         {
             get {  return GetResource<AdvanceInvoiceSchedule>("advance_invoice_schedule"); }

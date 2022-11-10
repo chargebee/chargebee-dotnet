@@ -325,6 +325,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<OrderResentOrder>("resent_orders"); }
         }
+        public string BusinessEntityId 
+        {
+            get { return GetValue<string>("business_entity_id", false); }
+        }
         
         #endregion
         
@@ -913,6 +917,10 @@ namespace ChargeBee.Models
             public TimestampFilter<OrderListRequest> ShippingDate() 
             {
                 return new TimestampFilter<OrderListRequest>("shipping_date", this);        
+            }
+            public TimestampFilter<OrderListRequest> ShippedAt() 
+            {
+                return new TimestampFilter<OrderListRequest>("shipped_at", this);        
             }
             public EnumFilter<Order.OrderTypeEnum, OrderListRequest> OrderType() 
             {

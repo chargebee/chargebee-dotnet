@@ -97,6 +97,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "resend_einvoice");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
+        public static ImportCreditNoteRequest ImportCreditNote()
+        {
+            string url = ApiUtil.BuildUrl("credit_notes", "import_credit_note");
+            return new ImportCreditNoteRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -547,6 +552,424 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class ImportCreditNoteRequest : EntityRequest<ImportCreditNoteRequest> 
+        {
+            public ImportCreditNoteRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public ImportCreditNoteRequest Id(string id) 
+            {
+                m_params.Add("id", id);
+                return this;
+            }
+            public ImportCreditNoteRequest CustomerId(string customerId) 
+            {
+                m_params.AddOpt("customer_id", customerId);
+                return this;
+            }
+            public ImportCreditNoteRequest SubscriptionId(string subscriptionId) 
+            {
+                m_params.AddOpt("subscription_id", subscriptionId);
+                return this;
+            }
+            public ImportCreditNoteRequest ReferenceInvoiceId(string referenceInvoiceId) 
+            {
+                m_params.Add("reference_invoice_id", referenceInvoiceId);
+                return this;
+            }
+            public ImportCreditNoteRequest Type(CreditNote.TypeEnum type) 
+            {
+                m_params.Add("type", type);
+                return this;
+            }
+            public ImportCreditNoteRequest CurrencyCode(string currencyCode) 
+            {
+                m_params.AddOpt("currency_code", currencyCode);
+                return this;
+            }
+            public ImportCreditNoteRequest CreateReasonCode(string createReasonCode) 
+            {
+                m_params.Add("create_reason_code", createReasonCode);
+                return this;
+            }
+            public ImportCreditNoteRequest Date(long date) 
+            {
+                m_params.AddOpt("date", date);
+                return this;
+            }
+            public ImportCreditNoteRequest Status(CreditNote.StatusEnum status) 
+            {
+                m_params.AddOpt("status", status);
+                return this;
+            }
+            public ImportCreditNoteRequest Total(int total) 
+            {
+                m_params.AddOpt("total", total);
+                return this;
+            }
+            public ImportCreditNoteRequest RefundedAt(long refundedAt) 
+            {
+                m_params.AddOpt("refunded_at", refundedAt);
+                return this;
+            }
+            public ImportCreditNoteRequest VoidedAt(long voidedAt) 
+            {
+                m_params.AddOpt("voided_at", voidedAt);
+                return this;
+            }
+            public ImportCreditNoteRequest SubTotal(int subTotal) 
+            {
+                m_params.AddOpt("sub_total", subTotal);
+                return this;
+            }
+            public ImportCreditNoteRequest RoundOffAmount(int roundOffAmount) 
+            {
+                m_params.AddOpt("round_off_amount", roundOffAmount);
+                return this;
+            }
+            public ImportCreditNoteRequest FractionalCorrection(int fractionalCorrection) 
+            {
+                m_params.AddOpt("fractional_correction", fractionalCorrection);
+                return this;
+            }
+            public ImportCreditNoteRequest VatNumberPrefix(string vatNumberPrefix) 
+            {
+                m_params.AddOpt("vat_number_prefix", vatNumberPrefix);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemReferenceLineItemId(int index, string lineItemReferenceLineItemId) 
+            {
+                m_params.AddOpt("line_items[reference_line_item_id][" + index + "]", lineItemReferenceLineItemId);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemId(int index, string lineItemId) 
+            {
+                m_params.AddOpt("line_items[id][" + index + "]", lineItemId);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemDateFrom(int index, long lineItemDateFrom) 
+            {
+                m_params.AddOpt("line_items[date_from][" + index + "]", lineItemDateFrom);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemDateTo(int index, long lineItemDateTo) 
+            {
+                m_params.AddOpt("line_items[date_to][" + index + "]", lineItemDateTo);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemSubscriptionId(int index, string lineItemSubscriptionId) 
+            {
+                m_params.AddOpt("line_items[subscription_id][" + index + "]", lineItemSubscriptionId);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemDescription(int index, string lineItemDescription) 
+            {
+                m_params.Add("line_items[description][" + index + "]", lineItemDescription);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemUnitAmount(int index, int lineItemUnitAmount) 
+            {
+                m_params.AddOpt("line_items[unit_amount][" + index + "]", lineItemUnitAmount);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemQuantity(int index, int lineItemQuantity) 
+            {
+                m_params.AddOpt("line_items[quantity][" + index + "]", lineItemQuantity);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemAmount(int index, int lineItemAmount) 
+            {
+                m_params.AddOpt("line_items[amount][" + index + "]", lineItemAmount);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemUnitAmountInDecimal(int index, string lineItemUnitAmountInDecimal) 
+            {
+                m_params.AddOpt("line_items[unit_amount_in_decimal][" + index + "]", lineItemUnitAmountInDecimal);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemQuantityInDecimal(int index, string lineItemQuantityInDecimal) 
+            {
+                m_params.AddOpt("line_items[quantity_in_decimal][" + index + "]", lineItemQuantityInDecimal);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemAmountInDecimal(int index, string lineItemAmountInDecimal) 
+            {
+                m_params.AddOpt("line_items[amount_in_decimal][" + index + "]", lineItemAmountInDecimal);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemEntityType(int index, CreditNoteLineItem.EntityTypeEnum lineItemEntityType) 
+            {
+                m_params.AddOpt("line_items[entity_type][" + index + "]", lineItemEntityType);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemEntityId(int index, string lineItemEntityId) 
+            {
+                m_params.AddOpt("line_items[entity_id][" + index + "]", lineItemEntityId);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemItemLevelDiscount1EntityId(int index, string lineItemItemLevelDiscount1EntityId) 
+            {
+                m_params.AddOpt("line_items[item_level_discount1_entity_id][" + index + "]", lineItemItemLevelDiscount1EntityId);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemItemLevelDiscount1Amount(int index, int lineItemItemLevelDiscount1Amount) 
+            {
+                m_params.AddOpt("line_items[item_level_discount1_amount][" + index + "]", lineItemItemLevelDiscount1Amount);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemItemLevelDiscount2EntityId(int index, string lineItemItemLevelDiscount2EntityId) 
+            {
+                m_params.AddOpt("line_items[item_level_discount2_entity_id][" + index + "]", lineItemItemLevelDiscount2EntityId);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemItemLevelDiscount2Amount(int index, int lineItemItemLevelDiscount2Amount) 
+            {
+                m_params.AddOpt("line_items[item_level_discount2_amount][" + index + "]", lineItemItemLevelDiscount2Amount);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTax1Name(int index, string lineItemTax1Name) 
+            {
+                m_params.AddOpt("line_items[tax1_name][" + index + "]", lineItemTax1Name);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTax1Amount(int index, int lineItemTax1Amount) 
+            {
+                m_params.AddOpt("line_items[tax1_amount][" + index + "]", lineItemTax1Amount);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTax2Name(int index, string lineItemTax2Name) 
+            {
+                m_params.AddOpt("line_items[tax2_name][" + index + "]", lineItemTax2Name);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTax2Amount(int index, int lineItemTax2Amount) 
+            {
+                m_params.AddOpt("line_items[tax2_amount][" + index + "]", lineItemTax2Amount);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTax3Name(int index, string lineItemTax3Name) 
+            {
+                m_params.AddOpt("line_items[tax3_name][" + index + "]", lineItemTax3Name);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTax3Amount(int index, int lineItemTax3Amount) 
+            {
+                m_params.AddOpt("line_items[tax3_amount][" + index + "]", lineItemTax3Amount);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTax4Name(int index, string lineItemTax4Name) 
+            {
+                m_params.AddOpt("line_items[tax4_name][" + index + "]", lineItemTax4Name);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTax4Amount(int index, int lineItemTax4Amount) 
+            {
+                m_params.AddOpt("line_items[tax4_amount][" + index + "]", lineItemTax4Amount);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTax5Name(int index, string lineItemTax5Name) 
+            {
+                m_params.AddOpt("line_items[tax5_name][" + index + "]", lineItemTax5Name);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTax5Amount(int index, int lineItemTax5Amount) 
+            {
+                m_params.AddOpt("line_items[tax5_amount][" + index + "]", lineItemTax5Amount);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTax6Name(int index, string lineItemTax6Name) 
+            {
+                m_params.AddOpt("line_items[tax6_name][" + index + "]", lineItemTax6Name);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTax6Amount(int index, int lineItemTax6Amount) 
+            {
+                m_params.AddOpt("line_items[tax6_amount][" + index + "]", lineItemTax6Amount);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTax7Name(int index, string lineItemTax7Name) 
+            {
+                m_params.AddOpt("line_items[tax7_name][" + index + "]", lineItemTax7Name);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTax7Amount(int index, int lineItemTax7Amount) 
+            {
+                m_params.AddOpt("line_items[tax7_amount][" + index + "]", lineItemTax7Amount);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTax8Name(int index, string lineItemTax8Name) 
+            {
+                m_params.AddOpt("line_items[tax8_name][" + index + "]", lineItemTax8Name);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTax8Amount(int index, int lineItemTax8Amount) 
+            {
+                m_params.AddOpt("line_items[tax8_amount][" + index + "]", lineItemTax8Amount);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTax9Name(int index, string lineItemTax9Name) 
+            {
+                m_params.AddOpt("line_items[tax9_name][" + index + "]", lineItemTax9Name);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTax9Amount(int index, int lineItemTax9Amount) 
+            {
+                m_params.AddOpt("line_items[tax9_amount][" + index + "]", lineItemTax9Amount);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTax10Name(int index, string lineItemTax10Name) 
+            {
+                m_params.AddOpt("line_items[tax10_name][" + index + "]", lineItemTax10Name);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTax10Amount(int index, int lineItemTax10Amount) 
+            {
+                m_params.AddOpt("line_items[tax10_amount][" + index + "]", lineItemTax10Amount);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTierLineItemId(int index, string lineItemTierLineItemId) 
+            {
+                m_params.Add("line_item_tiers[line_item_id][" + index + "]", lineItemTierLineItemId);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTierStartingUnit(int index, int lineItemTierStartingUnit) 
+            {
+                m_params.AddOpt("line_item_tiers[starting_unit][" + index + "]", lineItemTierStartingUnit);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTierEndingUnit(int index, int lineItemTierEndingUnit) 
+            {
+                m_params.AddOpt("line_item_tiers[ending_unit][" + index + "]", lineItemTierEndingUnit);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTierQuantityUsed(int index, int lineItemTierQuantityUsed) 
+            {
+                m_params.AddOpt("line_item_tiers[quantity_used][" + index + "]", lineItemTierQuantityUsed);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTierUnitAmount(int index, int lineItemTierUnitAmount) 
+            {
+                m_params.AddOpt("line_item_tiers[unit_amount][" + index + "]", lineItemTierUnitAmount);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTierStartingUnitInDecimal(int index, string lineItemTierStartingUnitInDecimal) 
+            {
+                m_params.AddOpt("line_item_tiers[starting_unit_in_decimal][" + index + "]", lineItemTierStartingUnitInDecimal);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTierEndingUnitInDecimal(int index, string lineItemTierEndingUnitInDecimal) 
+            {
+                m_params.AddOpt("line_item_tiers[ending_unit_in_decimal][" + index + "]", lineItemTierEndingUnitInDecimal);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTierQuantityUsedInDecimal(int index, string lineItemTierQuantityUsedInDecimal) 
+            {
+                m_params.AddOpt("line_item_tiers[quantity_used_in_decimal][" + index + "]", lineItemTierQuantityUsedInDecimal);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTierUnitAmountInDecimal(int index, string lineItemTierUnitAmountInDecimal) 
+            {
+                m_params.AddOpt("line_item_tiers[unit_amount_in_decimal][" + index + "]", lineItemTierUnitAmountInDecimal);
+                return this;
+            }
+            public ImportCreditNoteRequest DiscountLineItemId(int index, string discountLineItemId) 
+            {
+                m_params.AddOpt("discounts[line_item_id][" + index + "]", discountLineItemId);
+                return this;
+            }
+            public ImportCreditNoteRequest DiscountEntityType(int index, CreditNoteDiscount.EntityTypeEnum discountEntityType) 
+            {
+                m_params.Add("discounts[entity_type][" + index + "]", discountEntityType);
+                return this;
+            }
+            public ImportCreditNoteRequest DiscountEntityId(int index, string discountEntityId) 
+            {
+                m_params.AddOpt("discounts[entity_id][" + index + "]", discountEntityId);
+                return this;
+            }
+            public ImportCreditNoteRequest DiscountDescription(int index, string discountDescription) 
+            {
+                m_params.AddOpt("discounts[description][" + index + "]", discountDescription);
+                return this;
+            }
+            public ImportCreditNoteRequest DiscountAmount(int index, int discountAmount) 
+            {
+                m_params.Add("discounts[amount][" + index + "]", discountAmount);
+                return this;
+            }
+            public ImportCreditNoteRequest TaxName(int index, string taxName) 
+            {
+                m_params.Add("taxes[name][" + index + "]", taxName);
+                return this;
+            }
+            public ImportCreditNoteRequest TaxRate(int index, double taxRate) 
+            {
+                m_params.Add("taxes[rate][" + index + "]", taxRate);
+                return this;
+            }
+            public ImportCreditNoteRequest TaxAmount(int index, int taxAmount) 
+            {
+                m_params.AddOpt("taxes[amount][" + index + "]", taxAmount);
+                return this;
+            }
+            public ImportCreditNoteRequest TaxDescription(int index, string taxDescription) 
+            {
+                m_params.AddOpt("taxes[description][" + index + "]", taxDescription);
+                return this;
+            }
+            public ImportCreditNoteRequest TaxJurisType(int index, ChargeBee.Models.Enums.TaxJurisTypeEnum taxJurisType) 
+            {
+                m_params.AddOpt("taxes[juris_type][" + index + "]", taxJurisType);
+                return this;
+            }
+            public ImportCreditNoteRequest TaxJurisName(int index, string taxJurisName) 
+            {
+                m_params.AddOpt("taxes[juris_name][" + index + "]", taxJurisName);
+                return this;
+            }
+            public ImportCreditNoteRequest TaxJurisCode(int index, string taxJurisCode) 
+            {
+                m_params.AddOpt("taxes[juris_code][" + index + "]", taxJurisCode);
+                return this;
+            }
+            public ImportCreditNoteRequest AllocationInvoiceId(int index, string allocationInvoiceId) 
+            {
+                m_params.Add("allocations[invoice_id][" + index + "]", allocationInvoiceId);
+                return this;
+            }
+            public ImportCreditNoteRequest AllocationAllocatedAmount(int index, int allocationAllocatedAmount) 
+            {
+                m_params.Add("allocations[allocated_amount][" + index + "]", allocationAllocatedAmount);
+                return this;
+            }
+            public ImportCreditNoteRequest AllocationAllocatedAt(int index, long allocationAllocatedAt) 
+            {
+                m_params.Add("allocations[allocated_at][" + index + "]", allocationAllocatedAt);
+                return this;
+            }
+            public ImportCreditNoteRequest LinkedRefundAmount(int index, int linkedRefundAmount) 
+            {
+                m_params.Add("linked_refunds[amount][" + index + "]", linkedRefundAmount);
+                return this;
+            }
+            public ImportCreditNoteRequest LinkedRefundPaymentMethod(int index, ChargeBee.Models.Enums.PaymentMethodEnum linkedRefundPaymentMethod) 
+            {
+                m_params.Add("linked_refunds[payment_method][" + index + "]", linkedRefundPaymentMethod);
+                return this;
+            }
+            public ImportCreditNoteRequest LinkedRefundDate(int index, long linkedRefundDate) 
+            {
+                m_params.Add("linked_refunds[date][" + index + "]", linkedRefundDate);
+                return this;
+            }
+            public ImportCreditNoteRequest LinkedRefundReferenceNumber(int index, string linkedRefundReferenceNumber) 
+            {
+                m_params.AddOpt("linked_refunds[reference_number][" + index + "]", linkedRefundReferenceNumber);
+                return this;
+            }
+        }
         #endregion
 
         public enum TypeEnum
@@ -624,6 +1047,8 @@ namespace ChargeBee.Models
                 Success,
                 [EnumMember(Value = "failed")]
                 Failed,
+                [EnumMember(Value = "registered")]
+                Registered,
             }
 
             public string Id {

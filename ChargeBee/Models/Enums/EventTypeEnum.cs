@@ -464,6 +464,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "entitlement_overrides_auto_removed")]
          EntitlementOverridesAutoRemoved,
 
+        [EnumMember(Value = "subscription_entitlements_created")]
+         SubscriptionEntitlementsCreated,
+
         [EnumMember(Value = "business_entity_created")]
          BusinessEntityCreated,
 

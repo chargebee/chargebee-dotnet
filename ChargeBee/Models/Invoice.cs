@@ -1889,6 +1889,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("status", status);
                 return this;
             }
+            public ImportInvoiceRequest VoidedAt(long voidedAt) 
+            {
+                m_params.AddOpt("voided_at", voidedAt);
+                return this;
+            }
+            public ImportInvoiceRequest VoidReasonCode(string voidReasonCode) 
+            {
+                m_params.AddOpt("void_reason_code", voidReasonCode);
+                return this;
+            }
             public ImportInvoiceRequest DueDate(long dueDate) 
             {
                 m_params.AddOpt("due_date", dueDate);
@@ -2960,9 +2970,9 @@ namespace ChargeBee.Models
                 return this;
             }
             [Obsolete]
-            public VoidInvoiceRequest VoidWithCreditNote(bool voidWithCreditNote) 
+            public VoidInvoiceRequest CreateCreditNote(bool createCreditNote) 
             {
-                m_params.AddOpt("void_with_credit_note", voidWithCreditNote);
+                m_params.AddOpt("create_credit_note", createCreditNote);
                 return this;
             }
         }
@@ -3903,6 +3913,8 @@ namespace ChargeBee.Models
                 Success,
                 [EnumMember(Value = "failed")]
                 Failed,
+                [EnumMember(Value = "registered")]
+                Registered,
             }
 
             public string Id {
