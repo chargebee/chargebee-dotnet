@@ -2178,6 +2178,10 @@ namespace ChargeBee.Models
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","updated_at");
                 return this;
             }
+            public StringFilter<SubscriptionListRequest> BusinessEntityId() 
+            {
+                return new StringFilter<SubscriptionListRequest>("business_entity_id", this);        
+            }
             public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, SubscriptionListRequest> Channel() 
             {
                 return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, SubscriptionListRequest>("channel", this);        
@@ -5493,6 +5497,11 @@ namespace ChargeBee.Models
             public PauseRequest InvoiceDunningHandling(ChargeBee.Models.Enums.InvoiceDunningHandlingEnum invoiceDunningHandling) 
             {
                 m_params.AddOpt("invoice_dunning_handling", invoiceDunningHandling);
+                return this;
+            }
+            public PauseRequest SkipBillingCycles(int skipBillingCycles) 
+            {
+                m_params.AddOpt("skip_billing_cycles", skipBillingCycles);
                 return this;
             }
             public PauseRequest ResumeDate(long resumeDate) 

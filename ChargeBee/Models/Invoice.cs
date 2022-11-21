@@ -1899,6 +1899,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("void_reason_code", voidReasonCode);
                 return this;
             }
+            public ImportInvoiceRequest IsWrittenOff(bool isWrittenOff) 
+            {
+                m_params.AddOpt("is_written_off", isWrittenOff);
+                return this;
+            }
+            public ImportInvoiceRequest WriteOffAmount(int writeOffAmount) 
+            {
+                m_params.AddOpt("write_off_amount", writeOffAmount);
+                return this;
+            }
+            public ImportInvoiceRequest WriteOffDate(long writeOffDate) 
+            {
+                m_params.AddOpt("write_off_date", writeOffDate);
+                return this;
+            }
             public ImportInvoiceRequest DueDate(long dueDate) 
             {
                 m_params.AddOpt("due_date", dueDate);
@@ -1912,6 +1927,11 @@ namespace ChargeBee.Models
             public ImportInvoiceRequest UseForProration(bool useForProration) 
             {
                 m_params.AddOpt("use_for_proration", useForProration);
+                return this;
+            }
+            public ImportInvoiceRequest CreditNoteId(string creditNoteId) 
+            {
+                m_params.AddOpt("credit_note[id]", creditNoteId);
                 return this;
             }
             public ImportInvoiceRequest BillingAddressFirstName(string billingAddressFirstName) 

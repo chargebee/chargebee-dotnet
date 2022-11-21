@@ -19,5 +19,8 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "specific_date")]
          SpecificDate,
 
+        [EnumMember(Value = "billing_cycles")]
+         BillingCycles,
+
     }
 }

@@ -235,6 +235,10 @@ namespace ChargeBee.Models
             {
                 return new StringFilter<RevenueRecognitionRequest>("cancel_reason_code", this).SupportsMultiOperators(true);        
             }
+            public StringFilter<RevenueRecognitionRequest> BusinessEntityId() 
+            {
+                return new StringFilter<RevenueRecognitionRequest>("business_entity_id", this);        
+            }
             public StringFilter<RevenueRecognitionRequest> InvoiceId() 
             {
                 return new StringFilter<RevenueRecognitionRequest>("invoice[id]", this).SupportsMultiOperators(true);        
@@ -518,6 +522,10 @@ namespace ChargeBee.Models
             public StringFilter<DeferredRevenueRequest> CancelReasonCode() 
             {
                 return new StringFilter<DeferredRevenueRequest>("cancel_reason_code", this).SupportsMultiOperators(true);        
+            }
+            public StringFilter<DeferredRevenueRequest> BusinessEntityId() 
+            {
+                return new StringFilter<DeferredRevenueRequest>("business_entity_id", this);        
             }
             public StringFilter<DeferredRevenueRequest> InvoiceId() 
             {
@@ -933,6 +941,10 @@ namespace ChargeBee.Models
             {
             }
 
+            public StringFilter<CustomersRequest> BusinessEntityId() 
+            {
+                return new StringFilter<CustomersRequest>("business_entity_id", this);        
+            }
             public StringFilter<CustomersRequest> CustomerId() 
             {
                 return new StringFilter<CustomersRequest>("customer[id]", this).SupportsMultiOperators(true);        

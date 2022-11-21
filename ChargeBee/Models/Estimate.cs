@@ -2450,6 +2450,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[resume_date]", subscriptionResumeDate);
                 return this;
             }
+            public PauseSubscriptionRequest SubscriptionSkipBillingCycles(int subscriptionSkipBillingCycles) 
+            {
+                m_params.AddOpt("subscription[skip_billing_cycles]", subscriptionSkipBillingCycles);
+                return this;
+            }
         }
         public class ResumeSubscriptionRequest : EntityRequest<ResumeSubscriptionRequest> 
         {

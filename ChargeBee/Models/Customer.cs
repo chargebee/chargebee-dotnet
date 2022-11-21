@@ -995,6 +995,10 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<CustomerListRequest>("updated_at", this);        
             }
+            public StringFilter<CustomerListRequest> BusinessEntityId() 
+            {
+                return new StringFilter<CustomerListRequest>("business_entity_id", this);        
+            }
             public EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, CustomerListRequest> OfflinePaymentMethod() 
             {
                 return new EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, CustomerListRequest>("offline_payment_method", this);        
