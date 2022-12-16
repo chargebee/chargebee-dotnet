@@ -108,9 +108,9 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<ChargeTypeEnum>("charge_type", true); }
         }
-        public int? Price 
+        public long? Price 
         {
-            get { return GetValue<int?>("price", false); }
+            get { return GetValue<long?>("price", false); }
         }
         public string CurrencyCode 
         {
@@ -284,7 +284,7 @@ namespace ChargeBee.Models
                 m_params.Add("charge_type", chargeType);
                 return this;
             }
-            public CreateRequest Price(int price) 
+            public CreateRequest Price(long price) 
             {
                 m_params.AddOpt("price", price);
                 return this;
@@ -455,7 +455,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("tiers[ending_unit][" + index + "]", tierEndingUnit);
                 return this;
             }
-            public CreateRequest TierPrice(int index, int tierPrice) 
+            public CreateRequest TierPrice(int index, long tierPrice) 
             {
                 m_params.AddOpt("tiers[price][" + index + "]", tierPrice);
                 return this;
@@ -503,7 +503,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("charge_type", chargeType);
                 return this;
             }
-            public UpdateRequest Price(int price) 
+            public UpdateRequest Price(long price) 
             {
                 m_params.AddOpt("price", price);
                 return this;
@@ -669,7 +669,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("tiers[ending_unit][" + index + "]", tierEndingUnit);
                 return this;
             }
-            public UpdateRequest TierPrice(int index, int tierPrice) 
+            public UpdateRequest TierPrice(int index, long tierPrice) 
             {
                 m_params.AddOpt("tiers[price][" + index + "]", tierPrice);
                 return this;
@@ -718,9 +718,9 @@ namespace ChargeBee.Models
             {
                 return new EnumFilter<Addon.ChargeTypeEnum, AddonListRequest>("charge_type", this);        
             }
-            public NumberFilter<int, AddonListRequest> Price() 
+            public NumberFilter<long, AddonListRequest> Price() 
             {
-                return new NumberFilter<int, AddonListRequest>("price", this);        
+                return new NumberFilter<long, AddonListRequest>("price", this);        
             }
             public NumberFilter<int, AddonListRequest> Period() 
             {
@@ -869,8 +869,8 @@ namespace ChargeBee.Models
                 get { return GetValue<int?>("ending_unit", false); }
             }
 
-            public int Price {
-                get { return GetValue<int>("price", true); }
+            public long Price {
+                get { return GetValue<long>("price", true); }
             }
 
             public string StartingUnitInDecimal {

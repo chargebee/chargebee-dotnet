@@ -148,9 +148,9 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("currency_code", true); }
         }
-        public int? Amount 
+        public long? Amount 
         {
-            get { return GetValue<int?>("amount", false); }
+            get { return GetValue<long?>("amount", false); }
         }
         public string IdAtGateway 
         {
@@ -200,9 +200,9 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("fraud_reason", false); }
         }
-        public int? AmountUnused 
+        public long? AmountUnused 
         {
-            get { return GetValue<int?>("amount_unused", false); }
+            get { return GetValue<long?>("amount_unused", false); }
         }
         public string MaskedCardNumber 
         {
@@ -220,9 +220,9 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("reference_authorization_id", false); }
         }
-        public int? AmountCapturable 
+        public long? AmountCapturable 
         {
-            get { return GetValue<int?>("amount_capturable", false); }
+            get { return GetValue<long?>("amount_capturable", false); }
         }
         public string ReversalTransactionId 
         {
@@ -294,7 +294,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("currency_code", currencyCode);
                 return this;
             }
-            public CreateAuthorizationRequest Amount(int amount) 
+            public CreateAuthorizationRequest Amount(long amount) 
             {
                 m_params.Add("amount", amount);
                 return this;
@@ -307,7 +307,7 @@ namespace ChargeBee.Models
             {
             }
 
-            public RecordRefundRequest Amount(int amount) 
+            public RecordRefundRequest Amount(long amount) 
             {
                 m_params.AddOpt("amount", amount);
                 return this;
@@ -340,7 +340,7 @@ namespace ChargeBee.Models
             {
             }
 
-            public RefundRequest Amount(int amount) 
+            public RefundRequest Amount(long amount) 
             {
                 m_params.AddOpt("amount", amount);
                 return this;
@@ -407,13 +407,13 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<TransactionListRequest>("date", this);        
             }
-            public NumberFilter<int, TransactionListRequest> Amount() 
+            public NumberFilter<long, TransactionListRequest> Amount() 
             {
-                return new NumberFilter<int, TransactionListRequest>("amount", this);        
+                return new NumberFilter<long, TransactionListRequest>("amount", this);        
             }
-            public NumberFilter<int, TransactionListRequest> AmountCapturable() 
+            public NumberFilter<long, TransactionListRequest> AmountCapturable() 
             {
-                return new NumberFilter<int, TransactionListRequest>("amount_capturable", this);        
+                return new NumberFilter<long, TransactionListRequest>("amount_capturable", this);        
             }
             public EnumFilter<Transaction.StatusEnum, TransactionListRequest> Status() 
             {
@@ -525,8 +525,8 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("invoice_id", true); }
             }
 
-            public int AppliedAmount {
-                get { return GetValue<int>("applied_amount", true); }
+            public long AppliedAmount {
+                get { return GetValue<long>("applied_amount", true); }
             }
 
             public DateTime AppliedAt {
@@ -537,8 +537,8 @@ namespace ChargeBee.Models
                 get { return GetDateTime("invoice_date", false); }
             }
 
-            public int? InvoiceTotal {
-                get { return GetValue<int?>("invoice_total", false); }
+            public long? InvoiceTotal {
+                get { return GetValue<long?>("invoice_total", false); }
             }
 
             public Invoice.StatusEnum InvoiceStatus {
@@ -553,8 +553,8 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("cn_id", true); }
             }
 
-            public int AppliedAmount {
-                get { return GetValue<int>("applied_amount", true); }
+            public long AppliedAmount {
+                get { return GetValue<long>("applied_amount", true); }
             }
 
             public DateTime AppliedAt {
@@ -573,8 +573,8 @@ namespace ChargeBee.Models
                 get { return GetDateTime("cn_date", false); }
             }
 
-            public int? CnTotal {
-                get { return GetValue<int?>("cn_total", false); }
+            public long? CnTotal {
+                get { return GetValue<long?>("cn_total", false); }
             }
 
             public CreditNote.StatusEnum CnStatus {
@@ -601,8 +601,8 @@ namespace ChargeBee.Models
                 get { return (DateTime)GetDateTime("txn_date", true); }
             }
 
-            public int TxnAmount {
-                get { return GetValue<int>("txn_amount", true); }
+            public long TxnAmount {
+                get { return GetValue<long>("txn_amount", true); }
             }
 
         }
@@ -634,8 +634,8 @@ namespace ChargeBee.Models
                 get { return GetEnum<StatusEnum>("status", false); }
             }
 
-            public int? Amount {
-                get { return GetValue<int?>("amount", false); }
+            public long? Amount {
+                get { return GetValue<long?>("amount", false); }
             }
 
             public DateTime? Date {

@@ -1,5 +1,14 @@
+### v3.0.0 (2022-12-16)
+* * *
+
+* Upgraded the NewtonSoft library to 13.0.1.
+
+⚠️ **Breaking change**: The data types for all integral currency fields have been changed from `int` to `long`. Integral currency fields can be identified as those with their data type specified in the [API docs](https://apidocs.chargebee.com/docs/api?prod_cat_ver=2) as `in cents`. See the migration guide for details.
+
 ### v2.22.0 (2022-11-21)
 * * *
+
+🔴 **Alert!** Eventually, v2.x will reach end-of-life, after which it will no longer receive any new updates. We encourage you to upgrade to v3.x at the earliest.
 
 #### Added input parameters:
 * business_entity_id filter parameter has been added to the Customer#CustomerListRequest, Export#RevenueRecognitionRequest, Export#DeferredRevenueRequest, Export#CustomersRequest and Subscription#SubscriptionListRequest API.

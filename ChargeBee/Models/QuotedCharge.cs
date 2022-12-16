@@ -73,8 +73,8 @@ namespace ChargeBee.Models
         public class QuotedChargeCharge : Resource
         {
 
-            public int? Amount {
-                get { return GetValue<int?>("amount", false); }
+            public long? Amount {
+                get { return GetValue<long?>("amount", false); }
             }
 
             public string AmountInDecimal {
@@ -113,8 +113,8 @@ namespace ChargeBee.Models
                 get { return GetValue<int?>("quantity", false); }
             }
 
-            public int? UnitPrice {
-                get { return GetValue<int?>("unit_price", false); }
+            public long? UnitPrice {
+                get { return GetValue<long?>("unit_price", false); }
             }
 
             public string QuantityInDecimal {
@@ -145,8 +145,8 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("quantity_in_decimal", false); }
             }
 
-            public int? UnitPrice {
-                get { return GetValue<int?>("unit_price", false); }
+            public long? UnitPrice {
+                get { return GetValue<long?>("unit_price", false); }
             }
 
             public string UnitPriceInDecimal {
@@ -173,8 +173,8 @@ namespace ChargeBee.Models
                 get { return GetValue<int?>("ending_unit", false); }
             }
 
-            public int Price {
-                get { return GetValue<int>("price", true); }
+            public long Price {
+                get { return GetValue<long>("price", true); }
             }
 
             public string StartingUnitInDecimal {

@@ -119,7 +119,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("purchase_items[quantity][" + index + "]", purchaseItemQuantity);
                 return this;
             }
-            public CreateRequest PurchaseItemUnitAmount(int index, int purchaseItemUnitAmount) 
+            public CreateRequest PurchaseItemUnitAmount(int index, long purchaseItemUnitAmount) 
             {
                 m_params.AddOpt("purchase_items[unit_amount][" + index + "]", purchaseItemUnitAmount);
                 return this;
@@ -154,7 +154,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
                 return this;
             }
-            public CreateRequest ItemTierPrice(int index, int itemTierPrice) 
+            public CreateRequest ItemTierPrice(int index, long itemTierPrice) 
             {
                 m_params.AddOpt("item_tiers[price][" + index + "]", itemTierPrice);
                 return this;
@@ -259,7 +259,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("discounts[percentage][" + index + "]", discountPercentage);
                 return this;
             }
-            public CreateRequest DiscountAmount(int index, int discountAmount) 
+            public CreateRequest DiscountAmount(int index, long discountAmount) 
             {
                 m_params.AddOpt("discounts[amount][" + index + "]", discountAmount);
                 return this;
@@ -407,7 +407,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("purchase_items[quantity][" + index + "]", purchaseItemQuantity);
                 return this;
             }
-            public EstimateRequest PurchaseItemUnitAmount(int index, int purchaseItemUnitAmount) 
+            public EstimateRequest PurchaseItemUnitAmount(int index, long purchaseItemUnitAmount) 
             {
                 m_params.AddOpt("purchase_items[unit_amount][" + index + "]", purchaseItemUnitAmount);
                 return this;
@@ -442,7 +442,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
                 return this;
             }
-            public EstimateRequest ItemTierPrice(int index, int itemTierPrice) 
+            public EstimateRequest ItemTierPrice(int index, long itemTierPrice) 
             {
                 m_params.AddOpt("item_tiers[price][" + index + "]", itemTierPrice);
                 return this;
@@ -547,7 +547,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("discounts[percentage][" + index + "]", discountPercentage);
                 return this;
             }
-            public EstimateRequest DiscountAmount(int index, int discountAmount) 
+            public EstimateRequest DiscountAmount(int index, long discountAmount) 
             {
                 m_params.AddOpt("discounts[amount][" + index + "]", discountAmount);
                 return this;

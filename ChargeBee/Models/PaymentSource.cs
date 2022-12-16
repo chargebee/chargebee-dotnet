@@ -670,12 +670,12 @@ namespace ChargeBee.Models
             {
             }
 
-            public VerifyBankAccountRequest Amount1(int amount1) 
+            public VerifyBankAccountRequest Amount1(long amount1) 
             {
                 m_params.Add("amount1", amount1);
                 return this;
             }
-            public VerifyBankAccountRequest Amount2(int amount2) 
+            public VerifyBankAccountRequest Amount2(long amount2) 
             {
                 m_params.Add("amount2", amount2);
                 return this;

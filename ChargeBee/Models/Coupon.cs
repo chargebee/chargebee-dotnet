@@ -109,9 +109,9 @@ namespace ChargeBee.Models
         {
             get { return GetValue<double?>("discount_percentage", false); }
         }
-        public int? DiscountAmount 
+        public long? DiscountAmount 
         {
-            get { return GetValue<int?>("discount_amount", false); }
+            get { return GetValue<long?>("discount_amount", false); }
         }
         [Obsolete]
         public int? DiscountQuantity 
@@ -247,7 +247,7 @@ namespace ChargeBee.Models
                 m_params.Add("discount_type", discountType);
                 return this;
             }
-            public CreateRequest DiscountAmount(int discountAmount) 
+            public CreateRequest DiscountAmount(long discountAmount) 
             {
                 m_params.AddOpt("discount_amount", discountAmount);
                 return this;
@@ -371,7 +371,7 @@ namespace ChargeBee.Models
                 m_params.Add("discount_type", discountType);
                 return this;
             }
-            public CreateForItemsRequest DiscountAmount(int discountAmount) 
+            public CreateForItemsRequest DiscountAmount(long discountAmount) 
             {
                 m_params.AddOpt("discount_amount", discountAmount);
                 return this;
@@ -505,7 +505,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("discount_type", discountType);
                 return this;
             }
-            public UpdateForItemsRequest DiscountAmount(int discountAmount) 
+            public UpdateForItemsRequest DiscountAmount(long discountAmount) 
             {
                 m_params.AddOpt("discount_amount", discountAmount);
                 return this;
@@ -676,7 +676,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("discount_type", discountType);
                 return this;
             }
-            public UpdateRequest DiscountAmount(int discountAmount) 
+            public UpdateRequest DiscountAmount(long discountAmount) 
             {
                 m_params.AddOpt("discount_amount", discountAmount);
                 return this;

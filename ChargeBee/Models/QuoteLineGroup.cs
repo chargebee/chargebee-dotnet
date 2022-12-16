@@ -52,25 +52,25 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("id", false); }
         }
-        public int SubTotal 
+        public long SubTotal 
         {
-            get { return GetValue<int>("sub_total", true); }
+            get { return GetValue<long>("sub_total", true); }
         }
-        public int? Total 
+        public long? Total 
         {
-            get { return GetValue<int?>("total", false); }
+            get { return GetValue<long?>("total", false); }
         }
-        public int? CreditsApplied 
+        public long? CreditsApplied 
         {
-            get { return GetValue<int?>("credits_applied", false); }
+            get { return GetValue<long?>("credits_applied", false); }
         }
-        public int? AmountPaid 
+        public long? AmountPaid 
         {
-            get { return GetValue<int?>("amount_paid", false); }
+            get { return GetValue<long?>("amount_paid", false); }
         }
-        public int? AmountDue 
+        public long? AmountDue 
         {
-            get { return GetValue<int?>("amount_due", false); }
+            get { return GetValue<long?>("amount_due", false); }
         }
         public ChargeEventEnum? ChargeEvent 
         {
@@ -163,16 +163,16 @@ namespace ChargeBee.Models
                 get { return (DateTime)GetDateTime("date_to", true); }
             }
 
-            public int UnitAmount {
-                get { return GetValue<int>("unit_amount", true); }
+            public long UnitAmount {
+                get { return GetValue<long>("unit_amount", true); }
             }
 
             public int? Quantity {
                 get { return GetValue<int?>("quantity", false); }
             }
 
-            public int? Amount {
-                get { return GetValue<int?>("amount", false); }
+            public long? Amount {
+                get { return GetValue<long?>("amount", false); }
             }
 
             public PricingModelEnum? PricingModel {
@@ -183,8 +183,8 @@ namespace ChargeBee.Models
                 get { return GetValue<bool>("is_taxed", true); }
             }
 
-            public int? TaxAmount {
-                get { return GetValue<int?>("tax_amount", false); }
+            public long? TaxAmount {
+                get { return GetValue<long?>("tax_amount", false); }
             }
 
             public double? TaxRate {
@@ -203,12 +203,12 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("amount_in_decimal", false); }
             }
 
-            public int? DiscountAmount {
-                get { return GetValue<int?>("discount_amount", false); }
+            public long? DiscountAmount {
+                get { return GetValue<long?>("discount_amount", false); }
             }
 
-            public int? ItemLevelDiscountAmount {
-                get { return GetValue<int?>("item_level_discount_amount", false); }
+            public long? ItemLevelDiscountAmount {
+                get { return GetValue<long?>("item_level_discount_amount", false); }
             }
 
             public string ReferenceLineItemId {
@@ -260,8 +260,8 @@ namespace ChargeBee.Models
                 DocumentLevelDiscount,
             }
 
-            public int Amount {
-                get { return GetValue<int>("amount", true); }
+            public long Amount {
+                get { return GetValue<long>("amount", true); }
             }
 
             public string Description {
@@ -317,8 +317,8 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("entity_id", false); }
             }
 
-            public int DiscountAmount {
-                get { return GetValue<int>("discount_amount", true); }
+            public long DiscountAmount {
+                get { return GetValue<long>("discount_amount", true); }
             }
 
         }
@@ -329,8 +329,8 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("name", true); }
             }
 
-            public int Amount {
-                get { return GetValue<int>("amount", true); }
+            public long Amount {
+                get { return GetValue<long>("amount", true); }
             }
 
             public string Description {
@@ -361,12 +361,12 @@ namespace ChargeBee.Models
                 get { return GetValue<bool?>("is_non_compliance_tax", false); }
             }
 
-            public int TaxableAmount {
-                get { return GetValue<int>("taxable_amount", true); }
+            public long TaxableAmount {
+                get { return GetValue<long>("taxable_amount", true); }
             }
 
-            public int TaxAmount {
-                get { return GetValue<int>("tax_amount", true); }
+            public long TaxAmount {
+                get { return GetValue<long>("tax_amount", true); }
             }
 
             public TaxJurisTypeEnum? TaxJurisType {
@@ -381,8 +381,8 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("tax_juris_code", false); }
             }
 
-            public int? TaxAmountInLocalCurrency {
-                get { return GetValue<int?>("tax_amount_in_local_currency", false); }
+            public long? TaxAmountInLocalCurrency {
+                get { return GetValue<long?>("tax_amount_in_local_currency", false); }
             }
 
             public string LocalCurrencyCode {

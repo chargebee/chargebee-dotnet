@@ -56,13 +56,13 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int>("plan_quantity", false); }
         }
-        public int? PlanUnitPrice 
+        public long? PlanUnitPrice 
         {
-            get { return GetValue<int?>("plan_unit_price", false); }
+            get { return GetValue<long?>("plan_unit_price", false); }
         }
-        public int? SetupFee 
+        public long? SetupFee 
         {
-            get { return GetValue<int?>("setup_fee", false); }
+            get { return GetValue<long?>("setup_fee", false); }
         }
         public int? BillingPeriod 
         {
@@ -181,12 +181,12 @@ namespace ChargeBee.Models
                 get { return GetValue<int?>("quantity", false); }
             }
 
-            public int? UnitPrice {
-                get { return GetValue<int?>("unit_price", false); }
+            public long? UnitPrice {
+                get { return GetValue<long?>("unit_price", false); }
             }
 
-            public int? Amount {
-                get { return GetValue<int?>("amount", false); }
+            public long? Amount {
+                get { return GetValue<long?>("amount", false); }
             }
 
             public DateTime? TrialEnd {
@@ -236,8 +236,8 @@ namespace ChargeBee.Models
                 get { return GetValue<int>("quantity", true); }
             }
 
-            public int UnitPrice {
-                get { return GetValue<int>("unit_price", true); }
+            public long UnitPrice {
+                get { return GetValue<long>("unit_price", true); }
             }
 
             public int? ServicePeriodInDays {
@@ -316,16 +316,16 @@ namespace ChargeBee.Models
                 get { return GetDateTime("last_calculated_at", false); }
             }
 
-            public int? UnitPrice {
-                get { return GetValue<int?>("unit_price", false); }
+            public long? UnitPrice {
+                get { return GetValue<long?>("unit_price", false); }
             }
 
             public string UnitPriceInDecimal {
                 get { return GetValue<string>("unit_price_in_decimal", false); }
             }
 
-            public int? Amount {
-                get { return GetValue<int?>("amount", false); }
+            public long? Amount {
+                get { return GetValue<long?>("amount", false); }
             }
 
             public string AmountInDecimal {
@@ -380,8 +380,8 @@ namespace ChargeBee.Models
                 get { return GetValue<int?>("ending_unit", false); }
             }
 
-            public int Price {
-                get { return GetValue<int>("price", true); }
+            public long Price {
+                get { return GetValue<long>("price", true); }
             }
 
             public string StartingUnitInDecimal {

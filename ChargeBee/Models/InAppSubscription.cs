@@ -102,7 +102,7 @@ namespace ChargeBee.Models
                 m_params.Add("product[currency_code]", productCurrencyCode);
                 return this;
             }
-            public ProcessReceiptRequest ProductPrice(int productPrice) 
+            public ProcessReceiptRequest ProductPrice(long productPrice) 
             {
                 m_params.Add("product[price]", productPrice);
                 return this;

@@ -241,13 +241,13 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int>("plan_quantity", false); }
         }
-        public int? PlanUnitPrice 
+        public long? PlanUnitPrice 
         {
-            get { return GetValue<int?>("plan_unit_price", false); }
+            get { return GetValue<long?>("plan_unit_price", false); }
         }
-        public int? SetupFee 
+        public long? SetupFee 
         {
-            get { return GetValue<int?>("setup_fee", false); }
+            get { return GetValue<long?>("setup_fee", false); }
         }
         public int? BillingPeriod 
         {
@@ -289,9 +289,9 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("customer_id", true); }
         }
-        public int? PlanAmount 
+        public long? PlanAmount 
         {
-            get { return GetValue<int?>("plan_amount", false); }
+            get { return GetValue<long?>("plan_amount", false); }
         }
         public int? PlanFreeQuantity 
         {
@@ -433,13 +433,13 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("due_since", false); }
         }
-        public int? TotalDues 
+        public long? TotalDues 
         {
-            get { return GetValue<int?>("total_dues", false); }
+            get { return GetValue<long?>("total_dues", false); }
         }
-        public int? Mrr 
+        public long? Mrr 
         {
-            get { return GetValue<int?>("mrr", false); }
+            get { return GetValue<long?>("mrr", false); }
         }
         public decimal? ExchangeRate 
         {
@@ -566,7 +566,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("plan_quantity_in_decimal", planQuantityInDecimal);
                 return this;
             }
-            public CreateRequest PlanUnitPrice(int planUnitPrice) 
+            public CreateRequest PlanUnitPrice(long planUnitPrice) 
             {
                 m_params.AddOpt("plan_unit_price", planUnitPrice);
                 return this;
@@ -576,7 +576,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("plan_unit_price_in_decimal", planUnitPriceInDecimal);
                 return this;
             }
-            public CreateRequest SetupFee(int setupFee) 
+            public CreateRequest SetupFee(long setupFee) 
             {
                 m_params.AddOpt("setup_fee", setupFee);
                 return this;
@@ -1258,7 +1258,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
                 return this;
             }
-            public CreateRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            public CreateRequest AddonUnitPrice(int index, long addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
                 return this;
@@ -1283,7 +1283,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
                 return this;
             }
-            public CreateRequest EventBasedAddonUnitPrice(int index, int eventBasedAddonUnitPrice) 
+            public CreateRequest EventBasedAddonUnitPrice(int index, long eventBasedAddonUnitPrice) 
             {
                 m_params.AddOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
                 return this;
@@ -1356,7 +1356,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("plan_quantity_in_decimal", planQuantityInDecimal);
                 return this;
             }
-            public CreateForCustomerRequest PlanUnitPrice(int planUnitPrice) 
+            public CreateForCustomerRequest PlanUnitPrice(long planUnitPrice) 
             {
                 m_params.AddOpt("plan_unit_price", planUnitPrice);
                 return this;
@@ -1366,7 +1366,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("plan_unit_price_in_decimal", planUnitPriceInDecimal);
                 return this;
             }
-            public CreateForCustomerRequest SetupFee(int setupFee) 
+            public CreateForCustomerRequest SetupFee(long setupFee) 
             {
                 m_params.AddOpt("setup_fee", setupFee);
                 return this;
@@ -1613,7 +1613,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
                 return this;
             }
-            public CreateForCustomerRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            public CreateForCustomerRequest AddonUnitPrice(int index, long addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
                 return this;
@@ -1638,7 +1638,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
                 return this;
             }
-            public CreateForCustomerRequest EventBasedAddonUnitPrice(int index, int eventBasedAddonUnitPrice) 
+            public CreateForCustomerRequest EventBasedAddonUnitPrice(int index, long eventBasedAddonUnitPrice) 
             {
                 m_params.AddOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
                 return this;
@@ -1707,7 +1707,7 @@ namespace ChargeBee.Models
                 return this;
             }
             [Obsolete]
-            public CreateWithItemsRequest SetupFee(int setupFee) 
+            public CreateWithItemsRequest SetupFee(long setupFee) 
             {
                 m_params.AddOpt("setup_fee", setupFee);
                 return this;
@@ -1964,7 +1964,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
                 return this;
             }
-            public CreateWithItemsRequest SubscriptionItemUnitPrice(int index, int subscriptionItemUnitPrice) 
+            public CreateWithItemsRequest SubscriptionItemUnitPrice(int index, long subscriptionItemUnitPrice) 
             {
                 m_params.AddOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
                 return this;
@@ -2020,7 +2020,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("discounts[percentage][" + index + "]", discountPercentage);
                 return this;
             }
-            public CreateWithItemsRequest DiscountAmount(int index, int discountAmount) 
+            public CreateWithItemsRequest DiscountAmount(int index, long discountAmount) 
             {
                 m_params.AddOpt("discounts[amount][" + index + "]", discountAmount);
                 return this;
@@ -2065,7 +2065,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
                 return this;
             }
-            public CreateWithItemsRequest ItemTierPrice(int index, int itemTierPrice) 
+            public CreateWithItemsRequest ItemTierPrice(int index, long itemTierPrice) 
             {
                 m_params.AddOpt("item_tiers[price][" + index + "]", itemTierPrice);
                 return this;
@@ -2230,12 +2230,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("plan_quantity", planQuantity);
                 return this;
             }
-            public UpdateRequest PlanUnitPrice(int planUnitPrice) 
+            public UpdateRequest PlanUnitPrice(long planUnitPrice) 
             {
                 m_params.AddOpt("plan_unit_price", planUnitPrice);
                 return this;
             }
-            public UpdateRequest SetupFee(int setupFee) 
+            public UpdateRequest SetupFee(long setupFee) 
             {
                 m_params.AddOpt("setup_fee", setupFee);
                 return this;
@@ -2761,7 +2761,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
                 return this;
             }
-            public UpdateRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            public UpdateRequest AddonUnitPrice(int index, long addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
                 return this;
@@ -2781,7 +2781,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
                 return this;
             }
-            public UpdateRequest EventBasedAddonUnitPrice(int index, int eventBasedAddonUnitPrice) 
+            public UpdateRequest EventBasedAddonUnitPrice(int index, long eventBasedAddonUnitPrice) 
             {
                 m_params.AddOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
                 return this;
@@ -2850,7 +2850,7 @@ namespace ChargeBee.Models
                 return this;
             }
             [Obsolete]
-            public UpdateForItemsRequest SetupFee(int setupFee) 
+            public UpdateForItemsRequest SetupFee(long setupFee) 
             {
                 m_params.AddOpt("setup_fee", setupFee);
                 return this;
@@ -3376,7 +3376,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
                 return this;
             }
-            public UpdateForItemsRequest SubscriptionItemUnitPrice(int index, int subscriptionItemUnitPrice) 
+            public UpdateForItemsRequest SubscriptionItemUnitPrice(int index, long subscriptionItemUnitPrice) 
             {
                 m_params.AddOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
                 return this;
@@ -3437,7 +3437,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("discounts[percentage][" + index + "]", discountPercentage);
                 return this;
             }
-            public UpdateForItemsRequest DiscountAmount(int index, int discountAmount) 
+            public UpdateForItemsRequest DiscountAmount(int index, long discountAmount) 
             {
                 m_params.AddOpt("discounts[amount][" + index + "]", discountAmount);
                 return this;
@@ -3487,7 +3487,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
                 return this;
             }
-            public UpdateForItemsRequest ItemTierPrice(int index, int itemTierPrice) 
+            public UpdateForItemsRequest ItemTierPrice(int index, long itemTierPrice) 
             {
                 m_params.AddOpt("item_tiers[price][" + index + "]", itemTierPrice);
                 return this;
@@ -3638,7 +3638,7 @@ namespace ChargeBee.Models
             {
             }
 
-            public AddChargeAtTermEndRequest Amount(int amount) 
+            public AddChargeAtTermEndRequest Amount(long amount) 
             {
                 m_params.AddOpt("amount", amount);
                 return this;
@@ -3696,7 +3696,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addon_quantity", addonQuantity);
                 return this;
             }
-            public ChargeAddonAtTermEndRequest AddonUnitPrice(int addonUnitPrice) 
+            public ChargeAddonAtTermEndRequest AddonUnitPrice(long addonUnitPrice) 
             {
                 m_params.AddOpt("addon_unit_price", addonUnitPrice);
                 return this;
@@ -3901,7 +3901,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("plan_quantity_in_decimal", planQuantityInDecimal);
                 return this;
             }
-            public ImportSubscriptionRequest PlanUnitPrice(int planUnitPrice) 
+            public ImportSubscriptionRequest PlanUnitPrice(long planUnitPrice) 
             {
                 m_params.AddOpt("plan_unit_price", planUnitPrice);
                 return this;
@@ -3911,7 +3911,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("plan_unit_price_in_decimal", planUnitPriceInDecimal);
                 return this;
             }
-            public ImportSubscriptionRequest SetupFee(int setupFee) 
+            public ImportSubscriptionRequest SetupFee(long setupFee) 
             {
                 m_params.AddOpt("setup_fee", setupFee);
                 return this;
@@ -4394,7 +4394,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
                 return this;
             }
-            public ImportSubscriptionRequest TransactionAmount(int transactionAmount) 
+            public ImportSubscriptionRequest TransactionAmount(long transactionAmount) 
             {
                 m_params.AddOpt("transaction[amount]", transactionAmount);
                 return this;
@@ -4429,7 +4429,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
                 return this;
             }
-            public ImportSubscriptionRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            public ImportSubscriptionRequest AddonUnitPrice(int index, long addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
                 return this;
@@ -4454,7 +4454,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
                 return this;
             }
-            public ImportSubscriptionRequest EventBasedAddonUnitPrice(int index, int eventBasedAddonUnitPrice) 
+            public ImportSubscriptionRequest EventBasedAddonUnitPrice(int index, long eventBasedAddonUnitPrice) 
             {
                 m_params.AddOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
                 return this;
@@ -4522,7 +4522,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("plan_quantity_in_decimal", planQuantityInDecimal);
                 return this;
             }
-            public ImportForCustomerRequest PlanUnitPrice(int planUnitPrice) 
+            public ImportForCustomerRequest PlanUnitPrice(long planUnitPrice) 
             {
                 m_params.AddOpt("plan_unit_price", planUnitPrice);
                 return this;
@@ -4532,7 +4532,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("plan_unit_price_in_decimal", planUnitPriceInDecimal);
                 return this;
             }
-            public ImportForCustomerRequest SetupFee(int setupFee) 
+            public ImportForCustomerRequest SetupFee(long setupFee) 
             {
                 m_params.AddOpt("setup_fee", setupFee);
                 return this;
@@ -4672,7 +4672,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
                 return this;
             }
-            public ImportForCustomerRequest TransactionAmount(int transactionAmount) 
+            public ImportForCustomerRequest TransactionAmount(long transactionAmount) 
             {
                 m_params.AddOpt("transaction[amount]", transactionAmount);
                 return this;
@@ -4777,7 +4777,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
                 return this;
             }
-            public ImportForCustomerRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            public ImportForCustomerRequest AddonUnitPrice(int index, long addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
                 return this;
@@ -4802,7 +4802,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
                 return this;
             }
-            public ImportForCustomerRequest EventBasedAddonUnitPrice(int index, int eventBasedAddonUnitPrice) 
+            public ImportForCustomerRequest EventBasedAddonUnitPrice(int index, long eventBasedAddonUnitPrice) 
             {
                 m_params.AddOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
                 return this;
@@ -4943,7 +4943,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("unbilled_charges[description][" + index + "]", unbilledChargeDescription);
                 return this;
             }
-            public ImportUnbilledChargesRequest UnbilledChargeUnitAmount(int index, int unbilledChargeUnitAmount) 
+            public ImportUnbilledChargesRequest UnbilledChargeUnitAmount(int index, long unbilledChargeUnitAmount) 
             {
                 m_params.AddOpt("unbilled_charges[unit_amount][" + index + "]", unbilledChargeUnitAmount);
                 return this;
@@ -4953,7 +4953,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("unbilled_charges[quantity][" + index + "]", unbilledChargeQuantity);
                 return this;
             }
-            public ImportUnbilledChargesRequest UnbilledChargeAmount(int index, int unbilledChargeAmount) 
+            public ImportUnbilledChargesRequest UnbilledChargeAmount(int index, long unbilledChargeAmount) 
             {
                 m_params.AddOpt("unbilled_charges[amount][" + index + "]", unbilledChargeAmount);
                 return this;
@@ -4973,7 +4973,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("unbilled_charges[amount_in_decimal][" + index + "]", unbilledChargeAmountInDecimal);
                 return this;
             }
-            public ImportUnbilledChargesRequest UnbilledChargeDiscountAmount(int index, int unbilledChargeDiscountAmount) 
+            public ImportUnbilledChargesRequest UnbilledChargeDiscountAmount(int index, long unbilledChargeDiscountAmount) 
             {
                 m_params.AddOpt("unbilled_charges[discount_amount][" + index + "]", unbilledChargeDiscountAmount);
                 return this;
@@ -5003,7 +5003,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("discounts[description][" + index + "]", discountDescription);
                 return this;
             }
-            public ImportUnbilledChargesRequest DiscountAmount(int index, int discountAmount) 
+            public ImportUnbilledChargesRequest DiscountAmount(int index, long discountAmount) 
             {
                 m_params.Add("discounts[amount][" + index + "]", discountAmount);
                 return this;
@@ -5028,7 +5028,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("tiers[quantity_used][" + index + "]", tierQuantityUsed);
                 return this;
             }
-            public ImportUnbilledChargesRequest TierUnitAmount(int index, int tierUnitAmount) 
+            public ImportUnbilledChargesRequest TierUnitAmount(int index, long tierUnitAmount) 
             {
                 m_params.AddOpt("tiers[unit_amount][" + index + "]", tierUnitAmount);
                 return this;
@@ -5077,7 +5077,7 @@ namespace ChargeBee.Models
                 return this;
             }
             [Obsolete]
-            public ImportForItemsRequest SetupFee(int setupFee) 
+            public ImportForItemsRequest SetupFee(long setupFee) 
             {
                 m_params.AddOpt("setup_fee", setupFee);
                 return this;
@@ -5222,7 +5222,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
                 return this;
             }
-            public ImportForItemsRequest TransactionAmount(int transactionAmount) 
+            public ImportForItemsRequest TransactionAmount(long transactionAmount) 
             {
                 m_params.AddOpt("transaction[amount]", transactionAmount);
                 return this;
@@ -5327,7 +5327,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
                 return this;
             }
-            public ImportForItemsRequest SubscriptionItemUnitPrice(int index, int subscriptionItemUnitPrice) 
+            public ImportForItemsRequest SubscriptionItemUnitPrice(int index, long subscriptionItemUnitPrice) 
             {
                 m_params.AddOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
                 return this;
@@ -5383,7 +5383,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("discounts[percentage][" + index + "]", discountPercentage);
                 return this;
             }
-            public ImportForItemsRequest DiscountAmount(int index, int discountAmount) 
+            public ImportForItemsRequest DiscountAmount(int index, long discountAmount) 
             {
                 m_params.AddOpt("discounts[amount][" + index + "]", discountAmount);
                 return this;
@@ -5433,7 +5433,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
                 return this;
             }
-            public ImportForItemsRequest ItemTierPrice(int index, int itemTierPrice) 
+            public ImportForItemsRequest ItemTierPrice(int index, long itemTierPrice) 
             {
                 m_params.AddOpt("item_tiers[price][" + index + "]", itemTierPrice);
                 return this;
@@ -5572,7 +5572,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
                 return this;
             }
-            public CancelRequest EventBasedAddonUnitPrice(int index, int eventBasedAddonUnitPrice) 
+            public CancelRequest EventBasedAddonUnitPrice(int index, long eventBasedAddonUnitPrice) 
             {
                 m_params.AddOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
                 return this;
@@ -5650,7 +5650,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
                 return this;
             }
-            public CancelForItemsRequest SubscriptionItemUnitPrice(int index, int subscriptionItemUnitPrice) 
+            public CancelForItemsRequest SubscriptionItemUnitPrice(int index, long subscriptionItemUnitPrice) 
             {
                 m_params.AddOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
                 return this;
@@ -5836,16 +5836,16 @@ namespace ChargeBee.Models
                 get { return GetDateTime("last_calculated_at", false); }
             }
 
-            public int? UnitPrice {
-                get { return GetValue<int?>("unit_price", false); }
+            public long? UnitPrice {
+                get { return GetValue<long?>("unit_price", false); }
             }
 
             public string UnitPriceInDecimal {
                 get { return GetValue<string>("unit_price_in_decimal", false); }
             }
 
-            public int? Amount {
-                get { return GetValue<int?>("amount", false); }
+            public long? Amount {
+                get { return GetValue<long?>("amount", false); }
             }
 
             public string AmountInDecimal {
@@ -5900,8 +5900,8 @@ namespace ChargeBee.Models
                 get { return GetValue<int?>("ending_unit", false); }
             }
 
-            public int Price {
-                get { return GetValue<int>("price", true); }
+            public long Price {
+                get { return GetValue<long>("price", true); }
             }
 
             public string StartingUnitInDecimal {
@@ -5944,12 +5944,12 @@ namespace ChargeBee.Models
                 get { return GetValue<int?>("quantity", false); }
             }
 
-            public int? UnitPrice {
-                get { return GetValue<int?>("unit_price", false); }
+            public long? UnitPrice {
+                get { return GetValue<long?>("unit_price", false); }
             }
 
-            public int? Amount {
-                get { return GetValue<int?>("amount", false); }
+            public long? Amount {
+                get { return GetValue<long?>("amount", false); }
             }
 
             public DateTime? TrialEnd {
@@ -5999,8 +5999,8 @@ namespace ChargeBee.Models
                 get { return GetValue<int>("quantity", true); }
             }
 
-            public int UnitPrice {
-                get { return GetValue<int>("unit_price", true); }
+            public long UnitPrice {
+                get { return GetValue<long>("unit_price", true); }
             }
 
             public int? ServicePeriodInDays {
@@ -6313,8 +6313,8 @@ namespace ChargeBee.Models
                 get { return GetValue<double?>("percentage", false); }
             }
 
-            public int? Amount {
-                get { return GetValue<int?>("amount", false); }
+            public long? Amount {
+                get { return GetValue<long?>("amount", false); }
             }
 
             public string CurrencyCode {

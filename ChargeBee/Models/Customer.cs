@@ -341,21 +341,21 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("preferred_currency_code", false); }
         }
-        public int PromotionalCredits 
+        public long PromotionalCredits 
         {
-            get { return GetValue<int>("promotional_credits", true); }
+            get { return GetValue<long>("promotional_credits", true); }
         }
-        public int UnbilledCharges 
+        public long UnbilledCharges 
         {
-            get { return GetValue<int>("unbilled_charges", true); }
+            get { return GetValue<long>("unbilled_charges", true); }
         }
-        public int RefundableCredits 
+        public long RefundableCredits 
         {
-            get { return GetValue<int>("refundable_credits", true); }
+            get { return GetValue<long>("refundable_credits", true); }
         }
-        public int ExcessPayments 
+        public long ExcessPayments 
         {
-            get { return GetValue<int>("excess_payments", true); }
+            get { return GetValue<long>("excess_payments", true); }
         }
         public List<CustomerBalance> Balances 
         {
@@ -1484,7 +1484,7 @@ namespace ChargeBee.Models
             {
             }
 
-            public AddPromotionalCreditsRequest Amount(int amount) 
+            public AddPromotionalCreditsRequest Amount(long amount) 
             {
                 m_params.Add("amount", amount);
                 return this;
@@ -1517,7 +1517,7 @@ namespace ChargeBee.Models
             {
             }
 
-            public DeductPromotionalCreditsRequest Amount(int amount) 
+            public DeductPromotionalCreditsRequest Amount(long amount) 
             {
                 m_params.Add("amount", amount);
                 return this;
@@ -1550,7 +1550,7 @@ namespace ChargeBee.Models
             {
             }
 
-            public SetPromotionalCreditsRequest Amount(int amount) 
+            public SetPromotionalCreditsRequest Amount(long amount) 
             {
                 m_params.Add("amount", amount);
                 return this;
@@ -1588,7 +1588,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("comment", comment);
                 return this;
             }
-            public RecordExcessPaymentRequest TransactionAmount(int transactionAmount) 
+            public RecordExcessPaymentRequest TransactionAmount(long transactionAmount) 
             {
                 m_params.Add("transaction[amount]", transactionAmount);
                 return this;
@@ -1621,7 +1621,7 @@ namespace ChargeBee.Models
             {
             }
 
-            public CollectPaymentRequest Amount(int amount) 
+            public CollectPaymentRequest Amount(long amount) 
             {
                 m_params.AddOpt("amount", amount);
                 return this;
@@ -1787,7 +1787,7 @@ namespace ChargeBee.Models
                 m_params.Add("invoice_allocations[invoice_id][" + index + "]", invoiceAllocationInvoiceId);
                 return this;
             }
-            public CollectPaymentRequest InvoiceAllocationAllocationAmount(int index, int invoiceAllocationAllocationAmount) 
+            public CollectPaymentRequest InvoiceAllocationAllocationAmount(int index, long invoiceAllocationAllocationAmount) 
             {
                 m_params.AddOpt("invoice_allocations[allocation_amount][" + index + "]", invoiceAllocationAllocationAmount);
                 return this;
@@ -2332,20 +2332,20 @@ namespace ChargeBee.Models
         public class CustomerBalance : Resource
         {
 
-            public int PromotionalCredits {
-                get { return GetValue<int>("promotional_credits", true); }
+            public long PromotionalCredits {
+                get { return GetValue<long>("promotional_credits", true); }
             }
 
-            public int ExcessPayments {
-                get { return GetValue<int>("excess_payments", true); }
+            public long ExcessPayments {
+                get { return GetValue<long>("excess_payments", true); }
             }
 
-            public int RefundableCredits {
-                get { return GetValue<int>("refundable_credits", true); }
+            public long RefundableCredits {
+                get { return GetValue<long>("refundable_credits", true); }
             }
 
-            public int UnbilledCharges {
-                get { return GetValue<int>("unbilled_charges", true); }
+            public long UnbilledCharges {
+                get { return GetValue<long>("unbilled_charges", true); }
             }
 
             public string CurrencyCode {

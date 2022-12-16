@@ -149,21 +149,21 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("currency_code", true); }
         }
-        public int? Total 
+        public long? Total 
         {
-            get { return GetValue<int?>("total", false); }
+            get { return GetValue<long?>("total", false); }
         }
-        public int? AmountAllocated 
+        public long? AmountAllocated 
         {
-            get { return GetValue<int?>("amount_allocated", false); }
+            get { return GetValue<long?>("amount_allocated", false); }
         }
-        public int? AmountRefunded 
+        public long? AmountRefunded 
         {
-            get { return GetValue<int?>("amount_refunded", false); }
+            get { return GetValue<long?>("amount_refunded", false); }
         }
-        public int? AmountAvailable 
+        public long? AmountAvailable 
         {
-            get { return GetValue<int?>("amount_available", false); }
+            get { return GetValue<long?>("amount_available", false); }
         }
         public DateTime? RefundedAt 
         {
@@ -193,29 +193,29 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<CreditNoteEinvoice>("einvoice"); }
         }
-        public int SubTotal 
+        public long SubTotal 
         {
-            get { return GetValue<int>("sub_total", true); }
+            get { return GetValue<long>("sub_total", true); }
         }
-        public int? SubTotalInLocalCurrency 
+        public long? SubTotalInLocalCurrency 
         {
-            get { return GetValue<int?>("sub_total_in_local_currency", false); }
+            get { return GetValue<long?>("sub_total_in_local_currency", false); }
         }
-        public int? TotalInLocalCurrency 
+        public long? TotalInLocalCurrency 
         {
-            get { return GetValue<int?>("total_in_local_currency", false); }
+            get { return GetValue<long?>("total_in_local_currency", false); }
         }
         public string LocalCurrencyCode 
         {
             get { return GetValue<string>("local_currency_code", false); }
         }
-        public int? RoundOffAmount 
+        public long? RoundOffAmount 
         {
-            get { return GetValue<int?>("round_off_amount", false); }
+            get { return GetValue<long?>("round_off_amount", false); }
         }
-        public int? FractionalCorrection 
+        public long? FractionalCorrection 
         {
-            get { return GetValue<int?>("fractional_correction", false); }
+            get { return GetValue<long?>("fractional_correction", false); }
         }
         public List<CreditNoteLineItem> LineItems 
         {
@@ -281,7 +281,7 @@ namespace ChargeBee.Models
                 m_params.Add("reference_invoice_id", referenceInvoiceId);
                 return this;
             }
-            public CreateRequest Total(int total) 
+            public CreateRequest Total(long total) 
             {
                 m_params.AddOpt("total", total);
                 return this;
@@ -321,7 +321,7 @@ namespace ChargeBee.Models
                 m_params.Add("line_items[reference_line_item_id][" + index + "]", lineItemReferenceLineItemId);
                 return this;
             }
-            public CreateRequest LineItemUnitAmount(int index, int lineItemUnitAmount) 
+            public CreateRequest LineItemUnitAmount(int index, long lineItemUnitAmount) 
             {
                 m_params.AddOpt("line_items[unit_amount][" + index + "]", lineItemUnitAmount);
                 return this;
@@ -341,7 +341,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_items[quantity_in_decimal][" + index + "]", lineItemQuantityInDecimal);
                 return this;
             }
-            public CreateRequest LineItemAmount(int index, int lineItemAmount) 
+            public CreateRequest LineItemAmount(int index, long lineItemAmount) 
             {
                 m_params.AddOpt("line_items[amount][" + index + "]", lineItemAmount);
                 return this;
@@ -382,7 +382,7 @@ namespace ChargeBee.Models
             {
             }
 
-            public RefundRequest RefundAmount(int refundAmount) 
+            public RefundRequest RefundAmount(long refundAmount) 
             {
                 m_params.AddOpt("refund_amount", refundAmount);
                 return this;
@@ -415,7 +415,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("comment", comment);
                 return this;
             }
-            public RecordRefundRequest TransactionAmount(int transactionAmount) 
+            public RecordRefundRequest TransactionAmount(long transactionAmount) 
             {
                 m_params.AddOpt("transaction[amount]", transactionAmount);
                 return this;
@@ -497,25 +497,25 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<CreditNoteListRequest>("date", this);        
             }
-            public NumberFilter<int, CreditNoteListRequest> Total() 
+            public NumberFilter<long, CreditNoteListRequest> Total() 
             {
-                return new NumberFilter<int, CreditNoteListRequest>("total", this);        
+                return new NumberFilter<long, CreditNoteListRequest>("total", this);        
             }
             public EnumFilter<ChargeBee.Models.Enums.PriceTypeEnum, CreditNoteListRequest> PriceType() 
             {
                 return new EnumFilter<ChargeBee.Models.Enums.PriceTypeEnum, CreditNoteListRequest>("price_type", this);        
             }
-            public NumberFilter<int, CreditNoteListRequest> AmountAllocated() 
+            public NumberFilter<long, CreditNoteListRequest> AmountAllocated() 
             {
-                return new NumberFilter<int, CreditNoteListRequest>("amount_allocated", this);        
+                return new NumberFilter<long, CreditNoteListRequest>("amount_allocated", this);        
             }
-            public NumberFilter<int, CreditNoteListRequest> AmountRefunded() 
+            public NumberFilter<long, CreditNoteListRequest> AmountRefunded() 
             {
-                return new NumberFilter<int, CreditNoteListRequest>("amount_refunded", this);        
+                return new NumberFilter<long, CreditNoteListRequest>("amount_refunded", this);        
             }
-            public NumberFilter<int, CreditNoteListRequest> AmountAvailable() 
+            public NumberFilter<long, CreditNoteListRequest> AmountAvailable() 
             {
-                return new NumberFilter<int, CreditNoteListRequest>("amount_available", this);        
+                return new NumberFilter<long, CreditNoteListRequest>("amount_available", this);        
             }
             public TimestampFilter<CreditNoteListRequest> VoidedAt() 
             {
@@ -604,7 +604,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("status", status);
                 return this;
             }
-            public ImportCreditNoteRequest Total(int total) 
+            public ImportCreditNoteRequest Total(long total) 
             {
                 m_params.AddOpt("total", total);
                 return this;
@@ -619,17 +619,17 @@ namespace ChargeBee.Models
                 m_params.AddOpt("voided_at", voidedAt);
                 return this;
             }
-            public ImportCreditNoteRequest SubTotal(int subTotal) 
+            public ImportCreditNoteRequest SubTotal(long subTotal) 
             {
                 m_params.AddOpt("sub_total", subTotal);
                 return this;
             }
-            public ImportCreditNoteRequest RoundOffAmount(int roundOffAmount) 
+            public ImportCreditNoteRequest RoundOffAmount(long roundOffAmount) 
             {
                 m_params.AddOpt("round_off_amount", roundOffAmount);
                 return this;
             }
-            public ImportCreditNoteRequest FractionalCorrection(int fractionalCorrection) 
+            public ImportCreditNoteRequest FractionalCorrection(long fractionalCorrection) 
             {
                 m_params.AddOpt("fractional_correction", fractionalCorrection);
                 return this;
@@ -669,7 +669,7 @@ namespace ChargeBee.Models
                 m_params.Add("line_items[description][" + index + "]", lineItemDescription);
                 return this;
             }
-            public ImportCreditNoteRequest LineItemUnitAmount(int index, int lineItemUnitAmount) 
+            public ImportCreditNoteRequest LineItemUnitAmount(int index, long lineItemUnitAmount) 
             {
                 m_params.AddOpt("line_items[unit_amount][" + index + "]", lineItemUnitAmount);
                 return this;
@@ -679,7 +679,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_items[quantity][" + index + "]", lineItemQuantity);
                 return this;
             }
-            public ImportCreditNoteRequest LineItemAmount(int index, int lineItemAmount) 
+            public ImportCreditNoteRequest LineItemAmount(int index, long lineItemAmount) 
             {
                 m_params.AddOpt("line_items[amount][" + index + "]", lineItemAmount);
                 return this;
@@ -714,7 +714,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_items[item_level_discount1_entity_id][" + index + "]", lineItemItemLevelDiscount1EntityId);
                 return this;
             }
-            public ImportCreditNoteRequest LineItemItemLevelDiscount1Amount(int index, int lineItemItemLevelDiscount1Amount) 
+            public ImportCreditNoteRequest LineItemItemLevelDiscount1Amount(int index, long lineItemItemLevelDiscount1Amount) 
             {
                 m_params.AddOpt("line_items[item_level_discount1_amount][" + index + "]", lineItemItemLevelDiscount1Amount);
                 return this;
@@ -724,7 +724,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_items[item_level_discount2_entity_id][" + index + "]", lineItemItemLevelDiscount2EntityId);
                 return this;
             }
-            public ImportCreditNoteRequest LineItemItemLevelDiscount2Amount(int index, int lineItemItemLevelDiscount2Amount) 
+            public ImportCreditNoteRequest LineItemItemLevelDiscount2Amount(int index, long lineItemItemLevelDiscount2Amount) 
             {
                 m_params.AddOpt("line_items[item_level_discount2_amount][" + index + "]", lineItemItemLevelDiscount2Amount);
                 return this;
@@ -734,7 +734,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_items[tax1_name][" + index + "]", lineItemTax1Name);
                 return this;
             }
-            public ImportCreditNoteRequest LineItemTax1Amount(int index, int lineItemTax1Amount) 
+            public ImportCreditNoteRequest LineItemTax1Amount(int index, long lineItemTax1Amount) 
             {
                 m_params.AddOpt("line_items[tax1_amount][" + index + "]", lineItemTax1Amount);
                 return this;
@@ -744,7 +744,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_items[tax2_name][" + index + "]", lineItemTax2Name);
                 return this;
             }
-            public ImportCreditNoteRequest LineItemTax2Amount(int index, int lineItemTax2Amount) 
+            public ImportCreditNoteRequest LineItemTax2Amount(int index, long lineItemTax2Amount) 
             {
                 m_params.AddOpt("line_items[tax2_amount][" + index + "]", lineItemTax2Amount);
                 return this;
@@ -754,7 +754,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_items[tax3_name][" + index + "]", lineItemTax3Name);
                 return this;
             }
-            public ImportCreditNoteRequest LineItemTax3Amount(int index, int lineItemTax3Amount) 
+            public ImportCreditNoteRequest LineItemTax3Amount(int index, long lineItemTax3Amount) 
             {
                 m_params.AddOpt("line_items[tax3_amount][" + index + "]", lineItemTax3Amount);
                 return this;
@@ -764,7 +764,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_items[tax4_name][" + index + "]", lineItemTax4Name);
                 return this;
             }
-            public ImportCreditNoteRequest LineItemTax4Amount(int index, int lineItemTax4Amount) 
+            public ImportCreditNoteRequest LineItemTax4Amount(int index, long lineItemTax4Amount) 
             {
                 m_params.AddOpt("line_items[tax4_amount][" + index + "]", lineItemTax4Amount);
                 return this;
@@ -774,7 +774,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_items[tax5_name][" + index + "]", lineItemTax5Name);
                 return this;
             }
-            public ImportCreditNoteRequest LineItemTax5Amount(int index, int lineItemTax5Amount) 
+            public ImportCreditNoteRequest LineItemTax5Amount(int index, long lineItemTax5Amount) 
             {
                 m_params.AddOpt("line_items[tax5_amount][" + index + "]", lineItemTax5Amount);
                 return this;
@@ -784,7 +784,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_items[tax6_name][" + index + "]", lineItemTax6Name);
                 return this;
             }
-            public ImportCreditNoteRequest LineItemTax6Amount(int index, int lineItemTax6Amount) 
+            public ImportCreditNoteRequest LineItemTax6Amount(int index, long lineItemTax6Amount) 
             {
                 m_params.AddOpt("line_items[tax6_amount][" + index + "]", lineItemTax6Amount);
                 return this;
@@ -794,7 +794,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_items[tax7_name][" + index + "]", lineItemTax7Name);
                 return this;
             }
-            public ImportCreditNoteRequest LineItemTax7Amount(int index, int lineItemTax7Amount) 
+            public ImportCreditNoteRequest LineItemTax7Amount(int index, long lineItemTax7Amount) 
             {
                 m_params.AddOpt("line_items[tax7_amount][" + index + "]", lineItemTax7Amount);
                 return this;
@@ -804,7 +804,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_items[tax8_name][" + index + "]", lineItemTax8Name);
                 return this;
             }
-            public ImportCreditNoteRequest LineItemTax8Amount(int index, int lineItemTax8Amount) 
+            public ImportCreditNoteRequest LineItemTax8Amount(int index, long lineItemTax8Amount) 
             {
                 m_params.AddOpt("line_items[tax8_amount][" + index + "]", lineItemTax8Amount);
                 return this;
@@ -814,7 +814,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_items[tax9_name][" + index + "]", lineItemTax9Name);
                 return this;
             }
-            public ImportCreditNoteRequest LineItemTax9Amount(int index, int lineItemTax9Amount) 
+            public ImportCreditNoteRequest LineItemTax9Amount(int index, long lineItemTax9Amount) 
             {
                 m_params.AddOpt("line_items[tax9_amount][" + index + "]", lineItemTax9Amount);
                 return this;
@@ -824,7 +824,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_items[tax10_name][" + index + "]", lineItemTax10Name);
                 return this;
             }
-            public ImportCreditNoteRequest LineItemTax10Amount(int index, int lineItemTax10Amount) 
+            public ImportCreditNoteRequest LineItemTax10Amount(int index, long lineItemTax10Amount) 
             {
                 m_params.AddOpt("line_items[tax10_amount][" + index + "]", lineItemTax10Amount);
                 return this;
@@ -849,7 +849,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_item_tiers[quantity_used][" + index + "]", lineItemTierQuantityUsed);
                 return this;
             }
-            public ImportCreditNoteRequest LineItemTierUnitAmount(int index, int lineItemTierUnitAmount) 
+            public ImportCreditNoteRequest LineItemTierUnitAmount(int index, long lineItemTierUnitAmount) 
             {
                 m_params.AddOpt("line_item_tiers[unit_amount][" + index + "]", lineItemTierUnitAmount);
                 return this;
@@ -894,7 +894,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("discounts[description][" + index + "]", discountDescription);
                 return this;
             }
-            public ImportCreditNoteRequest DiscountAmount(int index, int discountAmount) 
+            public ImportCreditNoteRequest DiscountAmount(int index, long discountAmount) 
             {
                 m_params.Add("discounts[amount][" + index + "]", discountAmount);
                 return this;
@@ -909,7 +909,7 @@ namespace ChargeBee.Models
                 m_params.Add("taxes[rate][" + index + "]", taxRate);
                 return this;
             }
-            public ImportCreditNoteRequest TaxAmount(int index, int taxAmount) 
+            public ImportCreditNoteRequest TaxAmount(int index, long taxAmount) 
             {
                 m_params.AddOpt("taxes[amount][" + index + "]", taxAmount);
                 return this;
@@ -939,7 +939,7 @@ namespace ChargeBee.Models
                 m_params.Add("allocations[invoice_id][" + index + "]", allocationInvoiceId);
                 return this;
             }
-            public ImportCreditNoteRequest AllocationAllocatedAmount(int index, int allocationAllocatedAmount) 
+            public ImportCreditNoteRequest AllocationAllocatedAmount(int index, long allocationAllocatedAmount) 
             {
                 m_params.Add("allocations[allocated_amount][" + index + "]", allocationAllocatedAmount);
                 return this;
@@ -949,7 +949,7 @@ namespace ChargeBee.Models
                 m_params.Add("allocations[allocated_at][" + index + "]", allocationAllocatedAt);
                 return this;
             }
-            public ImportCreditNoteRequest LinkedRefundAmount(int index, int linkedRefundAmount) 
+            public ImportCreditNoteRequest LinkedRefundAmount(int index, long linkedRefundAmount) 
             {
                 m_params.Add("linked_refunds[amount][" + index + "]", linkedRefundAmount);
                 return this;
@@ -1102,16 +1102,16 @@ namespace ChargeBee.Models
                 get { return (DateTime)GetDateTime("date_to", true); }
             }
 
-            public int UnitAmount {
-                get { return GetValue<int>("unit_amount", true); }
+            public long UnitAmount {
+                get { return GetValue<long>("unit_amount", true); }
             }
 
             public int? Quantity {
                 get { return GetValue<int?>("quantity", false); }
             }
 
-            public int? Amount {
-                get { return GetValue<int?>("amount", false); }
+            public long? Amount {
+                get { return GetValue<long?>("amount", false); }
             }
 
             public PricingModelEnum? PricingModel {
@@ -1122,8 +1122,8 @@ namespace ChargeBee.Models
                 get { return GetValue<bool>("is_taxed", true); }
             }
 
-            public int? TaxAmount {
-                get { return GetValue<int?>("tax_amount", false); }
+            public long? TaxAmount {
+                get { return GetValue<long?>("tax_amount", false); }
             }
 
             public double? TaxRate {
@@ -1142,12 +1142,12 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("amount_in_decimal", false); }
             }
 
-            public int? DiscountAmount {
-                get { return GetValue<int?>("discount_amount", false); }
+            public long? DiscountAmount {
+                get { return GetValue<long?>("discount_amount", false); }
             }
 
-            public int? ItemLevelDiscountAmount {
-                get { return GetValue<int?>("item_level_discount_amount", false); }
+            public long? ItemLevelDiscountAmount {
+                get { return GetValue<long?>("item_level_discount_amount", false); }
             }
 
             public string ReferenceLineItemId {
@@ -1199,8 +1199,8 @@ namespace ChargeBee.Models
                 DocumentLevelDiscount,
             }
 
-            public int Amount {
-                get { return GetValue<int>("amount", true); }
+            public long Amount {
+                get { return GetValue<long>("amount", true); }
             }
 
             public string Description {
@@ -1256,8 +1256,8 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("entity_id", false); }
             }
 
-            public int DiscountAmount {
-                get { return GetValue<int>("discount_amount", true); }
+            public long DiscountAmount {
+                get { return GetValue<long>("discount_amount", true); }
             }
 
         }
@@ -1280,8 +1280,8 @@ namespace ChargeBee.Models
                 get { return GetValue<int>("quantity_used", true); }
             }
 
-            public int UnitAmount {
-                get { return GetValue<int>("unit_amount", true); }
+            public long UnitAmount {
+                get { return GetValue<long>("unit_amount", true); }
             }
 
             public string StartingUnitInDecimal {
@@ -1308,8 +1308,8 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("name", true); }
             }
 
-            public int Amount {
-                get { return GetValue<int>("amount", true); }
+            public long Amount {
+                get { return GetValue<long>("amount", true); }
             }
 
             public string Description {
@@ -1340,12 +1340,12 @@ namespace ChargeBee.Models
                 get { return GetValue<bool?>("is_non_compliance_tax", false); }
             }
 
-            public int TaxableAmount {
-                get { return GetValue<int>("taxable_amount", true); }
+            public long TaxableAmount {
+                get { return GetValue<long>("taxable_amount", true); }
             }
 
-            public int TaxAmount {
-                get { return GetValue<int>("tax_amount", true); }
+            public long TaxAmount {
+                get { return GetValue<long>("tax_amount", true); }
             }
 
             public TaxJurisTypeEnum? TaxJurisType {
@@ -1360,8 +1360,8 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("tax_juris_code", false); }
             }
 
-            public int? TaxAmountInLocalCurrency {
-                get { return GetValue<int?>("tax_amount_in_local_currency", false); }
+            public long? TaxAmountInLocalCurrency {
+                get { return GetValue<long?>("tax_amount_in_local_currency", false); }
             }
 
             public string LocalCurrencyCode {
@@ -1376,8 +1376,8 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("txn_id", true); }
             }
 
-            public int AppliedAmount {
-                get { return GetValue<int>("applied_amount", true); }
+            public long AppliedAmount {
+                get { return GetValue<long>("applied_amount", true); }
             }
 
             public DateTime AppliedAt {
@@ -1392,8 +1392,8 @@ namespace ChargeBee.Models
                 get { return GetDateTime("txn_date", false); }
             }
 
-            public int? TxnAmount {
-                get { return GetValue<int?>("txn_amount", false); }
+            public long? TxnAmount {
+                get { return GetValue<long?>("txn_amount", false); }
             }
 
             public string RefundReasonCode {
@@ -1408,8 +1408,8 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("invoice_id", true); }
             }
 
-            public int AllocatedAmount {
-                get { return GetValue<int>("allocated_amount", true); }
+            public long AllocatedAmount {
+                get { return GetValue<long>("allocated_amount", true); }
             }
 
             public DateTime AllocatedAt {

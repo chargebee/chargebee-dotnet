@@ -269,29 +269,29 @@ namespace ChargeBee.Models
                 return new TimestampFilter<RevenueRecognitionRequest>("invoice[paid_at]", this);        
             }
 
-            public NumberFilter<int, RevenueRecognitionRequest> InvoiceTotal() 
+            public NumberFilter<long, RevenueRecognitionRequest> InvoiceTotal() 
             {
-                return new NumberFilter<int, RevenueRecognitionRequest>("invoice[total]", this);        
+                return new NumberFilter<long, RevenueRecognitionRequest>("invoice[total]", this);        
             }
 
-            public NumberFilter<int, RevenueRecognitionRequest> InvoiceAmountPaid() 
+            public NumberFilter<long, RevenueRecognitionRequest> InvoiceAmountPaid() 
             {
-                return new NumberFilter<int, RevenueRecognitionRequest>("invoice[amount_paid]", this);        
+                return new NumberFilter<long, RevenueRecognitionRequest>("invoice[amount_paid]", this);        
             }
 
-            public NumberFilter<int, RevenueRecognitionRequest> InvoiceAmountAdjusted() 
+            public NumberFilter<long, RevenueRecognitionRequest> InvoiceAmountAdjusted() 
             {
-                return new NumberFilter<int, RevenueRecognitionRequest>("invoice[amount_adjusted]", this);        
+                return new NumberFilter<long, RevenueRecognitionRequest>("invoice[amount_adjusted]", this);        
             }
 
-            public NumberFilter<int, RevenueRecognitionRequest> InvoiceCreditsApplied() 
+            public NumberFilter<long, RevenueRecognitionRequest> InvoiceCreditsApplied() 
             {
-                return new NumberFilter<int, RevenueRecognitionRequest>("invoice[credits_applied]", this);        
+                return new NumberFilter<long, RevenueRecognitionRequest>("invoice[credits_applied]", this);        
             }
 
-            public NumberFilter<int, RevenueRecognitionRequest> InvoiceAmountDue() 
+            public NumberFilter<long, RevenueRecognitionRequest> InvoiceAmountDue() 
             {
-                return new NumberFilter<int, RevenueRecognitionRequest>("invoice[amount_due]", this);        
+                return new NumberFilter<long, RevenueRecognitionRequest>("invoice[amount_due]", this);        
             }
 
             public EnumFilter<Invoice.DunningStatusEnum, RevenueRecognitionRequest> InvoiceDunningStatus() 
@@ -557,29 +557,29 @@ namespace ChargeBee.Models
                 return new TimestampFilter<DeferredRevenueRequest>("invoice[paid_at]", this);        
             }
 
-            public NumberFilter<int, DeferredRevenueRequest> InvoiceTotal() 
+            public NumberFilter<long, DeferredRevenueRequest> InvoiceTotal() 
             {
-                return new NumberFilter<int, DeferredRevenueRequest>("invoice[total]", this);        
+                return new NumberFilter<long, DeferredRevenueRequest>("invoice[total]", this);        
             }
 
-            public NumberFilter<int, DeferredRevenueRequest> InvoiceAmountPaid() 
+            public NumberFilter<long, DeferredRevenueRequest> InvoiceAmountPaid() 
             {
-                return new NumberFilter<int, DeferredRevenueRequest>("invoice[amount_paid]", this);        
+                return new NumberFilter<long, DeferredRevenueRequest>("invoice[amount_paid]", this);        
             }
 
-            public NumberFilter<int, DeferredRevenueRequest> InvoiceAmountAdjusted() 
+            public NumberFilter<long, DeferredRevenueRequest> InvoiceAmountAdjusted() 
             {
-                return new NumberFilter<int, DeferredRevenueRequest>("invoice[amount_adjusted]", this);        
+                return new NumberFilter<long, DeferredRevenueRequest>("invoice[amount_adjusted]", this);        
             }
 
-            public NumberFilter<int, DeferredRevenueRequest> InvoiceCreditsApplied() 
+            public NumberFilter<long, DeferredRevenueRequest> InvoiceCreditsApplied() 
             {
-                return new NumberFilter<int, DeferredRevenueRequest>("invoice[credits_applied]", this);        
+                return new NumberFilter<long, DeferredRevenueRequest>("invoice[credits_applied]", this);        
             }
 
-            public NumberFilter<int, DeferredRevenueRequest> InvoiceAmountDue() 
+            public NumberFilter<long, DeferredRevenueRequest> InvoiceAmountDue() 
             {
-                return new NumberFilter<int, DeferredRevenueRequest>("invoice[amount_due]", this);        
+                return new NumberFilter<long, DeferredRevenueRequest>("invoice[amount_due]", this);        
             }
 
             public EnumFilter<Invoice.DunningStatusEnum, DeferredRevenueRequest> InvoiceDunningStatus() 
@@ -774,9 +774,9 @@ namespace ChargeBee.Models
                 return new StringFilter<PlansRequest>("plan[name]", this).SupportsMultiOperators(true);        
             }
 
-            public NumberFilter<int, PlansRequest> PlanPrice() 
+            public NumberFilter<long, PlansRequest> PlanPrice() 
             {
-                return new NumberFilter<int, PlansRequest>("plan[price]", this);        
+                return new NumberFilter<long, PlansRequest>("plan[price]", this);        
             }
 
             public NumberFilter<int, PlansRequest> PlanPeriod() 
@@ -851,9 +851,9 @@ namespace ChargeBee.Models
                 return new EnumFilter<Addon.ChargeTypeEnum, AddonsRequest>("addon[charge_type]", this);        
             }
 
-            public NumberFilter<int, AddonsRequest> AddonPrice() 
+            public NumberFilter<long, AddonsRequest> AddonPrice() 
             {
-                return new NumberFilter<int, AddonsRequest>("addon[price]", this);        
+                return new NumberFilter<long, AddonsRequest>("addon[price]", this);        
             }
 
             public NumberFilter<int, AddonsRequest> AddonPeriod() 
@@ -1172,29 +1172,29 @@ namespace ChargeBee.Models
                 return new TimestampFilter<InvoicesRequest>("invoice[paid_at]", this);        
             }
 
-            public NumberFilter<int, InvoicesRequest> InvoiceTotal() 
+            public NumberFilter<long, InvoicesRequest> InvoiceTotal() 
             {
-                return new NumberFilter<int, InvoicesRequest>("invoice[total]", this);        
+                return new NumberFilter<long, InvoicesRequest>("invoice[total]", this);        
             }
 
-            public NumberFilter<int, InvoicesRequest> InvoiceAmountPaid() 
+            public NumberFilter<long, InvoicesRequest> InvoiceAmountPaid() 
             {
-                return new NumberFilter<int, InvoicesRequest>("invoice[amount_paid]", this);        
+                return new NumberFilter<long, InvoicesRequest>("invoice[amount_paid]", this);        
             }
 
-            public NumberFilter<int, InvoicesRequest> InvoiceAmountAdjusted() 
+            public NumberFilter<long, InvoicesRequest> InvoiceAmountAdjusted() 
             {
-                return new NumberFilter<int, InvoicesRequest>("invoice[amount_adjusted]", this);        
+                return new NumberFilter<long, InvoicesRequest>("invoice[amount_adjusted]", this);        
             }
 
-            public NumberFilter<int, InvoicesRequest> InvoiceCreditsApplied() 
+            public NumberFilter<long, InvoicesRequest> InvoiceCreditsApplied() 
             {
-                return new NumberFilter<int, InvoicesRequest>("invoice[credits_applied]", this);        
+                return new NumberFilter<long, InvoicesRequest>("invoice[credits_applied]", this);        
             }
 
-            public NumberFilter<int, InvoicesRequest> InvoiceAmountDue() 
+            public NumberFilter<long, InvoicesRequest> InvoiceAmountDue() 
             {
-                return new NumberFilter<int, InvoicesRequest>("invoice[amount_due]", this);        
+                return new NumberFilter<long, InvoicesRequest>("invoice[amount_due]", this);        
             }
 
             public EnumFilter<Invoice.DunningStatusEnum, InvoicesRequest> InvoiceDunningStatus() 
@@ -1265,9 +1265,9 @@ namespace ChargeBee.Models
                 return new TimestampFilter<CreditNotesRequest>("credit_note[date]", this);        
             }
 
-            public NumberFilter<int, CreditNotesRequest> CreditNoteTotal() 
+            public NumberFilter<long, CreditNotesRequest> CreditNoteTotal() 
             {
-                return new NumberFilter<int, CreditNotesRequest>("credit_note[total]", this);        
+                return new NumberFilter<long, CreditNotesRequest>("credit_note[total]", this);        
             }
 
             public EnumFilter<ChargeBee.Models.Enums.PriceTypeEnum, CreditNotesRequest> CreditNotePriceType() 
@@ -1275,19 +1275,19 @@ namespace ChargeBee.Models
                 return new EnumFilter<ChargeBee.Models.Enums.PriceTypeEnum, CreditNotesRequest>("credit_note[price_type]", this);        
             }
 
-            public NumberFilter<int, CreditNotesRequest> CreditNoteAmountAllocated() 
+            public NumberFilter<long, CreditNotesRequest> CreditNoteAmountAllocated() 
             {
-                return new NumberFilter<int, CreditNotesRequest>("credit_note[amount_allocated]", this);        
+                return new NumberFilter<long, CreditNotesRequest>("credit_note[amount_allocated]", this);        
             }
 
-            public NumberFilter<int, CreditNotesRequest> CreditNoteAmountRefunded() 
+            public NumberFilter<long, CreditNotesRequest> CreditNoteAmountRefunded() 
             {
-                return new NumberFilter<int, CreditNotesRequest>("credit_note[amount_refunded]", this);        
+                return new NumberFilter<long, CreditNotesRequest>("credit_note[amount_refunded]", this);        
             }
 
-            public NumberFilter<int, CreditNotesRequest> CreditNoteAmountAvailable() 
+            public NumberFilter<long, CreditNotesRequest> CreditNoteAmountAvailable() 
             {
-                return new NumberFilter<int, CreditNotesRequest>("credit_note[amount_available]", this);        
+                return new NumberFilter<long, CreditNotesRequest>("credit_note[amount_available]", this);        
             }
 
             public TimestampFilter<CreditNotesRequest> CreditNoteVoidedAt() 
@@ -1368,14 +1368,14 @@ namespace ChargeBee.Models
                 return new TimestampFilter<TransactionsRequest>("transaction[date]", this);        
             }
 
-            public NumberFilter<int, TransactionsRequest> TransactionAmount() 
+            public NumberFilter<long, TransactionsRequest> TransactionAmount() 
             {
-                return new NumberFilter<int, TransactionsRequest>("transaction[amount]", this);        
+                return new NumberFilter<long, TransactionsRequest>("transaction[amount]", this);        
             }
 
-            public NumberFilter<int, TransactionsRequest> TransactionAmountCapturable() 
+            public NumberFilter<long, TransactionsRequest> TransactionAmountCapturable() 
             {
-                return new NumberFilter<int, TransactionsRequest>("transaction[amount_capturable]", this);        
+                return new NumberFilter<long, TransactionsRequest>("transaction[amount_capturable]", this);        
             }
 
             public EnumFilter<Transaction.StatusEnum, TransactionsRequest> TransactionStatus() 
@@ -1396,9 +1396,9 @@ namespace ChargeBee.Models
             {
             }
 
-            public NumberFilter<int, OrdersRequest> Total() 
+            public NumberFilter<long, OrdersRequest> Total() 
             {
-                return new NumberFilter<int, OrdersRequest>("total", this);        
+                return new NumberFilter<long, OrdersRequest>("total", this);        
             }
             public StringFilter<OrdersRequest> OrderId() 
             {
@@ -1450,19 +1450,19 @@ namespace ChargeBee.Models
                 return new TimestampFilter<OrdersRequest>("order[cancelled_at]", this);        
             }
 
-            public NumberFilter<int, OrdersRequest> OrderAmountPaid() 
+            public NumberFilter<long, OrdersRequest> OrderAmountPaid() 
             {
-                return new NumberFilter<int, OrdersRequest>("order[amount_paid]", this);        
+                return new NumberFilter<long, OrdersRequest>("order[amount_paid]", this);        
             }
 
-            public NumberFilter<int, OrdersRequest> OrderRefundableCredits() 
+            public NumberFilter<long, OrdersRequest> OrderRefundableCredits() 
             {
-                return new NumberFilter<int, OrdersRequest>("order[refundable_credits]", this);        
+                return new NumberFilter<long, OrdersRequest>("order[refundable_credits]", this);        
             }
 
-            public NumberFilter<int, OrdersRequest> OrderRefundableCreditsIssued() 
+            public NumberFilter<long, OrdersRequest> OrderRefundableCreditsIssued() 
             {
-                return new NumberFilter<int, OrdersRequest>("order[refundable_credits_issued]", this);        
+                return new NumberFilter<long, OrdersRequest>("order[refundable_credits_issued]", this);        
             }
 
             public TimestampFilter<OrdersRequest> OrderUpdatedAt() 
