@@ -98,6 +98,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "subscription_changed")]
          SubscriptionChanged,
 
+        [EnumMember(Value = "subscription_trial_extended")]
+         SubscriptionTrialExtended,
+
         [EnumMember(Value = "mrr_updated")]
          MrrUpdated,
 

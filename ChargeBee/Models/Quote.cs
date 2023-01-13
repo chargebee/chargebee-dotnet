@@ -348,6 +348,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[id]", subscriptionId);
                 return this;
             }
+            public CreateSubForCustomerQuoteRequest SubscriptionPoNumber(string subscriptionPoNumber) 
+            {
+                m_params.AddOpt("subscription[po_number]", subscriptionPoNumber);
+                return this;
+            }
             public CreateSubForCustomerQuoteRequest SubscriptionPlanId(string subscriptionPlanId) 
             {
                 m_params.Add("subscription[plan_id]", subscriptionPlanId);
@@ -2001,6 +2006,11 @@ namespace ChargeBee.Models
             public CreateSubItemsForCustomerQuoteRequest SubscriptionId(string subscriptionId) 
             {
                 m_params.AddOpt("subscription[id]", subscriptionId);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest SubscriptionPoNumber(string subscriptionPoNumber) 
+            {
+                m_params.AddOpt("subscription[po_number]", subscriptionPoNumber);
                 return this;
             }
             public CreateSubItemsForCustomerQuoteRequest SubscriptionTrialEnd(long subscriptionTrialEnd) 

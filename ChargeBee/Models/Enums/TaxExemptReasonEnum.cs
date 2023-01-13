@@ -34,5 +34,8 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "high_value_physical_goods")]
          HighValuePhysicalGoods,
 
+        [EnumMember(Value = "zero_value_item")]
+         ZeroValueItem,
+
     }
 }

@@ -139,6 +139,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "global_payments")]
          GlobalPayments,
 
+        [EnumMember(Value = "bank_of_america")]
+         BankOfAmerica,
+
         [EnumMember(Value = "not_applicable")]
          NotApplicable,
 
