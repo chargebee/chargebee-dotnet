@@ -2008,6 +2008,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[id]", subscriptionId);
                 return this;
             }
+            public CreateSubItemsForCustomerQuoteRequest SubscriptionPoNumber(string subscriptionPoNumber) 
+            {
+                m_params.AddOpt("subscription[po_number]", subscriptionPoNumber);
+                return this;
+            }
             public CreateSubItemsForCustomerQuoteRequest SubscriptionTrialEnd(long subscriptionTrialEnd) 
             {
                 m_params.AddOpt("subscription[trial_end]", subscriptionTrialEnd);

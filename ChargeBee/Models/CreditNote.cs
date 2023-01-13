@@ -265,6 +265,14 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("business_entity_id", true); }
         }
+        public CreditNoteShippingAddress ShippingAddress 
+        {
+            get { return GetSubResource<CreditNoteShippingAddress>("shipping_address"); }
+        }
+        public CreditNoteBillingAddress BillingAddress 
+        {
+            get { return GetSubResource<CreditNoteBillingAddress>("billing_address"); }
+        }
         
         #endregion
         
@@ -1422,6 +1430,130 @@ namespace ChargeBee.Models
 
             public Invoice.StatusEnum InvoiceStatus {
                 get { return GetEnum<Invoice.StatusEnum>("invoice_status", true); }
+            }
+
+        }
+        public class CreditNoteShippingAddress : Resource
+        {
+
+            public string FirstName {
+                get { return GetValue<string>("first_name", false); }
+            }
+
+            public string LastName {
+                get { return GetValue<string>("last_name", false); }
+            }
+
+            public string Email {
+                get { return GetValue<string>("email", false); }
+            }
+
+            public string Company {
+                get { return GetValue<string>("company", false); }
+            }
+
+            public string Phone {
+                get { return GetValue<string>("phone", false); }
+            }
+
+            public string Line1 {
+                get { return GetValue<string>("line1", false); }
+            }
+
+            public string Line2 {
+                get { return GetValue<string>("line2", false); }
+            }
+
+            public string Line3 {
+                get { return GetValue<string>("line3", false); }
+            }
+
+            public string City {
+                get { return GetValue<string>("city", false); }
+            }
+
+            public string StateCode {
+                get { return GetValue<string>("state_code", false); }
+            }
+
+            public string State {
+                get { return GetValue<string>("state", false); }
+            }
+
+            public string Country {
+                get { return GetValue<string>("country", false); }
+            }
+
+            public string Zip {
+                get { return GetValue<string>("zip", false); }
+            }
+
+            public ValidationStatusEnum? ValidationStatus {
+                get { return GetEnum<ValidationStatusEnum>("validation_status", false); }
+            }
+
+            public int Index {
+                get { return GetValue<int>("index", true); }
+            }
+
+        }
+        public class CreditNoteBillingAddress : Resource
+        {
+
+            public string FirstName {
+                get { return GetValue<string>("first_name", false); }
+            }
+
+            public string LastName {
+                get { return GetValue<string>("last_name", false); }
+            }
+
+            public string Email {
+                get { return GetValue<string>("email", false); }
+            }
+
+            public string Company {
+                get { return GetValue<string>("company", false); }
+            }
+
+            public string Phone {
+                get { return GetValue<string>("phone", false); }
+            }
+
+            public string Line1 {
+                get { return GetValue<string>("line1", false); }
+            }
+
+            public string Line2 {
+                get { return GetValue<string>("line2", false); }
+            }
+
+            public string Line3 {
+                get { return GetValue<string>("line3", false); }
+            }
+
+            public string City {
+                get { return GetValue<string>("city", false); }
+            }
+
+            public string StateCode {
+                get { return GetValue<string>("state_code", false); }
+            }
+
+            public string State {
+                get { return GetValue<string>("state", false); }
+            }
+
+            public string Country {
+                get { return GetValue<string>("country", false); }
+            }
+
+            public string Zip {
+                get { return GetValue<string>("zip", false); }
+            }
+
+            public ValidationStatusEnum? ValidationStatus {
+                get { return GetEnum<ValidationStatusEnum>("validation_status", false); }
             }
 
         }

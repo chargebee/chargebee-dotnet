@@ -87,6 +87,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "sync_usages");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
+        public static DeleteLineItemsRequest DeleteLineItems(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "delete_line_items");
+            return new DeleteLineItemsRequest(url, HttpMethod.POST);
+        }
         public static ApplyCreditsRequest ApplyCredits(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "apply_credits");
@@ -1924,6 +1929,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("net_term_days", netTermDays);
                 return this;
             }
+            public ImportInvoiceRequest HasAdvanceCharges(bool hasAdvanceCharges) 
+            {
+                m_params.AddOpt("has_advance_charges", hasAdvanceCharges);
+                return this;
+            }
             public ImportInvoiceRequest UseForProration(bool useForProration) 
             {
                 m_params.AddOpt("use_for_proration", useForProration);
@@ -2415,6 +2425,19 @@ namespace ChargeBee.Models
             public ApplyPaymentsRequest TransactionId(int index, string transactionId) 
             {
                 m_params.AddOpt("transactions[id][" + index + "]", transactionId);
+                return this;
+            }
+        }
+        public class DeleteLineItemsRequest : EntityRequest<DeleteLineItemsRequest> 
+        {
+            public DeleteLineItemsRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public DeleteLineItemsRequest LineItemId(int index, string lineItemId) 
+            {
+                m_params.AddOpt("line_items[id][" + index + "]", lineItemId);
                 return this;
             }
         }

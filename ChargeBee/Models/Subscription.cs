@@ -4983,6 +4983,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("unbilled_charges[use_for_proration][" + index + "]", unbilledChargeUseForProration);
                 return this;
             }
+            public ImportUnbilledChargesRequest UnbilledChargeIsAdvanceCharge(int index, bool unbilledChargeIsAdvanceCharge) 
+            {
+                m_params.AddOpt("unbilled_charges[is_advance_charge][" + index + "]", unbilledChargeIsAdvanceCharge);
+                return this;
+            }
             public ImportUnbilledChargesRequest DiscountUnbilledChargeId(int index, string discountUnbilledChargeId) 
             {
                 m_params.AddOpt("discounts[unbilled_charge_id][" + index + "]", discountUnbilledChargeId);

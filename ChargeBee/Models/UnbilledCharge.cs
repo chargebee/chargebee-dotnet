@@ -158,6 +158,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<UnbilledChargeTier>("tiers"); }
         }
+        public bool? IsAdvanceCharge 
+        {
+            get { return GetValue<bool?>("is_advance_charge", false); }
+        }
         public bool Deleted 
         {
             get { return GetValue<bool>("deleted", true); }
