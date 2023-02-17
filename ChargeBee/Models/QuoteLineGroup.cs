@@ -220,7 +220,7 @@ namespace ChargeBee.Models
             }
 
             public string EntityDescription {
-                get { return GetValue<string>("entity_description", true); }
+                get { return GetValue<string>("entity_description", false); }
             }
 
             public EntityTypeEnum EntityType {

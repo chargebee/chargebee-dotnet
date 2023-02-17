@@ -2818,6 +2818,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("redirect_url", redirectUrl);
                 return this;
             }
+            public CheckoutGiftRequest CouponIds(List<string> couponIds) 
+            {
+                m_params.AddOpt("coupon_ids", couponIds);
+                return this;
+            }
             public CheckoutGiftRequest GifterCustomerId(string gifterCustomerId) 
             {
                 m_params.AddOpt("gifter[customer_id]", gifterCustomerId);
@@ -2843,6 +2848,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
                 return this;
             }
+            [Obsolete]
             public CheckoutGiftRequest SubscriptionCoupon(string subscriptionCoupon) 
             {
                 m_params.AddOpt("subscription[coupon]", subscriptionCoupon);

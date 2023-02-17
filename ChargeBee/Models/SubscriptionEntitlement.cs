@@ -147,6 +147,10 @@ namespace ChargeBee.Models
         public class SubscriptionEntitlementComponent : Resource
         {
 
+            public EntitlementOverride EntitlementOverrides {
+                get { return GetSubResource<EntitlementOverride>("entitlement_overrides"); }
+            }
+
         }
 
         #endregion
