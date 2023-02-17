@@ -127,6 +127,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[id]", customerId);
                 return this;
             }
+            public ProcessReceiptRequest CustomerEmail(string customerEmail) 
+            {
+                m_params.AddOpt("customer[email]", customerEmail);
+                return this;
+            }
+            public ProcessReceiptRequest CustomerFirstName(string customerFirstName) 
+            {
+                m_params.AddOpt("customer[first_name]", customerFirstName);
+                return this;
+            }
+            public ProcessReceiptRequest CustomerLastName(string customerLastName) 
+            {
+                m_params.AddOpt("customer[last_name]", customerLastName);
+                return this;
+            }
         }
         public class ImportReceiptRequest : EntityRequest<ImportReceiptRequest> 
         {

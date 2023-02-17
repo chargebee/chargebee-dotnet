@@ -159,6 +159,16 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "record_payment");
             return new RecordPaymentRequest(url, HttpMethod.POST);
         }
+        public static RecordTaxWithheldRequest RecordTaxWithheld(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "record_tax_withheld");
+            return new RecordTaxWithheldRequest(url, HttpMethod.POST);
+        }
+        public static RemoveTaxWithheldRequest RemoveTaxWithheld(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "remove_tax_withheld");
+            return new RemoveTaxWithheldRequest(url, HttpMethod.POST);
+        }
         public static RefundRequest Refund(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "refund");
@@ -449,7 +459,7 @@ namespace ChargeBee.Models
         }
         public string BusinessEntityId 
         {
-            get { return GetValue<string>("business_entity_id", true); }
+            get { return GetValue<string>("business_entity_id", false); }
         }
         
         #endregion
@@ -2888,6 +2898,47 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class RecordTaxWithheldRequest : EntityRequest<RecordTaxWithheldRequest> 
+        {
+            public RecordTaxWithheldRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public RecordTaxWithheldRequest TaxWithheldAmount(int taxWithheldAmount) 
+            {
+                m_params.Add("tax_withheld[amount]", taxWithheldAmount);
+                return this;
+            }
+            public RecordTaxWithheldRequest TaxWithheldReferenceNumber(string taxWithheldReferenceNumber) 
+            {
+                m_params.AddOpt("tax_withheld[reference_number]", taxWithheldReferenceNumber);
+                return this;
+            }
+            public RecordTaxWithheldRequest TaxWithheldDate(long taxWithheldDate) 
+            {
+                m_params.AddOpt("tax_withheld[date]", taxWithheldDate);
+                return this;
+            }
+            public RecordTaxWithheldRequest TaxWithheldDescription(string taxWithheldDescription) 
+            {
+                m_params.AddOpt("tax_withheld[description]", taxWithheldDescription);
+                return this;
+            }
+        }
+        public class RemoveTaxWithheldRequest : EntityRequest<RemoveTaxWithheldRequest> 
+        {
+            public RemoveTaxWithheldRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public RemoveTaxWithheldRequest TaxWithheldId(string taxWithheldId) 
+            {
+                m_params.Add("tax_withheld[id]", taxWithheldId);
+                return this;
+            }
+        }
         public class RefundRequest : EntityRequest<RefundRequest> 
         {
             public RefundRequest(string url, HttpMethod method) 
@@ -3351,7 +3402,7 @@ namespace ChargeBee.Models
             }
 
             public string EntityDescription {
-                get { return GetValue<string>("entity_description", true); }
+                get { return GetValue<string>("entity_description", false); }
             }
 
             public EntityTypeEnum EntityType {

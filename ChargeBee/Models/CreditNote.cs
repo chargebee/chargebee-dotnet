@@ -92,6 +92,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "delete");
             return new DeleteRequest(url, HttpMethod.POST);
         }
+        public static RemoveTaxWithheldRefundRequest RemoveTaxWithheldRefund(string id)
+        {
+            string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "remove_tax_withheld_refund");
+            return new RemoveTaxWithheldRefundRequest(url, HttpMethod.POST);
+        }
         public static EntityRequest<Type> ResendEinvoice(string id)
         {
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "resend_einvoice");
@@ -557,6 +562,19 @@ namespace ChargeBee.Models
             public DeleteRequest Comment(string comment) 
             {
                 m_params.AddOpt("comment", comment);
+                return this;
+            }
+        }
+        public class RemoveTaxWithheldRefundRequest : EntityRequest<RemoveTaxWithheldRefundRequest> 
+        {
+            public RemoveTaxWithheldRefundRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public RemoveTaxWithheldRefundRequest TaxWithheldId(string taxWithheldId) 
+            {
+                m_params.Add("tax_withheld[id]", taxWithheldId);
                 return this;
             }
         }
@@ -1167,7 +1185,7 @@ namespace ChargeBee.Models
             }
 
             public string EntityDescription {
-                get { return GetValue<string>("entity_description", true); }
+                get { return GetValue<string>("entity_description", false); }
             }
 
             public EntityTypeEnum EntityType {

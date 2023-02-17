@@ -302,16 +302,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer_id", customerId);
                 return this;
             }
-            public EstimateRequest InvoiceInfoPoNumber(string invoiceInfoPoNumber) 
-            {
-                m_params.AddOpt("invoice_info[po_number]", invoiceInfoPoNumber);
-                return this;
-            }
-            public EstimateRequest InvoiceInfoNotes(string invoiceInfoNotes) 
-            {
-                m_params.AddOpt("invoice_info[notes]", invoiceInfoNotes);
-                return this;
-            }
             public EstimateRequest CustomerVatNumber(string customerVatNumber) 
             {
                 m_params.AddOpt("customer[vat_number]", customerVatNumber);

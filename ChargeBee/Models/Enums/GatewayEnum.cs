@@ -142,6 +142,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "bank_of_america")]
          BankOfAmerica,
 
+        [EnumMember(Value = "ecentric")]
+         Ecentric,
+
         [EnumMember(Value = "not_applicable")]
          NotApplicable,
 

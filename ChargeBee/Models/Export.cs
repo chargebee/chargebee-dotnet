@@ -1688,6 +1688,11 @@ namespace ChargeBee.Models
                 return new EnumFilter<ChargeBee.Models.Enums.ChargeOnEventEnum, AttachedItemsRequest>("attached_item[charge_on_event]", this);        
             }
 
+            public TimestampFilter<AttachedItemsRequest> AttachedItemUpdatedAt() 
+            {
+                return new TimestampFilter<AttachedItemsRequest>("attached_item[updated_at]", this);        
+            }
+
             public StringFilter<AttachedItemsRequest> AttachedItemParentItemId() 
             {
                 return new StringFilter<AttachedItemsRequest>("attached_item[parent_item_id]", this).SupportsMultiOperators(true);        

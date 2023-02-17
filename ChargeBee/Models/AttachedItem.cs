@@ -268,6 +268,10 @@ namespace ChargeBee.Models
             {
                 return new EnumFilter<ChargeBee.Models.Enums.ChargeOnEventEnum, AttachedItemListRequest>("charge_on_event", this);        
             }
+            public TimestampFilter<AttachedItemListRequest> UpdatedAt() 
+            {
+                return new TimestampFilter<AttachedItemListRequest>("updated_at", this);        
+            }
         }
         #endregion
 
