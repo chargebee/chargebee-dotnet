@@ -1,3 +1,9 @@
+### v3.2.1 (2023-03-10)
+* * *
+
+#### Fixes:
+* Fixed special character parsing issue.
+
 ### v3.2.0 (2023-02-17)
 * * *
 
@@ -60,6 +66,11 @@
 
 🔴 **Alert!** Eventually, v2.x will reach end-of-life, after which it will no longer receive any new updates. We encourage you to upgrade to v3.x at the earliest.
 
+#### Fixes:
+* Fixed special character parsing issue.
+
+### v2.24.0 (2023-02-17)
+* * *
 #### Fixes:
 * Fixed Serialization issue for Invoice#business_entity_id, CreditNoteLineItem#entity_description  CreditNoteEstimateLineItem#entity_description, InvoiceLineItem#entity_description, InvoiceEstimateLineItem#entity_description, QuoteLineItem#entity_description and QuoteLineGroupLineItem#entity_description attributes.
 
