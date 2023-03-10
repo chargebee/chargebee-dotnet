@@ -1,6 +1,12 @@
 
 🔴 **Alert!** Eventually, v2.x will reach end-of-life, after which it will no longer receive any new updates. We encourage you to upgrade to v3.x at the earliest.
 
+### v2.24.1 (2023-03-10)
+* * *
+
+#### Fixes:
+* Fixed special character parsing issue.
+
 ### v2.24.0 (2023-02-17)
 * * *
 
