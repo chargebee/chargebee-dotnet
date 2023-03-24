@@ -214,6 +214,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "resend_einvoice");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
+        public static EntityRequest<Type> SendEinvoice(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "send_einvoice");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -4013,6 +4018,10 @@ namespace ChargeBee.Models
 
             public string Id {
                 get { return GetValue<string>("id", true); }
+            }
+
+            public string ReferenceNumber {
+                get { return GetValue<string>("reference_number", false); }
             }
 
             public StatusEnum Status {

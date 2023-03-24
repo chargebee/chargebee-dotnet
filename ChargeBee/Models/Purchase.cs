@@ -284,6 +284,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_info[billing_cycles][" + index + "]", subscriptionInfoBillingCycles);
                 return this;
             }
+            public CreateRequest SubscriptionInfoMetaData(int index, JToken subscriptionInfoMetaData) 
+            {
+                m_params.AddOpt("subscription_info[meta_data][" + index + "]", subscriptionInfoMetaData);
+                return this;
+            }
         }
         public class EstimateRequest : EntityRequest<EstimateRequest> 
         {

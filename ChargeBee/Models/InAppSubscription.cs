@@ -51,6 +51,16 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("in_app_subscriptions", CheckNull(id), "import_receipt");
             return new ImportReceiptRequest(url, HttpMethod.POST);
         }
+        public static ImportSubscriptionRequest ImportSubscription(string id)
+        {
+            string url = ApiUtil.BuildUrl("in_app_subscriptions", CheckNull(id), "import_subscription");
+            return new ImportSubscriptionRequest(url, HttpMethod.POST);
+        }
+        public static RetrieveStoreSubsRequest RetrieveStoreSubs(string id)
+        {
+            string url = ApiUtil.BuildUrl("in_app_subscriptions", CheckNull(id), "retrieve");
+            return new RetrieveStoreSubsRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -70,6 +80,14 @@ namespace ChargeBee.Models
         public string PlanId 
         {
             get { return GetValue<string>("plan_id", false); }
+        }
+        public StoreStatusEnum? StoreStatus 
+        {
+            get { return GetEnum<StoreStatusEnum>("store_status", false); }
+        }
+        public string InvoiceId 
+        {
+            get { return GetValue<string>("invoice_id", false); }
         }
         
         #endregion
@@ -171,8 +189,92 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class ImportSubscriptionRequest : EntityRequest<ImportSubscriptionRequest> 
+        {
+            public ImportSubscriptionRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public ImportSubscriptionRequest SubscriptionId(string subscriptionId) 
+            {
+                m_params.Add("subscription[id]", subscriptionId);
+                return this;
+            }
+            public ImportSubscriptionRequest SubscriptionStartedAt(long subscriptionStartedAt) 
+            {
+                m_params.Add("subscription[started_at]", subscriptionStartedAt);
+                return this;
+            }
+            public ImportSubscriptionRequest SubscriptionTermStart(long subscriptionTermStart) 
+            {
+                m_params.Add("subscription[term_start]", subscriptionTermStart);
+                return this;
+            }
+            public ImportSubscriptionRequest SubscriptionTermEnd(long subscriptionTermEnd) 
+            {
+                m_params.Add("subscription[term_end]", subscriptionTermEnd);
+                return this;
+            }
+            public ImportSubscriptionRequest SubscriptionProductId(string subscriptionProductId) 
+            {
+                m_params.Add("subscription[product_id]", subscriptionProductId);
+                return this;
+            }
+            public ImportSubscriptionRequest SubscriptionCurrencyCode(string subscriptionCurrencyCode) 
+            {
+                m_params.Add("subscription[currency_code]", subscriptionCurrencyCode);
+                return this;
+            }
+            public ImportSubscriptionRequest SubscriptionTransactionId(string subscriptionTransactionId) 
+            {
+                m_params.Add("subscription[transaction_id]", subscriptionTransactionId);
+                return this;
+            }
+            public ImportSubscriptionRequest SubscriptionIsTrial(bool subscriptionIsTrial) 
+            {
+                m_params.AddOpt("subscription[is_trial]", subscriptionIsTrial);
+                return this;
+            }
+            public ImportSubscriptionRequest CustomerId(string customerId) 
+            {
+                m_params.AddOpt("customer[id]", customerId);
+                return this;
+            }
+            public ImportSubscriptionRequest CustomerEmail(string customerEmail) 
+            {
+                m_params.AddOpt("customer[email]", customerEmail);
+                return this;
+            }
+        }
+        public class RetrieveStoreSubsRequest : EntityRequest<RetrieveStoreSubsRequest> 
+        {
+            public RetrieveStoreSubsRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public RetrieveStoreSubsRequest Receipt(string receipt) 
+            {
+                m_params.Add("receipt", receipt);
+                return this;
+            }
+        }
         #endregion
 
+        public enum StoreStatusEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "in_trial")]
+            InTrial,
+            [EnumMember(Value = "active")]
+            Active,
+            [EnumMember(Value = "cancelled")]
+            Cancelled,
+
+        }
 
         #region Subclasses
 
