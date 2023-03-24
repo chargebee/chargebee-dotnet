@@ -520,6 +520,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("discount_percentage", discountPercentage);
                 return this;
             }
+            [Obsolete]
+            public UpdateForItemsRequest DiscountQuantity(int discountQuantity) 
+            {
+                m_params.AddOpt("discount_quantity", discountQuantity);
+                return this;
+            }
             public UpdateForItemsRequest ApplyOn(Coupon.ApplyOnEnum applyOn) 
             {
                 m_params.AddOpt("apply_on", applyOn);
@@ -689,6 +695,12 @@ namespace ChargeBee.Models
             public UpdateRequest DiscountPercentage(double discountPercentage) 
             {
                 m_params.AddOpt("discount_percentage", discountPercentage);
+                return this;
+            }
+            [Obsolete]
+            public UpdateRequest DiscountQuantity(int discountQuantity) 
+            {
+                m_params.AddOpt("discount_quantity", discountQuantity);
                 return this;
             }
             public UpdateRequest ApplyOn(Coupon.ApplyOnEnum applyOn) 

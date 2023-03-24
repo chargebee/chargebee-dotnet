@@ -1193,6 +1193,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[is_einvoice_enabled]", customerIsEinvoiceEnabled);
                 return this;
             }
+            public CreateRequest CustomerEinvoicingMethod(ChargeBee.Models.Enums.EinvoicingMethodEnum customerEinvoicingMethod) 
+            {
+                m_params.AddOpt("customer[einvoicing_method]", customerEinvoicingMethod);
+                return this;
+            }
             public CreateRequest CustomerRegisteredForGst(bool customerRegisteredForGst) 
             {
                 m_params.AddOpt("customer[registered_for_gst]", customerRegisteredForGst);
@@ -2726,6 +2731,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[is_einvoice_enabled]", customerIsEinvoiceEnabled);
                 return this;
             }
+            public UpdateRequest CustomerEinvoicingMethod(ChargeBee.Models.Enums.EinvoicingMethodEnum customerEinvoicingMethod) 
+            {
+                m_params.AddOpt("customer[einvoicing_method]", customerEinvoicingMethod);
+                return this;
+            }
             public UpdateRequest CustomerEntityIdentifierStandard(string customerEntityIdentifierStandard) 
             {
                 m_params.AddOpt("customer[entity_identifier_standard]", customerEntityIdentifierStandard);
@@ -3334,6 +3344,11 @@ namespace ChargeBee.Models
             public UpdateForItemsRequest CustomerIsEinvoiceEnabled(bool customerIsEinvoiceEnabled) 
             {
                 m_params.AddOpt("customer[is_einvoice_enabled]", customerIsEinvoiceEnabled);
+                return this;
+            }
+            public UpdateForItemsRequest CustomerEinvoicingMethod(ChargeBee.Models.Enums.EinvoicingMethodEnum customerEinvoicingMethod) 
+            {
+                m_params.AddOpt("customer[einvoicing_method]", customerEinvoicingMethod);
                 return this;
             }
             public UpdateForItemsRequest CustomerEntityIdentifierStandard(string customerEntityIdentifierStandard) 
