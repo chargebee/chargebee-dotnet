@@ -216,6 +216,10 @@ namespace ChargeBee.Models
         {
             get { return GetJToken("meta_data", false); }
         }
+        public List<CouponCouponConstraint> CouponConstraints 
+        {
+            get { return GetResourceList<CouponCouponConstraint>("coupon_constraints"); }
+        }
         
         #endregion
         
@@ -482,6 +486,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_constraint_criteria[item_price_periods][" + index + "]", itemConstraintCriteriaItemPricePeriods);
                 return this;
             }
+            public CreateForItemsRequest CouponConstraintEntityType(int index, CouponCouponConstraint.EntityTypeEnum couponConstraintEntityType) 
+            {
+                m_params.Add("coupon_constraints[entity_type][" + index + "]", couponConstraintEntityType);
+                return this;
+            }
+            public CreateForItemsRequest CouponConstraintType(int index, CouponCouponConstraint.TypeEnum couponConstraintType) 
+            {
+                m_params.Add("coupon_constraints[type][" + index + "]", couponConstraintType);
+                return this;
+            }
+            public CreateForItemsRequest CouponConstraintValue(int index, string couponConstraintValue) 
+            {
+                m_params.AddOpt("coupon_constraints[value][" + index + "]", couponConstraintValue);
+                return this;
+            }
         }
         public class UpdateForItemsRequest : EntityRequest<UpdateForItemsRequest> 
         {
@@ -609,6 +628,21 @@ namespace ChargeBee.Models
             public UpdateForItemsRequest ItemConstraintCriteriaItemPricePeriods(int index, JArray itemConstraintCriteriaItemPricePeriods) 
             {
                 m_params.AddOpt("item_constraint_criteria[item_price_periods][" + index + "]", itemConstraintCriteriaItemPricePeriods);
+                return this;
+            }
+            public UpdateForItemsRequest CouponConstraintEntityType(int index, CouponCouponConstraint.EntityTypeEnum couponConstraintEntityType) 
+            {
+                m_params.Add("coupon_constraints[entity_type][" + index + "]", couponConstraintEntityType);
+                return this;
+            }
+            public UpdateForItemsRequest CouponConstraintType(int index, CouponCouponConstraint.TypeEnum couponConstraintType) 
+            {
+                m_params.Add("coupon_constraints[type][" + index + "]", couponConstraintType);
+                return this;
+            }
+            public UpdateForItemsRequest CouponConstraintValue(int index, string couponConstraintValue) 
+            {
+                m_params.AddOpt("coupon_constraints[value][" + index + "]", couponConstraintValue);
                 return this;
             }
         }
@@ -979,6 +1013,38 @@ namespace ChargeBee.Models
 
             public JArray ItemPricePeriods {
                 get { return GetJArray("item_price_periods", false); }
+            }
+
+        }
+        public class CouponCouponConstraint : Resource
+        {
+            public enum EntityTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "customer")]
+                Customer,
+            }
+            public enum TypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "max_redemptions")]
+                MaxRedemptions,
+                [EnumMember(Value = "unique_by")]
+                UniqueBy,
+            }
+
+            public EntityTypeEnum EntityType {
+                get { return GetEnum<EntityTypeEnum>("entity_type", true); }
+            }
+
+            public TypeEnum CouponConstraintType {
+                get { return GetEnum<TypeEnum>("type", true); }
+            }
+
+            public string Value {
+                get { return GetValue<string>("value", false); }
             }
 
         }

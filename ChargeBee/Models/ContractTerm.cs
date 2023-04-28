@@ -72,6 +72,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<long>("total_contract_value", true); }
         }
+        public long TotalContractValueBeforeTax 
+        {
+            get { return GetValue<long>("total_contract_value_before_tax", true); }
+        }
         public int? CancellationCutoffPeriod 
         {
             get { return GetValue<int?>("cancellation_cutoff_period", false); }

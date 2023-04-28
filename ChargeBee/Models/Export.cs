@@ -941,6 +941,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public CustomersRequest ExportType(ChargeBee.Models.Enums.ExportTypeEnum exportType) 
+            {
+                m_params.AddOpt("export_type", exportType);
+                return this;
+            }
             public StringFilter<CustomersRequest> BusinessEntityId() 
             {
                 return new StringFilter<CustomersRequest>("business_entity_id", this);        
@@ -1033,6 +1038,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public SubscriptionsRequest ExportType(ChargeBee.Models.Enums.ExportTypeEnum exportType) 
+            {
+                m_params.AddOpt("export_type", exportType);
+                return this;
+            }
             public StringFilter<SubscriptionsRequest> ItemId() 
             {
                 return new StringFilter<SubscriptionsRequest>("item_id", this).SupportsMultiOperators(true);        

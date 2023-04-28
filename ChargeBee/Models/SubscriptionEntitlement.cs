@@ -54,10 +54,6 @@ namespace ChargeBee.Models
         #endregion
         
         #region Properties
-        public string Id 
-        {
-            get { return GetValue<string>("id", true); }
-        }
         public string SubscriptionId 
         {
             get { return GetValue<string>("subscription_id", true); }
