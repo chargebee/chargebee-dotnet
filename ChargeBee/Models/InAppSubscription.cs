@@ -71,7 +71,7 @@ namespace ChargeBee.Models
         }
         public string SubscriptionId 
         {
-            get { return GetValue<string>("subscription_id", false); }
+            get { return GetValue<string>("subscription_id", true); }
         }
         public string CustomerId 
         {
@@ -110,11 +110,6 @@ namespace ChargeBee.Models
                 m_params.Add("product[id]", productId);
                 return this;
             }
-            public ProcessReceiptRequest ProductName(string productName) 
-            {
-                m_params.AddOpt("product[name]", productName);
-                return this;
-            }
             public ProcessReceiptRequest ProductCurrencyCode(string productCurrencyCode) 
             {
                 m_params.Add("product[currency_code]", productCurrencyCode);
@@ -123,6 +118,11 @@ namespace ChargeBee.Models
             public ProcessReceiptRequest ProductPrice(int productPrice) 
             {
                 m_params.Add("product[price]", productPrice);
+                return this;
+            }
+            public ProcessReceiptRequest ProductName(string productName) 
+            {
+                m_params.AddOpt("product[name]", productName);
                 return this;
             }
             public ProcessReceiptRequest ProductPriceInDecimal(string productPriceInDecimal) 

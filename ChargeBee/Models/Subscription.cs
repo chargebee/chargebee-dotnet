@@ -4131,6 +4131,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("contract_term[total_amount_raised]", contractTermTotalAmountRaised);
                 return this;
             }
+            public ImportSubscriptionRequest ContractTermTotalAmountRaisedBeforeTax(long contractTermTotalAmountRaisedBeforeTax) 
+            {
+                m_params.AddOpt("contract_term[total_amount_raised_before_tax]", contractTermTotalAmountRaisedBeforeTax);
+                return this;
+            }
             public ImportSubscriptionRequest ContractTermActionAtTermEnd(SubscriptionContractTerm.ActionAtTermEndEnum contractTermActionAtTermEnd) 
             {
                 m_params.AddOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
@@ -4677,6 +4682,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("contract_term[total_amount_raised]", contractTermTotalAmountRaised);
                 return this;
             }
+            public ImportForCustomerRequest ContractTermTotalAmountRaisedBeforeTax(long contractTermTotalAmountRaisedBeforeTax) 
+            {
+                m_params.AddOpt("contract_term[total_amount_raised_before_tax]", contractTermTotalAmountRaisedBeforeTax);
+                return this;
+            }
             public ImportForCustomerRequest ContractTermActionAtTermEnd(SubscriptionContractTerm.ActionAtTermEndEnum contractTermActionAtTermEnd) 
             {
                 m_params.AddOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
@@ -4900,9 +4910,19 @@ namespace ChargeBee.Models
                 m_params.AddOpt("contract_term[total_amount_raised]", contractTermTotalAmountRaised);
                 return this;
             }
+            public ImportContractTermRequest ContractTermTotalAmountRaisedBeforeTax(long contractTermTotalAmountRaisedBeforeTax) 
+            {
+                m_params.AddOpt("contract_term[total_amount_raised_before_tax]", contractTermTotalAmountRaisedBeforeTax);
+                return this;
+            }
             public ImportContractTermRequest ContractTermTotalContractValue(long contractTermTotalContractValue) 
             {
                 m_params.AddOpt("contract_term[total_contract_value]", contractTermTotalContractValue);
+                return this;
+            }
+            public ImportContractTermRequest ContractTermTotalContractValueBeforeTax(long contractTermTotalContractValueBeforeTax) 
+            {
+                m_params.AddOpt("contract_term[total_contract_value_before_tax]", contractTermTotalContractValueBeforeTax);
                 return this;
             }
             public ImportContractTermRequest ContractTermBillingCycle(int contractTermBillingCycle) 
@@ -5230,6 +5250,11 @@ namespace ChargeBee.Models
             public ImportForItemsRequest ContractTermTotalAmountRaised(long contractTermTotalAmountRaised) 
             {
                 m_params.AddOpt("contract_term[total_amount_raised]", contractTermTotalAmountRaised);
+                return this;
+            }
+            public ImportForItemsRequest ContractTermTotalAmountRaisedBeforeTax(long contractTermTotalAmountRaisedBeforeTax) 
+            {
+                m_params.AddOpt("contract_term[total_amount_raised_before_tax]", contractTermTotalAmountRaisedBeforeTax);
                 return this;
             }
             public ImportForItemsRequest ContractTermActionAtTermEnd(SubscriptionContractTerm.ActionAtTermEndEnum contractTermActionAtTermEnd) 
@@ -6266,6 +6291,10 @@ namespace ChargeBee.Models
 
             public long TotalContractValue {
                 get { return GetValue<long>("total_contract_value", true); }
+            }
+
+            public long TotalContractValueBeforeTax {
+                get { return GetValue<long>("total_contract_value_before_tax", true); }
             }
 
             public int? CancellationCutoffPeriod {

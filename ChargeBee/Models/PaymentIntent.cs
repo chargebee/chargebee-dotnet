@@ -296,6 +296,8 @@ namespace ChargeBee.Models
                 Authorized,
                 [EnumMember(Value = "refused")]
                 Refused,
+                [EnumMember(Value = "pending_authorization")]
+                PendingAuthorization,
             }
 
             public string Id {
