@@ -68,6 +68,29 @@ Subscription subscription = result.Subscription;
 Customer customer = result.Customer;
 ```
 
+### Create an idempotent request
+[Idempotency keys](https://apidocs.chargebee.com/docs/api) are passed along with request headers to allow a safe retry of POST requests. 
+
+```cs
+using ChargeBee.Api;
+using ChargeBee.Models;
+ApiConfig.Configure("site","api_key");
+EntityResult result = Customer.Create()
+    .FirstName("John")
+    .LastName("Doe")
+    .Email("john@test.com")
+    .SetIdempotencyKey("<<UUID>>") // Replace <<UUID>> with a unique string
+    .Request();
+Customer customer = result.Customer;
+Console.WriteLine(ApiConfig.SerializeObject(customer));
+HttpResponseHeaders httpResponseHeaders = result.ResponseHeaders; // Retrieves response headers
+Console.WriteLine(httpResponseHeaders);
+string idempotencyReplayedValue = result.IsIdempotencyReplayed(); // Retrieves idempotency replayed header value 
+Console.WriteLine(idempotencyReplayedValue);
+
+```
+`isIdempotencyReplayed()` method can be accessed to differentiate between original and replayed requests.
+
 ### Serialize an object
 
 ```cs

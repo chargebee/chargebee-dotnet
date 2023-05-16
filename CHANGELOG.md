@@ -1,3 +1,12 @@
+### v3.5.0 (2023-05-16)
+* * *
+
+#### New Feature:
+* Added SetIdempotencyKey("UUID") utility to pass **Idempotency key** along with request headers to allow a safe retry of POST requests.
+* Added IsIdempotencyReplayed() utility to differentiate between original and replayed requests.
+* Added ResponseHeaders() utility to fetch the response headers.
+
+
 ### v3.4.0 (2023-04-28)
 * * *
 
@@ -120,6 +129,15 @@
 🔴 **Attention**: The support for v2 will eventually be discontinued on **December 31st 2023** and will no longer receive any further updates. We strongly recommend [upgrading to v3](https://github.com/chargebee/chargebee-dotnet/wiki/Migration-guide-for-v3) as soon as possible.
 
 * * *
+
+### v2.27.0 (2023-05-16)
+* * *
+
+#### New Feature:
+* Added SetIdempotencyKey("UUID") utility to pass **Idempotency key** along with request headers to allow a safe retry of POST requests.
+* Added IsIdempotencyReplayed() utility to differentiate between original and replayed requests.
+* Added ResponseHeaders() utility to fetch the response headers.
+
 
 ### v2.26.0 (2023-04-28)
 * * *

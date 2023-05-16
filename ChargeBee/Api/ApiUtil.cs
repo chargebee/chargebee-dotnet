@@ -139,7 +139,7 @@ namespace ChargeBee.Api
             var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             if (response.IsSuccessStatusCode)
             {
-                EntityResult result = new EntityResult(response.StatusCode, json);
+                EntityResult result = new EntityResult(response.StatusCode, json, response.Headers);
                 return result;
             }
             else
@@ -183,7 +183,7 @@ namespace ChargeBee.Api
             var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             if (response.IsSuccessStatusCode)
             {
-                ListResult result = new ListResult(response.StatusCode, json);
+                ListResult result = new ListResult(response.StatusCode, json, response.Headers);
                 return result;
             }
             else
