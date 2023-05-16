@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
-
+using System.Net.Http.Headers;
 using Newtonsoft.Json.Linq;
 
 using ChargeBee.Internal;
@@ -11,6 +11,11 @@ namespace ChargeBee.Api
     public class ListResult
     {
         public ListResult(HttpStatusCode statusCode, string json)
+            : this(statusCode, json, null)
+        {
+		}
+	    
+        public ListResult(HttpStatusCode statusCode, string json, HttpResponseHeaders responseHeaders)
         {
             List = new List<Entry>();
 
@@ -28,9 +33,13 @@ namespace ChargeBee.Api
             }
 
             StatusCode = statusCode;
+            ResponseHeaders = responseHeaders;
+
         }
 
         public HttpStatusCode StatusCode { get; private set; }
+        
+        public HttpResponseHeaders ResponseHeaders { get; private set; }
 
         public List<Entry> List { get; private set; }
 

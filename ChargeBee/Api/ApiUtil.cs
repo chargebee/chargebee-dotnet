@@ -19,7 +19,6 @@ namespace ChargeBee.Api
     {
         private static DateTime m_unixTime = new DateTime(1970, 1, 1);
         private static HttpClient httpClient = new HttpClient() { Timeout = TimeSpan.FromMilliseconds(0 < ApiConfig.ConnectTimeout ? ApiConfig.ConnectTimeout : 30000) };
-
         public static string BuildUrl(params string[] paths)
         {
             StringBuilder sb = new StringBuilder();
@@ -139,7 +138,7 @@ namespace ChargeBee.Api
             var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             if (response.IsSuccessStatusCode)
             {
-                EntityResult result = new EntityResult(response.StatusCode, json);
+                EntityResult result = new EntityResult(response.StatusCode, json, response.Headers);
                 return result;
             }
             else
@@ -183,7 +182,7 @@ namespace ChargeBee.Api
             var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             if (response.IsSuccessStatusCode)
             {
-                ListResult result = new ListResult(response.StatusCode, json);
+                ListResult result = new ListResult(response.StatusCode, json, response.Headers);
                 return result;
             }
             else
