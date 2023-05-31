@@ -82,5 +82,8 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "custom")]
          Custom,
 
+        [EnumMember(Value = "boleto")]
+         Boleto,
+
     }
 }

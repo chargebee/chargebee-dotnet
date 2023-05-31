@@ -274,6 +274,8 @@ namespace ChargeBee.Models
             PaypalExpressCheckout,
             [EnumMember(Value = "direct_debit")]
             DirectDebit,
+            [EnumMember(Value = "boleto")]
+            Boleto,
 
         }
 

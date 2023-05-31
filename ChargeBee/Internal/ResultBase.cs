@@ -253,6 +253,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<Purchase>("purchase"); }
         }
+        public PaymentVoucher PaymentVoucher
+        {
+            get {  return GetResource<PaymentVoucher>("payment_voucher"); }
+        }
 
         public List<UnbilledCharge> UnbilledCharges
         {

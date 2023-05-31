@@ -61,6 +61,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("payment_sources", "create_using_payment_intent");
             return new CreateUsingPaymentIntentRequest(url, HttpMethod.POST);
         }
+        public static CreateVoucherPaymentSourceRequest CreateVoucherPaymentSource()
+        {
+            string url = ApiUtil.BuildUrl("payment_sources", "create_voucher_payment_source");
+            return new CreateVoucherPaymentSourceRequest(url, HttpMethod.POST);
+        }
         public static CreateCardRequest CreateCard()
         {
             string url = ApiUtil.BuildUrl("payment_sources", "create_card");
@@ -174,6 +179,14 @@ namespace ChargeBee.Models
         public PaymentSourceBankAccount BankAccount 
         {
             get { return GetSubResource<PaymentSourceBankAccount>("bank_account"); }
+        }
+        public PaymentSourceCustVoucherSource Boleto 
+        {
+            get { return GetSubResource<PaymentSourceCustVoucherSource>("boleto"); }
+        }
+        public PaymentSourceBillingAddress BillingAddress 
+        {
+            get { return GetSubResource<PaymentSourceBillingAddress>("billing_address"); }
         }
         public PaymentSourceAmazonPayment AmazonPayment 
         {
@@ -368,6 +381,39 @@ namespace ChargeBee.Models
             public CreateUsingPaymentIntentRequest PaymentIntentAdditionalInformation(JToken paymentIntentAdditionalInformation) 
             {
                 m_params.AddOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
+                return this;
+            }
+        }
+        public class CreateVoucherPaymentSourceRequest : EntityRequest<CreateVoucherPaymentSourceRequest> 
+        {
+            public CreateVoucherPaymentSourceRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CreateVoucherPaymentSourceRequest CustomerId(string customerId) 
+            {
+                m_params.Add("customer_id", customerId);
+                return this;
+            }
+            public CreateVoucherPaymentSourceRequest VoucherPaymentSourceVoucherType(ChargeBee.Models.Enums.VoucherTypeEnum voucherPaymentSourceVoucherType) 
+            {
+                m_params.Add("voucher_payment_source[voucher_type]", voucherPaymentSourceVoucherType);
+                return this;
+            }
+            public CreateVoucherPaymentSourceRequest VoucherPaymentSourceGatewayAccountId(string voucherPaymentSourceGatewayAccountId) 
+            {
+                m_params.AddOpt("voucher_payment_source[gateway_account_id]", voucherPaymentSourceGatewayAccountId);
+                return this;
+            }
+            public CreateVoucherPaymentSourceRequest VoucherPaymentSourceTaxId(string voucherPaymentSourceTaxId) 
+            {
+                m_params.AddOpt("voucher_payment_source[tax_id]", voucherPaymentSourceTaxId);
+                return this;
+            }
+            public CreateVoucherPaymentSourceRequest VoucherPaymentSourceBillingAddress(JToken voucherPaymentSourceBillingAddress) 
+            {
+                m_params.AddOpt("voucher_payment_source[billing_address]", voucherPaymentSourceBillingAddress);
                 return this;
             }
         }
@@ -949,6 +995,86 @@ namespace ChargeBee.Models
 
             public string Email {
                 get { return GetValue<string>("email", false); }
+            }
+
+        }
+        public class PaymentSourceCustVoucherSource : Resource
+        {
+
+            public string Last4 {
+                get { return GetValue<string>("last4", true); }
+            }
+
+            public string FirstName {
+                get { return GetValue<string>("first_name", false); }
+            }
+
+            public string LastName {
+                get { return GetValue<string>("last_name", false); }
+            }
+
+            public string Email {
+                get { return GetValue<string>("email", false); }
+            }
+
+        }
+        public class PaymentSourceBillingAddress : Resource
+        {
+
+            public string FirstName {
+                get { return GetValue<string>("first_name", false); }
+            }
+
+            public string LastName {
+                get { return GetValue<string>("last_name", false); }
+            }
+
+            public string Email {
+                get { return GetValue<string>("email", false); }
+            }
+
+            public string Company {
+                get { return GetValue<string>("company", false); }
+            }
+
+            public string Phone {
+                get { return GetValue<string>("phone", false); }
+            }
+
+            public string Line1 {
+                get { return GetValue<string>("line1", false); }
+            }
+
+            public string Line2 {
+                get { return GetValue<string>("line2", false); }
+            }
+
+            public string Line3 {
+                get { return GetValue<string>("line3", false); }
+            }
+
+            public string City {
+                get { return GetValue<string>("city", false); }
+            }
+
+            public string StateCode {
+                get { return GetValue<string>("state_code", false); }
+            }
+
+            public string State {
+                get { return GetValue<string>("state", false); }
+            }
+
+            public string Country {
+                get { return GetValue<string>("country", false); }
+            }
+
+            public string Zip {
+                get { return GetValue<string>("zip", false); }
+            }
+
+            public ValidationStatusEnum? ValidationStatus {
+                get { return GetEnum<ValidationStatusEnum>("validation_status", false); }
             }
 
         }
