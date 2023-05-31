@@ -142,6 +142,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("hosted_pages", "pre_cancel");
             return new PreCancelRequest(url, HttpMethod.POST);
         }
+        public static EventsRequest Events()
+        {
+            string url = ApiUtil.BuildUrl("hosted_pages", "events");
+            return new EventsRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -3003,6 +3008,29 @@ namespace ChargeBee.Models
             public PreCancelRequest SubscriptionId(string subscriptionId) 
             {
                 m_params.Add("subscription[id]", subscriptionId);
+                return this;
+            }
+        }
+        public class EventsRequest : EntityRequest<EventsRequest> 
+        {
+            public EventsRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public EventsRequest EventName(ChargeBee.Models.Enums.EventNameEnum eventName) 
+            {
+                m_params.Add("event_name", eventName);
+                return this;
+            }
+            public EventsRequest OccurredAt(long occurredAt) 
+            {
+                m_params.AddOpt("occurred_at", occurredAt);
+                return this;
+            }
+            public EventsRequest EventData(JToken eventData) 
+            {
+                m_params.Add("event_data", eventData);
                 return this;
             }
         }

@@ -482,5 +482,32 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "purchase_created")]
          PurchaseCreated,
 
+        [EnumMember(Value = "voucher_created")]
+         VoucherCreated,
+
+        [EnumMember(Value = "voucher_expired")]
+         VoucherExpired,
+
+        [EnumMember(Value = "voucher_create_failed")]
+         VoucherCreateFailed,
+
+        [EnumMember(Value = "product_created")]
+         ProductCreated,
+
+        [EnumMember(Value = "product_updated")]
+         ProductUpdated,
+
+        [EnumMember(Value = "product_deleted")]
+         ProductDeleted,
+
+        [EnumMember(Value = "variant_created")]
+         VariantCreated,
+
+        [EnumMember(Value = "variant_updated")]
+         VariantUpdated,
+
+        [EnumMember(Value = "variant_deleted")]
+         VariantDeleted,
+
     }
 }
