@@ -147,6 +147,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("hosted_pages", "events");
             return new EventsRequest(url, HttpMethod.POST);
         }
+        public static ViewVoucherRequest ViewVoucher()
+        {
+            string url = ApiUtil.BuildUrl("hosted_pages", "view_voucher");
+            return new ViewVoucherRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -3034,6 +3039,24 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class ViewVoucherRequest : EntityRequest<ViewVoucherRequest> 
+        {
+            public ViewVoucherRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public ViewVoucherRequest PaymentVoucherId(string paymentVoucherId) 
+            {
+                m_params.Add("payment_voucher[id]", paymentVoucherId);
+                return this;
+            }
+            public ViewVoucherRequest CustomerLocale(string customerLocale) 
+            {
+                m_params.AddOpt("customer[locale]", customerLocale);
+                return this;
+            }
+        }
         #endregion
 
         public enum TypeEnum
@@ -3064,6 +3087,8 @@ namespace ChargeBee.Models
             CheckoutOneTime,
             [EnumMember(Value = "pre_cancel")]
             PreCancel,
+            [EnumMember(Value = "view_voucher")]
+            ViewVoucher,
 
         }
         public enum StateEnum

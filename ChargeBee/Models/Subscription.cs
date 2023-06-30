@@ -698,6 +698,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("client_profile_id", clientProfileId);
                 return this;
             }
+            public CreateRequest PaymentInitiator(ChargeBee.Models.Enums.PaymentInitiatorEnum paymentInitiator) 
+            {
+                m_params.AddOpt("payment_initiator", paymentInitiator);
+                return this;
+            }
             public CreateRequest CustomerId(string customerId) 
             {
                 m_params.AddOpt("customer[id]", customerId);
@@ -1487,6 +1492,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("trial_end_action", trialEndAction);
                 return this;
             }
+            public CreateForCustomerRequest PaymentInitiator(ChargeBee.Models.Enums.PaymentInitiatorEnum paymentInitiator) 
+            {
+                m_params.AddOpt("payment_initiator", paymentInitiator);
+                return this;
+            }
             public CreateForCustomerRequest ShippingAddressFirstName(string shippingAddressFirstName) 
             {
                 m_params.AddOpt("shipping_address[first_name]", shippingAddressFirstName);
@@ -1836,6 +1846,11 @@ namespace ChargeBee.Models
             public CreateWithItemsRequest TrialEndAction(ChargeBee.Models.Enums.TrialEndActionEnum trialEndAction) 
             {
                 m_params.AddOpt("trial_end_action", trialEndAction);
+                return this;
+            }
+            public CreateWithItemsRequest PaymentInitiator(ChargeBee.Models.Enums.PaymentInitiatorEnum paymentInitiator) 
+            {
+                m_params.AddOpt("payment_initiator", paymentInitiator);
                 return this;
             }
             public CreateWithItemsRequest ShippingAddressFirstName(string shippingAddressFirstName) 
@@ -3021,6 +3036,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("trial_end_action", trialEndAction);
                 return this;
             }
+            public UpdateForItemsRequest PaymentInitiator(ChargeBee.Models.Enums.PaymentInitiatorEnum paymentInitiator) 
+            {
+                m_params.AddOpt("payment_initiator", paymentInitiator);
+                return this;
+            }
             [Obsolete]
             public UpdateForItemsRequest CardGateway(ChargeBee.Models.Enums.GatewayEnum cardGateway) 
             {
@@ -3597,6 +3617,11 @@ namespace ChargeBee.Models
             public ReactivateRequest ContractTermBillingCycleOnRenewal(int contractTermBillingCycleOnRenewal) 
             {
                 m_params.AddOpt("contract_term_billing_cycle_on_renewal", contractTermBillingCycleOnRenewal);
+                return this;
+            }
+            public ReactivateRequest PaymentInitiator(ChargeBee.Models.Enums.PaymentInitiatorEnum paymentInitiator) 
+            {
+                m_params.AddOpt("payment_initiator", paymentInitiator);
                 return this;
             }
             public ReactivateRequest ContractTermActionAtTermEnd(SubscriptionContractTerm.ActionAtTermEndEnum contractTermActionAtTermEnd) 
@@ -5736,6 +5761,11 @@ namespace ChargeBee.Models
             public ResumeRequest UnpaidInvoicesHandling(ChargeBee.Models.Enums.UnpaidInvoicesHandlingEnum unpaidInvoicesHandling) 
             {
                 m_params.AddOpt("unpaid_invoices_handling", unpaidInvoicesHandling);
+                return this;
+            }
+            public ResumeRequest PaymentInitiator(ChargeBee.Models.Enums.PaymentInitiatorEnum paymentInitiator) 
+            {
+                m_params.AddOpt("payment_initiator", paymentInitiator);
                 return this;
             }
             public ResumeRequest PaymentIntentId(string paymentIntentId) 
