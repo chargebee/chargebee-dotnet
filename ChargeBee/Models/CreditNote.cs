@@ -263,6 +263,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool>("deleted", true); }
         }
+        public decimal? LocalCurrencyExchangeRate 
+        {
+            get { return GetValue<decimal?>("local_currency_exchange_rate", false); }
+        }
         public string CreateReasonCode 
         {
             get { return GetValue<string>("create_reason_code", false); }
@@ -627,7 +631,7 @@ namespace ChargeBee.Models
             }
             public ImportCreditNoteRequest Date(long date) 
             {
-                m_params.AddOpt("date", date);
+                m_params.Add("date", date);
                 return this;
             }
             public ImportCreditNoteRequest Status(CreditNote.StatusEnum status) 

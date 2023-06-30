@@ -89,6 +89,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<Invoice>("invoice"); }
         }
+        public PaymentReferenceNumber PaymentReferenceNumber
+        {
+            get {  return GetResource<PaymentReferenceNumber>("payment_reference_number"); }
+        }
         public TaxWithheld TaxWithheld
         {
             get {  return GetResource<TaxWithheld>("tax_withheld"); }

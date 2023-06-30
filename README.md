@@ -1,9 +1,7 @@
 # .NET Client Library for Chargebee API
 ***
 
-[![NuGet](https://img.shields.io/nuget/v/chargebee.svg?maxAge=399999999)](https://www.nuget.org/packages/ChargeBee/)
-and
-[![NuGet](https://img.shields.io/nuget/v/chargebee.svg?maxAge=399999999)](https://www.nuget.org/packages/ChargeBee/)
+[![NuGet](https://img.shields.io/nuget/v/chargebee.svg?maxAge=3)](https://www.nuget.org/packages/ChargeBee/)
 
 This is the source code for the .NET client library for [Chargebee APIs](https://apidocs.chargebee.com/docs/api?lang=dotnet). The latest version (v3) of the library supports the following:
 

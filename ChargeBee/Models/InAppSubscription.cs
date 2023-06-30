@@ -273,6 +273,8 @@ namespace ChargeBee.Models
             Active,
             [EnumMember(Value = "cancelled")]
             Cancelled,
+            [EnumMember(Value = "paused")]
+            Paused,
 
         }
 

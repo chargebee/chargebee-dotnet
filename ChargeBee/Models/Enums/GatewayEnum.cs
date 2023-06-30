@@ -145,6 +145,12 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "ecentric")]
          Ecentric,
 
+        [EnumMember(Value = "metrics_global")]
+         MetricsGlobal,
+
+        [EnumMember(Value = "windcave")]
+         Windcave,
+
         [EnumMember(Value = "not_applicable")]
          NotApplicable,
 
