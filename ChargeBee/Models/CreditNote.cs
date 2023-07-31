@@ -263,6 +263,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool>("deleted", true); }
         }
+        public string TaxCategory 
+        {
+            get { return GetValue<string>("tax_category", false); }
+        }
         public decimal? LocalCurrencyExchangeRate 
         {
             get { return GetValue<decimal?>("local_currency_exchange_rate", false); }

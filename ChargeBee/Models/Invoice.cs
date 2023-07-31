@@ -463,6 +463,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool>("deleted", true); }
         }
+        public string TaxCategory 
+        {
+            get { return GetValue<string>("tax_category", false); }
+        }
         public string VatNumberPrefix 
         {
             get { return GetValue<string>("vat_number_prefix", false); }
@@ -3923,6 +3927,8 @@ namespace ChargeBee.Models
                 AddonItemPrice,
                 [EnumMember(Value = "charge_item_price")]
                 ChargeItemPrice,
+                [EnumMember(Value = "tax")]
+                Tax,
             }
 
             public EntityTypeEnum EntityType {

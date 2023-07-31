@@ -260,6 +260,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<QuoteLineItemTier>("line_item_tiers"); }
         }
+        public string TaxCategory 
+        {
+            get { return GetValue<string>("tax_category", false); }
+        }
         public string CurrencyCode 
         {
             get { return GetValue<string>("currency_code", true); }

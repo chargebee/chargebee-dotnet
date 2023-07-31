@@ -1747,6 +1747,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[trial_end][" + index + "]", addonTrialEnd);
                 return this;
             }
+            [Obsolete]
+            public UpdateSubscriptionRequest AddonProrationType(int index, ChargeBee.Models.Enums.ProrationTypeEnum addonProrationType) 
+            {
+                m_params.AddOpt("addons[proration_type][" + index + "]", addonProrationType);
+                return this;
+            }
         }
         public class UpdateSubscriptionForItemsRequest : EntityRequest<UpdateSubscriptionForItemsRequest> 
         {
