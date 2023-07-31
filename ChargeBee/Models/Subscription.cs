@@ -1333,6 +1333,18 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[trial_end][" + index + "]", addonTrialEnd);
                 return this;
             }
+            [Obsolete]
+            public CreateRequest CouponCouponId(int index, string couponCouponId) 
+            {
+                m_params.AddOpt("coupons[coupon_id][" + index + "]", couponCouponId);
+                return this;
+            }
+            [Obsolete]
+            public CreateRequest CouponApplyTill(int index, long couponApplyTill) 
+            {
+                m_params.AddOpt("coupons[apply_till][" + index + "]", couponApplyTill);
+                return this;
+            }
         }
         public class CreateForCustomerRequest : EntityRequest<CreateForCustomerRequest> 
         {
@@ -1691,6 +1703,18 @@ namespace ChargeBee.Models
             public CreateForCustomerRequest AddonTrialEnd(int index, long addonTrialEnd) 
             {
                 m_params.AddOpt("addons[trial_end][" + index + "]", addonTrialEnd);
+                return this;
+            }
+            [Obsolete]
+            public CreateForCustomerRequest CouponCouponId(int index, string couponCouponId) 
+            {
+                m_params.AddOpt("coupons[coupon_id][" + index + "]", couponCouponId);
+                return this;
+            }
+            [Obsolete]
+            public CreateForCustomerRequest CouponApplyTill(int index, long couponApplyTill) 
+            {
+                m_params.AddOpt("coupons[apply_till][" + index + "]", couponApplyTill);
                 return this;
             }
         }
@@ -2103,6 +2127,18 @@ namespace ChargeBee.Models
             public CreateWithItemsRequest ItemTierPriceInDecimal(int index, string itemTierPriceInDecimal) 
             {
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+                return this;
+            }
+            [Obsolete]
+            public CreateWithItemsRequest CouponCouponId(int index, string couponCouponId) 
+            {
+                m_params.AddOpt("coupons[coupon_id][" + index + "]", couponCouponId);
+                return this;
+            }
+            [Obsolete]
+            public CreateWithItemsRequest CouponApplyTill(int index, long couponApplyTill) 
+            {
+                m_params.AddOpt("coupons[apply_till][" + index + "]", couponApplyTill);
                 return this;
             }
         }
@@ -2856,6 +2892,24 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[trial_end][" + index + "]", addonTrialEnd);
                 return this;
             }
+            [Obsolete]
+            public UpdateRequest AddonProrationType(int index, ChargeBee.Models.Enums.ProrationTypeEnum addonProrationType) 
+            {
+                m_params.AddOpt("addons[proration_type][" + index + "]", addonProrationType);
+                return this;
+            }
+            [Obsolete]
+            public UpdateRequest CouponCouponId(int index, string couponCouponId) 
+            {
+                m_params.AddOpt("coupons[coupon_id][" + index + "]", couponCouponId);
+                return this;
+            }
+            [Obsolete]
+            public UpdateRequest CouponApplyTill(int index, long couponApplyTill) 
+            {
+                m_params.AddOpt("coupons[apply_till][" + index + "]", couponApplyTill);
+                return this;
+            }
         }
         public class UpdateForItemsRequest : EntityRequest<UpdateForItemsRequest> 
         {
@@ -3540,6 +3594,18 @@ namespace ChargeBee.Models
             public UpdateForItemsRequest ItemTierPriceInDecimal(int index, string itemTierPriceInDecimal) 
             {
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+                return this;
+            }
+            [Obsolete]
+            public UpdateForItemsRequest CouponCouponId(int index, string couponCouponId) 
+            {
+                m_params.AddOpt("coupons[coupon_id][" + index + "]", couponCouponId);
+                return this;
+            }
+            [Obsolete]
+            public UpdateForItemsRequest CouponApplyTill(int index, long couponApplyTill) 
+            {
+                m_params.AddOpt("coupons[apply_till][" + index + "]", couponApplyTill);
                 return this;
             }
         }
@@ -4539,6 +4605,18 @@ namespace ChargeBee.Models
                 m_params.AddOpt("charged_event_based_addons[last_charged_at][" + index + "]", chargedEventBasedAddonLastChargedAt);
                 return this;
             }
+            [Obsolete]
+            public ImportSubscriptionRequest CouponCouponId(int index, string couponCouponId) 
+            {
+                m_params.AddOpt("coupons[coupon_id][" + index + "]", couponCouponId);
+                return this;
+            }
+            [Obsolete]
+            public ImportSubscriptionRequest CouponApplyTill(int index, long couponApplyTill) 
+            {
+                m_params.AddOpt("coupons[apply_till][" + index + "]", couponApplyTill);
+                return this;
+            }
         }
         public class ImportForCustomerRequest : EntityRequest<ImportForCustomerRequest> 
         {
@@ -4892,6 +4970,18 @@ namespace ChargeBee.Models
                 m_params.AddOpt("charged_event_based_addons[last_charged_at][" + index + "]", chargedEventBasedAddonLastChargedAt);
                 return this;
             }
+            [Obsolete]
+            public ImportForCustomerRequest CouponCouponId(int index, string couponCouponId) 
+            {
+                m_params.AddOpt("coupons[coupon_id][" + index + "]", couponCouponId);
+                return this;
+            }
+            [Obsolete]
+            public ImportForCustomerRequest CouponApplyTill(int index, long couponApplyTill) 
+            {
+                m_params.AddOpt("coupons[apply_till][" + index + "]", couponApplyTill);
+                return this;
+            }
         }
         public class ImportContractTermRequest : EntityRequest<ImportContractTermRequest> 
         {
@@ -5242,6 +5332,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("meta_data", metaData);
                 return this;
             }
+            public ImportForItemsRequest CancelReasonCode(string cancelReasonCode) 
+            {
+                m_params.AddOpt("cancel_reason_code", cancelReasonCode);
+                return this;
+            }
             public ImportForItemsRequest CreatePendingInvoices(bool createPendingInvoices) 
             {
                 m_params.AddOpt("create_pending_invoices", createPendingInvoices);
@@ -5521,6 +5616,18 @@ namespace ChargeBee.Models
             public ImportForItemsRequest ItemTierPriceInDecimal(int index, string itemTierPriceInDecimal) 
             {
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+                return this;
+            }
+            [Obsolete]
+            public ImportForItemsRequest CouponCouponId(int index, string couponCouponId) 
+            {
+                m_params.AddOpt("coupons[coupon_id][" + index + "]", couponCouponId);
+                return this;
+            }
+            [Obsolete]
+            public ImportForItemsRequest CouponApplyTill(int index, long couponApplyTill) 
+            {
+                m_params.AddOpt("coupons[apply_till][" + index + "]", couponApplyTill);
                 return this;
             }
         }
