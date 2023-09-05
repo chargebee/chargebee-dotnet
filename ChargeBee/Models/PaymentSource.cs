@@ -973,6 +973,10 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("last_name", false); }
             }
 
+            public DirectDebitSchemeEnum? DirectDebitScheme {
+                get { return GetEnum<DirectDebitSchemeEnum>("direct_debit_scheme", false); }
+            }
+
             public string BankName {
                 get { return GetValue<string>("bank_name", false); }
             }

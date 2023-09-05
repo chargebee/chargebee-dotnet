@@ -2692,6 +2692,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("avalara_service_type", avalaraServiceType);
                 return this;
             }
+            public AddChargeRequest AvalaraTaxCode(string avalaraTaxCode) 
+            {
+                m_params.AddOpt("avalara_tax_code", avalaraTaxCode);
+                return this;
+            }
+            public AddChargeRequest HsnCode(string hsnCode) 
+            {
+                m_params.AddOpt("hsn_code", hsnCode);
+                return this;
+            }
+            public AddChargeRequest TaxjarProductCode(string taxjarProductCode) 
+            {
+                m_params.AddOpt("taxjar_product_code", taxjarProductCode);
+                return this;
+            }
             public AddChargeRequest Comment(string comment) 
             {
                 m_params.AddOpt("comment", comment);
