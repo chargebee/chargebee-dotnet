@@ -2310,6 +2310,8 @@ namespace ChargeBee.Models
                 Upi,
                 [EnumMember(Value = "netbanking_emandates")]
                 NetbankingEmandates,
+                [EnumMember(Value = "venmo")]
+                Venmo,
             }
             public enum StatusEnum
             {

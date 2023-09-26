@@ -151,6 +151,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "windcave")]
          Windcave,
 
+        [EnumMember(Value = "ebanx")]
+         Ebanx,
+
         [EnumMember(Value = "not_applicable")]
          NotApplicable,
 

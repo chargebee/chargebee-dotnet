@@ -678,11 +678,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("vat_number_prefix", vatNumberPrefix);
                 return this;
             }
-            public ImportCreditNoteRequest LineItemReferenceLineItemId(int index, string lineItemReferenceLineItemId) 
-            {
-                m_params.AddOpt("line_items[reference_line_item_id][" + index + "]", lineItemReferenceLineItemId);
-                return this;
-            }
             public ImportCreditNoteRequest LineItemId(int index, string lineItemId) 
             {
                 m_params.AddOpt("line_items[id][" + index + "]", lineItemId);
@@ -866,6 +861,11 @@ namespace ChargeBee.Models
             public ImportCreditNoteRequest LineItemTax10Amount(int index, long lineItemTax10Amount) 
             {
                 m_params.AddOpt("line_items[tax10_amount][" + index + "]", lineItemTax10Amount);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemReferenceLineItemId(int index, string lineItemReferenceLineItemId) 
+            {
+                m_params.AddOpt("line_items[reference_line_item_id][" + index + "]", lineItemReferenceLineItemId);
                 return this;
             }
             public ImportCreditNoteRequest LineItemTierLineItemId(int index, string lineItemTierLineItemId) 

@@ -1136,6 +1136,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
                 return this;
             }
+            public CheckoutOneTimeForItemsRequest CustomerEinvoicingMethod(ChargeBee.Models.Enums.EinvoicingMethodEnum customerEinvoicingMethod) 
+            {
+                m_params.AddOpt("customer[einvoicing_method]", customerEinvoicingMethod);
+                return this;
+            }
             public CheckoutOneTimeForItemsRequest CustomerIsEinvoiceEnabled(bool customerIsEinvoiceEnabled) 
             {
                 m_params.AddOpt("customer[is_einvoice_enabled]", customerIsEinvoiceEnabled);
@@ -1654,6 +1659,11 @@ namespace ChargeBee.Models
             public CheckoutNewForItemsRequest CustomerEntityIdentifierStandard(string customerEntityIdentifierStandard) 
             {
                 m_params.AddOpt("customer[entity_identifier_standard]", customerEntityIdentifierStandard);
+                return this;
+            }
+            public CheckoutNewForItemsRequest CustomerEinvoicingMethod(ChargeBee.Models.Enums.EinvoicingMethodEnum customerEinvoicingMethod) 
+            {
+                m_params.AddOpt("customer[einvoicing_method]", customerEinvoicingMethod);
                 return this;
             }
             public CheckoutNewForItemsRequest BillingAddressFirstName(string billingAddressFirstName) 

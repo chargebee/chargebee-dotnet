@@ -276,6 +276,8 @@ namespace ChargeBee.Models
             DirectDebit,
             [EnumMember(Value = "boleto")]
             Boleto,
+            [EnumMember(Value = "venmo")]
+            Venmo,
 
         }
 
