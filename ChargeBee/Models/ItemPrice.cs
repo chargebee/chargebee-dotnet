@@ -91,6 +91,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("item_family_id", false); }
         }
+        public string ProductId 
+        {
+            get { return GetValue<string>("product_id", false); }
+        }
         public string ItemId 
         {
             get { return GetValue<string>("item_id", false); }
@@ -111,9 +115,9 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<PricingModelEnum>("pricing_model", true); }
         }
-        public int? Price 
+        public long? Price 
         {
-            get { return GetValue<int?>("price", false); }
+            get { return GetValue<long?>("price", false); }
         }
         public string PriceInDecimal 
         {
@@ -310,7 +314,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("pricing_model", pricingModel);
                 return this;
             }
-            public CreateRequest Price(int price) 
+            public CreateRequest Price(long price) 
             {
                 m_params.AddOpt("price", price);
                 return this;
@@ -435,7 +439,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("tiers[ending_unit][" + index + "]", tierEndingUnit);
                 return this;
             }
-            public CreateRequest TierPrice(int index, int tierPrice) 
+            public CreateRequest TierPrice(int index, long tierPrice) 
             {
                 m_params.AddOpt("tiers[price][" + index + "]", tierPrice);
                 return this;
@@ -518,7 +522,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("pricing_model", pricingModel);
                 return this;
             }
-            public UpdateRequest Price(int price) 
+            public UpdateRequest Price(long price) 
             {
                 m_params.AddOpt("price", price);
                 return this;
@@ -653,7 +657,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("tiers[ending_unit][" + index + "]", tierEndingUnit);
                 return this;
             }
-            public UpdateRequest TierPrice(int index, int tierPrice) 
+            public UpdateRequest TierPrice(int index, long tierPrice) 
             {
                 m_params.AddOpt("tiers[price][" + index + "]", tierPrice);
                 return this;
@@ -877,8 +881,8 @@ namespace ChargeBee.Models
                 get { return GetValue<int?>("ending_unit", false); }
             }
 
-            public int Price {
-                get { return GetValue<int>("price", true); }
+            public long Price {
+                get { return GetValue<long>("price", true); }
             }
 
             public string StartingUnitInDecimal {

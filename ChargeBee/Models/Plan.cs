@@ -95,9 +95,9 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("description", false); }
         }
-        public int? Price 
+        public long? Price 
         {
-            get { return GetValue<int?>("price", false); }
+            get { return GetValue<long?>("price", false); }
         }
         public string CurrencyCode 
         {
@@ -136,9 +136,9 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int>("free_quantity", true); }
         }
-        public int? SetupCost 
+        public long? SetupCost 
         {
-            get { return GetValue<int?>("setup_cost", false); }
+            get { return GetValue<long?>("setup_cost", false); }
         }
         [Obsolete]
         public double? DowngradePenalty 
@@ -357,12 +357,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("period_unit", periodUnit);
                 return this;
             }
-            public CreateRequest SetupCost(int setupCost) 
+            public CreateRequest SetupCost(long setupCost) 
             {
                 m_params.AddOpt("setup_cost", setupCost);
                 return this;
             }
-            public CreateRequest Price(int price) 
+            public CreateRequest Price(long price) 
             {
                 m_params.AddOpt("price", price);
                 return this;
@@ -559,7 +559,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("tiers[ending_unit][" + index + "]", tierEndingUnit);
                 return this;
             }
-            public CreateRequest TierPrice(int index, int tierPrice) 
+            public CreateRequest TierPrice(int index, long tierPrice) 
             {
                 m_params.AddOpt("tiers[price][" + index + "]", tierPrice);
                 return this;
@@ -682,12 +682,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("period_unit", periodUnit);
                 return this;
             }
-            public UpdateRequest SetupCost(int setupCost) 
+            public UpdateRequest SetupCost(long setupCost) 
             {
                 m_params.AddOpt("setup_cost", setupCost);
                 return this;
             }
-            public UpdateRequest Price(int price) 
+            public UpdateRequest Price(long price) 
             {
                 m_params.AddOpt("price", price);
                 return this;
@@ -869,7 +869,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("tiers[ending_unit][" + index + "]", tierEndingUnit);
                 return this;
             }
-            public UpdateRequest TierPrice(int index, int tierPrice) 
+            public UpdateRequest TierPrice(int index, long tierPrice) 
             {
                 m_params.AddOpt("tiers[price][" + index + "]", tierPrice);
                 return this;
@@ -960,9 +960,9 @@ namespace ChargeBee.Models
             {
                 return new StringFilter<PlanListRequest>("name", this).SupportsMultiOperators(true);        
             }
-            public NumberFilter<int, PlanListRequest> Price() 
+            public NumberFilter<long, PlanListRequest> Price() 
             {
-                return new NumberFilter<int, PlanListRequest>("price", this);        
+                return new NumberFilter<long, PlanListRequest>("price", this);        
             }
             public NumberFilter<int, PlanListRequest> Period() 
             {
@@ -1158,8 +1158,8 @@ namespace ChargeBee.Models
                 get { return GetValue<int?>("ending_unit", false); }
             }
 
-            public int Price {
-                get { return GetValue<int>("price", true); }
+            public long Price {
+                get { return GetValue<long>("price", true); }
             }
 
             public string StartingUnitInDecimal {

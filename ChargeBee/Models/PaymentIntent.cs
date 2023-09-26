@@ -71,9 +71,9 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("currency_code", false); }
         }
-        public int Amount 
+        public long Amount 
         {
-            get { return GetValue<int>("amount", true); }
+            get { return GetValue<long>("amount", true); }
         }
         public string GatewayAccountId 
         {
@@ -152,7 +152,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer_id", customerId);
                 return this;
             }
-            public CreateRequest Amount(int amount) 
+            public CreateRequest Amount(long amount) 
             {
                 m_params.Add("amount", amount);
                 return this;
@@ -195,7 +195,7 @@ namespace ChargeBee.Models
             {
             }
 
-            public UpdateRequest Amount(int amount) 
+            public UpdateRequest Amount(long amount) 
             {
                 m_params.AddOpt("amount", amount);
                 return this;
@@ -274,6 +274,8 @@ namespace ChargeBee.Models
             PaypalExpressCheckout,
             [EnumMember(Value = "direct_debit")]
             DirectDebit,
+            [EnumMember(Value = "boleto")]
+            Boleto,
 
         }
 
@@ -296,6 +298,8 @@ namespace ChargeBee.Models
                 Authorized,
                 [EnumMember(Value = "refused")]
                 Refused,
+                [EnumMember(Value = "pending_authorization")]
+                PendingAuthorization,
             }
 
             public string Id {

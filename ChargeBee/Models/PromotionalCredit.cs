@@ -85,9 +85,9 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("amount_in_decimal", false); }
         }
-        public int Amount 
+        public long Amount 
         {
-            get { return GetValue<int>("amount", true); }
+            get { return GetValue<long>("amount", true); }
         }
         public string CurrencyCode 
         {
@@ -105,9 +105,9 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("reference", false); }
         }
-        public int ClosingBalance 
+        public long ClosingBalance 
         {
-            get { return GetValue<int>("closing_balance", true); }
+            get { return GetValue<long>("closing_balance", true); }
         }
         public string DoneBy 
         {
@@ -133,7 +133,7 @@ namespace ChargeBee.Models
                 m_params.Add("customer_id", customerId);
                 return this;
             }
-            public AddRequest Amount(int amount) 
+            public AddRequest Amount(long amount) 
             {
                 m_params.AddOpt("amount", amount);
                 return this;
@@ -176,7 +176,7 @@ namespace ChargeBee.Models
                 m_params.Add("customer_id", customerId);
                 return this;
             }
-            public DeductRequest Amount(int amount) 
+            public DeductRequest Amount(long amount) 
             {
                 m_params.AddOpt("amount", amount);
                 return this;
@@ -219,7 +219,7 @@ namespace ChargeBee.Models
                 m_params.Add("customer_id", customerId);
                 return this;
             }
-            public SetRequest Amount(int amount) 
+            public SetRequest Amount(long amount) 
             {
                 m_params.AddOpt("amount", amount);
                 return this;

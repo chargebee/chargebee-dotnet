@@ -52,5 +52,11 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "item_price")]
          ItemPrice,
 
+        [EnumMember(Value = "product")]
+         Product,
+
+        [EnumMember(Value = "variant")]
+         Variant,
+
     }
 }

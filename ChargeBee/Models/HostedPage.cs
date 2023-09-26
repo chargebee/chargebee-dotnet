@@ -142,6 +142,16 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("hosted_pages", "pre_cancel");
             return new PreCancelRequest(url, HttpMethod.POST);
         }
+        public static EventsRequest Events()
+        {
+            string url = ApiUtil.BuildUrl("hosted_pages", "events");
+            return new EventsRequest(url, HttpMethod.POST);
+        }
+        public static ViewVoucherRequest ViewVoucher()
+        {
+            string url = ApiUtil.BuildUrl("hosted_pages", "view_voucher");
+            return new ViewVoucherRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -334,7 +344,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
                 return this;
             }
-            public CheckoutNewRequest SubscriptionPlanUnitPrice(int subscriptionPlanUnitPrice) 
+            public CheckoutNewRequest SubscriptionPlanUnitPrice(long subscriptionPlanUnitPrice) 
             {
                 m_params.AddOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
                 return this;
@@ -344,7 +354,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[plan_unit_price_in_decimal]", subscriptionPlanUnitPriceInDecimal);
                 return this;
             }
-            public CheckoutNewRequest SubscriptionSetupFee(int subscriptionSetupFee) 
+            public CheckoutNewRequest SubscriptionSetupFee(long subscriptionSetupFee) 
             {
                 m_params.AddOpt("subscription[setup_fee]", subscriptionSetupFee);
                 return this;
@@ -581,7 +591,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
                 return this;
             }
-            public CheckoutNewRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            public CheckoutNewRequest AddonUnitPrice(int index, long addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
                 return this;
@@ -606,7 +616,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
                 return this;
             }
-            public CheckoutNewRequest EventBasedAddonUnitPrice(int index, int eventBasedAddonUnitPrice) 
+            public CheckoutNewRequest EventBasedAddonUnitPrice(int index, long eventBasedAddonUnitPrice) 
             {
                 m_params.AddOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
                 return this;
@@ -916,7 +926,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
                 return this;
             }
-            public CheckoutOneTimeRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            public CheckoutOneTimeRequest AddonUnitPrice(int index, long addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
                 return this;
@@ -941,7 +951,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[date_to][" + index + "]", addonDateTo);
                 return this;
             }
-            public CheckoutOneTimeRequest ChargeAmount(int index, int chargeAmount) 
+            public CheckoutOneTimeRequest ChargeAmount(int index, long chargeAmount) 
             {
                 m_params.AddOpt("charges[amount][" + index + "]", chargeAmount);
                 return this;
@@ -1017,6 +1027,11 @@ namespace ChargeBee.Models
             public CheckoutOneTimeForItemsRequest BusinessEntityId(string businessEntityId) 
             {
                 m_params.AddOpt("business_entity_id", businessEntityId);
+                return this;
+            }
+            public CheckoutOneTimeForItemsRequest Layout(ChargeBee.Models.Enums.LayoutEnum layout) 
+            {
+                m_params.AddOpt("layout", layout);
                 return this;
             }
             public CheckoutOneTimeForItemsRequest InvoiceNote(string invoiceNote) 
@@ -1296,7 +1311,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_prices[quantity_in_decimal][" + index + "]", itemPriceQuantityInDecimal);
                 return this;
             }
-            public CheckoutOneTimeForItemsRequest ItemPriceUnitPrice(int index, int itemPriceUnitPrice) 
+            public CheckoutOneTimeForItemsRequest ItemPriceUnitPrice(int index, long itemPriceUnitPrice) 
             {
                 m_params.AddOpt("item_prices[unit_price][" + index + "]", itemPriceUnitPrice);
                 return this;
@@ -1331,7 +1346,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
                 return this;
             }
-            public CheckoutOneTimeForItemsRequest ItemTierPrice(int index, int itemTierPrice) 
+            public CheckoutOneTimeForItemsRequest ItemTierPrice(int index, long itemTierPrice) 
             {
                 m_params.AddOpt("item_tiers[price][" + index + "]", itemTierPrice);
                 return this;
@@ -1351,7 +1366,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
                 return this;
             }
-            public CheckoutOneTimeForItemsRequest ChargeAmount(int index, int chargeAmount) 
+            public CheckoutOneTimeForItemsRequest ChargeAmount(int index, long chargeAmount) 
             {
                 m_params.AddOpt("charges[amount][" + index + "]", chargeAmount);
                 return this;
@@ -1416,6 +1431,26 @@ namespace ChargeBee.Models
                 m_params.AddOpt("charges[date_to][" + index + "]", chargeDateTo);
                 return this;
             }
+            public CheckoutOneTimeForItemsRequest DiscountPercentage(int index, double discountPercentage) 
+            {
+                m_params.AddOpt("discounts[percentage][" + index + "]", discountPercentage);
+                return this;
+            }
+            public CheckoutOneTimeForItemsRequest DiscountAmount(int index, long discountAmount) 
+            {
+                m_params.AddOpt("discounts[amount][" + index + "]", discountAmount);
+                return this;
+            }
+            public CheckoutOneTimeForItemsRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
+            {
+                m_params.Add("discounts[apply_on][" + index + "]", discountApplyOn);
+                return this;
+            }
+            public CheckoutOneTimeForItemsRequest DiscountItemPriceId(int index, string discountItemPriceId) 
+            {
+                m_params.AddOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+                return this;
+            }
             public CheckoutOneTimeForItemsRequest EntityIdentifierId(int index, string entityIdentifierId) 
             {
                 m_params.AddOpt("entity_identifiers[id][" + index + "]", entityIdentifierId);
@@ -1449,6 +1484,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public CheckoutNewForItemsRequest Layout(ChargeBee.Models.Enums.LayoutEnum layout) 
+            {
+                m_params.AddOpt("layout", layout);
+                return this;
+            }
             public CheckoutNewForItemsRequest BusinessEntityId(string businessEntityId) 
             {
                 m_params.AddOpt("business_entity_id", businessEntityId);
@@ -1550,7 +1590,7 @@ namespace ChargeBee.Models
                 return this;
             }
             [Obsolete]
-            public CheckoutNewForItemsRequest SubscriptionSetupFee(int subscriptionSetupFee) 
+            public CheckoutNewForItemsRequest SubscriptionSetupFee(long subscriptionSetupFee) 
             {
                 m_params.AddOpt("subscription[setup_fee]", subscriptionSetupFee);
                 return this;
@@ -1791,7 +1831,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
                 return this;
             }
-            public CheckoutNewForItemsRequest SubscriptionItemUnitPrice(int index, int subscriptionItemUnitPrice) 
+            public CheckoutNewForItemsRequest SubscriptionItemUnitPrice(int index, long subscriptionItemUnitPrice) 
             {
                 m_params.AddOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
                 return this;
@@ -1832,6 +1872,46 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_items[item_type][" + index + "]", subscriptionItemItemType);
                 return this;
             }
+            public CheckoutNewForItemsRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
+            {
+                m_params.Add("discounts[apply_on][" + index + "]", discountApplyOn);
+                return this;
+            }
+            public CheckoutNewForItemsRequest DiscountDurationType(int index, ChargeBee.Models.Enums.DurationTypeEnum discountDurationType) 
+            {
+                m_params.Add("discounts[duration_type][" + index + "]", discountDurationType);
+                return this;
+            }
+            public CheckoutNewForItemsRequest DiscountPercentage(int index, double discountPercentage) 
+            {
+                m_params.AddOpt("discounts[percentage][" + index + "]", discountPercentage);
+                return this;
+            }
+            public CheckoutNewForItemsRequest DiscountAmount(int index, long discountAmount) 
+            {
+                m_params.AddOpt("discounts[amount][" + index + "]", discountAmount);
+                return this;
+            }
+            public CheckoutNewForItemsRequest DiscountPeriod(int index, int discountPeriod) 
+            {
+                m_params.AddOpt("discounts[period][" + index + "]", discountPeriod);
+                return this;
+            }
+            public CheckoutNewForItemsRequest DiscountPeriodUnit(int index, ChargeBee.Models.Enums.PeriodUnitEnum discountPeriodUnit) 
+            {
+                m_params.AddOpt("discounts[period_unit][" + index + "]", discountPeriodUnit);
+                return this;
+            }
+            public CheckoutNewForItemsRequest DiscountIncludedInMrr(int index, bool discountIncludedInMrr) 
+            {
+                m_params.AddOpt("discounts[included_in_mrr][" + index + "]", discountIncludedInMrr);
+                return this;
+            }
+            public CheckoutNewForItemsRequest DiscountItemPriceId(int index, string discountItemPriceId) 
+            {
+                m_params.AddOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+                return this;
+            }
             public CheckoutNewForItemsRequest SubscriptionItemChargeOnOption(int index, ChargeBee.Models.Enums.ChargeOnOptionEnum subscriptionItemChargeOnOption) 
             {
                 m_params.AddOpt("subscription_items[charge_on_option][" + index + "]", subscriptionItemChargeOnOption);
@@ -1852,7 +1932,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
                 return this;
             }
-            public CheckoutNewForItemsRequest ItemTierPrice(int index, int itemTierPrice) 
+            public CheckoutNewForItemsRequest ItemTierPrice(int index, long itemTierPrice) 
             {
                 m_params.AddOpt("item_tiers[price][" + index + "]", itemTierPrice);
                 return this;
@@ -2000,12 +2080,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
                 return this;
             }
-            public CheckoutExistingRequest SubscriptionPlanUnitPrice(int subscriptionPlanUnitPrice) 
+            public CheckoutExistingRequest SubscriptionPlanUnitPrice(long subscriptionPlanUnitPrice) 
             {
                 m_params.AddOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
                 return this;
             }
-            public CheckoutExistingRequest SubscriptionSetupFee(int subscriptionSetupFee) 
+            public CheckoutExistingRequest SubscriptionSetupFee(long subscriptionSetupFee) 
             {
                 m_params.AddOpt("subscription[setup_fee]", subscriptionSetupFee);
                 return this;
@@ -2097,7 +2177,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
                 return this;
             }
-            public CheckoutExistingRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            public CheckoutExistingRequest AddonUnitPrice(int index, long addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
                 return this;
@@ -2117,7 +2197,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
                 return this;
             }
-            public CheckoutExistingRequest EventBasedAddonUnitPrice(int index, int eventBasedAddonUnitPrice) 
+            public CheckoutExistingRequest EventBasedAddonUnitPrice(int index, long eventBasedAddonUnitPrice) 
             {
                 m_params.AddOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
                 return this;
@@ -2170,6 +2250,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public CheckoutExistingForItemsRequest Layout(ChargeBee.Models.Enums.LayoutEnum layout) 
+            {
+                m_params.AddOpt("layout", layout);
+                return this;
+            }
             public CheckoutExistingForItemsRequest MandatoryItemsToRemove(List<string> mandatoryItemsToRemove) 
             {
                 m_params.AddOpt("mandatory_items_to_remove", mandatoryItemsToRemove);
@@ -2246,7 +2331,7 @@ namespace ChargeBee.Models
                 return this;
             }
             [Obsolete]
-            public CheckoutExistingForItemsRequest SubscriptionSetupFee(int subscriptionSetupFee) 
+            public CheckoutExistingForItemsRequest SubscriptionSetupFee(long subscriptionSetupFee) 
             {
                 m_params.AddOpt("subscription[setup_fee]", subscriptionSetupFee);
                 return this;
@@ -2348,7 +2433,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
                 return this;
             }
-            public CheckoutExistingForItemsRequest SubscriptionItemUnitPrice(int index, int subscriptionItemUnitPrice) 
+            public CheckoutExistingForItemsRequest SubscriptionItemUnitPrice(int index, long subscriptionItemUnitPrice) 
             {
                 m_params.AddOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
                 return this;
@@ -2394,6 +2479,56 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_items[item_type][" + index + "]", subscriptionItemItemType);
                 return this;
             }
+            public CheckoutExistingForItemsRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
+            {
+                m_params.Add("discounts[apply_on][" + index + "]", discountApplyOn);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest DiscountDurationType(int index, ChargeBee.Models.Enums.DurationTypeEnum discountDurationType) 
+            {
+                m_params.Add("discounts[duration_type][" + index + "]", discountDurationType);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest DiscountPercentage(int index, double discountPercentage) 
+            {
+                m_params.AddOpt("discounts[percentage][" + index + "]", discountPercentage);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest DiscountAmount(int index, long discountAmount) 
+            {
+                m_params.AddOpt("discounts[amount][" + index + "]", discountAmount);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest DiscountPeriod(int index, int discountPeriod) 
+            {
+                m_params.AddOpt("discounts[period][" + index + "]", discountPeriod);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest DiscountPeriodUnit(int index, ChargeBee.Models.Enums.PeriodUnitEnum discountPeriodUnit) 
+            {
+                m_params.AddOpt("discounts[period_unit][" + index + "]", discountPeriodUnit);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest DiscountIncludedInMrr(int index, bool discountIncludedInMrr) 
+            {
+                m_params.AddOpt("discounts[included_in_mrr][" + index + "]", discountIncludedInMrr);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest DiscountItemPriceId(int index, string discountItemPriceId) 
+            {
+                m_params.AddOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest DiscountOperationType(int index, ChargeBee.Models.Enums.OperationTypeEnum discountOperationType) 
+            {
+                m_params.Add("discounts[operation_type][" + index + "]", discountOperationType);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest DiscountId(int index, string discountId) 
+            {
+                m_params.AddOpt("discounts[id][" + index + "]", discountId);
+                return this;
+            }
             public CheckoutExistingForItemsRequest ItemTierItemPriceId(int index, string itemTierItemPriceId) 
             {
                 m_params.AddOpt("item_tiers[item_price_id][" + index + "]", itemTierItemPriceId);
@@ -2409,7 +2544,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
                 return this;
             }
-            public CheckoutExistingForItemsRequest ItemTierPrice(int index, int itemTierPrice) 
+            public CheckoutExistingForItemsRequest ItemTierPrice(int index, long itemTierPrice) 
             {
                 m_params.AddOpt("item_tiers[price][" + index + "]", itemTierPrice);
                 return this;
@@ -2693,6 +2828,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("redirect_url", redirectUrl);
                 return this;
             }
+            public CheckoutGiftRequest CouponIds(List<string> couponIds) 
+            {
+                m_params.AddOpt("coupon_ids", couponIds);
+                return this;
+            }
             public CheckoutGiftRequest GifterCustomerId(string gifterCustomerId) 
             {
                 m_params.AddOpt("gifter[customer_id]", gifterCustomerId);
@@ -2718,6 +2858,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
                 return this;
             }
+            [Obsolete]
             public CheckoutGiftRequest SubscriptionCoupon(string subscriptionCoupon) 
             {
                 m_params.AddOpt("subscription[coupon]", subscriptionCoupon);
@@ -2875,6 +3016,47 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class EventsRequest : EntityRequest<EventsRequest> 
+        {
+            public EventsRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public EventsRequest EventName(ChargeBee.Models.Enums.EventNameEnum eventName) 
+            {
+                m_params.Add("event_name", eventName);
+                return this;
+            }
+            public EventsRequest OccurredAt(long occurredAt) 
+            {
+                m_params.AddOpt("occurred_at", occurredAt);
+                return this;
+            }
+            public EventsRequest EventData(JToken eventData) 
+            {
+                m_params.Add("event_data", eventData);
+                return this;
+            }
+        }
+        public class ViewVoucherRequest : EntityRequest<ViewVoucherRequest> 
+        {
+            public ViewVoucherRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public ViewVoucherRequest PaymentVoucherId(string paymentVoucherId) 
+            {
+                m_params.Add("payment_voucher[id]", paymentVoucherId);
+                return this;
+            }
+            public ViewVoucherRequest CustomerLocale(string customerLocale) 
+            {
+                m_params.AddOpt("customer[locale]", customerLocale);
+                return this;
+            }
+        }
         #endregion
 
         public enum TypeEnum
@@ -2905,6 +3087,8 @@ namespace ChargeBee.Models
             CheckoutOneTime,
             [EnumMember(Value = "pre_cancel")]
             PreCancel,
+            [EnumMember(Value = "view_voucher")]
+            ViewVoucher,
 
         }
         public enum StateEnum

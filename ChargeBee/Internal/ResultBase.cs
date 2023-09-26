@@ -41,6 +41,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<ContractTerm>("contract_term"); }
         }
+        public Discount Discount
+        {
+            get {  return GetResource<Discount>("discount"); }
+        }
         public AdvanceInvoiceSchedule AdvanceInvoiceSchedule
         {
             get {  return GetResource<AdvanceInvoiceSchedule>("advance_invoice_schedule"); }
@@ -84,6 +88,10 @@ namespace ChargeBee.Internal
         public Invoice Invoice
         {
             get {  return GetResource<Invoice>("invoice"); }
+        }
+        public PaymentReferenceNumber PaymentReferenceNumber
+        {
+            get {  return GetResource<PaymentReferenceNumber>("payment_reference_number"); }
         }
         public TaxWithheld TaxWithheld
         {
@@ -248,6 +256,14 @@ namespace ChargeBee.Internal
         public Purchase Purchase
         {
             get {  return GetResource<Purchase>("purchase"); }
+        }
+        public PaymentVoucher PaymentVoucher
+        {
+            get {  return GetResource<PaymentVoucher>("payment_voucher"); }
+        }
+        public CsvTaxRule CsvTaxRule
+        {
+            get {  return GetResource<CsvTaxRule>("csv_tax_rule"); }
         }
 
         public List<UnbilledCharge> UnbilledCharges

@@ -29,7 +29,10 @@ namespace ChargeBee.Api
 
             foreach (var path in paths)
             {
-                sb.Append('/').Append(Uri.EscapeDataString(path));
+                if(path.Contains("/"))
+                    sb.Append('/').Append(Uri.EscapeUriString(path));
+                else
+                    sb.Append('/').Append(Uri.EscapeDataString(path));
             }
 
             return sb.ToString();
@@ -160,7 +163,7 @@ namespace ChargeBee.Api
             var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             if (response.IsSuccessStatusCode)
             {
-                EntityResult result = new EntityResult(response.StatusCode, json);
+                EntityResult result = new EntityResult(response.StatusCode, json, response.Headers);
                 return result;
             }
             else
@@ -210,7 +213,7 @@ namespace ChargeBee.Api
             var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             if (response.IsSuccessStatusCode)
             {
-                ListResult result = new ListResult(response.StatusCode, json);
+                ListResult result = new ListResult(response.StatusCode, json, response.Headers);
                 return result;
             }
             else

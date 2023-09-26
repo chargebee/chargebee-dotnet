@@ -242,7 +242,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
                 return this;
             }
-            public CreateSubscriptionRequest SubscriptionPlanUnitPrice(int subscriptionPlanUnitPrice) 
+            public CreateSubscriptionRequest SubscriptionPlanUnitPrice(long subscriptionPlanUnitPrice) 
             {
                 m_params.AddOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
                 return this;
@@ -252,7 +252,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[plan_unit_price_in_decimal]", subscriptionPlanUnitPriceInDecimal);
                 return this;
             }
-            public CreateSubscriptionRequest SubscriptionSetupFee(int subscriptionSetupFee) 
+            public CreateSubscriptionRequest SubscriptionSetupFee(long subscriptionSetupFee) 
             {
                 m_params.AddOpt("subscription[setup_fee]", subscriptionSetupFee);
                 return this;
@@ -443,7 +443,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
                 return this;
             }
-            public CreateSubscriptionRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            public CreateSubscriptionRequest AddonUnitPrice(int index, long addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
                 return this;
@@ -468,7 +468,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
                 return this;
             }
-            public CreateSubscriptionRequest EventBasedAddonUnitPrice(int index, int eventBasedAddonUnitPrice) 
+            public CreateSubscriptionRequest EventBasedAddonUnitPrice(int index, long eventBasedAddonUnitPrice) 
             {
                 m_params.AddOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
                 return this;
@@ -567,7 +567,7 @@ namespace ChargeBee.Models
                 return this;
             }
             [Obsolete]
-            public CreateSubItemEstimateRequest SubscriptionSetupFee(int subscriptionSetupFee) 
+            public CreateSubItemEstimateRequest SubscriptionSetupFee(long subscriptionSetupFee) 
             {
                 m_params.AddOpt("subscription[setup_fee]", subscriptionSetupFee);
                 return this;
@@ -753,7 +753,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
                 return this;
             }
-            public CreateSubItemEstimateRequest SubscriptionItemUnitPrice(int index, int subscriptionItemUnitPrice) 
+            public CreateSubItemEstimateRequest SubscriptionItemUnitPrice(int index, long subscriptionItemUnitPrice) 
             {
                 m_params.AddOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
                 return this;
@@ -794,6 +794,46 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_items[item_type][" + index + "]", subscriptionItemItemType);
                 return this;
             }
+            public CreateSubItemEstimateRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
+            {
+                m_params.Add("discounts[apply_on][" + index + "]", discountApplyOn);
+                return this;
+            }
+            public CreateSubItemEstimateRequest DiscountDurationType(int index, ChargeBee.Models.Enums.DurationTypeEnum discountDurationType) 
+            {
+                m_params.Add("discounts[duration_type][" + index + "]", discountDurationType);
+                return this;
+            }
+            public CreateSubItemEstimateRequest DiscountPercentage(int index, double discountPercentage) 
+            {
+                m_params.AddOpt("discounts[percentage][" + index + "]", discountPercentage);
+                return this;
+            }
+            public CreateSubItemEstimateRequest DiscountAmount(int index, long discountAmount) 
+            {
+                m_params.AddOpt("discounts[amount][" + index + "]", discountAmount);
+                return this;
+            }
+            public CreateSubItemEstimateRequest DiscountPeriod(int index, int discountPeriod) 
+            {
+                m_params.AddOpt("discounts[period][" + index + "]", discountPeriod);
+                return this;
+            }
+            public CreateSubItemEstimateRequest DiscountPeriodUnit(int index, ChargeBee.Models.Enums.PeriodUnitEnum discountPeriodUnit) 
+            {
+                m_params.AddOpt("discounts[period_unit][" + index + "]", discountPeriodUnit);
+                return this;
+            }
+            public CreateSubItemEstimateRequest DiscountIncludedInMrr(int index, bool discountIncludedInMrr) 
+            {
+                m_params.AddOpt("discounts[included_in_mrr][" + index + "]", discountIncludedInMrr);
+                return this;
+            }
+            public CreateSubItemEstimateRequest DiscountItemPriceId(int index, string discountItemPriceId) 
+            {
+                m_params.AddOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+                return this;
+            }
             public CreateSubItemEstimateRequest SubscriptionItemChargeOnOption(int index, ChargeBee.Models.Enums.ChargeOnOptionEnum subscriptionItemChargeOnOption) 
             {
                 m_params.AddOpt("subscription_items[charge_on_option][" + index + "]", subscriptionItemChargeOnOption);
@@ -814,7 +854,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
                 return this;
             }
-            public CreateSubItemEstimateRequest ItemTierPrice(int index, int itemTierPrice) 
+            public CreateSubItemEstimateRequest ItemTierPrice(int index, long itemTierPrice) 
             {
                 m_params.AddOpt("item_tiers[price][" + index + "]", itemTierPrice);
                 return this;
@@ -902,7 +942,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[plan_quantity_in_decimal]", subscriptionPlanQuantityInDecimal);
                 return this;
             }
-            public CreateSubForCustomerEstimateRequest SubscriptionPlanUnitPrice(int subscriptionPlanUnitPrice) 
+            public CreateSubForCustomerEstimateRequest SubscriptionPlanUnitPrice(long subscriptionPlanUnitPrice) 
             {
                 m_params.AddOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
                 return this;
@@ -912,7 +952,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[plan_unit_price_in_decimal]", subscriptionPlanUnitPriceInDecimal);
                 return this;
             }
-            public CreateSubForCustomerEstimateRequest SubscriptionSetupFee(int subscriptionSetupFee) 
+            public CreateSubForCustomerEstimateRequest SubscriptionSetupFee(long subscriptionSetupFee) 
             {
                 m_params.AddOpt("subscription[setup_fee]", subscriptionSetupFee);
                 return this;
@@ -1017,7 +1057,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
                 return this;
             }
-            public CreateSubForCustomerEstimateRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            public CreateSubForCustomerEstimateRequest AddonUnitPrice(int index, long addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
                 return this;
@@ -1042,7 +1082,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
                 return this;
             }
-            public CreateSubForCustomerEstimateRequest EventBasedAddonUnitPrice(int index, int eventBasedAddonUnitPrice) 
+            public CreateSubForCustomerEstimateRequest EventBasedAddonUnitPrice(int index, long eventBasedAddonUnitPrice) 
             {
                 m_params.AddOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
                 return this;
@@ -1141,7 +1181,7 @@ namespace ChargeBee.Models
                 return this;
             }
             [Obsolete]
-            public CreateSubItemForCustomerEstimateRequest SubscriptionSetupFee(int subscriptionSetupFee) 
+            public CreateSubItemForCustomerEstimateRequest SubscriptionSetupFee(long subscriptionSetupFee) 
             {
                 m_params.AddOpt("subscription[setup_fee]", subscriptionSetupFee);
                 return this;
@@ -1241,7 +1281,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
                 return this;
             }
-            public CreateSubItemForCustomerEstimateRequest SubscriptionItemUnitPrice(int index, int subscriptionItemUnitPrice) 
+            public CreateSubItemForCustomerEstimateRequest SubscriptionItemUnitPrice(int index, long subscriptionItemUnitPrice) 
             {
                 m_params.AddOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
                 return this;
@@ -1282,6 +1322,46 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_items[item_type][" + index + "]", subscriptionItemItemType);
                 return this;
             }
+            public CreateSubItemForCustomerEstimateRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
+            {
+                m_params.Add("discounts[apply_on][" + index + "]", discountApplyOn);
+                return this;
+            }
+            public CreateSubItemForCustomerEstimateRequest DiscountDurationType(int index, ChargeBee.Models.Enums.DurationTypeEnum discountDurationType) 
+            {
+                m_params.Add("discounts[duration_type][" + index + "]", discountDurationType);
+                return this;
+            }
+            public CreateSubItemForCustomerEstimateRequest DiscountPercentage(int index, double discountPercentage) 
+            {
+                m_params.AddOpt("discounts[percentage][" + index + "]", discountPercentage);
+                return this;
+            }
+            public CreateSubItemForCustomerEstimateRequest DiscountAmount(int index, long discountAmount) 
+            {
+                m_params.AddOpt("discounts[amount][" + index + "]", discountAmount);
+                return this;
+            }
+            public CreateSubItemForCustomerEstimateRequest DiscountPeriod(int index, int discountPeriod) 
+            {
+                m_params.AddOpt("discounts[period][" + index + "]", discountPeriod);
+                return this;
+            }
+            public CreateSubItemForCustomerEstimateRequest DiscountPeriodUnit(int index, ChargeBee.Models.Enums.PeriodUnitEnum discountPeriodUnit) 
+            {
+                m_params.AddOpt("discounts[period_unit][" + index + "]", discountPeriodUnit);
+                return this;
+            }
+            public CreateSubItemForCustomerEstimateRequest DiscountIncludedInMrr(int index, bool discountIncludedInMrr) 
+            {
+                m_params.AddOpt("discounts[included_in_mrr][" + index + "]", discountIncludedInMrr);
+                return this;
+            }
+            public CreateSubItemForCustomerEstimateRequest DiscountItemPriceId(int index, string discountItemPriceId) 
+            {
+                m_params.AddOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+                return this;
+            }
             public CreateSubItemForCustomerEstimateRequest SubscriptionItemChargeOnOption(int index, ChargeBee.Models.Enums.ChargeOnOptionEnum subscriptionItemChargeOnOption) 
             {
                 m_params.AddOpt("subscription_items[charge_on_option][" + index + "]", subscriptionItemChargeOnOption);
@@ -1302,7 +1382,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
                 return this;
             }
-            public CreateSubItemForCustomerEstimateRequest ItemTierPrice(int index, int itemTierPrice) 
+            public CreateSubItemForCustomerEstimateRequest ItemTierPrice(int index, long itemTierPrice) 
             {
                 m_params.AddOpt("item_tiers[price][" + index + "]", itemTierPrice);
                 return this;
@@ -1425,12 +1505,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[plan_quantity]", subscriptionPlanQuantity);
                 return this;
             }
-            public UpdateSubscriptionRequest SubscriptionPlanUnitPrice(int subscriptionPlanUnitPrice) 
+            public UpdateSubscriptionRequest SubscriptionPlanUnitPrice(long subscriptionPlanUnitPrice) 
             {
                 m_params.AddOpt("subscription[plan_unit_price]", subscriptionPlanUnitPrice);
                 return this;
             }
-            public UpdateSubscriptionRequest SubscriptionSetupFee(int subscriptionSetupFee) 
+            public UpdateSubscriptionRequest SubscriptionSetupFee(long subscriptionSetupFee) 
             {
                 m_params.AddOpt("subscription[setup_fee]", subscriptionSetupFee);
                 return this;
@@ -1597,7 +1677,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
                 return this;
             }
-            public UpdateSubscriptionRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            public UpdateSubscriptionRequest AddonUnitPrice(int index, long addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
                 return this;
@@ -1617,7 +1697,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
                 return this;
             }
-            public UpdateSubscriptionRequest EventBasedAddonUnitPrice(int index, int eventBasedAddonUnitPrice) 
+            public UpdateSubscriptionRequest EventBasedAddonUnitPrice(int index, long eventBasedAddonUnitPrice) 
             {
                 m_params.AddOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
                 return this;
@@ -1665,6 +1745,12 @@ namespace ChargeBee.Models
             public UpdateSubscriptionRequest AddonTrialEnd(int index, long addonTrialEnd) 
             {
                 m_params.AddOpt("addons[trial_end][" + index + "]", addonTrialEnd);
+                return this;
+            }
+            [Obsolete]
+            public UpdateSubscriptionRequest AddonProrationType(int index, ChargeBee.Models.Enums.ProrationTypeEnum addonProrationType) 
+            {
+                m_params.AddOpt("addons[proration_type][" + index + "]", addonProrationType);
                 return this;
             }
         }
@@ -1761,7 +1847,7 @@ namespace ChargeBee.Models
                 return this;
             }
             [Obsolete]
-            public UpdateSubscriptionForItemsRequest SubscriptionSetupFee(int subscriptionSetupFee) 
+            public UpdateSubscriptionForItemsRequest SubscriptionSetupFee(long subscriptionSetupFee) 
             {
                 m_params.AddOpt("subscription[setup_fee]", subscriptionSetupFee);
                 return this;
@@ -1923,7 +2009,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
                 return this;
             }
-            public UpdateSubscriptionForItemsRequest SubscriptionItemUnitPrice(int index, int subscriptionItemUnitPrice) 
+            public UpdateSubscriptionForItemsRequest SubscriptionItemUnitPrice(int index, long subscriptionItemUnitPrice) 
             {
                 m_params.AddOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
                 return this;
@@ -1969,6 +2055,56 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_items[item_type][" + index + "]", subscriptionItemItemType);
                 return this;
             }
+            public UpdateSubscriptionForItemsRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
+            {
+                m_params.Add("discounts[apply_on][" + index + "]", discountApplyOn);
+                return this;
+            }
+            public UpdateSubscriptionForItemsRequest DiscountDurationType(int index, ChargeBee.Models.Enums.DurationTypeEnum discountDurationType) 
+            {
+                m_params.Add("discounts[duration_type][" + index + "]", discountDurationType);
+                return this;
+            }
+            public UpdateSubscriptionForItemsRequest DiscountPercentage(int index, double discountPercentage) 
+            {
+                m_params.AddOpt("discounts[percentage][" + index + "]", discountPercentage);
+                return this;
+            }
+            public UpdateSubscriptionForItemsRequest DiscountAmount(int index, long discountAmount) 
+            {
+                m_params.AddOpt("discounts[amount][" + index + "]", discountAmount);
+                return this;
+            }
+            public UpdateSubscriptionForItemsRequest DiscountPeriod(int index, int discountPeriod) 
+            {
+                m_params.AddOpt("discounts[period][" + index + "]", discountPeriod);
+                return this;
+            }
+            public UpdateSubscriptionForItemsRequest DiscountPeriodUnit(int index, ChargeBee.Models.Enums.PeriodUnitEnum discountPeriodUnit) 
+            {
+                m_params.AddOpt("discounts[period_unit][" + index + "]", discountPeriodUnit);
+                return this;
+            }
+            public UpdateSubscriptionForItemsRequest DiscountIncludedInMrr(int index, bool discountIncludedInMrr) 
+            {
+                m_params.AddOpt("discounts[included_in_mrr][" + index + "]", discountIncludedInMrr);
+                return this;
+            }
+            public UpdateSubscriptionForItemsRequest DiscountItemPriceId(int index, string discountItemPriceId) 
+            {
+                m_params.AddOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+                return this;
+            }
+            public UpdateSubscriptionForItemsRequest DiscountOperationType(int index, ChargeBee.Models.Enums.OperationTypeEnum discountOperationType) 
+            {
+                m_params.Add("discounts[operation_type][" + index + "]", discountOperationType);
+                return this;
+            }
+            public UpdateSubscriptionForItemsRequest DiscountId(int index, string discountId) 
+            {
+                m_params.AddOpt("discounts[id][" + index + "]", discountId);
+                return this;
+            }
             public UpdateSubscriptionForItemsRequest ItemTierItemPriceId(int index, string itemTierItemPriceId) 
             {
                 m_params.AddOpt("item_tiers[item_price_id][" + index + "]", itemTierItemPriceId);
@@ -1984,7 +2120,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
                 return this;
             }
-            public UpdateSubscriptionForItemsRequest ItemTierPrice(int index, int itemTierPrice) 
+            public UpdateSubscriptionForItemsRequest ItemTierPrice(int index, long itemTierPrice) 
             {
                 m_params.AddOpt("item_tiers[price][" + index + "]", itemTierPrice);
                 return this;
@@ -2199,7 +2335,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("event_based_addons[quantity][" + index + "]", eventBasedAddonQuantity);
                 return this;
             }
-            public CancelSubscriptionRequest EventBasedAddonUnitPrice(int index, int eventBasedAddonUnitPrice) 
+            public CancelSubscriptionRequest EventBasedAddonUnitPrice(int index, long eventBasedAddonUnitPrice) 
             {
                 m_params.AddOpt("event_based_addons[unit_price][" + index + "]", eventBasedAddonUnitPrice);
                 return this;
@@ -2277,7 +2413,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
                 return this;
             }
-            public CancelSubscriptionForItemsRequest SubscriptionItemUnitPrice(int index, int subscriptionItemUnitPrice) 
+            public CancelSubscriptionForItemsRequest SubscriptionItemUnitPrice(int index, long subscriptionItemUnitPrice) 
             {
                 m_params.AddOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
                 return this;
@@ -2318,6 +2454,11 @@ namespace ChargeBee.Models
             public PauseSubscriptionRequest SubscriptionResumeDate(long subscriptionResumeDate) 
             {
                 m_params.AddOpt("subscription[resume_date]", subscriptionResumeDate);
+                return this;
+            }
+            public PauseSubscriptionRequest SubscriptionSkipBillingCycles(int subscriptionSkipBillingCycles) 
+            {
+                m_params.AddOpt("subscription[skip_billing_cycles]", subscriptionSkipBillingCycles);
                 return this;
             }
         }
@@ -2900,7 +3041,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[quantity_in_decimal][" + index + "]", addonQuantityInDecimal);
                 return this;
             }
-            public CreateInvoiceRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            public CreateInvoiceRequest AddonUnitPrice(int index, long addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
                 return this;
@@ -2920,7 +3061,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[date_to][" + index + "]", addonDateTo);
                 return this;
             }
-            public CreateInvoiceRequest ChargeAmount(int index, int chargeAmount) 
+            public CreateInvoiceRequest ChargeAmount(int index, long chargeAmount) 
             {
                 m_params.AddOpt("charges[amount][" + index + "]", chargeAmount);
                 return this;
@@ -3149,7 +3290,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_prices[quantity_in_decimal][" + index + "]", itemPriceQuantityInDecimal);
                 return this;
             }
-            public CreateInvoiceForItemsRequest ItemPriceUnitPrice(int index, int itemPriceUnitPrice) 
+            public CreateInvoiceForItemsRequest ItemPriceUnitPrice(int index, long itemPriceUnitPrice) 
             {
                 m_params.AddOpt("item_prices[unit_price][" + index + "]", itemPriceUnitPrice);
                 return this;
@@ -3184,7 +3325,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
                 return this;
             }
-            public CreateInvoiceForItemsRequest ItemTierPrice(int index, int itemTierPrice) 
+            public CreateInvoiceForItemsRequest ItemTierPrice(int index, long itemTierPrice) 
             {
                 m_params.AddOpt("item_tiers[price][" + index + "]", itemTierPrice);
                 return this;
@@ -3204,7 +3345,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
                 return this;
             }
-            public CreateInvoiceForItemsRequest ChargeAmount(int index, int chargeAmount) 
+            public CreateInvoiceForItemsRequest ChargeAmount(int index, long chargeAmount) 
             {
                 m_params.AddOpt("charges[amount][" + index + "]", chargeAmount);
                 return this;
@@ -3277,6 +3418,26 @@ namespace ChargeBee.Models
             public CreateInvoiceForItemsRequest NotesToRemoveEntityId(int index, string notesToRemoveEntityId) 
             {
                 m_params.AddOpt("notes_to_remove[entity_id][" + index + "]", notesToRemoveEntityId);
+                return this;
+            }
+            public CreateInvoiceForItemsRequest DiscountPercentage(int index, double discountPercentage) 
+            {
+                m_params.AddOpt("discounts[percentage][" + index + "]", discountPercentage);
+                return this;
+            }
+            public CreateInvoiceForItemsRequest DiscountAmount(int index, long discountAmount) 
+            {
+                m_params.AddOpt("discounts[amount][" + index + "]", discountAmount);
+                return this;
+            }
+            public CreateInvoiceForItemsRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
+            {
+                m_params.Add("discounts[apply_on][" + index + "]", discountApplyOn);
+                return this;
+            }
+            public CreateInvoiceForItemsRequest DiscountItemPriceId(int index, string discountItemPriceId) 
+            {
+                m_params.AddOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
                 return this;
             }
         }

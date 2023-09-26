@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using ChargeBee.Internal;
 
 namespace ChargeBee.Api
 {
@@ -15,6 +16,11 @@ namespace ChargeBee.Api
 		{
 			m_url = url;
 			m_method = method;
+		}
+		
+		public T SetIdempotencyKey(string idempotencyKey){
+			headers.Add (IdempotencyConstants.IDEMPOTENCY_HEADER, idempotencyKey);
+			return (T)Convert.ChangeType (this, typeof(T));
 		}
 
 		public Params Params() {

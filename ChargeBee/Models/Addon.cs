@@ -108,9 +108,9 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<ChargeTypeEnum>("charge_type", true); }
         }
-        public int? Price 
+        public long? Price 
         {
-            get { return GetValue<int?>("price", false); }
+            get { return GetValue<long?>("price", false); }
         }
         public string CurrencyCode 
         {
@@ -220,6 +220,11 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<ChannelEnum>("channel", false); }
         }
+        [Obsolete]
+        public ProrationTypeEnum? ProrationType 
+        {
+            get { return GetEnum<ProrationTypeEnum>("proration_type", false); }
+        }
         public string InvoiceNotes 
         {
             get { return GetValue<string>("invoice_notes", false); }
@@ -284,7 +289,7 @@ namespace ChargeBee.Models
                 m_params.Add("charge_type", chargeType);
                 return this;
             }
-            public CreateRequest Price(int price) 
+            public CreateRequest Price(long price) 
             {
                 m_params.AddOpt("price", price);
                 return this;
@@ -440,6 +445,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("price_in_decimal", priceInDecimal);
                 return this;
             }
+            [Obsolete]
+            public CreateRequest ProrationType(Addon.ProrationTypeEnum prorationType) 
+            {
+                m_params.AddOpt("proration_type", prorationType);
+                return this;
+            }
             public CreateRequest Status(Addon.StatusEnum status) 
             {
                 m_params.AddOpt("status", status);
@@ -455,7 +466,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("tiers[ending_unit][" + index + "]", tierEndingUnit);
                 return this;
             }
-            public CreateRequest TierPrice(int index, int tierPrice) 
+            public CreateRequest TierPrice(int index, long tierPrice) 
             {
                 m_params.AddOpt("tiers[price][" + index + "]", tierPrice);
                 return this;
@@ -503,7 +514,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("charge_type", chargeType);
                 return this;
             }
-            public UpdateRequest Price(int price) 
+            public UpdateRequest Price(long price) 
             {
                 m_params.AddOpt("price", price);
                 return this;
@@ -659,6 +670,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("price_in_decimal", priceInDecimal);
                 return this;
             }
+            [Obsolete]
+            public UpdateRequest ProrationType(Addon.ProrationTypeEnum prorationType) 
+            {
+                m_params.AddOpt("proration_type", prorationType);
+                return this;
+            }
             public UpdateRequest TierStartingUnit(int index, int tierStartingUnit) 
             {
                 m_params.AddOpt("tiers[starting_unit][" + index + "]", tierStartingUnit);
@@ -669,7 +686,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("tiers[ending_unit][" + index + "]", tierEndingUnit);
                 return this;
             }
-            public UpdateRequest TierPrice(int index, int tierPrice) 
+            public UpdateRequest TierPrice(int index, long tierPrice) 
             {
                 m_params.AddOpt("tiers[price][" + index + "]", tierPrice);
                 return this;
@@ -718,9 +735,9 @@ namespace ChargeBee.Models
             {
                 return new EnumFilter<Addon.ChargeTypeEnum, AddonListRequest>("charge_type", this);        
             }
-            public NumberFilter<int, AddonListRequest> Price() 
+            public NumberFilter<long, AddonListRequest> Price() 
             {
-                return new NumberFilter<int, AddonListRequest>("price", this);        
+                return new NumberFilter<long, AddonListRequest>("price", this);        
             }
             public NumberFilter<int, AddonListRequest> Period() 
             {
@@ -856,6 +873,20 @@ namespace ChargeBee.Models
             Day,
 
         }
+        [Obsolete]
+        public enum ProrationTypeEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "site_default")]
+            SiteDefault,
+            [EnumMember(Value = "partial_term")]
+            PartialTerm,
+            [EnumMember(Value = "full_term")]
+            FullTerm,
+
+        }
 
         #region Subclasses
         public class AddonTier : Resource
@@ -869,8 +900,8 @@ namespace ChargeBee.Models
                 get { return GetValue<int?>("ending_unit", false); }
             }
 
-            public int Price {
-                get { return GetValue<int>("price", true); }
+            public long Price {
+                get { return GetValue<long>("price", true); }
             }
 
             public string StartingUnitInDecimal {

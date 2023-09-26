@@ -94,9 +94,9 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("date_to", false); }
         }
-        public int? UnitAmount 
+        public long? UnitAmount 
         {
-            get { return GetValue<int?>("unit_amount", false); }
+            get { return GetValue<long?>("unit_amount", false); }
         }
         public PricingModelEnum? PricingModel 
         {
@@ -106,17 +106,17 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int?>("quantity", false); }
         }
-        public int? Amount 
+        public long? Amount 
         {
-            get { return GetValue<int?>("amount", false); }
+            get { return GetValue<long?>("amount", false); }
         }
         public string CurrencyCode 
         {
             get { return GetValue<string>("currency_code", true); }
         }
-        public int? DiscountAmount 
+        public long? DiscountAmount 
         {
-            get { return GetValue<int?>("discount_amount", false); }
+            get { return GetValue<long?>("discount_amount", false); }
         }
         public string Description 
         {
@@ -158,6 +158,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<UnbilledChargeTier>("tiers"); }
         }
+        public bool? IsAdvanceCharge 
+        {
+            get { return GetValue<bool?>("is_advance_charge", false); }
+        }
         public bool Deleted 
         {
             get { return GetValue<bool>("deleted", true); }
@@ -193,7 +197,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[quantity][" + index + "]", addonQuantity);
                 return this;
             }
-            public CreateUnbilledChargeRequest AddonUnitPrice(int index, int addonUnitPrice) 
+            public CreateUnbilledChargeRequest AddonUnitPrice(int index, long addonUnitPrice) 
             {
                 m_params.AddOpt("addons[unit_price][" + index + "]", addonUnitPrice);
                 return this;
@@ -218,7 +222,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[date_to][" + index + "]", addonDateTo);
                 return this;
             }
-            public CreateUnbilledChargeRequest ChargeAmount(int index, int chargeAmount) 
+            public CreateUnbilledChargeRequest ChargeAmount(int index, long chargeAmount) 
             {
                 m_params.AddOpt("charges[amount][" + index + "]", chargeAmount);
                 return this;
@@ -316,7 +320,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_prices[quantity_in_decimal][" + index + "]", itemPriceQuantityInDecimal);
                 return this;
             }
-            public CreateRequest ItemPriceUnitPrice(int index, int itemPriceUnitPrice) 
+            public CreateRequest ItemPriceUnitPrice(int index, long itemPriceUnitPrice) 
             {
                 m_params.AddOpt("item_prices[unit_price][" + index + "]", itemPriceUnitPrice);
                 return this;
@@ -351,7 +355,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
                 return this;
             }
-            public CreateRequest ItemTierPrice(int index, int itemTierPrice) 
+            public CreateRequest ItemTierPrice(int index, long itemTierPrice) 
             {
                 m_params.AddOpt("item_tiers[price][" + index + "]", itemTierPrice);
                 return this;
@@ -371,7 +375,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
                 return this;
             }
-            public CreateRequest ChargeAmount(int index, int chargeAmount) 
+            public CreateRequest ChargeAmount(int index, long chargeAmount) 
             {
                 m_params.AddOpt("charges[amount][" + index + "]", chargeAmount);
                 return this;
@@ -539,8 +543,8 @@ namespace ChargeBee.Models
                 get { return GetValue<int>("quantity_used", true); }
             }
 
-            public int UnitAmount {
-                get { return GetValue<int>("unit_amount", true); }
+            public long UnitAmount {
+                get { return GetValue<long>("unit_amount", true); }
             }
 
             public string StartingUnitInDecimal {

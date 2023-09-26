@@ -109,9 +109,9 @@ namespace ChargeBee.Models
         {
             get { return GetValue<double?>("discount_percentage", false); }
         }
-        public int? DiscountAmount 
+        public long? DiscountAmount 
         {
-            get { return GetValue<int?>("discount_amount", false); }
+            get { return GetValue<long?>("discount_amount", false); }
         }
         [Obsolete]
         public int? DiscountQuantity 
@@ -216,6 +216,10 @@ namespace ChargeBee.Models
         {
             get { return GetJToken("meta_data", false); }
         }
+        public List<CouponCouponConstraint> CouponConstraints 
+        {
+            get { return GetResourceList<CouponCouponConstraint>("coupon_constraints"); }
+        }
         
         #endregion
         
@@ -247,7 +251,7 @@ namespace ChargeBee.Models
                 m_params.Add("discount_type", discountType);
                 return this;
             }
-            public CreateRequest DiscountAmount(int discountAmount) 
+            public CreateRequest DiscountAmount(long discountAmount) 
             {
                 m_params.AddOpt("discount_amount", discountAmount);
                 return this;
@@ -371,7 +375,7 @@ namespace ChargeBee.Models
                 m_params.Add("discount_type", discountType);
                 return this;
             }
-            public CreateForItemsRequest DiscountAmount(int discountAmount) 
+            public CreateForItemsRequest DiscountAmount(long discountAmount) 
             {
                 m_params.AddOpt("discount_amount", discountAmount);
                 return this;
@@ -482,6 +486,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_constraint_criteria[item_price_periods][" + index + "]", itemConstraintCriteriaItemPricePeriods);
                 return this;
             }
+            public CreateForItemsRequest CouponConstraintEntityType(int index, CouponCouponConstraint.EntityTypeEnum couponConstraintEntityType) 
+            {
+                m_params.Add("coupon_constraints[entity_type][" + index + "]", couponConstraintEntityType);
+                return this;
+            }
+            public CreateForItemsRequest CouponConstraintType(int index, CouponCouponConstraint.TypeEnum couponConstraintType) 
+            {
+                m_params.Add("coupon_constraints[type][" + index + "]", couponConstraintType);
+                return this;
+            }
+            public CreateForItemsRequest CouponConstraintValue(int index, string couponConstraintValue) 
+            {
+                m_params.AddOpt("coupon_constraints[value][" + index + "]", couponConstraintValue);
+                return this;
+            }
         }
         public class UpdateForItemsRequest : EntityRequest<UpdateForItemsRequest> 
         {
@@ -505,7 +524,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("discount_type", discountType);
                 return this;
             }
-            public UpdateForItemsRequest DiscountAmount(int discountAmount) 
+            public UpdateForItemsRequest DiscountAmount(long discountAmount) 
             {
                 m_params.AddOpt("discount_amount", discountAmount);
                 return this;
@@ -518,6 +537,12 @@ namespace ChargeBee.Models
             public UpdateForItemsRequest DiscountPercentage(double discountPercentage) 
             {
                 m_params.AddOpt("discount_percentage", discountPercentage);
+                return this;
+            }
+            [Obsolete]
+            public UpdateForItemsRequest DiscountQuantity(int discountQuantity) 
+            {
+                m_params.AddOpt("discount_quantity", discountQuantity);
                 return this;
             }
             public UpdateForItemsRequest ApplyOn(Coupon.ApplyOnEnum applyOn) 
@@ -605,6 +630,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_constraint_criteria[item_price_periods][" + index + "]", itemConstraintCriteriaItemPricePeriods);
                 return this;
             }
+            public UpdateForItemsRequest CouponConstraintEntityType(int index, CouponCouponConstraint.EntityTypeEnum couponConstraintEntityType) 
+            {
+                m_params.Add("coupon_constraints[entity_type][" + index + "]", couponConstraintEntityType);
+                return this;
+            }
+            public UpdateForItemsRequest CouponConstraintType(int index, CouponCouponConstraint.TypeEnum couponConstraintType) 
+            {
+                m_params.Add("coupon_constraints[type][" + index + "]", couponConstraintType);
+                return this;
+            }
+            public UpdateForItemsRequest CouponConstraintValue(int index, string couponConstraintValue) 
+            {
+                m_params.AddOpt("coupon_constraints[value][" + index + "]", couponConstraintValue);
+                return this;
+            }
         }
         public class CouponListRequest : ListRequestBase<CouponListRequest> 
         {
@@ -676,7 +716,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("discount_type", discountType);
                 return this;
             }
-            public UpdateRequest DiscountAmount(int discountAmount) 
+            public UpdateRequest DiscountAmount(long discountAmount) 
             {
                 m_params.AddOpt("discount_amount", discountAmount);
                 return this;
@@ -689,6 +729,12 @@ namespace ChargeBee.Models
             public UpdateRequest DiscountPercentage(double discountPercentage) 
             {
                 m_params.AddOpt("discount_percentage", discountPercentage);
+                return this;
+            }
+            [Obsolete]
+            public UpdateRequest DiscountQuantity(int discountQuantity) 
+            {
+                m_params.AddOpt("discount_quantity", discountQuantity);
                 return this;
             }
             public UpdateRequest ApplyOn(Coupon.ApplyOnEnum applyOn) 
@@ -967,6 +1013,38 @@ namespace ChargeBee.Models
 
             public JArray ItemPricePeriods {
                 get { return GetJArray("item_price_periods", false); }
+            }
+
+        }
+        public class CouponCouponConstraint : Resource
+        {
+            public enum EntityTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "customer")]
+                Customer,
+            }
+            public enum TypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "max_redemptions")]
+                MaxRedemptions,
+                [EnumMember(Value = "unique_by")]
+                UniqueBy,
+            }
+
+            public EntityTypeEnum EntityType {
+                get { return GetEnum<EntityTypeEnum>("entity_type", true); }
+            }
+
+            public TypeEnum CouponConstraintType {
+                get { return GetEnum<TypeEnum>("type", true); }
+            }
+
+            public string Value {
+                get { return GetValue<string>("value", false); }
             }
 
         }

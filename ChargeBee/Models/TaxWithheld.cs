@@ -80,9 +80,17 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("currency_code", true); }
         }
-        public int? Amount 
+        public long? Amount 
         {
-            get { return GetValue<int?>("amount", false); }
+            get { return GetValue<long?>("amount", false); }
+        }
+        public long? ResourceVersion 
+        {
+            get { return GetValue<long?>("resource_version", false); }
+        }
+        public DateTime? UpdatedAt 
+        {
+            get { return GetDateTime("updated_at", false); }
         }
         [Obsolete]
         public decimal? ExchangeRate 

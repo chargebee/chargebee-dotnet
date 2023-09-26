@@ -98,6 +98,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "subscription_changed")]
          SubscriptionChanged,
 
+        [EnumMember(Value = "subscription_trial_extended")]
+         SubscriptionTrialExtended,
+
         [EnumMember(Value = "mrr_updated")]
          MrrUpdated,
 
@@ -265,6 +268,9 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "payment_source_expired")]
          PaymentSourceExpired,
+
+        [EnumMember(Value = "payment_source_locally_deleted")]
+         PaymentSourceLocallyDeleted,
 
         [EnumMember(Value = "virtual_bank_account_added")]
          VirtualBankAccountAdded,
@@ -464,6 +470,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "entitlement_overrides_auto_removed")]
          EntitlementOverridesAutoRemoved,
 
+        [EnumMember(Value = "subscription_entitlements_created")]
+         SubscriptionEntitlementsCreated,
+
         [EnumMember(Value = "business_entity_created")]
          BusinessEntityCreated,
 
@@ -475,6 +484,33 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "purchase_created")]
          PurchaseCreated,
+
+        [EnumMember(Value = "voucher_created")]
+         VoucherCreated,
+
+        [EnumMember(Value = "voucher_expired")]
+         VoucherExpired,
+
+        [EnumMember(Value = "voucher_create_failed")]
+         VoucherCreateFailed,
+
+        [EnumMember(Value = "product_created")]
+         ProductCreated,
+
+        [EnumMember(Value = "product_updated")]
+         ProductUpdated,
+
+        [EnumMember(Value = "product_deleted")]
+         ProductDeleted,
+
+        [EnumMember(Value = "variant_created")]
+         VariantCreated,
+
+        [EnumMember(Value = "variant_updated")]
+         VariantUpdated,
+
+        [EnumMember(Value = "variant_deleted")]
+         VariantDeleted,
 
     }
 }

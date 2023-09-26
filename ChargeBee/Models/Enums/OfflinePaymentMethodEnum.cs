@@ -28,5 +28,8 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "sepa_credit")]
          SepaCredit,
 
+        [EnumMember(Value = "boleto")]
+         Boleto,
+
     }
 }

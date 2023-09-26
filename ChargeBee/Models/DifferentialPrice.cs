@@ -81,9 +81,9 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("parent_item_id", true); }
         }
-        public int? Price 
+        public long? Price 
         {
-            get { return GetValue<int?>("price", false); }
+            get { return GetValue<long?>("price", false); }
         }
         public string PriceInDecimal 
         {
@@ -137,7 +137,7 @@ namespace ChargeBee.Models
                 m_params.Add("parent_item_id", parentItemId);
                 return this;
             }
-            public CreateRequest Price(int price) 
+            public CreateRequest Price(long price) 
             {
                 m_params.AddOpt("price", price);
                 return this;
@@ -167,7 +167,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("tiers[ending_unit][" + index + "]", tierEndingUnit);
                 return this;
             }
-            public CreateRequest TierPrice(int index, int tierPrice) 
+            public CreateRequest TierPrice(int index, long tierPrice) 
             {
                 m_params.AddOpt("tiers[price][" + index + "]", tierPrice);
                 return this;
@@ -213,7 +213,7 @@ namespace ChargeBee.Models
                 m_params.Add("item_price_id", itemPriceId);
                 return this;
             }
-            public UpdateRequest Price(int price) 
+            public UpdateRequest Price(long price) 
             {
                 m_params.AddOpt("price", price);
                 return this;
@@ -243,7 +243,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("tiers[ending_unit][" + index + "]", tierEndingUnit);
                 return this;
             }
-            public UpdateRequest TierPrice(int index, int tierPrice) 
+            public UpdateRequest TierPrice(int index, long tierPrice) 
             {
                 m_params.AddOpt("tiers[price][" + index + "]", tierPrice);
                 return this;
@@ -327,8 +327,8 @@ namespace ChargeBee.Models
                 get { return GetValue<int?>("ending_unit", false); }
             }
 
-            public int Price {
-                get { return GetValue<int>("price", true); }
+            public long Price {
+                get { return GetValue<long>("price", true); }
             }
 
             public string StartingUnitInDecimal {
