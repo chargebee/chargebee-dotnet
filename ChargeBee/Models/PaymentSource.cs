@@ -200,6 +200,10 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<PaymentSourcePaypal>("paypal"); }
         }
+        public PaymentSourceVenmo Venmo 
+        {
+            get { return GetSubResource<PaymentSourceVenmo>("venmo"); }
+        }
         public List<PaymentSourceMandate> Mandates 
         {
             get { return GetResourceList<PaymentSourceMandate>("mandates"); }
@@ -685,6 +689,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[billing_country]", cardBillingCountry);
                 return this;
             }
+            public UpdateCardRequest CardAdditionalInformation(JToken cardAdditionalInformation) 
+            {
+                m_params.AddOpt("card[additional_information]", cardAdditionalInformation);
+                return this;
+            }
         }
         public class UpdateBankAccountRequest : EntityRequest<UpdateBankAccountRequest> 
         {
@@ -1111,6 +1120,14 @@ namespace ChargeBee.Models
 
             public string AgreementId {
                 get { return GetValue<string>("agreement_id", false); }
+            }
+
+        }
+        public class PaymentSourceVenmo : Resource
+        {
+
+            public string UserName {
+                get { return GetValue<string>("user_name", false); }
             }
 
         }

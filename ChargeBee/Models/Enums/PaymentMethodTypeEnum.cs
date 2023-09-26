@@ -61,5 +61,7 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "netbanking_emandates")]
          NetbankingEmandates,
 
+        [EnumMember(Value = "venmo")]
+         Venmo,
     }
 }
