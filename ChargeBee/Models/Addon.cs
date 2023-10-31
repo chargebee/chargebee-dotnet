@@ -220,7 +220,6 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<ChannelEnum>("channel", false); }
         }
-        [Obsolete]
         public ProrationTypeEnum? ProrationType 
         {
             get { return GetEnum<ProrationTypeEnum>("proration_type", false); }
@@ -445,7 +444,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("price_in_decimal", priceInDecimal);
                 return this;
             }
-            [Obsolete]
             public CreateRequest ProrationType(Addon.ProrationTypeEnum prorationType) 
             {
                 m_params.AddOpt("proration_type", prorationType);
@@ -670,7 +668,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("price_in_decimal", priceInDecimal);
                 return this;
             }
-            [Obsolete]
             public UpdateRequest ProrationType(Addon.ProrationTypeEnum prorationType) 
             {
                 m_params.AddOpt("proration_type", prorationType);
@@ -873,7 +870,6 @@ namespace ChargeBee.Models
             Day,
 
         }
-        [Obsolete]
         public enum ProrationTypeEnum
         {
 

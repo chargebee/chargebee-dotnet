@@ -63,5 +63,15 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "venmo")]
          Venmo,
+
+        [EnumMember(Value = "pay_to")]
+         PayTo,
+
+        [EnumMember(Value = "faster_payments")]
+         FasterPayments,
+
+        [EnumMember(Value = "sepa_instant_transfer")]
+         SepaInstantTransfer,
+
     }
 }

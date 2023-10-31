@@ -261,10 +261,6 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<PaymentVoucher>("payment_voucher"); }
         }
-        public CsvTaxRule CsvTaxRule
-        {
-            get {  return GetResource<CsvTaxRule>("csv_tax_rule"); }
-        }
 
         public List<UnbilledCharge> UnbilledCharges
         {

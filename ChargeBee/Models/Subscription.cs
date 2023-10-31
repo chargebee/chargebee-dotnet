@@ -1173,6 +1173,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
             }
+            public CreateRequest StatementDescriptorDescriptor(string statementDescriptorDescriptor) 
+            {
+                m_params.AddOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
+                return this;
+            }
+            public CreateRequest StatementDescriptorAdditionalInfo(string statementDescriptorAdditionalInfo) 
+            {
+                m_params.AddOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
+                return this;
+            }
             public CreateRequest CustomerVatNumber(string customerVatNumber) 
             {
                 m_params.AddOpt("customer[vat_number]", customerVatNumber);
@@ -1579,6 +1589,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
             }
+            public CreateForCustomerRequest StatementDescriptorDescriptor(string statementDescriptorDescriptor) 
+            {
+                m_params.AddOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
+                return this;
+            }
+            public CreateForCustomerRequest StatementDescriptorAdditionalInfo(string statementDescriptorAdditionalInfo) 
+            {
+                m_params.AddOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
+                return this;
+            }
             public CreateForCustomerRequest PaymentIntentId(string paymentIntentId) 
             {
                 m_params.AddOpt("payment_intent[id]", paymentIntentId);
@@ -1945,6 +1965,16 @@ namespace ChargeBee.Models
             public CreateWithItemsRequest ShippingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum shippingAddressValidationStatus) 
             {
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+                return this;
+            }
+            public CreateWithItemsRequest StatementDescriptorDescriptor(string statementDescriptorDescriptor) 
+            {
+                m_params.AddOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
+                return this;
+            }
+            public CreateWithItemsRequest StatementDescriptorAdditionalInfo(string statementDescriptorAdditionalInfo) 
+            {
+                m_params.AddOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
                 return this;
             }
             public CreateWithItemsRequest PaymentIntentId(string paymentIntentId) 
@@ -2762,6 +2792,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
             }
+            public UpdateRequest StatementDescriptorDescriptor(string statementDescriptorDescriptor) 
+            {
+                m_params.AddOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
+                return this;
+            }
+            public UpdateRequest StatementDescriptorAdditionalInfo(string statementDescriptorAdditionalInfo) 
+            {
+                m_params.AddOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
+                return this;
+            }
             public UpdateRequest CustomerVatNumber(string customerVatNumber) 
             {
                 m_params.AddOpt("customer[vat_number]", customerVatNumber);
@@ -2892,7 +2932,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[trial_end][" + index + "]", addonTrialEnd);
                 return this;
             }
-            [Obsolete]
             public UpdateRequest AddonProrationType(int index, ChargeBee.Models.Enums.ProrationTypeEnum addonProrationType) 
             {
                 m_params.AddOpt("addons[proration_type][" + index + "]", addonProrationType);
@@ -3400,6 +3439,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
             }
+            public UpdateForItemsRequest StatementDescriptorDescriptor(string statementDescriptorDescriptor) 
+            {
+                m_params.AddOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
+                return this;
+            }
+            public UpdateForItemsRequest StatementDescriptorAdditionalInfo(string statementDescriptorAdditionalInfo) 
+            {
+                m_params.AddOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
+                return this;
+            }
             public UpdateForItemsRequest CustomerVatNumber(string customerVatNumber) 
             {
                 m_params.AddOpt("customer[vat_number]", customerVatNumber);
@@ -3698,6 +3747,16 @@ namespace ChargeBee.Models
             public ReactivateRequest ContractTermCancellationCutoffPeriod(int contractTermCancellationCutoffPeriod) 
             {
                 m_params.AddOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
+                return this;
+            }
+            public ReactivateRequest StatementDescriptorDescriptor(string statementDescriptorDescriptor) 
+            {
+                m_params.AddOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
+                return this;
+            }
+            public ReactivateRequest StatementDescriptorAdditionalInfo(string statementDescriptorAdditionalInfo) 
+            {
+                m_params.AddOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
                 return this;
             }
             public ReactivateRequest PaymentIntentId(string paymentIntentId) 

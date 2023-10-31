@@ -151,6 +151,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "windcave")]
          Windcave,
 
+        [EnumMember(Value = "pay_com")]
+         PayCom,
+
         [EnumMember(Value = "ebanx")]
          Ebanx,
 
