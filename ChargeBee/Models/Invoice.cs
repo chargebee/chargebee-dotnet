@@ -443,6 +443,10 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<InvoiceShippingAddress>("shipping_address"); }
         }
+        public InvoiceStatementDescriptor StatementDescriptor 
+        {
+            get { return GetSubResource<InvoiceStatementDescriptor>("statement_descriptor"); }
+        }
         public InvoiceBillingAddress BillingAddress 
         {
             get { return GetSubResource<InvoiceBillingAddress>("billing_address"); }
@@ -639,6 +643,16 @@ namespace ChargeBee.Models
             public CreateRequest ShippingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum shippingAddressValidationStatus) 
             {
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+                return this;
+            }
+            public CreateRequest StatementDescriptorDescriptor(string statementDescriptorDescriptor) 
+            {
+                m_params.AddOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
+                return this;
+            }
+            public CreateRequest StatementDescriptorAdditionalInfo(string statementDescriptorAdditionalInfo) 
+            {
+                m_params.AddOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
                 return this;
             }
             [Obsolete]
@@ -1153,6 +1167,16 @@ namespace ChargeBee.Models
             public CreateForChargeItemsAndChargesRequest ShippingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum shippingAddressValidationStatus) 
             {
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest StatementDescriptorDescriptor(string statementDescriptorDescriptor) 
+            {
+                m_params.AddOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest StatementDescriptorAdditionalInfo(string statementDescriptorAdditionalInfo) 
+            {
+                m_params.AddOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
                 return this;
             }
             [Obsolete]
@@ -3358,6 +3382,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
             }
+            public UpdateDetailsRequest StatementDescriptorDescriptor(string statementDescriptorDescriptor) 
+            {
+                m_params.AddOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
+                return this;
+            }
+            public UpdateDetailsRequest StatementDescriptorAdditionalInfo(string statementDescriptorAdditionalInfo) 
+            {
+                m_params.AddOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
+                return this;
+            }
         }
         #endregion
 
@@ -4020,6 +4054,22 @@ namespace ChargeBee.Models
 
             public int Index {
                 get { return GetValue<int>("index", true); }
+            }
+
+        }
+        public class InvoiceStatementDescriptor : Resource
+        {
+
+            public string Id {
+                get { return GetValue<string>("id", true); }
+            }
+
+            public string Descriptor {
+                get { return GetValue<string>("descriptor", false); }
+            }
+
+            public string AdditionalInfo {
+                get { return GetValue<string>("additional_info", false); }
             }
 
         }

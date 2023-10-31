@@ -278,6 +278,14 @@ namespace ChargeBee.Models
             Boleto,
             [EnumMember(Value = "venmo")]
             Venmo,
+            [EnumMember(Value = "amazon_payments")]
+            AmazonPayments,
+            [EnumMember(Value = "pay_to")]
+            PayTo,
+            [EnumMember(Value = "faster_payments")]
+            FasterPayments,
+            [EnumMember(Value = "sepa_instant_transfer")]
+            SepaInstantTransfer,
 
         }
 

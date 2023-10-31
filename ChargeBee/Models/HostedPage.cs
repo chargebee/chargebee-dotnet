@@ -1070,6 +1070,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("pass_thru_content", passThruContent);
                 return this;
             }
+            [Obsolete]
+            public CheckoutOneTimeForItemsRequest Source(string source) 
+            {
+                m_params.AddOpt("source", source);
+                return this;
+            }
             public CheckoutOneTimeForItemsRequest CustomerId(string customerId) 
             {
                 m_params.AddOpt("customer[id]", customerId);
@@ -1537,6 +1543,12 @@ namespace ChargeBee.Models
             public CheckoutNewForItemsRequest PassThruContent(string passThruContent) 
             {
                 m_params.AddOpt("pass_thru_content", passThruContent);
+                return this;
+            }
+            [Obsolete]
+            public CheckoutNewForItemsRequest Source(string source) 
+            {
+                m_params.AddOpt("source", source);
                 return this;
             }
             public CheckoutNewForItemsRequest AllowOfflinePaymentMethods(bool allowOfflinePaymentMethods) 
@@ -2328,6 +2340,12 @@ namespace ChargeBee.Models
             public CheckoutExistingForItemsRequest PassThruContent(string passThruContent) 
             {
                 m_params.AddOpt("pass_thru_content", passThruContent);
+                return this;
+            }
+            [Obsolete]
+            public CheckoutExistingForItemsRequest Source(string source) 
+            {
+                m_params.AddOpt("source", source);
                 return this;
             }
             public CheckoutExistingForItemsRequest AllowOfflinePaymentMethods(bool allowOfflinePaymentMethods) 
