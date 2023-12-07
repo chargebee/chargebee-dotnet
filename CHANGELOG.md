@@ -1,3 +1,11 @@
+### v3.12.1 (2023-12-07)
+* * *
+
+#### New Feature:
+* Support for Base url customization
+
+* * *
+
 ### v3.12.0 (2023-11-30)
 * * *
 
@@ -321,6 +329,14 @@
 * * *
 
 🔴 **Attention**: The support for v2 will eventually be discontinued on **December 31st 2023** and will no longer receive any further updates. We strongly recommend [upgrading to v3](https://github.com/chargebee/chargebee-dotnet/wiki/Migration-guide-for-v3) as soon as possible.
+
+* * *
+
+### v2.34.1 (2023-12-07)
+* * *
+
+#### New Feature:
+* Support for Base url customization
 
 * * *
 
