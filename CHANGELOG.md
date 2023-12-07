@@ -2,6 +2,14 @@
 
 * * * 
 
+### v2.34.1 (2023-12-07)
+* * *
+
+#### New Feature:
+* Support for Base url customization
+
+* * * 
+
 ### v2.34.0 (2023-11-30)
 * * *
 

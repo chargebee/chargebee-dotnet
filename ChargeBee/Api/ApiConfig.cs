@@ -9,7 +9,7 @@ namespace ChargeBee.Api
     {
 		public static string DomainSuffix = "chargebee.com";
 		public static string Proto = "https";
-		public static string Version = "2.34.0";
+		public static string Version = "2.34.1";
 		public static readonly string API_VERSION = "v2";
         public static int TimeTravelMillis { get; set; }
         public static int ExportSleepMillis { get; set;}
@@ -18,11 +18,16 @@ namespace ChargeBee.Api
         public string SiteName { get; set; }
         public string Charset { get; set; }
         public static int ConnectTimeout { get; set; }
+        public string BaseUrl { get; set; }
 
         public string ApiBaseUrl
         {
             get
             {
+                if (BaseUrl != null)
+                {
+                    return BaseUrl;
+                }
 				return String.Format("{0}://{1}.{2}/api/{3}",
                     Proto,
                     SiteName,
@@ -63,6 +68,11 @@ namespace ChargeBee.Api
         public static void Configure(string siteName, string apiKey)
         {         
             m_instance = new ApiConfig(siteName, apiKey);
+        }
+        
+        public static void SetBaseUrl(string url)
+        {
+            m_instance.BaseUrl = url;
         }
 
         public static string SerializeObject<T>(T t)where T : Resource
