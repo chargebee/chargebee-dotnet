@@ -2139,6 +2139,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
                 return this;
             }
+            public UpdateSubscriptionForItemsRequest SubscriptionItemProrationType(int index, ChargeBee.Models.Enums.ProrationTypeEnum subscriptionItemProrationType)
+            {
+                m_params.AddOpt("subscription_items[proration_type][" + index + "]", subscriptionItemProrationType);
+                return this;
+            }
         }
         public class RenewalEstimateRequest : EntityRequest<RenewalEstimateRequest> 
         {

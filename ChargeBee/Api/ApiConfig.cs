@@ -9,7 +9,7 @@ namespace ChargeBee.Api
     {
 		public static string DomainSuffix = "chargebee.com";
 		public static string Proto = "https";
-		public static string Version = "3.12.1";
+		public static string Version = "3.13.0";
 		public static readonly string API_VERSION = "v2";
         public static int TimeTravelMillis { get; set; }
         public static int ExportSleepMillis { get; set;}
@@ -69,7 +69,7 @@ namespace ChargeBee.Api
         {         
             m_instance = new ApiConfig(siteName, apiKey);
         }
-        
+
         public static void SetBaseUrl(string url)
         {
             m_instance.BaseUrl = url;

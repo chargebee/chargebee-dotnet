@@ -60,7 +60,7 @@ namespace ChargeBee.Models
         {
             get { return GetValue<double?>("percentage", false); }
         }
-        public long? Amount 
+        public long? Amount
         {
             get { return GetValue<long?>("amount", false); }
         }

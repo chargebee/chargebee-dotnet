@@ -92,7 +92,7 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("currency_code", true); }
         }
-        public long? Amount 
+        public long? Amount
         {
             get { return GetValue<long?>("amount", false); }
         }

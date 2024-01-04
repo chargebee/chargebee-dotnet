@@ -482,6 +482,12 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "business_entity_deleted")]
          BusinessEntityDeleted,
 
+        [EnumMember(Value = "customer_business_entity_changed")]
+         CustomerBusinessEntityChanged,
+
+        [EnumMember(Value = "subscription_business_entity_changed")]
+         SubscriptionBusinessEntityChanged,
+
         [EnumMember(Value = "purchase_created")]
          PurchaseCreated,
 

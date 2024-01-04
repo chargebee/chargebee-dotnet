@@ -352,6 +352,28 @@ namespace ChargeBee.Models
             DinersClub,
             [EnumMember(Value = "bancontact")]
             Bancontact,
+            [EnumMember(Value = "cmr_falabella")]
+            CmrFalabella,
+            [EnumMember(Value = "tarjeta_naranja")]
+            TarjetaNaranja,
+            [EnumMember(Value = "nativa")]
+            Nativa,
+            [EnumMember(Value = "cencosud")]
+            Cencosud,
+            [EnumMember(Value = "cabal")]
+            Cabal,
+            [EnumMember(Value = "argencard")]
+            Argencard,
+            [EnumMember(Value = "elo")]
+            Elo,
+            [EnumMember(Value = "hipercard")]
+            Hipercard,
+            [EnumMember(Value = "carnet")]
+            Carnet,
+            [EnumMember(Value = "rupay")]
+            Rupay,
+            [EnumMember(Value = "maestro")]
+            Maestro,
             [EnumMember(Value = "other")]
             Other,
             [EnumMember(Value = "not_applicable")]

@@ -296,6 +296,10 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<ChannelEnum>("channel", false); }
         }
+        public string ActiveId
+        {
+            get { return GetValue<string>("active_id", false); }
+        }
         [Obsolete]
         public CardStatusEnum? CardStatus 
         {
@@ -1627,6 +1631,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("transaction[reference_number]", transactionReferenceNumber);
                 return this;
             }
+            public RecordExcessPaymentRequest TransactionCustomPaymentMethodId(string transactionCustomPaymentMethodId)
+            {
+                m_params.AddOpt("transaction[custom_payment_method_id]", transactionCustomPaymentMethodId);
+                return this;
+            }
         }
         public class CollectPaymentRequest : EntityRequest<CollectPaymentRequest> 
         {
@@ -2318,6 +2327,8 @@ namespace ChargeBee.Models
                 FasterPayments,
                 [EnumMember(Value = "sepa_instant_transfer")]
                 SepaInstantTransfer,
+                [EnumMember(Value = "automated_bank_transfer")]
+                AutomatedBankTransfer,
             }
             public enum StatusEnum
             {

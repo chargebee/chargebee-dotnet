@@ -245,6 +245,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<ItemEntitlement>("item_entitlement"); }
         }
+        public Entitlement Entitlement
+        {
+            get {  return GetResource<Entitlement>("entitlement"); }
+        }
         public InAppSubscription InAppSubscription
         {
             get {  return GetResource<InAppSubscription>("in_app_subscription"); }

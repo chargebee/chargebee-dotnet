@@ -456,7 +456,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("transaction[reference_number]", transactionReferenceNumber);
                 return this;
             }
-            public RecordRefundRequest TransactionDate(long transactionDate) 
+            public RecordRefundRequest TransactionCustomPaymentMethodId(string transactionCustomPaymentMethodId)
+            {
+                m_params.AddOpt("transaction[custom_payment_method_id]", transactionCustomPaymentMethodId);
+                return this;
+            }
+            public RecordRefundRequest TransactionDate(long transactionDate)
             {
                 m_params.Add("transaction[date]", transactionDate);
                 return this;
@@ -1373,6 +1378,18 @@ namespace ChargeBee.Models
 
             public double TaxRate {
                 get { return GetValue<double>("tax_rate", true); }
+            }
+
+            public DateTime? DateTo {
+                get { return GetDateTime("date_to", false); }
+            }
+
+            public DateTime? DateFrom {
+                get { return GetDateTime("date_from", false); }
+            }
+
+            public decimal? ProratedTaxableAmount {
+                get { return GetValue<decimal?>("prorated_taxable_amount", false); }
             }
 
             public bool? IsPartialTaxApplied {

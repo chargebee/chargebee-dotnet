@@ -413,7 +413,11 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int?>("net_term_days", false); }
         }
-        public List<SubscriptionSubscriptionItem> SubscriptionItems 
+        public string ActiveId
+        {
+            get { return GetValue<string>("active_id", false); }
+        }
+        public List<SubscriptionSubscriptionItem> SubscriptionItems
         {
             get { return GetResourceList<SubscriptionSubscriptionItem>("subscription_items"); }
         }
@@ -3645,6 +3649,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
                 return this;
             }
+            public UpdateForItemsRequest SubscriptionItemProrationType(int index, ChargeBee.Models.Enums.ProrationTypeEnum subscriptionItemProrationType)
+            {
+                m_params.AddOpt("subscription_items[proration_type][" + index + "]", subscriptionItemProrationType);
+                return this;
+            }
             [Obsolete]
             public UpdateForItemsRequest CouponCouponId(int index, string couponCouponId) 
             {
@@ -6005,6 +6014,8 @@ namespace ChargeBee.Models
             Paused,
             [EnumMember(Value = "cancelled")]
             Cancelled,
+            [EnumMember(Value = "transferred")]
+            Transferred,
 
         }
         public enum CancelReasonEnum

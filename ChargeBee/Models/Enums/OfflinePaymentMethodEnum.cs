@@ -31,5 +31,23 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "boleto")]
          Boleto,
 
+        [EnumMember(Value = "us_automated_bank_transfer")]
+         UsAutomatedBankTransfer,
+
+        [EnumMember(Value = "eu_automated_bank_transfer")]
+         EuAutomatedBankTransfer,
+
+        [EnumMember(Value = "uk_automated_bank_transfer")]
+         UkAutomatedBankTransfer,
+
+        [EnumMember(Value = "jp_automated_bank_transfer")]
+         JpAutomatedBankTransfer,
+
+        [EnumMember(Value = "mx_automated_bank_transfer")]
+         MxAutomatedBankTransfer,
+
+        [EnumMember(Value = "custom")]
+         Custom,
+
     }
 }

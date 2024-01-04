@@ -9,6 +9,7 @@ namespace ChargeBee
 		private U req;
 		private String paramName;
 		private bool supportsPresenceOperator;
+		private bool supportsMultiOperator = true;
 
 		public EnumFilter(String paramName, U req) {
 			this.paramName = paramName;
@@ -31,11 +32,19 @@ namespace ChargeBee
 		}
 
 		public U In(params T[] value) {
+			if(!supportsMultiOperator) {
+				throw new NotSupportedException("operator '[in]' is not supported for this filter-parameter");
+			}
+
 			req.Params().AddOpt(paramName + "[in]", value);
 			return req;
 		} 
 
 		public U NotIn(params T[] value) {
+			if(!supportsMultiOperator) {
+				throw new NotSupportedException("operator '[not_in]' is not supported for this filter-parameter");
+			}
+
 			req.Params().AddOpt(paramName + "[not_in]", value);
 			return req;
 		}
@@ -46,6 +55,11 @@ namespace ChargeBee
 			}
 			req.Params().AddOpt(paramName + "[is_present]", value);
 			return req;
+		}
+
+		public EnumFilter<T,U> SupportsMultiOperators(bool supportsMultiOperators) {
+			this.supportsMultiOperator = supportsMultiOperators;
+			return this;
 		}
 	}
 }

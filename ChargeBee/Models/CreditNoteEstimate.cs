@@ -312,6 +312,18 @@ namespace ChargeBee.Models
                 get { return GetValue<double>("tax_rate", true); }
             }
 
+            public DateTime? DateTo {
+                get { return GetDateTime("date_to", false); }
+            }
+
+            public DateTime? DateFrom {
+                get { return GetDateTime("date_from", false); }
+            }
+
+            public decimal? ProratedTaxableAmount {
+                get { return GetValue<decimal?>("prorated_taxable_amount", false); }
+            }
+
             public bool? IsPartialTaxApplied {
                 get { return GetValue<bool?>("is_partial_tax_applied", false); }
             }

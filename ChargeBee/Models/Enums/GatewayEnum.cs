@@ -157,6 +157,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "ebanx")]
          Ebanx,
 
+        [EnumMember(Value = "dlocal")]
+         Dlocal,
+
         [EnumMember(Value = "not_applicable")]
          NotApplicable,
 

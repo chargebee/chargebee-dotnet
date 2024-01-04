@@ -73,5 +73,8 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "sepa_instant_transfer")]
          SepaInstantTransfer,
 
+        [EnumMember(Value = "automated_bank_transfer")]
+         AutomatedBankTransfer,
+
     }
 }

@@ -14,7 +14,7 @@ namespace ChargeBee.Api
             : this(statusCode, json, null)
         {
         }
-	    
+
         public ListResult(HttpStatusCode statusCode, string json, HttpResponseHeaders responseHeaders)
         {
             List = new List<Entry>();
@@ -38,7 +38,7 @@ namespace ChargeBee.Api
         }
 
         public HttpStatusCode StatusCode { get; private set; }
-        
+
         public HttpResponseHeaders ResponseHeaders { get; private set; }
 
         public List<Entry> List { get; private set; }

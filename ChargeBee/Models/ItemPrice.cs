@@ -111,7 +111,11 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("external_name", false); }
         }
-        public PricingModelEnum PricingModel 
+        public ProrationTypeEnum? ProrationType
+        {
+            get { return GetEnum<ProrationTypeEnum>("proration_type", false); }
+        }
+        public PricingModelEnum PricingModel
         {
             get { return GetEnum<PricingModelEnum>("pricing_model", true); }
         }
@@ -269,7 +273,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("invoice_notes", invoiceNotes);
                 return this;
             }
-            public CreateRequest ExternalName(string externalName) 
+            public CreateRequest ProrationType(ItemPrice.ProrationTypeEnum prorationType)
+            {
+                m_params.AddOpt("proration_type", prorationType);
+                return this;
+            }
+            public CreateRequest ExternalName(string externalName)
             {
                 m_params.AddOpt("external_name", externalName);
                 return this;
@@ -477,7 +486,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("description", description);
                 return this;
             }
-            public UpdateRequest Status(ItemPrice.StatusEnum status) 
+            public UpdateRequest ProrationType(ItemPrice.ProrationTypeEnum prorationType)
+            {
+                m_params.AddOpt("proration_type", prorationType);
+                return this;
+            }
+            public UpdateRequest Status(ItemPrice.StatusEnum status)
             {
                 m_params.AddOpt("status", status);
                 return this;
@@ -812,6 +826,19 @@ namespace ChargeBee.Models
             Archived,
             [EnumMember(Value = "deleted")]
             Deleted,
+
+        }
+        public enum ProrationTypeEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "site_default")]
+            SiteDefault,
+            [EnumMember(Value = "partial_term")]
+            PartialTerm,
+            [EnumMember(Value = "full_term")]
+            FullTerm,
 
         }
         public enum PeriodUnitEnum
