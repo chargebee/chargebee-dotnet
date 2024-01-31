@@ -2815,6 +2815,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("redirect_url", redirectUrl);
                 return this;
             }
+            public AcceptQuoteRequest Layout(ChargeBee.Models.Enums.LayoutEnum layout) 
+            {
+                m_params.AddOpt("layout", layout);
+                return this;
+            }
             public AcceptQuoteRequest QuoteId(string quoteId) 
             {
                 m_params.Add("quote[id]", quoteId);

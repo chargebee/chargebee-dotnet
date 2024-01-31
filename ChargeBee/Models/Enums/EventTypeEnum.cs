@@ -518,5 +518,11 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "variant_deleted")]
          VariantDeleted,
 
+        [EnumMember(Value = "item_price_entitlements_updated")]
+         ItemPriceEntitlementsUpdated,
+
+        [EnumMember(Value = "item_price_entitlements_removed")]
+         ItemPriceEntitlementsRemoved,
+
     }
 }
