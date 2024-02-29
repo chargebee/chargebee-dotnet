@@ -92,6 +92,10 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<ApiVersionEnum>("api_version", false); }
         }
+        public string OriginUser 
+        {
+            get { return GetValue<string>("origin_user", false); }
+        }
         public EventContent Content
         {
             get { return new EventContent(GetValue<JToken>("content")); }

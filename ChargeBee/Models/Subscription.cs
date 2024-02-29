@@ -6136,6 +6136,10 @@ namespace ChargeBee.Models
                 get { return GetEnum<ChargeOnOptionEnum>("charge_on_option", false); }
             }
 
+            public ProrationTypeEnum? ProrationType {
+                get { return GetEnum<ProrationTypeEnum>("proration_type", false); }
+            }
+
         }
         public class SubscriptionItemTier : Resource
         {

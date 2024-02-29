@@ -2519,6 +2519,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("transactions[id][" + index + "]", transactionId);
                 return this;
             }
+            public ApplyPaymentsRequest TransactionAmount(int index, long transactionAmount) 
+            {
+                m_params.AddOpt("transactions[amount][" + index + "]", transactionAmount);
+                return this;
+            }
         }
         public class DeleteLineItemsRequest : EntityRequest<DeleteLineItemsRequest>
         {
@@ -3530,6 +3535,10 @@ namespace ChargeBee.Models
 
             public long? ItemLevelDiscountAmount {
                 get { return GetValue<long?>("item_level_discount_amount", false); }
+            }
+
+            public string UsagePercentage {
+                get { return GetValue<string>("usage_percentage", false); }
             }
 
             public string ReferenceLineItemId {

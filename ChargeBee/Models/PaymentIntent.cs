@@ -344,6 +344,10 @@ namespace ChargeBee.Models
                 get { return (DateTime)GetDateTime("modified_at", true); }
             }
 
+            public GatewayErrorDetail ErrorDetail {
+                get { return GetSubResource<GatewayErrorDetail>("error_detail"); }
+            }
+
         }
 
         #endregion

@@ -205,6 +205,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<PaymentIntent>("payment_intent"); }
         }
+        public GatewayErrorDetail GatewayErrorDetail
+        {
+            get {  return GetResource<GatewayErrorDetail>("gateway_error_detail"); }
+        }
         public ItemFamily ItemFamily
         {
             get {  return GetResource<ItemFamily>("item_family"); }

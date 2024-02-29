@@ -691,12 +691,28 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("network_error_code", false); }
             }
 
+            public string NetworkErrorMessage {
+                get { return GetValue<string>("network_error_message", false); }
+            }
+
             public string ErrorField {
                 get { return GetValue<string>("error_field", false); }
             }
 
             public string RecommendationCode {
                 get { return GetValue<string>("recommendation_code", false); }
+            }
+
+            public string RecommendationMessage {
+                get { return GetValue<string>("recommendation_message", false); }
+            }
+
+            public string ProcessorErrorCode {
+                get { return GetValue<string>("processor_error_code", false); }
+            }
+
+            public string ProcessorErrorMessage {
+                get { return GetValue<string>("processor_error_message", false); }
             }
 
         }
