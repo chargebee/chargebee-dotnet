@@ -91,10 +91,6 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("item_family_id", false); }
         }
-        public string ProductId 
-        {
-            get { return GetValue<string>("product_id", false); }
-        }
         public string ItemId 
         {
             get { return GetValue<string>("item_id", false); }

@@ -100,5 +100,8 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "automated_bank_transfer")]
          AutomatedBankTransfer,
 
+        [EnumMember(Value = "klarna_pay_now")]
+         KlarnaPayNow,
+
     }
 }

@@ -286,6 +286,8 @@ namespace ChargeBee.Models
             FasterPayments,
             [EnumMember(Value = "sepa_instant_transfer")]
             SepaInstantTransfer,
+            [EnumMember(Value = "klarna_pay_now")]
+            KlarnaPayNow,
 
         }
 

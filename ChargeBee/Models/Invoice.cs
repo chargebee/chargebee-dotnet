@@ -214,6 +214,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "update_details");
             return new UpdateDetailsRequest(url, HttpMethod.POST);
         }
+        public static InstallmentsRequest Installments(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "installments");
+            return new InstallmentsRequest(url, HttpMethod.POST);
+        }
         public static EntityRequest<Type> ResendEinvoice(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "resend_einvoice");
@@ -3410,6 +3415,24 @@ namespace ChargeBee.Models
             public UpdateDetailsRequest StatementDescriptorAdditionalInfo(string statementDescriptorAdditionalInfo)
             {
                 m_params.AddOpt("statement_descriptor[additional_info]", statementDescriptorAdditionalInfo);
+                return this;
+            }
+        }
+        public class InstallmentsRequest : EntityRequest<InstallmentsRequest> 
+        {
+            public InstallmentsRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public InstallmentsRequest ConfigId(string configId) 
+            {
+                m_params.Add("config_id", configId);
+                return this;
+            }
+            public InstallmentsRequest Amount(long amount) 
+            {
+                m_params.AddOpt("amount", amount);
                 return this;
             }
         }

@@ -94,6 +94,11 @@ namespace ChargeBee.Models
                 m_params.Add("customer_id", customerId);
                 return this;
             }
+            public CreateRequest PaymentSourceId(string paymentSourceId) 
+            {
+                m_params.AddOpt("payment_source_id", paymentSourceId);
+                return this;
+            }
             public CreateRequest InvoiceInfoPoNumber(string invoiceInfoPoNumber) 
             {
                 m_params.AddOpt("invoice_info[po_number]", invoiceInfoPoNumber);
@@ -102,6 +107,16 @@ namespace ChargeBee.Models
             public CreateRequest InvoiceInfoNotes(string invoiceInfoNotes) 
             {
                 m_params.AddOpt("invoice_info[notes]", invoiceInfoNotes);
+                return this;
+            }
+            public CreateRequest InstallmentInfoConfigId(string installmentInfoConfigId) 
+            {
+                m_params.AddOpt("installment_info[config_id]", installmentInfoConfigId);
+                return this;
+            }
+            public CreateRequest InstallmentInfoAmount(long installmentInfoAmount) 
+            {
+                m_params.AddOpt("installment_info[amount]", installmentInfoAmount);
                 return this;
             }
             public CreateRequest PurchaseItemIndex(int index, int purchaseItemIndex) 
@@ -282,6 +297,26 @@ namespace ChargeBee.Models
             public CreateRequest SubscriptionInfoBillingCycles(int index, int subscriptionInfoBillingCycles) 
             {
                 m_params.AddOpt("subscription_info[billing_cycles][" + index + "]", subscriptionInfoBillingCycles);
+                return this;
+            }
+            public CreateRequest SubscriptionInfoContractTermBillingCycleOnRenewal(int index, int subscriptionInfoContractTermBillingCycleOnRenewal) 
+            {
+                m_params.AddOpt("subscription_info[contract_term_billing_cycle_on_renewal][" + index + "]", subscriptionInfoContractTermBillingCycleOnRenewal);
+                return this;
+            }
+            public CreateRequest ContractTermIndex(int index, int contractTermIndex) 
+            {
+                m_params.Add("contract_terms[index][" + index + "]", contractTermIndex);
+                return this;
+            }
+            public CreateRequest ContractTermActionAtTermEnd(int index, ContractTerm.ActionAtTermEndEnum contractTermActionAtTermEnd) 
+            {
+                m_params.AddOpt("contract_terms[action_at_term_end][" + index + "]", contractTermActionAtTermEnd);
+                return this;
+            }
+            public CreateRequest ContractTermCancellationCutoffPeriod(int index, int contractTermCancellationCutoffPeriod) 
+            {
+                m_params.AddOpt("contract_terms[cancellation_cutoff_period][" + index + "]", contractTermCancellationCutoffPeriod);
                 return this;
             }
             public CreateRequest SubscriptionInfoMetaData(int index, JToken subscriptionInfoMetaData) 
@@ -565,6 +600,26 @@ namespace ChargeBee.Models
             public EstimateRequest SubscriptionInfoBillingCycles(int index, int subscriptionInfoBillingCycles) 
             {
                 m_params.AddOpt("subscription_info[billing_cycles][" + index + "]", subscriptionInfoBillingCycles);
+                return this;
+            }
+            public EstimateRequest SubscriptionInfoContractTermBillingCycleOnRenewal(int index, int subscriptionInfoContractTermBillingCycleOnRenewal) 
+            {
+                m_params.AddOpt("subscription_info[contract_term_billing_cycle_on_renewal][" + index + "]", subscriptionInfoContractTermBillingCycleOnRenewal);
+                return this;
+            }
+            public EstimateRequest ContractTermIndex(int index, int contractTermIndex) 
+            {
+                m_params.Add("contract_terms[index][" + index + "]", contractTermIndex);
+                return this;
+            }
+            public EstimateRequest ContractTermActionAtTermEnd(int index, ContractTerm.ActionAtTermEndEnum contractTermActionAtTermEnd) 
+            {
+                m_params.AddOpt("contract_terms[action_at_term_end][" + index + "]", contractTermActionAtTermEnd);
+                return this;
+            }
+            public EstimateRequest ContractTermCancellationCutoffPeriod(int index, int contractTermCancellationCutoffPeriod) 
+            {
+                m_params.AddOpt("contract_terms[cancellation_cutoff_period][" + index + "]", contractTermCancellationCutoffPeriod);
                 return this;
             }
         }

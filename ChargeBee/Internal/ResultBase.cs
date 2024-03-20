@@ -217,6 +217,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<Item>("item"); }
         }
+        public ChargeBee.Models.Attribute Attribute
+        {
+            get {  return GetResource<ChargeBee.Models.Attribute>("attribute"); }
+        }
         public ItemPrice ItemPrice
         {
             get {  return GetResource<ItemPrice>("item_price"); }
@@ -240,6 +244,10 @@ namespace ChargeBee.Internal
         public ImpactedItem ImpactedItem
         {
             get {  return GetResource<ImpactedItem>("impacted_item"); }
+        }
+        public ImpactedItemPrice ImpactedItemPrice
+        {
+            get {  return GetResource<ImpactedItemPrice>("impacted_item_price"); }
         }
         public SubscriptionEntitlement SubscriptionEntitlement
         {
@@ -268,6 +276,14 @@ namespace ChargeBee.Internal
         public PaymentVoucher PaymentVoucher
         {
             get {  return GetResource<PaymentVoucher>("payment_voucher"); }
+        }
+        public InstallmentConfig InstallmentConfig
+        {
+            get {  return GetResource<InstallmentConfig>("installment_config"); }
+        }
+        public Installment Installment
+        {
+            get {  return GetResource<Installment>("installment"); }
         }
 
         public List<UnbilledCharge> UnbilledCharges
