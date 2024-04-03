@@ -222,6 +222,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "remove_scheduled_resumption");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
+        public static MoveRequest Move(string id)
+        {
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "move");
+            return new MoveRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -5977,6 +5982,24 @@ namespace ChargeBee.Models
             public ResumeRequest PaymentIntentAdditionalInformation(JToken paymentIntentAdditionalInformation) 
             {
                 m_params.AddOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
+                return this;
+            }
+        }
+        public class MoveRequest : EntityRequest<MoveRequest> 
+        {
+            public MoveRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public MoveRequest ToCustomerId(string toCustomerId) 
+            {
+                m_params.Add("to_customer_id", toCustomerId);
+                return this;
+            }
+            public MoveRequest CopyPaymentSource(bool copyPaymentSource) 
+            {
+                m_params.AddOpt("copy_payment_source", copyPaymentSource);
                 return this;
             }
         }
