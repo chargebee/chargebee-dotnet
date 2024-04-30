@@ -685,6 +685,7 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<CouponListRequest>("updated_at", this);        
             }
+            
             public CouponListRequest SortByCreatedAt(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");
                 return this;

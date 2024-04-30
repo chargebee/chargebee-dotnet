@@ -154,6 +154,7 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<EventListRequest>("occurred_at", this);        
             }
+            
             public EventListRequest SortByOccurredAt(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","occurred_at");
                 return this;
@@ -216,7 +217,6 @@ namespace ChargeBee.Models
             }
 
         }
-
         public class EventContent : ResultBase
         {
 
@@ -227,6 +227,7 @@ namespace ChargeBee.Models
                 m_jobj = jobj;
             }
         }
+
         #endregion
     }
 }

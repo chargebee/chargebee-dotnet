@@ -217,6 +217,7 @@ namespace ChargeBee.Models
             {
                 return new EnumFilter<ChargeBee.Models.Enums.SourceEnum, UsageListRequest>("source", this);        
             }
+            
             public UsageListRequest SortByUsageDate(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","usage_date");
                 return this;

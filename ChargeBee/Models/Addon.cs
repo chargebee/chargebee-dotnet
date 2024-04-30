@@ -244,6 +244,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<AddonTier>("tiers"); }
         }
+        public List<AddonTaxProvidersField> TaxProvidersFields 
+        {
+            get { return GetResourceList<AddonTaxProvidersField>("tax_providers_fields"); }
+        }
         public bool? ShowDescriptionInInvoices 
         {
             get { return GetValue<bool?>("show_description_in_invoices", false); }
@@ -910,6 +914,22 @@ namespace ChargeBee.Models
 
             public string PriceInDecimal {
                 get { return GetValue<string>("price_in_decimal", false); }
+            }
+
+        }
+        public class AddonTaxProvidersField : Resource
+        {
+
+            public string ProviderName {
+                get { return GetValue<string>("provider_name", true); }
+            }
+
+            public string FieldId {
+                get { return GetValue<string>("field_id", true); }
+            }
+
+            public string FieldValue {
+                get { return GetValue<string>("field_value", true); }
             }
 
         }

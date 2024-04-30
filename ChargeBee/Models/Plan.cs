@@ -281,6 +281,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<PlanTier>("tiers"); }
         }
+        public List<PlanTaxProvidersField> TaxProvidersFields 
+        {
+            get { return GetResourceList<PlanTaxProvidersField>("tax_providers_fields"); }
+        }
         public List<PlanApplicableAddon> ApplicableAddons 
         {
             get { return GetResourceList<PlanApplicableAddon>("applicable_addons"); }
@@ -1172,6 +1176,22 @@ namespace ChargeBee.Models
 
             public string PriceInDecimal {
                 get { return GetValue<string>("price_in_decimal", false); }
+            }
+
+        }
+        public class PlanTaxProvidersField : Resource
+        {
+
+            public string ProviderName {
+                get { return GetValue<string>("provider_name", true); }
+            }
+
+            public string FieldId {
+                get { return GetValue<string>("field_id", true); }
+            }
+
+            public string FieldValue {
+                get { return GetValue<string>("field_value", true); }
             }
 
         }

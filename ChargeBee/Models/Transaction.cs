@@ -200,11 +200,11 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("fraud_reason", false); }
         }
-        public string CustomPaymentMethodId
+        public string CustomPaymentMethodId 
         {
             get { return GetValue<string>("custom_payment_method_id", false); }
         }
-        public long? AmountUnused
+        public long? AmountUnused 
         {
             get { return GetValue<long?>("amount_unused", false); }
         }
@@ -272,15 +272,15 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("payment_method_details", false); }
         }
-        public TransactionGatewayErrorDetail ErrorDetail
+        public TransactionGatewayErrorDetail ErrorDetail 
         {
             get { return GetSubResource<TransactionGatewayErrorDetail>("error_detail"); }
         }
-        public string CustomPaymentMethodName
+        public string CustomPaymentMethodName 
         {
             get { return GetValue<string>("custom_payment_method_name", false); }
         }
-
+        
         #endregion
         
         #region Requests
@@ -339,12 +339,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("reference_number", referenceNumber);
                 return this;
             }
-            public RecordRefundRequest CustomPaymentMethodId(string customPaymentMethodId)
+            public RecordRefundRequest CustomPaymentMethodId(string customPaymentMethodId) 
             {
                 m_params.AddOpt("custom_payment_method_id", customPaymentMethodId);
                 return this;
             }
-            public RecordRefundRequest Comment(string comment)
+            public RecordRefundRequest Comment(string comment) 
             {
                 m_params.AddOpt("comment", comment);
                 return this;
@@ -440,6 +440,7 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<TransactionListRequest>("updated_at", this);        
             }
+            
             public TransactionListRequest SortByDate(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","date");
                 return this;

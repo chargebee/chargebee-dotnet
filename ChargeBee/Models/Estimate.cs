@@ -723,6 +723,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
                 return this;
             }
+            [Obsolete]
+            public CreateSubItemEstimateRequest ContractTermContractStart(long contractTermContractStart) 
+            {
+                m_params.AddOpt("contract_term[contract_start]", contractTermContractStart);
+                return this;
+            }
             public CreateSubItemEstimateRequest ContractTermCancellationCutoffPeriod(int contractTermCancellationCutoffPeriod) 
             {
                 m_params.AddOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
@@ -1291,6 +1297,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
                 return this;
             }
+            [Obsolete]
+            public CreateSubItemForCustomerEstimateRequest ContractTermContractStart(long contractTermContractStart) 
+            {
+                m_params.AddOpt("contract_term[contract_start]", contractTermContractStart);
+                return this;
+            }
             public CreateSubItemForCustomerEstimateRequest ContractTermCancellationCutoffPeriod(int contractTermCancellationCutoffPeriod) 
             {
                 m_params.AddOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
@@ -1450,6 +1462,16 @@ namespace ChargeBee.Models
             {
             }
 
+            public UpdateSubscriptionRequest ChangesScheduledAt(long changesScheduledAt) 
+            {
+                m_params.AddOpt("changes_scheduled_at", changesScheduledAt);
+                return this;
+            }
+            public UpdateSubscriptionRequest ChangeOption(ChargeBee.Models.Enums.ChangeOptionEnum changeOption) 
+            {
+                m_params.AddOpt("change_option", changeOption);
+                return this;
+            }
             public UpdateSubscriptionRequest ReplaceAddonList(bool replaceAddonList) 
             {
                 m_params.AddOpt("replace_addon_list", replaceAddonList);
@@ -1800,6 +1822,16 @@ namespace ChargeBee.Models
             {
             }
 
+            public UpdateSubscriptionForItemsRequest ChangesScheduledAt(long changesScheduledAt) 
+            {
+                m_params.AddOpt("changes_scheduled_at", changesScheduledAt);
+                return this;
+            }
+            public UpdateSubscriptionForItemsRequest ChangeOption(ChargeBee.Models.Enums.ChangeOptionEnum changeOption) 
+            {
+                m_params.AddOpt("change_option", changeOption);
+                return this;
+            }
             public UpdateSubscriptionForItemsRequest MandatoryItemsToRemove(List<string> mandatoryItemsToRemove) 
             {
                 m_params.AddOpt("mandatory_items_to_remove", mandatoryItemsToRemove);
@@ -2179,7 +2211,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
                 return this;
             }
-            public UpdateSubscriptionForItemsRequest SubscriptionItemProrationType(int index, ChargeBee.Models.Enums.ProrationTypeEnum subscriptionItemProrationType)
+            public UpdateSubscriptionForItemsRequest SubscriptionItemProrationType(int index, ChargeBee.Models.Enums.ProrationTypeEnum subscriptionItemProrationType) 
             {
                 m_params.AddOpt("subscription_items[proration_type][" + index + "]", subscriptionItemProrationType);
                 return this;

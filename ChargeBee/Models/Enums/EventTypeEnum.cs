@@ -200,6 +200,18 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "credit_note_deleted")]
          CreditNoteDeleted,
 
+        [EnumMember(Value = "invoice_installments_created")]
+         InvoiceInstallmentsCreated,
+
+        [EnumMember(Value = "invoice_installment_updated")]
+         InvoiceInstallmentUpdated,
+
+        [EnumMember(Value = "installment_config_created")]
+         InstallmentConfigCreated,
+
+        [EnumMember(Value = "installment_config_deleted")]
+         InstallmentConfigDeleted,
+
         [EnumMember(Value = "subscription_renewal_reminder")]
          SubscriptionRenewalReminder,
 
@@ -523,6 +535,15 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "item_price_entitlements_removed")]
          ItemPriceEntitlementsRemoved,
+
+        [EnumMember(Value = "ramp_created")]
+         RampCreated,
+
+        [EnumMember(Value = "ramp_deleted")]
+         RampDeleted,
+
+        [EnumMember(Value = "ramp_applied")]
+         RampApplied,
 
         [EnumMember(Value = "price_variant_created")]
          PriceVariantCreated,

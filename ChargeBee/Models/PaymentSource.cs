@@ -204,6 +204,10 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<PaymentSourceVenmo>("venmo"); }
         }
+        public PaymentSourceKlarnaPayNow KlarnaPayNow 
+        {
+            get { return GetSubResource<PaymentSourceKlarnaPayNow>("klarna_pay_now"); }
+        }
         public List<PaymentSourceMandate> Mandates 
         {
             get { return GetResourceList<PaymentSourceMandate>("mandates"); }
@@ -300,117 +304,117 @@ namespace ChargeBee.Models
                 m_params.AddOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
                 return this;
             }
-            public CreateUsingPermanentTokenRequest PaymentMethodToken(string paymentMethodToken)
+            public CreateUsingPermanentTokenRequest PaymentMethodToken(string paymentMethodToken) 
             {
                 m_params.AddOpt("payment_method_token", paymentMethodToken);
                 return this;
             }
-            public CreateUsingPermanentTokenRequest CustomerProfileToken(string customerProfileToken)
+            public CreateUsingPermanentTokenRequest CustomerProfileToken(string customerProfileToken) 
             {
                 m_params.AddOpt("customer_profile_token", customerProfileToken);
                 return this;
             }
-            public CreateUsingPermanentTokenRequest NetworkTransactionId(string networkTransactionId)
+            public CreateUsingPermanentTokenRequest NetworkTransactionId(string networkTransactionId) 
             {
                 m_params.AddOpt("network_transaction_id", networkTransactionId);
                 return this;
             }
-            public CreateUsingPermanentTokenRequest MandateId(string mandateId)
+            public CreateUsingPermanentTokenRequest MandateId(string mandateId) 
             {
                 m_params.AddOpt("mandate_id", mandateId);
                 return this;
             }
-            public CreateUsingPermanentTokenRequest SkipRetrieval(bool skipRetrieval)
+            public CreateUsingPermanentTokenRequest SkipRetrieval(bool skipRetrieval) 
             {
                 m_params.AddOpt("skip_retrieval", skipRetrieval);
                 return this;
             }
-            public CreateUsingPermanentTokenRequest AdditionalInformation(JToken additionalInformation)
+            public CreateUsingPermanentTokenRequest AdditionalInformation(JToken additionalInformation) 
             {
                 m_params.AddOpt("additional_information", additionalInformation);
                 return this;
             }
-            public CreateUsingPermanentTokenRequest CardLast4(string cardLast4)
+            public CreateUsingPermanentTokenRequest CardLast4(string cardLast4) 
             {
                 m_params.AddOpt("card[last4]", cardLast4);
                 return this;
             }
-            public CreateUsingPermanentTokenRequest CardIin(string cardIin)
+            public CreateUsingPermanentTokenRequest CardIin(string cardIin) 
             {
                 m_params.AddOpt("card[iin]", cardIin);
                 return this;
             }
-            public CreateUsingPermanentTokenRequest CardExpiryMonth(int cardExpiryMonth)
+            public CreateUsingPermanentTokenRequest CardExpiryMonth(int cardExpiryMonth) 
             {
                 m_params.AddOpt("card[expiry_month]", cardExpiryMonth);
                 return this;
             }
-            public CreateUsingPermanentTokenRequest CardExpiryYear(int cardExpiryYear)
+            public CreateUsingPermanentTokenRequest CardExpiryYear(int cardExpiryYear) 
             {
                 m_params.AddOpt("card[expiry_year]", cardExpiryYear);
                 return this;
             }
-            public CreateUsingPermanentTokenRequest CardBrand(PaymentSourceCard.BrandEnum cardBrand)
+            public CreateUsingPermanentTokenRequest CardBrand(PaymentSourceCard.BrandEnum cardBrand) 
             {
                 m_params.AddOpt("card[brand]", cardBrand);
                 return this;
             }
-            public CreateUsingPermanentTokenRequest CardFundingType(PaymentSourceCard.FundingTypeEnum cardFundingType)
+            public CreateUsingPermanentTokenRequest CardFundingType(PaymentSourceCard.FundingTypeEnum cardFundingType) 
             {
                 m_params.AddOpt("card[funding_type]", cardFundingType);
                 return this;
             }
-            public CreateUsingPermanentTokenRequest BillingAddressFirstName(string billingAddressFirstName)
+            public CreateUsingPermanentTokenRequest BillingAddressFirstName(string billingAddressFirstName) 
             {
                 m_params.AddOpt("billing_address[first_name]", billingAddressFirstName);
                 return this;
             }
-            public CreateUsingPermanentTokenRequest BillingAddressLastName(string billingAddressLastName)
+            public CreateUsingPermanentTokenRequest BillingAddressLastName(string billingAddressLastName) 
             {
                 m_params.AddOpt("billing_address[last_name]", billingAddressLastName);
                 return this;
             }
-            public CreateUsingPermanentTokenRequest BillingAddressEmail(string billingAddressEmail)
+            public CreateUsingPermanentTokenRequest BillingAddressEmail(string billingAddressEmail) 
             {
                 m_params.AddOpt("billing_address[email]", billingAddressEmail);
                 return this;
             }
-            public CreateUsingPermanentTokenRequest BillingAddressLine1(string billingAddressLine1)
+            public CreateUsingPermanentTokenRequest BillingAddressLine1(string billingAddressLine1) 
             {
                 m_params.AddOpt("billing_address[line1]", billingAddressLine1);
                 return this;
             }
-            public CreateUsingPermanentTokenRequest BillingAddressLine2(string billingAddressLine2)
+            public CreateUsingPermanentTokenRequest BillingAddressLine2(string billingAddressLine2) 
             {
                 m_params.AddOpt("billing_address[line2]", billingAddressLine2);
                 return this;
             }
-            public CreateUsingPermanentTokenRequest BillingAddressLine3(string billingAddressLine3)
+            public CreateUsingPermanentTokenRequest BillingAddressLine3(string billingAddressLine3) 
             {
                 m_params.AddOpt("billing_address[line3]", billingAddressLine3);
                 return this;
             }
-            public CreateUsingPermanentTokenRequest BillingAddressCity(string billingAddressCity)
+            public CreateUsingPermanentTokenRequest BillingAddressCity(string billingAddressCity) 
             {
                 m_params.AddOpt("billing_address[city]", billingAddressCity);
                 return this;
             }
-            public CreateUsingPermanentTokenRequest BillingAddressStateCode(string billingAddressStateCode)
+            public CreateUsingPermanentTokenRequest BillingAddressStateCode(string billingAddressStateCode) 
             {
                 m_params.AddOpt("billing_address[state_code]", billingAddressStateCode);
                 return this;
             }
-            public CreateUsingPermanentTokenRequest BillingAddressState(string billingAddressState)
+            public CreateUsingPermanentTokenRequest BillingAddressState(string billingAddressState) 
             {
                 m_params.AddOpt("billing_address[state]", billingAddressState);
                 return this;
             }
-            public CreateUsingPermanentTokenRequest BillingAddressZip(string billingAddressZip)
+            public CreateUsingPermanentTokenRequest BillingAddressZip(string billingAddressZip) 
             {
                 m_params.AddOpt("billing_address[zip]", billingAddressZip);
                 return this;
             }
-            public CreateUsingPermanentTokenRequest BillingAddressCountry(string billingAddressCountry)
+            public CreateUsingPermanentTokenRequest BillingAddressCountry(string billingAddressCountry) 
             {
                 m_params.AddOpt("billing_address[country]", billingAddressCountry);
                 return this;
@@ -878,6 +882,7 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<PaymentSourceListRequest>("created_at", this);        
             }
+            
             public PaymentSourceListRequest SortByCreatedAt(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");
                 return this;
@@ -1260,6 +1265,14 @@ namespace ChargeBee.Models
 
             public string UserName {
                 get { return GetValue<string>("user_name", false); }
+            }
+
+        }
+        public class PaymentSourceKlarnaPayNow : Resource
+        {
+
+            public string Email {
+                get { return GetValue<string>("email", false); }
             }
 
         }

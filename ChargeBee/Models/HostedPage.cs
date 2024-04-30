@@ -3158,7 +3158,6 @@ namespace ChargeBee.Models
         }
 
         #region Subclasses
-
         public class HostedPageContent : ResultBase
         {
 
@@ -3169,6 +3168,7 @@ namespace ChargeBee.Models
                 m_jobj = jobj;
             }
         }
+
         #endregion
     }
 }

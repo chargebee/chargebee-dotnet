@@ -537,25 +537,22 @@ namespace ChargeBee.Models
             {
             }
 
-            public EnumFilter<Gift.StatusEnum, GiftListRequest> Status() 
-            {
-                return new EnumFilter<Gift.StatusEnum, GiftListRequest>("status", this);        
-            }
             public StringFilter<GiftListRequest> GiftReceiverEmail() 
             {
                 return new StringFilter<GiftListRequest>("gift_receiver[email]", this);        
             }
-
-            public StringFilter<GiftListRequest> GifterCustomerId() 
-            {
-                return new StringFilter<GiftListRequest>("gifter[customer_id]", this);        
-            }
-
             public StringFilter<GiftListRequest> GiftReceiverCustomerId() 
             {
                 return new StringFilter<GiftListRequest>("gift_receiver[customer_id]", this);        
             }
-
+            public StringFilter<GiftListRequest> GifterCustomerId() 
+            {
+                return new StringFilter<GiftListRequest>("gifter[customer_id]", this);        
+            }
+            public EnumFilter<Gift.StatusEnum, GiftListRequest> Status() 
+            {
+                return new EnumFilter<Gift.StatusEnum, GiftListRequest>("status", this);        
+            }
         }
         public class UpdateGiftRequest : EntityRequest<UpdateGiftRequest> 
         {

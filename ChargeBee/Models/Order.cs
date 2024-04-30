@@ -954,6 +954,7 @@ namespace ChargeBee.Models
             {
                 return new StringFilter<OrderListRequest>("original_order_id", this);        
             }
+            
             public OrderListRequest SortByCreatedAt(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");
                 return this;

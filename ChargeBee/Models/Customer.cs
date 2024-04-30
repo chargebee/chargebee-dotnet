@@ -296,7 +296,7 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<ChannelEnum>("channel", false); }
         }
-        public string ActiveId
+        public string ActiveId 
         {
             get { return GetValue<string>("active_id", false); }
         }
@@ -368,6 +368,10 @@ namespace ChargeBee.Models
         public List<CustomerEntityIdentifier> EntityIdentifiers 
         {
             get { return GetResourceList<CustomerEntityIdentifier>("entity_identifiers"); }
+        }
+        public List<CustomerTaxProvidersField> TaxProvidersFields 
+        {
+            get { return GetResourceList<CustomerTaxProvidersField>("tax_providers_fields"); }
         }
         public bool? IsEinvoiceEnabled 
         {
@@ -963,6 +967,18 @@ namespace ChargeBee.Models
             {
             }
 
+            public StringFilter<CustomerListRequest> RelationshipParentId() 
+            {
+                return new StringFilter<CustomerListRequest>("relationship[parent_id]", this);        
+            }
+            public StringFilter<CustomerListRequest> RelationshipPaymentOwnerId() 
+            {
+                return new StringFilter<CustomerListRequest>("relationship[payment_owner_id]", this);        
+            }
+            public StringFilter<CustomerListRequest> RelationshipInvoiceOwnerId() 
+            {
+                return new StringFilter<CustomerListRequest>("relationship[invoice_owner_id]", this);        
+            }
             public CustomerListRequest IncludeDeleted(bool includeDeleted) 
             {
                 m_params.AddOpt("include_deleted", includeDeleted);
@@ -1024,6 +1040,7 @@ namespace ChargeBee.Models
             {
                 return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, CustomerListRequest>("channel", this);        
             }
+            
             public CustomerListRequest SortByCreatedAt(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");
                 return this;
@@ -1032,21 +1049,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","updated_at");
                 return this;
             }
-            public StringFilter<CustomerListRequest> RelationshipParentId() 
-            {
-                return new StringFilter<CustomerListRequest>("relationship[parent_id]", this);        
-            }
-
-            public StringFilter<CustomerListRequest> RelationshipPaymentOwnerId() 
-            {
-                return new StringFilter<CustomerListRequest>("relationship[payment_owner_id]", this);        
-            }
-
-            public StringFilter<CustomerListRequest> RelationshipInvoiceOwnerId() 
-            {
-                return new StringFilter<CustomerListRequest>("relationship[invoice_owner_id]", this);        
-            }
-
         }
         public class UpdateRequest : EntityRequest<UpdateRequest> 
         {
@@ -1631,7 +1633,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("transaction[reference_number]", transactionReferenceNumber);
                 return this;
             }
-            public RecordExcessPaymentRequest TransactionCustomPaymentMethodId(string transactionCustomPaymentMethodId)
+            public RecordExcessPaymentRequest TransactionCustomPaymentMethodId(string transactionCustomPaymentMethodId) 
             {
                 m_params.AddOpt("transaction[custom_payment_method_id]", transactionCustomPaymentMethodId);
                 return this;
@@ -2414,6 +2416,22 @@ namespace ChargeBee.Models
 
             public string Standard {
                 get { return GetValue<string>("standard", false); }
+            }
+
+        }
+        public class CustomerTaxProvidersField : Resource
+        {
+
+            public string ProviderName {
+                get { return GetValue<string>("provider_name", true); }
+            }
+
+            public string FieldId {
+                get { return GetValue<string>("field_id", true); }
+            }
+
+            public string FieldValue {
+                get { return GetValue<string>("field_value", true); }
             }
 
         }

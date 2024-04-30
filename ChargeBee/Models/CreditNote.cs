@@ -456,12 +456,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("transaction[reference_number]", transactionReferenceNumber);
                 return this;
             }
-            public RecordRefundRequest TransactionCustomPaymentMethodId(string transactionCustomPaymentMethodId)
+            public RecordRefundRequest TransactionCustomPaymentMethodId(string transactionCustomPaymentMethodId) 
             {
                 m_params.AddOpt("transaction[custom_payment_method_id]", transactionCustomPaymentMethodId);
                 return this;
             }
-            public RecordRefundRequest TransactionDate(long transactionDate)
+            public RecordRefundRequest TransactionDate(long transactionDate) 
             {
                 m_params.Add("transaction[date]", transactionDate);
                 return this;
@@ -487,6 +487,10 @@ namespace ChargeBee.Models
             {
             }
 
+            public EnumFilter<CreditNoteEinvoice.StatusEnum, CreditNoteListRequest> EinvoiceStatus() 
+            {
+                return new EnumFilter<CreditNoteEinvoice.StatusEnum, CreditNoteListRequest>("einvoice[status]", this);        
+            }
             public CreditNoteListRequest IncludeDeleted(bool includeDeleted) 
             {
                 m_params.AddOpt("include_deleted", includeDeleted);
@@ -506,7 +510,7 @@ namespace ChargeBee.Models
             }
             public StringFilter<CreditNoteListRequest> ReferenceInvoiceId() 
             {
-                return new StringFilter<CreditNoteListRequest>("reference_invoice_id", this).SupportsMultiOperators(true);        
+                return new StringFilter<CreditNoteListRequest>("reference_invoice_id", this).SupportsMultiOperators(true).SupportsPresenceOperator(true);        
             }
             public EnumFilter<CreditNote.TypeEnum, CreditNoteListRequest> Type() 
             {
@@ -556,6 +560,7 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<CreditNoteListRequest>("updated_at", this);        
             }
+            
             public CreditNoteListRequest SortByDate(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","date");
                 return this;
@@ -564,11 +569,6 @@ namespace ChargeBee.Models
             {
                 return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, CreditNoteListRequest>("channel", this);        
             }
-            public EnumFilter<CreditNoteEinvoice.StatusEnum, CreditNoteListRequest> EinvoiceStatus() 
-            {
-                return new EnumFilter<CreditNoteEinvoice.StatusEnum, CreditNoteListRequest>("einvoice[status]", this);        
-            }
-
         }
         public class DeleteRequest : EntityRequest<DeleteRequest> 
         {
@@ -681,6 +681,11 @@ namespace ChargeBee.Models
             public ImportCreditNoteRequest VatNumberPrefix(string vatNumberPrefix) 
             {
                 m_params.AddOpt("vat_number_prefix", vatNumberPrefix);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemReferenceLineItemId(int index, string lineItemReferenceLineItemId) 
+            {
+                m_params.AddOpt("line_items[reference_line_item_id][" + index + "]", lineItemReferenceLineItemId);
                 return this;
             }
             public ImportCreditNoteRequest LineItemId(int index, string lineItemId) 
@@ -866,11 +871,6 @@ namespace ChargeBee.Models
             public ImportCreditNoteRequest LineItemTax10Amount(int index, long lineItemTax10Amount) 
             {
                 m_params.AddOpt("line_items[tax10_amount][" + index + "]", lineItemTax10Amount);
-                return this;
-            }
-            public ImportCreditNoteRequest LineItemReferenceLineItemId(int index, string lineItemReferenceLineItemId) 
-            {
-                m_params.AddOpt("line_items[reference_line_item_id][" + index + "]", lineItemReferenceLineItemId);
                 return this;
             }
             public ImportCreditNoteRequest LineItemTierLineItemId(int index, string lineItemTierLineItemId) 

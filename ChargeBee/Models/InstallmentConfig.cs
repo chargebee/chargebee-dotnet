@@ -87,6 +87,10 @@ namespace ChargeBee.Models
         {
             get { return (DateTime)GetDateTime("created_at", true); }
         }
+        public long? ResourceVersion 
+        {
+            get { return GetValue<long?>("resource_version", false); }
+        }
         public DateTime? UpdatedAt 
         {
             get { return GetDateTime("updated_at", false); }

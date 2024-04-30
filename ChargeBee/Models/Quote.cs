@@ -3924,6 +3924,7 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<QuoteListRequest>("updated_at", this);        
             }
+            
             public QuoteListRequest SortByDate(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","date");
                 return this;
