@@ -297,10 +297,6 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<InstallmentDetail>("installment_detail"); }
         }
-        public Session Session
-        {
-            get {  return GetResource<Session>("session"); }
-        }
 
         public List<AdvanceInvoiceSchedule> AdvanceInvoiceSchedules
         {
