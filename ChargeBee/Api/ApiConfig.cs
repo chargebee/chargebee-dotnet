@@ -1,4 +1,5 @@
 using System;
+using System.Net.Http;
 using System.Text;
 using ChargeBee.Internal;
 using Newtonsoft.Json.Linq;
@@ -19,6 +20,8 @@ namespace ChargeBee.Api
         public string Charset { get; set; }
         public static int ConnectTimeout { get; set; }
         public string BaseUrl { get; set; }
+        
+        public static HttpMessageHandler HttpMessageHandler { get; set; }
 
         public string ApiBaseUrl
         {
@@ -46,7 +49,7 @@ namespace ChargeBee.Api
             }
         }
 
-        public ApiConfig(string siteName, string apiKey)
+        public ApiConfig(string siteName, string apiKey, HttpMessageHandler httpMessageHandler = null)
         {
 
             if (String.IsNullOrEmpty(siteName))
@@ -61,6 +64,7 @@ namespace ChargeBee.Api
             ExportSleepMillis = 10000;
             SiteName = siteName;
             ApiKey = apiKey;
+            HttpMessageHandler = httpMessageHandler;
         }
 
         private static volatile ApiConfig m_instance;
