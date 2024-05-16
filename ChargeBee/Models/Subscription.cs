@@ -222,6 +222,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "remove_scheduled_resumption");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
+        public static MoveRequest Move(string id)
+        {
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "move");
+            return new MoveRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -412,6 +417,10 @@ namespace ChargeBee.Models
         public int? NetTermDays 
         {
             get { return GetValue<int?>("net_term_days", false); }
+        }
+        public string ActiveId 
+        {
+            get { return GetValue<string>("active_id", false); }
         }
         public List<SubscriptionSubscriptionItem> SubscriptionItems 
         {
@@ -1173,6 +1182,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
             }
+            public CreateRequest StatementDescriptorDescriptor(string statementDescriptorDescriptor) 
+            {
+                m_params.AddOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
+                return this;
+            }
             public CreateRequest CustomerVatNumber(string customerVatNumber) 
             {
                 m_params.AddOpt("customer[vat_number]", customerVatNumber);
@@ -1579,6 +1593,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
             }
+            public CreateForCustomerRequest StatementDescriptorDescriptor(string statementDescriptorDescriptor) 
+            {
+                m_params.AddOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
+                return this;
+            }
             public CreateForCustomerRequest PaymentIntentId(string paymentIntentId) 
             {
                 m_params.AddOpt("payment_intent[id]", paymentIntentId);
@@ -1947,6 +1966,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
             }
+            public CreateWithItemsRequest StatementDescriptorDescriptor(string statementDescriptorDescriptor) 
+            {
+                m_params.AddOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
+                return this;
+            }
             public CreateWithItemsRequest PaymentIntentId(string paymentIntentId) 
             {
                 m_params.AddOpt("payment_intent[id]", paymentIntentId);
@@ -1986,6 +2010,12 @@ namespace ChargeBee.Models
             public CreateWithItemsRequest ContractTermActionAtTermEnd(SubscriptionContractTerm.ActionAtTermEndEnum contractTermActionAtTermEnd) 
             {
                 m_params.AddOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+                return this;
+            }
+            [Obsolete]
+            public CreateWithItemsRequest ContractTermContractStart(long contractTermContractStart) 
+            {
+                m_params.AddOpt("contract_term[contract_start]", contractTermContractStart);
                 return this;
             }
             public CreateWithItemsRequest ContractTermCancellationCutoffPeriod(int contractTermCancellationCutoffPeriod) 
@@ -2226,6 +2256,7 @@ namespace ChargeBee.Models
             {
                 return new BooleanFilter<SubscriptionListRequest>("override_relationship", this);        
             }
+            
             public SubscriptionListRequest SortByCreatedAt(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");
                 return this;
@@ -2762,6 +2793,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
             }
+            public UpdateRequest StatementDescriptorDescriptor(string statementDescriptorDescriptor) 
+            {
+                m_params.AddOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
+                return this;
+            }
             public UpdateRequest CustomerVatNumber(string customerVatNumber) 
             {
                 m_params.AddOpt("customer[vat_number]", customerVatNumber);
@@ -2892,7 +2928,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[trial_end][" + index + "]", addonTrialEnd);
                 return this;
             }
-            [Obsolete]
             public UpdateRequest AddonProrationType(int index, ChargeBee.Models.Enums.ProrationTypeEnum addonProrationType) 
             {
                 m_params.AddOpt("addons[proration_type][" + index + "]", addonProrationType);
@@ -3400,6 +3435,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
             }
+            public UpdateForItemsRequest StatementDescriptorDescriptor(string statementDescriptorDescriptor) 
+            {
+                m_params.AddOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
+                return this;
+            }
             public UpdateForItemsRequest CustomerVatNumber(string customerVatNumber) 
             {
                 m_params.AddOpt("customer[vat_number]", customerVatNumber);
@@ -3448,6 +3488,12 @@ namespace ChargeBee.Models
             public UpdateForItemsRequest ContractTermCancellationCutoffPeriod(int contractTermCancellationCutoffPeriod) 
             {
                 m_params.AddOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
+                return this;
+            }
+            [Obsolete]
+            public UpdateForItemsRequest ContractTermContractStart(long contractTermContractStart) 
+            {
+                m_params.AddOpt("contract_term[contract_start]", contractTermContractStart);
                 return this;
             }
             public UpdateForItemsRequest SubscriptionItemItemPriceId(int index, string subscriptionItemItemPriceId) 
@@ -3596,6 +3642,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
                 return this;
             }
+            public UpdateForItemsRequest SubscriptionItemProrationType(int index, ChargeBee.Models.Enums.ProrationTypeEnum subscriptionItemProrationType) 
+            {
+                m_params.AddOpt("subscription_items[proration_type][" + index + "]", subscriptionItemProrationType);
+                return this;
+            }
             [Obsolete]
             public UpdateForItemsRequest CouponCouponId(int index, string couponCouponId) 
             {
@@ -3698,6 +3749,11 @@ namespace ChargeBee.Models
             public ReactivateRequest ContractTermCancellationCutoffPeriod(int contractTermCancellationCutoffPeriod) 
             {
                 m_params.AddOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
+                return this;
+            }
+            public ReactivateRequest StatementDescriptorDescriptor(string statementDescriptorDescriptor) 
+            {
+                m_params.AddOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
                 return this;
             }
             public ReactivateRequest PaymentIntentId(string paymentIntentId) 
@@ -5912,23 +5968,26 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class MoveRequest : EntityRequest<MoveRequest> 
+        {
+            public MoveRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public MoveRequest ToCustomerId(string toCustomerId) 
+            {
+                m_params.Add("to_customer_id", toCustomerId);
+                return this;
+            }
+            public MoveRequest CopyPaymentSource(bool copyPaymentSource) 
+            {
+                m_params.AddOpt("copy_payment_source", copyPaymentSource);
+                return this;
+            }
+        }
         #endregion
 
-        public enum BillingPeriodUnitEnum
-        {
-
-            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
-            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [EnumMember(Value = "day")]
-            Day,
-            [EnumMember(Value = "week")]
-            Week,
-            [EnumMember(Value = "month")]
-            Month,
-            [EnumMember(Value = "year")]
-            Year,
-
-        }
         public enum StatusEnum
         {
 
@@ -5946,6 +6005,8 @@ namespace ChargeBee.Models
             Paused,
             [EnumMember(Value = "cancelled")]
             Cancelled,
+            [EnumMember(Value = "transferred")]
+            Transferred,
 
         }
         public enum CancelReasonEnum
@@ -5967,6 +6028,21 @@ namespace ChargeBee.Models
             CurrencyIncompatibleWithGateway,
             [EnumMember(Value = "non_compliant_customer")]
             NonCompliantCustomer,
+
+        }
+        public enum BillingPeriodUnitEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "day")]
+            Day,
+            [EnumMember(Value = "week")]
+            Week,
+            [EnumMember(Value = "month")]
+            Month,
+            [EnumMember(Value = "year")]
+            Year,
 
         }
 
@@ -6066,6 +6142,10 @@ namespace ChargeBee.Models
                 get { return GetEnum<ChargeOnOptionEnum>("charge_on_option", false); }
             }
 
+            public ProrationTypeEnum? ProrationType {
+                get { return GetEnum<ProrationTypeEnum>("proration_type", false); }
+            }
+
         }
         public class SubscriptionItemTier : Resource
         {
@@ -6152,6 +6232,10 @@ namespace ChargeBee.Models
 
             public string AmountInDecimal {
                 get { return GetValue<string>("amount_in_decimal", false); }
+            }
+
+            public ProrationTypeEnum? ProrationType {
+                get { return GetEnum<ProrationTypeEnum>("proration_type", false); }
             }
 
         }

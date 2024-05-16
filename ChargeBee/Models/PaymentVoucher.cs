@@ -187,6 +187,7 @@ namespace ChargeBee.Models
             {
                 return new EnumFilter<PaymentVoucher.StatusEnum, PaymentVoucherPaymentVouchersForInvoiceRequest>("status", this);        
             }
+            
             public PaymentVoucherPaymentVouchersForInvoiceRequest SortByDate(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","date");
                 return this;
@@ -207,6 +208,7 @@ namespace ChargeBee.Models
             {
                 return new EnumFilter<PaymentVoucher.StatusEnum, PaymentVoucherPaymentVouchersForCustomerRequest>("status", this);        
             }
+            
             public PaymentVoucherPaymentVouchersForCustomerRequest SortByDate(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","date");
                 return this;

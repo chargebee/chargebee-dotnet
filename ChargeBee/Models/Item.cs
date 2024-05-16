@@ -420,6 +420,7 @@ namespace ChargeBee.Models
             {
                 return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, ItemListRequest>("channel", this);        
             }
+            
             public ItemListRequest SortByName(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","name");
                 return this;

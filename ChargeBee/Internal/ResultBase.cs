@@ -205,6 +205,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<PaymentIntent>("payment_intent"); }
         }
+        public GatewayErrorDetail GatewayErrorDetail
+        {
+            get {  return GetResource<GatewayErrorDetail>("gateway_error_detail"); }
+        }
         public ItemFamily ItemFamily
         {
             get {  return GetResource<ItemFamily>("item_family"); }
@@ -212,6 +216,14 @@ namespace ChargeBee.Internal
         public Item Item
         {
             get {  return GetResource<Item>("item"); }
+        }
+        public PriceVariant PriceVariant
+        {
+            get {  return GetResource<PriceVariant>("price_variant"); }
+        }
+        public ChargeBee.Models.Attribute Attribute
+        {
+            get {  return GetResource<ChargeBee.Models.Attribute>("attribute"); }
         }
         public ItemPrice ItemPrice
         {
@@ -237,6 +249,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<ImpactedItem>("impacted_item"); }
         }
+        public ImpactedItemPrice ImpactedItemPrice
+        {
+            get {  return GetResource<ImpactedItemPrice>("impacted_item_price"); }
+        }
         public SubscriptionEntitlement SubscriptionEntitlement
         {
             get {  return GetResource<SubscriptionEntitlement>("subscription_entitlement"); }
@@ -244,6 +260,10 @@ namespace ChargeBee.Internal
         public ItemEntitlement ItemEntitlement
         {
             get {  return GetResource<ItemEntitlement>("item_entitlement"); }
+        }
+        public Entitlement Entitlement
+        {
+            get {  return GetResource<Entitlement>("entitlement"); }
         }
         public InAppSubscription InAppSubscription
         {
@@ -261,19 +281,21 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<PaymentVoucher>("payment_voucher"); }
         }
-        public CsvTaxRule CsvTaxRule
+        public Ramp Ramp
         {
-            get {  return GetResource<CsvTaxRule>("csv_tax_rule"); }
+            get {  return GetResource<Ramp>("ramp"); }
         }
-
-        public List<UnbilledCharge> UnbilledCharges
+        public InstallmentConfig InstallmentConfig
         {
-            get {  return (List<UnbilledCharge>)GetResourceList<UnbilledCharge>("unbilled_charges", "unbilled_charge"); }
+            get {  return GetResource<InstallmentConfig>("installment_config"); }
         }
-
-        public List<CreditNote> CreditNotes
+        public Installment Installment
         {
-            get {  return (List<CreditNote>)GetResourceList<CreditNote>("credit_notes", "credit_note"); }
+            get {  return GetResource<Installment>("installment"); }
+        }
+        public InstallmentDetail InstallmentDetail
+        {
+            get {  return GetResource<InstallmentDetail>("installment_detail"); }
         }
 
         public List<AdvanceInvoiceSchedule> AdvanceInvoiceSchedules
@@ -286,19 +308,24 @@ namespace ChargeBee.Internal
             get {  return (List<Hierarchy>)GetResourceList<Hierarchy>("hierarchies", "hierarchy"); }
         }
 
-        public List<Download> Downloads
-        {
-            get {  return (List<Download>)GetResourceList<Download>("downloads", "download"); }
-        }
-
         public List<Invoice> Invoices
         {
             get {  return (List<Invoice>)GetResourceList<Invoice>("invoices", "invoice"); }
         }
 
-        public List<DifferentialPrice> DifferentialPrices
+        public List<CreditNote> CreditNotes
         {
-            get {  return (List<DifferentialPrice>)GetResourceList<DifferentialPrice>("differential_prices", "differential_price"); }
+            get {  return (List<CreditNote>)GetResourceList<CreditNote>("credit_notes", "credit_note"); }
+        }
+
+        public List<UnbilledCharge> UnbilledCharges
+        {
+            get {  return (List<UnbilledCharge>)GetResourceList<UnbilledCharge>("unbilled_charges", "unbilled_charge"); }
+        }
+
+        public List<Download> Downloads
+        {
+            get {  return (List<Download>)GetResourceList<Download>("downloads", "download"); }
         }
 
         public List<InAppSubscription> InAppSubscriptions
@@ -306,19 +333,23 @@ namespace ChargeBee.Internal
             get {  return (List<InAppSubscription>)GetResourceList<InAppSubscription>("in_app_subscriptions", "in_app_subscription"); }
         }
 
+        public List<DifferentialPrice> DifferentialPrices
+        {
+            get {  return (List<DifferentialPrice>)GetResourceList<DifferentialPrice>("differential_prices", "differential_price"); }
+        }
 
-        private List<T> GetResourceList<T>(string property, string propertySingularName) where T : Resource, new() 
+        private List<T> GetResourceList<T>(string property, string propertySingularName) where T : Resource, new()
         {
             List<T> list = new List<T> ();
             JArray jArr = (JArray)m_jobj.SelectToken (property);
-			if (jArr != null) {
-				foreach (JToken jObj in jArr.Children()) {
-					T t = new T();
-					t.JObj = jObj;
-					list.Add(t);
-				}				
-			}
-			return list;
+            if (jArr != null) {
+                foreach (JToken jObj in jArr.Children()) {
+                    T t = new T();
+                    t.JObj = jObj;
+                    list.Add(t);
+                }
+            }
+            return list;
         }
 
         private T GetResource<T>(string property) where T : Resource, new()

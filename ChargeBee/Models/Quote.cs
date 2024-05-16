@@ -615,6 +615,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[id]", subscriptionId);
                 return this;
             }
+            public EditCreateSubForCustomerQuoteRequest SubscriptionPoNumber(string subscriptionPoNumber) 
+            {
+                m_params.AddOpt("subscription[po_number]", subscriptionPoNumber);
+                return this;
+            }
             public EditCreateSubForCustomerQuoteRequest SubscriptionPlanId(string subscriptionPlanId) 
             {
                 m_params.Add("subscription[plan_id]", subscriptionPlanId);
@@ -2307,6 +2312,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[id]", subscriptionId);
                 return this;
             }
+            public EditCreateSubCustomerQuoteForItemsRequest SubscriptionPoNumber(string subscriptionPoNumber) 
+            {
+                m_params.AddOpt("subscription[po_number]", subscriptionPoNumber);
+                return this;
+            }
             public EditCreateSubCustomerQuoteForItemsRequest SubscriptionTrialEnd(long subscriptionTrialEnd) 
             {
                 m_params.AddOpt("subscription[trial_end]", subscriptionTrialEnd);
@@ -3914,6 +3924,7 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<QuoteListRequest>("updated_at", this);        
             }
+            
             public QuoteListRequest SortByDate(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","date");
                 return this;
@@ -4144,6 +4155,10 @@ namespace ChargeBee.Models
                 get { return GetValue<long?>("item_level_discount_amount", false); }
             }
 
+            public string UsagePercentage {
+                get { return GetValue<string>("usage_percentage", false); }
+            }
+
             public string ReferenceLineItemId {
                 get { return GetValue<string>("reference_line_item_id", false); }
             }
@@ -4284,6 +4299,18 @@ namespace ChargeBee.Models
 
             public double TaxRate {
                 get { return GetValue<double>("tax_rate", true); }
+            }
+
+            public DateTime? DateTo {
+                get { return GetDateTime("date_to", false); }
+            }
+
+            public DateTime? DateFrom {
+                get { return GetDateTime("date_from", false); }
+            }
+
+            public decimal? ProratedTaxableAmount {
+                get { return GetValue<decimal?>("prorated_taxable_amount", false); }
             }
 
             public bool? IsPartialTaxApplied {

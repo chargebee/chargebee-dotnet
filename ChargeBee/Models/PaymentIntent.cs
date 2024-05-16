@@ -276,6 +276,18 @@ namespace ChargeBee.Models
             DirectDebit,
             [EnumMember(Value = "boleto")]
             Boleto,
+            [EnumMember(Value = "venmo")]
+            Venmo,
+            [EnumMember(Value = "amazon_payments")]
+            AmazonPayments,
+            [EnumMember(Value = "pay_to")]
+            PayTo,
+            [EnumMember(Value = "faster_payments")]
+            FasterPayments,
+            [EnumMember(Value = "sepa_instant_transfer")]
+            SepaInstantTransfer,
+            [EnumMember(Value = "klarna_pay_now")]
+            KlarnaPayNow,
 
         }
 
@@ -332,6 +344,10 @@ namespace ChargeBee.Models
 
             public DateTime ModifiedAt {
                 get { return (DateTime)GetDateTime("modified_at", true); }
+            }
+
+            public GatewayErrorDetail ErrorDetail {
+                get { return GetSubResource<GatewayErrorDetail>("error_detail"); }
             }
 
         }

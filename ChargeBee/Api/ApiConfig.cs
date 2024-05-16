@@ -1,5 +1,4 @@
 using System;
-using System.Net.Http;
 using System.Text;
 using ChargeBee.Internal;
 using Newtonsoft.Json.Linq;
@@ -10,7 +9,7 @@ namespace ChargeBee.Api
     {
 		public static string DomainSuffix = "chargebee.com";
 		public static string Proto = "https";
-		public static string Version = "3.9.0";
+		public static string Version = "3.17.1";
 		public static readonly string API_VERSION = "v2";
         public static int TimeTravelMillis { get; set; }
         public static int ExportSleepMillis { get; set;}
@@ -19,22 +18,35 @@ namespace ChargeBee.Api
         public string SiteName { get; set; }
         public string Charset { get; set; }
         public static int ConnectTimeout { get; set; }
-        
-        public static HttpMessageHandler HttpMessageHandler { get; set; }
+        public string BaseUrl { get; set; }
 
-        public string ApiBaseUrl =>
-            String.Format("{0}://{1}.{2}/api/{3}",
-                Proto,
-                SiteName,
-                DomainSuffix,
-                API_VERSION);
+        public string ApiBaseUrl
+        {
+            get
+            {
+                if (BaseUrl != null)
+                {
+                    return BaseUrl;
+                }
+				return String.Format("{0}://{1}.{2}/api/{3}",
+                    Proto,
+                    SiteName,
+                    DomainSuffix,
+					API_VERSION);
+            }
+        }
 
-        public string AuthValue =>
-            String.Format("Basic {0}",
-                Convert.ToBase64String(Encoding.UTF8.GetBytes(
+        public string AuthValue
+        {
+            get
+            {
+                return String.Format("Basic {0}",
+                    Convert.ToBase64String(Encoding.UTF8.GetBytes(
                     String.Format("{0}:", ApiKey))));
+            }
+        }
 
-        public ApiConfig(string siteName, string apiKey, HttpMessageHandler httpMessageHandler = null)
+        public ApiConfig(string siteName, string apiKey)
         {
 
             if (String.IsNullOrEmpty(siteName))
@@ -49,14 +61,18 @@ namespace ChargeBee.Api
             ExportSleepMillis = 10000;
             SiteName = siteName;
             ApiKey = apiKey;
-            HttpMessageHandler = httpMessageHandler;
         }
 
         private static volatile ApiConfig m_instance;
 
-        public static void Configure(string siteName, string apiKey, HttpMessageHandler httpMessageHandler = null)
+        public static void Configure(string siteName, string apiKey)
         {         
-            m_instance = new ApiConfig(siteName, apiKey, httpMessageHandler);
+            m_instance = new ApiConfig(siteName, apiKey);
+        }
+
+        public static void SetBaseUrl(string url)
+        {
+            m_instance.BaseUrl = url;
         }
 
         public static string SerializeObject<T>(T t)where T : Resource

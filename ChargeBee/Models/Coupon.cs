@@ -248,7 +248,7 @@ namespace ChargeBee.Models
             }
             public CreateRequest DiscountType(Coupon.DiscountTypeEnum discountType) 
             {
-                m_params.Add("discount_type", discountType);
+                m_params.AddOpt("discount_type", discountType);
                 return this;
             }
             public CreateRequest DiscountAmount(long discountAmount) 
@@ -279,7 +279,7 @@ namespace ChargeBee.Models
             }
             public CreateRequest DurationType(Coupon.DurationTypeEnum durationType) 
             {
-                m_params.Add("duration_type", durationType);
+                m_params.AddOpt("duration_type", durationType);
                 return this;
             }
             public CreateRequest DurationMonth(int durationMonth) 
@@ -372,7 +372,7 @@ namespace ChargeBee.Models
             }
             public CreateForItemsRequest DiscountType(Coupon.DiscountTypeEnum discountType) 
             {
-                m_params.Add("discount_type", discountType);
+                m_params.AddOpt("discount_type", discountType);
                 return this;
             }
             public CreateForItemsRequest DiscountAmount(long discountAmount) 
@@ -403,7 +403,7 @@ namespace ChargeBee.Models
             }
             public CreateForItemsRequest DurationType(Coupon.DurationTypeEnum durationType) 
             {
-                m_params.Add("duration_type", durationType);
+                m_params.AddOpt("duration_type", durationType);
                 return this;
             }
             public CreateForItemsRequest DurationMonth(int durationMonth) 
@@ -685,6 +685,7 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<CouponListRequest>("updated_at", this);        
             }
+            
             public CouponListRequest SortByCreatedAt(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");
                 return this;

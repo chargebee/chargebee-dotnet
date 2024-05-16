@@ -200,6 +200,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("fraud_reason", false); }
         }
+        public string CustomPaymentMethodId 
+        {
+            get { return GetValue<string>("custom_payment_method_id", false); }
+        }
         public long? AmountUnused 
         {
             get { return GetValue<long?>("amount_unused", false); }
@@ -268,6 +272,14 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("payment_method_details", false); }
         }
+        public TransactionGatewayErrorDetail ErrorDetail 
+        {
+            get { return GetSubResource<TransactionGatewayErrorDetail>("error_detail"); }
+        }
+        public string CustomPaymentMethodName 
+        {
+            get { return GetValue<string>("custom_payment_method_name", false); }
+        }
         
         #endregion
         
@@ -325,6 +337,11 @@ namespace ChargeBee.Models
             public RecordRefundRequest ReferenceNumber(string referenceNumber) 
             {
                 m_params.AddOpt("reference_number", referenceNumber);
+                return this;
+            }
+            public RecordRefundRequest CustomPaymentMethodId(string customPaymentMethodId) 
+            {
+                m_params.AddOpt("custom_payment_method_id", customPaymentMethodId);
                 return this;
             }
             public RecordRefundRequest Comment(string comment) 
@@ -423,6 +440,7 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<TransactionListRequest>("updated_at", this);        
             }
+            
             public TransactionListRequest SortByDate(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","date");
                 return this;
@@ -640,6 +658,62 @@ namespace ChargeBee.Models
 
             public DateTime? Date {
                 get { return GetDateTime("date", false); }
+            }
+
+        }
+        public class TransactionGatewayErrorDetail : Resource
+        {
+
+            public string RequestId {
+                get { return GetValue<string>("request_id", false); }
+            }
+
+            public string ErrorCategory {
+                get { return GetValue<string>("error_category", false); }
+            }
+
+            public string ErrorCode {
+                get { return GetValue<string>("error_code", false); }
+            }
+
+            public string ErrorMessage {
+                get { return GetValue<string>("error_message", false); }
+            }
+
+            public string DeclineCode {
+                get { return GetValue<string>("decline_code", false); }
+            }
+
+            public string DeclineMessage {
+                get { return GetValue<string>("decline_message", false); }
+            }
+
+            public string NetworkErrorCode {
+                get { return GetValue<string>("network_error_code", false); }
+            }
+
+            public string NetworkErrorMessage {
+                get { return GetValue<string>("network_error_message", false); }
+            }
+
+            public string ErrorField {
+                get { return GetValue<string>("error_field", false); }
+            }
+
+            public string RecommendationCode {
+                get { return GetValue<string>("recommendation_code", false); }
+            }
+
+            public string RecommendationMessage {
+                get { return GetValue<string>("recommendation_message", false); }
+            }
+
+            public string ProcessorErrorCode {
+                get { return GetValue<string>("processor_error_code", false); }
+            }
+
+            public string ProcessorErrorMessage {
+                get { return GetValue<string>("processor_error_message", false); }
             }
 
         }

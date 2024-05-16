@@ -77,6 +77,8 @@ namespace ChargeBee.Models
             Frn,
             [EnumMember(Value = "fik")]
             Fik,
+            [EnumMember(Value = "swiss_reference")]
+            SwissReference,
 
         }
 

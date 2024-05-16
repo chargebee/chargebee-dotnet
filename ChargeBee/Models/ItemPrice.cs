@@ -91,10 +91,6 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("item_family_id", false); }
         }
-        public string ProductId 
-        {
-            get { return GetValue<string>("product_id", false); }
-        }
         public string ItemId 
         {
             get { return GetValue<string>("item_id", false); }
@@ -110,6 +106,14 @@ namespace ChargeBee.Models
         public string ExternalName 
         {
             get { return GetValue<string>("external_name", false); }
+        }
+        public string PriceVariantId 
+        {
+            get { return GetValue<string>("price_variant_id", false); }
+        }
+        public ProrationTypeEnum? ProrationType 
+        {
+            get { return GetEnum<ProrationTypeEnum>("proration_type", false); }
         }
         public PricingModelEnum PricingModel 
         {
@@ -203,6 +207,10 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<ItemPriceTaxDetail>("tax_detail"); }
         }
+        public List<ItemPriceTaxProvidersField> TaxProvidersFields 
+        {
+            get { return GetResourceList<ItemPriceTaxProvidersField>("tax_providers_fields"); }
+        }
         public ItemPriceAccountingDetail AccountingDetail 
         {
             get { return GetSubResource<ItemPriceAccountingDetail>("accounting_detail"); }
@@ -269,6 +277,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("invoice_notes", invoiceNotes);
                 return this;
             }
+            public CreateRequest ProrationType(ItemPrice.ProrationTypeEnum prorationType) 
+            {
+                m_params.AddOpt("proration_type", prorationType);
+                return this;
+            }
             public CreateRequest ExternalName(string externalName) 
             {
                 m_params.AddOpt("external_name", externalName);
@@ -277,6 +290,11 @@ namespace ChargeBee.Models
             public CreateRequest CurrencyCode(string currencyCode) 
             {
                 m_params.AddOpt("currency_code", currencyCode);
+                return this;
+            }
+            public CreateRequest PriceVariantId(string priceVariantId) 
+            {
+                m_params.AddOpt("price_variant_id", priceVariantId);
                 return this;
             }
             public CreateRequest IsTaxable(bool isTaxable) 
@@ -475,6 +493,16 @@ namespace ChargeBee.Models
             public UpdateRequest Description(string description) 
             {
                 m_params.AddOpt("description", description);
+                return this;
+            }
+            public UpdateRequest ProrationType(ItemPrice.ProrationTypeEnum prorationType) 
+            {
+                m_params.AddOpt("proration_type", prorationType);
+                return this;
+            }
+            public UpdateRequest PriceVariantId(string priceVariantId) 
+            {
+                m_params.AddOpt("price_variant_id", priceVariantId);
                 return this;
             }
             public UpdateRequest Status(ItemPrice.StatusEnum status) 
@@ -713,6 +741,10 @@ namespace ChargeBee.Models
             {
                 return new StringFilter<ItemPriceListRequest>("currency_code", this).SupportsMultiOperators(true);        
             }
+            public StringFilter<ItemPriceListRequest> PriceVariantId() 
+            {
+                return new StringFilter<ItemPriceListRequest>("price_variant_id", this).SupportsMultiOperators(true);        
+            }
             public NumberFilter<int, ItemPriceListRequest> TrialPeriod() 
             {
                 return new NumberFilter<int, ItemPriceListRequest>("trial_period", this);        
@@ -741,6 +773,7 @@ namespace ChargeBee.Models
             {
                 return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, ItemPriceListRequest>("channel", this);        
             }
+            
             public ItemPriceListRequest SortByName(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","name");
                 return this;
@@ -761,6 +794,7 @@ namespace ChargeBee.Models
             {
             }
 
+            
             public ItemPriceFindApplicableItemsRequest SortByName(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","name");
                 return this;
@@ -786,6 +820,7 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_id", itemId);
                 return this;
             }
+            
             public ItemPriceFindApplicableItemPricesRequest SortByName(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","name");
                 return this;
@@ -812,6 +847,19 @@ namespace ChargeBee.Models
             Archived,
             [EnumMember(Value = "deleted")]
             Deleted,
+
+        }
+        public enum ProrationTypeEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "site_default")]
+            SiteDefault,
+            [EnumMember(Value = "partial_term")]
+            PartialTerm,
+            [EnumMember(Value = "full_term")]
+            FullTerm,
 
         }
         public enum PeriodUnitEnum
@@ -927,6 +975,22 @@ namespace ChargeBee.Models
 
             public string TaxjarProductCode {
                 get { return GetValue<string>("taxjar_product_code", false); }
+            }
+
+        }
+        public class ItemPriceTaxProvidersField : Resource
+        {
+
+            public string ProviderName {
+                get { return GetValue<string>("provider_name", true); }
+            }
+
+            public string FieldId {
+                get { return GetValue<string>("field_id", true); }
+            }
+
+            public string FieldValue {
+                get { return GetValue<string>("field_value", true); }
             }
 
         }

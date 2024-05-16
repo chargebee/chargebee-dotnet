@@ -140,6 +140,19 @@ namespace ChargeBee.Models
         #endregion
         
 
+        public enum ChangeOptionEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "end_of_term")]
+            EndOfTerm,
+            [EnumMember(Value = "specific_date")]
+            SpecificDate,
+            [EnumMember(Value = "immediately")]
+            Immediately,
+
+        }
         public enum BillingPeriodUnitEnum
         {
 
@@ -153,19 +166,6 @@ namespace ChargeBee.Models
             Month,
             [EnumMember(Value = "year")]
             Year,
-
-        }
-        public enum ChangeOptionEnum
-        {
-
-            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
-            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [EnumMember(Value = "end_of_term")]
-            EndOfTerm,
-            [EnumMember(Value = "specific_date")]
-            SpecificDate,
-            [EnumMember(Value = "immediately")]
-            Immediately,
 
         }
 
@@ -207,6 +207,10 @@ namespace ChargeBee.Models
 
             public string AmountInDecimal {
                 get { return GetValue<string>("amount_in_decimal", false); }
+            }
+
+            public ProrationTypeEnum? ProrationType {
+                get { return GetEnum<ProrationTypeEnum>("proration_type", false); }
             }
 
         }
@@ -362,6 +366,10 @@ namespace ChargeBee.Models
 
             public ChargeOnOptionEnum? ChargeOnOption {
                 get { return GetEnum<ChargeOnOptionEnum>("charge_on_option", false); }
+            }
+
+            public ProrationTypeEnum? ProrationType {
+                get { return GetEnum<ProrationTypeEnum>("proration_type", false); }
             }
 
         }

@@ -1070,6 +1070,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("pass_thru_content", passThruContent);
                 return this;
             }
+            [Obsolete]
+            public CheckoutOneTimeForItemsRequest Source(string source) 
+            {
+                m_params.AddOpt("source", source);
+                return this;
+            }
             public CheckoutOneTimeForItemsRequest CustomerId(string customerId) 
             {
                 m_params.AddOpt("customer[id]", customerId);
@@ -1134,6 +1140,11 @@ namespace ChargeBee.Models
             public CheckoutOneTimeForItemsRequest CustomerVatNumberPrefix(string customerVatNumberPrefix) 
             {
                 m_params.AddOpt("customer[vat_number_prefix]", customerVatNumberPrefix);
+                return this;
+            }
+            public CheckoutOneTimeForItemsRequest CustomerEinvoicingMethod(ChargeBee.Models.Enums.EinvoicingMethodEnum customerEinvoicingMethod) 
+            {
+                m_params.AddOpt("customer[einvoicing_method]", customerEinvoicingMethod);
                 return this;
             }
             public CheckoutOneTimeForItemsRequest CustomerIsEinvoiceEnabled(bool customerIsEinvoiceEnabled) 
@@ -1534,6 +1545,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("pass_thru_content", passThruContent);
                 return this;
             }
+            [Obsolete]
+            public CheckoutNewForItemsRequest Source(string source) 
+            {
+                m_params.AddOpt("source", source);
+                return this;
+            }
             public CheckoutNewForItemsRequest AllowOfflinePaymentMethods(bool allowOfflinePaymentMethods) 
             {
                 m_params.AddOpt("allow_offline_payment_methods", allowOfflinePaymentMethods);
@@ -1654,6 +1671,11 @@ namespace ChargeBee.Models
             public CheckoutNewForItemsRequest CustomerEntityIdentifierStandard(string customerEntityIdentifierStandard) 
             {
                 m_params.AddOpt("customer[entity_identifier_standard]", customerEntityIdentifierStandard);
+                return this;
+            }
+            public CheckoutNewForItemsRequest CustomerEinvoicingMethod(ChargeBee.Models.Enums.EinvoicingMethodEnum customerEinvoicingMethod) 
+            {
+                m_params.AddOpt("customer[einvoicing_method]", customerEinvoicingMethod);
                 return this;
             }
             public CheckoutNewForItemsRequest BillingAddressFirstName(string billingAddressFirstName) 
@@ -2320,6 +2342,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("pass_thru_content", passThruContent);
                 return this;
             }
+            [Obsolete]
+            public CheckoutExistingForItemsRequest Source(string source) 
+            {
+                m_params.AddOpt("source", source);
+                return this;
+            }
             public CheckoutExistingForItemsRequest AllowOfflinePaymentMethods(bool allowOfflinePaymentMethods) 
             {
                 m_params.AddOpt("allow_offline_payment_methods", allowOfflinePaymentMethods);
@@ -2787,6 +2815,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("redirect_url", redirectUrl);
                 return this;
             }
+            public AcceptQuoteRequest Layout(ChargeBee.Models.Enums.LayoutEnum layout) 
+            {
+                m_params.AddOpt("layout", layout);
+                return this;
+            }
             public AcceptQuoteRequest QuoteId(string quoteId) 
             {
                 m_params.Add("quote[id]", quoteId);
@@ -3125,7 +3158,6 @@ namespace ChargeBee.Models
         }
 
         #region Subclasses
-
         public class HostedPageContent : ResultBase
         {
 
@@ -3136,6 +3168,7 @@ namespace ChargeBee.Models
                 m_jobj = jobj;
             }
         }
+
         #endregion
     }
 }

@@ -101,6 +101,8 @@ namespace ChargeBee.Models
             Paused,
             [EnumMember(Value = "cancelled")]
             Cancelled,
+            [EnumMember(Value = "transferred")]
+            Transferred,
 
         }
 

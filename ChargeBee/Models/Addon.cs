@@ -220,7 +220,6 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<ChannelEnum>("channel", false); }
         }
-        [Obsolete]
         public ProrationTypeEnum? ProrationType 
         {
             get { return GetEnum<ProrationTypeEnum>("proration_type", false); }
@@ -244,6 +243,10 @@ namespace ChargeBee.Models
         public List<AddonTier> Tiers 
         {
             get { return GetResourceList<AddonTier>("tiers"); }
+        }
+        public List<AddonTaxProvidersField> TaxProvidersFields 
+        {
+            get { return GetResourceList<AddonTaxProvidersField>("tax_providers_fields"); }
         }
         public bool? ShowDescriptionInInvoices 
         {
@@ -445,7 +448,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("price_in_decimal", priceInDecimal);
                 return this;
             }
-            [Obsolete]
             public CreateRequest ProrationType(Addon.ProrationTypeEnum prorationType) 
             {
                 m_params.AddOpt("proration_type", prorationType);
@@ -670,7 +672,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("price_in_decimal", priceInDecimal);
                 return this;
             }
-            [Obsolete]
             public UpdateRequest ProrationType(Addon.ProrationTypeEnum prorationType) 
             {
                 m_params.AddOpt("proration_type", prorationType);
@@ -873,7 +874,6 @@ namespace ChargeBee.Models
             Day,
 
         }
-        [Obsolete]
         public enum ProrationTypeEnum
         {
 
@@ -914,6 +914,22 @@ namespace ChargeBee.Models
 
             public string PriceInDecimal {
                 get { return GetValue<string>("price_in_decimal", false); }
+            }
+
+        }
+        public class AddonTaxProvidersField : Resource
+        {
+
+            public string ProviderName {
+                get { return GetValue<string>("provider_name", true); }
+            }
+
+            public string FieldId {
+                get { return GetValue<string>("field_id", true); }
+            }
+
+            public string FieldValue {
+                get { return GetValue<string>("field_value", true); }
             }
 
         }

@@ -456,6 +456,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("transaction[reference_number]", transactionReferenceNumber);
                 return this;
             }
+            public RecordRefundRequest TransactionCustomPaymentMethodId(string transactionCustomPaymentMethodId) 
+            {
+                m_params.AddOpt("transaction[custom_payment_method_id]", transactionCustomPaymentMethodId);
+                return this;
+            }
             public RecordRefundRequest TransactionDate(long transactionDate) 
             {
                 m_params.Add("transaction[date]", transactionDate);
@@ -482,6 +487,10 @@ namespace ChargeBee.Models
             {
             }
 
+            public EnumFilter<CreditNoteEinvoice.StatusEnum, CreditNoteListRequest> EinvoiceStatus() 
+            {
+                return new EnumFilter<CreditNoteEinvoice.StatusEnum, CreditNoteListRequest>("einvoice[status]", this);        
+            }
             public CreditNoteListRequest IncludeDeleted(bool includeDeleted) 
             {
                 m_params.AddOpt("include_deleted", includeDeleted);
@@ -501,7 +510,7 @@ namespace ChargeBee.Models
             }
             public StringFilter<CreditNoteListRequest> ReferenceInvoiceId() 
             {
-                return new StringFilter<CreditNoteListRequest>("reference_invoice_id", this).SupportsMultiOperators(true);        
+                return new StringFilter<CreditNoteListRequest>("reference_invoice_id", this).SupportsMultiOperators(true).SupportsPresenceOperator(true);        
             }
             public EnumFilter<CreditNote.TypeEnum, CreditNoteListRequest> Type() 
             {
@@ -551,6 +560,7 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<CreditNoteListRequest>("updated_at", this);        
             }
+            
             public CreditNoteListRequest SortByDate(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","date");
                 return this;
@@ -559,11 +569,6 @@ namespace ChargeBee.Models
             {
                 return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, CreditNoteListRequest>("channel", this);        
             }
-            public EnumFilter<CreditNoteEinvoice.StatusEnum, CreditNoteListRequest> EinvoiceStatus() 
-            {
-                return new EnumFilter<CreditNoteEinvoice.StatusEnum, CreditNoteListRequest>("einvoice[status]", this);        
-            }
-
         }
         public class DeleteRequest : EntityRequest<DeleteRequest> 
         {
@@ -1193,6 +1198,10 @@ namespace ChargeBee.Models
                 get { return GetValue<long?>("item_level_discount_amount", false); }
             }
 
+            public string UsagePercentage {
+                get { return GetValue<string>("usage_percentage", false); }
+            }
+
             public string ReferenceLineItemId {
                 get { return GetValue<string>("reference_line_item_id", false); }
             }
@@ -1373,6 +1382,18 @@ namespace ChargeBee.Models
 
             public double TaxRate {
                 get { return GetValue<double>("tax_rate", true); }
+            }
+
+            public DateTime? DateTo {
+                get { return GetDateTime("date_to", false); }
+            }
+
+            public DateTime? DateFrom {
+                get { return GetDateTime("date_from", false); }
+            }
+
+            public decimal? ProratedTaxableAmount {
+                get { return GetValue<decimal?>("prorated_taxable_amount", false); }
             }
 
             public bool? IsPartialTaxApplied {

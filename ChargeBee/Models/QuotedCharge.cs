@@ -125,6 +125,10 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("unit_price_in_decimal", false); }
             }
 
+            public ProrationTypeEnum? ProrationType {
+                get { return GetEnum<ProrationTypeEnum>("proration_type", false); }
+            }
+
             public int? ServicePeriod {
                 get { return GetValue<int?>("service_period", false); }
             }

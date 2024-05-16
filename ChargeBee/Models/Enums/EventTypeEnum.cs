@@ -200,6 +200,18 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "credit_note_deleted")]
          CreditNoteDeleted,
 
+        [EnumMember(Value = "invoice_installments_created")]
+         InvoiceInstallmentsCreated,
+
+        [EnumMember(Value = "invoice_installment_updated")]
+         InvoiceInstallmentUpdated,
+
+        [EnumMember(Value = "installment_config_created")]
+         InstallmentConfigCreated,
+
+        [EnumMember(Value = "installment_config_deleted")]
+         InstallmentConfigDeleted,
+
         [EnumMember(Value = "subscription_renewal_reminder")]
          SubscriptionRenewalReminder,
 
@@ -482,6 +494,12 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "business_entity_deleted")]
          BusinessEntityDeleted,
 
+        [EnumMember(Value = "customer_business_entity_changed")]
+         CustomerBusinessEntityChanged,
+
+        [EnumMember(Value = "subscription_business_entity_changed")]
+         SubscriptionBusinessEntityChanged,
+
         [EnumMember(Value = "purchase_created")]
          PurchaseCreated,
 
@@ -495,22 +513,46 @@ namespace ChargeBee.Models.Enums
          VoucherCreateFailed,
 
         [EnumMember(Value = "product_created")]
-         ProductCreated,
+        [Obsolete] ProductCreated,
 
         [EnumMember(Value = "product_updated")]
-         ProductUpdated,
+        [Obsolete] ProductUpdated,
 
         [EnumMember(Value = "product_deleted")]
-         ProductDeleted,
+        [Obsolete] ProductDeleted,
 
         [EnumMember(Value = "variant_created")]
-         VariantCreated,
+        [Obsolete] VariantCreated,
 
         [EnumMember(Value = "variant_updated")]
-         VariantUpdated,
+        [Obsolete] VariantUpdated,
 
         [EnumMember(Value = "variant_deleted")]
-         VariantDeleted,
+        [Obsolete] VariantDeleted,
+
+        [EnumMember(Value = "item_price_entitlements_updated")]
+         ItemPriceEntitlementsUpdated,
+
+        [EnumMember(Value = "item_price_entitlements_removed")]
+         ItemPriceEntitlementsRemoved,
+
+        [EnumMember(Value = "ramp_created")]
+         RampCreated,
+
+        [EnumMember(Value = "ramp_deleted")]
+         RampDeleted,
+
+        [EnumMember(Value = "ramp_applied")]
+         RampApplied,
+
+        [EnumMember(Value = "price_variant_created")]
+         PriceVariantCreated,
+
+        [EnumMember(Value = "price_variant_updated")]
+         PriceVariantUpdated,
+
+        [EnumMember(Value = "price_variant_deleted")]
+         PriceVariantDeleted,
 
     }
 }

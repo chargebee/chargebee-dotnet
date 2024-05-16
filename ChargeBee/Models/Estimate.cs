@@ -723,6 +723,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
                 return this;
             }
+            [Obsolete]
+            public CreateSubItemEstimateRequest ContractTermContractStart(long contractTermContractStart) 
+            {
+                m_params.AddOpt("contract_term[contract_start]", contractTermContractStart);
+                return this;
+            }
             public CreateSubItemEstimateRequest ContractTermCancellationCutoffPeriod(int contractTermCancellationCutoffPeriod) 
             {
                 m_params.AddOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
@@ -1236,6 +1242,46 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
             }
+            public CreateSubItemForCustomerEstimateRequest BillingAddressLine1(string billingAddressLine1) 
+            {
+                m_params.AddOpt("billing_address[line1]", billingAddressLine1);
+                return this;
+            }
+            public CreateSubItemForCustomerEstimateRequest BillingAddressLine2(string billingAddressLine2) 
+            {
+                m_params.AddOpt("billing_address[line2]", billingAddressLine2);
+                return this;
+            }
+            public CreateSubItemForCustomerEstimateRequest BillingAddressLine3(string billingAddressLine3) 
+            {
+                m_params.AddOpt("billing_address[line3]", billingAddressLine3);
+                return this;
+            }
+            public CreateSubItemForCustomerEstimateRequest BillingAddressCity(string billingAddressCity) 
+            {
+                m_params.AddOpt("billing_address[city]", billingAddressCity);
+                return this;
+            }
+            public CreateSubItemForCustomerEstimateRequest BillingAddressStateCode(string billingAddressStateCode) 
+            {
+                m_params.AddOpt("billing_address[state_code]", billingAddressStateCode);
+                return this;
+            }
+            public CreateSubItemForCustomerEstimateRequest BillingAddressZip(string billingAddressZip) 
+            {
+                m_params.AddOpt("billing_address[zip]", billingAddressZip);
+                return this;
+            }
+            public CreateSubItemForCustomerEstimateRequest BillingAddressCountry(string billingAddressCountry) 
+            {
+                m_params.AddOpt("billing_address[country]", billingAddressCountry);
+                return this;
+            }
+            public CreateSubItemForCustomerEstimateRequest BillingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum billingAddressValidationStatus) 
+            {
+                m_params.AddOpt("billing_address[validation_status]", billingAddressValidationStatus);
+                return this;
+            }
             public CreateSubItemForCustomerEstimateRequest SubscriptionFreePeriod(int subscriptionFreePeriod) 
             {
                 m_params.AddOpt("subscription[free_period]", subscriptionFreePeriod);
@@ -1249,6 +1295,12 @@ namespace ChargeBee.Models
             public CreateSubItemForCustomerEstimateRequest ContractTermActionAtTermEnd(ContractTerm.ActionAtTermEndEnum contractTermActionAtTermEnd) 
             {
                 m_params.AddOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+                return this;
+            }
+            [Obsolete]
+            public CreateSubItemForCustomerEstimateRequest ContractTermContractStart(long contractTermContractStart) 
+            {
+                m_params.AddOpt("contract_term[contract_start]", contractTermContractStart);
                 return this;
             }
             public CreateSubItemForCustomerEstimateRequest ContractTermCancellationCutoffPeriod(int contractTermCancellationCutoffPeriod) 
@@ -1410,6 +1462,16 @@ namespace ChargeBee.Models
             {
             }
 
+            public UpdateSubscriptionRequest ChangesScheduledAt(long changesScheduledAt) 
+            {
+                m_params.AddOpt("changes_scheduled_at", changesScheduledAt);
+                return this;
+            }
+            public UpdateSubscriptionRequest ChangeOption(ChargeBee.Models.Enums.ChangeOptionEnum changeOption) 
+            {
+                m_params.AddOpt("change_option", changeOption);
+                return this;
+            }
             public UpdateSubscriptionRequest ReplaceAddonList(bool replaceAddonList) 
             {
                 m_params.AddOpt("replace_addon_list", replaceAddonList);
@@ -1747,7 +1809,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("addons[trial_end][" + index + "]", addonTrialEnd);
                 return this;
             }
-            [Obsolete]
             public UpdateSubscriptionRequest AddonProrationType(int index, ChargeBee.Models.Enums.ProrationTypeEnum addonProrationType) 
             {
                 m_params.AddOpt("addons[proration_type][" + index + "]", addonProrationType);
@@ -1761,6 +1822,16 @@ namespace ChargeBee.Models
             {
             }
 
+            public UpdateSubscriptionForItemsRequest ChangesScheduledAt(long changesScheduledAt) 
+            {
+                m_params.AddOpt("changes_scheduled_at", changesScheduledAt);
+                return this;
+            }
+            public UpdateSubscriptionForItemsRequest ChangeOption(ChargeBee.Models.Enums.ChangeOptionEnum changeOption) 
+            {
+                m_params.AddOpt("change_option", changeOption);
+                return this;
+            }
             public UpdateSubscriptionForItemsRequest MandatoryItemsToRemove(List<string> mandatoryItemsToRemove) 
             {
                 m_params.AddOpt("mandatory_items_to_remove", mandatoryItemsToRemove);
@@ -2138,6 +2209,11 @@ namespace ChargeBee.Models
             public UpdateSubscriptionForItemsRequest ItemTierPriceInDecimal(int index, string itemTierPriceInDecimal) 
             {
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+                return this;
+            }
+            public UpdateSubscriptionForItemsRequest SubscriptionItemProrationType(int index, ChargeBee.Models.Enums.ProrationTypeEnum subscriptionItemProrationType) 
+            {
+                m_params.AddOpt("subscription_items[proration_type][" + index + "]", subscriptionItemProrationType);
                 return this;
             }
         }

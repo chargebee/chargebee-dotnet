@@ -37,5 +37,8 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "zero_value_item")]
          ZeroValueItem,
 
+        [EnumMember(Value = "tax_not_configured_external_provider")]
+         TaxNotConfiguredExternalProvider,
+
     }
 }

@@ -200,6 +200,10 @@ namespace ChargeBee.Models
                 get { return GetValue<long?>("item_level_discount_amount", false); }
             }
 
+            public string UsagePercentage {
+                get { return GetValue<string>("usage_percentage", false); }
+            }
+
             public string ReferenceLineItemId {
                 get { return GetValue<string>("reference_line_item_id", false); }
             }
@@ -299,6 +303,18 @@ namespace ChargeBee.Models
 
             public double TaxRate {
                 get { return GetValue<double>("tax_rate", true); }
+            }
+
+            public DateTime? DateTo {
+                get { return GetDateTime("date_to", false); }
+            }
+
+            public DateTime? DateFrom {
+                get { return GetDateTime("date_from", false); }
+            }
+
+            public decimal? ProratedTaxableAmount {
+                get { return GetValue<decimal?>("prorated_taxable_amount", false); }
             }
 
             public bool? IsPartialTaxApplied {

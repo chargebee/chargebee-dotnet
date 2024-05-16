@@ -92,6 +92,10 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<ApiVersionEnum>("api_version", false); }
         }
+        public string OriginUser 
+        {
+            get { return GetValue<string>("origin_user", false); }
+        }
         public EventContent Content
         {
             get { return new EventContent(GetValue<JToken>("content")); }
@@ -150,6 +154,7 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<EventListRequest>("occurred_at", this);        
             }
+            
             public EventListRequest SortByOccurredAt(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","occurred_at");
                 return this;
@@ -212,7 +217,6 @@ namespace ChargeBee.Models
             }
 
         }
-
         public class EventContent : ResultBase
         {
 
@@ -223,6 +227,7 @@ namespace ChargeBee.Models
                 m_jobj = jobj;
             }
         }
+
         #endregion
     }
 }

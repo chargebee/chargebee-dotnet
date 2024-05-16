@@ -85,5 +85,23 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "boleto")]
          Boleto,
 
+        [EnumMember(Value = "venmo")]
+         Venmo,
+
+        [EnumMember(Value = "pay_to")]
+         PayTo,
+
+        [EnumMember(Value = "faster_payments")]
+         FasterPayments,
+
+        [EnumMember(Value = "sepa_instant_transfer")]
+         SepaInstantTransfer,
+
+        [EnumMember(Value = "automated_bank_transfer")]
+         AutomatedBankTransfer,
+
+        [EnumMember(Value = "klarna_pay_now")]
+         KlarnaPayNow,
+
     }
 }
