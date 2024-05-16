@@ -69,9 +69,9 @@ namespace ChargeBee.Api
 
         private static volatile ApiConfig m_instance;
 
-        public static void Configure(string siteName, string apiKey)
+        public static void Configure(string siteName, string apiKey, HttpMessageHandler httpMessageHandler = null)
         {         
-            m_instance = new ApiConfig(siteName, apiKey);
+            m_instance = new ApiConfig(siteName, apiKey, httpMessageHandler);
         }
 
         public static void SetBaseUrl(string url)
