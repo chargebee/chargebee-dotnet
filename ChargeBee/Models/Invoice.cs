@@ -488,6 +488,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("business_entity_id", false); }
         }
+        public InvoiceSiteDetailsAtCreation SiteDetailsAtCreation 
+        {
+            get { return GetSubResource<InvoiceSiteDetailsAtCreation>("site_details_at_creation"); }
+        }
         
         #endregion
         
@@ -1003,6 +1007,21 @@ namespace ChargeBee.Models
             public CreateRequest ChargeDateTo(int index, long chargeDateTo) 
             {
                 m_params.AddOpt("charges[date_to][" + index + "]", chargeDateTo);
+                return this;
+            }
+            public CreateRequest TaxProvidersFieldProviderName(int index, string taxProvidersFieldProviderName) 
+            {
+                m_params.AddOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+                return this;
+            }
+            public CreateRequest TaxProvidersFieldFieldId(int index, string taxProvidersFieldFieldId) 
+            {
+                m_params.AddOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+                return this;
+            }
+            public CreateRequest TaxProvidersFieldFieldValue(int index, string taxProvidersFieldFieldValue) 
+            {
+                m_params.AddOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
                 return this;
             }
             public CreateRequest NotesToRemoveEntityType(int index, ChargeBee.Models.Enums.EntityTypeEnum notesToRemoveEntityType) 
@@ -1574,6 +1593,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("notes_to_remove[entity_id][" + index + "]", notesToRemoveEntityId);
                 return this;
             }
+            public CreateForChargeItemsAndChargesRequest TaxProvidersFieldProviderName(int index, string taxProvidersFieldProviderName) 
+            {
+                m_params.AddOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest TaxProvidersFieldFieldId(int index, string taxProvidersFieldFieldId) 
+            {
+                m_params.AddOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest TaxProvidersFieldFieldValue(int index, string taxProvidersFieldFieldValue) 
+            {
+                m_params.AddOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
+                return this;
+            }
             public CreateForChargeItemsAndChargesRequest DiscountPercentage(int index, double discountPercentage) 
             {
                 m_params.AddOpt("discounts[percentage][" + index + "]", discountPercentage);
@@ -1686,6 +1720,21 @@ namespace ChargeBee.Models
             public ChargeRequest PaymentInitiator(ChargeBee.Models.Enums.PaymentInitiatorEnum paymentInitiator) 
             {
                 m_params.AddOpt("payment_initiator", paymentInitiator);
+                return this;
+            }
+            public ChargeRequest TaxProvidersFieldProviderName(int index, string taxProvidersFieldProviderName) 
+            {
+                m_params.AddOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+                return this;
+            }
+            public ChargeRequest TaxProvidersFieldFieldId(int index, string taxProvidersFieldFieldId) 
+            {
+                m_params.AddOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+                return this;
+            }
+            public ChargeRequest TaxProvidersFieldFieldValue(int index, string taxProvidersFieldFieldValue) 
+            {
+                m_params.AddOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
                 return this;
             }
         }
@@ -2399,11 +2448,6 @@ namespace ChargeBee.Models
             public ImportInvoiceRequest LineItemTierUnitAmountInDecimal(int index, string lineItemTierUnitAmountInDecimal) 
             {
                 m_params.AddOpt("line_item_tiers[unit_amount_in_decimal][" + index + "]", lineItemTierUnitAmountInDecimal);
-                return this;
-            }
-            public ImportInvoiceRequest DiscountLineItemId(int index, string discountLineItemId) 
-            {
-                m_params.AddOpt("discounts[line_item_id][" + index + "]", discountLineItemId);
                 return this;
             }
             public ImportInvoiceRequest DiscountEntityType(int index, InvoiceDiscount.EntityTypeEnum discountEntityType) 
@@ -3191,12 +3235,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("void_reason_code", voidReasonCode);
                 return this;
             }
-            [Obsolete]
-            public VoidInvoiceRequest CreateCreditNote(bool createCreditNote) 
-            {
-                m_params.AddOpt("create_credit_note", createCreditNote);
-                return this;
-            }
         }
         public class WriteOffRequest : EntityRequest<WriteOffRequest> 
         {
@@ -3221,11 +3259,6 @@ namespace ChargeBee.Models
             public DeleteRequest Comment(string comment) 
             {
                 m_params.AddOpt("comment", comment);
-                return this;
-            }
-            public DeleteRequest ClaimCredits(bool claimCredits) 
-            {
-                m_params.AddOpt("claim_credits", claimCredits);
                 return this;
             }
         }
@@ -3464,12 +3497,6 @@ namespace ChargeBee.Models
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [EnumMember(Value = "plan_setup")]
-                PlanSetup,
-                [EnumMember(Value = "plan")]
-                Plan,
-                [EnumMember(Value = "addon")]
-                Addon,
                 [EnumMember(Value = "adhoc")]
                 Adhoc,
                 [EnumMember(Value = "plan_item_price")]
@@ -3478,6 +3505,12 @@ namespace ChargeBee.Models
                 AddonItemPrice,
                 [EnumMember(Value = "charge_item_price")]
                 ChargeItemPrice,
+                [EnumMember(Value = "plan_setup")]
+                PlanSetup,
+                [EnumMember(Value = "plan")]
+                Plan,
+                [EnumMember(Value = "addon")]
+                Addon,
             }
 
             public string Id {
@@ -4003,10 +4036,6 @@ namespace ChargeBee.Models
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [EnumMember(Value = "plan")]
-                Plan,
-                [EnumMember(Value = "addon")]
-                Addon,
                 [EnumMember(Value = "coupon")]
                 Coupon,
                 [EnumMember(Value = "subscription")]
@@ -4021,6 +4050,10 @@ namespace ChargeBee.Models
                 ChargeItemPrice,
                 [EnumMember(Value = "tax")]
                 Tax,
+                [EnumMember(Value = "plan")]
+                Plan,
+                [EnumMember(Value = "addon")]
+                Addon,
             }
 
             public EntityTypeEnum EntityType {
@@ -4206,6 +4239,18 @@ namespace ChargeBee.Models
 
             public string Message {
                 get { return GetValue<string>("message", false); }
+            }
+
+        }
+        public class InvoiceSiteDetailsAtCreation : Resource
+        {
+
+            public string Timezone {
+                get { return GetValue<string>("timezone", false); }
+            }
+
+            public JToken OrganizationAddress {
+                get { return GetJToken("organization_address", false); }
             }
 
         }

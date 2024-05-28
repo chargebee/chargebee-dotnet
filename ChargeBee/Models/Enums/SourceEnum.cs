@@ -16,6 +16,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "api")]
          Api,
 
+        [EnumMember(Value = "bulk_operation")]
+         BulkOperation,
+
         [EnumMember(Value = "scheduled_job")]
          ScheduledJob,
 
@@ -36,9 +39,6 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "migration")]
          Migration,
-
-        [EnumMember(Value = "bulk_operation")]
-         BulkOperation,
 
         [EnumMember(Value = "external_service")]
          ExternalService,

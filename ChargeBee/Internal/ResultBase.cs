@@ -61,6 +61,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<Contact>("contact"); }
         }
+        public BusinessEntityTransfer BusinessEntityTransfer
+        {
+            get {  return GetResource<BusinessEntityTransfer>("business_entity_transfer"); }
+        }
         public Token Token
         {
             get {  return GetResource<Token>("token"); }
@@ -272,6 +276,10 @@ namespace ChargeBee.Internal
         public EntitlementOverride EntitlementOverride
         {
             get {  return GetResource<EntitlementOverride>("entitlement_override"); }
+        }
+        public BusinessEntity BusinessEntity
+        {
+            get {  return GetResource<BusinessEntity>("business_entity"); }
         }
         public Purchase Purchase
         {

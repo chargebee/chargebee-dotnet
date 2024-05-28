@@ -179,11 +179,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("type", type);
                 return this;
             }
-            public CreateRequest Status(StatusEnum status) 
-            {
-                m_params.AddOpt("status", status);
-                return this;
-            }
             public CreateRequest Unit(string unit) 
             {
                 m_params.AddOpt("unit", unit);
@@ -225,11 +220,6 @@ namespace ChargeBee.Models
             public UpdateRequest Description(string description) 
             {
                 m_params.AddOpt("description", description);
-                return this;
-            }
-            public UpdateRequest Status(StatusEnum status) 
-            {
-                m_params.AddOpt("status", status);
                 return this;
             }
             public UpdateRequest Unit(string unit) 
