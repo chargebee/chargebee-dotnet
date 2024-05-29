@@ -192,10 +192,6 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("expires_at", false); }
         }
-        public JToken Content 
-        {
-            get { return GetJToken("content", true); }
-        }
         public DateTime? UpdatedAt 
         {
             get { return GetDateTime("updated_at", false); }
@@ -212,8 +208,19 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("business_entity_id", false); }
         }
+        public HostedPageContent Content
+        {
+            get
+            {
+                if (GetValue<JToken>("content", false) == null)
+                {
+                    return null;
+                }
+                return new HostedPageContent(GetValue<JToken>("content"));
+            }
+        }
         #endregion
-        
+
         #region Requests
         public class CheckoutNewRequest : EntityRequest<CheckoutNewRequest> 
         {
