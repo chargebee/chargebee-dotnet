@@ -92,15 +92,14 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<ApiVersionEnum>("api_version", false); }
         }
-        public JToken Content 
-        {
-            get { return GetJToken("content", true); }
-        }
         public string OriginUser 
         {
             get { return GetValue<string>("origin_user", false); }
         }
-       
+        public EventContent Content
+        {
+            get { return new EventContent(GetValue<JToken>("content")); }
+        }
         #endregion
         
         #region Requests

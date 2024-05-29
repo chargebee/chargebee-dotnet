@@ -1,3 +1,8 @@
+### v3.18.1 (2024-05-29)
+* * *
+* Dotnet Event Content - bugfix
+* Dotnet HostedPage Content - bugfix
+
 ### v3.18.0 (2024-05-28)
 * * *
 

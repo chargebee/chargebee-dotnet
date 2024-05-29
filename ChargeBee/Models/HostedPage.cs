@@ -212,7 +212,7 @@ namespace ChargeBee.Models
         {
             get
             {
-                if (GetValue<JToken>("content", false) == null)
+                if(GetValue<JToken>("content", false) == null)
                 {
                     return null;
                 }
@@ -220,7 +220,7 @@ namespace ChargeBee.Models
             }
         }
         #endregion
-
+        
         #region Requests
         public class CheckoutNewRequest : EntityRequest<CheckoutNewRequest> 
         {
