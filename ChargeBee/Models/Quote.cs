@@ -1791,6 +1791,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("charges[service_period][" + index + "]", chargeServicePeriod);
                 return this;
             }
+            public CreateForOnetimeChargesRequest TaxProvidersFieldProviderName(int index, string taxProvidersFieldProviderName) 
+            {
+                m_params.AddOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest TaxProvidersFieldFieldId(int index, string taxProvidersFieldFieldId) 
+            {
+                m_params.AddOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+                return this;
+            }
+            public CreateForOnetimeChargesRequest TaxProvidersFieldFieldValue(int index, string taxProvidersFieldFieldValue) 
+            {
+                m_params.AddOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
+                return this;
+            }
         }
         public class EditOneTimeQuoteRequest : EntityRequest<EditOneTimeQuoteRequest> 
         {
@@ -1964,6 +1979,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("charges[service_period][" + index + "]", chargeServicePeriod);
                 return this;
             }
+            public EditOneTimeQuoteRequest TaxProvidersFieldProviderName(int index, string taxProvidersFieldProviderName) 
+            {
+                m_params.AddOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+                return this;
+            }
+            public EditOneTimeQuoteRequest TaxProvidersFieldFieldId(int index, string taxProvidersFieldFieldId) 
+            {
+                m_params.AddOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+                return this;
+            }
+            public EditOneTimeQuoteRequest TaxProvidersFieldFieldValue(int index, string taxProvidersFieldFieldValue) 
+            {
+                m_params.AddOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
+                return this;
+            }
         }
         public class CreateSubItemsForCustomerQuoteRequest : EntityRequest<CreateSubItemsForCustomerQuoteRequest> 
         {
@@ -2036,11 +2066,6 @@ namespace ChargeBee.Models
             public CreateSubItemsForCustomerQuoteRequest SubscriptionStartDate(long subscriptionStartDate) 
             {
                 m_params.AddOpt("subscription[start_date]", subscriptionStartDate);
-                return this;
-            }
-            public CreateSubItemsForCustomerQuoteRequest SubscriptionOfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum subscriptionOfflinePaymentMethod) 
-            {
-                m_params.AddOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
                 return this;
             }
             public CreateSubItemsForCustomerQuoteRequest ShippingAddressFirstName(string shippingAddressFirstName) 
@@ -2331,11 +2356,6 @@ namespace ChargeBee.Models
             public EditCreateSubCustomerQuoteForItemsRequest SubscriptionStartDate(long subscriptionStartDate) 
             {
                 m_params.AddOpt("subscription[start_date]", subscriptionStartDate);
-                return this;
-            }
-            public EditCreateSubCustomerQuoteForItemsRequest SubscriptionOfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum subscriptionOfflinePaymentMethod) 
-            {
-                m_params.AddOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
                 return this;
             }
             public EditCreateSubCustomerQuoteForItemsRequest ShippingAddressFirstName(string shippingAddressFirstName) 
@@ -3659,6 +3679,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
                 return this;
             }
+            public CreateForChargeItemsAndChargesRequest TaxProvidersFieldProviderName(int index, string taxProvidersFieldProviderName) 
+            {
+                m_params.AddOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest TaxProvidersFieldFieldId(int index, string taxProvidersFieldFieldId) 
+            {
+                m_params.AddOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest TaxProvidersFieldFieldValue(int index, string taxProvidersFieldFieldValue) 
+            {
+                m_params.AddOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
+                return this;
+            }
         }
         public class EditForChargeItemsAndChargesRequest : EntityRequest<EditForChargeItemsAndChargesRequest> 
         {
@@ -3887,6 +3922,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
                 return this;
             }
+            public EditForChargeItemsAndChargesRequest TaxProvidersFieldProviderName(int index, string taxProvidersFieldProviderName) 
+            {
+                m_params.AddOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+                return this;
+            }
+            public EditForChargeItemsAndChargesRequest TaxProvidersFieldFieldId(int index, string taxProvidersFieldFieldId) 
+            {
+                m_params.AddOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+                return this;
+            }
+            public EditForChargeItemsAndChargesRequest TaxProvidersFieldFieldValue(int index, string taxProvidersFieldFieldValue) 
+            {
+                m_params.AddOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
+                return this;
+            }
         }
         public class QuoteListRequest : ListRequestBase<QuoteListRequest> 
         {
@@ -4075,12 +4125,6 @@ namespace ChargeBee.Models
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [EnumMember(Value = "plan_setup")]
-                PlanSetup,
-                [EnumMember(Value = "plan")]
-                Plan,
-                [EnumMember(Value = "addon")]
-                Addon,
                 [EnumMember(Value = "adhoc")]
                 Adhoc,
                 [EnumMember(Value = "plan_item_price")]
@@ -4089,6 +4133,12 @@ namespace ChargeBee.Models
                 AddonItemPrice,
                 [EnumMember(Value = "charge_item_price")]
                 ChargeItemPrice,
+                [EnumMember(Value = "plan_setup")]
+                PlanSetup,
+                [EnumMember(Value = "plan")]
+                Plan,
+                [EnumMember(Value = "addon")]
+                Addon,
             }
 
             public string Id {

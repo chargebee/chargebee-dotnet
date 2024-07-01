@@ -291,6 +291,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("charges[date_to][" + index + "]", chargeDateTo);
                 return this;
             }
+            public CreateUnbilledChargeRequest TaxProvidersFieldProviderName(int index, string taxProvidersFieldProviderName) 
+            {
+                m_params.AddOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+                return this;
+            }
+            public CreateUnbilledChargeRequest TaxProvidersFieldFieldId(int index, string taxProvidersFieldFieldId) 
+            {
+                m_params.AddOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+                return this;
+            }
+            public CreateUnbilledChargeRequest TaxProvidersFieldFieldValue(int index, string taxProvidersFieldFieldValue) 
+            {
+                m_params.AddOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
+                return this;
+            }
         }
         public class CreateRequest : EntityRequest<CreateRequest> 
         {
@@ -444,6 +459,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("charges[date_to][" + index + "]", chargeDateTo);
                 return this;
             }
+            public CreateRequest TaxProvidersFieldProviderName(int index, string taxProvidersFieldProviderName) 
+            {
+                m_params.AddOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+                return this;
+            }
+            public CreateRequest TaxProvidersFieldFieldId(int index, string taxProvidersFieldFieldId) 
+            {
+                m_params.AddOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+                return this;
+            }
+            public CreateRequest TaxProvidersFieldFieldValue(int index, string taxProvidersFieldFieldValue) 
+            {
+                m_params.AddOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
+                return this;
+            }
         }
         public class InvoiceUnbilledChargesRequest : EntityRequest<InvoiceUnbilledChargesRequest> 
         {
@@ -514,12 +544,6 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [EnumMember(Value = "plan_setup")]
-            PlanSetup,
-            [EnumMember(Value = "plan")]
-            Plan,
-            [EnumMember(Value = "addon")]
-            Addon,
             [EnumMember(Value = "adhoc")]
             Adhoc,
             [EnumMember(Value = "plan_item_price")]
@@ -528,6 +552,12 @@ namespace ChargeBee.Models
             AddonItemPrice,
             [EnumMember(Value = "charge_item_price")]
             ChargeItemPrice,
+            [EnumMember(Value = "plan_setup")]
+            PlanSetup,
+            [EnumMember(Value = "plan")]
+            Plan,
+            [EnumMember(Value = "addon")]
+            Addon,
 
         }
 

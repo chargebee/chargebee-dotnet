@@ -1,4 +1,3 @@
-using System;
 using System.ComponentModel;
 using System.Runtime.Serialization;
 
@@ -10,24 +9,6 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "Unknown Enum")]
         UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-
-        [EnumMember(Value = "plan_created")]
-         PlanCreated,
-
-        [EnumMember(Value = "plan_updated")]
-         PlanUpdated,
-
-        [EnumMember(Value = "plan_deleted")]
-         PlanDeleted,
-
-        [EnumMember(Value = "addon_created")]
-         AddonCreated,
-
-        [EnumMember(Value = "addon_updated")]
-         AddonUpdated,
-
-        [EnumMember(Value = "addon_deleted")]
-         AddonDeleted,
 
         [EnumMember(Value = "coupon_created")]
          CouponCreated,
@@ -241,9 +222,6 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "refund_initiated")]
          RefundInitiated,
-
-        [EnumMember(Value = "netd_payment_due_reminder")]
-        [Obsolete] NetdPaymentDueReminder,
 
         [EnumMember(Value = "authorization_succeeded")]
          AuthorizationSucceeded,
@@ -512,24 +490,6 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "voucher_create_failed")]
          VoucherCreateFailed,
 
-        [EnumMember(Value = "product_created")]
-        [Obsolete] ProductCreated,
-
-        [EnumMember(Value = "product_updated")]
-        [Obsolete] ProductUpdated,
-
-        [EnumMember(Value = "product_deleted")]
-        [Obsolete] ProductDeleted,
-
-        [EnumMember(Value = "variant_created")]
-        [Obsolete] VariantCreated,
-
-        [EnumMember(Value = "variant_updated")]
-        [Obsolete] VariantUpdated,
-
-        [EnumMember(Value = "variant_deleted")]
-        [Obsolete] VariantDeleted,
-
         [EnumMember(Value = "item_price_entitlements_updated")]
          ItemPriceEntitlementsUpdated,
 
@@ -553,6 +513,24 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "price_variant_deleted")]
          PriceVariantDeleted,
+
+        [EnumMember(Value = "plan_created")]
+         PlanCreated,
+
+        [EnumMember(Value = "plan_updated")]
+         PlanUpdated,
+
+        [EnumMember(Value = "plan_deleted")]
+         PlanDeleted,
+
+        [EnumMember(Value = "addon_created")]
+         AddonCreated,
+
+        [EnumMember(Value = "addon_updated")]
+         AddonUpdated,
+
+        [EnumMember(Value = "addon_deleted")]
+         AddonDeleted,
 
     }
 }

@@ -1070,12 +1070,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("pass_thru_content", passThruContent);
                 return this;
             }
-            [Obsolete]
-            public CheckoutOneTimeForItemsRequest Source(string source) 
-            {
-                m_params.AddOpt("source", source);
-                return this;
-            }
             public CheckoutOneTimeForItemsRequest CustomerId(string customerId) 
             {
                 m_params.AddOpt("customer[id]", customerId);
@@ -1545,12 +1539,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("pass_thru_content", passThruContent);
                 return this;
             }
-            [Obsolete]
-            public CheckoutNewForItemsRequest Source(string source) 
-            {
-                m_params.AddOpt("source", source);
-                return this;
-            }
             public CheckoutNewForItemsRequest AllowOfflinePaymentMethods(bool allowOfflinePaymentMethods) 
             {
                 m_params.AddOpt("allow_offline_payment_methods", allowOfflinePaymentMethods);
@@ -1625,11 +1613,6 @@ namespace ChargeBee.Models
             public CheckoutNewForItemsRequest SubscriptionAutoCollection(ChargeBee.Models.Enums.AutoCollectionEnum subscriptionAutoCollection) 
             {
                 m_params.AddOpt("subscription[auto_collection]", subscriptionAutoCollection);
-                return this;
-            }
-            public CheckoutNewForItemsRequest SubscriptionOfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum subscriptionOfflinePaymentMethod) 
-            {
-                m_params.AddOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
                 return this;
             }
             public CheckoutNewForItemsRequest SubscriptionInvoiceNotes(string subscriptionInvoiceNotes) 
@@ -1831,11 +1814,6 @@ namespace ChargeBee.Models
             public CheckoutNewForItemsRequest SubscriptionContractTermBillingCycleOnRenewal(int subscriptionContractTermBillingCycleOnRenewal) 
             {
                 m_params.AddOpt("subscription[contract_term_billing_cycle_on_renewal]", subscriptionContractTermBillingCycleOnRenewal);
-                return this;
-            }
-            public CheckoutNewForItemsRequest SubscriptionAffiliateToken(string subscriptionAffiliateToken) 
-            {
-                m_params.AddOpt("subscription[affiliate_token]", subscriptionAffiliateToken);
                 return this;
             }
             public CheckoutNewForItemsRequest SubscriptionItemItemPriceId(int index, string subscriptionItemItemPriceId) 
@@ -2340,12 +2318,6 @@ namespace ChargeBee.Models
             public CheckoutExistingForItemsRequest PassThruContent(string passThruContent) 
             {
                 m_params.AddOpt("pass_thru_content", passThruContent);
-                return this;
-            }
-            [Obsolete]
-            public CheckoutExistingForItemsRequest Source(string source) 
-            {
-                m_params.AddOpt("source", source);
                 return this;
             }
             public CheckoutExistingForItemsRequest AllowOfflinePaymentMethods(bool allowOfflinePaymentMethods) 
@@ -2871,11 +2843,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("gifter[customer_id]", gifterCustomerId);
                 return this;
             }
-            public CheckoutGiftRequest GifterLocale(string gifterLocale) 
-            {
-                m_params.AddOpt("gifter[locale]", gifterLocale);
-                return this;
-            }
             public CheckoutGiftRequest SubscriptionPlanId(string subscriptionPlanId) 
             {
                 m_params.Add("subscription[plan_id]", subscriptionPlanId);
@@ -2938,11 +2905,6 @@ namespace ChargeBee.Models
             public CheckoutGiftForItemsRequest GifterCustomerId(string gifterCustomerId) 
             {
                 m_params.AddOpt("gifter[customer_id]", gifterCustomerId);
-                return this;
-            }
-            public CheckoutGiftForItemsRequest GifterLocale(string gifterLocale) 
-            {
-                m_params.AddOpt("gifter[locale]", gifterLocale);
                 return this;
             }
             public CheckoutGiftForItemsRequest SubscriptionItemItemPriceId(int index, string subscriptionItemItemPriceId) 
@@ -3112,16 +3074,16 @@ namespace ChargeBee.Models
             CollectNow,
             [EnumMember(Value = "extend_subscription")]
             ExtendSubscription,
-            [EnumMember(Value = "checkout_gift")]
-            CheckoutGift,
-            [EnumMember(Value = "claim_gift")]
-            ClaimGift,
             [EnumMember(Value = "checkout_one_time")]
             CheckoutOneTime,
             [EnumMember(Value = "pre_cancel")]
             PreCancel,
             [EnumMember(Value = "view_voucher")]
             ViewVoucher,
+            [EnumMember(Value = "checkout_gift")]
+            CheckoutGift,
+            [EnumMember(Value = "claim_gift")]
+            ClaimGift,
 
         }
         public enum StateEnum

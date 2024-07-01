@@ -130,21 +130,9 @@ namespace ChargeBee.Models
             {
                 return new EnumFilter<WebhookStatusEnum, EventListRequest>("webhook_status", this);        
             }
-            [Obsolete]
-            public EventListRequest WebhookStatus(WebhookStatusEnum webhookStatus) 
-            {
-                m_params.AddOpt("webhook_status", webhookStatus);
-                return this;
-            }
             public EnumFilter<ChargeBee.Models.Enums.EventTypeEnum, EventListRequest> EventType() 
             {
                 return new EnumFilter<ChargeBee.Models.Enums.EventTypeEnum, EventListRequest>("event_type", this);        
-            }
-            [Obsolete]
-            public EventListRequest EventType(ChargeBee.Models.Enums.EventTypeEnum eventType) 
-            {
-                m_params.AddOpt("event_type", eventType);
-                return this;
             }
             public EnumFilter<ChargeBee.Models.Enums.SourceEnum, EventListRequest> Source() 
             {

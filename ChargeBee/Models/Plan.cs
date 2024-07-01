@@ -583,6 +583,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("tiers[price_in_decimal][" + index + "]", tierPriceInDecimal);
                 return this;
             }
+            public CreateRequest TaxProvidersFieldProviderName(int index, string taxProvidersFieldProviderName) 
+            {
+                m_params.Add("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+                return this;
+            }
+            public CreateRequest TaxProvidersFieldFieldId(int index, string taxProvidersFieldFieldId) 
+            {
+                m_params.Add("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+                return this;
+            }
+            public CreateRequest TaxProvidersFieldFieldValue(int index, string taxProvidersFieldFieldValue) 
+            {
+                m_params.Add("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
+                return this;
+            }
             public CreateRequest ApplicableAddonId(int index, string applicableAddonId) 
             {
                 m_params.AddOpt("applicable_addons[id][" + index + "]", applicableAddonId);
@@ -891,6 +906,21 @@ namespace ChargeBee.Models
             public UpdateRequest TierPriceInDecimal(int index, string tierPriceInDecimal) 
             {
                 m_params.AddOpt("tiers[price_in_decimal][" + index + "]", tierPriceInDecimal);
+                return this;
+            }
+            public UpdateRequest TaxProvidersFieldProviderName(int index, string taxProvidersFieldProviderName) 
+            {
+                m_params.Add("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+                return this;
+            }
+            public UpdateRequest TaxProvidersFieldFieldId(int index, string taxProvidersFieldFieldId) 
+            {
+                m_params.Add("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+                return this;
+            }
+            public UpdateRequest TaxProvidersFieldFieldValue(int index, string taxProvidersFieldFieldValue) 
+            {
+                m_params.Add("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
                 return this;
             }
             public UpdateRequest ApplicableAddonId(int index, string applicableAddonId) 

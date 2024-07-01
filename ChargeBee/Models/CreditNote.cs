@@ -129,7 +129,7 @@ namespace ChargeBee.Models
         }
         public string ReferenceInvoiceId 
         {
-            get { return GetValue<string>("reference_invoice_id", true); }
+            get { return GetValue<string>("reference_invoice_id", false); }
         }
         public TypeEnum CreditNoteType 
         {
@@ -291,6 +291,10 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<CreditNoteBillingAddress>("billing_address"); }
         }
+        public CreditNoteSiteDetailsAtCreation SiteDetailsAtCreation 
+        {
+            get { return GetSubResource<CreditNoteSiteDetailsAtCreation>("site_details_at_creation"); }
+        }
         
         #endregion
         
@@ -304,7 +308,12 @@ namespace ChargeBee.Models
 
             public CreateRequest ReferenceInvoiceId(string referenceInvoiceId) 
             {
-                m_params.Add("reference_invoice_id", referenceInvoiceId);
+                m_params.AddOpt("reference_invoice_id", referenceInvoiceId);
+                return this;
+            }
+            public CreateRequest CustomerId(string customerId) 
+            {
+                m_params.AddOpt("customer_id", customerId);
                 return this;
             }
             public CreateRequest Total(long total) 
@@ -337,6 +346,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer_notes", customerNotes);
                 return this;
             }
+            public CreateRequest CurrencyCode(string currencyCode) 
+            {
+                m_params.AddOpt("currency_code", currencyCode);
+                return this;
+            }
             public CreateRequest Comment(string comment) 
             {
                 m_params.AddOpt("comment", comment);
@@ -344,7 +358,7 @@ namespace ChargeBee.Models
             }
             public CreateRequest LineItemReferenceLineItemId(int index, string lineItemReferenceLineItemId) 
             {
-                m_params.Add("line_items[reference_line_item_id][" + index + "]", lineItemReferenceLineItemId);
+                m_params.AddOpt("line_items[reference_line_item_id][" + index + "]", lineItemReferenceLineItemId);
                 return this;
             }
             public CreateRequest LineItemUnitAmount(int index, long lineItemUnitAmount) 
@@ -385,6 +399,16 @@ namespace ChargeBee.Models
             public CreateRequest LineItemDescription(int index, string lineItemDescription) 
             {
                 m_params.AddOpt("line_items[description][" + index + "]", lineItemDescription);
+                return this;
+            }
+            public CreateRequest LineItemEntityType(int index, CreditNoteLineItem.EntityTypeEnum lineItemEntityType) 
+            {
+                m_params.AddOpt("line_items[entity_type][" + index + "]", lineItemEntityType);
+                return this;
+            }
+            public CreateRequest LineItemEntityId(int index, string lineItemEntityId) 
+            {
+                m_params.AddOpt("line_items[entity_id][" + index + "]", lineItemEntityId);
                 return this;
             }
         }
@@ -918,11 +942,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_item_tiers[unit_amount_in_decimal][" + index + "]", lineItemTierUnitAmountInDecimal);
                 return this;
             }
-            public ImportCreditNoteRequest DiscountLineItemId(int index, string discountLineItemId) 
-            {
-                m_params.AddOpt("discounts[line_item_id][" + index + "]", discountLineItemId);
-                return this;
-            }
             public ImportCreditNoteRequest DiscountEntityType(int index, CreditNoteDiscount.EntityTypeEnum discountEntityType) 
             {
                 m_params.Add("discounts[entity_type][" + index + "]", discountEntityType);
@@ -1118,12 +1137,6 @@ namespace ChargeBee.Models
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [EnumMember(Value = "plan_setup")]
-                PlanSetup,
-                [EnumMember(Value = "plan")]
-                Plan,
-                [EnumMember(Value = "addon")]
-                Addon,
                 [EnumMember(Value = "adhoc")]
                 Adhoc,
                 [EnumMember(Value = "plan_item_price")]
@@ -1132,6 +1145,12 @@ namespace ChargeBee.Models
                 AddonItemPrice,
                 [EnumMember(Value = "charge_item_price")]
                 ChargeItemPrice,
+                [EnumMember(Value = "plan_setup")]
+                PlanSetup,
+                [EnumMember(Value = "plan")]
+                Plan,
+                [EnumMember(Value = "addon")]
+                Addon,
             }
 
             public string Id {
@@ -1610,6 +1629,18 @@ namespace ChargeBee.Models
 
             public ValidationStatusEnum? ValidationStatus {
                 get { return GetEnum<ValidationStatusEnum>("validation_status", false); }
+            }
+
+        }
+        public class CreditNoteSiteDetailsAtCreation : Resource
+        {
+
+            public string Timezone {
+                get { return GetValue<string>("timezone", false); }
+            }
+
+            public JToken OrganizationAddress {
+                get { return GetJToken("organization_address", false); }
             }
 
         }

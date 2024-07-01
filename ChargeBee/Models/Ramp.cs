@@ -352,6 +352,7 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<RampListRequest>("updated_at", this);        
             }
+            
             public RampListRequest SortByEffectiveFrom(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","effective_from");
                 return this;
@@ -374,7 +375,6 @@ namespace ChargeBee.Models
             Succeeded,
             [EnumMember(Value = "failed")]
             Failed,
-
         }
 
         #region Subclasses

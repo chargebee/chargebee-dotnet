@@ -555,11 +555,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("id", id);
                 return this;
             }
-            public CreateRequest BusinessEntityId(string businessEntityId) 
-            {
-                m_params.AddOpt("business_entity_id", businessEntityId);
-                return this;
-            }
             public CreateRequest PlanId(string planId) 
             {
                 m_params.Add("plan_id", planId);
@@ -1267,6 +1262,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("entity_identifiers[standard][" + index + "]", entityIdentifierStandard);
                 return this;
             }
+            public CreateRequest TaxProvidersFieldProviderName(int index, string taxProvidersFieldProviderName) 
+            {
+                m_params.AddOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
+                return this;
+            }
+            public CreateRequest TaxProvidersFieldFieldId(int index, string taxProvidersFieldFieldId) 
+            {
+                m_params.AddOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
+                return this;
+            }
+            public CreateRequest TaxProvidersFieldFieldValue(int index, string taxProvidersFieldFieldValue) 
+            {
+                m_params.AddOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
+                return this;
+            }
             public CreateRequest AddonId(int index, string addonId) 
             {
                 m_params.AddOpt("addons[id][" + index + "]", addonId);
@@ -1370,11 +1380,6 @@ namespace ChargeBee.Models
             public CreateForCustomerRequest Id(string id) 
             {
                 m_params.AddOpt("id", id);
-                return this;
-            }
-            public CreateForCustomerRequest BusinessEntityId(string businessEntityId) 
-            {
-                m_params.AddOpt("business_entity_id", businessEntityId);
                 return this;
             }
             public CreateForCustomerRequest PlanId(string planId) 
@@ -1804,11 +1809,6 @@ namespace ChargeBee.Models
             public CreateWithItemsRequest BillingAlignmentMode(ChargeBee.Models.Enums.BillingAlignmentModeEnum billingAlignmentMode) 
             {
                 m_params.AddOpt("billing_alignment_mode", billingAlignmentMode);
-                return this;
-            }
-            public CreateWithItemsRequest OfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum offlinePaymentMethod) 
-            {
-                m_params.AddOpt("offline_payment_method", offlinePaymentMethod);
                 return this;
             }
             public CreateWithItemsRequest PoNumber(string poNumber) 

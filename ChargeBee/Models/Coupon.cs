@@ -914,7 +914,7 @@ namespace ChargeBee.Models
             EachUnitOfSpecifiedItems,
 
         }
-        public enum PlanConstraintEnum
+        public enum AddonConstraintEnum
         {
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
@@ -929,7 +929,7 @@ namespace ChargeBee.Models
             NotApplicable,
 
         }
-        public enum AddonConstraintEnum
+        public enum PlanConstraintEnum
         {
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a

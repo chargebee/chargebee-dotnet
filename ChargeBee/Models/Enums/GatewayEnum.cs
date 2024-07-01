@@ -91,9 +91,6 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "paypal_express_checkout")]
          PaypalExpressCheckout,
 
-        [EnumMember(Value = "gocardless")]
-         Gocardless,
-
         [EnumMember(Value = "adyen")]
          Adyen,
 
@@ -159,6 +156,12 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "dlocal")]
          Dlocal,
+
+        [EnumMember(Value = "nuvei")]
+         Nuvei,
+
+        [EnumMember(Value = "gocardless")]
+         Gocardless,
 
         [EnumMember(Value = "not_applicable")]
          NotApplicable,
