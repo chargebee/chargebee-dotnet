@@ -289,6 +289,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<PaymentVoucher>("payment_voucher"); }
         }
+        public Currency Currency
+        {
+            get {  return GetResource<Currency>("currency"); }
+        }
         public Ramp Ramp
         {
             get {  return GetResource<Ramp>("ramp"); }
@@ -304,6 +308,10 @@ namespace ChargeBee.Internal
         public InstallmentDetail InstallmentDetail
         {
             get {  return GetResource<InstallmentDetail>("installment_detail"); }
+        }
+        public PricingPageSession PricingPageSession
+        {
+            get {  return GetResource<PricingPageSession>("pricing_page_session"); }
         }
 
         public List<AdvanceInvoiceSchedule> AdvanceInvoiceSchedules

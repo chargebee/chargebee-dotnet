@@ -492,6 +492,10 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<InvoiceSiteDetailsAtCreation>("site_details_at_creation"); }
         }
+        public InvoiceTaxOrigin TaxOrigin 
+        {
+            get { return GetSubResource<InvoiceTaxOrigin>("tax_origin"); }
+        }
         
         #endregion
         
@@ -4251,6 +4255,18 @@ namespace ChargeBee.Models
 
             public JToken OrganizationAddress {
                 get { return GetJToken("organization_address", false); }
+            }
+
+        }
+        public class InvoiceTaxOrigin : Resource
+        {
+
+            public string Country {
+                get { return GetValue<string>("country", false); }
+            }
+
+            public string RegistrationNumber {
+                get { return GetValue<string>("registration_number", false); }
             }
 
         }

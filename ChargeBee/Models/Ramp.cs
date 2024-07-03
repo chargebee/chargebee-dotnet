@@ -375,6 +375,10 @@ namespace ChargeBee.Models
             Succeeded,
             [EnumMember(Value = "failed")]
             Failed,
+            [EnumMember(Value = "draft")]
+            [Obsolete]
+            Draft,
+
         }
 
         #region Subclasses

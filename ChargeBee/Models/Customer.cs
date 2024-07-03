@@ -1039,10 +1039,6 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<CustomerListRequest>("updated_at", this);        
             }
-            public StringFilter<CustomerListRequest> BusinessEntityId() 
-            {
-                return new StringFilter<CustomerListRequest>("business_entity_id", this);        
-            }
             public EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, CustomerListRequest> OfflinePaymentMethod() 
             {
                 return new EnumFilter<ChargeBee.Models.Enums.OfflinePaymentMethodEnum, CustomerListRequest>("offline_payment_method", this);        
@@ -1054,6 +1050,10 @@ namespace ChargeBee.Models
             public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, CustomerListRequest> Channel() 
             {
                 return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, CustomerListRequest>("channel", this);        
+            }
+            public StringFilter<CustomerListRequest> BusinessEntityId() 
+            {
+                return new StringFilter<CustomerListRequest>("business_entity_id", this);        
             }
             
             public CustomerListRequest SortByCreatedAt(SortOrderEnum order) {
@@ -2408,6 +2408,8 @@ namespace ChargeBee.Models
                 AutomatedBankTransfer,
                 [EnumMember(Value = "klarna_pay_now")]
                 KlarnaPayNow,
+                [EnumMember(Value = "online_banking_poland")]
+                OnlineBankingPoland,
             }
             public enum StatusEnum
             {

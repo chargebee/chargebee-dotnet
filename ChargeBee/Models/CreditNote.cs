@@ -295,6 +295,10 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<CreditNoteSiteDetailsAtCreation>("site_details_at_creation"); }
         }
+        public CreditNoteTaxOrigin TaxOrigin 
+        {
+            get { return GetSubResource<CreditNoteTaxOrigin>("tax_origin"); }
+        }
         
         #endregion
         
@@ -1641,6 +1645,18 @@ namespace ChargeBee.Models
 
             public JToken OrganizationAddress {
                 get { return GetJToken("organization_address", false); }
+            }
+
+        }
+        public class CreditNoteTaxOrigin : Resource
+        {
+
+            public string Country {
+                get { return GetValue<string>("country", false); }
+            }
+
+            public string RegistrationNumber {
+                get { return GetValue<string>("registration_number", false); }
             }
 
         }

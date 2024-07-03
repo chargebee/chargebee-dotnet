@@ -2376,6 +2376,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public CancelSubscriptionRequest CancelOption(ChargeBee.Models.Enums.CancelOptionEnum cancelOption) 
+            {
+                m_params.AddOpt("cancel_option", cancelOption);
+                return this;
+            }
             public CancelSubscriptionRequest EndOfTerm(bool endOfTerm) 
             {
                 m_params.AddOpt("end_of_term", endOfTerm);
@@ -2449,6 +2454,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public CancelSubscriptionForItemsRequest CancelOption(ChargeBee.Models.Enums.CancelOptionEnum cancelOption) 
+            {
+                m_params.AddOpt("cancel_option", cancelOption);
+                return this;
+            }
             public CancelSubscriptionForItemsRequest EndOfTerm(bool endOfTerm) 
             {
                 m_params.AddOpt("end_of_term", endOfTerm);

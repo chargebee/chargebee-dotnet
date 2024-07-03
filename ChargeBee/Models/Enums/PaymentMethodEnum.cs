@@ -103,5 +103,8 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "klarna_pay_now")]
          KlarnaPayNow,
 
+        [EnumMember(Value = "online_banking_poland")]
+         OnlineBankingPoland,
+
     }
 }

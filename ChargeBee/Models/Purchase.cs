@@ -109,6 +109,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("invoice_info[notes]", invoiceInfoNotes);
                 return this;
             }
+            public CreateRequest StatementDescriptorDescriptor(string statementDescriptorDescriptor) 
+            {
+                m_params.AddOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
+                return this;
+            }
             public CreateRequest InstallmentInfoConfigId(string installmentInfoConfigId) 
             {
                 m_params.AddOpt("installment_info[config_id]", installmentInfoConfigId);
