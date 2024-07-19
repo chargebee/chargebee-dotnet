@@ -2305,6 +2305,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("force_term_reset", forceTermReset);
                 return this;
             }
+            public CheckoutExistingForItemsRequest ChangeOption(ChargeBee.Models.Enums.ChangeOptionEnum changeOption) 
+            {
+                m_params.AddOpt("change_option", changeOption);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest ChangesScheduledAt(long changesScheduledAt) 
+            {
+                m_params.AddOpt("changes_scheduled_at", changesScheduledAt);
+                return this;
+            }
             public CheckoutExistingForItemsRequest RedirectUrl(string redirectUrl) 
             {
                 m_params.AddOpt("redirect_url", redirectUrl);
