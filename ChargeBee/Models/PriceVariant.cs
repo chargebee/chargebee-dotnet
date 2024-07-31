@@ -81,6 +81,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("external_name", false); }
         }
+        public string VariantGroup 
+        {
+            get { return GetValue<string>("variant_group", false); }
+        }
         public string Description 
         {
             get { return GetValue<string>("description", false); }
@@ -140,6 +144,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("description", description);
                 return this;
             }
+            public CreateRequest VariantGroup(string variantGroup) 
+            {
+                m_params.AddOpt("variant_group", variantGroup);
+                return this;
+            }
             public CreateRequest AttributeName(int index, string attributeName) 
             {
                 m_params.Add("attributes[name][" + index + "]", attributeName);
@@ -171,6 +180,11 @@ namespace ChargeBee.Models
             public UpdateRequest Description(string description) 
             {
                 m_params.AddOpt("description", description);
+                return this;
+            }
+            public UpdateRequest VariantGroup(string variantGroup) 
+            {
+                m_params.AddOpt("variant_group", variantGroup);
                 return this;
             }
             public UpdateRequest Status(PriceVariant.StatusEnum status) 

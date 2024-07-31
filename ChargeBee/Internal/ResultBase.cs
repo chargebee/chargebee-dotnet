@@ -257,6 +257,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<ImpactedItemPrice>("impacted_item_price"); }
         }
+        public Metadata Metadata
+        {
+            get {  return GetResource<Metadata>("metadata"); }
+        }
         public SubscriptionEntitlement SubscriptionEntitlement
         {
             get {  return GetResource<SubscriptionEntitlement>("subscription_entitlement"); }

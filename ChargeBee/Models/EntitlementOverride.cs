@@ -86,6 +86,15 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("expires_at", false); }
         }
+        public DateTime? EffectiveFrom 
+        {
+            get { return GetDateTime("effective_from", false); }
+        }
+        [Obsolete]
+        public ScheduleStatusEnum? ScheduleStatus 
+        {
+            get { return GetEnum<ScheduleStatusEnum>("schedule_status", false); }
+        }
         
         #endregion
         
@@ -117,6 +126,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("entitlement_overrides[expires_at][" + index + "]", entitlementOverrideExpiresAt);
                 return this;
             }
+            public AddEntitlementOverrideForSubscriptionRequest EntitlementOverrideEffectiveFrom(int index, long entitlementOverrideEffectiveFrom) 
+            {
+                m_params.AddOpt("entitlement_overrides[effective_from][" + index + "]", entitlementOverrideEffectiveFrom);
+                return this;
+            }
         }
         public class EntitlementOverrideListEntitlementOverrideForSubscriptionRequest : ListRequestBase<EntitlementOverrideListEntitlementOverrideForSubscriptionRequest> 
         {
@@ -137,9 +151,29 @@ namespace ChargeBee.Models
                 m_params.AddOpt("include_drafts", includeDrafts);
                 return this;
             }
+            [Obsolete]
+            public EntitlementOverrideListEntitlementOverrideForSubscriptionRequest IncludeScheduledOverrides(bool includeScheduledOverrides) 
+            {
+                m_params.AddOpt("include_scheduled_overrides", includeScheduledOverrides);
+                return this;
+            }
         }
         #endregion
 
+        [Obsolete]
+        public enum ScheduleStatusEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "activated")]
+            Activated,
+            [EnumMember(Value = "scheduled")]
+            Scheduled,
+            [EnumMember(Value = "failed")]
+            Failed,
+
+        }
 
         #region Subclasses
 

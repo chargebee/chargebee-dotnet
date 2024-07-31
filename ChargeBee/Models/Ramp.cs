@@ -132,6 +132,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool>("deleted", true); }
         }
+        public RampStatusTransitionReason StatusTransitionReason 
+        {
+            get { return GetSubResource<RampStatusTransitionReason>("status_transition_reason"); }
+        }
         
         #endregion
         
@@ -376,7 +380,6 @@ namespace ChargeBee.Models
             [EnumMember(Value = "failed")]
             Failed,
             [EnumMember(Value = "draft")]
-            [Obsolete]
             Draft,
 
         }
@@ -642,6 +645,18 @@ namespace ChargeBee.Models
 
             public int Index {
                 get { return GetValue<int>("index", true); }
+            }
+
+        }
+        public class RampStatusTransitionReason : Resource
+        {
+
+            public string Code {
+                get { return GetValue<string>("code", false); }
+            }
+
+            public string Message {
+                get { return GetValue<string>("message", false); }
             }
 
         }

@@ -109,6 +109,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "subscription_renewed")]
          SubscriptionRenewed,
 
+        [EnumMember(Value = "subscription_items_renewed")]
+         SubscriptionItemsRenewed,
+
         [EnumMember(Value = "subscription_scheduled_cancellation_removed")]
          SubscriptionScheduledCancellationRemoved,
 
@@ -504,6 +507,12 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "ramp_applied")]
          RampApplied,
+
+        [EnumMember(Value = "subscription_ramp_drafted")]
+         SubscriptionRampDrafted,
+
+        [EnumMember(Value = "subscription_ramp_updated")]
+         SubscriptionRampUpdated,
 
         [EnumMember(Value = "price_variant_created")]
          PriceVariantCreated,

@@ -6120,6 +6120,14 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("amount_in_decimal", false); }
             }
 
+            public int? BillingPeriod {
+                get { return GetValue<int?>("billing_period", false); }
+            }
+
+            public BillingPeriodUnitEnum? BillingPeriodUnit {
+                get { return GetEnum<BillingPeriodUnitEnum>("billing_period_unit", false); }
+            }
+
             public int? FreeQuantity {
                 get { return GetValue<int?>("free_quantity", false); }
             }

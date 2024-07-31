@@ -205,6 +205,10 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<UsageListRequest>("usage_date", this);        
             }
+            public TimestampFilter<UsageListRequest> UpdatedAt() 
+            {
+                return new TimestampFilter<UsageListRequest>("updated_at", this);        
+            }
             public StringFilter<UsageListRequest> ItemPriceId() 
             {
                 return new StringFilter<UsageListRequest>("item_price_id", this);        
@@ -220,6 +224,10 @@ namespace ChargeBee.Models
             
             public UsageListRequest SortByUsageDate(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","usage_date");
+                return this;
+            }
+            public UsageListRequest SortByUpdatedAt(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","updated_at");
                 return this;
             }
         }

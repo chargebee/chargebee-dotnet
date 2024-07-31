@@ -86,6 +86,16 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool>("is_enabled", true); }
         }
+        [Obsolete]
+        public DateTime? EffectiveFrom 
+        {
+            get { return GetDateTime("effective_from", false); }
+        }
+        [Obsolete]
+        public ScheduleStatusEnum? ScheduleStatus 
+        {
+            get { return GetEnum<ScheduleStatusEnum>("schedule_status", false); }
+        }
         public DateTime? ExpiresAt 
         {
             get { return GetDateTime("expires_at", false); }
@@ -117,6 +127,12 @@ namespace ChargeBee.Models
                 m_params.AddOpt("embed", embed);
                 return this;
             }
+            [Obsolete]
+            public SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionRequest IncludeScheduledOverrides(bool includeScheduledOverrides) 
+            {
+                m_params.AddOpt("include_scheduled_overrides", includeScheduledOverrides);
+                return this;
+            }
         }
         public class SetSubscriptionEntitlementAvailabilityRequest : EntityRequest<SetSubscriptionEntitlementAvailabilityRequest> 
         {
@@ -138,6 +154,20 @@ namespace ChargeBee.Models
         }
         #endregion
 
+        [Obsolete]
+        public enum ScheduleStatusEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "activated")]
+            Activated,
+            [EnumMember(Value = "scheduled")]
+            Scheduled,
+            [EnumMember(Value = "failed")]
+            Failed,
+
+        }
 
         #region Subclasses
         public class SubscriptionEntitlementComponent : Resource
