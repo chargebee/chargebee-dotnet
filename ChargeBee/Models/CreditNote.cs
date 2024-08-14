@@ -281,7 +281,7 @@ namespace ChargeBee.Models
         }
         public string BusinessEntityId 
         {
-            get { return GetValue<string>("business_entity_id", true); }
+            get { return GetValue<string>("business_entity_id", false); }
         }
         public CreditNoteShippingAddress ShippingAddress 
         {

@@ -70,6 +70,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("feature_unit", false); }
         }
+        public string FeatureType 
+        {
+            get { return GetValue<string>("feature_type", false); }
+        }
         public string Value 
         {
             get { return GetValue<string>("value", false); }

@@ -1932,6 +1932,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("invoice_immediately", invoiceImmediately);
                 return this;
             }
+            public UpdateSubscriptionForItemsRequest InvoiceUsages(bool invoiceUsages) 
+            {
+                m_params.AddOpt("invoice_usages", invoiceUsages);
+                return this;
+            }
             public UpdateSubscriptionForItemsRequest SubscriptionId(string subscriptionId) 
             {
                 m_params.Add("subscription[id]", subscriptionId);

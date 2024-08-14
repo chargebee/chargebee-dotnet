@@ -3130,6 +3130,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_initiator", paymentInitiator);
                 return this;
             }
+            public UpdateForItemsRequest InvoiceUsages(bool invoiceUsages) 
+            {
+                m_params.AddOpt("invoice_usages", invoiceUsages);
+                return this;
+            }
             [Obsolete]
             public UpdateForItemsRequest CardGateway(ChargeBee.Models.Enums.GatewayEnum cardGateway) 
             {
