@@ -56,6 +56,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("transactions", CheckNull(id), "record_refund");
             return new RecordRefundRequest(url, HttpMethod.POST);
         }
+        public static ReconcileRequest Reconcile(string id)
+        {
+            string url = ApiUtil.BuildUrl("transactions", CheckNull(id), "reconcile");
+            return new ReconcileRequest(url, HttpMethod.POST);
+        }
         public static RefundRequest Refund(string id)
         {
             string url = ApiUtil.BuildUrl("transactions", CheckNull(id), "refund");
@@ -347,6 +352,29 @@ namespace ChargeBee.Models
             public RecordRefundRequest Comment(string comment) 
             {
                 m_params.AddOpt("comment", comment);
+                return this;
+            }
+        }
+        public class ReconcileRequest : EntityRequest<ReconcileRequest> 
+        {
+            public ReconcileRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public ReconcileRequest IdAtGateway(string idAtGateway) 
+            {
+                m_params.AddOpt("id_at_gateway", idAtGateway);
+                return this;
+            }
+            public ReconcileRequest CustomerId(string customerId) 
+            {
+                m_params.AddOpt("customer_id", customerId);
+                return this;
+            }
+            public ReconcileRequest Status(StatusEnum status) 
+            {
+                m_params.AddOpt("status", status);
                 return this;
             }
         }

@@ -450,6 +450,11 @@ namespace ChargeBee.Models
         {
             get { return GetValue<long?>("mrr", false); }
         }
+        [Obsolete]
+        public long? Arr 
+        {
+            get { return GetValue<long?>("arr", false); }
+        }
         public decimal? ExchangeRate 
         {
             get { return GetValue<decimal?>("exchange_rate", false); }

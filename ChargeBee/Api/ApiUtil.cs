@@ -33,13 +33,13 @@ namespace ChargeBee.Api
             }
             return sb.ToString();
         }
-        private static HttpRequestMessage BuildRequest(string uri, HttpMethod method, Params parameters, ApiConfig env)
+        private static HttpRequestMessage BuildRequest(string uri, HttpMethod method, Params parameters, ApiConfig env, bool supportsFilter)
         {
             HttpRequestMessage request;
             System.Net.Http.HttpMethod meth = new System.Net.Http.HttpMethod(method.ToString());
             if (method.Equals(HttpMethod.POST))
             {
-                byte[] paramBytes = Encoding.GetEncoding(env.Charset).GetBytes(parameters.GetQuery(false));
+                byte[] paramBytes = Encoding.GetEncoding(env.Charset).GetBytes(parameters.GetQuery(supportsFilter));
                 string postData = Encoding.GetEncoding(env.Charset).GetString(paramBytes, 0, paramBytes.Length);
                 request = new HttpRequestMessage(meth, new Uri($"{env.ApiBaseUrl}{uri}"))
                 {
@@ -52,9 +52,9 @@ namespace ChargeBee.Api
             }
             return request;
         }
-        private static HttpRequestMessage GetRequestMessage(string url, HttpMethod method, Params parameters, Dictionary<string, string> headers, ApiConfig env)
+        private static HttpRequestMessage GetRequestMessage(string url, HttpMethod method, Params parameters, Dictionary<string, string> headers, ApiConfig env, bool supportsFilter=false)
         {
-            HttpRequestMessage request = BuildRequest(url, method, parameters, env);
+            HttpRequestMessage request = BuildRequest(url, method, parameters, env, supportsFilter);
             AddHeaders(request, env);
             AddCustomHeaders(request, headers);
             return request;
@@ -127,14 +127,14 @@ namespace ChargeBee.Api
             }
 
         }
-        private static EntityResult GetEntityResult(String url, Params parameters, Dictionary<string, string> headers, ApiConfig env, HttpMethod meth)
+        private static EntityResult GetEntityResult(String url, Params parameters, Dictionary<string, string> headers, ApiConfig env, HttpMethod meth, bool supportsFilter)
         {
 
-            return GetEntityResultAsync(url, parameters, headers, env, meth).ConfigureAwait(false).GetAwaiter().GetResult();
+            return GetEntityResultAsync(url, parameters, headers, env, meth, supportsFilter).ConfigureAwait(false).GetAwaiter().GetResult();
         }
-        private static async Task<EntityResult> GetEntityResultAsync(String url, Params parameters, Dictionary<string, string> headers, ApiConfig env, HttpMethod meth)
+        private static async Task<EntityResult> GetEntityResultAsync(String url, Params parameters, Dictionary<string, string> headers, ApiConfig env, HttpMethod meth, bool supportsFilter)
         {
-            HttpRequestMessage request = GetRequestMessage(url, meth, parameters, headers, env);
+            HttpRequestMessage request = GetRequestMessage(url, meth, parameters, headers, env, supportsFilter);
             var response = await httpClient.SendAsync(request).ConfigureAwait(false);
             var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             if (response.IsSuccessStatusCode)
@@ -148,26 +148,26 @@ namespace ChargeBee.Api
                 return null;
             }
         }
-        public static EntityResult Post(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env)
+        public static EntityResult Post(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env, bool supportsFilter=false)
         {
-            return GetEntityResult(url, parameters, headers, env, HttpMethod.POST);
+            return GetEntityResult(url, parameters, headers, env, HttpMethod.POST, supportsFilter);
         }
 
-        public static Task<EntityResult> PostAsync(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env)
+        public static Task<EntityResult> PostAsync(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env, bool supportsFilter=false)
         {
-            return GetEntityResultAsync(url, parameters, headers, env, HttpMethod.POST);
+            return GetEntityResultAsync(url, parameters, headers, env, HttpMethod.POST, supportsFilter);
         }
 
-        public static EntityResult Get(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env)
+        public static EntityResult Get(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env, bool supportsFilter=false)
         {
             url = String.Format("{0}?{1}", url, parameters.GetQuery(false));
-            return GetEntityResult(url, parameters, headers, env, HttpMethod.GET);
+            return GetEntityResult(url, parameters, headers, env, HttpMethod.GET, supportsFilter);
         }
 
-        public static Task<EntityResult> GetAsync(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env)
+        public static Task<EntityResult> GetAsync(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env, bool supportsFilter=false)
         {
-            url = String.Format("{0}?{1}", url, parameters.GetQuery(false));
-            return GetEntityResultAsync(url, parameters, headers, env, HttpMethod.GET);
+            url = String.Format("{0}?{1}", url, parameters.GetQuery(supportsFilter));
+            return GetEntityResultAsync(url, parameters, headers, env, HttpMethod.GET, supportsFilter);
         }
 
         public static ListResult GetList(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env)

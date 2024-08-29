@@ -523,6 +523,18 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "price_variant_deleted")]
          PriceVariantDeleted,
 
+        [EnumMember(Value = "customer_entitlements_updated")]
+         CustomerEntitlementsUpdated,
+
+        [EnumMember(Value = "subscription_moved_in")]
+         SubscriptionMovedIn,
+
+        [EnumMember(Value = "subscription_moved_out")]
+         SubscriptionMovedOut,
+
+        [EnumMember(Value = "subscription_movement_failed")]
+         SubscriptionMovementFailed,
+
         [EnumMember(Value = "plan_created")]
          PlanCreated,
 
