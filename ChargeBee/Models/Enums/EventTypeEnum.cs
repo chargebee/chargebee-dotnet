@@ -184,17 +184,17 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "credit_note_deleted")]
          CreditNoteDeleted,
 
-        [EnumMember(Value = "invoice_installments_created")]
-         InvoiceInstallmentsCreated,
+        [EnumMember(Value = "payment_schedules_created")]
+         PaymentSchedulesCreated,
 
-        [EnumMember(Value = "invoice_installment_updated")]
-         InvoiceInstallmentUpdated,
+        [EnumMember(Value = "payment_schedules_updated")]
+         PaymentSchedulesUpdated,
 
-        [EnumMember(Value = "installment_config_created")]
-         InstallmentConfigCreated,
+        [EnumMember(Value = "payment_schedule_scheme_created")]
+         PaymentScheduleSchemeCreated,
 
-        [EnumMember(Value = "installment_config_deleted")]
-         InstallmentConfigDeleted,
+        [EnumMember(Value = "payment_schedule_scheme_deleted")]
+         PaymentScheduleSchemeDeleted,
 
         [EnumMember(Value = "subscription_renewal_reminder")]
          SubscriptionRenewalReminder,

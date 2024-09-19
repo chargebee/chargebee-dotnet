@@ -14,12 +14,12 @@ using ChargeBee.Filters.Enums;
 namespace ChargeBee.Models
 {
 
-    public class InstallmentConfig : Resource 
+    public class PaymentScheduleScheme : Resource 
     {
     
-        public InstallmentConfig() { }
+        public PaymentScheduleScheme() { }
 
-        public InstallmentConfig(Stream stream)
+        public PaymentScheduleScheme(Stream stream)
         {
             using (StreamReader reader = new StreamReader(stream))
             {
@@ -28,13 +28,13 @@ namespace ChargeBee.Models
             }
         }
 
-        public InstallmentConfig(TextReader reader)
+        public PaymentScheduleScheme(TextReader reader)
         {
             JObj = JToken.Parse(reader.ReadToEnd());
             apiVersionCheck (JObj);    
         }
 
-        public InstallmentConfig(String jsonString)
+        public PaymentScheduleScheme(String jsonString)
         {
             JObj = JToken.Parse(jsonString);
             apiVersionCheck (JObj);
@@ -43,17 +43,17 @@ namespace ChargeBee.Models
         #region Methods
         public static CreateRequest Create()
         {
-            string url = ApiUtil.BuildUrl("installment_configs");
+            string url = ApiUtil.BuildUrl("payment_schedule_schemes");
             return new CreateRequest(url, HttpMethod.POST);
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
-            string url = ApiUtil.BuildUrl("installment_configs", CheckNull(id));
+            string url = ApiUtil.BuildUrl("payment_schedule_schemes", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         public static EntityRequest<Type> Delete(string id)
         {
-            string url = ApiUtil.BuildUrl("installment_configs", CheckNull(id), "delete");
+            string url = ApiUtil.BuildUrl("payment_schedule_schemes", CheckNull(id), "delete");
             return new EntityRequest<Type>(url, HttpMethod.POST);
         }
         #endregion
@@ -67,9 +67,9 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("description", false); }
         }
-        public int NumberOfInstallments 
+        public int NumberOfSchedules 
         {
-            get { return GetValue<int>("number_of_installments", true); }
+            get { return GetValue<int>("number_of_schedules", true); }
         }
         public PeriodUnitEnum PeriodUnit 
         {
@@ -78,10 +78,6 @@ namespace ChargeBee.Models
         public int? Period 
         {
             get { return GetValue<int?>("period", false); }
-        }
-        public int? PreferredDay 
-        {
-            get { return GetValue<int?>("preferred_day", false); }
         }
         public DateTime CreatedAt 
         {
@@ -95,9 +91,10 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("updated_at", false); }
         }
-        public List<InstallmentConfigInstallment> Installments 
+        [Obsolete]
+        public List<PaymentScheduleSchemePreferredSchedule> PreferredSchedules 
         {
-            get { return GetResourceList<InstallmentConfigInstallment>("installments"); }
+            get { return GetResourceList<PaymentScheduleSchemePreferredSchedule>("preferred_schedules"); }
         }
         
         #endregion
@@ -110,12 +107,12 @@ namespace ChargeBee.Models
             {
             }
 
-            public CreateRequest NumberOfInstallments(int numberOfInstallments) 
+            public CreateRequest NumberOfSchedules(int numberOfSchedules) 
             {
-                m_params.Add("number_of_installments", numberOfInstallments);
+                m_params.Add("number_of_schedules", numberOfSchedules);
                 return this;
             }
-            public CreateRequest PeriodUnit(InstallmentConfig.PeriodUnitEnum periodUnit) 
+            public CreateRequest PeriodUnit(PaymentScheduleScheme.PeriodUnitEnum periodUnit) 
             {
                 m_params.Add("period_unit", periodUnit);
                 return this;
@@ -125,24 +122,9 @@ namespace ChargeBee.Models
                 m_params.AddOpt("period", period);
                 return this;
             }
-            public CreateRequest PreferredDay(int preferredDay) 
-            {
-                m_params.AddOpt("preferred_day", preferredDay);
-                return this;
-            }
             public CreateRequest Description(string description) 
             {
                 m_params.AddOpt("description", description);
-                return this;
-            }
-            public CreateRequest InstallmentPeriod(int index, int installmentPeriod) 
-            {
-                m_params.AddOpt("installments[period][" + index + "]", installmentPeriod);
-                return this;
-            }
-            public CreateRequest InstallmentAmountPercentage(int index, decimal installmentAmountPercentage) 
-            {
-                m_params.AddOpt("installments[amount_percentage][" + index + "]", installmentAmountPercentage);
                 return this;
             }
         }
@@ -163,7 +145,7 @@ namespace ChargeBee.Models
         }
 
         #region Subclasses
-        public class InstallmentConfigInstallment : Resource
+        public class PaymentScheduleSchemePreferredSchedule : Resource
         {
 
             public int? Period {

@@ -214,10 +214,15 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "update_details");
             return new UpdateDetailsRequest(url, HttpMethod.POST);
         }
-        public static InstallmentsRequest Installments(string id)
+        public static ApplyPaymentScheduleSchemeRequest ApplyPaymentScheduleScheme(string id)
         {
-            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "installments");
-            return new InstallmentsRequest(url, HttpMethod.POST);
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "apply_payment_schedule_scheme");
+            return new ApplyPaymentScheduleSchemeRequest(url, HttpMethod.POST);
+        }
+        public static EntityRequest<Type> PaymentSchedules(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "payment_schedules");
+            return new EntityRequest<Type>(url, HttpMethod.GET);
         }
         public static EntityRequest<Type> ResendEinvoice(string id)
         {
@@ -3439,19 +3444,19 @@ namespace ChargeBee.Models
                 return this;
             }
         }
-        public class InstallmentsRequest : EntityRequest<InstallmentsRequest> 
+        public class ApplyPaymentScheduleSchemeRequest : EntityRequest<ApplyPaymentScheduleSchemeRequest> 
         {
-            public InstallmentsRequest(string url, HttpMethod method) 
+            public ApplyPaymentScheduleSchemeRequest(string url, HttpMethod method) 
                     : base(url, method)
             {
             }
 
-            public InstallmentsRequest ConfigId(string configId) 
+            public ApplyPaymentScheduleSchemeRequest SchemeId(string schemeId) 
             {
-                m_params.Add("config_id", configId);
+                m_params.Add("scheme_id", schemeId);
                 return this;
             }
-            public InstallmentsRequest Amount(long amount) 
+            public ApplyPaymentScheduleSchemeRequest Amount(long amount) 
             {
                 m_params.AddOpt("amount", amount);
                 return this;
