@@ -109,6 +109,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "subscription_renewed")]
          SubscriptionRenewed,
 
+        [EnumMember(Value = "subscription_items_renewed")]
+         SubscriptionItemsRenewed,
+
         [EnumMember(Value = "subscription_scheduled_cancellation_removed")]
          SubscriptionScheduledCancellationRemoved,
 
@@ -181,17 +184,17 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "credit_note_deleted")]
          CreditNoteDeleted,
 
-        [EnumMember(Value = "invoice_installments_created")]
-         InvoiceInstallmentsCreated,
+        [EnumMember(Value = "payment_schedules_created")]
+         PaymentSchedulesCreated,
 
-        [EnumMember(Value = "invoice_installment_updated")]
-         InvoiceInstallmentUpdated,
+        [EnumMember(Value = "payment_schedules_updated")]
+         PaymentSchedulesUpdated,
 
-        [EnumMember(Value = "installment_config_created")]
-         InstallmentConfigCreated,
+        [EnumMember(Value = "payment_schedule_scheme_created")]
+         PaymentScheduleSchemeCreated,
 
-        [EnumMember(Value = "installment_config_deleted")]
-         InstallmentConfigDeleted,
+        [EnumMember(Value = "payment_schedule_scheme_deleted")]
+         PaymentScheduleSchemeDeleted,
 
         [EnumMember(Value = "subscription_renewal_reminder")]
          SubscriptionRenewalReminder,
@@ -505,6 +508,12 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "ramp_applied")]
          RampApplied,
 
+        [EnumMember(Value = "subscription_ramp_drafted")]
+         SubscriptionRampDrafted,
+
+        [EnumMember(Value = "subscription_ramp_updated")]
+         SubscriptionRampUpdated,
+
         [EnumMember(Value = "price_variant_created")]
          PriceVariantCreated,
 
@@ -513,6 +522,18 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "price_variant_deleted")]
          PriceVariantDeleted,
+
+        [EnumMember(Value = "customer_entitlements_updated")]
+         CustomerEntitlementsUpdated,
+
+        [EnumMember(Value = "subscription_moved_in")]
+         SubscriptionMovedIn,
+
+        [EnumMember(Value = "subscription_moved_out")]
+         SubscriptionMovedOut,
+
+        [EnumMember(Value = "subscription_movement_failed")]
+         SubscriptionMovementFailed,
 
         [EnumMember(Value = "plan_created")]
          PlanCreated,

@@ -6,7 +6,9 @@ using System.Reflection;
 using System.Text;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+
 using Newtonsoft.Json;
+
 using ChargeBee.Exceptions;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -37,14 +39,13 @@ namespace ChargeBee.Api
 
             return sb.ToString();
         }
-
-        private static HttpRequestMessage BuildRequest(string uri, HttpMethod method, Params parameters, ApiConfig env)
+        private static HttpRequestMessage BuildRequest(string uri, HttpMethod method, Params parameters, ApiConfig env, bool supportsFilter)
         {
             HttpRequestMessage request;
             System.Net.Http.HttpMethod meth = new System.Net.Http.HttpMethod(method.ToString());
             if (method.Equals(HttpMethod.POST))
             {
-                byte[] paramBytes = Encoding.GetEncoding(env.Charset).GetBytes(parameters.GetQuery(false));
+                byte[] paramBytes = Encoding.GetEncoding(env.Charset).GetBytes(parameters.GetQuery(supportsFilter));
                 string postData = Encoding.GetEncoding(env.Charset).GetString(paramBytes, 0, paramBytes.Length);
                 request = new HttpRequestMessage(meth, new Uri($"{env.ApiBaseUrl}{uri}"))
                 {
@@ -55,14 +56,11 @@ namespace ChargeBee.Api
             {
                 request = new HttpRequestMessage(meth, new Uri($"{env.ApiBaseUrl}{uri}"));
             }
-
             return request;
         }
-
-        private static HttpRequestMessage GetRequestMessage(string url, HttpMethod method, Params parameters,
-            Dictionary<string, string> headers, ApiConfig env)
+        private static HttpRequestMessage GetRequestMessage(string url, HttpMethod method, Params parameters, Dictionary<string, string> headers, ApiConfig env, bool supportsFilter=false)
         {
-            HttpRequestMessage request = BuildRequest(url, method, parameters, env);
+            HttpRequestMessage request = BuildRequest(url, method, parameters, env, supportsFilter);
             AddHeaders(request, env);
             AddCustomHeaders(request, headers);
             return request;
@@ -108,26 +106,14 @@ namespace ChargeBee.Api
             }
             catch (JsonException e)
             {
-                if (content.Contains("503"))
-                {
-                    throw new ArgumentException(
-                        "Sorry, the server is currently unable to handle the request due to a temporary overload or scheduled maintenance. Please retry after sometime. \n type: internal_temporary_error, \n http_status_code: 503, \n error_code: internal_temporary_error,\n content: " +
-                        content, e);
-                }
-                else if (content.Contains("504"))
-                {
-                    throw new ArgumentException(
-                        "The server did not receive a timely response from an upstream server, request aborted. If this problem persists, contact us at support@chargebee.com. \n type: gateway_timeout, \n http_status_code: 504, \n error_code: gateway_timeout,\n content: " +
-                        content, e);
-                }
-                else
-                {
-                    throw new ArgumentException(
-                        "Sorry, something went wrong when trying to process the request. If this problem persists, contact us at support@chargebee.com. \n type: internal_error, \n http_status_code: 500, \n error_code: internal_error,\n content: " +
-                        content, e);
+                if(content.Contains("503")){
+                   throw new ArgumentException("Sorry, the server is currently unable to handle the request due to a temporary overload or scheduled maintenance. Please retry after sometime. \n type: internal_temporary_error, \n http_status_code: 503, \n error_code: internal_temporary_error,\n content: " + content,e);
+                }else if(content.Contains("504")){
+                   throw new ArgumentException("The server did not receive a timely response from an upstream server, request aborted. If this problem persists, contact us at support@chargebee.com. \n type: gateway_timeout, \n http_status_code: 504, \n error_code: gateway_timeout,\n content: " + content, e);
+                }else{
+                   throw new ArgumentException("Sorry, something went wrong when trying to process the request. If this problem persists, contact us at support@chargebee.com. \n type: internal_error, \n http_status_code: 500, \n error_code: internal_error,\n content: " + content,e);
                 }
             }
-
             string type = "";
             errorJson.TryGetValue("type", out type);
             if ("payment".Equals(type))
@@ -146,19 +132,16 @@ namespace ChargeBee.Api
             {
                 throw new ApiException(response.StatusCode, errorJson);
             }
-        }
 
-        private static EntityResult GetEntityResult(String url, Params parameters, Dictionary<string, string> headers,
-            ApiConfig env, HttpMethod meth)
-        {
-            return GetEntityResultAsync(url, parameters, headers, env, meth).ConfigureAwait(false).GetAwaiter()
-                .GetResult();
         }
-
-        private static async Task<EntityResult> GetEntityResultAsync(String url, Params parameters,
-            Dictionary<string, string> headers, ApiConfig env, HttpMethod meth)
+        private static EntityResult GetEntityResult(String url, Params parameters, Dictionary<string, string> headers, ApiConfig env, HttpMethod meth, bool supportsFilter)
         {
-            HttpRequestMessage request = GetRequestMessage(url, meth, parameters, headers, env);
+
+            return GetEntityResultAsync(url, parameters, headers, env, meth, supportsFilter).ConfigureAwait(false).GetAwaiter().GetResult();
+        }
+        private static async Task<EntityResult> GetEntityResultAsync(String url, Params parameters, Dictionary<string, string> headers, ApiConfig env, HttpMethod meth, bool supportsFilter)
+        {
+            HttpRequestMessage request = GetRequestMessage(url, meth, parameters, headers, env, supportsFilter);
             var response = await httpClient.SendAsync(request).ConfigureAwait(false);
             var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             if (response.IsSuccessStatusCode)
@@ -172,40 +155,34 @@ namespace ChargeBee.Api
                 return null;
             }
         }
-
-        public static EntityResult Post(string url, Params parameters, Dictionary<string, string> headers,
-            ApiConfig env)
+        public static EntityResult Post(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env, bool supportsFilter=false)
         {
-            return GetEntityResult(url, parameters, headers, env, HttpMethod.POST);
+            return GetEntityResult(url, parameters, headers, env, HttpMethod.POST, supportsFilter);
         }
 
-        public static Task<EntityResult> PostAsync(string url, Params parameters, Dictionary<string, string> headers,
-            ApiConfig env)
+        public static Task<EntityResult> PostAsync(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env, bool supportsFilter=false)
         {
-            return GetEntityResultAsync(url, parameters, headers, env, HttpMethod.POST);
+            return GetEntityResultAsync(url, parameters, headers, env, HttpMethod.POST, supportsFilter);
         }
 
-        public static EntityResult Get(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env)
+        public static EntityResult Get(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env, bool supportsFilter=false)
         {
             url = String.Format("{0}?{1}", url, parameters.GetQuery(false));
-            return GetEntityResult(url, parameters, headers, env, HttpMethod.GET);
+            return GetEntityResult(url, parameters, headers, env, HttpMethod.GET, supportsFilter);
         }
 
-        public static Task<EntityResult> GetAsync(string url, Params parameters, Dictionary<string, string> headers,
-            ApiConfig env)
+        public static Task<EntityResult> GetAsync(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env, bool supportsFilter=false)
         {
-            url = String.Format("{0}?{1}", url, parameters.GetQuery(false));
-            return GetEntityResultAsync(url, parameters, headers, env, HttpMethod.GET);
+            url = String.Format("{0}?{1}", url, parameters.GetQuery(supportsFilter));
+            return GetEntityResultAsync(url, parameters, headers, env, HttpMethod.GET, supportsFilter);
         }
 
-        public static ListResult GetList(string url, Params parameters, Dictionary<string, string> headers,
-            ApiConfig env)
+        public static ListResult GetList(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env)
         {
             return GetListAsync(url, parameters, headers, env).GetAwaiter().GetResult();
         }
 
-        public static async Task<ListResult> GetListAsync(string url, Params parameters,
-            Dictionary<string, string> headers, ApiConfig env)
+        public static async Task<ListResult> GetListAsync(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env)
         {
             url = String.Format("{0}?{1}", url, parameters.GetQuery(true));
             HttpRequestMessage request = GetRequestMessage(url, HttpMethod.GET, parameters, headers, env);
@@ -242,6 +219,7 @@ namespace ChargeBee.Api
         public static String SerializeObject(Object obj)
         {
             return JsonConvert.SerializeObject(obj);
+
         }
     }
 
@@ -254,17 +232,14 @@ namespace ChargeBee.Api
         /// DELETE
         /// </summary>
         DELETE,
-
         /// <summary>
         /// GET
         /// </summary>
         GET,
-
         /// <summary>
         /// POST
         /// </summary>
         POST,
-
         /// <summary>
         /// PUT
         /// </summary>

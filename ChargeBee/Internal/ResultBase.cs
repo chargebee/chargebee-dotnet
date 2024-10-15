@@ -97,6 +97,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<PaymentReferenceNumber>("payment_reference_number"); }
         }
+        public PaymentSchedule PaymentSchedule
+        {
+            get {  return GetResource<PaymentSchedule>("payment_schedule"); }
+        }
         public TaxWithheld TaxWithheld
         {
             get {  return GetResource<TaxWithheld>("tax_withheld"); }
@@ -257,9 +261,17 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<ImpactedItemPrice>("impacted_item_price"); }
         }
+        public Metadata Metadata
+        {
+            get {  return GetResource<Metadata>("metadata"); }
+        }
         public SubscriptionEntitlement SubscriptionEntitlement
         {
             get {  return GetResource<SubscriptionEntitlement>("subscription_entitlement"); }
+        }
+        public CustomerEntitlement CustomerEntitlement
+        {
+            get {  return GetResource<CustomerEntitlement>("customer_entitlement"); }
         }
         public ItemEntitlement ItemEntitlement
         {
@@ -289,21 +301,21 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<PaymentVoucher>("payment_voucher"); }
         }
+        public Currency Currency
+        {
+            get {  return GetResource<Currency>("currency"); }
+        }
         public Ramp Ramp
         {
             get {  return GetResource<Ramp>("ramp"); }
         }
-        public InstallmentConfig InstallmentConfig
+        public PaymentScheduleScheme PaymentScheduleScheme
         {
-            get {  return GetResource<InstallmentConfig>("installment_config"); }
+            get {  return GetResource<PaymentScheduleScheme>("payment_schedule_scheme"); }
         }
-        public Installment Installment
+        public PricingPageSession PricingPageSession
         {
-            get {  return GetResource<Installment>("installment"); }
-        }
-        public InstallmentDetail InstallmentDetail
-        {
-            get {  return GetResource<InstallmentDetail>("installment_detail"); }
+            get {  return GetResource<PricingPageSession>("pricing_page_session"); }
         }
 
         public List<AdvanceInvoiceSchedule> AdvanceInvoiceSchedules
@@ -319,6 +331,11 @@ namespace ChargeBee.Internal
         public List<Invoice> Invoices
         {
             get {  return (List<Invoice>)GetResourceList<Invoice>("invoices", "invoice"); }
+        }
+
+        public List<PaymentSchedule> PaymentSchedules
+        {
+            get {  return (List<PaymentSchedule>)GetResourceList<PaymentSchedule>("payment_schedules", "payment_schedule"); }
         }
 
         public List<CreditNote> CreditNotes

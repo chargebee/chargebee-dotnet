@@ -288,6 +288,8 @@ namespace ChargeBee.Models
             SepaInstantTransfer,
             [EnumMember(Value = "klarna_pay_now")]
             KlarnaPayNow,
+            [EnumMember(Value = "online_banking_poland")]
+            OnlineBankingPoland,
 
         }
 

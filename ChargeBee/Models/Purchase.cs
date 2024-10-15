@@ -109,14 +109,19 @@ namespace ChargeBee.Models
                 m_params.AddOpt("invoice_info[notes]", invoiceInfoNotes);
                 return this;
             }
-            public CreateRequest InstallmentInfoConfigId(string installmentInfoConfigId) 
+            public CreateRequest PaymentScheduleSchemeId(string paymentScheduleSchemeId) 
             {
-                m_params.AddOpt("installment_info[config_id]", installmentInfoConfigId);
+                m_params.AddOpt("payment_schedule[scheme_id]", paymentScheduleSchemeId);
                 return this;
             }
-            public CreateRequest InstallmentInfoAmount(long installmentInfoAmount) 
+            public CreateRequest PaymentScheduleAmount(long paymentScheduleAmount) 
             {
-                m_params.AddOpt("installment_info[amount]", installmentInfoAmount);
+                m_params.AddOpt("payment_schedule[amount]", paymentScheduleAmount);
+                return this;
+            }
+            public CreateRequest StatementDescriptorDescriptor(string statementDescriptorDescriptor) 
+            {
+                m_params.AddOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
                 return this;
             }
             public CreateRequest PurchaseItemIndex(int index, int purchaseItemIndex) 

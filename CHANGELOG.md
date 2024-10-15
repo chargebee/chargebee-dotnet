@@ -1,3 +1,141 @@
+### v3.24.0 (2024-09-19)
+* * *
+
+#### New Resource:
+* PaymentScheduleScheme has been added. 
+* PaymentSchedule has been added. 
+
+### New Endpoints: 
+* Invoice#ApplyPaymentScheduleScheme has been added. 
+* Invoice#PaymentSchedules has been added. 
+
+### New Attributes 
+* bundle_items[] has been added to Items. 
+* bundle_configuration has been added to Items.
+
+#### New Input parameters: 
+* bundle_configuration has been added to Items#CreateParams, Items#UpdateParams & Items#ListParams.
+* bundle_items_to_add[] has been added to Items#CreateParams & Items#UpdateParams.  
+* bundle_items_to_update[] has been added to Items#UpdateParams.
+* bundle_items_to_remove[] has been added to Items#UpdateParams.
+* payment_schedule has been added to Purchase#CreateParams.
+
+### New Enum Values:
+* payment_schedules_created has been added to EventTypeEnum.
+* payment_schedules_updated has been added to EventTypeEnum.
+* payment_schedule_scheme_created has been added to EventTypeEnum.
+* payment_schedule_scheme_deleted has been added to EventTypeEnum.
+
+### Removed Resource: 
+* Installment has been removed. 
+* InstallmentConfig has been removed.
+* InstallmentDetail has been removed.
+
+### Removed Endpoints: 
+* Invoice#Installments has been removed. 
+
+### Removed Input parameters: 
+* installment_info has been removed from Purchase#CreateParams.
+
+### Removed Enum Values: 
+* invoice_installments_created has been removed from EventTypeEnum.
+* invoice_installment_updated has been removed from EventTypeEnum.
+* installment_config_created has been removed from EventTypeEnum.
+* installment_config_deleted has been removed from EventTypeEnum.
+
+### v3.23.0 (2024-08-29)
+* * *
+
+#### New Resource:
+* CustomerEntitlement has been added. 
+
+#### New Endpoints:
+* Ramp#UpdateRequest has been added to Ramp resource.
+* Transaction#ReconcileRequest has been added to Transaction resource. 
+
+### New Attributes: 
+* arr has been added to Subscription. 
+
+### New Enum Values: 
+* customer_entitlements_updated has been added to EntityTypeEnum.
+* subscription_moved_in has been added in EventType enum.
+* subscription_moved_out has been added in EventType enum.
+* subscription_movement_failed has been added in EventType enum.
+
+#### Bug Fixes: 
+* in filter not working as expected in case of export, fixed.
+
+### v3.22.0 (2024-08-14)
+* * *
+
+#### New Attributes:
+* feature_type has been added in SubscriptionEntitlement.
+* business_entity_id has been made optional in Quote.
+* business_entity_id has been made optional in CreditNote.
+
+#### New Input parameters: 
+* invoice_usages has been added in Subscription#UpdateForItemsRequest.
+* invoice_usages has been added in Estimate#UpdateSubscriptionForItemsRequest.
+
+### v3.21.0 (2024-07-31)
+* * *
+
+#### New Resource:
+* Metadata has been added. 
+
+#### New Attributes:
+* variant_group has been added in PriceVariant resource.
+* effective_from & schedule_status have been added in EntitlementOverride resource.
+* effective_from & schedule_status have been added in SubscriptionEntitlement resource.
+* status_transition_reason has been added in Ramp subresource.
+* billing_period & billing_period_unit have been added in SubscriptionItem subresource.
+
+#### New Input parameters:
+* variant_group has been added to PriceVariant#CreateRequest, PriceVariant#UpdateRequest.
+* include_scheduled_overrides has been added to SubscriptionEntitlement#SubscriptionEntitlementsForSubscriptionRequest.
+* entitlement_overrides[effective_from] has been added to SubscriptionEntitlement#SubscriptionEntitlementsForSubscriptionRequest.
+* entitlement_overrides[effective_from] has been added to EntitlementOverride#AddEntitlementOverrideForSubscriptionRequest.
+* include_scheduled_overrides has been added to EntitlementOverride#ListEntitlementOverrideForSubscriptionRequest.
+* updated_at has been added to Usage#ListRequest.
+
+#### New Enum values:
+* SUBSCRIPTION_ITEMS_RENEWED has been added in EventType enum.
+* SUBSCRIPTION_RAMP_DRAFTED has been added in EventType enum.
+* SUBSCRIPTION_RAMP_UPDATED has been added in EventType enum.
+
+### v3.20.0 (2024-07-19)
+* * *
+
+#### New Input parameters:
+* change_option has been added to HostedPage#CheckoutExistingForItemsRequest.
+* changes_scheduled_at has been added to HostedPage#CheckoutExistingForItemsRequest.
+
+### v3.19.0 (2024-07-03)
+* * *
+
+#### New resources:
+* Currency has been added.
+* PricingPageSession Transfer has been added.
+
+#### New Enum 
+* cancel_option Enum has been added. 
+
+#### New Enum values:
+* ONLINE_BANKING_POLAND has been added in PaymentMethod enum.
+* ONLINE_BANKING_POLAND has been added in PaymentMethodType enum.
+* ONLINE_BANKING_POLAND has been added in Type enum.
+* DRAFT has been added in Ramp enum.
+
+#### New Input parameters:
+* cancel_option has been added to Estimate#CancelSubscriptionRequest, Estimate#CancelSubscriptionForItemsRequest.
+* cancel_option has been added to Subscription#CancelForItemsRequest, Subscription#CancelRequest.
+* statement_descriptor[descriptor] has been added to Purchase#ChargeRequest.
+
+#### New Attributes:
+* tax_origin has been added to Invoice.
+* tax_origin has been added to CreditNote.
+
+
 ### v3.18.1 (2024-05-29)
 * * *
 * Dotnet Event Content - bugfix

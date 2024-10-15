@@ -46,6 +46,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "create_ramp");
             return new CreateForSubscriptionRequest(url, HttpMethod.POST);
         }
+        public static UpdateRequest Update(string id)
+        {
+            string url = ApiUtil.BuildUrl("ramps", CheckNull(id), "update");
+            return new UpdateRequest(url, HttpMethod.POST);
+        }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("ramps", CheckNull(id));
@@ -131,6 +136,10 @@ namespace ChargeBee.Models
         public bool Deleted 
         {
             get { return GetValue<bool>("deleted", true); }
+        }
+        public RampStatusTransitionReason StatusTransitionReason 
+        {
+            get { return GetSubResource<RampStatusTransitionReason>("status_transition_reason"); }
         }
         
         #endregion
@@ -324,6 +333,194 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class UpdateRequest : EntityRequest<UpdateRequest> 
+        {
+            public UpdateRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public UpdateRequest EffectiveFrom(long effectiveFrom) 
+            {
+                m_params.Add("effective_from", effectiveFrom);
+                return this;
+            }
+            public UpdateRequest Description(string description) 
+            {
+                m_params.AddOpt("description", description);
+                return this;
+            }
+            public UpdateRequest CouponsToRemove(List<string> couponsToRemove) 
+            {
+                m_params.AddOpt("coupons_to_remove", couponsToRemove);
+                return this;
+            }
+            public UpdateRequest DiscountsToRemove(List<string> discountsToRemove) 
+            {
+                m_params.AddOpt("discounts_to_remove", discountsToRemove);
+                return this;
+            }
+            public UpdateRequest ItemsToRemove(List<string> itemsToRemove) 
+            {
+                m_params.AddOpt("items_to_remove", itemsToRemove);
+                return this;
+            }
+            public UpdateRequest ItemsToAddItemPriceId(int index, string itemsToAddItemPriceId) 
+            {
+                m_params.Add("items_to_add[item_price_id][" + index + "]", itemsToAddItemPriceId);
+                return this;
+            }
+            public UpdateRequest ItemsToAddQuantity(int index, int itemsToAddQuantity) 
+            {
+                m_params.AddOpt("items_to_add[quantity][" + index + "]", itemsToAddQuantity);
+                return this;
+            }
+            public UpdateRequest ItemsToAddQuantityInDecimal(int index, string itemsToAddQuantityInDecimal) 
+            {
+                m_params.AddOpt("items_to_add[quantity_in_decimal][" + index + "]", itemsToAddQuantityInDecimal);
+                return this;
+            }
+            public UpdateRequest ItemsToAddUnitPrice(int index, long itemsToAddUnitPrice) 
+            {
+                m_params.AddOpt("items_to_add[unit_price][" + index + "]", itemsToAddUnitPrice);
+                return this;
+            }
+            public UpdateRequest ItemsToAddUnitPriceInDecimal(int index, string itemsToAddUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("items_to_add[unit_price_in_decimal][" + index + "]", itemsToAddUnitPriceInDecimal);
+                return this;
+            }
+            public UpdateRequest ItemsToAddBillingCycles(int index, int itemsToAddBillingCycles) 
+            {
+                m_params.AddOpt("items_to_add[billing_cycles][" + index + "]", itemsToAddBillingCycles);
+                return this;
+            }
+            public UpdateRequest ItemsToAddServicePeriodDays(int index, int itemsToAddServicePeriodDays) 
+            {
+                m_params.AddOpt("items_to_add[service_period_days][" + index + "]", itemsToAddServicePeriodDays);
+                return this;
+            }
+            public UpdateRequest ItemsToUpdateItemPriceId(int index, string itemsToUpdateItemPriceId) 
+            {
+                m_params.Add("items_to_update[item_price_id][" + index + "]", itemsToUpdateItemPriceId);
+                return this;
+            }
+            public UpdateRequest ItemsToUpdateQuantity(int index, int itemsToUpdateQuantity) 
+            {
+                m_params.AddOpt("items_to_update[quantity][" + index + "]", itemsToUpdateQuantity);
+                return this;
+            }
+            public UpdateRequest ItemsToUpdateQuantityInDecimal(int index, string itemsToUpdateQuantityInDecimal) 
+            {
+                m_params.AddOpt("items_to_update[quantity_in_decimal][" + index + "]", itemsToUpdateQuantityInDecimal);
+                return this;
+            }
+            public UpdateRequest ItemsToUpdateUnitPrice(int index, long itemsToUpdateUnitPrice) 
+            {
+                m_params.AddOpt("items_to_update[unit_price][" + index + "]", itemsToUpdateUnitPrice);
+                return this;
+            }
+            public UpdateRequest ItemsToUpdateUnitPriceInDecimal(int index, string itemsToUpdateUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("items_to_update[unit_price_in_decimal][" + index + "]", itemsToUpdateUnitPriceInDecimal);
+                return this;
+            }
+            public UpdateRequest ItemsToUpdateBillingCycles(int index, int itemsToUpdateBillingCycles) 
+            {
+                m_params.AddOpt("items_to_update[billing_cycles][" + index + "]", itemsToUpdateBillingCycles);
+                return this;
+            }
+            public UpdateRequest ItemsToUpdateServicePeriodDays(int index, int itemsToUpdateServicePeriodDays) 
+            {
+                m_params.AddOpt("items_to_update[service_period_days][" + index + "]", itemsToUpdateServicePeriodDays);
+                return this;
+            }
+            public UpdateRequest ItemTierItemPriceId(int index, string itemTierItemPriceId) 
+            {
+                m_params.AddOpt("item_tiers[item_price_id][" + index + "]", itemTierItemPriceId);
+                return this;
+            }
+            public UpdateRequest ItemTierStartingUnit(int index, int itemTierStartingUnit) 
+            {
+                m_params.AddOpt("item_tiers[starting_unit][" + index + "]", itemTierStartingUnit);
+                return this;
+            }
+            public UpdateRequest ItemTierEndingUnit(int index, int itemTierEndingUnit) 
+            {
+                m_params.AddOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
+                return this;
+            }
+            public UpdateRequest ItemTierPrice(int index, long itemTierPrice) 
+            {
+                m_params.AddOpt("item_tiers[price][" + index + "]", itemTierPrice);
+                return this;
+            }
+            public UpdateRequest ItemTierStartingUnitInDecimal(int index, string itemTierStartingUnitInDecimal) 
+            {
+                m_params.AddOpt("item_tiers[starting_unit_in_decimal][" + index + "]", itemTierStartingUnitInDecimal);
+                return this;
+            }
+            public UpdateRequest ItemTierEndingUnitInDecimal(int index, string itemTierEndingUnitInDecimal) 
+            {
+                m_params.AddOpt("item_tiers[ending_unit_in_decimal][" + index + "]", itemTierEndingUnitInDecimal);
+                return this;
+            }
+            public UpdateRequest ItemTierPriceInDecimal(int index, string itemTierPriceInDecimal) 
+            {
+                m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+                return this;
+            }
+            public UpdateRequest CouponsToAddCouponId(int index, string couponsToAddCouponId) 
+            {
+                m_params.AddOpt("coupons_to_add[coupon_id][" + index + "]", couponsToAddCouponId);
+                return this;
+            }
+            public UpdateRequest CouponsToAddApplyTill(int index, long couponsToAddApplyTill) 
+            {
+                m_params.AddOpt("coupons_to_add[apply_till][" + index + "]", couponsToAddApplyTill);
+                return this;
+            }
+            public UpdateRequest DiscountsToAddApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountsToAddApplyOn) 
+            {
+                m_params.Add("discounts_to_add[apply_on][" + index + "]", discountsToAddApplyOn);
+                return this;
+            }
+            public UpdateRequest DiscountsToAddDurationType(int index, ChargeBee.Models.Enums.DurationTypeEnum discountsToAddDurationType) 
+            {
+                m_params.Add("discounts_to_add[duration_type][" + index + "]", discountsToAddDurationType);
+                return this;
+            }
+            public UpdateRequest DiscountsToAddPercentage(int index, double discountsToAddPercentage) 
+            {
+                m_params.AddOpt("discounts_to_add[percentage][" + index + "]", discountsToAddPercentage);
+                return this;
+            }
+            public UpdateRequest DiscountsToAddAmount(int index, long discountsToAddAmount) 
+            {
+                m_params.AddOpt("discounts_to_add[amount][" + index + "]", discountsToAddAmount);
+                return this;
+            }
+            public UpdateRequest DiscountsToAddPeriod(int index, int discountsToAddPeriod) 
+            {
+                m_params.AddOpt("discounts_to_add[period][" + index + "]", discountsToAddPeriod);
+                return this;
+            }
+            public UpdateRequest DiscountsToAddPeriodUnit(int index, ChargeBee.Models.Enums.PeriodUnitEnum discountsToAddPeriodUnit) 
+            {
+                m_params.AddOpt("discounts_to_add[period_unit][" + index + "]", discountsToAddPeriodUnit);
+                return this;
+            }
+            public UpdateRequest DiscountsToAddIncludedInMrr(int index, bool discountsToAddIncludedInMrr) 
+            {
+                m_params.AddOpt("discounts_to_add[included_in_mrr][" + index + "]", discountsToAddIncludedInMrr);
+                return this;
+            }
+            public UpdateRequest DiscountsToAddItemPriceId(int index, string discountsToAddItemPriceId) 
+            {
+                m_params.AddOpt("discounts_to_add[item_price_id][" + index + "]", discountsToAddItemPriceId);
+                return this;
+            }
+        }
         public class RampListRequest : ListRequestBase<RampListRequest> 
         {
             public RampListRequest(string url) 
@@ -375,6 +572,9 @@ namespace ChargeBee.Models
             Succeeded,
             [EnumMember(Value = "failed")]
             Failed,
+            [EnumMember(Value = "draft")]
+            Draft,
+
         }
 
         #region Subclasses
@@ -638,6 +838,18 @@ namespace ChargeBee.Models
 
             public int Index {
                 get { return GetValue<int>("index", true); }
+            }
+
+        }
+        public class RampStatusTransitionReason : Resource
+        {
+
+            public string Code {
+                get { return GetValue<string>("code", false); }
+            }
+
+            public string Message {
+                get { return GetValue<string>("message", false); }
             }
 
         }

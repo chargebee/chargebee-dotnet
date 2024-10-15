@@ -161,6 +161,14 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<ItemApplicableItem>("applicable_items"); }
         }
+        public List<ItemBundleItem> BundleItems 
+        {
+            get { return GetResourceList<ItemBundleItem>("bundle_items"); }
+        }
+        public ItemBundleConfiguration BundleConfiguration 
+        {
+            get { return GetSubResource<ItemBundleConfiguration>("bundle_configuration"); }
+        }
         public JToken Metadata 
         {
             get { return GetJToken("metadata", false); }
@@ -271,6 +279,31 @@ namespace ChargeBee.Models
                 m_params.AddOpt("metadata", metadata);
                 return this;
             }
+            public CreateRequest BundleConfigurationType(ItemBundleConfiguration.TypeEnum bundleConfigurationType) 
+            {
+                m_params.AddOpt("bundle_configuration[type]", bundleConfigurationType);
+                return this;
+            }
+            public CreateRequest BundleItemsToAddItemId(int index, string bundleItemsToAddItemId) 
+            {
+                m_params.AddOpt("bundle_items_to_add[item_id][" + index + "]", bundleItemsToAddItemId);
+                return this;
+            }
+            public CreateRequest BundleItemsToAddItemType(int index, ChargeBee.Models.Enums.ItemTypeEnum bundleItemsToAddItemType) 
+            {
+                m_params.AddOpt("bundle_items_to_add[item_type][" + index + "]", bundleItemsToAddItemType);
+                return this;
+            }
+            public CreateRequest BundleItemsToAddQuantity(int index, int bundleItemsToAddQuantity) 
+            {
+                m_params.AddOpt("bundle_items_to_add[quantity][" + index + "]", bundleItemsToAddQuantity);
+                return this;
+            }
+            public CreateRequest BundleItemsToAddPriceAllocation(int index, decimal bundleItemsToAddPriceAllocation) 
+            {
+                m_params.AddOpt("bundle_items_to_add[price_allocation][" + index + "]", bundleItemsToAddPriceAllocation);
+                return this;
+            }
         }
         public class UpdateRequest : EntityRequest<UpdateRequest> 
         {
@@ -360,6 +393,61 @@ namespace ChargeBee.Models
                 m_params.AddOpt("status", status);
                 return this;
             }
+            public UpdateRequest BundleConfigurationType(ItemBundleConfiguration.TypeEnum bundleConfigurationType) 
+            {
+                m_params.AddOpt("bundle_configuration[type]", bundleConfigurationType);
+                return this;
+            }
+            public UpdateRequest BundleItemsToAddItemId(int index, string bundleItemsToAddItemId) 
+            {
+                m_params.AddOpt("bundle_items_to_add[item_id][" + index + "]", bundleItemsToAddItemId);
+                return this;
+            }
+            public UpdateRequest BundleItemsToAddItemType(int index, ChargeBee.Models.Enums.ItemTypeEnum bundleItemsToAddItemType) 
+            {
+                m_params.AddOpt("bundle_items_to_add[item_type][" + index + "]", bundleItemsToAddItemType);
+                return this;
+            }
+            public UpdateRequest BundleItemsToAddQuantity(int index, int bundleItemsToAddQuantity) 
+            {
+                m_params.AddOpt("bundle_items_to_add[quantity][" + index + "]", bundleItemsToAddQuantity);
+                return this;
+            }
+            public UpdateRequest BundleItemsToAddPriceAllocation(int index, decimal bundleItemsToAddPriceAllocation) 
+            {
+                m_params.AddOpt("bundle_items_to_add[price_allocation][" + index + "]", bundleItemsToAddPriceAllocation);
+                return this;
+            }
+            public UpdateRequest BundleItemsToUpdateItemId(int index, string bundleItemsToUpdateItemId) 
+            {
+                m_params.AddOpt("bundle_items_to_update[item_id][" + index + "]", bundleItemsToUpdateItemId);
+                return this;
+            }
+            public UpdateRequest BundleItemsToUpdateItemType(int index, ChargeBee.Models.Enums.ItemTypeEnum bundleItemsToUpdateItemType) 
+            {
+                m_params.AddOpt("bundle_items_to_update[item_type][" + index + "]", bundleItemsToUpdateItemType);
+                return this;
+            }
+            public UpdateRequest BundleItemsToUpdateQuantity(int index, int bundleItemsToUpdateQuantity) 
+            {
+                m_params.AddOpt("bundle_items_to_update[quantity][" + index + "]", bundleItemsToUpdateQuantity);
+                return this;
+            }
+            public UpdateRequest BundleItemsToUpdatePriceAllocation(int index, decimal bundleItemsToUpdatePriceAllocation) 
+            {
+                m_params.AddOpt("bundle_items_to_update[price_allocation][" + index + "]", bundleItemsToUpdatePriceAllocation);
+                return this;
+            }
+            public UpdateRequest BundleItemsToRemoveItemId(int index, string bundleItemsToRemoveItemId) 
+            {
+                m_params.AddOpt("bundle_items_to_remove[item_id][" + index + "]", bundleItemsToRemoveItemId);
+                return this;
+            }
+            public UpdateRequest BundleItemsToRemoveItemType(int index, ChargeBee.Models.Enums.ItemTypeEnum bundleItemsToRemoveItemType) 
+            {
+                m_params.AddOpt("bundle_items_to_remove[item_type][" + index + "]", bundleItemsToRemoveItemType);
+                return this;
+            }
         }
         public class ItemListRequest : ListRequestBase<ItemListRequest> 
         {
@@ -368,6 +456,10 @@ namespace ChargeBee.Models
             {
             }
 
+            public EnumFilter<ItemBundleConfiguration.TypeEnum, ItemListRequest> BundleConfigurationType() 
+            {
+                return new EnumFilter<ItemBundleConfiguration.TypeEnum, ItemListRequest>("bundle_configuration[type]", this);        
+            }
             public StringFilter<ItemListRequest> Id() 
             {
                 return new StringFilter<ItemListRequest>("id", this).SupportsMultiOperators(true);        
@@ -493,6 +585,52 @@ namespace ChargeBee.Models
 
             public string Id {
                 get { return GetValue<string>("id", false); }
+            }
+
+        }
+        public class ItemBundleItem : Resource
+        {
+            public enum ItemTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "plan")]
+                Plan,
+                [EnumMember(Value = "addon")]
+                Addon,
+                [EnumMember(Value = "charge")]
+                Charge,
+            }
+
+            public string ItemId {
+                get { return GetValue<string>("item_id", true); }
+            }
+
+            public ItemTypeEnum? ItemType {
+                get { return GetEnum<ItemTypeEnum>("item_type", false); }
+            }
+
+            public int? Quantity {
+                get { return GetValue<int?>("quantity", false); }
+            }
+
+            public decimal? PriceAllocation {
+                get { return GetValue<decimal?>("price_allocation", false); }
+            }
+
+        }
+        public class ItemBundleConfiguration : Resource
+        {
+            public enum TypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "fixed")]
+                Fixed,
+            }
+
+            public TypeEnum? BundleConfigurationType {
+                get { return GetEnum<TypeEnum>("type", false); }
             }
 
         }

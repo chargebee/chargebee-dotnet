@@ -14,12 +14,12 @@ using ChargeBee.Filters.Enums;
 namespace ChargeBee.Models
 {
 
-    public class InstallmentDetail : Resource 
+    public class PaymentSchedule : Resource 
     {
     
-        public InstallmentDetail() { }
+        public PaymentSchedule() { }
 
-        public InstallmentDetail(Stream stream)
+        public PaymentSchedule(Stream stream)
         {
             using (StreamReader reader = new StreamReader(stream))
             {
@@ -28,13 +28,13 @@ namespace ChargeBee.Models
             }
         }
 
-        public InstallmentDetail(TextReader reader)
+        public PaymentSchedule(TextReader reader)
         {
             JObj = JToken.Parse(reader.ReadToEnd());
             apiVersionCheck (JObj);    
         }
 
-        public InstallmentDetail(String jsonString)
+        public PaymentSchedule(String jsonString)
         {
             JObj = JToken.Parse(jsonString);
             apiVersionCheck (JObj);
@@ -46,27 +46,60 @@ namespace ChargeBee.Models
         #region Properties
         public string Id 
         {
-            get { return GetValue<string>("id", false); }
+            get { return GetValue<string>("id", true); }
         }
-        public string InvoiceId 
+        public string SchemeId 
         {
-            get { return GetValue<string>("invoice_id", false); }
+            get { return GetValue<string>("scheme_id", true); }
+        }
+        public EntityTypeEnum EntityType 
+        {
+            get { return GetEnum<EntityTypeEnum>("entity_type", true); }
+        }
+        public string EntityId 
+        {
+            get { return GetValue<string>("entity_id", true); }
         }
         public long? Amount 
         {
             get { return GetValue<long?>("amount", false); }
         }
-        public List<InstallmentDetailInstallment> Installments 
+        public DateTime CreatedAt 
         {
-            get { return GetResourceList<InstallmentDetailInstallment>("installments"); }
+            get { return (DateTime)GetDateTime("created_at", true); }
+        }
+        public long? ResourceVersion 
+        {
+            get { return GetValue<long?>("resource_version", false); }
+        }
+        public DateTime? UpdatedAt 
+        {
+            get { return GetDateTime("updated_at", false); }
+        }
+        public string CurrencyCode 
+        {
+            get { return GetValue<string>("currency_code", false); }
+        }
+        public List<PaymentScheduleScheduleEntry> ScheduleEntries 
+        {
+            get { return GetResourceList<PaymentScheduleScheduleEntry>("schedule_entries"); }
         }
         
         #endregion
         
 
+        public enum EntityTypeEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "invoice")]
+            Invoice,
+
+        }
 
         #region Subclasses
-        public class InstallmentDetailInstallment : Resource
+        public class PaymentScheduleScheduleEntry : Resource
         {
             public enum StatusEnum
             {
@@ -84,10 +117,6 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("id", true); }
             }
 
-            public string InvoiceId {
-                get { return GetValue<string>("invoice_id", true); }
-            }
-
             public DateTime Date {
                 get { return (DateTime)GetDateTime("date", true); }
             }
@@ -98,18 +127,6 @@ namespace ChargeBee.Models
 
             public StatusEnum Status {
                 get { return GetEnum<StatusEnum>("status", true); }
-            }
-
-            public DateTime CreatedAt {
-                get { return (DateTime)GetDateTime("created_at", true); }
-            }
-
-            public long? ResourceVersion {
-                get { return GetValue<long?>("resource_version", false); }
-            }
-
-            public DateTime? UpdatedAt {
-                get { return GetDateTime("updated_at", false); }
             }
 
         }

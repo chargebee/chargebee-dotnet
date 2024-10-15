@@ -51,87 +51,87 @@ namespace ChargeBee.Models
         public static RevenueRecognitionRequest RevenueRecognition()
         {
             string url = ApiUtil.BuildUrl("exports", "revenue_recognition");
-            return new RevenueRecognitionRequest(url, HttpMethod.POST);
+            return new RevenueRecognitionRequest(url, HttpMethod.POST, true);
         }
         public static DeferredRevenueRequest DeferredRevenue()
         {
             string url = ApiUtil.BuildUrl("exports", "deferred_revenue");
-            return new DeferredRevenueRequest(url, HttpMethod.POST);
+            return new DeferredRevenueRequest(url, HttpMethod.POST, true);
         }
         public static PlansRequest Plans()
         {
             string url = ApiUtil.BuildUrl("exports", "plans");
-            return new PlansRequest(url, HttpMethod.POST);
+            return new PlansRequest(url, HttpMethod.POST, true);
         }
         public static AddonsRequest Addons()
         {
             string url = ApiUtil.BuildUrl("exports", "addons");
-            return new AddonsRequest(url, HttpMethod.POST);
+            return new AddonsRequest(url, HttpMethod.POST, true);
         }
         public static CouponsRequest Coupons()
         {
             string url = ApiUtil.BuildUrl("exports", "coupons");
-            return new CouponsRequest(url, HttpMethod.POST);
+            return new CouponsRequest(url, HttpMethod.POST, true);
         }
         public static CustomersRequest Customers()
         {
             string url = ApiUtil.BuildUrl("exports", "customers");
-            return new CustomersRequest(url, HttpMethod.POST);
+            return new CustomersRequest(url, HttpMethod.POST, true);
         }
         public static SubscriptionsRequest Subscriptions()
         {
             string url = ApiUtil.BuildUrl("exports", "subscriptions");
-            return new SubscriptionsRequest(url, HttpMethod.POST);
+            return new SubscriptionsRequest(url, HttpMethod.POST, true);
         }
         public static InvoicesRequest Invoices()
         {
             string url = ApiUtil.BuildUrl("exports", "invoices");
-            return new InvoicesRequest(url, HttpMethod.POST);
+            return new InvoicesRequest(url, HttpMethod.POST, true);
         }
         public static CreditNotesRequest CreditNotes()
         {
             string url = ApiUtil.BuildUrl("exports", "credit_notes");
-            return new CreditNotesRequest(url, HttpMethod.POST);
+            return new CreditNotesRequest(url, HttpMethod.POST, true);
         }
         public static TransactionsRequest Transactions()
         {
             string url = ApiUtil.BuildUrl("exports", "transactions");
-            return new TransactionsRequest(url, HttpMethod.POST);
+            return new TransactionsRequest(url, HttpMethod.POST, true);
         }
         public static OrdersRequest Orders()
         {
             string url = ApiUtil.BuildUrl("exports", "orders");
-            return new OrdersRequest(url, HttpMethod.POST);
+            return new OrdersRequest(url, HttpMethod.POST, true);
         }
         public static ItemFamiliesRequest ItemFamilies()
         {
             string url = ApiUtil.BuildUrl("exports", "item_families");
-            return new ItemFamiliesRequest(url, HttpMethod.POST);
+            return new ItemFamiliesRequest(url, HttpMethod.POST, true);
         }
         public static ItemsRequest Items()
         {
             string url = ApiUtil.BuildUrl("exports", "items");
-            return new ItemsRequest(url, HttpMethod.POST);
+            return new ItemsRequest(url, HttpMethod.POST, true);
         }
         public static ItemPricesRequest ItemPrices()
         {
             string url = ApiUtil.BuildUrl("exports", "item_prices");
-            return new ItemPricesRequest(url, HttpMethod.POST);
+            return new ItemPricesRequest(url, HttpMethod.POST, true);
         }
         public static AttachedItemsRequest AttachedItems()
         {
             string url = ApiUtil.BuildUrl("exports", "attached_items");
-            return new AttachedItemsRequest(url, HttpMethod.POST);
+            return new AttachedItemsRequest(url, HttpMethod.POST, true);
         }
         public static DifferentialPricesRequest DifferentialPrices()
         {
             string url = ApiUtil.BuildUrl("exports", "differential_prices");
-            return new DifferentialPricesRequest(url, HttpMethod.POST);
+            return new DifferentialPricesRequest(url, HttpMethod.POST, true);
         }
         public static PriceVariantsRequest PriceVariants()
         {
             string url = ApiUtil.BuildUrl("exports", "price_variants");
-            return new PriceVariantsRequest(url, HttpMethod.POST);
+            return new PriceVariantsRequest(url, HttpMethod.POST, true);
         }
         #endregion
         
@@ -184,8 +184,8 @@ namespace ChargeBee.Models
         #region Requests
         public class RevenueRecognitionRequest : EntityRequest<RevenueRecognitionRequest> 
         {
-            public RevenueRecognitionRequest(string url, HttpMethod method) 
-                    : base(url, method)
+            public RevenueRecognitionRequest(string url, HttpMethod method, bool supportsFilter=false) 
+                    : base(url, method, supportsFilter)
             {
             }
 
@@ -427,8 +427,8 @@ namespace ChargeBee.Models
         }
         public class DeferredRevenueRequest : EntityRequest<DeferredRevenueRequest> 
         {
-            public DeferredRevenueRequest(string url, HttpMethod method) 
-                    : base(url, method)
+            public DeferredRevenueRequest(string url, HttpMethod method, bool supportsFilter=false) 
+                    : base(url, method, supportsFilter)
             {
             }
 
@@ -670,8 +670,8 @@ namespace ChargeBee.Models
         }
         public class PlansRequest : EntityRequest<PlansRequest> 
         {
-            public PlansRequest(string url, HttpMethod method) 
-                    : base(url, method)
+            public PlansRequest(string url, HttpMethod method, bool supportsFilter=false) 
+                    : base(url, method, supportsFilter)
             {
             }
 
@@ -730,8 +730,8 @@ namespace ChargeBee.Models
         }
         public class AddonsRequest : EntityRequest<AddonsRequest> 
         {
-            public AddonsRequest(string url, HttpMethod method) 
-                    : base(url, method)
+            public AddonsRequest(string url, HttpMethod method, bool supportsFilter=false) 
+                    : base(url, method, supportsFilter)
             {
             }
 
@@ -778,8 +778,8 @@ namespace ChargeBee.Models
         }
         public class CouponsRequest : EntityRequest<CouponsRequest> 
         {
-            public CouponsRequest(string url, HttpMethod method) 
-                    : base(url, method)
+            public CouponsRequest(string url, HttpMethod method, bool supportsFilter=false) 
+                    : base(url, method, supportsFilter)
             {
             }
 
@@ -822,8 +822,8 @@ namespace ChargeBee.Models
         }
         public class CustomersRequest : EntityRequest<CustomersRequest> 
         {
-            public CustomersRequest(string url, HttpMethod method) 
-                    : base(url, method)
+            public CustomersRequest(string url, HttpMethod method, bool supportsFilter=false) 
+                    : base(url, method, supportsFilter)
             {
             }
 
@@ -903,8 +903,8 @@ namespace ChargeBee.Models
         }
         public class SubscriptionsRequest : EntityRequest<SubscriptionsRequest> 
         {
-            public SubscriptionsRequest(string url, HttpMethod method) 
-                    : base(url, method)
+            public SubscriptionsRequest(string url, HttpMethod method, bool supportsFilter=false) 
+                    : base(url, method, supportsFilter)
             {
             }
 
@@ -988,8 +988,8 @@ namespace ChargeBee.Models
         }
         public class InvoicesRequest : EntityRequest<InvoicesRequest> 
         {
-            public InvoicesRequest(string url, HttpMethod method) 
-                    : base(url, method)
+            public InvoicesRequest(string url, HttpMethod method, bool supportsFilter=false) 
+                    : base(url, method, supportsFilter)
             {
             }
 
@@ -1064,8 +1064,8 @@ namespace ChargeBee.Models
         }
         public class CreditNotesRequest : EntityRequest<CreditNotesRequest> 
         {
-            public CreditNotesRequest(string url, HttpMethod method) 
-                    : base(url, method)
+            public CreditNotesRequest(string url, HttpMethod method, bool supportsFilter=false) 
+                    : base(url, method, supportsFilter)
             {
             }
 
@@ -1140,8 +1140,8 @@ namespace ChargeBee.Models
         }
         public class TransactionsRequest : EntityRequest<TransactionsRequest> 
         {
-            public TransactionsRequest(string url, HttpMethod method) 
-                    : base(url, method)
+            public TransactionsRequest(string url, HttpMethod method, bool supportsFilter=false) 
+                    : base(url, method, supportsFilter)
             {
             }
 
@@ -1208,8 +1208,8 @@ namespace ChargeBee.Models
         }
         public class OrdersRequest : EntityRequest<OrdersRequest> 
         {
-            public OrdersRequest(string url, HttpMethod method) 
-                    : base(url, method)
+            public OrdersRequest(string url, HttpMethod method, bool supportsFilter=false) 
+                    : base(url, method, supportsFilter)
             {
             }
 
@@ -1288,8 +1288,8 @@ namespace ChargeBee.Models
         }
         public class ItemFamiliesRequest : EntityRequest<ItemFamiliesRequest> 
         {
-            public ItemFamiliesRequest(string url, HttpMethod method) 
-                    : base(url, method)
+            public ItemFamiliesRequest(string url, HttpMethod method, bool supportsFilter=false) 
+                    : base(url, method, supportsFilter)
             {
             }
 
@@ -1308,8 +1308,8 @@ namespace ChargeBee.Models
         }
         public class ItemsRequest : EntityRequest<ItemsRequest> 
         {
-            public ItemsRequest(string url, HttpMethod method) 
-                    : base(url, method)
+            public ItemsRequest(string url, HttpMethod method, bool supportsFilter=false) 
+                    : base(url, method, supportsFilter)
             {
             }
 
@@ -1368,8 +1368,8 @@ namespace ChargeBee.Models
         }
         public class ItemPricesRequest : EntityRequest<ItemPricesRequest> 
         {
-            public ItemPricesRequest(string url, HttpMethod method) 
-                    : base(url, method)
+            public ItemPricesRequest(string url, HttpMethod method, bool supportsFilter=false) 
+                    : base(url, method, supportsFilter)
             {
             }
 
@@ -1436,8 +1436,8 @@ namespace ChargeBee.Models
         }
         public class AttachedItemsRequest : EntityRequest<AttachedItemsRequest> 
         {
-            public AttachedItemsRequest(string url, HttpMethod method) 
-                    : base(url, method)
+            public AttachedItemsRequest(string url, HttpMethod method, bool supportsFilter=false) 
+                    : base(url, method, supportsFilter)
             {
             }
 
@@ -1472,8 +1472,8 @@ namespace ChargeBee.Models
         }
         public class DifferentialPricesRequest : EntityRequest<DifferentialPricesRequest> 
         {
-            public DifferentialPricesRequest(string url, HttpMethod method) 
-                    : base(url, method)
+            public DifferentialPricesRequest(string url, HttpMethod method, bool supportsFilter=false) 
+                    : base(url, method, supportsFilter)
             {
             }
 
@@ -1496,8 +1496,8 @@ namespace ChargeBee.Models
         }
         public class PriceVariantsRequest : EntityRequest<PriceVariantsRequest> 
         {
-            public PriceVariantsRequest(string url, HttpMethod method) 
-                    : base(url, method)
+            public PriceVariantsRequest(string url, HttpMethod method, bool supportsFilter=false) 
+                    : base(url, method, supportsFilter)
             {
             }
 

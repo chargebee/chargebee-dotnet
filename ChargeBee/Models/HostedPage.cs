@@ -314,9 +314,9 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[company]", customerCompany);
                 return this;
             }
-            public CheckoutNewRequest CustomerTaxability(ChargeBee.Models.Enums.TaxabilityEnum customerTaxability) 
+            public CheckoutNewRequest CustomerPhone(string customerPhone) 
             {
-                m_params.AddOpt("customer[taxability]", customerTaxability);
+                m_params.AddOpt("customer[phone]", customerPhone);
                 return this;
             }
             public CheckoutNewRequest CustomerLocale(string customerLocale) 
@@ -324,9 +324,9 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[locale]", customerLocale);
                 return this;
             }
-            public CheckoutNewRequest CustomerPhone(string customerPhone) 
+            public CheckoutNewRequest CustomerTaxability(ChargeBee.Models.Enums.TaxabilityEnum customerTaxability) 
             {
-                m_params.AddOpt("customer[phone]", customerPhone);
+                m_params.AddOpt("customer[taxability]", customerTaxability);
                 return this;
             }
             public CheckoutNewRequest SubscriptionPlanId(string subscriptionPlanId) 
@@ -730,9 +730,9 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[company]", customerCompany);
                 return this;
             }
-            public CheckoutOneTimeRequest CustomerTaxability(ChargeBee.Models.Enums.TaxabilityEnum customerTaxability) 
+            public CheckoutOneTimeRequest CustomerPhone(string customerPhone) 
             {
-                m_params.AddOpt("customer[taxability]", customerTaxability);
+                m_params.AddOpt("customer[phone]", customerPhone);
                 return this;
             }
             public CheckoutOneTimeRequest CustomerLocale(string customerLocale) 
@@ -740,9 +740,9 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[locale]", customerLocale);
                 return this;
             }
-            public CheckoutOneTimeRequest CustomerPhone(string customerPhone) 
+            public CheckoutOneTimeRequest CustomerTaxability(ChargeBee.Models.Enums.TaxabilityEnum customerTaxability) 
             {
-                m_params.AddOpt("customer[phone]", customerPhone);
+                m_params.AddOpt("customer[taxability]", customerTaxability);
                 return this;
             }
             public CheckoutOneTimeRequest InvoicePoNumber(string invoicePoNumber) 
@@ -1095,9 +1095,9 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[company]", customerCompany);
                 return this;
             }
-            public CheckoutOneTimeForItemsRequest CustomerTaxability(ChargeBee.Models.Enums.TaxabilityEnum customerTaxability) 
+            public CheckoutOneTimeForItemsRequest CustomerPhone(string customerPhone) 
             {
-                m_params.AddOpt("customer[taxability]", customerTaxability);
+                m_params.AddOpt("customer[phone]", customerPhone);
                 return this;
             }
             public CheckoutOneTimeForItemsRequest CustomerLocale(string customerLocale) 
@@ -1105,9 +1105,9 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[locale]", customerLocale);
                 return this;
             }
-            public CheckoutOneTimeForItemsRequest CustomerPhone(string customerPhone) 
+            public CheckoutOneTimeForItemsRequest CustomerTaxability(ChargeBee.Models.Enums.TaxabilityEnum customerTaxability) 
             {
-                m_params.AddOpt("customer[phone]", customerPhone);
+                m_params.AddOpt("customer[taxability]", customerTaxability);
                 return this;
             }
             public CheckoutOneTimeForItemsRequest InvoicePoNumber(string invoicePoNumber) 
@@ -1574,9 +1574,9 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[company]", customerCompany);
                 return this;
             }
-            public CheckoutNewForItemsRequest CustomerTaxability(ChargeBee.Models.Enums.TaxabilityEnum customerTaxability) 
+            public CheckoutNewForItemsRequest CustomerPhone(string customerPhone) 
             {
-                m_params.AddOpt("customer[taxability]", customerTaxability);
+                m_params.AddOpt("customer[phone]", customerPhone);
                 return this;
             }
             public CheckoutNewForItemsRequest CustomerLocale(string customerLocale) 
@@ -1584,9 +1584,9 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[locale]", customerLocale);
                 return this;
             }
-            public CheckoutNewForItemsRequest CustomerPhone(string customerPhone) 
+            public CheckoutNewForItemsRequest CustomerTaxability(ChargeBee.Models.Enums.TaxabilityEnum customerTaxability) 
             {
-                m_params.AddOpt("customer[phone]", customerPhone);
+                m_params.AddOpt("customer[taxability]", customerTaxability);
                 return this;
             }
             public CheckoutNewForItemsRequest SubscriptionTrialEnd(long subscriptionTrialEnd) 
@@ -2303,6 +2303,16 @@ namespace ChargeBee.Models
             public CheckoutExistingForItemsRequest ForceTermReset(bool forceTermReset) 
             {
                 m_params.AddOpt("force_term_reset", forceTermReset);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest ChangeOption(ChargeBee.Models.Enums.ChangeOptionEnum changeOption) 
+            {
+                m_params.AddOpt("change_option", changeOption);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest ChangesScheduledAt(long changesScheduledAt) 
+            {
+                m_params.AddOpt("changes_scheduled_at", changesScheduledAt);
                 return this;
             }
             public CheckoutExistingForItemsRequest RedirectUrl(string redirectUrl) 

@@ -11,11 +11,13 @@ namespace ChargeBee.Api
         protected HttpMethod m_method;
         protected Params m_params = new Params();
 		protected Dictionary<string, string> headers = new Dictionary<string, string>();
+		protected bool m_supportsFilter;
 
-		public EntityRequest(string url, HttpMethod method)
+		public EntityRequest(string url, HttpMethod method, bool supportsFilter = false)
 		{
 			m_url = url;
-			m_method = method;
+			m_method = method; 
+			m_supportsFilter = supportsFilter;
 		}
 		
 		public T SetIdempotencyKey(string idempotencyKey){
@@ -52,9 +54,9 @@ namespace ChargeBee.Api
             switch (m_method)
             {
                 case HttpMethod.GET:
-					return ApiUtil.Get(m_url, m_params, headers, env);
+					return ApiUtil.Get(m_url, m_params, headers, env, m_supportsFilter);
                 case HttpMethod.POST:
-					return ApiUtil.Post(m_url, m_params, headers, env);
+					return ApiUtil.Post(m_url, m_params, headers, env, m_supportsFilter);
                 default:
                     throw new NotImplementedException(String.Format(
                         "HTTP method {0} is not implemented",
@@ -68,9 +70,9 @@ namespace ChargeBee.Api
             switch (m_method)
             {
                 case HttpMethod.GET:
-                    return ApiUtil.GetAsync(m_url, m_params, headers, env);
+                    return ApiUtil.GetAsync(m_url, m_params, headers, env, m_supportsFilter);
                 case HttpMethod.POST:
-                    return ApiUtil.PostAsync(m_url, m_params, headers, env);
+                    return ApiUtil.PostAsync(m_url, m_params, headers, env, m_supportsFilter);
                 default:
                     throw new NotImplementedException(String.Format(
                         "HTTP method {0} is not implemented",

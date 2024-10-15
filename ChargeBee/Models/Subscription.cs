@@ -450,6 +450,11 @@ namespace ChargeBee.Models
         {
             get { return GetValue<long?>("mrr", false); }
         }
+        [Obsolete]
+        public long? Arr 
+        {
+            get { return GetValue<long?>("arr", false); }
+        }
         public decimal? ExchangeRate 
         {
             get { return GetValue<decimal?>("exchange_rate", false); }
@@ -732,14 +737,19 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[company]", customerCompany);
                 return this;
             }
-            public CreateRequest CustomerTaxability(ChargeBee.Models.Enums.TaxabilityEnum customerTaxability) 
+            public CreateRequest CustomerPhone(string customerPhone) 
             {
-                m_params.AddOpt("customer[taxability]", customerTaxability);
+                m_params.AddOpt("customer[phone]", customerPhone);
                 return this;
             }
             public CreateRequest CustomerLocale(string customerLocale) 
             {
                 m_params.AddOpt("customer[locale]", customerLocale);
+                return this;
+            }
+            public CreateRequest CustomerTaxability(ChargeBee.Models.Enums.TaxabilityEnum customerTaxability) 
+            {
+                m_params.AddOpt("customer[taxability]", customerTaxability);
                 return this;
             }
             public CreateRequest CustomerEntityCode(ChargeBee.Models.Enums.EntityCodeEnum customerEntityCode) 
@@ -760,11 +770,6 @@ namespace ChargeBee.Models
             public CreateRequest CustomerTaxjarExemptionCategory(ChargeBee.Models.Enums.TaxjarExemptionCategoryEnum customerTaxjarExemptionCategory) 
             {
                 m_params.AddOpt("customer[taxjar_exemption_category]", customerTaxjarExemptionCategory);
-                return this;
-            }
-            public CreateRequest CustomerPhone(string customerPhone) 
-            {
-                m_params.AddOpt("customer[phone]", customerPhone);
                 return this;
             }
             public CreateRequest CustomerAutoCollection(ChargeBee.Models.Enums.AutoCollectionEnum customerAutoCollection) 
@@ -3130,6 +3135,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("payment_initiator", paymentInitiator);
                 return this;
             }
+            public UpdateForItemsRequest InvoiceUsages(bool invoiceUsages) 
+            {
+                m_params.AddOpt("invoice_usages", invoiceUsages);
+                return this;
+            }
             [Obsolete]
             public UpdateForItemsRequest CardGateway(ChargeBee.Models.Enums.GatewayEnum cardGateway) 
             {
@@ -4203,14 +4213,19 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[company]", customerCompany);
                 return this;
             }
-            public ImportSubscriptionRequest CustomerTaxability(ChargeBee.Models.Enums.TaxabilityEnum customerTaxability) 
+            public ImportSubscriptionRequest CustomerPhone(string customerPhone) 
             {
-                m_params.AddOpt("customer[taxability]", customerTaxability);
+                m_params.AddOpt("customer[phone]", customerPhone);
                 return this;
             }
             public ImportSubscriptionRequest CustomerLocale(string customerLocale) 
             {
                 m_params.AddOpt("customer[locale]", customerLocale);
+                return this;
+            }
+            public ImportSubscriptionRequest CustomerTaxability(ChargeBee.Models.Enums.TaxabilityEnum customerTaxability) 
+            {
+                m_params.AddOpt("customer[taxability]", customerTaxability);
                 return this;
             }
             public ImportSubscriptionRequest CustomerEntityCode(ChargeBee.Models.Enums.EntityCodeEnum customerEntityCode) 
@@ -4231,11 +4246,6 @@ namespace ChargeBee.Models
             public ImportSubscriptionRequest CustomerTaxjarExemptionCategory(ChargeBee.Models.Enums.TaxjarExemptionCategoryEnum customerTaxjarExemptionCategory) 
             {
                 m_params.AddOpt("customer[taxjar_exemption_category]", customerTaxjarExemptionCategory);
-                return this;
-            }
-            public ImportSubscriptionRequest CustomerPhone(string customerPhone) 
-            {
-                m_params.AddOpt("customer[phone]", customerPhone);
                 return this;
             }
             public ImportSubscriptionRequest CustomerCustomerType(ChargeBee.Models.Enums.CustomerTypeEnum customerCustomerType) 
@@ -5750,6 +5760,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public CancelRequest CancelOption(ChargeBee.Models.Enums.CancelOptionEnum cancelOption) 
+            {
+                m_params.AddOpt("cancel_option", cancelOption);
+                return this;
+            }
             public CancelRequest EndOfTerm(bool endOfTerm) 
             {
                 m_params.AddOpt("end_of_term", endOfTerm);
@@ -5823,6 +5838,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public CancelForItemsRequest CancelOption(ChargeBee.Models.Enums.CancelOptionEnum cancelOption) 
+            {
+                m_params.AddOpt("cancel_option", cancelOption);
+                return this;
+            }
             public CancelForItemsRequest EndOfTerm(bool endOfTerm) 
             {
                 m_params.AddOpt("end_of_term", endOfTerm);
@@ -6108,6 +6128,14 @@ namespace ChargeBee.Models
 
             public string AmountInDecimal {
                 get { return GetValue<string>("amount_in_decimal", false); }
+            }
+
+            public int? BillingPeriod {
+                get { return GetValue<int?>("billing_period", false); }
+            }
+
+            public BillingPeriodUnitEnum? BillingPeriodUnit {
+                get { return GetEnum<BillingPeriodUnitEnum>("billing_period_unit", false); }
             }
 
             public int? FreeQuantity {
