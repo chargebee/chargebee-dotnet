@@ -499,14 +499,14 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "item_price_entitlements_removed")]
          ItemPriceEntitlementsRemoved,
 
-        [EnumMember(Value = "ramp_created")]
-         RampCreated,
+        [EnumMember(Value = "subscription_ramp_created")]
+         SubscriptionRampCreated,
 
-        [EnumMember(Value = "ramp_deleted")]
-         RampDeleted,
+        [EnumMember(Value = "subscription_ramp_deleted")]
+         SubscriptionRampDeleted,
 
-        [EnumMember(Value = "ramp_applied")]
-         RampApplied,
+        [EnumMember(Value = "subscription_ramp_applied")]
+         SubscriptionRampApplied,
 
         [EnumMember(Value = "subscription_ramp_drafted")]
          SubscriptionRampDrafted,

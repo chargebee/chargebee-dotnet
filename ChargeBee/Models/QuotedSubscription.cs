@@ -380,6 +380,10 @@ namespace ChargeBee.Models
                 get { return GetEnum<ProrationTypeEnum>("proration_type", false); }
             }
 
+            public UsageAccumulationResetFrequencyEnum? UsageAccumulationResetFrequency {
+                get { return GetEnum<UsageAccumulationResetFrequencyEnum>("usage_accumulation_reset_frequency", false); }
+            }
+
         }
         public class QuotedSubscriptionItemTier : Resource
         {

@@ -63,6 +63,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("id", true); }
         }
+        public string Name 
+        {
+            get { return GetValue<string>("name", false); }
+        }
         public string Description 
         {
             get { return GetValue<string>("description", false); }

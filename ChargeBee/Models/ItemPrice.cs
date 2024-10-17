@@ -187,6 +187,10 @@ namespace ChargeBee.Models
         {
             get { return (DateTime)GetDateTime("created_at", true); }
         }
+        public UsageAccumulationResetFrequencyEnum? UsageAccumulationResetFrequency 
+        {
+            get { return GetEnum<UsageAccumulationResetFrequencyEnum>("usage_accumulation_reset_frequency", false); }
+        }
         public DateTime? ArchivedAt 
         {
             get { return GetDateTime("archived_at", false); }
@@ -325,6 +329,11 @@ namespace ChargeBee.Models
             public CreateRequest ShowDescriptionInQuotes(bool showDescriptionInQuotes) 
             {
                 m_params.AddOpt("show_description_in_quotes", showDescriptionInQuotes);
+                return this;
+            }
+            public CreateRequest UsageAccumulationResetFrequency(ChargeBee.Models.Enums.UsageAccumulationResetFrequencyEnum usageAccumulationResetFrequency) 
+            {
+                m_params.AddOpt("usage_accumulation_reset_frequency", usageAccumulationResetFrequency);
                 return this;
             }
             public CreateRequest PricingModel(ChargeBee.Models.Enums.PricingModelEnum pricingModel) 
@@ -528,6 +537,11 @@ namespace ChargeBee.Models
             public UpdateRequest ExternalName(string externalName) 
             {
                 m_params.AddOpt("external_name", externalName);
+                return this;
+            }
+            public UpdateRequest UsageAccumulationResetFrequency(ChargeBee.Models.Enums.UsageAccumulationResetFrequencyEnum usageAccumulationResetFrequency) 
+            {
+                m_params.AddOpt("usage_accumulation_reset_frequency", usageAccumulationResetFrequency);
                 return this;
             }
             public UpdateRequest CurrencyCode(string currencyCode) 

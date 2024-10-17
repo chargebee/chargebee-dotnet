@@ -136,6 +136,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("estimates", "create_invoice_for_items");
             return new CreateInvoiceForItemsRequest(url, HttpMethod.POST);
         }
+        public static PaymentSchedulesRequest PaymentSchedules()
+        {
+            string url = ApiUtil.BuildUrl("estimates", "payment_schedules");
+            return new PaymentSchedulesRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -158,6 +163,10 @@ namespace ChargeBee.Models
         public List<InvoiceEstimate> InvoiceEstimates 
         {
             get { return GetResourceList<InvoiceEstimate>("invoice_estimates"); }
+        }
+        public List<PaymentScheduleEstimate> PaymentScheduleEstimates 
+        {
+            get { return GetResourceList<PaymentScheduleEstimate>("payment_schedule_estimates"); }
         }
         public InvoiceEstimate NextInvoiceEstimate 
         {
@@ -3579,6 +3588,34 @@ namespace ChargeBee.Models
             public CreateInvoiceForItemsRequest TaxProvidersFieldFieldValue(int index, string taxProvidersFieldFieldValue) 
             {
                 m_params.AddOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
+                return this;
+            }
+        }
+        public class PaymentSchedulesRequest : EntityRequest<PaymentSchedulesRequest> 
+        {
+            public PaymentSchedulesRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public PaymentSchedulesRequest SchemeId(string schemeId) 
+            {
+                m_params.Add("scheme_id", schemeId);
+                return this;
+            }
+            public PaymentSchedulesRequest Amount(long amount) 
+            {
+                m_params.AddOpt("amount", amount);
+                return this;
+            }
+            public PaymentSchedulesRequest InvoiceId(string invoiceId) 
+            {
+                m_params.AddOpt("invoice_id", invoiceId);
+                return this;
+            }
+            public PaymentSchedulesRequest PaymentScheduleStartDate(long paymentScheduleStartDate) 
+            {
+                m_params.AddOpt("payment_schedule_start_date", paymentScheduleStartDate);
                 return this;
             }
         }

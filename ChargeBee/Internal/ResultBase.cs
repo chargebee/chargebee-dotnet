@@ -357,7 +357,6 @@ namespace ChargeBee.Internal
         {
             get {  return (List<InAppSubscription>)GetResourceList<InAppSubscription>("in_app_subscriptions", "in_app_subscription"); }
         }
-
         public List<DifferentialPrice> DifferentialPrices
         {
             get {  return (List<DifferentialPrice>)GetResourceList<DifferentialPrice>("differential_prices", "differential_price"); }

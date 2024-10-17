@@ -3992,6 +3992,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("invoice_date", invoiceDate);
                 return this;
             }
+            public ConvertRequest InvoiceImmediately(bool invoiceImmediately) 
+            {
+                m_params.AddOpt("invoice_immediately", invoiceImmediately);
+                return this;
+            }
             public ConvertRequest CreatePendingInvoices(bool createPendingInvoices) 
             {
                 m_params.AddOpt("create_pending_invoices", createPendingInvoices);

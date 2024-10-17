@@ -983,6 +983,10 @@ namespace ChargeBee.Models
                 Rupay,
                 [EnumMember(Value = "maestro")]
                 Maestro,
+                [EnumMember(Value = "dankort")]
+                Dankort,
+                [EnumMember(Value = "cartes_bancaires")]
+                CartesBancaires,
                 [EnumMember(Value = "not_applicable")]
                 NotApplicable,
             }

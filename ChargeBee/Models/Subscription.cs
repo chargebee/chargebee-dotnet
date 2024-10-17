@@ -2176,6 +2176,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("coupons[apply_till][" + index + "]", couponApplyTill);
                 return this;
             }
+            public CreateWithItemsRequest SubscriptionItemUsageAccumulationResetFrequency(int index, ChargeBee.Models.Enums.UsageAccumulationResetFrequencyEnum subscriptionItemUsageAccumulationResetFrequency) 
+            {
+                m_params.AddOpt("subscription_items[usage_accumulation_reset_frequency][" + index + "]", subscriptionItemUsageAccumulationResetFrequency);
+                return this;
+            }
         }
         public class SubscriptionListRequest : ListRequestBase<SubscriptionListRequest> 
         {
@@ -3667,6 +3672,11 @@ namespace ChargeBee.Models
             public UpdateForItemsRequest CouponApplyTill(int index, long couponApplyTill) 
             {
                 m_params.AddOpt("coupons[apply_till][" + index + "]", couponApplyTill);
+                return this;
+            }
+            public UpdateForItemsRequest SubscriptionItemUsageAccumulationResetFrequency(int index, ChargeBee.Models.Enums.UsageAccumulationResetFrequencyEnum subscriptionItemUsageAccumulationResetFrequency) 
+            {
+                m_params.AddOpt("subscription_items[usage_accumulation_reset_frequency][" + index + "]", subscriptionItemUsageAccumulationResetFrequency);
                 return this;
             }
         }
@@ -6172,6 +6182,10 @@ namespace ChargeBee.Models
 
             public ProrationTypeEnum? ProrationType {
                 get { return GetEnum<ProrationTypeEnum>("proration_type", false); }
+            }
+
+            public UsageAccumulationResetFrequencyEnum? UsageAccumulationResetFrequency {
+                get { return GetEnum<UsageAccumulationResetFrequencyEnum>("usage_accumulation_reset_frequency", false); }
             }
 
         }

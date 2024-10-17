@@ -849,7 +849,6 @@ namespace ChargeBee.Models
             [EnumMember(Value = "percentage")]
             Percentage,
             [EnumMember(Value = "offer_quantity")]
-            [Obsolete]
             OfferQuantity,
 
         }
