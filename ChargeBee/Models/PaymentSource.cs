@@ -587,6 +587,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[cvv]", cardCvv);
                 return this;
             }
+            public CreateCardRequest CardPreferredScheme(PaymentSourceCard.PreferredSchemeEnum cardPreferredScheme) 
+            {
+                m_params.AddOpt("card[preferred_scheme]", cardPreferredScheme);
+                return this;
+            }
             public CreateCardRequest CardBillingAddr1(string cardBillingAddr1) 
             {
                 m_params.AddOpt("card[billing_addr1]", cardBillingAddr1);
@@ -1004,6 +1009,17 @@ namespace ChargeBee.Models
                 NotKnown,
                 [EnumMember(Value = "not_applicable")]
                 NotApplicable,
+            }
+            public enum PreferredSchemeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "cartes_bancaires")]
+                CartesBancaires,
+                [EnumMember(Value = "mastercard")]
+                Mastercard,
+                [EnumMember(Value = "visa")]
+                Visa,
             }
 
             public string FirstName {

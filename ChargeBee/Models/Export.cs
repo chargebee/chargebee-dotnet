@@ -1293,6 +1293,14 @@ namespace ChargeBee.Models
             {
             }
 
+            public StringFilter<ItemFamiliesRequest> BusinessEntityId() 
+            {
+                return new StringFilter<ItemFamiliesRequest>("business_entity_id", this).SupportsPresenceOperator(true);        
+            }
+            public BooleanFilter<ItemFamiliesRequest> IncludeSiteLevelResources() 
+            {
+                return new BooleanFilter<ItemFamiliesRequest>("include_site_level_resources", this);        
+            }
             public StringFilter<ItemFamiliesRequest> ItemFamilyId() 
             {
                 return new StringFilter<ItemFamiliesRequest>("item_family[id]", this).SupportsMultiOperators(true);        
@@ -1313,6 +1321,14 @@ namespace ChargeBee.Models
             {
             }
 
+            public StringFilter<ItemsRequest> BusinessEntityId() 
+            {
+                return new StringFilter<ItemsRequest>("business_entity_id", this).SupportsPresenceOperator(true);        
+            }
+            public BooleanFilter<ItemsRequest> IncludeSiteLevelResources() 
+            {
+                return new BooleanFilter<ItemsRequest>("include_site_level_resources", this);        
+            }
             public StringFilter<ItemsRequest> ItemId() 
             {
                 return new StringFilter<ItemsRequest>("item[id]", this).SupportsMultiOperators(true);        
@@ -1384,6 +1400,14 @@ namespace ChargeBee.Models
             public StringFilter<ItemPricesRequest> CurrencyCode() 
             {
                 return new StringFilter<ItemPricesRequest>("currency_code", this).SupportsMultiOperators(true);        
+            }
+            public StringFilter<ItemPricesRequest> BusinessEntityId() 
+            {
+                return new StringFilter<ItemPricesRequest>("business_entity_id", this).SupportsPresenceOperator(true);        
+            }
+            public BooleanFilter<ItemPricesRequest> IncludeSiteLevelResources() 
+            {
+                return new BooleanFilter<ItemPricesRequest>("include_site_level_resources", this);        
             }
             public StringFilter<ItemPricesRequest> ItemPriceId() 
             {
@@ -1501,6 +1525,14 @@ namespace ChargeBee.Models
             {
             }
 
+            public StringFilter<PriceVariantsRequest> BusinessEntityId() 
+            {
+                return new StringFilter<PriceVariantsRequest>("business_entity_id", this).SupportsPresenceOperator(true);        
+            }
+            public BooleanFilter<PriceVariantsRequest> IncludeSiteLevelResources() 
+            {
+                return new BooleanFilter<PriceVariantsRequest>("include_site_level_resources", this);        
+            }
             public StringFilter<PriceVariantsRequest> PriceVariantId() 
             {
                 return new StringFilter<PriceVariantsRequest>("price_variant[id]", this).SupportsMultiOperators(true);        

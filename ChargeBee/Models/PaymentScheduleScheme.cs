@@ -126,9 +126,19 @@ namespace ChargeBee.Models
                 m_params.AddOpt("period", period);
                 return this;
             }
-            public CreateRequest Description(string description) 
+            public CreateRequest Name(string name) 
             {
-                m_params.AddOpt("description", description);
+                m_params.Add("name", name);
+                return this;
+            }
+            public CreateRequest FlexibleSchedulePeriod(int index, int flexibleSchedulePeriod) 
+            {
+                m_params.AddOpt("flexible_schedules[period][" + index + "]", flexibleSchedulePeriod);
+                return this;
+            }
+            public CreateRequest FlexibleScheduleAmountPercentage(int index, decimal flexibleScheduleAmountPercentage) 
+            {
+                m_params.AddOpt("flexible_schedules[amount_percentage][" + index + "]", flexibleScheduleAmountPercentage);
                 return this;
             }
         }

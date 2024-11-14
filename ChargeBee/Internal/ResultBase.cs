@@ -317,6 +317,18 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<PricingPageSession>("pricing_page_session"); }
         }
+        public OmnichannelSubscription OmnichannelSubscription
+        {
+            get {  return GetResource<OmnichannelSubscription>("omnichannel_subscription"); }
+        }
+        public OmnichannelTransaction OmnichannelTransaction
+        {
+            get {  return GetResource<OmnichannelTransaction>("omnichannel_transaction"); }
+        }
+        public RecordedPurchase RecordedPurchase
+        {
+            get {  return GetResource<RecordedPurchase>("recorded_purchase"); }
+        }
 
         public List<AdvanceInvoiceSchedule> AdvanceInvoiceSchedules
         {

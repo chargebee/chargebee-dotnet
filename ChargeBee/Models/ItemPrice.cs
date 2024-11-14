@@ -245,6 +245,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool?>("show_description_in_quotes", false); }
         }
+        public string BusinessEntityId 
+        {
+            get { return GetValue<string>("business_entity_id", false); }
+        }
         
         #endregion
         
@@ -334,6 +338,11 @@ namespace ChargeBee.Models
             public CreateRequest UsageAccumulationResetFrequency(ChargeBee.Models.Enums.UsageAccumulationResetFrequencyEnum usageAccumulationResetFrequency) 
             {
                 m_params.AddOpt("usage_accumulation_reset_frequency", usageAccumulationResetFrequency);
+                return this;
+            }
+            public CreateRequest BusinessEntityId(string businessEntityId) 
+            {
+                m_params.AddOpt("business_entity_id", businessEntityId);
                 return this;
             }
             public CreateRequest PricingModel(ChargeBee.Models.Enums.PricingModelEnum pricingModel) 
@@ -804,6 +813,14 @@ namespace ChargeBee.Models
             public TimestampFilter<ItemPriceListRequest> UpdatedAt() 
             {
                 return new TimestampFilter<ItemPriceListRequest>("updated_at", this);        
+            }
+            public StringFilter<ItemPriceListRequest> BusinessEntityId() 
+            {
+                return new StringFilter<ItemPriceListRequest>("business_entity_id", this).SupportsPresenceOperator(true);        
+            }
+            public BooleanFilter<ItemPriceListRequest> IncludeSiteLevelResources() 
+            {
+                return new BooleanFilter<ItemPriceListRequest>("include_site_level_resources", this);        
             }
             public EnumFilter<ItemPrice.PeriodUnitEnum, ItemPriceListRequest> PeriodUnit() 
             {

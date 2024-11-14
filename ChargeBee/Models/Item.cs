@@ -173,6 +173,10 @@ namespace ChargeBee.Models
         {
             get { return GetJToken("metadata", false); }
         }
+        public string BusinessEntityId 
+        {
+            get { return GetValue<string>("business_entity_id", false); }
+        }
         
         #endregion
         
@@ -277,6 +281,11 @@ namespace ChargeBee.Models
             public CreateRequest Metadata(JToken metadata) 
             {
                 m_params.AddOpt("metadata", metadata);
+                return this;
+            }
+            public CreateRequest BusinessEntityId(string businessEntityId) 
+            {
+                m_params.AddOpt("business_entity_id", businessEntityId);
                 return this;
             }
             public CreateRequest BundleConfigurationType(ItemBundleConfiguration.TypeEnum bundleConfigurationType) 
@@ -511,6 +520,14 @@ namespace ChargeBee.Models
             public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, ItemListRequest> Channel() 
             {
                 return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, ItemListRequest>("channel", this);        
+            }
+            public StringFilter<ItemListRequest> BusinessEntityId() 
+            {
+                return new StringFilter<ItemListRequest>("business_entity_id", this).SupportsPresenceOperator(true);        
+            }
+            public BooleanFilter<ItemListRequest> IncludeSiteLevelResources() 
+            {
+                return new BooleanFilter<ItemListRequest>("include_site_level_resources", this);        
             }
             
             public ItemListRequest SortByName(SortOrderEnum order) {

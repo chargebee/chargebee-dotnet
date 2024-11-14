@@ -125,6 +125,10 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<ChannelEnum>("channel", false); }
         }
+        public string BusinessEntityId 
+        {
+            get { return GetValue<string>("business_entity_id", false); }
+        }
         
         #endregion
         
@@ -169,6 +173,11 @@ namespace ChargeBee.Models
             public CreateRequest ChargeOnce(bool chargeOnce) 
             {
                 m_params.AddOpt("charge_once", chargeOnce);
+                return this;
+            }
+            public CreateRequest BusinessEntityId(string businessEntityId) 
+            {
+                m_params.AddOpt("business_entity_id", businessEntityId);
                 return this;
             }
         }

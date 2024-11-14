@@ -113,6 +113,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<PriceVariantAttribute>("attributes"); }
         }
+        public string BusinessEntityId 
+        {
+            get { return GetValue<string>("business_entity_id", false); }
+        }
         
         #endregion
         
@@ -147,6 +151,11 @@ namespace ChargeBee.Models
             public CreateRequest VariantGroup(string variantGroup) 
             {
                 m_params.AddOpt("variant_group", variantGroup);
+                return this;
+            }
+            public CreateRequest BusinessEntityId(string businessEntityId) 
+            {
+                m_params.AddOpt("business_entity_id", businessEntityId);
                 return this;
             }
             public CreateRequest AttributeName(int index, string attributeName) 
@@ -229,6 +238,14 @@ namespace ChargeBee.Models
             public TimestampFilter<PriceVariantListRequest> CreatedAt() 
             {
                 return new TimestampFilter<PriceVariantListRequest>("created_at", this);        
+            }
+            public StringFilter<PriceVariantListRequest> BusinessEntityId() 
+            {
+                return new StringFilter<PriceVariantListRequest>("business_entity_id", this).SupportsPresenceOperator(true);        
+            }
+            public BooleanFilter<PriceVariantListRequest> IncludeSiteLevelResources() 
+            {
+                return new BooleanFilter<PriceVariantListRequest>("include_site_level_resources", this);        
             }
             
             public PriceVariantListRequest SortByName(SortOrderEnum order) {

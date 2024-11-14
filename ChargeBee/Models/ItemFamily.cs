@@ -97,6 +97,10 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<ChannelEnum>("channel", false); }
         }
+        public string BusinessEntityId 
+        {
+            get { return GetValue<string>("business_entity_id", false); }
+        }
         
         #endregion
         
@@ -123,6 +127,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("description", description);
                 return this;
             }
+            public CreateRequest BusinessEntityId(string businessEntityId) 
+            {
+                m_params.AddOpt("business_entity_id", businessEntityId);
+                return this;
+            }
         }
         public class ItemFamilyListRequest : ListRequestBase<ItemFamilyListRequest> 
         {
@@ -142,6 +151,14 @@ namespace ChargeBee.Models
             public TimestampFilter<ItemFamilyListRequest> UpdatedAt() 
             {
                 return new TimestampFilter<ItemFamilyListRequest>("updated_at", this);        
+            }
+            public StringFilter<ItemFamilyListRequest> BusinessEntityId() 
+            {
+                return new StringFilter<ItemFamilyListRequest>("business_entity_id", this).SupportsPresenceOperator(true);        
+            }
+            public BooleanFilter<ItemFamilyListRequest> IncludeSiteLevelResources() 
+            {
+                return new BooleanFilter<ItemFamilyListRequest>("include_site_level_resources", this);        
             }
         }
         public class UpdateRequest : EntityRequest<UpdateRequest> 

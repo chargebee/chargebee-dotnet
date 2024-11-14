@@ -121,6 +121,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<DifferentialPriceParentPeriod>("parent_periods"); }
         }
+        public string BusinessEntityId 
+        {
+            get { return GetValue<string>("business_entity_id", false); }
+        }
         
         #endregion
         
@@ -145,6 +149,11 @@ namespace ChargeBee.Models
             public CreateRequest PriceInDecimal(string priceInDecimal) 
             {
                 m_params.AddOpt("price_in_decimal", priceInDecimal);
+                return this;
+            }
+            public CreateRequest BusinessEntityId(string businessEntityId) 
+            {
+                m_params.AddOpt("business_entity_id", businessEntityId);
                 return this;
             }
             public CreateRequest ParentPeriodPeriodUnit(int index, DifferentialPriceParentPeriod.PeriodUnitEnum parentPeriodPeriodUnit) 

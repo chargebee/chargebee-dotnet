@@ -131,6 +131,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int?>("duration_month", false); }
         }
+        public DateTime? ValidFrom 
+        {
+            get { return GetDateTime("valid_from", false); }
+        }
         public DateTime? ValidTill 
         {
             get { return GetDateTime("valid_till", false); }
@@ -411,6 +415,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("duration_month", durationMonth);
                 return this;
             }
+            public CreateForItemsRequest ValidFrom(long validFrom) 
+            {
+                m_params.AddOpt("valid_from", validFrom);
+                return this;
+            }
             public CreateForItemsRequest ValidTill(long validTill) 
             {
                 m_params.AddOpt("valid_till", validTill);
@@ -558,6 +567,11 @@ namespace ChargeBee.Models
             public UpdateForItemsRequest DurationMonth(int durationMonth) 
             {
                 m_params.AddOpt("duration_month", durationMonth);
+                return this;
+            }
+            public UpdateForItemsRequest ValidFrom(long validFrom) 
+            {
+                m_params.AddOpt("valid_from", validFrom);
                 return this;
             }
             public UpdateForItemsRequest ValidTill(long validTill) 
@@ -878,6 +892,8 @@ namespace ChargeBee.Models
             Archived,
             [EnumMember(Value = "deleted")]
             Deleted,
+            [EnumMember(Value = "future")]
+            Future,
 
         }
         [Obsolete]
@@ -1033,6 +1049,10 @@ namespace ChargeBee.Models
                 MaxRedemptions,
                 [EnumMember(Value = "unique_by")]
                 UniqueBy,
+                [EnumMember(Value = "existing_customer")]
+                ExistingCustomer,
+                [EnumMember(Value = "new_customer")]
+                NewCustomer,
             }
 
             public EntityTypeEnum EntityType {

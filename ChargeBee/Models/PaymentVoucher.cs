@@ -51,16 +51,29 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("payment_vouchers", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
+        public static PaymentVoucherPaymentVouchersForInvoiceRequest PaymentVouchersForInvoice(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "payment_vouchers");
+            return new PaymentVoucherPaymentVouchersForInvoiceRequest(url);
+        }
+        public static PaymentVoucherPaymentVouchersForCustomerRequest PaymentVouchersForCustomer(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "payment_vouchers");
+            return new PaymentVoucherPaymentVouchersForCustomerRequest(url);
+        }
+        [Obsolete("Use PaymentVouchersForInvoice")]
         public static PaymentVoucherPaymentVouchersForInvoiceRequest Payment_vouchersForInvoice(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "payment_vouchers");
             return new PaymentVoucherPaymentVouchersForInvoiceRequest(url);
         }
+        [Obsolete("Use PaymentVouchersForInvoice")]
         public static PaymentVoucherPaymentVouchersForCustomerRequest Payment_vouchersForCustomer(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "payment_vouchers");
             return new PaymentVoucherPaymentVouchersForCustomerRequest(url);
         }
+        
         #endregion
         
         #region Properties

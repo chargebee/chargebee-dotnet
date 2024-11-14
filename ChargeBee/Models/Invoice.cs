@@ -836,6 +836,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[cvv]", cardCvv);
                 return this;
             }
+            public CreateRequest CardPreferredScheme(Card.PreferredSchemeEnum cardPreferredScheme) 
+            {
+                m_params.AddOpt("card[preferred_scheme]", cardPreferredScheme);
+                return this;
+            }
             public CreateRequest CardBillingAddr1(string cardBillingAddr1) 
             {
                 m_params.AddOpt("card[billing_addr1]", cardBillingAddr1);
@@ -1373,6 +1378,11 @@ namespace ChargeBee.Models
             public CreateForChargeItemsAndChargesRequest CardCvv(string cardCvv) 
             {
                 m_params.AddOpt("card[cvv]", cardCvv);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest CardPreferredScheme(Card.PreferredSchemeEnum cardPreferredScheme) 
+            {
+                m_params.AddOpt("card[preferred_scheme]", cardPreferredScheme);
                 return this;
             }
             public CreateForChargeItemsAndChargesRequest CardBillingAddr1(string cardBillingAddr1) 

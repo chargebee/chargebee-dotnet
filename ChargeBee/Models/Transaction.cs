@@ -525,6 +525,8 @@ namespace ChargeBee.Models
             Timeout,
             [EnumMember(Value = "needs_attention")]
             NeedsAttention,
+            [EnumMember(Value = "late_failure")]
+            LateFailure,
 
         }
         public enum FraudFlagEnum
@@ -628,7 +630,7 @@ namespace ChargeBee.Models
             }
 
             public string CnReferenceInvoiceId {
-                get { return GetValue<string>("cn_reference_invoice_id", true); }
+                get { return GetValue<string>("cn_reference_invoice_id", false); }
             }
 
         }
@@ -670,6 +672,8 @@ namespace ChargeBee.Models
                 Timeout,
                 [EnumMember(Value = "needs_attention")]
                 NeedsAttention,
+                [EnumMember(Value = "late_failure")]
+                LateFailure,
             }
 
             public string Id {

@@ -960,6 +960,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[cvv]", cardCvv);
                 return this;
             }
+            public CreateRequest CardPreferredScheme(Card.PreferredSchemeEnum cardPreferredScheme) 
+            {
+                m_params.AddOpt("card[preferred_scheme]", cardPreferredScheme);
+                return this;
+            }
             public CreateRequest CardBillingAddr1(string cardBillingAddr1) 
             {
                 m_params.AddOpt("card[billing_addr1]", cardBillingAddr1);
@@ -2581,6 +2586,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[cvv]", cardCvv);
                 return this;
             }
+            public UpdateRequest CardPreferredScheme(Card.PreferredSchemeEnum cardPreferredScheme) 
+            {
+                m_params.AddOpt("card[preferred_scheme]", cardPreferredScheme);
+                return this;
+            }
             public UpdateRequest CardBillingAddr1(string cardBillingAddr1) 
             {
                 m_params.AddOpt("card[billing_addr1]", cardBillingAddr1);
@@ -3226,6 +3236,11 @@ namespace ChargeBee.Models
             public UpdateForItemsRequest CardCvv(string cardCvv) 
             {
                 m_params.AddOpt("card[cvv]", cardCvv);
+                return this;
+            }
+            public UpdateForItemsRequest CardPreferredScheme(Card.PreferredSchemeEnum cardPreferredScheme) 
+            {
+                m_params.AddOpt("card[preferred_scheme]", cardPreferredScheme);
                 return this;
             }
             public UpdateForItemsRequest CardBillingAddr1(string cardBillingAddr1) 
@@ -4389,6 +4404,11 @@ namespace ChargeBee.Models
             public ImportSubscriptionRequest CardCvv(string cardCvv) 
             {
                 m_params.AddOpt("card[cvv]", cardCvv);
+                return this;
+            }
+            public ImportSubscriptionRequest CardPreferredScheme(Card.PreferredSchemeEnum cardPreferredScheme) 
+            {
+                m_params.AddOpt("card[preferred_scheme]", cardPreferredScheme);
                 return this;
             }
             public ImportSubscriptionRequest CardBillingAddr1(string cardBillingAddr1) 

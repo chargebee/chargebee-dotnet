@@ -97,5 +97,14 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "price_variant")]
          PriceVariant,
 
+        [EnumMember(Value = "omnichannel_subscription")]
+         OmnichannelSubscription,
+
+        [EnumMember(Value = "omnichannel_subscription_item")]
+         OmnichannelSubscriptionItem,
+
+        [EnumMember(Value = "omnichannel_transaction")]
+         OmnichannelTransaction,
+
     }
 }
