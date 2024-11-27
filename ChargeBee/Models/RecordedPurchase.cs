@@ -82,6 +82,10 @@ namespace ChargeBee.Models
         {
             get { return (DateTime)GetDateTime("created_at", true); }
         }
+        public long? ResourceVersion 
+        {
+            get { return GetValue<long?>("resource_version", false); }
+        }
         public List<RecordedPurchaseLinkedOmnichannelSubscription> LinkedOmnichannelSubscriptions 
         {
             get { return GetResourceList<RecordedPurchaseLinkedOmnichannelSubscription>("linked_omnichannel_subscriptions"); }

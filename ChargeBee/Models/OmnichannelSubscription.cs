@@ -46,10 +46,10 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("omnichannel_subscriptions", CheckNull(id));
             return new EntityRequest<Type>(url, HttpMethod.GET);
         }
-        public static ListRequest List()
+        public static OmnichannelSubscriptionListRequest List()
         {
             string url = ApiUtil.BuildUrl("omnichannel_subscriptions");
-            return new ListRequest(url);
+            return new OmnichannelSubscriptionListRequest(url);
         }
         public static ListRequest OmnichannelTransactionsForOmnichannelSubscription(string id)
         {
@@ -83,13 +83,31 @@ namespace ChargeBee.Models
         {
             get { return (DateTime)GetDateTime("created_at", true); }
         }
-        public List<OmnichannelSubscriptionOmnichannelSubscriptionItem> OmnichannelSubscriptionItems 
+        public long? ResourceVersion 
         {
-            get { return GetResourceList<OmnichannelSubscriptionOmnichannelSubscriptionItem>("omnichannel_subscription_items"); }
+            get { return GetValue<long?>("resource_version", false); }
+        }
+        public List<OmnichannelSubscriptionItem> OmnichannelSubscriptionItems 
+        {
+            get { return GetResourceList<OmnichannelSubscriptionItem>("omnichannel_subscription_items"); }
         }
         
         #endregion
         
+        #region Requests
+        public class OmnichannelSubscriptionListRequest : ListRequestBase<OmnichannelSubscriptionListRequest> 
+        {
+            public OmnichannelSubscriptionListRequest(string url) 
+                    : base(url)
+            {
+            }
+
+            public StringFilter<OmnichannelSubscriptionListRequest> CustomerId() 
+            {
+                return new StringFilter<OmnichannelSubscriptionListRequest>("customer_id", this);        
+            }
+        }
+        #endregion
 
         public enum SourceEnum
         {
@@ -102,77 +120,6 @@ namespace ChargeBee.Models
         }
 
         #region Subclasses
-        public class OmnichannelSubscriptionOmnichannelSubscriptionItem : Resource
-        {
-            public enum StatusEnum
-            {
-                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
-                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [EnumMember(Value = "active")]
-                Active,
-                [EnumMember(Value = "expired")]
-                Expired,
-                [EnumMember(Value = "cancelled")]
-                Cancelled,
-            }
-            public enum ExpirationReasonEnum
-            {
-                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
-                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [EnumMember(Value = "billing_error")]
-                BillingError,
-                [EnumMember(Value = "product_not_available")]
-                ProductNotAvailable,
-                [EnumMember(Value = "other")]
-                Other,
-            }
-            public enum CancellationReasonEnum
-            {
-                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
-                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [EnumMember(Value = "customer_cancelled")]
-                CustomerCancelled,
-                [EnumMember(Value = "customer_did_not_consent_to_price_increase")]
-                CustomerDidNotConsentToPriceIncrease,
-            }
-
-            public string Id {
-                get { return GetValue<string>("id", true); }
-            }
-
-            public string IdAtSource {
-                get { return GetValue<string>("id_at_source", true); }
-            }
-
-            public StatusEnum Status {
-                get { return GetEnum<StatusEnum>("status", true); }
-            }
-
-            public DateTime? CurrentTermStart {
-                get { return GetDateTime("current_term_start", false); }
-            }
-
-            public DateTime? CurrentTermEnd {
-                get { return GetDateTime("current_term_end", false); }
-            }
-
-            public DateTime? ExpiredAt {
-                get { return GetDateTime("expired_at", false); }
-            }
-
-            public ExpirationReasonEnum? ExpirationReason {
-                get { return GetEnum<ExpirationReasonEnum>("expiration_reason", false); }
-            }
-
-            public DateTime? CancelledAt {
-                get { return GetDateTime("cancelled_at", false); }
-            }
-
-            public CancellationReasonEnum? CancellationReason {
-                get { return GetEnum<CancellationReasonEnum>("cancellation_reason", false); }
-            }
-
-        }
 
         #endregion
     }

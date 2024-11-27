@@ -500,10 +500,6 @@ namespace ChargeBee.Models
         {
             get { return GetJToken("meta_data", false); }
         }
-        public JToken Metadata 
-        {
-            get { return GetJToken("metadata", false); }
-        }
         public bool Deleted 
         {
             get { return GetValue<bool>("deleted", true); }
@@ -543,6 +539,11 @@ namespace ChargeBee.Models
         public string BusinessEntityId 
         {
             get { return GetValue<string>("business_entity_id", false); }
+        }
+        [Obsolete]
+        public JToken Metadata
+        {
+            get { return GetJToken("metadata", false); }
         }
         
         #endregion

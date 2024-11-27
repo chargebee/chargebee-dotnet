@@ -325,6 +325,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<OmnichannelTransaction>("omnichannel_transaction"); }
         }
+        public OmnichannelSubscriptionItem OmnichannelSubscriptionItem
+        {
+            get {  return GetResource<OmnichannelSubscriptionItem>("omnichannel_subscription_item"); }
+        }
         public RecordedPurchase RecordedPurchase
         {
             get {  return GetResource<RecordedPurchase>("recorded_purchase"); }

@@ -1661,6 +1661,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("customer[einvoicing_method]", customerEinvoicingMethod);
                 return this;
             }
+            public CheckoutNewForItemsRequest SubscriptionPoNumber(string subscriptionPoNumber) 
+            {
+                m_params.AddOpt("subscription[po_number]", subscriptionPoNumber);
+                return this;
+            }
             public CheckoutNewForItemsRequest BillingAddressFirstName(string billingAddressFirstName) 
             {
                 m_params.AddOpt("billing_address[first_name]", billingAddressFirstName);
@@ -2025,6 +2030,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("coupon_ids", couponIds);
                 return this;
             }
+            public CheckoutExistingRequest ReplaceCouponList(bool replaceCouponList) 
+            {
+                m_params.AddOpt("replace_coupon_list", replaceCouponList);
+                return this;
+            }
             public CheckoutExistingRequest Reactivate(bool reactivate) 
             {
                 m_params.AddOpt("reactivate", reactivate);
@@ -2293,6 +2303,11 @@ namespace ChargeBee.Models
             public CheckoutExistingForItemsRequest CouponIds(List<string> couponIds) 
             {
                 m_params.AddOpt("coupon_ids", couponIds);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest ReplaceCouponList(bool replaceCouponList) 
+            {
+                m_params.AddOpt("replace_coupon_list", replaceCouponList);
                 return this;
             }
             public CheckoutExistingForItemsRequest Reactivate(bool reactivate) 
