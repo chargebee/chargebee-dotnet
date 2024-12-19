@@ -1273,6 +1273,15 @@ namespace ChargeBee.Models
                 [EnumMember(Value = "document_level_discount")]
                 DocumentLevelDiscount,
             }
+            public enum DiscountTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "fixed_amount")]
+                FixedAmount,
+                [EnumMember(Value = "percentage")]
+                Percentage,
+            }
 
             public long Amount {
                 get { return GetValue<long>("amount", true); }
@@ -1284,6 +1293,10 @@ namespace ChargeBee.Models
 
             public EntityTypeEnum EntityType {
                 get { return GetEnum<EntityTypeEnum>("entity_type", true); }
+            }
+
+            public DiscountTypeEnum? DiscountType {
+                get { return GetEnum<DiscountTypeEnum>("discount_type", false); }
             }
 
             public string EntityId {

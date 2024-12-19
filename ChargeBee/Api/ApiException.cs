@@ -10,6 +10,7 @@ namespace ChargeBee.Api
 
 		private string ErrorType = "";
 		private string ErrorParam = "";
+		private string ErrorErrorCauseId = "";
 
 		public ApiException (HttpStatusCode httpStatusCode, Dictionary<string, string> errorResp)
 			: base (errorResp ["message"])
@@ -19,6 +20,7 @@ namespace ChargeBee.Api
 			this.ApiErrorCode = errorResp ["api_error_code"];
 
 			errorResp.TryGetValue("param", out ErrorParam);
+			errorResp.TryGetValue("error_cause_id", out ErrorErrorCauseId);
 
 			//Deprecated fields.
 			this.ApiCode = errorResp ["error_code"];
@@ -38,6 +40,12 @@ namespace ChargeBee.Api
         public string Param { 
 			get {
 				return this.ErrorParam;
+			}
+		}
+
+		public string ErrorCauseId { 
+			get {
+				return this.ErrorErrorCauseId;
 			}
 		}
 

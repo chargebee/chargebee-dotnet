@@ -332,6 +332,18 @@ namespace ChargeBee.Models
                 get { return GetValue<long?>("amount", false); }
             }
 
+            public DateTime? CurrentTermStart {
+                get { return GetDateTime("current_term_start", false); }
+            }
+
+            public DateTime? CurrentTermEnd {
+                get { return GetDateTime("current_term_end", false); }
+            }
+
+            public DateTime? NextBillingAt {
+                get { return GetDateTime("next_billing_at", false); }
+            }
+
             public string AmountInDecimal {
                 get { return GetValue<string>("amount_in_decimal", false); }
             }

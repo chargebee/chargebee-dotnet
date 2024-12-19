@@ -80,6 +80,10 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<CancellationReasonEnum>("cancellation_reason", false); }
         }
+        public DateTime? GracePeriodExpiresAt 
+        {
+            get { return GetDateTime("grace_period_expires_at", false); }
+        }
         public long? ResourceVersion 
         {
             get { return GetValue<long?>("resource_version", false); }
@@ -99,6 +103,10 @@ namespace ChargeBee.Models
             Expired,
             [EnumMember(Value = "cancelled")]
             Cancelled,
+            [EnumMember(Value = "in_dunning")]
+            InDunning,
+            [EnumMember(Value = "in_grace_period")]
+            InGracePeriod,
 
         }
         public enum ExpirationReasonEnum

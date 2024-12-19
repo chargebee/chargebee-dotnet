@@ -143,6 +143,8 @@ namespace ChargeBee.Models
             Completed,
             [EnumMember(Value = "failed")]
             Failed,
+            [EnumMember(Value = "ignored")]
+            Ignored,
 
         }
 

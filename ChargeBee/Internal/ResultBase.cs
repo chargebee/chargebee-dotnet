@@ -245,6 +245,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<DifferentialPrice>("differential_price"); }
         }
+        public Configuration Configuration
+        {
+            get {  return GetResource<Configuration>("configuration"); }
+        }
         public Feature Feature
         {
             get {  return GetResource<Feature>("feature"); }
@@ -367,6 +371,11 @@ namespace ChargeBee.Internal
         public List<Download> Downloads
         {
             get {  return (List<Download>)GetResourceList<Download>("downloads", "download"); }
+        }
+
+        public List<Configuration> Configurations
+        {
+            get {  return (List<Configuration>)GetResourceList<Configuration>("configurations", "configuration"); }
         }
 
         public List<InAppSubscription> InAppSubscriptions

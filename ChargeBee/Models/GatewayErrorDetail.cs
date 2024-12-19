@@ -96,6 +96,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("processor_error_message", false); }
         }
+        public string ErrorCauseId 
+        {
+            get { return GetValue<string>("error_cause_id", false); }
+        }
         
         #endregion
         

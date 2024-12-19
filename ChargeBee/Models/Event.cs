@@ -170,6 +170,8 @@ namespace ChargeBee.Models
             Skipped,
             [EnumMember(Value = "not_applicable")]
             NotApplicable,
+            [EnumMember(Value = "disabled")]
+            Disabled,
 
         }
 
@@ -194,6 +196,8 @@ namespace ChargeBee.Models
                 Skipped,
                 [EnumMember(Value = "not_applicable")]
                 NotApplicable,
+                [EnumMember(Value = "disabled")]
+                Disabled,
             }
 
             public string Id {

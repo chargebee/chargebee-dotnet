@@ -568,6 +568,21 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "omnichannel_subscription_item_cancelled")]
          OmnichannelSubscriptionItemCancelled,
 
+        [EnumMember(Value = "omnichannel_subscription_imported")]
+         OmnichannelSubscriptionImported,
+
+        [EnumMember(Value = "omnichannel_subscription_item_grace_period_started")]
+         OmnichannelSubscriptionItemGracePeriodStarted,
+
+        [EnumMember(Value = "omnichannel_subscription_item_grace_period_expired")]
+         OmnichannelSubscriptionItemGracePeriodExpired,
+
+        [EnumMember(Value = "omnichannel_subscription_item_dunning_started")]
+         OmnichannelSubscriptionItemDunningStarted,
+
+        [EnumMember(Value = "omnichannel_subscription_item_dunning_expired")]
+         OmnichannelSubscriptionItemDunningExpired,
+
         [EnumMember(Value = "plan_created")]
          PlanCreated,
 

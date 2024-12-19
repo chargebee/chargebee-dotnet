@@ -492,6 +492,10 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<SubscriptionReferralInfo>("referral_info"); }
         }
+        public SubscriptionBillingOverride BillingOverride 
+        {
+            get { return GetSubResource<SubscriptionBillingOverride>("billing_override"); }
+        }
         public string InvoiceNotes 
         {
             get { return GetValue<string>("invoice_notes", false); }
@@ -2034,6 +2038,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
                 return this;
             }
+            public CreateWithItemsRequest BillingOverrideMaxExcessPaymentUsage(long billingOverrideMaxExcessPaymentUsage) 
+            {
+                m_params.AddOpt("billing_override[max_excess_payment_usage]", billingOverrideMaxExcessPaymentUsage);
+                return this;
+            }
+            public CreateWithItemsRequest BillingOverrideMaxRefundableCreditsUsage(long billingOverrideMaxRefundableCreditsUsage) 
+            {
+                m_params.AddOpt("billing_override[max_refundable_credits_usage]", billingOverrideMaxRefundableCreditsUsage);
+                return this;
+            }
             public CreateWithItemsRequest SubscriptionItemItemPriceId(int index, string subscriptionItemItemPriceId) 
             {
                 m_params.Add("subscription_items[item_price_id][" + index + "]", subscriptionItemItemPriceId);
@@ -3525,6 +3539,16 @@ namespace ChargeBee.Models
             public UpdateForItemsRequest ContractTermContractStart(long contractTermContractStart) 
             {
                 m_params.AddOpt("contract_term[contract_start]", contractTermContractStart);
+                return this;
+            }
+            public UpdateForItemsRequest BillingOverrideMaxExcessPaymentUsage(long billingOverrideMaxExcessPaymentUsage) 
+            {
+                m_params.AddOpt("billing_override[max_excess_payment_usage]", billingOverrideMaxExcessPaymentUsage);
+                return this;
+            }
+            public UpdateForItemsRequest BillingOverrideMaxRefundableCreditsUsage(long billingOverrideMaxRefundableCreditsUsage) 
+            {
+                m_params.AddOpt("billing_override[max_refundable_credits_usage]", billingOverrideMaxRefundableCreditsUsage);
                 return this;
             }
             public UpdateForItemsRequest SubscriptionItemItemPriceId(int index, string subscriptionItemItemPriceId) 
@@ -6157,6 +6181,18 @@ namespace ChargeBee.Models
                 get { return GetValue<long?>("amount", false); }
             }
 
+            public DateTime? CurrentTermStart {
+                get { return GetDateTime("current_term_start", false); }
+            }
+
+            public DateTime? CurrentTermEnd {
+                get { return GetDateTime("current_term_end", false); }
+            }
+
+            public DateTime? NextBillingAt {
+                get { return GetDateTime("next_billing_at", false); }
+            }
+
             public string AmountInDecimal {
                 get { return GetValue<string>("amount_in_decimal", false); }
             }
@@ -6517,6 +6553,18 @@ namespace ChargeBee.Models
 
             public bool PostPurchaseWidgetEnabled {
                 get { return GetValue<bool>("post_purchase_widget_enabled", true); }
+            }
+
+        }
+        public class SubscriptionBillingOverride : Resource
+        {
+
+            public long? MaxExcessPaymentUsage {
+                get { return GetValue<long?>("max_excess_payment_usage", false); }
+            }
+
+            public long? MaxRefundableCreditsUsage {
+                get { return GetValue<long?>("max_refundable_credits_usage", false); }
             }
 
         }
