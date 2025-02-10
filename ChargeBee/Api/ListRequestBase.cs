@@ -44,12 +44,12 @@ namespace ChargeBee.Api
 
 		public new ListResult Request(ApiConfig env)
 		{
-			return ApiUtil.GetList(m_url, m_params, headers, env);
+			return ApiUtil.GetList(m_url, m_params, headers, env, sub_domain);
 		}
 
         public new Task<ListResult> RequestAsync(ApiConfig env)
         {
-            return ApiUtil.GetListAsync(m_url, m_params, headers, env);
+            return ApiUtil.GetListAsync(m_url, m_params, headers, env, sub_domain);
         }
 
         public new ListResult Request()

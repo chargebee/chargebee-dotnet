@@ -337,6 +337,14 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<RecordedPurchase>("recorded_purchase"); }
         }
+        public Rule Rule
+        {
+            get {  return GetResource<Rule>("rule"); }
+        }
+        public UsageEvent UsageEvent
+        {
+            get {  return GetResource<UsageEvent>("usage_event"); }
+        }
 
         public List<AdvanceInvoiceSchedule> AdvanceInvoiceSchedules
         {

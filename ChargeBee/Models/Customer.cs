@@ -1908,21 +1908,6 @@ namespace ChargeBee.Models
                 m_params.Add("from_site", fromSite);
                 return this;
             }
-            public MoveRequest TaxProvidersFieldProviderName(int index, string taxProvidersFieldProviderName) 
-            {
-                m_params.AddOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
-                return this;
-            }
-            public MoveRequest TaxProvidersFieldFieldId(int index, string taxProvidersFieldFieldId) 
-            {
-                m_params.AddOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
-                return this;
-            }
-            public MoveRequest TaxProvidersFieldFieldValue(int index, string taxProvidersFieldFieldValue) 
-            {
-                m_params.AddOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
-                return this;
-            }
         }
         public class ChangeBillingDateRequest : EntityRequest<ChangeBillingDateRequest> 
         {
@@ -1972,21 +1957,6 @@ namespace ChargeBee.Models
             public MergeRequest ToCustomerId(string toCustomerId) 
             {
                 m_params.Add("to_customer_id", toCustomerId);
-                return this;
-            }
-            public MergeRequest TaxProvidersFieldProviderName(int index, string taxProvidersFieldProviderName) 
-            {
-                m_params.AddOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
-                return this;
-            }
-            public MergeRequest TaxProvidersFieldFieldId(int index, string taxProvidersFieldFieldId) 
-            {
-                m_params.AddOpt("tax_providers_fields[field_id][" + index + "]", taxProvidersFieldFieldId);
-                return this;
-            }
-            public MergeRequest TaxProvidersFieldFieldValue(int index, string taxProvidersFieldFieldValue) 
-            {
-                m_params.AddOpt("tax_providers_fields[field_value][" + index + "]", taxProvidersFieldFieldValue);
                 return this;
             }
         }

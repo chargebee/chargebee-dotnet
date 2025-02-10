@@ -51,6 +51,18 @@ namespace ChargeBee.Internal
 			return JToken.Parse(m_jobj[key].ToString());
 		}
 
+		public Dictionary<String, Object> GetMap(string key, bool required)
+		{
+			Object value = m_jobj[key];
+			if(required)
+				ThrowIfKeyMissed (key) ;
+			if (value == null)
+				return null;
+			Dictionary<string, object> dict = new Dictionary<string, object>();
+			dict.Add(key, value);
+			return dict;
+		}
+
         public JArray GetJArray(String key, bool required = true)
         {
             if (required)

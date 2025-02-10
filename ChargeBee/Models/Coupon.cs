@@ -113,7 +113,6 @@ namespace ChargeBee.Models
         {
             get { return GetValue<long?>("discount_amount", false); }
         }
-        [Obsolete]
         public int? DiscountQuantity 
         {
             get { return GetValue<int?>("discount_quantity", false); }
@@ -224,6 +223,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<CouponCouponConstraint>("coupon_constraints"); }
         }
+        public bool Deleted 
+        {
+            get { return GetValue<bool>("deleted", true); }
+        }
         
         #endregion
         
@@ -270,7 +273,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("discount_percentage", discountPercentage);
                 return this;
             }
-            [Obsolete]
             public CreateRequest DiscountQuantity(int discountQuantity) 
             {
                 m_params.AddOpt("discount_quantity", discountQuantity);
@@ -394,7 +396,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("discount_percentage", discountPercentage);
                 return this;
             }
-            [Obsolete]
             public CreateForItemsRequest DiscountQuantity(int discountQuantity) 
             {
                 m_params.AddOpt("discount_quantity", discountQuantity);
@@ -548,7 +549,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("discount_percentage", discountPercentage);
                 return this;
             }
-            [Obsolete]
             public UpdateForItemsRequest DiscountQuantity(int discountQuantity) 
             {
                 m_params.AddOpt("discount_quantity", discountQuantity);
@@ -746,7 +746,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("discount_percentage", discountPercentage);
                 return this;
             }
-            [Obsolete]
             public UpdateRequest DiscountQuantity(int discountQuantity) 
             {
                 m_params.AddOpt("discount_quantity", discountQuantity);

@@ -173,6 +173,10 @@ namespace ChargeBee.Models
         {
             get { return GetJToken("metadata", false); }
         }
+        public bool Deleted 
+        {
+            get { return GetValue<bool>("deleted", true); }
+        }
         public string BusinessEntityId 
         {
             get { return GetValue<string>("business_entity_id", false); }

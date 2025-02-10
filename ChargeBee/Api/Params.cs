@@ -91,9 +91,18 @@ namespace ChargeBee.Api
 				return isDate ?
 					((DateTime)value).ToString ("yyyy-MM-dd")
 						: ApiUtil.ConvertToTimestamp ((DateTime)value).ToString ();
-			} else {
+			} else if(value is Dictionary<String,Object>)
+			{
+				return JsonConvert.SerializeObject(value);
+			}	
+			else {
 				throw new ArgumentException("Type [" + value.GetType().ToString() + "] not handled");
 			}
     	}
+
+		public string ToJsonString()
+		{
+			return JsonConvert.SerializeObject(m_dict);
+		}
 	}
 }

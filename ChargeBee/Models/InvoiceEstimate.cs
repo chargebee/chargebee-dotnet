@@ -96,6 +96,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<InvoiceEstimateLineItemTier>("line_item_tiers"); }
         }
+        public List<InvoiceEstimateLineItemCredit> LineItemCredits 
+        {
+            get { return GetResourceList<InvoiceEstimateLineItemCredit>("line_item_credits"); }
+        }
         public List<InvoiceEstimateLineItemDiscount> LineItemDiscounts 
         {
             get { return GetResourceList<InvoiceEstimateLineItemDiscount>("line_item_discounts"); }
@@ -404,6 +408,22 @@ namespace ChargeBee.Models
 
             public string UnitAmountInDecimal {
                 get { return GetValue<string>("unit_amount_in_decimal", false); }
+            }
+
+        }
+        public class InvoiceEstimateLineItemCredit : Resource
+        {
+
+            public string CnId {
+                get { return GetValue<string>("cn_id", true); }
+            }
+
+            public double AppliedAmount {
+                get { return GetValue<double>("applied_amount", true); }
+            }
+
+            public string LineItemId {
+                get { return GetValue<string>("line_item_id", false); }
             }
 
         }

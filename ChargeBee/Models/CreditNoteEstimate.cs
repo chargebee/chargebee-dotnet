@@ -121,6 +121,8 @@ namespace ChargeBee.Models
             Adjustment,
             [EnumMember(Value = "refundable")]
             Refundable,
+            [EnumMember(Value = "store")]
+            Store,
 
         }
 

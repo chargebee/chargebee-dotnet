@@ -129,6 +129,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("business_entity_id", false); }
         }
+        public bool Deleted 
+        {
+            get { return GetValue<bool>("deleted", true); }
+        }
         
         #endregion
         

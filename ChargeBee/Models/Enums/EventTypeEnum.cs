@@ -583,6 +583,18 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "omnichannel_subscription_item_dunning_expired")]
          OmnichannelSubscriptionItemDunningExpired,
 
+        [EnumMember(Value = "rule_created")]
+         RuleCreated,
+
+        [EnumMember(Value = "rule_updated")]
+         RuleUpdated,
+
+        [EnumMember(Value = "rule_deleted")]
+         RuleDeleted,
+
+        [EnumMember(Value = "record_purchase_failed")]
+         RecordPurchaseFailed,
+
         [EnumMember(Value = "plan_created")]
          PlanCreated,
 

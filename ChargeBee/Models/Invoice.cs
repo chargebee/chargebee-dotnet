@@ -417,6 +417,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<InvoiceLineItemTax>("line_item_taxes"); }
         }
+        public List<InvoiceLineItemCredit> LineItemCredits 
+        {
+            get { return GetResourceList<InvoiceLineItemCredit>("line_item_credits"); }
+        }
         public List<InvoiceLineItemTier> LineItemTiers 
         {
             get { return GetResourceList<InvoiceLineItemTier>("line_item_tiers"); }
@@ -3804,6 +3808,22 @@ namespace ChargeBee.Models
             }
 
         }
+        public class InvoiceLineItemCredit : Resource
+        {
+
+            public string CnId {
+                get { return GetValue<string>("cn_id", true); }
+            }
+
+            public double AppliedAmount {
+                get { return GetValue<double>("applied_amount", true); }
+            }
+
+            public string LineItemId {
+                get { return GetValue<string>("line_item_id", false); }
+            }
+
+        }
         public class InvoiceLineItemTier : Resource
         {
 
@@ -3902,6 +3922,15 @@ namespace ChargeBee.Models
         }
         public class InvoiceAppliedCredit : Resource
         {
+            public enum TaxApplicationEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "pre_tax")]
+                PreTax,
+                [EnumMember(Value = "post_tax")]
+                PostTax,
+            }
 
             public string CnId {
                 get { return GetValue<string>("cn_id", true); }
@@ -3929,6 +3958,10 @@ namespace ChargeBee.Models
 
             public CreditNote.StatusEnum CnStatus {
                 get { return GetEnum<CreditNote.StatusEnum>("cn_status", true); }
+            }
+
+            public TaxApplicationEnum? TaxApplication {
+                get { return GetEnum<TaxApplicationEnum>("tax_application", false); }
             }
 
         }

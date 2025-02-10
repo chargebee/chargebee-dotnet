@@ -1048,6 +1048,8 @@ namespace ChargeBee.Models
             Adjustment,
             [EnumMember(Value = "refundable")]
             Refundable,
+            [EnumMember(Value = "store")]
+            Store,
 
         }
         public enum ReasonCodeEnum
@@ -1503,6 +1505,15 @@ namespace ChargeBee.Models
         }
         public class CreditNoteAllocation : Resource
         {
+            public enum TaxApplicationEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "pre_tax")]
+                PreTax,
+                [EnumMember(Value = "post_tax")]
+                PostTax,
+            }
 
             public string InvoiceId {
                 get { return GetValue<string>("invoice_id", true); }
@@ -1522,6 +1533,10 @@ namespace ChargeBee.Models
 
             public Invoice.StatusEnum InvoiceStatus {
                 get { return GetEnum<Invoice.StatusEnum>("invoice_status", true); }
+            }
+
+            public TaxApplicationEnum? TaxApplication {
+                get { return GetEnum<TaxApplicationEnum>("tax_application", false); }
             }
 
         }

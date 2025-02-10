@@ -5337,6 +5337,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public ImportForItemsRequest ExhaustedCouponIds(List<string> exhaustedCouponIds) 
+            {
+                m_params.AddOpt("exhausted_coupon_ids", exhaustedCouponIds);
+                return this;
+            }
             public ImportForItemsRequest Id(string id) 
             {
                 m_params.AddOpt("id", id);

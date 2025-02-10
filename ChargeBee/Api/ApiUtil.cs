@@ -33,7 +33,7 @@ namespace ChargeBee.Api
             }
             return sb.ToString();
         }
-        private static HttpRequestMessage BuildRequest(string uri, HttpMethod method, Params parameters, ApiConfig env, bool supportsFilter)
+        private static HttpRequestMessage BuildRequest(string uri, HttpMethod method, Params parameters, ApiConfig env, bool supportsFilter, string subDomain)
         {
             HttpRequestMessage request;
             System.Net.Http.HttpMethod meth = new System.Net.Http.HttpMethod(method.ToString());
@@ -41,20 +41,66 @@ namespace ChargeBee.Api
             {
                 byte[] paramBytes = Encoding.GetEncoding(env.Charset).GetBytes(parameters.GetQuery(supportsFilter));
                 string postData = Encoding.GetEncoding(env.Charset).GetString(paramBytes, 0, paramBytes.Length);
-                request = new HttpRequestMessage(meth, new Uri($"{env.ApiBaseUrl}{uri}"))
+                string baseUrl;
+                if(subDomain != null) {
+                    baseUrl  = env.ApiBaseUrlWithSubDomain(subDomain);
+                }
+                else {
+                    baseUrl = env.ApiBaseUrl;
+                }
+                request = new HttpRequestMessage(meth, new Uri($"{baseUrl}{uri}"))
                 {
                     Content = new StringContent(postData, Encoding.UTF8, "application/x-www-form-urlencoded")
                 };
             }
             else
             {
-                request = new HttpRequestMessage(meth, new Uri($"{env.ApiBaseUrl}{uri}"));
+                string baseUrl;
+                if(subDomain != null) {
+                    baseUrl  = env.ApiBaseUrlWithSubDomain(subDomain);
+                }
+                else {
+                    baseUrl = env.ApiBaseUrl;
+                }
+                request = new HttpRequestMessage(meth, new Uri($"{baseUrl}{uri}"));
             }
             return request;
         }
-        private static HttpRequestMessage GetRequestMessage(string url, HttpMethod method, Params parameters, Dictionary<string, string> headers, ApiConfig env, bool supportsFilter=false)
+        
+        private static HttpRequestMessage BuildContentTypeJsonRequest(string uri, HttpMethod method, Params parameters, ApiConfig env, bool supportsFilter, string subDomain)
         {
-            HttpRequestMessage request = BuildRequest(url, method, parameters, env, supportsFilter);
+            HttpRequestMessage request;
+            System.Net.Http.HttpMethod meth = new System.Net.Http.HttpMethod(method.ToString());
+            if (method.Equals(HttpMethod.POST))
+            {
+                string baseUrl;
+                if(subDomain != null) {
+                    baseUrl  = env.ApiBaseUrlWithSubDomain(subDomain);
+                }
+                else {
+                    baseUrl = env.ApiBaseUrl;
+                }
+                request = new HttpRequestMessage(meth, new Uri($"{baseUrl}{uri}"))
+                {
+                    Content = new StringContent(parameters.ToJsonString(), Encoding.UTF8, "application/json")
+                };
+            }
+            else
+            {
+                string baseUrl;
+                if(subDomain != null) {
+                    baseUrl  = env.ApiBaseUrlWithSubDomain(subDomain);
+                }
+                else {
+                    baseUrl = env.ApiBaseUrl;
+                }
+                request = new HttpRequestMessage(meth, new Uri($"{baseUrl}{uri}"));
+            }
+            return request;
+        }
+        private static HttpRequestMessage GetRequestMessage(string url, HttpMethod method, Params parameters, Dictionary<string, string> headers, ApiConfig env, bool supportsFilter=false, string subDomain = null, bool isJsonRequest=false)
+        {
+            HttpRequestMessage request = isJsonRequest ? BuildContentTypeJsonRequest(url, method, parameters, env, supportsFilter, subDomain) : BuildRequest(url, method, parameters, env, supportsFilter, subDomain);
             AddHeaders(request, env);
             AddCustomHeaders(request, headers);
             return request;
@@ -127,14 +173,14 @@ namespace ChargeBee.Api
             }
 
         }
-        private static EntityResult GetEntityResult(String url, Params parameters, Dictionary<string, string> headers, ApiConfig env, HttpMethod meth, bool supportsFilter)
+        private static EntityResult GetEntityResult(String url, Params parameters, Dictionary<string, string> headers, ApiConfig env, HttpMethod meth, bool supportsFilter, string subDomain = null, bool isJsonRequest=false)
         {
 
-            return GetEntityResultAsync(url, parameters, headers, env, meth, supportsFilter).ConfigureAwait(false).GetAwaiter().GetResult();
+            return GetEntityResultAsync(url, parameters, headers, env, meth, supportsFilter, subDomain, isJsonRequest).ConfigureAwait(false).GetAwaiter().GetResult();
         }
-        private static async Task<EntityResult> GetEntityResultAsync(String url, Params parameters, Dictionary<string, string> headers, ApiConfig env, HttpMethod meth, bool supportsFilter)
+        private static async Task<EntityResult> GetEntityResultAsync(String url, Params parameters, Dictionary<string, string> headers, ApiConfig env, HttpMethod meth, bool supportsFilter, string subDomain = null, bool isJsonRequest=false)
         {
-            HttpRequestMessage request = GetRequestMessage(url, meth, parameters, headers, env, supportsFilter);
+            HttpRequestMessage request = GetRequestMessage(url, meth, parameters, headers, env, supportsFilter, subDomain, isJsonRequest);
             var response = await httpClient.SendAsync(request).ConfigureAwait(false);
             var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             if (response.IsSuccessStatusCode)
@@ -148,37 +194,37 @@ namespace ChargeBee.Api
                 return null;
             }
         }
-        public static EntityResult Post(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env, bool supportsFilter=false)
+        public static EntityResult Post(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env, bool supportsFilter=false, string subDomain = null, bool isJsonRequest=false)
         {
-            return GetEntityResult(url, parameters, headers, env, HttpMethod.POST, supportsFilter);
+            return GetEntityResult(url, parameters, headers, env, HttpMethod.POST, supportsFilter, subDomain, isJsonRequest);
         }
 
-        public static Task<EntityResult> PostAsync(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env, bool supportsFilter=false)
+        public static Task<EntityResult> PostAsync(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env, bool supportsFilter=false, string subDomain = null, bool isJsonRequest=false)
         {
-            return GetEntityResultAsync(url, parameters, headers, env, HttpMethod.POST, supportsFilter);
+            return GetEntityResultAsync(url, parameters, headers, env, HttpMethod.POST, supportsFilter, subDomain, isJsonRequest);
         }
 
-        public static EntityResult Get(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env, bool supportsFilter=false)
+        public static EntityResult Get(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env, bool supportsFilter=false, string subDomain = null, bool isJsonRequest=false)
         {
             url = String.Format("{0}?{1}", url, parameters.GetQuery(false));
-            return GetEntityResult(url, parameters, headers, env, HttpMethod.GET, supportsFilter);
+            return GetEntityResult(url, parameters, headers, env, HttpMethod.GET, supportsFilter, subDomain, isJsonRequest);
         }
 
-        public static Task<EntityResult> GetAsync(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env, bool supportsFilter=false)
+        public static Task<EntityResult> GetAsync(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env, bool supportsFilter=false, string subDomain = null, bool isJsonRequest=false)
         {
             url = String.Format("{0}?{1}", url, parameters.GetQuery(supportsFilter));
-            return GetEntityResultAsync(url, parameters, headers, env, HttpMethod.GET, supportsFilter);
+            return GetEntityResultAsync(url, parameters, headers, env, HttpMethod.GET, supportsFilter, subDomain, isJsonRequest);
         }
 
-        public static ListResult GetList(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env)
+        public static ListResult GetList(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env, string subDomain = null)
         {
-            return GetListAsync(url, parameters, headers, env).GetAwaiter().GetResult();
+            return GetListAsync(url, parameters, headers, env,subDomain).GetAwaiter().GetResult();
         }
 
-        public static async Task<ListResult> GetListAsync(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env)
+        public static async Task<ListResult> GetListAsync(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env, string subDomain = null)
         {
             url = String.Format("{0}?{1}", url, parameters.GetQuery(true));
-            HttpRequestMessage request = GetRequestMessage(url, HttpMethod.GET, parameters, headers, env);
+            HttpRequestMessage request = GetRequestMessage(url, HttpMethod.GET, parameters, headers, env, false, subDomain);
             var response = await httpClient.SendAsync(request).ConfigureAwait(false);
             var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             if (response.IsSuccessStatusCode)

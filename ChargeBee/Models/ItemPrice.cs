@@ -245,6 +245,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool?>("show_description_in_quotes", false); }
         }
+        public bool Deleted 
+        {
+            get { return GetValue<bool>("deleted", true); }
+        }
         public string BusinessEntityId 
         {
             get { return GetValue<string>("business_entity_id", false); }

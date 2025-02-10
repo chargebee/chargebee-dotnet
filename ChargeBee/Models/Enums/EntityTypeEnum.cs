@@ -106,5 +106,8 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "omnichannel_transaction")]
          OmnichannelTransaction,
 
+        [EnumMember(Value = "recorded_purchase")]
+         RecordedPurchase,
+
     }
 }

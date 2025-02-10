@@ -9,7 +9,7 @@ namespace ChargeBee.Api
     {
 		public static string DomainSuffix = "chargebee.com";
 		public static string Proto = "https";
-		public static string Version = "3.28.0";
+		public static string Version = "3.29.0";
 		public static readonly string API_VERSION = "v2";
         public static int TimeTravelMillis { get; set; }
         public static int ExportSleepMillis { get; set;}
@@ -34,6 +34,17 @@ namespace ChargeBee.Api
                     DomainSuffix,
 					API_VERSION);
             }
+        }
+
+        public string ApiBaseUrlWithSubDomain(string subDomain) {
+             if (BaseUrl != null)
+                 return BaseUrl;
+             return String.Format("{0}://{1}.{2}.{3}/api/{4}",
+                    Proto,
+                    SiteName,
+                    subDomain,
+                    DomainSuffix,
+					API_VERSION);
         }
 
         public string AuthValue
