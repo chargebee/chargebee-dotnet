@@ -16,6 +16,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "chargebee_payments")]
          ChargebeePayments,
 
+        [EnumMember(Value = "adyen")]
+         Adyen,
+
         [EnumMember(Value = "stripe")]
          Stripe,
 
@@ -90,9 +93,6 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "paypal_express_checkout")]
          PaypalExpressCheckout,
-
-        [EnumMember(Value = "adyen")]
-         Adyen,
 
         [EnumMember(Value = "orbital")]
          Orbital,

@@ -466,6 +466,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "subscription_entitlements_created")]
          SubscriptionEntitlementsCreated,
 
+        [EnumMember(Value = "subscription_entitlements_updated")]
+         SubscriptionEntitlementsUpdated,
+
         [EnumMember(Value = "business_entity_created")]
          BusinessEntityCreated,
 

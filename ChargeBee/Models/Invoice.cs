@@ -2413,6 +2413,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_items[tax10_amount][" + index + "]", lineItemTax10Amount);
                 return this;
             }
+            public ImportInvoiceRequest LineItemCreatedAt(int index, long lineItemCreatedAt) 
+            {
+                m_params.AddOpt("line_items[created_at][" + index + "]", lineItemCreatedAt);
+                return this;
+            }
             public ImportInvoiceRequest PaymentReferenceNumberId(int index, string paymentReferenceNumberId) 
             {
                 m_params.AddOpt("payment_reference_numbers[id][" + index + "]", paymentReferenceNumberId);

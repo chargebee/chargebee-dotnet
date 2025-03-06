@@ -124,6 +124,42 @@ namespace ChargeBee.Models
                 m_params.AddOpt("statement_descriptor[descriptor]", statementDescriptorDescriptor);
                 return this;
             }
+            public CreateRequest PaymentIntentId(string paymentIntentId) 
+            {
+                m_params.AddOpt("payment_intent[id]", paymentIntentId);
+                return this;
+            }
+            public CreateRequest PaymentIntentGatewayAccountId(string paymentIntentGatewayAccountId) 
+            {
+                m_params.AddOpt("payment_intent[gateway_account_id]", paymentIntentGatewayAccountId);
+                return this;
+            }
+            public CreateRequest PaymentIntentGwToken(string paymentIntentGwToken) 
+            {
+                m_params.AddOpt("payment_intent[gw_token]", paymentIntentGwToken);
+                return this;
+            }
+            public CreateRequest PaymentIntentPaymentMethodType(PaymentIntent.PaymentMethodTypeEnum paymentIntentPaymentMethodType) 
+            {
+                m_params.AddOpt("payment_intent[payment_method_type]", paymentIntentPaymentMethodType);
+                return this;
+            }
+            public CreateRequest PaymentIntentReferenceId(string paymentIntentReferenceId) 
+            {
+                m_params.AddOpt("payment_intent[reference_id]", paymentIntentReferenceId);
+                return this;
+            }
+            [Obsolete]
+            public CreateRequest PaymentIntentGwPaymentMethodId(string paymentIntentGwPaymentMethodId) 
+            {
+                m_params.AddOpt("payment_intent[gw_payment_method_id]", paymentIntentGwPaymentMethodId);
+                return this;
+            }
+            public CreateRequest PaymentIntentAdditionalInformation(JToken paymentIntentAdditionalInformation) 
+            {
+                m_params.AddOpt("payment_intent[additional_information]", paymentIntentAdditionalInformation);
+                return this;
+            }
             public CreateRequest PurchaseItemIndex(int index, int purchaseItemIndex) 
             {
                 m_params.Add("purchase_items[index][" + index + "]", purchaseItemIndex);
