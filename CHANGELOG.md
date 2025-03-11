@@ -1,3 +1,9 @@
+### v3.30.1 (2025-03-06)
+* * * 
+
+### Deleted Attribute:
+* metadata (deprecated attributed) has been removed from the subscription.
+
 ### v3.30.0 (2025-03-06)
 * * * 
 

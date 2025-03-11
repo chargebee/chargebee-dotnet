@@ -544,11 +544,6 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("business_entity_id", false); }
         }
-        [Obsolete]
-        public JToken Metadata
-        {
-            get { return GetJToken("metadata", false); }
-        }
         
         #endregion
         
