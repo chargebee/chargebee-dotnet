@@ -345,6 +345,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<UsageEvent>("usage_event"); }
         }
+        public OmnichannelSubscriptionItemScheduledChange OmnichannelSubscriptionItemScheduledChange
+        {
+            get {  return GetResource<OmnichannelSubscriptionItemScheduledChange>("omnichannel_subscription_item_scheduled_change"); }
+        }
 
         public List<AdvanceInvoiceSchedule> AdvanceInvoiceSchedules
         {

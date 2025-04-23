@@ -112,6 +112,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("customer_id", false); }
         }
+        public List<InvoiceEstimateLineItemAddress> LineItemAddresses 
+        {
+            get { return GetResourceList<InvoiceEstimateLineItemAddress>("line_item_addresses"); }
+        }
         
         #endregion
         
@@ -204,8 +208,12 @@ namespace ChargeBee.Models
                 get { return GetValue<long?>("item_level_discount_amount", false); }
             }
 
-            public string UsagePercentage {
-                get { return GetValue<string>("usage_percentage", false); }
+            public bool? Metered {
+                get { return GetValue<bool?>("metered", false); }
+            }
+
+            public string Percentage {
+                get { return GetValue<string>("percentage", false); }
             }
 
             public string ReferenceLineItemId {
@@ -373,6 +381,17 @@ namespace ChargeBee.Models
         }
         public class InvoiceEstimateLineItemTier : Resource
         {
+            public enum PricingTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "per_unit")]
+                PerUnit,
+                [EnumMember(Value = "flat_fee")]
+                FlatFee,
+                [EnumMember(Value = "package")]
+                Package,
+            }
 
             public string LineItemId {
                 get { return GetValue<string>("line_item_id", false); }
@@ -408,6 +427,14 @@ namespace ChargeBee.Models
 
             public string UnitAmountInDecimal {
                 get { return GetValue<string>("unit_amount_in_decimal", false); }
+            }
+
+            public PricingTypeEnum? PricingType {
+                get { return GetEnum<PricingTypeEnum>("pricing_type", false); }
+            }
+
+            public int? PackageSize {
+                get { return GetValue<int?>("package_size", false); }
             }
 
         }
@@ -465,6 +492,70 @@ namespace ChargeBee.Models
 
             public long DiscountAmount {
                 get { return GetValue<long>("discount_amount", true); }
+            }
+
+        }
+        public class InvoiceEstimateLineItemAddress : Resource
+        {
+
+            public string LineItemId {
+                get { return GetValue<string>("line_item_id", false); }
+            }
+
+            public string FirstName {
+                get { return GetValue<string>("first_name", false); }
+            }
+
+            public string LastName {
+                get { return GetValue<string>("last_name", false); }
+            }
+
+            public string Email {
+                get { return GetValue<string>("email", false); }
+            }
+
+            public string Company {
+                get { return GetValue<string>("company", false); }
+            }
+
+            public string Phone {
+                get { return GetValue<string>("phone", false); }
+            }
+
+            public string Line1 {
+                get { return GetValue<string>("line1", false); }
+            }
+
+            public string Line2 {
+                get { return GetValue<string>("line2", false); }
+            }
+
+            public string Line3 {
+                get { return GetValue<string>("line3", false); }
+            }
+
+            public string City {
+                get { return GetValue<string>("city", false); }
+            }
+
+            public string StateCode {
+                get { return GetValue<string>("state_code", false); }
+            }
+
+            public string State {
+                get { return GetValue<string>("state", false); }
+            }
+
+            public string Country {
+                get { return GetValue<string>("country", false); }
+            }
+
+            public string Zip {
+                get { return GetValue<string>("zip", false); }
+            }
+
+            public ValidationStatusEnum? ValidationStatus {
+                get { return GetEnum<ValidationStatusEnum>("validation_status", false); }
             }
 
         }

@@ -160,6 +160,12 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "nuvei")]
          Nuvei,
 
+        [EnumMember(Value = "paystack")]
+         Paystack,
+
+        [EnumMember(Value = "jp_morgan")]
+         JpMorgan,
+
         [EnumMember(Value = "gocardless")]
          Gocardless,
 

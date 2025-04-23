@@ -211,8 +211,12 @@ namespace ChargeBee.Models
                 get { return GetValue<long?>("item_level_discount_amount", false); }
             }
 
-            public string UsagePercentage {
-                get { return GetValue<string>("usage_percentage", false); }
+            public bool? Metered {
+                get { return GetValue<bool?>("metered", false); }
+            }
+
+            public string Percentage {
+                get { return GetValue<string>("percentage", false); }
             }
 
             public string ReferenceLineItemId {

@@ -899,6 +899,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
                 return this;
             }
+            public CreateSubItemEstimateRequest ItemTierPricingType(int index, ChargeBee.Models.Enums.PricingTypeEnum itemTierPricingType) 
+            {
+                m_params.AddOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+                return this;
+            }
+            public CreateSubItemEstimateRequest ItemTierPackageSize(int index, int itemTierPackageSize) 
+            {
+                m_params.AddOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
+                return this;
+            }
             public CreateSubItemEstimateRequest TaxProvidersFieldProviderName(int index, string taxProvidersFieldProviderName) 
             {
                 m_params.AddOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
@@ -1481,6 +1491,16 @@ namespace ChargeBee.Models
             public CreateSubItemForCustomerEstimateRequest ItemTierPriceInDecimal(int index, string itemTierPriceInDecimal) 
             {
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+                return this;
+            }
+            public CreateSubItemForCustomerEstimateRequest ItemTierPricingType(int index, ChargeBee.Models.Enums.PricingTypeEnum itemTierPricingType) 
+            {
+                m_params.AddOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+                return this;
+            }
+            public CreateSubItemForCustomerEstimateRequest ItemTierPackageSize(int index, int itemTierPackageSize) 
+            {
+                m_params.AddOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
                 return this;
             }
         }
@@ -2243,6 +2263,16 @@ namespace ChargeBee.Models
             public UpdateSubscriptionForItemsRequest ItemTierPriceInDecimal(int index, string itemTierPriceInDecimal) 
             {
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+                return this;
+            }
+            public UpdateSubscriptionForItemsRequest ItemTierPricingType(int index, ChargeBee.Models.Enums.PricingTypeEnum itemTierPricingType) 
+            {
+                m_params.AddOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+                return this;
+            }
+            public UpdateSubscriptionForItemsRequest ItemTierPackageSize(int index, int itemTierPackageSize) 
+            {
+                m_params.AddOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
                 return this;
             }
             public UpdateSubscriptionForItemsRequest SubscriptionItemProrationType(int index, ChargeBee.Models.Enums.ProrationTypeEnum subscriptionItemProrationType) 
@@ -3410,6 +3440,46 @@ namespace ChargeBee.Models
                 m_params.AddOpt("shipping_address[validation_status]", shippingAddressValidationStatus);
                 return this;
             }
+            public CreateInvoiceForItemsRequest BillingAddressLine1(string billingAddressLine1) 
+            {
+                m_params.AddOpt("billing_address[line1]", billingAddressLine1);
+                return this;
+            }
+            public CreateInvoiceForItemsRequest BillingAddressLine2(string billingAddressLine2) 
+            {
+                m_params.AddOpt("billing_address[line2]", billingAddressLine2);
+                return this;
+            }
+            public CreateInvoiceForItemsRequest BillingAddressLine3(string billingAddressLine3) 
+            {
+                m_params.AddOpt("billing_address[line3]", billingAddressLine3);
+                return this;
+            }
+            public CreateInvoiceForItemsRequest BillingAddressCity(string billingAddressCity) 
+            {
+                m_params.AddOpt("billing_address[city]", billingAddressCity);
+                return this;
+            }
+            public CreateInvoiceForItemsRequest BillingAddressStateCode(string billingAddressStateCode) 
+            {
+                m_params.AddOpt("billing_address[state_code]", billingAddressStateCode);
+                return this;
+            }
+            public CreateInvoiceForItemsRequest BillingAddressZip(string billingAddressZip) 
+            {
+                m_params.AddOpt("billing_address[zip]", billingAddressZip);
+                return this;
+            }
+            public CreateInvoiceForItemsRequest BillingAddressCountry(string billingAddressCountry) 
+            {
+                m_params.AddOpt("billing_address[country]", billingAddressCountry);
+                return this;
+            }
+            public CreateInvoiceForItemsRequest BillingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum billingAddressValidationStatus) 
+            {
+                m_params.AddOpt("billing_address[validation_status]", billingAddressValidationStatus);
+                return this;
+            }
             public CreateInvoiceForItemsRequest ItemPriceItemPriceId(int index, string itemPriceItemPriceId) 
             {
                 m_params.AddOpt("item_prices[item_price_id][" + index + "]", itemPriceItemPriceId);
@@ -3478,6 +3548,16 @@ namespace ChargeBee.Models
             public CreateInvoiceForItemsRequest ItemTierPriceInDecimal(int index, string itemTierPriceInDecimal) 
             {
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+                return this;
+            }
+            public CreateInvoiceForItemsRequest ItemTierPricingType(int index, ChargeBee.Models.Enums.PricingTypeEnum itemTierPricingType) 
+            {
+                m_params.AddOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+                return this;
+            }
+            public CreateInvoiceForItemsRequest ItemTierPackageSize(int index, int itemTierPackageSize) 
+            {
+                m_params.AddOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
                 return this;
             }
             public CreateInvoiceForItemsRequest ChargeAmount(int index, long chargeAmount) 

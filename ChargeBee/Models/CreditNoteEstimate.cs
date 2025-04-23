@@ -213,8 +213,12 @@ namespace ChargeBee.Models
                 get { return GetValue<long?>("item_level_discount_amount", false); }
             }
 
-            public string UsagePercentage {
-                get { return GetValue<string>("usage_percentage", false); }
+            public bool? Metered {
+                get { return GetValue<bool?>("metered", false); }
+            }
+
+            public string Percentage {
+                get { return GetValue<string>("percentage", false); }
             }
 
             public string ReferenceLineItemId {
@@ -423,6 +427,17 @@ namespace ChargeBee.Models
         }
         public class CreditNoteEstimateLineItemTier : Resource
         {
+            public enum PricingTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "per_unit")]
+                PerUnit,
+                [EnumMember(Value = "flat_fee")]
+                FlatFee,
+                [EnumMember(Value = "package")]
+                Package,
+            }
 
             public string LineItemId {
                 get { return GetValue<string>("line_item_id", false); }
@@ -458,6 +473,14 @@ namespace ChargeBee.Models
 
             public string UnitAmountInDecimal {
                 get { return GetValue<string>("unit_amount_in_decimal", false); }
+            }
+
+            public PricingTypeEnum? PricingType {
+                get { return GetEnum<PricingTypeEnum>("pricing_type", false); }
+            }
+
+            public int? PackageSize {
+                get { return GetValue<int?>("package_size", false); }
             }
 
         }

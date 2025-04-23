@@ -149,6 +149,10 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<UsageCalculationEnum>("usage_calculation", false); }
         }
+        public bool IsPercentagePricing 
+        {
+            get { return GetValue<bool>("is_percentage_pricing", true); }
+        }
         public DateTime? ArchivedAt 
         {
             get { return GetDateTime("archived_at", false); }
@@ -290,6 +294,11 @@ namespace ChargeBee.Models
             public CreateRequest BusinessEntityId(string businessEntityId) 
             {
                 m_params.AddOpt("business_entity_id", businessEntityId);
+                return this;
+            }
+            public CreateRequest IsPercentagePricing(bool isPercentagePricing) 
+            {
+                m_params.AddOpt("is_percentage_pricing", isPercentagePricing);
                 return this;
             }
             public CreateRequest BundleConfigurationType(ItemBundleConfiguration.TypeEnum bundleConfigurationType) 

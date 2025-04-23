@@ -282,6 +282,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
                 return this;
             }
+            public CreateForSubscriptionRequest ItemTierPricingType(int index, ChargeBee.Models.Enums.PricingTypeEnum itemTierPricingType) 
+            {
+                m_params.AddOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+                return this;
+            }
+            public CreateForSubscriptionRequest ItemTierPackageSize(int index, int itemTierPackageSize) 
+            {
+                m_params.AddOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
+                return this;
+            }
             public CreateForSubscriptionRequest CouponsToAddCouponId(int index, string couponsToAddCouponId) 
             {
                 m_params.AddOpt("coupons_to_add[coupon_id][" + index + "]", couponsToAddCouponId);
@@ -468,6 +478,16 @@ namespace ChargeBee.Models
             public UpdateRequest ItemTierPriceInDecimal(int index, string itemTierPriceInDecimal) 
             {
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+                return this;
+            }
+            public UpdateRequest ItemTierPricingType(int index, ChargeBee.Models.Enums.PricingTypeEnum itemTierPricingType) 
+            {
+                m_params.AddOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+                return this;
+            }
+            public UpdateRequest ItemTierPackageSize(int index, int itemTierPackageSize) 
+            {
+                m_params.AddOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
                 return this;
             }
             public UpdateRequest CouponsToAddCouponId(int index, string couponsToAddCouponId) 
@@ -807,6 +827,17 @@ namespace ChargeBee.Models
         }
         public class RampItemTier : Resource
         {
+            public enum PricingTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "per_unit")]
+                PerUnit,
+                [EnumMember(Value = "flat_fee")]
+                FlatFee,
+                [EnumMember(Value = "package")]
+                Package,
+            }
 
             public string ItemPriceId {
                 get { return GetValue<string>("item_price_id", true); }
@@ -834,6 +865,14 @@ namespace ChargeBee.Models
 
             public string PriceInDecimal {
                 get { return GetValue<string>("price_in_decimal", false); }
+            }
+
+            public PricingTypeEnum? PricingType {
+                get { return GetEnum<PricingTypeEnum>("pricing_type", false); }
+            }
+
+            public int? PackageSize {
+                get { return GetValue<int?>("package_size", false); }
             }
 
             public int Index {

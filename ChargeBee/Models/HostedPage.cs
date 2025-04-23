@@ -1371,6 +1371,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
                 return this;
             }
+            public CheckoutOneTimeForItemsRequest ItemTierPricingType(int index, ChargeBee.Models.Enums.PricingTypeEnum itemTierPricingType) 
+            {
+                m_params.AddOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+                return this;
+            }
+            public CheckoutOneTimeForItemsRequest ItemTierPackageSize(int index, int itemTierPackageSize) 
+            {
+                m_params.AddOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
+                return this;
+            }
             public CheckoutOneTimeForItemsRequest ChargeAmount(int index, long chargeAmount) 
             {
                 m_params.AddOpt("charges[amount][" + index + "]", chargeAmount);
@@ -1955,6 +1965,16 @@ namespace ChargeBee.Models
             public CheckoutNewForItemsRequest ItemTierPriceInDecimal(int index, string itemTierPriceInDecimal) 
             {
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+                return this;
+            }
+            public CheckoutNewForItemsRequest ItemTierPricingType(int index, ChargeBee.Models.Enums.PricingTypeEnum itemTierPricingType) 
+            {
+                m_params.AddOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+                return this;
+            }
+            public CheckoutNewForItemsRequest ItemTierPackageSize(int index, int itemTierPackageSize) 
+            {
+                m_params.AddOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
                 return this;
             }
             public CheckoutNewForItemsRequest EntityIdentifierId(int index, string entityIdentifierId) 
@@ -2587,6 +2607,16 @@ namespace ChargeBee.Models
             public CheckoutExistingForItemsRequest ItemTierPriceInDecimal(int index, string itemTierPriceInDecimal) 
             {
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest ItemTierPricingType(int index, ChargeBee.Models.Enums.PricingTypeEnum itemTierPricingType) 
+            {
+                m_params.AddOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest ItemTierPackageSize(int index, int itemTierPackageSize) 
+            {
+                m_params.AddOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
                 return this;
             }
             public CheckoutExistingForItemsRequest EntityIdentifierId(int index, string entityIdentifierId) 

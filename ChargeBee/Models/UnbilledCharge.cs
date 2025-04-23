@@ -394,6 +394,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
                 return this;
             }
+            public CreateRequest ItemTierPricingType(int index, ChargeBee.Models.Enums.PricingTypeEnum itemTierPricingType) 
+            {
+                m_params.AddOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+                return this;
+            }
+            public CreateRequest ItemTierPackageSize(int index, int itemTierPackageSize) 
+            {
+                m_params.AddOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
+                return this;
+            }
             public CreateRequest ChargeAmount(int index, long chargeAmount) 
             {
                 m_params.AddOpt("charges[amount][" + index + "]", chargeAmount);
@@ -564,6 +574,17 @@ namespace ChargeBee.Models
         #region Subclasses
         public class UnbilledChargeTier : Resource
         {
+            public enum PricingTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "per_unit")]
+                PerUnit,
+                [EnumMember(Value = "flat_fee")]
+                FlatFee,
+                [EnumMember(Value = "package")]
+                Package,
+            }
 
             public int StartingUnit {
                 get { return GetValue<int>("starting_unit", true); }
@@ -595,6 +616,14 @@ namespace ChargeBee.Models
 
             public string UnitAmountInDecimal {
                 get { return GetValue<string>("unit_amount_in_decimal", false); }
+            }
+
+            public PricingTypeEnum? PricingType {
+                get { return GetEnum<PricingTypeEnum>("pricing_type", false); }
+            }
+
+            public int? PackageSize {
+                get { return GetValue<int?>("package_size", false); }
             }
 
         }

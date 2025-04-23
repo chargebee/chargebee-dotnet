@@ -16,5 +16,11 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "end_of_contract_term")]
          EndOfContractTerm,
 
+        [EnumMember(Value = "specific_date")]
+         SpecificDate,
+
+        [EnumMember(Value = "end_of_subscription_billing_term")]
+         EndOfSubscriptionBillingTerm,
+
     }
 }

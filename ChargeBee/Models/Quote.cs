@@ -2293,6 +2293,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
                 return this;
             }
+            public CreateSubItemsForCustomerQuoteRequest ItemTierPricingType(int index, ChargeBee.Models.Enums.PricingTypeEnum itemTierPricingType) 
+            {
+                m_params.AddOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest ItemTierPackageSize(int index, int itemTierPackageSize) 
+            {
+                m_params.AddOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
+                return this;
+            }
         }
         public class EditCreateSubCustomerQuoteForItemsRequest : EntityRequest<EditCreateSubCustomerQuoteForItemsRequest> 
         {
@@ -2581,6 +2591,16 @@ namespace ChargeBee.Models
             public EditCreateSubCustomerQuoteForItemsRequest ItemTierPriceInDecimal(int index, string itemTierPriceInDecimal) 
             {
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest ItemTierPricingType(int index, ChargeBee.Models.Enums.PricingTypeEnum itemTierPricingType) 
+            {
+                m_params.AddOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest ItemTierPackageSize(int index, int itemTierPackageSize) 
+            {
+                m_params.AddOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
                 return this;
             }
         }
@@ -3019,6 +3039,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
                 return this;
             }
+            public UpdateSubscriptionQuoteForItemsRequest ItemTierPricingType(int index, ChargeBee.Models.Enums.PricingTypeEnum itemTierPricingType) 
+            {
+                m_params.AddOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+                return this;
+            }
+            public UpdateSubscriptionQuoteForItemsRequest ItemTierPackageSize(int index, int itemTierPackageSize) 
+            {
+                m_params.AddOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
+                return this;
+            }
         }
         public class EditUpdateSubscriptionQuoteForItemsRequest : EntityRequest<EditUpdateSubscriptionQuoteForItemsRequest> 
         {
@@ -3445,6 +3475,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
                 return this;
             }
+            public EditUpdateSubscriptionQuoteForItemsRequest ItemTierPricingType(int index, ChargeBee.Models.Enums.PricingTypeEnum itemTierPricingType) 
+            {
+                m_params.AddOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+                return this;
+            }
+            public EditUpdateSubscriptionQuoteForItemsRequest ItemTierPackageSize(int index, int itemTierPackageSize) 
+            {
+                m_params.AddOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
+                return this;
+            }
         }
         public class CreateForChargeItemsAndChargesRequest : EntityRequest<CreateForChargeItemsAndChargesRequest> 
         {
@@ -3626,6 +3666,16 @@ namespace ChargeBee.Models
             public CreateForChargeItemsAndChargesRequest ItemTierPriceInDecimal(int index, string itemTierPriceInDecimal) 
             {
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest ItemTierPricingType(int index, ChargeBee.Models.Enums.PricingTypeEnum itemTierPricingType) 
+            {
+                m_params.AddOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest ItemTierPackageSize(int index, int itemTierPackageSize) 
+            {
+                m_params.AddOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
                 return this;
             }
             public CreateForChargeItemsAndChargesRequest ChargeAmount(int index, long chargeAmount) 
@@ -3871,6 +3921,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
                 return this;
             }
+            public EditForChargeItemsAndChargesRequest ItemTierPricingType(int index, ChargeBee.Models.Enums.PricingTypeEnum itemTierPricingType) 
+            {
+                m_params.AddOpt("item_tiers[pricing_type][" + index + "]", itemTierPricingType);
+                return this;
+            }
+            public EditForChargeItemsAndChargesRequest ItemTierPackageSize(int index, int itemTierPackageSize) 
+            {
+                m_params.AddOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
+                return this;
+            }
             public EditForChargeItemsAndChargesRequest ChargeAmount(int index, long chargeAmount) 
             {
                 m_params.AddOpt("charges[amount][" + index + "]", chargeAmount);
@@ -4111,6 +4171,21 @@ namespace ChargeBee.Models
             Invoiced,
             [EnumMember(Value = "closed")]
             Closed,
+            [EnumMember(Value = "pending_approval")]
+            [Obsolete]
+            PendingApproval,
+            [EnumMember(Value = "approval_rejected")]
+            [Obsolete]
+            ApprovalRejected,
+            [EnumMember(Value = "proposed")]
+            [Obsolete]
+            Proposed,
+            [EnumMember(Value = "voided")]
+            [Obsolete]
+            Voided,
+            [EnumMember(Value = "expired")]
+            [Obsolete]
+            Expired,
 
         }
         public enum OperationTypeEnum
@@ -4124,6 +4199,9 @@ namespace ChargeBee.Models
             ChangeSubscription,
             [EnumMember(Value = "onetime_invoice")]
             OnetimeInvoice,
+            [EnumMember(Value = "renew_subscription")]
+            [Obsolete]
+            RenewSubscription,
 
         }
 
@@ -4214,8 +4292,12 @@ namespace ChargeBee.Models
                 get { return GetValue<long?>("item_level_discount_amount", false); }
             }
 
-            public string UsagePercentage {
-                get { return GetValue<string>("usage_percentage", false); }
+            public bool? Metered {
+                get { return GetValue<bool?>("metered", false); }
+            }
+
+            public string Percentage {
+                get { return GetValue<string>("percentage", false); }
             }
 
             public string ReferenceLineItemId {
@@ -4424,6 +4506,17 @@ namespace ChargeBee.Models
         }
         public class QuoteLineItemTier : Resource
         {
+            public enum PricingTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "per_unit")]
+                PerUnit,
+                [EnumMember(Value = "flat_fee")]
+                FlatFee,
+                [EnumMember(Value = "package")]
+                Package,
+            }
 
             public string LineItemId {
                 get { return GetValue<string>("line_item_id", false); }
@@ -4459,6 +4552,14 @@ namespace ChargeBee.Models
 
             public string UnitAmountInDecimal {
                 get { return GetValue<string>("unit_amount_in_decimal", false); }
+            }
+
+            public PricingTypeEnum? PricingType {
+                get { return GetEnum<PricingTypeEnum>("pricing_type", false); }
+            }
+
+            public int? PackageSize {
+                get { return GetValue<int?>("package_size", false); }
             }
 
         }

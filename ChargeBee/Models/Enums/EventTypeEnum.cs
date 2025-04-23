@@ -544,12 +544,6 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "omnichannel_subscription_item_renewed")]
          OmnichannelSubscriptionItemRenewed,
 
-        [EnumMember(Value = "omnichannel_subscription_item_downgrade_scheduled")]
-         OmnichannelSubscriptionItemDowngradeScheduled,
-
-        [EnumMember(Value = "omnichannel_subscription_item_scheduled_downgrade_removed")]
-         OmnichannelSubscriptionItemScheduledDowngradeRemoved,
-
         [EnumMember(Value = "omnichannel_subscription_item_downgraded")]
          OmnichannelSubscriptionItemDowngraded,
 
@@ -597,6 +591,24 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "record_purchase_failed")]
          RecordPurchaseFailed,
+
+        [EnumMember(Value = "omnichannel_subscription_item_change_scheduled")]
+         OmnichannelSubscriptionItemChangeScheduled,
+
+        [EnumMember(Value = "omnichannel_subscription_item_scheduled_change_removed")]
+         OmnichannelSubscriptionItemScheduledChangeRemoved,
+
+        [EnumMember(Value = "omnichannel_subscription_item_reactivated")]
+         OmnichannelSubscriptionItemReactivated,
+
+        [EnumMember(Value = "sales_order_created")]
+         SalesOrderCreated,
+
+        [EnumMember(Value = "sales_order_updated")]
+         SalesOrderUpdated,
+
+        [EnumMember(Value = "omnichannel_subscription_item_changed")]
+         OmnichannelSubscriptionItemChanged,
 
         [EnumMember(Value = "plan_created")]
          PlanCreated,

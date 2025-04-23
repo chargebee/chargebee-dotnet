@@ -120,6 +120,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("apple_app_store[transaction_id]", appleAppStoreTransactionId);
                 return this;
             }
+            public CreateRequest AppleAppStoreReceipt(string appleAppStoreReceipt) 
+            {
+                m_params.AddOpt("apple_app_store[receipt]", appleAppStoreReceipt);
+                return this;
+            }
+            public CreateRequest AppleAppStoreProductId(string appleAppStoreProductId) 
+            {
+                m_params.AddOpt("apple_app_store[product_id]", appleAppStoreProductId);
+                return this;
+            }
+            public CreateRequest GooglePlayStorePurchaseToken(string googlePlayStorePurchaseToken) 
+            {
+                m_params.AddOpt("google_play_store[purchase_token]", googlePlayStorePurchaseToken);
+                return this;
+            }
         }
         #endregion
 
@@ -130,6 +145,8 @@ namespace ChargeBee.Models
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
             [EnumMember(Value = "apple_app_store")]
             AppleAppStore,
+            [EnumMember(Value = "google_play_store")]
+            GooglePlayStore,
 
         }
         public enum StatusEnum

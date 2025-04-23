@@ -399,6 +399,17 @@ namespace ChargeBee.Models
         }
         public class QuotedSubscriptionItemTier : Resource
         {
+            public enum PricingTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "per_unit")]
+                PerUnit,
+                [EnumMember(Value = "flat_fee")]
+                FlatFee,
+                [EnumMember(Value = "package")]
+                Package,
+            }
 
             public string ItemPriceId {
                 get { return GetValue<string>("item_price_id", true); }
@@ -426,6 +437,14 @@ namespace ChargeBee.Models
 
             public string PriceInDecimal {
                 get { return GetValue<string>("price_in_decimal", false); }
+            }
+
+            public PricingTypeEnum? PricingType {
+                get { return GetEnum<PricingTypeEnum>("pricing_type", false); }
+            }
+
+            public int? PackageSize {
+                get { return GetValue<int?>("package_size", false); }
             }
 
             public int Index {

@@ -867,6 +867,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_id", subscriptionId);
                 return this;
             }
+            public PaymentSourceListRequest IncludeDeleted(bool includeDeleted) 
+            {
+                m_params.AddOpt("include_deleted", includeDeleted);
+                return this;
+            }
             public StringFilter<PaymentSourceListRequest> CustomerId() 
             {
                 return new StringFilter<PaymentSourceListRequest>("customer_id", this).SupportsMultiOperators(true);        

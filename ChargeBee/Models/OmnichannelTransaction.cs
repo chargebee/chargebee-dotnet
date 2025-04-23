@@ -58,23 +58,23 @@ namespace ChargeBee.Models
         }
         public string PriceCurrency 
         {
-            get { return GetValue<string>("price_currency", true); }
+            get { return GetValue<string>("price_currency", false); }
         }
-        public long PriceUnits 
+        public long? PriceUnits 
         {
-            get { return GetValue<long>("price_units", true); }
+            get { return GetValue<long?>("price_units", false); }
         }
-        public long PriceNanos 
+        public long? PriceNanos 
         {
-            get { return GetValue<long>("price_nanos", true); }
+            get { return GetValue<long?>("price_nanos", false); }
         }
         public TypeEnum OmnichannelTransactionType 
         {
             get { return GetEnum<TypeEnum>("type", true); }
         }
-        public DateTime TransactedAt 
+        public DateTime? TransactedAt 
         {
-            get { return (DateTime)GetDateTime("transacted_at", true); }
+            get { return GetDateTime("transacted_at", false); }
         }
         public DateTime CreatedAt 
         {

@@ -41,6 +41,11 @@ namespace ChargeBee.Models
         }
 
         #region Methods
+        public static ListRequest ListOmniSubItemScheduleChanges(string id)
+        {
+            string url = ApiUtil.BuildUrl("omnichannel_subscription_items", CheckNull(id), "scheduled_changes");
+            return new ListRequest(url);
+        }
         #endregion
         
         #region Properties
@@ -52,9 +57,17 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("item_id_at_source", true); }
         }
+        public string ItemParentIdAtSource 
+        {
+            get { return GetValue<string>("item_parent_id_at_source", false); }
+        }
         public StatusEnum Status 
         {
             get { return GetEnum<StatusEnum>("status", true); }
+        }
+        public AutoRenewStatusEnum? AutoRenewStatus 
+        {
+            get { return GetEnum<AutoRenewStatusEnum>("auto_renew_status", false); }
         }
         public DateTime? CurrentTermStart 
         {
@@ -84,9 +97,17 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("grace_period_expires_at", false); }
         }
+        public bool HasScheduledChanges 
+        {
+            get { return GetValue<bool>("has_scheduled_changes", true); }
+        }
         public long? ResourceVersion 
         {
             get { return GetValue<long?>("resource_version", false); }
+        }
+        public OmnichannelSubscriptionItemUpcomingRenewal UpcomingRenewal 
+        {
+            get { return GetSubResource<OmnichannelSubscriptionItemUpcomingRenewal>("upcoming_renewal"); }
         }
         
         #endregion
@@ -107,6 +128,17 @@ namespace ChargeBee.Models
             InDunning,
             [EnumMember(Value = "in_grace_period")]
             InGracePeriod,
+
+        }
+        public enum AutoRenewStatusEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "off")]
+            Off,
+            [EnumMember(Value = "on")]
+            On,
 
         }
         public enum ExpirationReasonEnum
@@ -131,10 +163,30 @@ namespace ChargeBee.Models
             CustomerCancelled,
             [EnumMember(Value = "customer_did_not_consent_to_price_increase")]
             CustomerDidNotConsentToPriceIncrease,
+            [EnumMember(Value = "refunded_due_to_app_issue")]
+            RefundedDueToAppIssue,
+            [EnumMember(Value = "refunded_for_other_reason")]
+            RefundedForOtherReason,
 
         }
 
         #region Subclasses
+        public class OmnichannelSubscriptionItemUpcomingRenewal : Resource
+        {
+
+            public string PriceCurrency {
+                get { return GetValue<string>("price_currency", false); }
+            }
+
+            public long? PriceUnits {
+                get { return GetValue<long?>("price_units", false); }
+            }
+
+            public long? PriceNanos {
+                get { return GetValue<long?>("price_nanos", false); }
+            }
+
+        }
 
         #endregion
     }

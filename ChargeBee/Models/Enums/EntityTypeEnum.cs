@@ -109,5 +109,11 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "recorded_purchase")]
          RecordedPurchase,
 
+        [EnumMember(Value = "omnichannel_subscription_item_scheduled_change")]
+         OmnichannelSubscriptionItemScheduledChange,
+
+        [EnumMember(Value = "sales_order")]
+         SalesOrder,
+
     }
 }

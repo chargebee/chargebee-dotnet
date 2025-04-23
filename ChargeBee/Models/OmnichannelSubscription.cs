@@ -120,6 +120,8 @@ namespace ChargeBee.Models
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
             [EnumMember(Value = "apple_app_store")]
             AppleAppStore,
+            [EnumMember(Value = "google_play_store")]
+            GooglePlayStore,
 
         }
 
@@ -149,23 +151,23 @@ namespace ChargeBee.Models
             }
 
             public string PriceCurrency {
-                get { return GetValue<string>("price_currency", true); }
+                get { return GetValue<string>("price_currency", false); }
             }
 
-            public long PriceUnits {
-                get { return GetValue<long>("price_units", true); }
+            public long? PriceUnits {
+                get { return GetValue<long?>("price_units", false); }
             }
 
-            public long PriceNanos {
-                get { return GetValue<long>("price_nanos", true); }
+            public long? PriceNanos {
+                get { return GetValue<long?>("price_nanos", false); }
             }
 
             public TypeEnum InitialPurchaseTransactionType {
                 get { return GetEnum<TypeEnum>("type", true); }
             }
 
-            public DateTime TransactedAt {
-                get { return (DateTime)GetDateTime("transacted_at", true); }
+            public DateTime? TransactedAt {
+                get { return GetDateTime("transacted_at", false); }
             }
 
             public DateTime CreatedAt {
