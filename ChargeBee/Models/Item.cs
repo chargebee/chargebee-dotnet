@@ -129,9 +129,9 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool?>("included_in_mrr", false); }
         }
-        public ItemApplicabilityEnum ItemApplicability 
+        public ItemApplicabilityEnum? ItemApplicability 
         {
-            get { return GetEnum<ItemApplicabilityEnum>("item_applicability", true); }
+            get { return GetEnum<ItemApplicabilityEnum>("item_applicability", false); }
         }
         public string GiftClaimRedirectUrl 
         {
@@ -149,9 +149,9 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<UsageCalculationEnum>("usage_calculation", false); }
         }
-        public bool IsPercentagePricing 
+        public bool? IsPercentagePricing 
         {
-            get { return GetValue<bool>("is_percentage_pricing", true); }
+            get { return GetValue<bool?>("is_percentage_pricing", false); }
         }
         public DateTime? ArchivedAt 
         {
