@@ -18,7 +18,12 @@ namespace ChargeBee.Api
     public static class ApiUtil
     {
         private static DateTime m_unixTime = new DateTime(1970, 1, 1);
-        private static HttpClient httpClient = new HttpClient() { Timeout = TimeSpan.FromMilliseconds(0 < ApiConfig.ConnectTimeout ? ApiConfig.ConnectTimeout : 30000) };
+
+        private static readonly HttpClient httpClient =
+            new HttpClient(ApiConfig.HttpMessageHandler ?? new HttpClientHandler())
+            {
+                Timeout = TimeSpan.FromMilliseconds(0 < ApiConfig.ConnectTimeout ? ApiConfig.ConnectTimeout : 30000)
+            };
 
         public static string BuildUrl(params string[] paths)
         {
@@ -31,6 +36,7 @@ namespace ChargeBee.Api
                 else
                     sb.Append('/').Append(Uri.EscapeDataString(path));
             }
+
             return sb.ToString();
         }
         private static HttpRequestMessage BuildRequest(string uri, HttpMethod method, Params parameters, ApiConfig env, bool supportsFilter, string subDomain)
@@ -105,6 +111,7 @@ namespace ChargeBee.Api
             AddCustomHeaders(request, headers);
             return request;
         }
+
         private static void AddHeaders(HttpRequestMessage request, ApiConfig env)
         {
             request.Headers.Add("Accept-Charset", env.Charset);
