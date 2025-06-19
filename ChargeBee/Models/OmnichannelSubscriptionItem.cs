@@ -97,6 +97,10 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("grace_period_expires_at", false); }
         }
+        public DateTime? ResumesAt 
+        {
+            get { return GetDateTime("resumes_at", false); }
+        }
         public bool HasScheduledChanges 
         {
             get { return GetValue<bool>("has_scheduled_changes", true); }
@@ -108,6 +112,10 @@ namespace ChargeBee.Models
         public OmnichannelSubscriptionItemUpcomingRenewal UpcomingRenewal 
         {
             get { return GetSubResource<OmnichannelSubscriptionItemUpcomingRenewal>("upcoming_renewal"); }
+        }
+        public OmnichannelSubscriptionItemLinkedItem LinkedItem 
+        {
+            get { return GetSubResource<OmnichannelSubscriptionItemLinkedItem>("linked_item"); }
         }
         
         #endregion
@@ -128,6 +136,8 @@ namespace ChargeBee.Models
             InDunning,
             [EnumMember(Value = "in_grace_period")]
             InGracePeriod,
+            [EnumMember(Value = "paused")]
+            Paused,
 
         }
         public enum AutoRenewStatusEnum
@@ -167,6 +177,8 @@ namespace ChargeBee.Models
             RefundedDueToAppIssue,
             [EnumMember(Value = "refunded_for_other_reason")]
             RefundedForOtherReason,
+            [EnumMember(Value = "merchant_revoked")]
+            MerchantRevoked,
 
         }
 
@@ -184,6 +196,18 @@ namespace ChargeBee.Models
 
             public long? PriceNanos {
                 get { return GetValue<long?>("price_nanos", false); }
+            }
+
+        }
+        public class OmnichannelSubscriptionItemLinkedItem : Resource
+        {
+
+            public string Id {
+                get { return GetValue<string>("id", true); }
+            }
+
+            public DateTime? LinkedAt {
+                get { return GetDateTime("linked_at", false); }
             }
 
         }

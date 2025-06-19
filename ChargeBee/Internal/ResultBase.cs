@@ -145,6 +145,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<QuotedCharge>("quoted_charge"); }
         }
+        public QuotedRamp QuotedRamp
+        {
+            get {  return GetResource<QuotedRamp>("quoted_ramp"); }
+        }
         public QuoteLineGroup QuoteLineGroup
         {
             get {  return GetResource<QuoteLineGroup>("quote_line_group"); }

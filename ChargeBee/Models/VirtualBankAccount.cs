@@ -104,7 +104,7 @@ namespace ChargeBee.Models
         }
         public string SwiftCode 
         {
-            get { return GetValue<string>("swift_code", true); }
+            get { return GetValue<string>("swift_code", false); }
         }
         public GatewayEnum Gateway 
         {

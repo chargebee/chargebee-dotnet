@@ -46,10 +46,10 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("credit_notes");
             return new CreateRequest(url, HttpMethod.POST);
         }
-        public static EntityRequest<Type> Retrieve(string id)
+        public static RetrieveRequest Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            return new RetrieveRequest(url, HttpMethod.GET);
         }
         public static PdfRequest Pdf(string id)
         {
@@ -418,6 +418,22 @@ namespace ChargeBee.Models
             {
                 m_params.AddOpt("line_items[entity_id][" + index + "]", lineItemEntityId);
                 return this;
+            }
+        }
+        public class RetrieveRequest : EntityRequest<RetrieveRequest> 
+        {
+            public RetrieveRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public StringFilter<RetrieveRequest> LineItemSubscriptionId() 
+            {
+                return new StringFilter<RetrieveRequest>("line_item[subscription_id]", this);        
+            }
+            public StringFilter<RetrieveRequest> LineItemCustomerId() 
+            {
+                return new StringFilter<RetrieveRequest>("line_item[customer_id]", this);        
             }
         }
         public class PdfRequest : EntityRequest<PdfRequest> 
@@ -1231,8 +1247,8 @@ namespace ChargeBee.Models
                 get { return GetValue<bool?>("metered", false); }
             }
 
-            public string Percentage {
-                get { return GetValue<string>("percentage", false); }
+            public bool? IsPercentagePricing {
+                get { return GetValue<bool?>("is_percentage_pricing", false); }
             }
 
             public string ReferenceLineItemId {

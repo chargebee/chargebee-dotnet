@@ -57,6 +57,10 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<ProductCatalogVersionEnum>("product_catalog_version", false); }
         }
+        public ChargebeeResponseSchemaTypeEnum? ChargebeeResponseSchemaType 
+        {
+            get { return GetEnum<ChargebeeResponseSchemaTypeEnum>("chargebee_response_schema_type", false); }
+        }
         
         #endregion
         

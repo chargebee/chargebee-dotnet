@@ -300,6 +300,14 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool>("deleted", true); }
         }
+        public long? TotalContractValue 
+        {
+            get { return GetValue<long?>("total_contract_value", false); }
+        }
+        public long? TotalDiscount 
+        {
+            get { return GetValue<long?>("total_discount", false); }
+        }
         
         #endregion
         
@@ -2046,6 +2054,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("coupon_ids", couponIds);
                 return this;
             }
+            public CreateSubItemsForCustomerQuoteRequest BillingStartOption(ChargeBee.Models.Enums.BillingStartOptionEnum billingStartOption) 
+            {
+                m_params.AddOpt("billing_start_option", billingStartOption);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest NetTermDays(int netTermDays) 
+            {
+                m_params.AddOpt("net_term_days", netTermDays);
+                return this;
+            }
             public CreateSubItemsForCustomerQuoteRequest SubscriptionId(string subscriptionId) 
             {
                 m_params.AddOpt("subscription[id]", subscriptionId);
@@ -2157,6 +2175,76 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[contract_term_billing_cycle_on_renewal]", subscriptionContractTermBillingCycleOnRenewal);
                 return this;
             }
+            public CreateSubItemsForCustomerQuoteRequest BillingAddressFirstName(string billingAddressFirstName) 
+            {
+                m_params.AddOpt("billing_address[first_name]", billingAddressFirstName);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest BillingAddressLastName(string billingAddressLastName) 
+            {
+                m_params.AddOpt("billing_address[last_name]", billingAddressLastName);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest BillingAddressEmail(string billingAddressEmail) 
+            {
+                m_params.AddOpt("billing_address[email]", billingAddressEmail);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest BillingAddressCompany(string billingAddressCompany) 
+            {
+                m_params.AddOpt("billing_address[company]", billingAddressCompany);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest BillingAddressPhone(string billingAddressPhone) 
+            {
+                m_params.AddOpt("billing_address[phone]", billingAddressPhone);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest BillingAddressLine1(string billingAddressLine1) 
+            {
+                m_params.AddOpt("billing_address[line1]", billingAddressLine1);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest BillingAddressLine2(string billingAddressLine2) 
+            {
+                m_params.AddOpt("billing_address[line2]", billingAddressLine2);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest BillingAddressLine3(string billingAddressLine3) 
+            {
+                m_params.AddOpt("billing_address[line3]", billingAddressLine3);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest BillingAddressCity(string billingAddressCity) 
+            {
+                m_params.AddOpt("billing_address[city]", billingAddressCity);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest BillingAddressStateCode(string billingAddressStateCode) 
+            {
+                m_params.AddOpt("billing_address[state_code]", billingAddressStateCode);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest BillingAddressState(string billingAddressState) 
+            {
+                m_params.AddOpt("billing_address[state]", billingAddressState);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest BillingAddressZip(string billingAddressZip) 
+            {
+                m_params.AddOpt("billing_address[zip]", billingAddressZip);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest BillingAddressCountry(string billingAddressCountry) 
+            {
+                m_params.AddOpt("billing_address[country]", billingAddressCountry);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest BillingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum billingAddressValidationStatus) 
+            {
+                m_params.AddOpt("billing_address[validation_status]", billingAddressValidationStatus);
+                return this;
+            }
             public CreateSubItemsForCustomerQuoteRequest SubscriptionItemItemPriceId(int index, string subscriptionItemItemPriceId) 
             {
                 m_params.Add("subscription_items[item_price_id][" + index + "]", subscriptionItemItemPriceId);
@@ -2215,7 +2303,7 @@ namespace ChargeBee.Models
             }
             public CreateSubItemsForCustomerQuoteRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
             {
-                m_params.Add("discounts[apply_on][" + index + "]", discountApplyOn);
+                m_params.AddOpt("discounts[apply_on][" + index + "]", discountApplyOn);
                 return this;
             }
             public CreateSubItemsForCustomerQuoteRequest DiscountDurationType(int index, ChargeBee.Models.Enums.DurationTypeEnum discountDurationType) 
@@ -2303,6 +2391,51 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
                 return this;
             }
+            public CreateSubItemsForCustomerQuoteRequest SubscriptionItemStartDate(int index, long subscriptionItemStartDate) 
+            {
+                m_params.AddOpt("subscription_items[start_date][" + index + "]", subscriptionItemStartDate);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest SubscriptionItemEndDate(int index, long subscriptionItemEndDate) 
+            {
+                m_params.AddOpt("subscription_items[end_date][" + index + "]", subscriptionItemEndDate);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest SubscriptionItemRampTierId(int index, string subscriptionItemRampTierId) 
+            {
+                m_params.AddOpt("subscription_items[ramp_tier_id][" + index + "]", subscriptionItemRampTierId);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest DiscountStartDate(int index, long discountStartDate) 
+            {
+                m_params.AddOpt("discounts[start_date][" + index + "]", discountStartDate);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest DiscountEndDate(int index, long discountEndDate) 
+            {
+                m_params.AddOpt("discounts[end_date][" + index + "]", discountEndDate);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest ItemTierRampTierId(int index, string itemTierRampTierId) 
+            {
+                m_params.AddOpt("item_tiers[ramp_tier_id][" + index + "]", itemTierRampTierId);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest CouponId(int index, string couponId) 
+            {
+                m_params.AddOpt("coupons[id][" + index + "]", couponId);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest CouponStartDate(int index, long couponStartDate) 
+            {
+                m_params.AddOpt("coupons[start_date][" + index + "]", couponStartDate);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest CouponEndDate(int index, long couponEndDate) 
+            {
+                m_params.AddOpt("coupons[end_date][" + index + "]", couponEndDate);
+                return this;
+            }
         }
         public class EditCreateSubCustomerQuoteForItemsRequest : EntityRequest<EditCreateSubCustomerQuoteForItemsRequest> 
         {
@@ -2344,6 +2477,16 @@ namespace ChargeBee.Models
             public EditCreateSubCustomerQuoteForItemsRequest CouponIds(List<string> couponIds) 
             {
                 m_params.AddOpt("coupon_ids", couponIds);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest BillingStartOption(ChargeBee.Models.Enums.BillingStartOptionEnum billingStartOption) 
+            {
+                m_params.AddOpt("billing_start_option", billingStartOption);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest NetTermDays(int netTermDays) 
+            {
+                m_params.AddOpt("net_term_days", netTermDays);
                 return this;
             }
             public EditCreateSubCustomerQuoteForItemsRequest SubscriptionId(string subscriptionId) 
@@ -2457,6 +2600,76 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[contract_term_billing_cycle_on_renewal]", subscriptionContractTermBillingCycleOnRenewal);
                 return this;
             }
+            public EditCreateSubCustomerQuoteForItemsRequest BillingAddressFirstName(string billingAddressFirstName) 
+            {
+                m_params.AddOpt("billing_address[first_name]", billingAddressFirstName);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest BillingAddressLastName(string billingAddressLastName) 
+            {
+                m_params.AddOpt("billing_address[last_name]", billingAddressLastName);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest BillingAddressEmail(string billingAddressEmail) 
+            {
+                m_params.AddOpt("billing_address[email]", billingAddressEmail);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest BillingAddressCompany(string billingAddressCompany) 
+            {
+                m_params.AddOpt("billing_address[company]", billingAddressCompany);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest BillingAddressPhone(string billingAddressPhone) 
+            {
+                m_params.AddOpt("billing_address[phone]", billingAddressPhone);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest BillingAddressLine1(string billingAddressLine1) 
+            {
+                m_params.AddOpt("billing_address[line1]", billingAddressLine1);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest BillingAddressLine2(string billingAddressLine2) 
+            {
+                m_params.AddOpt("billing_address[line2]", billingAddressLine2);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest BillingAddressLine3(string billingAddressLine3) 
+            {
+                m_params.AddOpt("billing_address[line3]", billingAddressLine3);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest BillingAddressCity(string billingAddressCity) 
+            {
+                m_params.AddOpt("billing_address[city]", billingAddressCity);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest BillingAddressStateCode(string billingAddressStateCode) 
+            {
+                m_params.AddOpt("billing_address[state_code]", billingAddressStateCode);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest BillingAddressState(string billingAddressState) 
+            {
+                m_params.AddOpt("billing_address[state]", billingAddressState);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest BillingAddressZip(string billingAddressZip) 
+            {
+                m_params.AddOpt("billing_address[zip]", billingAddressZip);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest BillingAddressCountry(string billingAddressCountry) 
+            {
+                m_params.AddOpt("billing_address[country]", billingAddressCountry);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest BillingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum billingAddressValidationStatus) 
+            {
+                m_params.AddOpt("billing_address[validation_status]", billingAddressValidationStatus);
+                return this;
+            }
             public EditCreateSubCustomerQuoteForItemsRequest SubscriptionItemItemPriceId(int index, string subscriptionItemItemPriceId) 
             {
                 m_params.Add("subscription_items[item_price_id][" + index + "]", subscriptionItemItemPriceId);
@@ -2515,7 +2728,7 @@ namespace ChargeBee.Models
             }
             public EditCreateSubCustomerQuoteForItemsRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
             {
-                m_params.Add("discounts[apply_on][" + index + "]", discountApplyOn);
+                m_params.AddOpt("discounts[apply_on][" + index + "]", discountApplyOn);
                 return this;
             }
             public EditCreateSubCustomerQuoteForItemsRequest DiscountDurationType(int index, ChargeBee.Models.Enums.DurationTypeEnum discountDurationType) 
@@ -2603,6 +2816,51 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
                 return this;
             }
+            public EditCreateSubCustomerQuoteForItemsRequest SubscriptionItemStartDate(int index, long subscriptionItemStartDate) 
+            {
+                m_params.AddOpt("subscription_items[start_date][" + index + "]", subscriptionItemStartDate);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest SubscriptionItemEndDate(int index, long subscriptionItemEndDate) 
+            {
+                m_params.AddOpt("subscription_items[end_date][" + index + "]", subscriptionItemEndDate);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest SubscriptionItemRampTierId(int index, string subscriptionItemRampTierId) 
+            {
+                m_params.AddOpt("subscription_items[ramp_tier_id][" + index + "]", subscriptionItemRampTierId);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest DiscountStartDate(int index, long discountStartDate) 
+            {
+                m_params.AddOpt("discounts[start_date][" + index + "]", discountStartDate);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest DiscountEndDate(int index, long discountEndDate) 
+            {
+                m_params.AddOpt("discounts[end_date][" + index + "]", discountEndDate);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest ItemTierRampTierId(int index, string itemTierRampTierId) 
+            {
+                m_params.AddOpt("item_tiers[ramp_tier_id][" + index + "]", itemTierRampTierId);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest CouponId(int index, string couponId) 
+            {
+                m_params.AddOpt("coupons[id][" + index + "]", couponId);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest CouponStartDate(int index, long couponStartDate) 
+            {
+                m_params.AddOpt("coupons[start_date][" + index + "]", couponStartDate);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest CouponEndDate(int index, long couponEndDate) 
+            {
+                m_params.AddOpt("coupons[end_date][" + index + "]", couponEndDate);
+                return this;
+            }
         }
         public class UpdateSubscriptionQuoteForItemsRequest : EntityRequest<UpdateSubscriptionQuoteForItemsRequest> 
         {
@@ -2684,6 +2942,11 @@ namespace ChargeBee.Models
             public UpdateSubscriptionQuoteForItemsRequest Reactivate(bool reactivate) 
             {
                 m_params.AddOpt("reactivate", reactivate);
+                return this;
+            }
+            public UpdateSubscriptionQuoteForItemsRequest NetTermDays(int netTermDays) 
+            {
+                m_params.AddOpt("net_term_days", netTermDays);
                 return this;
             }
             public UpdateSubscriptionQuoteForItemsRequest SubscriptionId(string subscriptionId) 
@@ -2956,7 +3219,7 @@ namespace ChargeBee.Models
             }
             public UpdateSubscriptionQuoteForItemsRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
             {
-                m_params.Add("discounts[apply_on][" + index + "]", discountApplyOn);
+                m_params.AddOpt("discounts[apply_on][" + index + "]", discountApplyOn);
                 return this;
             }
             public UpdateSubscriptionQuoteForItemsRequest DiscountDurationType(int index, ChargeBee.Models.Enums.DurationTypeEnum discountDurationType) 
@@ -3049,6 +3312,51 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
                 return this;
             }
+            public UpdateSubscriptionQuoteForItemsRequest SubscriptionItemStartDate(int index, long subscriptionItemStartDate) 
+            {
+                m_params.AddOpt("subscription_items[start_date][" + index + "]", subscriptionItemStartDate);
+                return this;
+            }
+            public UpdateSubscriptionQuoteForItemsRequest SubscriptionItemEndDate(int index, long subscriptionItemEndDate) 
+            {
+                m_params.AddOpt("subscription_items[end_date][" + index + "]", subscriptionItemEndDate);
+                return this;
+            }
+            public UpdateSubscriptionQuoteForItemsRequest SubscriptionItemRampTierId(int index, string subscriptionItemRampTierId) 
+            {
+                m_params.AddOpt("subscription_items[ramp_tier_id][" + index + "]", subscriptionItemRampTierId);
+                return this;
+            }
+            public UpdateSubscriptionQuoteForItemsRequest DiscountStartDate(int index, long discountStartDate) 
+            {
+                m_params.AddOpt("discounts[start_date][" + index + "]", discountStartDate);
+                return this;
+            }
+            public UpdateSubscriptionQuoteForItemsRequest DiscountEndDate(int index, long discountEndDate) 
+            {
+                m_params.AddOpt("discounts[end_date][" + index + "]", discountEndDate);
+                return this;
+            }
+            public UpdateSubscriptionQuoteForItemsRequest ItemTierRampTierId(int index, string itemTierRampTierId) 
+            {
+                m_params.AddOpt("item_tiers[ramp_tier_id][" + index + "]", itemTierRampTierId);
+                return this;
+            }
+            public UpdateSubscriptionQuoteForItemsRequest CouponId(int index, string couponId) 
+            {
+                m_params.AddOpt("coupons[id][" + index + "]", couponId);
+                return this;
+            }
+            public UpdateSubscriptionQuoteForItemsRequest CouponStartDate(int index, long couponStartDate) 
+            {
+                m_params.AddOpt("coupons[start_date][" + index + "]", couponStartDate);
+                return this;
+            }
+            public UpdateSubscriptionQuoteForItemsRequest CouponEndDate(int index, long couponEndDate) 
+            {
+                m_params.AddOpt("coupons[end_date][" + index + "]", couponEndDate);
+                return this;
+            }
         }
         public class EditUpdateSubscriptionQuoteForItemsRequest : EntityRequest<EditUpdateSubscriptionQuoteForItemsRequest> 
         {
@@ -3125,6 +3433,11 @@ namespace ChargeBee.Models
             public EditUpdateSubscriptionQuoteForItemsRequest Reactivate(bool reactivate) 
             {
                 m_params.AddOpt("reactivate", reactivate);
+                return this;
+            }
+            public EditUpdateSubscriptionQuoteForItemsRequest NetTermDays(int netTermDays) 
+            {
+                m_params.AddOpt("net_term_days", netTermDays);
                 return this;
             }
             [Obsolete]
@@ -3392,7 +3705,7 @@ namespace ChargeBee.Models
             }
             public EditUpdateSubscriptionQuoteForItemsRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
             {
-                m_params.Add("discounts[apply_on][" + index + "]", discountApplyOn);
+                m_params.AddOpt("discounts[apply_on][" + index + "]", discountApplyOn);
                 return this;
             }
             public EditUpdateSubscriptionQuoteForItemsRequest DiscountDurationType(int index, ChargeBee.Models.Enums.DurationTypeEnum discountDurationType) 
@@ -3485,6 +3798,51 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
                 return this;
             }
+            public EditUpdateSubscriptionQuoteForItemsRequest SubscriptionItemStartDate(int index, long subscriptionItemStartDate) 
+            {
+                m_params.AddOpt("subscription_items[start_date][" + index + "]", subscriptionItemStartDate);
+                return this;
+            }
+            public EditUpdateSubscriptionQuoteForItemsRequest SubscriptionItemEndDate(int index, long subscriptionItemEndDate) 
+            {
+                m_params.AddOpt("subscription_items[end_date][" + index + "]", subscriptionItemEndDate);
+                return this;
+            }
+            public EditUpdateSubscriptionQuoteForItemsRequest SubscriptionItemRampTierId(int index, string subscriptionItemRampTierId) 
+            {
+                m_params.AddOpt("subscription_items[ramp_tier_id][" + index + "]", subscriptionItemRampTierId);
+                return this;
+            }
+            public EditUpdateSubscriptionQuoteForItemsRequest DiscountStartDate(int index, long discountStartDate) 
+            {
+                m_params.AddOpt("discounts[start_date][" + index + "]", discountStartDate);
+                return this;
+            }
+            public EditUpdateSubscriptionQuoteForItemsRequest DiscountEndDate(int index, long discountEndDate) 
+            {
+                m_params.AddOpt("discounts[end_date][" + index + "]", discountEndDate);
+                return this;
+            }
+            public EditUpdateSubscriptionQuoteForItemsRequest ItemTierRampTierId(int index, string itemTierRampTierId) 
+            {
+                m_params.AddOpt("item_tiers[ramp_tier_id][" + index + "]", itemTierRampTierId);
+                return this;
+            }
+            public EditUpdateSubscriptionQuoteForItemsRequest CouponId(int index, string couponId) 
+            {
+                m_params.AddOpt("coupons[id][" + index + "]", couponId);
+                return this;
+            }
+            public EditUpdateSubscriptionQuoteForItemsRequest CouponStartDate(int index, long couponStartDate) 
+            {
+                m_params.AddOpt("coupons[start_date][" + index + "]", couponStartDate);
+                return this;
+            }
+            public EditUpdateSubscriptionQuoteForItemsRequest CouponEndDate(int index, long couponEndDate) 
+            {
+                m_params.AddOpt("coupons[end_date][" + index + "]", couponEndDate);
+                return this;
+            }
         }
         public class CreateForChargeItemsAndChargesRequest : EntityRequest<CreateForChargeItemsAndChargesRequest> 
         {
@@ -3531,6 +3889,76 @@ namespace ChargeBee.Models
             public CreateForChargeItemsAndChargesRequest CouponIds(List<string> couponIds) 
             {
                 m_params.AddOpt("coupon_ids", couponIds);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BillingAddressFirstName(string billingAddressFirstName) 
+            {
+                m_params.AddOpt("billing_address[first_name]", billingAddressFirstName);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BillingAddressLastName(string billingAddressLastName) 
+            {
+                m_params.AddOpt("billing_address[last_name]", billingAddressLastName);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BillingAddressEmail(string billingAddressEmail) 
+            {
+                m_params.AddOpt("billing_address[email]", billingAddressEmail);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BillingAddressCompany(string billingAddressCompany) 
+            {
+                m_params.AddOpt("billing_address[company]", billingAddressCompany);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BillingAddressPhone(string billingAddressPhone) 
+            {
+                m_params.AddOpt("billing_address[phone]", billingAddressPhone);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BillingAddressLine1(string billingAddressLine1) 
+            {
+                m_params.AddOpt("billing_address[line1]", billingAddressLine1);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BillingAddressLine2(string billingAddressLine2) 
+            {
+                m_params.AddOpt("billing_address[line2]", billingAddressLine2);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BillingAddressLine3(string billingAddressLine3) 
+            {
+                m_params.AddOpt("billing_address[line3]", billingAddressLine3);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BillingAddressCity(string billingAddressCity) 
+            {
+                m_params.AddOpt("billing_address[city]", billingAddressCity);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BillingAddressStateCode(string billingAddressStateCode) 
+            {
+                m_params.AddOpt("billing_address[state_code]", billingAddressStateCode);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BillingAddressState(string billingAddressState) 
+            {
+                m_params.AddOpt("billing_address[state]", billingAddressState);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BillingAddressZip(string billingAddressZip) 
+            {
+                m_params.AddOpt("billing_address[zip]", billingAddressZip);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BillingAddressCountry(string billingAddressCountry) 
+            {
+                m_params.AddOpt("billing_address[country]", billingAddressCountry);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest BillingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum billingAddressValidationStatus) 
+            {
+                m_params.AddOpt("billing_address[validation_status]", billingAddressValidationStatus);
                 return this;
             }
             public CreateForChargeItemsAndChargesRequest ShippingAddressFirstName(string shippingAddressFirstName) 
@@ -3784,6 +4212,76 @@ namespace ChargeBee.Models
             public EditForChargeItemsAndChargesRequest CouponIds(List<string> couponIds) 
             {
                 m_params.AddOpt("coupon_ids", couponIds);
+                return this;
+            }
+            public EditForChargeItemsAndChargesRequest BillingAddressFirstName(string billingAddressFirstName) 
+            {
+                m_params.AddOpt("billing_address[first_name]", billingAddressFirstName);
+                return this;
+            }
+            public EditForChargeItemsAndChargesRequest BillingAddressLastName(string billingAddressLastName) 
+            {
+                m_params.AddOpt("billing_address[last_name]", billingAddressLastName);
+                return this;
+            }
+            public EditForChargeItemsAndChargesRequest BillingAddressEmail(string billingAddressEmail) 
+            {
+                m_params.AddOpt("billing_address[email]", billingAddressEmail);
+                return this;
+            }
+            public EditForChargeItemsAndChargesRequest BillingAddressCompany(string billingAddressCompany) 
+            {
+                m_params.AddOpt("billing_address[company]", billingAddressCompany);
+                return this;
+            }
+            public EditForChargeItemsAndChargesRequest BillingAddressPhone(string billingAddressPhone) 
+            {
+                m_params.AddOpt("billing_address[phone]", billingAddressPhone);
+                return this;
+            }
+            public EditForChargeItemsAndChargesRequest BillingAddressLine1(string billingAddressLine1) 
+            {
+                m_params.AddOpt("billing_address[line1]", billingAddressLine1);
+                return this;
+            }
+            public EditForChargeItemsAndChargesRequest BillingAddressLine2(string billingAddressLine2) 
+            {
+                m_params.AddOpt("billing_address[line2]", billingAddressLine2);
+                return this;
+            }
+            public EditForChargeItemsAndChargesRequest BillingAddressLine3(string billingAddressLine3) 
+            {
+                m_params.AddOpt("billing_address[line3]", billingAddressLine3);
+                return this;
+            }
+            public EditForChargeItemsAndChargesRequest BillingAddressCity(string billingAddressCity) 
+            {
+                m_params.AddOpt("billing_address[city]", billingAddressCity);
+                return this;
+            }
+            public EditForChargeItemsAndChargesRequest BillingAddressStateCode(string billingAddressStateCode) 
+            {
+                m_params.AddOpt("billing_address[state_code]", billingAddressStateCode);
+                return this;
+            }
+            public EditForChargeItemsAndChargesRequest BillingAddressState(string billingAddressState) 
+            {
+                m_params.AddOpt("billing_address[state]", billingAddressState);
+                return this;
+            }
+            public EditForChargeItemsAndChargesRequest BillingAddressZip(string billingAddressZip) 
+            {
+                m_params.AddOpt("billing_address[zip]", billingAddressZip);
+                return this;
+            }
+            public EditForChargeItemsAndChargesRequest BillingAddressCountry(string billingAddressCountry) 
+            {
+                m_params.AddOpt("billing_address[country]", billingAddressCountry);
+                return this;
+            }
+            public EditForChargeItemsAndChargesRequest BillingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum billingAddressValidationStatus) 
+            {
+                m_params.AddOpt("billing_address[validation_status]", billingAddressValidationStatus);
                 return this;
             }
             public EditForChargeItemsAndChargesRequest ShippingAddressFirstName(string shippingAddressFirstName) 
@@ -4172,19 +4670,14 @@ namespace ChargeBee.Models
             [EnumMember(Value = "closed")]
             Closed,
             [EnumMember(Value = "pending_approval")]
-            [Obsolete]
             PendingApproval,
             [EnumMember(Value = "approval_rejected")]
-            [Obsolete]
             ApprovalRejected,
             [EnumMember(Value = "proposed")]
-            [Obsolete]
             Proposed,
             [EnumMember(Value = "voided")]
-            [Obsolete]
             Voided,
             [EnumMember(Value = "expired")]
-            [Obsolete]
             Expired,
 
         }
@@ -4200,7 +4693,6 @@ namespace ChargeBee.Models
             [EnumMember(Value = "onetime_invoice")]
             OnetimeInvoice,
             [EnumMember(Value = "renew_subscription")]
-            [Obsolete]
             RenewSubscription,
 
         }
@@ -4296,8 +4788,8 @@ namespace ChargeBee.Models
                 get { return GetValue<bool?>("metered", false); }
             }
 
-            public string Percentage {
-                get { return GetValue<string>("percentage", false); }
+            public bool? IsPercentagePricing {
+                get { return GetValue<bool?>("is_percentage_pricing", false); }
             }
 
             public string ReferenceLineItemId {

@@ -72,6 +72,16 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "stop_dunning");
             return new StopDunningRequest(url, HttpMethod.POST);
         }
+        public static PauseDunningRequest PauseDunning(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "pause_dunning");
+            return new PauseDunningRequest(url, HttpMethod.POST);
+        }
+        public static ResumeDunningRequest ResumeDunning(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "resume_dunning");
+            return new ResumeDunningRequest(url, HttpMethod.POST);
+        }
         public static ImportInvoiceRequest ImportInvoice()
         {
             string url = ApiUtil.BuildUrl("invoices", "import_invoice");
@@ -114,10 +124,10 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "invoices");
             return new ListRequest(url);
         }
-        public static EntityRequest<Type> Retrieve(string id)
+        public static RetrieveRequest Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            return new RetrieveRequest(url, HttpMethod.GET);
         }
         public static PdfRequest Pdf(string id)
         {
@@ -1990,6 +2000,37 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class PauseDunningRequest : EntityRequest<PauseDunningRequest> 
+        {
+            public PauseDunningRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public PauseDunningRequest ExpectedPaymentDate(long expectedPaymentDate) 
+            {
+                m_params.Add("expected_payment_date", expectedPaymentDate);
+                return this;
+            }
+            public PauseDunningRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
+                return this;
+            }
+        }
+        public class ResumeDunningRequest : EntityRequest<ResumeDunningRequest> 
+        {
+            public ResumeDunningRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public ResumeDunningRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
+                return this;
+            }
+        }
         public class ImportInvoiceRequest : EntityRequest<ImportInvoiceRequest> 
         {
             public ImportInvoiceRequest(string url, HttpMethod method) 
@@ -2592,6 +2633,81 @@ namespace ChargeBee.Models
                 m_params.AddOpt("notes[note][" + index + "]", noteNote);
                 return this;
             }
+            public ImportInvoiceRequest LineItemAddressLineItemId(int index, string lineItemAddressLineItemId) 
+            {
+                m_params.AddOpt("line_item_addresses[line_item_id][" + index + "]", lineItemAddressLineItemId);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemAddressFirstName(int index, string lineItemAddressFirstName) 
+            {
+                m_params.AddOpt("line_item_addresses[first_name][" + index + "]", lineItemAddressFirstName);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemAddressLastName(int index, string lineItemAddressLastName) 
+            {
+                m_params.AddOpt("line_item_addresses[last_name][" + index + "]", lineItemAddressLastName);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemAddressEmail(int index, string lineItemAddressEmail) 
+            {
+                m_params.AddOpt("line_item_addresses[email][" + index + "]", lineItemAddressEmail);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemAddressCompany(int index, string lineItemAddressCompany) 
+            {
+                m_params.AddOpt("line_item_addresses[company][" + index + "]", lineItemAddressCompany);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemAddressPhone(int index, string lineItemAddressPhone) 
+            {
+                m_params.AddOpt("line_item_addresses[phone][" + index + "]", lineItemAddressPhone);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemAddressLine1(int index, string lineItemAddressLine1) 
+            {
+                m_params.AddOpt("line_item_addresses[line1][" + index + "]", lineItemAddressLine1);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemAddressLine2(int index, string lineItemAddressLine2) 
+            {
+                m_params.AddOpt("line_item_addresses[line2][" + index + "]", lineItemAddressLine2);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemAddressLine3(int index, string lineItemAddressLine3) 
+            {
+                m_params.AddOpt("line_item_addresses[line3][" + index + "]", lineItemAddressLine3);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemAddressCity(int index, string lineItemAddressCity) 
+            {
+                m_params.AddOpt("line_item_addresses[city][" + index + "]", lineItemAddressCity);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemAddressStateCode(int index, string lineItemAddressStateCode) 
+            {
+                m_params.AddOpt("line_item_addresses[state_code][" + index + "]", lineItemAddressStateCode);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemAddressState(int index, string lineItemAddressState) 
+            {
+                m_params.AddOpt("line_item_addresses[state][" + index + "]", lineItemAddressState);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemAddressZip(int index, string lineItemAddressZip) 
+            {
+                m_params.AddOpt("line_item_addresses[zip][" + index + "]", lineItemAddressZip);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemAddressCountry(int index, string lineItemAddressCountry) 
+            {
+                m_params.AddOpt("line_item_addresses[country][" + index + "]", lineItemAddressCountry);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemAddressValidationStatus(int index, ChargeBee.Models.Enums.ValidationStatusEnum lineItemAddressValidationStatus) 
+            {
+                m_params.AddOpt("line_item_addresses[validation_status][" + index + "]", lineItemAddressValidationStatus);
+                return this;
+            }
         }
         public class ApplyPaymentsRequest : EntityRequest<ApplyPaymentsRequest> 
         {
@@ -2753,6 +2869,22 @@ namespace ChargeBee.Models
             public InvoiceListRequest SortByUpdatedAt(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","updated_at");
                 return this;
+            }
+        }
+        public class RetrieveRequest : EntityRequest<RetrieveRequest> 
+        {
+            public RetrieveRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public StringFilter<RetrieveRequest> LineItemSubscriptionId() 
+            {
+                return new StringFilter<RetrieveRequest>("line_item[subscription_id]", this);        
+            }
+            public StringFilter<RetrieveRequest> LineItemCustomerId() 
+            {
+                return new StringFilter<RetrieveRequest>("line_item[customer_id]", this);        
             }
         }
         public class PdfRequest : EntityRequest<PdfRequest> 
@@ -3643,8 +3775,8 @@ namespace ChargeBee.Models
                 get { return GetValue<bool?>("metered", false); }
             }
 
-            public string Percentage {
-                get { return GetValue<string>("percentage", false); }
+            public bool? IsPercentagePricing {
+                get { return GetValue<bool?>("is_percentage_pricing", false); }
             }
 
             public string ReferenceLineItemId {
@@ -4183,16 +4315,16 @@ namespace ChargeBee.Models
                 Addon,
             }
 
-            public EntityTypeEnum EntityType {
-                get { return GetEnum<EntityTypeEnum>("entity_type", true); }
-            }
-
             public string Note {
                 get { return GetValue<string>("note", true); }
             }
 
             public string EntityId {
                 get { return GetValue<string>("entity_id", false); }
+            }
+
+            public EntityTypeEnum? EntityType {
+                get { return GetEnum<EntityTypeEnum>("entity_type", false); }
             }
 
         }

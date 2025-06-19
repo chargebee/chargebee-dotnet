@@ -286,6 +286,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("usage_calculation", usageCalculation);
                 return this;
             }
+            public CreateRequest IsPercentagePricing(bool isPercentagePricing) 
+            {
+                m_params.AddOpt("is_percentage_pricing", isPercentagePricing);
+                return this;
+            }
             public CreateRequest Metadata(JToken metadata) 
             {
                 m_params.AddOpt("metadata", metadata);
@@ -294,11 +299,6 @@ namespace ChargeBee.Models
             public CreateRequest BusinessEntityId(string businessEntityId) 
             {
                 m_params.AddOpt("business_entity_id", businessEntityId);
-                return this;
-            }
-            public CreateRequest IsPercentagePricing(bool isPercentagePricing) 
-            {
-                m_params.AddOpt("is_percentage_pricing", isPercentagePricing);
                 return this;
             }
             public CreateRequest BundleConfigurationType(ItemBundleConfiguration.TypeEnum bundleConfigurationType) 
@@ -413,6 +413,11 @@ namespace ChargeBee.Models
             public UpdateRequest Status(Item.StatusEnum status) 
             {
                 m_params.AddOpt("status", status);
+                return this;
+            }
+            public UpdateRequest IsPercentagePricing(bool isPercentagePricing) 
+            {
+                m_params.AddOpt("is_percentage_pricing", isPercentagePricing);
                 return this;
             }
             public UpdateRequest BundleConfigurationType(ItemBundleConfiguration.TypeEnum bundleConfigurationType) 

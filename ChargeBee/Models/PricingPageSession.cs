@@ -278,7 +278,7 @@ namespace ChargeBee.Models
             }
             public CreateForNewSubscriptionRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
             {
-                m_params.Add("discounts[apply_on][" + index + "]", discountApplyOn);
+                m_params.AddOpt("discounts[apply_on][" + index + "]", discountApplyOn);
                 return this;
             }
             public CreateForNewSubscriptionRequest DiscountDurationType(int index, ChargeBee.Models.Enums.DurationTypeEnum discountDurationType) 
@@ -346,7 +346,7 @@ namespace ChargeBee.Models
             }
             public CreateForExistingSubscriptionRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
             {
-                m_params.Add("discounts[apply_on][" + index + "]", discountApplyOn);
+                m_params.AddOpt("discounts[apply_on][" + index + "]", discountApplyOn);
                 return this;
             }
             public CreateForExistingSubscriptionRequest DiscountDurationType(int index, ChargeBee.Models.Enums.DurationTypeEnum discountDurationType) 

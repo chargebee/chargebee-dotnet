@@ -217,8 +217,8 @@ namespace ChargeBee.Models
                 get { return GetValue<bool?>("metered", false); }
             }
 
-            public string Percentage {
-                get { return GetValue<string>("percentage", false); }
+            public bool? IsPercentagePricing {
+                get { return GetValue<bool?>("is_percentage_pricing", false); }
             }
 
             public string ReferenceLineItemId {

@@ -106,6 +106,10 @@ namespace ChargeBee.Models
             {
             }
 
+            public EnumFilter<OmnichannelSubscription.SourceEnum, OmnichannelSubscriptionListRequest> Source() 
+            {
+                return new EnumFilter<OmnichannelSubscription.SourceEnum, OmnichannelSubscriptionListRequest>("source", this);        
+            }
             public StringFilter<OmnichannelSubscriptionListRequest> CustomerId() 
             {
                 return new StringFilter<OmnichannelSubscriptionListRequest>("customer_id", this);        

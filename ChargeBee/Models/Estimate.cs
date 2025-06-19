@@ -821,7 +821,7 @@ namespace ChargeBee.Models
             }
             public CreateSubItemEstimateRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
             {
-                m_params.Add("discounts[apply_on][" + index + "]", discountApplyOn);
+                m_params.AddOpt("discounts[apply_on][" + index + "]", discountApplyOn);
                 return this;
             }
             public CreateSubItemEstimateRequest DiscountDurationType(int index, ChargeBee.Models.Enums.DurationTypeEnum discountDurationType) 
@@ -1357,6 +1357,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[trial_end_action]", subscriptionTrialEndAction);
                 return this;
             }
+            public CreateSubItemForCustomerEstimateRequest BillingOverrideMaxExcessPaymentUsage(long billingOverrideMaxExcessPaymentUsage) 
+            {
+                m_params.AddOpt("billing_override[max_excess_payment_usage]", billingOverrideMaxExcessPaymentUsage);
+                return this;
+            }
+            public CreateSubItemForCustomerEstimateRequest BillingOverrideMaxRefundableCreditsUsage(long billingOverrideMaxRefundableCreditsUsage) 
+            {
+                m_params.AddOpt("billing_override[max_refundable_credits_usage]", billingOverrideMaxRefundableCreditsUsage);
+                return this;
+            }
             public CreateSubItemForCustomerEstimateRequest SubscriptionItemItemPriceId(int index, string subscriptionItemItemPriceId) 
             {
                 m_params.Add("subscription_items[item_price_id][" + index + "]", subscriptionItemItemPriceId);
@@ -1415,7 +1425,7 @@ namespace ChargeBee.Models
             }
             public CreateSubItemForCustomerEstimateRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
             {
-                m_params.Add("discounts[apply_on][" + index + "]", discountApplyOn);
+                m_params.AddOpt("discounts[apply_on][" + index + "]", discountApplyOn);
                 return this;
             }
             public CreateSubItemForCustomerEstimateRequest DiscountDurationType(int index, ChargeBee.Models.Enums.DurationTypeEnum discountDurationType) 
@@ -2119,6 +2129,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[trial_end_action]", subscriptionTrialEndAction);
                 return this;
             }
+            public UpdateSubscriptionForItemsRequest BillingOverrideMaxExcessPaymentUsage(long billingOverrideMaxExcessPaymentUsage) 
+            {
+                m_params.AddOpt("billing_override[max_excess_payment_usage]", billingOverrideMaxExcessPaymentUsage);
+                return this;
+            }
+            public UpdateSubscriptionForItemsRequest BillingOverrideMaxRefundableCreditsUsage(long billingOverrideMaxRefundableCreditsUsage) 
+            {
+                m_params.AddOpt("billing_override[max_refundable_credits_usage]", billingOverrideMaxRefundableCreditsUsage);
+                return this;
+            }
             public UpdateSubscriptionForItemsRequest SubscriptionItemItemPriceId(int index, string subscriptionItemItemPriceId) 
             {
                 m_params.Add("subscription_items[item_price_id][" + index + "]", subscriptionItemItemPriceId);
@@ -2182,7 +2202,7 @@ namespace ChargeBee.Models
             }
             public UpdateSubscriptionForItemsRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
             {
-                m_params.Add("discounts[apply_on][" + index + "]", discountApplyOn);
+                m_params.AddOpt("discounts[apply_on][" + index + "]", discountApplyOn);
                 return this;
             }
             public UpdateSubscriptionForItemsRequest DiscountDurationType(int index, ChargeBee.Models.Enums.DurationTypeEnum discountDurationType) 

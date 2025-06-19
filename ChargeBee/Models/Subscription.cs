@@ -67,10 +67,10 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "subscriptions");
             return new ListRequest(url);
         }
-        public static ListRequest ContractTermsForSubscription(string id)
+        public static SubscriptionContractTermsForSubscriptionRequest ContractTermsForSubscription(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "contract_terms");
-            return new ListRequest(url);
+            return new SubscriptionContractTermsForSubscriptionRequest(url);
         }
         public static ListRequest ListDiscounts(string id)
         {
@@ -2101,7 +2101,7 @@ namespace ChargeBee.Models
             }
             public CreateWithItemsRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
             {
-                m_params.Add("discounts[apply_on][" + index + "]", discountApplyOn);
+                m_params.AddOpt("discounts[apply_on][" + index + "]", discountApplyOn);
                 return this;
             }
             public CreateWithItemsRequest DiscountDurationType(int index, ChargeBee.Models.Enums.DurationTypeEnum discountDurationType) 
@@ -2307,6 +2307,19 @@ namespace ChargeBee.Models
             public EnumFilter<ChargeBee.Models.Enums.ChannelEnum, SubscriptionListRequest> Channel() 
             {
                 return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, SubscriptionListRequest>("channel", this);        
+            }
+        }
+        public class SubscriptionContractTermsForSubscriptionRequest : ListRequestBase<SubscriptionContractTermsForSubscriptionRequest> 
+        {
+            public SubscriptionContractTermsForSubscriptionRequest(string url) 
+                    : base(url)
+            {
+            }
+
+            
+            public SubscriptionContractTermsForSubscriptionRequest SortByCreatedAt(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");
+                return this;
             }
         }
         public class RemoveScheduledCancellationRequest : EntityRequest<RemoveScheduledCancellationRequest> 
@@ -3619,7 +3632,7 @@ namespace ChargeBee.Models
             }
             public UpdateForItemsRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
             {
-                m_params.Add("discounts[apply_on][" + index + "]", discountApplyOn);
+                m_params.AddOpt("discounts[apply_on][" + index + "]", discountApplyOn);
                 return this;
             }
             public UpdateForItemsRequest DiscountDurationType(int index, ChargeBee.Models.Enums.DurationTypeEnum discountDurationType) 
@@ -5676,7 +5689,7 @@ namespace ChargeBee.Models
             }
             public ImportForItemsRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
             {
-                m_params.Add("discounts[apply_on][" + index + "]", discountApplyOn);
+                m_params.AddOpt("discounts[apply_on][" + index + "]", discountApplyOn);
                 return this;
             }
             public ImportForItemsRequest DiscountDurationType(int index, ChargeBee.Models.Enums.DurationTypeEnum discountDurationType) 
