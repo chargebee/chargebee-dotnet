@@ -1,15 +1,29 @@
 using System;
+using System.Collections.Generic;
 using System.Text;
 using ChargeBee.Internal;
 using Newtonsoft.Json.Linq;
 
 namespace ChargeBee.Api
 {
+    public class RetryConfig
+    {
+        public bool Enabled { get; set; } = false;
+        public int MaxRetries { get; set; } = 3;
+        public int BaseDelayMs { get; set; } = 500;
+        public HashSet<int> RetryOnStatus { get; set; } = new HashSet<int> { 500, 502, 503, 504 };
+
+        public bool ShouldRetry(int statusCode, int attempt)
+        {
+            return Enabled && attempt < MaxRetries && RetryOnStatus.Contains(statusCode);
+        }
+    }
+
     public sealed class ApiConfig
     {
 		public static string DomainSuffix = "chargebee.com";
 		public static string Proto = "https";
-		public static string Version = "3.32.0";
+		public static string Version = "3.33.0";
 		public static readonly string API_VERSION = "v2";
         public static int TimeTravelMillis { get; set; }
         public static int ExportSleepMillis { get; set;}
@@ -19,6 +33,8 @@ namespace ChargeBee.Api
         public string Charset { get; set; }
         public static int ConnectTimeout { get; set; }
         public string BaseUrl { get; set; }
+
+        public RetryConfig RetryConfig { get; set; } = new RetryConfig();
 
         public string ApiBaseUrl
         {
@@ -112,6 +128,15 @@ namespace ChargeBee.Api
 
         public static void updateConnectTimeoutInMillis(int timeout) {
                     ConnectTimeout = timeout;
+        }
+        
+        public static void UpdateRetryConfig(RetryConfig retryConfig)
+        {
+            if (retryConfig == null)
+            {
+                throw new ArgumentNullException(nameof(retryConfig), "Retry configuration cannot be null.");
+            }
+            Instance.RetryConfig = retryConfig;
         }
     }
 }

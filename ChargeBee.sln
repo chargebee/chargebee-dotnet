@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{9A753E
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chargebee.Tests", "Chargebee.Tests\Chargebee.Tests.csproj", "{CF226494-5A47-4B29-B7AA-C51BD7ED6F25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +24,10 @@ Global
 		{8F827C3F-DA3E-4C85-96E7-2F4DF5DD1928}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F827C3F-DA3E-4C85-96E7-2F4DF5DD1928}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F827C3F-DA3E-4C85-96E7-2F4DF5DD1928}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF226494-5A47-4B29-B7AA-C51BD7ED6F25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF226494-5A47-4B29-B7AA-C51BD7ED6F25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF226494-5A47-4B29-B7AA-C51BD7ED6F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF226494-5A47-4B29-B7AA-C51BD7ED6F25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

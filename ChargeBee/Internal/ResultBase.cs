@@ -33,6 +33,13 @@ namespace ChargeBee.Internal
             m_jobj = jobj;
         }
 
+        public string ToJson()
+        {
+            
+            return m_jobj.ToString(Formatting.None) ;
+        }
+        
+
         public Subscription Subscription
         {
             get {  return GetResource<Subscription>("subscription"); }

@@ -1,8 +1,4 @@
 using System;
-using System.ComponentModel;
-using System.IO;
-using System.Net;
-using System.Reflection;
 using System.Text;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -180,18 +176,57 @@ namespace ChargeBee.Api
         }
         private static async Task<EntityResult> GetEntityResultAsync(String url, Params parameters, Dictionary<string, string> headers, ApiConfig env, HttpMethod meth, bool supportsFilter, string subDomain = null, bool isJsonRequest=false)
         {
-            HttpRequestMessage request = GetRequestMessage(url, meth, parameters, headers, env, supportsFilter, subDomain, isJsonRequest);
-            var response = await httpClient.SendAsync(request).ConfigureAwait(false);
-            var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-            if (response.IsSuccessStatusCode)
+            int attempt = 0;
+            int lastRetryAfterDelay = 0;
+            Random rng = new Random();
+            while (true)
             {
-                EntityResult result = new EntityResult(response.StatusCode, json, response.Headers);
-                return result;
-            }
-            else
-            {
-                HandleException(response);
-                return null;
+                HttpRequestMessage request = GetRequestMessage(url, meth, parameters, headers, env, supportsFilter, subDomain, isJsonRequest);
+                HttpResponseMessage response = null;
+                try
+                {
+                    response = await httpClient.SendAsync(request).ConfigureAwait(false);
+                    var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return new EntityResult(response.StatusCode, json, response.Headers);
+                    }
+                    else
+                    {
+                        int statusCode = (int)response.StatusCode;
+                        if (env.RetryConfig != null && env.RetryConfig.ShouldRetry(statusCode, attempt))
+                        {
+                            int retryAfterDelay = ParseRetryAfterHeader(response);
+                            int delay = GetRetryDelay(env.RetryConfig, attempt,
+                                retryAfterDelay > 0 ? retryAfterDelay : lastRetryAfterDelay, rng);
+                            await Task.Delay(delay).ConfigureAwait(false);
+                            attempt++;
+                            lastRetryAfterDelay = retryAfterDelay > 0 ? retryAfterDelay : lastRetryAfterDelay;
+                            continue;
+                        }
+
+                        HandleException(response);
+                        return null;
+                    }
+                }
+                catch (ApiException exception)
+                {
+                    int statusCode = (int)exception.HttpStatusCode;
+                    if (env.RetryConfig == null || !env.RetryConfig.ShouldRetry(statusCode, attempt)) throw;
+                    int delay = GetRetryDelay(env.RetryConfig, attempt, lastRetryAfterDelay, rng);
+                    await Task.Delay(delay).ConfigureAwait(false);
+                    attempt++;
+                }
+                catch (Exception e)
+                {
+                    if (env.RetryConfig == null || !env.RetryConfig.ShouldRetry(0, attempt)) throw;
+
+                }
+                finally
+                {
+                    response?.Dispose();
+                    request.Dispose();
+                }
             }
         }
         public static EntityResult Post(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env, bool supportsFilter=false, string subDomain = null, bool isJsonRequest=false)
@@ -224,19 +259,79 @@ namespace ChargeBee.Api
         public static async Task<ListResult> GetListAsync(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env, string subDomain = null)
         {
             url = String.Format("{0}?{1}", url, parameters.GetQuery(true));
-            HttpRequestMessage request = GetRequestMessage(url, HttpMethod.GET, parameters, headers, env, false, subDomain);
-            var response = await httpClient.SendAsync(request).ConfigureAwait(false);
-            var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-            if (response.IsSuccessStatusCode)
+            int attempt = 0;
+            int lastRetryAfterDelay = 0;
+            Random rng = new Random();
+            while (true)
             {
-                ListResult result = new ListResult(response.StatusCode, json, response.Headers);
-                return result;
+                HttpRequestMessage request = GetRequestMessage(url, HttpMethod.GET, parameters, headers, env, false, subDomain);
+                HttpResponseMessage response = null;
+                try
+                {
+                    response = await httpClient.SendAsync(request).ConfigureAwait(false);
+                    var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return new ListResult(response.StatusCode, json, response.Headers);
+                    }
+                    else
+                    {
+                        int statusCode = (int)response.StatusCode;
+                        if (env.RetryConfig != null && env.RetryConfig.ShouldRetry(statusCode, attempt))
+                        {
+                            int retryAfterDelay = ParseRetryAfterHeader(response);
+                            int delay = GetRetryDelay(env.RetryConfig, attempt, retryAfterDelay > 0 ? retryAfterDelay : lastRetryAfterDelay, rng);
+                            await Task.Delay(delay).ConfigureAwait(false);
+                            attempt++;
+                            lastRetryAfterDelay = retryAfterDelay > 0 ? retryAfterDelay : lastRetryAfterDelay;
+                            continue;
+                        }
+                        HandleException(response);
+                        return null;
+                    }
+                }
+                catch (Exception)
+                {
+                    if (env.RetryConfig == null || !env.RetryConfig.ShouldRetry(0, attempt)) throw;
+                    int delay = GetRetryDelay(env.RetryConfig, attempt, lastRetryAfterDelay, rng);
+                    await Task.Delay(delay).ConfigureAwait(false);
+                    attempt++;
+                }
+                finally
+                {
+                    response?.Dispose();
+                    request.Dispose();
+                }
             }
-            else
+        }
+
+        private static int ParseRetryAfterHeader(HttpResponseMessage response)
+        {
+            if (response.Headers.TryGetValues("Retry-After", out var values))
             {
-                HandleException(response);
-                return null;
+                var retryAfter = values.GetEnumerator();
+                if (retryAfter.MoveNext())
+                {
+                    string val = retryAfter.Current;
+                    if (int.TryParse(val, out int seconds))
+                    {
+                        return seconds * 1000;
+                    }
+                    if (DateTimeOffset.TryParse(val, out var date))
+                    {
+                        var delay = (int)(date - DateTimeOffset.UtcNow).TotalMilliseconds;
+                        return delay > 0 ? delay : 0;
+                    }
+                }
             }
+            return 0;
+        }
+
+        private static int GetRetryDelay(RetryConfig config, int attempt, int retryAfterDelay, Random rng)
+        {
+            if (retryAfterDelay > 0) return retryAfterDelay;
+            int jitter = rng.Next(100);
+            return config.BaseDelayMs * (int)Math.Pow(2, attempt) + jitter;
         }
 
         public static DateTime ConvertFromTimestamp(long timestamp)
