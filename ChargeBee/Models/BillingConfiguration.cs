@@ -14,12 +14,12 @@ using ChargeBee.Filters.Enums;
 namespace ChargeBee.Models
 {
 
-    public class Hierarchy : Resource 
+    public class BillingConfiguration : Resource 
     {
     
-        public Hierarchy() { }
+        public BillingConfiguration() { }
 
-        public Hierarchy(Stream stream)
+        public BillingConfiguration(Stream stream)
         {
             using (StreamReader reader = new StreamReader(stream))
             {
@@ -28,13 +28,13 @@ namespace ChargeBee.Models
             }
         }
 
-        public Hierarchy(TextReader reader)
+        public BillingConfiguration(TextReader reader)
         {
             JObj = JToken.Parse(reader.ReadToEnd());
             apiVersionCheck (JObj);    
         }
 
-        public Hierarchy(String jsonString)
+        public BillingConfiguration(String jsonString)
         {
             JObj = JToken.Parse(jsonString);
             apiVersionCheck (JObj);
@@ -44,29 +44,13 @@ namespace ChargeBee.Models
         #endregion
         
         #region Properties
-        public string CustomerId 
+        public bool IsCalendarBillingEnabled 
         {
-            get { return GetValue<string>("customer_id", true); }
+            get { return GetValue<bool>("is_calendar_billing_enabled", true); }
         }
-        public string ParentId 
+        public List<BillingConfigurationBillingDate> BillingDates 
         {
-            get { return GetValue<string>("parent_id", false); }
-        }
-        public string PaymentOwnerId 
-        {
-            get { return GetValue<string>("payment_owner_id", true); }
-        }
-        public string InvoiceOwnerId 
-        {
-            get { return GetValue<string>("invoice_owner_id", true); }
-        }
-        public bool? HasChildren 
-        {
-            get { return GetValue<bool?>("has_children", false); }
-        }
-        public List<string> ChildrenIds 
-        {
-            get { return GetList<string>("children_ids"); }
+            get { return GetResourceList<BillingConfigurationBillingDate>("billing_dates"); }
         }
         
         #endregion
@@ -74,6 +58,18 @@ namespace ChargeBee.Models
 
 
         #region Subclasses
+        public class BillingConfigurationBillingDate : Resource
+        {
+
+            public DateTime? StartDate {
+                get { return GetDateTime("start_date", false); }
+            }
+
+            public DateTime? EndDate {
+                get { return GetDateTime("end_date", false); }
+            }
+
+        }
 
         #endregion
     }

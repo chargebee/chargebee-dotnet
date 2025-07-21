@@ -130,6 +130,11 @@ namespace ChargeBee.Models
                 m_params.Add("action", action);
                 return this;
             }
+            public CreateRequest ChangeReason(string changeReason) 
+            {
+                m_params.AddOpt("change_reason", changeReason);
+                return this;
+            }
             public CreateRequest EntitlementEntityId(int index, string entitlementEntityId) 
             {
                 m_params.Add("entitlements[entity_id][" + index + "]", entitlementEntityId);
@@ -148,6 +153,11 @@ namespace ChargeBee.Models
             public CreateRequest EntitlementValue(int index, string entitlementValue) 
             {
                 m_params.AddOpt("entitlements[value][" + index + "]", entitlementValue);
+                return this;
+            }
+            public CreateRequest EntitlementApplyGrandfathering(int index, bool entitlementApplyGrandfathering) 
+            {
+                m_params.AddOpt("entitlements[apply_grandfathering][" + index + "]", entitlementApplyGrandfathering);
                 return this;
             }
         }

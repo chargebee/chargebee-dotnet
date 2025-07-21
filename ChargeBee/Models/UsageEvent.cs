@@ -44,12 +44,12 @@ namespace ChargeBee.Models
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("usage_events");
-            return new CreateRequest(url, HttpMethod.POST).SetSubDomain("ingest").IsJsonRequest(true);
+            return new CreateRequest(url, HttpMethod.POST).SetSubDomain("ingest").IsJsonRequest(true).SetIdempotent(false);
         }
         public static BatchIngestRequest BatchIngest()
         {
             string url = ApiUtil.BuildUrl("batch", "usage_events");
-            return new BatchIngestRequest(url, HttpMethod.POST).SetSubDomain("ingest").IsJsonRequest(true);
+            return new BatchIngestRequest(url, HttpMethod.POST).SetSubDomain("ingest").IsJsonRequest(true).SetIdempotent(false);
         }
         #endregion
         

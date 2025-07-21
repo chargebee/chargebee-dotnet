@@ -1,6 +1,7 @@
 using System;
 using System.Text;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 
 using Newtonsoft.Json;
@@ -8,6 +9,7 @@ using Newtonsoft.Json;
 using ChargeBee.Exceptions;
 using System.Net.Http;
 using System.Threading.Tasks;
+using ChargeBee.Internal;
 
 namespace ChargeBee.Api
 {
@@ -94,11 +96,13 @@ namespace ChargeBee.Api
             }
             return request;
         }
-        private static HttpRequestMessage GetRequestMessage(string url, HttpMethod method, Params parameters, Dictionary<string, string> headers, ApiConfig env, bool supportsFilter=false, string subDomain = null, bool isJsonRequest=false)
+        private static HttpRequestMessage GetRequestMessage(string url, HttpMethod method, Params parameters,
+            Dictionary<string, string> headers, ApiConfig env, bool supportsFilter = false, string subDomain = null,
+            bool isJsonRequest = false, Dictionary<string, dynamic> options = null)
         {
             HttpRequestMessage request = isJsonRequest ? BuildContentTypeJsonRequest(url, method, parameters, env, supportsFilter, subDomain) : BuildRequest(url, method, parameters, env, supportsFilter, subDomain);
             AddHeaders(request, env);
-            AddCustomHeaders(request, headers);
+            AddCustomHeaders(request, headers,env, options);
             return request;
         }
         private static void AddHeaders(HttpRequestMessage request, ApiConfig env)
@@ -118,11 +122,31 @@ namespace ChargeBee.Api
 #endif
         }
 
-        private static void AddCustomHeaders(HttpRequestMessage request, Dictionary<string, string> headers)
+        private static void AddCustomHeaders(HttpRequestMessage request, Dictionary<string, string> headers,
+            ApiConfig env,
+            Dictionary<string, dynamic> options)
         {
             foreach (KeyValuePair<string, string> entry in headers)
             {
                 AddHeader(request, entry.Key, entry.Value);
+            }
+
+            if (request.Method != System.Net.Http.HttpMethod.Post ||
+                headers.ContainsKey(IdempotencyConstants.IDEMPOTENCY_HEADER))
+            {
+                return;
+            }
+            var shouldAddIdempotencyKey = true;
+            if (options != null && options.TryGetValue(EntityRequestConstants.IdempotencyOption, out var option))
+            {
+                if (option is bool optBool)
+                {
+                    shouldAddIdempotencyKey = optBool;
+                }
+            }
+            if (shouldAddIdempotencyKey && env.RetryConfig.Enabled)
+            {
+                AddHeader(request, IdempotencyConstants.IDEMPOTENCY_HEADER, Guid.NewGuid().ToString());
             }
         }
 
@@ -169,22 +193,40 @@ namespace ChargeBee.Api
             }
 
         }
-        private static EntityResult GetEntityResult(String url, Params parameters, Dictionary<string, string> headers, ApiConfig env, HttpMethod meth, bool supportsFilter, string subDomain = null, bool isJsonRequest=false)
+        private static EntityResult GetEntityResult(string url, Params parameters, Dictionary<string, string> headers,
+            ApiConfig env, HttpMethod meth, bool supportsFilter, string subDomain = null, bool isJsonRequest = false,
+            Dictionary<string, dynamic> options = null)
         {
 
-            return GetEntityResultAsync(url, parameters, headers, env, meth, supportsFilter, subDomain, isJsonRequest).ConfigureAwait(false).GetAwaiter().GetResult();
+            return GetEntityResultAsync(url, parameters, headers, env, meth, supportsFilter, subDomain, isJsonRequest, options).ConfigureAwait(false).GetAwaiter().GetResult();
         }
-        private static async Task<EntityResult> GetEntityResultAsync(String url, Params parameters, Dictionary<string, string> headers, ApiConfig env, HttpMethod meth, bool supportsFilter, string subDomain = null, bool isJsonRequest=false)
+        private static async Task<EntityResult> GetEntityResultAsync(string url, Params parameters,
+            Dictionary<string, string> headers, ApiConfig env, HttpMethod meth, bool supportsFilter,
+            string subDomain = null, bool isJsonRequest = false, Dictionary<string, dynamic> options = null)
         {
             int attempt = 0;
+            string idempotentKey = null;
             int lastRetryAfterDelay = 0;
             Random rng = new Random();
             while (true)
             {
-                HttpRequestMessage request = GetRequestMessage(url, meth, parameters, headers, env, supportsFilter, subDomain, isJsonRequest);
+                if (idempotentKey != null && !headers.ContainsKey(IdempotencyConstants.IDEMPOTENCY_HEADER))
+                {
+                    headers[IdempotencyConstants.IDEMPOTENCY_HEADER] = idempotentKey;
+                }
+                HttpRequestMessage request = GetRequestMessage(url, meth, parameters, headers, env, supportsFilter, subDomain, isJsonRequest,options);
                 HttpResponseMessage response = null;
                 try
                 {
+                    if (idempotentKey == null  && request.Headers.TryGetValues(IdempotencyConstants.IDEMPOTENCY_HEADER, out var values))
+                    {
+                        idempotentKey = values.First();
+                    }
+                    if (attempt > 0)
+                    {
+                        request.Headers.Remove("X-CB-Retry-Attempt"); // Ensure no duplicates
+                        request.Headers.Add("X-CB-Retry-Attempt", attempt.ToString());
+                    }
                     response = await httpClient.SendAsync(request).ConfigureAwait(false);
                     var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                     if (response.IsSuccessStatusCode)
@@ -217,11 +259,6 @@ namespace ChargeBee.Api
                     await Task.Delay(delay).ConfigureAwait(false);
                     attempt++;
                 }
-                catch (Exception e)
-                {
-                    if (env.RetryConfig == null || !env.RetryConfig.ShouldRetry(0, attempt)) throw;
-
-                }
                 finally
                 {
                     response?.Dispose();
@@ -229,26 +266,34 @@ namespace ChargeBee.Api
                 }
             }
         }
-        public static EntityResult Post(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env, bool supportsFilter=false, string subDomain = null, bool isJsonRequest=false)
+        public static EntityResult Post(string url, Params parameters, Dictionary<string, string> headers,
+            ApiConfig env, bool supportsFilter = false, string subDomain = null, bool isJsonRequest = false,
+            Dictionary<string, dynamic> options= null)
         {
-            return GetEntityResult(url, parameters, headers, env, HttpMethod.POST, supportsFilter, subDomain, isJsonRequest);
+            return GetEntityResult(url, parameters, headers, env, HttpMethod.POST, supportsFilter, subDomain, isJsonRequest,options);
         }
 
-        public static Task<EntityResult> PostAsync(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env, bool supportsFilter=false, string subDomain = null, bool isJsonRequest=false)
+        public static Task<EntityResult> PostAsync(string url, Params parameters, Dictionary<string, string> headers,
+            ApiConfig env, bool supportsFilter = false, string subDomain = null, bool isJsonRequest = false,
+            Dictionary<string, dynamic> options= null)
         {
-            return GetEntityResultAsync(url, parameters, headers, env, HttpMethod.POST, supportsFilter, subDomain, isJsonRequest);
+            return GetEntityResultAsync(url, parameters, headers, env, HttpMethod.POST, supportsFilter, subDomain, isJsonRequest,options);
         }
 
-        public static EntityResult Get(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env, bool supportsFilter=false, string subDomain = null, bool isJsonRequest=false)
+        public static EntityResult Get(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env,
+            bool supportsFilter = false, string subDomain = null, bool isJsonRequest = false,
+            Dictionary<string, dynamic> options = null)
         {
             url = String.Format("{0}?{1}", url, parameters.GetQuery(false));
-            return GetEntityResult(url, parameters, headers, env, HttpMethod.GET, supportsFilter, subDomain, isJsonRequest);
+            return GetEntityResult(url, parameters, headers, env, HttpMethod.GET, supportsFilter, subDomain, isJsonRequest,options);
         }
 
-        public static Task<EntityResult> GetAsync(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env, bool supportsFilter=false, string subDomain = null, bool isJsonRequest=false)
+        public static Task<EntityResult> GetAsync(string url, Params parameters, Dictionary<string, string> headers,
+            ApiConfig env, bool supportsFilter = false, string subDomain = null, bool isJsonRequest = false,
+            Dictionary<string, dynamic> options= null)
         {
             url = String.Format("{0}?{1}", url, parameters.GetQuery(supportsFilter));
-            return GetEntityResultAsync(url, parameters, headers, env, HttpMethod.GET, supportsFilter, subDomain, isJsonRequest);
+            return GetEntityResultAsync(url, parameters, headers, env, HttpMethod.GET, supportsFilter, subDomain, isJsonRequest,options);
         }
 
         public static ListResult GetList(string url, Params parameters, Dictionary<string, string> headers, ApiConfig env, string subDomain = null)

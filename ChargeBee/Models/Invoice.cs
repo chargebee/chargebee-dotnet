@@ -2878,10 +2878,12 @@ namespace ChargeBee.Models
             {
             }
 
+            [Obsolete]
             public StringFilter<RetrieveRequest> LineItemSubscriptionId() 
             {
                 return new StringFilter<RetrieveRequest>("line_item[subscription_id]", this);        
             }
+            [Obsolete]
             public StringFilter<RetrieveRequest> LineItemCustomerId() 
             {
                 return new StringFilter<RetrieveRequest>("line_item[customer_id]", this);        

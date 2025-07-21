@@ -49,7 +49,7 @@ namespace ChargeBee.Models
         public static EstimateRequest Estimate()
         {
             string url = ApiUtil.BuildUrl("purchases", "estimate");
-            return new EstimateRequest(url, HttpMethod.POST);
+            return new EstimateRequest(url, HttpMethod.POST).SetIdempotent(false);
         }
         #endregion
         
@@ -97,6 +97,11 @@ namespace ChargeBee.Models
             public CreateRequest PaymentSourceId(string paymentSourceId) 
             {
                 m_params.AddOpt("payment_source_id", paymentSourceId);
+                return this;
+            }
+            public CreateRequest ReplacePrimaryPaymentSource(bool replacePrimaryPaymentSource) 
+            {
+                m_params.AddOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
                 return this;
             }
             public CreateRequest InvoiceInfoPoNumber(string invoiceInfoPoNumber) 

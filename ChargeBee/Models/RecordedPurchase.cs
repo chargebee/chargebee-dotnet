@@ -135,6 +135,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("google_play_store[purchase_token]", googlePlayStorePurchaseToken);
                 return this;
             }
+            public CreateRequest OmnichannelSubscriptionId(string omnichannelSubscriptionId) 
+            {
+                m_params.AddOpt("omnichannel_subscription[id]", omnichannelSubscriptionId);
+                return this;
+            }
         }
         #endregion
 
