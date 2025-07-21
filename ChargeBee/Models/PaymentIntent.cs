@@ -290,6 +290,8 @@ namespace ChargeBee.Models
             KlarnaPayNow,
             [EnumMember(Value = "online_banking_poland")]
             OnlineBankingPoland,
+            [EnumMember(Value = "payconiq_by_bancontact")]
+            PayconiqByBancontact,
 
         }
 

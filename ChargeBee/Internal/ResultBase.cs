@@ -32,13 +32,12 @@ namespace ChargeBee.Internal
         {
             m_jobj = jobj;
         }
-
         public string ToJson()
         {
-            
+
             return m_jobj.ToString(Formatting.None) ;
         }
-        
+
 
         public Subscription Subscription
         {
@@ -155,6 +154,10 @@ namespace ChargeBee.Internal
         public QuotedRamp QuotedRamp
         {
             get {  return GetResource<QuotedRamp>("quoted_ramp"); }
+        }
+        public BillingConfiguration BillingConfiguration
+        {
+            get {  return GetResource<BillingConfiguration>("billing_configuration"); }
         }
         public QuoteLineGroup QuoteLineGroup
         {
@@ -360,6 +363,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<OmnichannelSubscriptionItemScheduledChange>("omnichannel_subscription_item_scheduled_change"); }
         }
+        public Brand Brand
+        {
+            get {  return GetResource<Brand>("brand"); }
+        }
 
         public List<AdvanceInvoiceSchedule> AdvanceInvoiceSchedules
         {
@@ -405,10 +412,7 @@ namespace ChargeBee.Internal
         {
             get {  return (List<InAppSubscription>)GetResourceList<InAppSubscription>("in_app_subscriptions", "in_app_subscription"); }
         }
-        public List<DifferentialPrice> DifferentialPrices
-        {
-            get {  return (List<DifferentialPrice>)GetResourceList<DifferentialPrice>("differential_prices", "differential_price"); }
-        }
+
 
         private List<T> GetResourceList<T>(string property, string propertySingularName) where T : Resource, new()
         {

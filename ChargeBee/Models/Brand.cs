@@ -14,12 +14,12 @@ using ChargeBee.Filters.Enums;
 namespace ChargeBee.Models
 {
 
-    public class Hierarchy : Resource 
+    public class Brand : Resource 
     {
     
-        public Hierarchy() { }
+        public Brand() { }
 
-        public Hierarchy(Stream stream)
+        public Brand(Stream stream)
         {
             using (StreamReader reader = new StreamReader(stream))
             {
@@ -28,13 +28,13 @@ namespace ChargeBee.Models
             }
         }
 
-        public Hierarchy(TextReader reader)
+        public Brand(TextReader reader)
         {
             JObj = JToken.Parse(reader.ReadToEnd());
             apiVersionCheck (JObj);    
         }
 
-        public Hierarchy(String jsonString)
+        public Brand(String jsonString)
         {
             JObj = JToken.Parse(jsonString);
             apiVersionCheck (JObj);
@@ -44,29 +44,13 @@ namespace ChargeBee.Models
         #endregion
         
         #region Properties
-        public string CustomerId 
+        public string Id 
         {
-            get { return GetValue<string>("customer_id", true); }
+            get { return GetValue<string>("id", true); }
         }
-        public string ParentId 
+        public string Name 
         {
-            get { return GetValue<string>("parent_id", false); }
-        }
-        public string PaymentOwnerId 
-        {
-            get { return GetValue<string>("payment_owner_id", true); }
-        }
-        public string InvoiceOwnerId 
-        {
-            get { return GetValue<string>("invoice_owner_id", true); }
-        }
-        public bool? HasChildren 
-        {
-            get { return GetValue<bool?>("has_children", false); }
-        }
-        public List<string> ChildrenIds 
-        {
-            get { return GetList<string>("children_ids"); }
+            get { return GetValue<string>("name", true); }
         }
         
         #endregion

@@ -164,6 +164,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "hierarchy");
             return new HierarchyRequest(url, HttpMethod.GET);
         }
+        public static CustomerListHierarchyDetailRequest ListHierarchyDetail(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "hierarchy_detail");
+            return new CustomerListHierarchyDetailRequest(url);
+        }
         public static UpdateHierarchySettingsRequest UpdateHierarchySettings(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "update_hierarchy_settings");
@@ -2051,6 +2056,19 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class CustomerListHierarchyDetailRequest : ListRequestBase<CustomerListHierarchyDetailRequest> 
+        {
+            public CustomerListHierarchyDetailRequest(string url) 
+                    : base(url)
+            {
+            }
+
+            public CustomerListHierarchyDetailRequest HierarchyOperationType(ChargeBee.Models.Enums.HierarchyOperationTypeEnum hierarchyOperationType) 
+            {
+                m_params.Add("hierarchy_operation_type", hierarchyOperationType);
+                return this;
+            }
+        }
         public class UpdateHierarchySettingsRequest : EntityRequest<UpdateHierarchySettingsRequest> 
         {
             public UpdateHierarchySettingsRequest(string url, HttpMethod method) 
@@ -2390,6 +2408,8 @@ namespace ChargeBee.Models
                 KlarnaPayNow,
                 [EnumMember(Value = "online_banking_poland")]
                 OnlineBankingPoland,
+                [EnumMember(Value = "payconiq_by_bancontact")]
+                PayconiqByBancontact,
             }
             public enum StatusEnum
             {

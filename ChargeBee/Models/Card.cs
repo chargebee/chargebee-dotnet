@@ -423,6 +423,8 @@ namespace ChargeBee.Models
             Card,
             [EnumMember(Value = "latam_local_card")]
             LatamLocalCard,
+            [EnumMember(Value = "payconiq")]
+            Payconiq,
             [EnumMember(Value = "not_applicable")]
             NotApplicable,
 

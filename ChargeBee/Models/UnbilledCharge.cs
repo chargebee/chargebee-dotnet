@@ -69,7 +69,7 @@ namespace ChargeBee.Models
         public static InvoiceNowEstimateRequest InvoiceNowEstimate()
         {
             string url = ApiUtil.BuildUrl("unbilled_charges", "invoice_now_estimate");
-            return new InvoiceNowEstimateRequest(url, HttpMethod.POST);
+            return new InvoiceNowEstimateRequest(url, HttpMethod.POST).SetIdempotent(false);
         }
         #endregion
         

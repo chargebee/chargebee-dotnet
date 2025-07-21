@@ -106,5 +106,8 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "online_banking_poland")]
          OnlineBankingPoland,
 
+        [EnumMember(Value = "payconiq_by_bancontact")]
+         PayconiqByBancontact,
+
     }
 }

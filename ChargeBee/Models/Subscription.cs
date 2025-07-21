@@ -2334,6 +2334,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_cycles", billingCycles);
                 return this;
             }
+            public RemoveScheduledCancellationRequest ContractTermBillingCycleOnRenewal(int contractTermBillingCycleOnRenewal) 
+            {
+                m_params.AddOpt("contract_term_billing_cycle_on_renewal", contractTermBillingCycleOnRenewal);
+                return this;
+            }
+            public RemoveScheduledCancellationRequest ContractTermActionAtTermEnd(SubscriptionContractTerm.ActionAtTermEndEnum contractTermActionAtTermEnd) 
+            {
+                m_params.AddOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+                return this;
+            }
+            public RemoveScheduledCancellationRequest ContractTermCancellationCutoffPeriod(int contractTermCancellationCutoffPeriod) 
+            {
+                m_params.AddOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
+                return this;
+            }
         }
         public class RemoveCouponsRequest : EntityRequest<RemoveCouponsRequest> 
         {

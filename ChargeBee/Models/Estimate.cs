@@ -44,12 +44,12 @@ namespace ChargeBee.Models
         public static CreateSubscriptionRequest CreateSubscription()
         {
             string url = ApiUtil.BuildUrl("estimates", "create_subscription");
-            return new CreateSubscriptionRequest(url, HttpMethod.POST);
+            return new CreateSubscriptionRequest(url, HttpMethod.POST).SetIdempotent(false);
         }
         public static CreateSubItemEstimateRequest CreateSubItemEstimate()
         {
             string url = ApiUtil.BuildUrl("estimates", "create_subscription_for_items");
-            return new CreateSubItemEstimateRequest(url, HttpMethod.POST);
+            return new CreateSubItemEstimateRequest(url, HttpMethod.POST).SetIdempotent(false);
         }
         public static CreateSubForCustomerEstimateRequest CreateSubForCustomerEstimate(string id)
         {
@@ -59,17 +59,17 @@ namespace ChargeBee.Models
         public static CreateSubItemForCustomerEstimateRequest CreateSubItemForCustomerEstimate(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "create_subscription_for_items_estimate");
-            return new CreateSubItemForCustomerEstimateRequest(url, HttpMethod.POST);
+            return new CreateSubItemForCustomerEstimateRequest(url, HttpMethod.POST).SetIdempotent(false);
         }
         public static UpdateSubscriptionRequest UpdateSubscription()
         {
             string url = ApiUtil.BuildUrl("estimates", "update_subscription");
-            return new UpdateSubscriptionRequest(url, HttpMethod.POST);
+            return new UpdateSubscriptionRequest(url, HttpMethod.POST).SetIdempotent(false);
         }
         public static UpdateSubscriptionForItemsRequest UpdateSubscriptionForItems()
         {
             string url = ApiUtil.BuildUrl("estimates", "update_subscription_for_items");
-            return new UpdateSubscriptionForItemsRequest(url, HttpMethod.POST);
+            return new UpdateSubscriptionForItemsRequest(url, HttpMethod.POST).SetIdempotent(false);
         }
         public static RenewalEstimateRequest RenewalEstimate(string id)
         {
@@ -79,12 +79,12 @@ namespace ChargeBee.Models
         public static AdvanceInvoiceEstimateRequest AdvanceInvoiceEstimate(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "advance_invoice_estimate");
-            return new AdvanceInvoiceEstimateRequest(url, HttpMethod.POST);
+            return new AdvanceInvoiceEstimateRequest(url, HttpMethod.POST).SetIdempotent(false);
         }
         public static RegenerateInvoiceEstimateRequest RegenerateInvoiceEstimate(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "regenerate_invoice_estimate");
-            return new RegenerateInvoiceEstimateRequest(url, HttpMethod.POST);
+            return new RegenerateInvoiceEstimateRequest(url, HttpMethod.POST).SetIdempotent(false);
         }
         public static EntityRequest<Type> UpcomingInvoicesEstimate(string id)
         {
@@ -94,47 +94,47 @@ namespace ChargeBee.Models
         public static ChangeTermEndRequest ChangeTermEnd(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "change_term_end_estimate");
-            return new ChangeTermEndRequest(url, HttpMethod.POST);
+            return new ChangeTermEndRequest(url, HttpMethod.POST).SetIdempotent(false);
         }
         public static CancelSubscriptionRequest CancelSubscription(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "cancel_subscription_estimate");
-            return new CancelSubscriptionRequest(url, HttpMethod.POST);
+            return new CancelSubscriptionRequest(url, HttpMethod.POST).SetIdempotent(false);
         }
         public static CancelSubscriptionForItemsRequest CancelSubscriptionForItems(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "cancel_subscription_for_items_estimate");
-            return new CancelSubscriptionForItemsRequest(url, HttpMethod.POST);
+            return new CancelSubscriptionForItemsRequest(url, HttpMethod.POST).SetIdempotent(false);
         }
         public static PauseSubscriptionRequest PauseSubscription(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "pause_subscription_estimate");
-            return new PauseSubscriptionRequest(url, HttpMethod.POST);
+            return new PauseSubscriptionRequest(url, HttpMethod.POST).SetIdempotent(false);
         }
         public static ResumeSubscriptionRequest ResumeSubscription(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "resume_subscription_estimate");
-            return new ResumeSubscriptionRequest(url, HttpMethod.POST);
+            return new ResumeSubscriptionRequest(url, HttpMethod.POST).SetIdempotent(false);
         }
         public static GiftSubscriptionRequest GiftSubscription()
         {
             string url = ApiUtil.BuildUrl("estimates", "gift_subscription");
-            return new GiftSubscriptionRequest(url, HttpMethod.POST);
+            return new GiftSubscriptionRequest(url, HttpMethod.POST).SetIdempotent(false);
         }
         public static GiftSubscriptionForItemsRequest GiftSubscriptionForItems()
         {
             string url = ApiUtil.BuildUrl("estimates", "gift_subscription_for_items");
-            return new GiftSubscriptionForItemsRequest(url, HttpMethod.POST);
+            return new GiftSubscriptionForItemsRequest(url, HttpMethod.POST).SetIdempotent(false);
         }
         public static CreateInvoiceRequest CreateInvoice()
         {
             string url = ApiUtil.BuildUrl("estimates", "create_invoice");
-            return new CreateInvoiceRequest(url, HttpMethod.POST);
+            return new CreateInvoiceRequest(url, HttpMethod.POST).SetIdempotent(false);
         }
         public static CreateInvoiceForItemsRequest CreateInvoiceForItems()
         {
             string url = ApiUtil.BuildUrl("estimates", "create_invoice_for_items");
-            return new CreateInvoiceForItemsRequest(url, HttpMethod.POST);
+            return new CreateInvoiceForItemsRequest(url, HttpMethod.POST).SetIdempotent(false);
         }
         public static PaymentSchedulesRequest PaymentSchedules()
         {

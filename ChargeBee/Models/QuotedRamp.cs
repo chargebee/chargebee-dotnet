@@ -60,6 +60,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<QuotedRampItemTier>("item_tiers"); }
         }
+        public List<QuotedRampCouponApplicabilityMapping> CouponApplicabilityMappings 
+        {
+            get { return GetResourceList<QuotedRampCouponApplicabilityMapping>("coupon_applicability_mappings"); }
+        }
         
         #endregion
         
@@ -173,22 +177,6 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("ramp_tier_id", false); }
             }
 
-            public long? DiscountAmount {
-                get { return GetValue<long?>("discount_amount", false); }
-            }
-
-            public string MdDiscountAmount {
-                get { return GetValue<string>("md_discount_amount", false); }
-            }
-
-            public long? ItemLevelDiscountAmount {
-                get { return GetValue<long?>("item_level_discount_amount", false); }
-            }
-
-            public string MdItemLevelDiscountAmount {
-                get { return GetValue<string>("md_item_level_discount_amount", false); }
-            }
-
             public long? DiscountPerBillingCycle {
                 get { return GetValue<long?>("discount_per_billing_cycle", false); }
             }
@@ -203,14 +191,6 @@ namespace ChargeBee.Models
 
             public string ItemLevelDiscountPerBillingCycleInDecimal {
                 get { return GetValue<string>("item_level_discount_per_billing_cycle_in_decimal", false); }
-            }
-
-            public long? NetAmount {
-                get { return GetValue<long?>("net_amount", false); }
-            }
-
-            public string MdNetAmount {
-                get { return GetValue<string>("md_net_amount", false); }
             }
 
             public long? AmountPerBillingCycle {
@@ -274,24 +254,9 @@ namespace ChargeBee.Models
                 [EnumMember(Value = "specific_item_price")]
                 SpecificItemPrice,
             }
-            public enum ApplyOnItemTypeEnum
-            {
-                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
-                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [EnumMember(Value = "plan")]
-                Plan,
-                [EnumMember(Value = "addon")]
-                Addon,
-                [EnumMember(Value = "charge")]
-                Charge,
-            }
 
             public string Id {
                 get { return GetValue<string>("id", true); }
-            }
-
-            public string Name {
-                get { return GetValue<string>("name", true); }
             }
 
             public string InvoiceName {
@@ -338,10 +303,6 @@ namespace ChargeBee.Models
                 get { return GetEnum<ApplyOnEnum>("apply_on", true); }
             }
 
-            public ApplyOnItemTypeEnum? ApplyOnItemType {
-                get { return GetEnum<ApplyOnItemTypeEnum>("apply_on_item_type", false); }
-            }
-
             public string ItemPriceId {
                 get { return GetValue<string>("item_price_id", false); }
             }
@@ -365,6 +326,17 @@ namespace ChargeBee.Models
         }
         public class QuotedRampItemTier : Resource
         {
+            public enum PricingTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "per_unit")]
+                PerUnit,
+                [EnumMember(Value = "flat_fee")]
+                FlatFee,
+                [EnumMember(Value = "package")]
+                Package,
+            }
 
             public string ItemPriceId {
                 get { return GetValue<string>("item_price_id", true); }
@@ -396,6 +368,26 @@ namespace ChargeBee.Models
 
             public string RampTierId {
                 get { return GetValue<string>("ramp_tier_id", false); }
+            }
+
+            public PricingTypeEnum? PricingType {
+                get { return GetEnum<PricingTypeEnum>("pricing_type", false); }
+            }
+
+            public int? PackageSize {
+                get { return GetValue<int?>("package_size", false); }
+            }
+
+        }
+        public class QuotedRampCouponApplicabilityMapping : Resource
+        {
+
+            public string CouponId {
+                get { return GetValue<string>("coupon_id", false); }
+            }
+
+            public List<string> ApplicableItemPriceIds {
+                get { return GetList<string>("applicable_item_price_ids"); }
             }
 
         }

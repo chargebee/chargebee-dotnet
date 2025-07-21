@@ -14,6 +14,7 @@ namespace ChargeBee.Api
 		protected bool m_supportsFilter;
 		protected bool is_json_request = false;
         protected string sub_domain;
+        private readonly Dictionary<string, dynamic> _options = new Dictionary<string, dynamic>();
 
 		public EntityRequest(string url, HttpMethod method, bool supportsFilter = false)
 		{
@@ -33,6 +34,13 @@ namespace ChargeBee.Api
 			is_json_request = true;
 			return (T)Convert.ChangeType (this, typeof(T));
 		}
+
+		public T SetIdempotent(bool isIdempotent)
+		{
+			_options.Add(EntityRequestConstants.IdempotencyOption, isIdempotent);
+			return (T)Convert.ChangeType (this, typeof(T));
+		}
+		
 		public T SetIdempotencyKey(string idempotencyKey){
 			headers.Add (IdempotencyConstants.IDEMPOTENCY_HEADER, idempotencyKey);
 			return (T)Convert.ChangeType (this, typeof(T));
@@ -51,6 +59,7 @@ namespace ChargeBee.Api
 			headers.Add (headerName, headerValue);
 			return (T)Convert.ChangeType (this, typeof(T));
 		}
+		
 
 		public EntityResult Request()
         {
@@ -67,9 +76,9 @@ namespace ChargeBee.Api
             switch (m_method)
             {
                 case HttpMethod.GET:
-					return ApiUtil.Get(m_url, m_params, headers, env, m_supportsFilter, sub_domain, is_json_request);
+					return ApiUtil.Get(m_url, m_params, headers, env, m_supportsFilter, sub_domain, is_json_request, _options);
                 case HttpMethod.POST:
-					return ApiUtil.Post(m_url, m_params, headers, env, m_supportsFilter, sub_domain, is_json_request);
+					return ApiUtil.Post(m_url, m_params, headers, env, m_supportsFilter, sub_domain, is_json_request, _options);
                 default:
                     throw new NotImplementedException(String.Format(
                         "HTTP method {0} is not implemented",
@@ -83,9 +92,9 @@ namespace ChargeBee.Api
             switch (m_method)
             {
                 case HttpMethod.GET:
-                    return ApiUtil.GetAsync(m_url, m_params, headers, env, m_supportsFilter, sub_domain, is_json_request);
+                    return ApiUtil.GetAsync(m_url, m_params, headers, env, m_supportsFilter, sub_domain, is_json_request, _options);
                 case HttpMethod.POST:
-                    return ApiUtil.PostAsync(m_url, m_params, headers, env, m_supportsFilter, sub_domain, is_json_request);
+                    return ApiUtil.PostAsync(m_url, m_params, headers, env, m_supportsFilter, sub_domain, is_json_request, _options);
                 default:
                     throw new NotImplementedException(String.Format(
                         "HTTP method {0} is not implemented",
