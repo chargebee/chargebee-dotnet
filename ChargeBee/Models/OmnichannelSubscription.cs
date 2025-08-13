@@ -56,6 +56,11 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("omnichannel_subscriptions", CheckNull(id), "omnichannel_transactions");
             return new ListRequest(url);
         }
+        public static MoveRequest Move(string id)
+        {
+            string url = ApiUtil.BuildUrl("omnichannel_subscriptions", CheckNull(id), "move");
+            return new MoveRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -91,9 +96,9 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<OmnichannelSubscriptionItem>("omnichannel_subscription_items"); }
         }
-        public OmnichannelSubscriptionOmnichannelTransaction InitialPurchaseTransaction 
+        public OmnichannelTransaction InitialPurchaseTransaction 
         {
-            get { return GetSubResource<OmnichannelSubscriptionOmnichannelTransaction>("initial_purchase_transaction"); }
+            get { return GetSubResource<OmnichannelTransaction>("initial_purchase_transaction"); }
         }
         
         #endregion
@@ -115,6 +120,19 @@ namespace ChargeBee.Models
                 return new StringFilter<OmnichannelSubscriptionListRequest>("customer_id", this);        
             }
         }
+        public class MoveRequest : EntityRequest<MoveRequest> 
+        {
+            public MoveRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public MoveRequest ToCustomerId(string toCustomerId) 
+            {
+                m_params.Add("to_customer_id", toCustomerId);
+                return this;
+            }
+        }
         #endregion
 
         public enum SourceEnum
@@ -130,59 +148,6 @@ namespace ChargeBee.Models
         }
 
         #region Subclasses
-        public class OmnichannelSubscriptionOmnichannelTransaction : Resource
-        {
-            public enum TypeEnum
-            {
-                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
-                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [EnumMember(Value = "purchase")]
-                Purchase,
-                [EnumMember(Value = "renewal")]
-                Renewal,
-            }
-
-            public string Id {
-                get { return GetValue<string>("id", true); }
-            }
-
-            public string IdAtSource {
-                get { return GetValue<string>("id_at_source", true); }
-            }
-
-            public string AppId {
-                get { return GetValue<string>("app_id", true); }
-            }
-
-            public string PriceCurrency {
-                get { return GetValue<string>("price_currency", false); }
-            }
-
-            public long? PriceUnits {
-                get { return GetValue<long?>("price_units", false); }
-            }
-
-            public long? PriceNanos {
-                get { return GetValue<long?>("price_nanos", false); }
-            }
-
-            public TypeEnum InitialPurchaseTransactionType {
-                get { return GetEnum<TypeEnum>("type", true); }
-            }
-
-            public DateTime? TransactedAt {
-                get { return GetDateTime("transacted_at", false); }
-            }
-
-            public DateTime CreatedAt {
-                get { return (DateTime)GetDateTime("created_at", true); }
-            }
-
-            public long? ResourceVersion {
-                get { return GetValue<long?>("resource_version", false); }
-            }
-
-        }
 
         #endregion
     }

@@ -101,6 +101,7 @@ namespace ChargeBee.Models
                 m_params.Add("properties", properties);
                 return this;
             }
+        
         }
         public class BatchIngestRequest : EntityRequest<BatchIngestRequest> 
         {
@@ -109,6 +110,7 @@ namespace ChargeBee.Models
             {
             }
 
+        
         public BatchIngestRequest Events(List<EventBatchIngestInputParams> array){
             JArray jArray = new JArray();
             foreach (var item in array){
@@ -124,6 +126,7 @@ namespace ChargeBee.Models
 
         #region Subclasses
 
+        
         public class EventBatchIngestInputParams { 
             public  string DeduplicationId { get; }
             public  string SubscriptionId { get; }
@@ -199,6 +202,7 @@ namespace ChargeBee.Models
             }
 
         }
+        
         
         #endregion
     }

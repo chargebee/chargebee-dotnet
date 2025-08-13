@@ -41,10 +41,10 @@ namespace ChargeBee.Models
         }
 
         #region Methods
-        public static EntityRequest<Type> List()
+        public static ListRequest List()
         {
             string url = ApiUtil.BuildUrl("currencies", "list");
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            return new ListRequest(url);
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
@@ -76,7 +76,7 @@ namespace ChargeBee.Models
         #region Properties
         public string Id 
         {
-            get { return GetValue<string>("id", false); }
+            get { return GetValue<string>("id", true); }
         }
         public bool Enabled 
         {
@@ -88,11 +88,11 @@ namespace ChargeBee.Models
         }
         public string CurrencyCode 
         {
-            get { return GetValue<string>("currency_code", false); }
+            get { return GetValue<string>("currency_code", true); }
         }
-        public bool? IsBaseCurrency 
+        public bool IsBaseCurrency 
         {
-            get { return GetValue<bool?>("is_base_currency", false); }
+            get { return GetValue<bool>("is_base_currency", true); }
         }
         public string ManualExchangeRate 
         {

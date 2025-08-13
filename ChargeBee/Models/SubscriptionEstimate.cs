@@ -166,10 +166,6 @@ namespace ChargeBee.Models
                 get { return GetEnum<ValidationStatusEnum>("validation_status", false); }
             }
 
-            public int Index {
-                get { return GetValue<int>("index", true); }
-            }
-
         }
         public class SubscriptionEstimateContractTerm : Resource
         {

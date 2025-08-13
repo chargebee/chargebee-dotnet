@@ -607,6 +607,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[coupon]", subscriptionCoupon);
                 return this;
             }
+            public CreateSubItemEstimateRequest SubscriptionOfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum subscriptionOfflinePaymentMethod) 
+            {
+                m_params.AddOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
+                return this;
+            }
             public CreateSubItemEstimateRequest BillingAddressLine1(string billingAddressLine1) 
             {
                 m_params.AddOpt("billing_address[line1]", billingAddressLine1);
@@ -1244,6 +1249,11 @@ namespace ChargeBee.Models
             public CreateSubItemForCustomerEstimateRequest SubscriptionStartDate(long subscriptionStartDate) 
             {
                 m_params.AddOpt("subscription[start_date]", subscriptionStartDate);
+                return this;
+            }
+            public CreateSubItemForCustomerEstimateRequest SubscriptionOfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum subscriptionOfflinePaymentMethod) 
+            {
+                m_params.AddOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
                 return this;
             }
             public CreateSubItemForCustomerEstimateRequest ShippingAddressLine1(string shippingAddressLine1) 

@@ -133,6 +133,10 @@ namespace ChargeBee.Models
         {
             get { return GetList<string>("discounts_to_remove"); }
         }
+        public RampContractTerm ContractTerm 
+        {
+            get { return GetSubResource<RampContractTerm>("contract_term"); }
+        }
         public bool Deleted 
         {
             get { return GetValue<bool>("deleted", true); }
@@ -177,6 +181,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("items_to_remove", itemsToRemove);
                 return this;
             }
+            public CreateForSubscriptionRequest ContractTermActionAtTermEnd(RampContractTerm.ActionAtTermEndEnum contractTermActionAtTermEnd) 
+            {
+                m_params.AddOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+                return this;
+            }
+            public CreateForSubscriptionRequest ContractTermCancellationCutoffPeriod(int contractTermCancellationCutoffPeriod) 
+            {
+                m_params.AddOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
+                return this;
+            }
+            public CreateForSubscriptionRequest ContractTermRenewalBillingCycles(int contractTermRenewalBillingCycles) 
+            {
+                m_params.AddOpt("contract_term[renewal_billing_cycles]", contractTermRenewalBillingCycles);
+                return this;
+            }
             public CreateForSubscriptionRequest ItemsToAddItemPriceId(int index, string itemsToAddItemPriceId) 
             {
                 m_params.Add("items_to_add[item_price_id][" + index + "]", itemsToAddItemPriceId);
@@ -212,6 +231,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("items_to_add[service_period_days][" + index + "]", itemsToAddServicePeriodDays);
                 return this;
             }
+            public CreateForSubscriptionRequest ItemsToAddChargeOnEvent(int index, ChargeBee.Models.Enums.ChargeOnEventEnum itemsToAddChargeOnEvent) 
+            {
+                m_params.AddOpt("items_to_add[charge_on_event][" + index + "]", itemsToAddChargeOnEvent);
+                return this;
+            }
+            public CreateForSubscriptionRequest ItemsToAddChargeOnce(int index, bool itemsToAddChargeOnce) 
+            {
+                m_params.AddOpt("items_to_add[charge_once][" + index + "]", itemsToAddChargeOnce);
+                return this;
+            }
+            public CreateForSubscriptionRequest ItemsToAddChargeOnOption(int index, ChargeBee.Models.Enums.ChargeOnOptionEnum itemsToAddChargeOnOption) 
+            {
+                m_params.AddOpt("items_to_add[charge_on_option][" + index + "]", itemsToAddChargeOnOption);
+                return this;
+            }
             public CreateForSubscriptionRequest ItemsToUpdateItemPriceId(int index, string itemsToUpdateItemPriceId) 
             {
                 m_params.Add("items_to_update[item_price_id][" + index + "]", itemsToUpdateItemPriceId);
@@ -245,6 +279,21 @@ namespace ChargeBee.Models
             public CreateForSubscriptionRequest ItemsToUpdateServicePeriodDays(int index, int itemsToUpdateServicePeriodDays) 
             {
                 m_params.AddOpt("items_to_update[service_period_days][" + index + "]", itemsToUpdateServicePeriodDays);
+                return this;
+            }
+            public CreateForSubscriptionRequest ItemsToUpdateChargeOnEvent(int index, ChargeBee.Models.Enums.ChargeOnEventEnum itemsToUpdateChargeOnEvent) 
+            {
+                m_params.AddOpt("items_to_update[charge_on_event][" + index + "]", itemsToUpdateChargeOnEvent);
+                return this;
+            }
+            public CreateForSubscriptionRequest ItemsToUpdateChargeOnce(int index, bool itemsToUpdateChargeOnce) 
+            {
+                m_params.AddOpt("items_to_update[charge_once][" + index + "]", itemsToUpdateChargeOnce);
+                return this;
+            }
+            public CreateForSubscriptionRequest ItemsToUpdateChargeOnOption(int index, ChargeBee.Models.Enums.ChargeOnOptionEnum itemsToUpdateChargeOnOption) 
+            {
+                m_params.AddOpt("items_to_update[charge_on_option][" + index + "]", itemsToUpdateChargeOnOption);
                 return this;
             }
             public CreateForSubscriptionRequest ItemTierItemPriceId(int index, string itemTierItemPriceId) 
@@ -375,6 +424,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("items_to_remove", itemsToRemove);
                 return this;
             }
+            public UpdateRequest ContractTermActionAtTermEnd(RampContractTerm.ActionAtTermEndEnum contractTermActionAtTermEnd) 
+            {
+                m_params.AddOpt("contract_term[action_at_term_end]", contractTermActionAtTermEnd);
+                return this;
+            }
+            public UpdateRequest ContractTermCancellationCutoffPeriod(int contractTermCancellationCutoffPeriod) 
+            {
+                m_params.AddOpt("contract_term[cancellation_cutoff_period]", contractTermCancellationCutoffPeriod);
+                return this;
+            }
+            public UpdateRequest ContractTermRenewalBillingCycles(int contractTermRenewalBillingCycles) 
+            {
+                m_params.AddOpt("contract_term[renewal_billing_cycles]", contractTermRenewalBillingCycles);
+                return this;
+            }
             public UpdateRequest ItemsToAddItemPriceId(int index, string itemsToAddItemPriceId) 
             {
                 m_params.Add("items_to_add[item_price_id][" + index + "]", itemsToAddItemPriceId);
@@ -410,6 +474,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("items_to_add[service_period_days][" + index + "]", itemsToAddServicePeriodDays);
                 return this;
             }
+            public UpdateRequest ItemsToAddChargeOnEvent(int index, ChargeBee.Models.Enums.ChargeOnEventEnum itemsToAddChargeOnEvent) 
+            {
+                m_params.AddOpt("items_to_add[charge_on_event][" + index + "]", itemsToAddChargeOnEvent);
+                return this;
+            }
+            public UpdateRequest ItemsToAddChargeOnce(int index, bool itemsToAddChargeOnce) 
+            {
+                m_params.AddOpt("items_to_add[charge_once][" + index + "]", itemsToAddChargeOnce);
+                return this;
+            }
+            public UpdateRequest ItemsToAddChargeOnOption(int index, ChargeBee.Models.Enums.ChargeOnOptionEnum itemsToAddChargeOnOption) 
+            {
+                m_params.AddOpt("items_to_add[charge_on_option][" + index + "]", itemsToAddChargeOnOption);
+                return this;
+            }
             public UpdateRequest ItemsToUpdateItemPriceId(int index, string itemsToUpdateItemPriceId) 
             {
                 m_params.Add("items_to_update[item_price_id][" + index + "]", itemsToUpdateItemPriceId);
@@ -443,6 +522,21 @@ namespace ChargeBee.Models
             public UpdateRequest ItemsToUpdateServicePeriodDays(int index, int itemsToUpdateServicePeriodDays) 
             {
                 m_params.AddOpt("items_to_update[service_period_days][" + index + "]", itemsToUpdateServicePeriodDays);
+                return this;
+            }
+            public UpdateRequest ItemsToUpdateChargeOnEvent(int index, ChargeBee.Models.Enums.ChargeOnEventEnum itemsToUpdateChargeOnEvent) 
+            {
+                m_params.AddOpt("items_to_update[charge_on_event][" + index + "]", itemsToUpdateChargeOnEvent);
+                return this;
+            }
+            public UpdateRequest ItemsToUpdateChargeOnce(int index, bool itemsToUpdateChargeOnce) 
+            {
+                m_params.AddOpt("items_to_update[charge_once][" + index + "]", itemsToUpdateChargeOnce);
+                return this;
+            }
+            public UpdateRequest ItemsToUpdateChargeOnOption(int index, ChargeBee.Models.Enums.ChargeOnOptionEnum itemsToUpdateChargeOnOption) 
+            {
+                m_params.AddOpt("items_to_update[charge_on_option][" + index + "]", itemsToUpdateChargeOnOption);
                 return this;
             }
             public UpdateRequest ItemTierItemPriceId(int index, string itemTierItemPriceId) 
@@ -611,6 +705,15 @@ namespace ChargeBee.Models
                 [EnumMember(Value = "charge")]
                 Charge,
             }
+            public enum ChargeOnOptionEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "immediately")]
+                Immediately,
+                [EnumMember(Value = "on_event")]
+                OnEvent,
+            }
 
             public string ItemPriceId {
                 get { return GetValue<string>("item_price_id", true); }
@@ -662,6 +765,18 @@ namespace ChargeBee.Models
 
             public string MeteredQuantity {
                 get { return GetValue<string>("metered_quantity", false); }
+            }
+
+            public bool? ChargeOnce {
+                get { return GetValue<bool?>("charge_once", false); }
+            }
+
+            public ChargeOnOptionEnum? ChargeOnOption {
+                get { return GetEnum<ChargeOnOptionEnum>("charge_on_option", false); }
+            }
+
+            public ChargeOnEventEnum? ChargeOnEvent {
+                get { return GetEnum<ChargeOnEventEnum>("charge_on_event", false); }
             }
 
         }
@@ -678,6 +793,15 @@ namespace ChargeBee.Models
                 [EnumMember(Value = "charge")]
                 Charge,
             }
+            public enum ChargeOnOptionEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "immediately")]
+                Immediately,
+                [EnumMember(Value = "on_event")]
+                OnEvent,
+            }
 
             public string ItemPriceId {
                 get { return GetValue<string>("item_price_id", true); }
@@ -729,6 +853,18 @@ namespace ChargeBee.Models
 
             public string MeteredQuantity {
                 get { return GetValue<string>("metered_quantity", false); }
+            }
+
+            public bool? ChargeOnce {
+                get { return GetValue<bool?>("charge_once", false); }
+            }
+
+            public ChargeOnOptionEnum? ChargeOnOption {
+                get { return GetEnum<ChargeOnOptionEnum>("charge_on_option", false); }
+            }
+
+            public ChargeOnEventEnum? ChargeOnEvent {
+                get { return GetEnum<ChargeOnEventEnum>("charge_on_event", false); }
             }
 
         }
@@ -877,6 +1013,35 @@ namespace ChargeBee.Models
 
             public int Index {
                 get { return GetValue<int>("index", true); }
+            }
+
+        }
+        public class RampContractTerm : Resource
+        {
+            public enum ActionAtTermEndEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "renew")]
+                Renew,
+                [EnumMember(Value = "evergreen")]
+                Evergreen,
+                [EnumMember(Value = "cancel")]
+                Cancel,
+                [EnumMember(Value = "renew_once")]
+                RenewOnce,
+            }
+
+            public int? CancellationCutoffPeriod {
+                get { return GetValue<int?>("cancellation_cutoff_period", false); }
+            }
+
+            public int? RenewalBillingCycles {
+                get { return GetValue<int?>("renewal_billing_cycles", false); }
+            }
+
+            public ActionAtTermEndEnum ActionAtTermEnd {
+                get { return GetEnum<ActionAtTermEndEnum>("action_at_term_end", true); }
             }
 
         }

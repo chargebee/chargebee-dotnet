@@ -85,5 +85,14 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "payconiq_by_bancontact")]
          PayconiqByBancontact,
 
+        [EnumMember(Value = "free_trial")]
+         FreeTrial,
+
+        [EnumMember(Value = "pay_up_front")]
+         PayUpFront,
+
+        [EnumMember(Value = "pay_as_you_go")]
+         PayAsYouGo,
+
     }
 }

@@ -109,6 +109,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<long?>("resource_version", false); }
         }
+        public List<OmnichannelSubscriptionItemOffer> OmnichannelSubscriptionItemOffers 
+        {
+            get { return GetResourceList<OmnichannelSubscriptionItemOffer>("omnichannel_subscription_item_offers"); }
+        }
         public OmnichannelSubscriptionItemUpcomingRenewal UpcomingRenewal 
         {
             get { return GetSubResource<OmnichannelSubscriptionItemUpcomingRenewal>("upcoming_renewal"); }

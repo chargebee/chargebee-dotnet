@@ -217,6 +217,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "payment_failed")]
          PaymentFailed,
 
+        [EnumMember(Value = "dunning_updated")]
+         DunningUpdated,
+
         [EnumMember(Value = "payment_refunded")]
          PaymentRefunded,
 
@@ -627,6 +630,9 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "omnichannel_subscription_item_pause_scheduled")]
          OmnichannelSubscriptionItemPauseScheduled,
+
+        [EnumMember(Value = "omnichannel_subscription_moved_in")]
+         OmnichannelSubscriptionMovedIn,
 
         [EnumMember(Value = "plan_created")]
          PlanCreated,

@@ -240,25 +240,25 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<QuoteLineItem>("line_items"); }
         }
-        public List<QuoteDiscount> Discounts 
+        public List<QuoteLineItemTier> LineItemTiers 
         {
-            get { return GetResourceList<QuoteDiscount>("discounts"); }
+            get { return GetResourceList<QuoteLineItemTier>("line_item_tiers"); }
         }
         public List<QuoteLineItemDiscount> LineItemDiscounts 
         {
             get { return GetResourceList<QuoteLineItemDiscount>("line_item_discounts"); }
         }
-        public List<QuoteTax> Taxes 
-        {
-            get { return GetResourceList<QuoteTax>("taxes"); }
-        }
         public List<QuoteLineItemTax> LineItemTaxes 
         {
             get { return GetResourceList<QuoteLineItemTax>("line_item_taxes"); }
         }
-        public List<QuoteLineItemTier> LineItemTiers 
+        public List<QuoteDiscount> Discounts 
         {
-            get { return GetResourceList<QuoteLineItemTier>("line_item_tiers"); }
+            get { return GetResourceList<QuoteDiscount>("discounts"); }
+        }
+        public List<QuoteTax> Taxes 
+        {
+            get { return GetResourceList<QuoteTax>("taxes"); }
         }
         public string TaxCategory 
         {
@@ -2090,6 +2090,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[start_date]", subscriptionStartDate);
                 return this;
             }
+            public CreateSubItemsForCustomerQuoteRequest SubscriptionOfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum subscriptionOfflinePaymentMethod) 
+            {
+                m_params.AddOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
+                return this;
+            }
             public CreateSubItemsForCustomerQuoteRequest ShippingAddressFirstName(string shippingAddressFirstName) 
             {
                 m_params.AddOpt("shipping_address[first_name]", shippingAddressFirstName);
@@ -2518,6 +2523,11 @@ namespace ChargeBee.Models
             public EditCreateSubCustomerQuoteForItemsRequest SubscriptionStartDate(long subscriptionStartDate) 
             {
                 m_params.AddOpt("subscription[start_date]", subscriptionStartDate);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest SubscriptionOfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum subscriptionOfflinePaymentMethod) 
+            {
+                m_params.AddOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
                 return this;
             }
             public EditCreateSubCustomerQuoteForItemsRequest ShippingAddressFirstName(string shippingAddressFirstName) 
@@ -4851,57 +4861,62 @@ namespace ChargeBee.Models
             }
 
         }
-        public class QuoteDiscount : Resource
+        public class QuoteLineItemTier : Resource
         {
-            public enum EntityTypeEnum
+            public enum PricingTypeEnum
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [EnumMember(Value = "item_level_coupon")]
-                ItemLevelCoupon,
-                [EnumMember(Value = "document_level_coupon")]
-                DocumentLevelCoupon,
-                [EnumMember(Value = "promotional_credits")]
-                PromotionalCredits,
-                [EnumMember(Value = "prorated_credits")]
-                ProratedCredits,
-                [EnumMember(Value = "item_level_discount")]
-                ItemLevelDiscount,
-                [EnumMember(Value = "document_level_discount")]
-                DocumentLevelDiscount,
-            }
-            public enum DiscountTypeEnum
-            {
-                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
-                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [EnumMember(Value = "fixed_amount")]
-                FixedAmount,
-                [EnumMember(Value = "percentage")]
-                Percentage,
+                [EnumMember(Value = "per_unit")]
+                PerUnit,
+                [EnumMember(Value = "flat_fee")]
+                FlatFee,
+                [EnumMember(Value = "package")]
+                Package,
             }
 
-            public long Amount {
-                get { return GetValue<long>("amount", true); }
+            public string LineItemId {
+                get { return GetValue<string>("line_item_id", false); }
             }
 
-            public string Description {
-                get { return GetValue<string>("description", false); }
+            public int StartingUnit {
+                get { return GetValue<int>("starting_unit", true); }
             }
 
-            public EntityTypeEnum EntityType {
-                get { return GetEnum<EntityTypeEnum>("entity_type", true); }
+            public int? EndingUnit {
+                get { return GetValue<int?>("ending_unit", false); }
             }
 
-            public DiscountTypeEnum? DiscountType {
-                get { return GetEnum<DiscountTypeEnum>("discount_type", false); }
+            public int QuantityUsed {
+                get { return GetValue<int>("quantity_used", true); }
             }
 
-            public string EntityId {
-                get { return GetValue<string>("entity_id", false); }
+            public long UnitAmount {
+                get { return GetValue<long>("unit_amount", true); }
             }
 
-            public string CouponSetCode {
-                get { return GetValue<string>("coupon_set_code", false); }
+            public string StartingUnitInDecimal {
+                get { return GetValue<string>("starting_unit_in_decimal", false); }
+            }
+
+            public string EndingUnitInDecimal {
+                get { return GetValue<string>("ending_unit_in_decimal", false); }
+            }
+
+            public string QuantityUsedInDecimal {
+                get { return GetValue<string>("quantity_used_in_decimal", false); }
+            }
+
+            public string UnitAmountInDecimal {
+                get { return GetValue<string>("unit_amount_in_decimal", false); }
+            }
+
+            public PricingTypeEnum? PricingType {
+                get { return GetEnum<PricingTypeEnum>("pricing_type", false); }
+            }
+
+            public int? PackageSize {
+                get { return GetValue<int?>("package_size", false); }
             }
 
         }
@@ -4943,22 +4958,6 @@ namespace ChargeBee.Models
 
             public long DiscountAmount {
                 get { return GetValue<long>("discount_amount", true); }
-            }
-
-        }
-        public class QuoteTax : Resource
-        {
-
-            public string Name {
-                get { return GetValue<string>("name", true); }
-            }
-
-            public long Amount {
-                get { return GetValue<long>("amount", true); }
-            }
-
-            public string Description {
-                get { return GetValue<string>("description", false); }
             }
 
         }
@@ -5026,62 +5025,73 @@ namespace ChargeBee.Models
             }
 
         }
-        public class QuoteLineItemTier : Resource
+        public class QuoteDiscount : Resource
         {
-            public enum PricingTypeEnum
+            public enum EntityTypeEnum
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [EnumMember(Value = "per_unit")]
-                PerUnit,
-                [EnumMember(Value = "flat_fee")]
-                FlatFee,
-                [EnumMember(Value = "package")]
-                Package,
+                [EnumMember(Value = "item_level_coupon")]
+                ItemLevelCoupon,
+                [EnumMember(Value = "document_level_coupon")]
+                DocumentLevelCoupon,
+                [EnumMember(Value = "promotional_credits")]
+                PromotionalCredits,
+                [EnumMember(Value = "prorated_credits")]
+                ProratedCredits,
+                [EnumMember(Value = "item_level_discount")]
+                ItemLevelDiscount,
+                [EnumMember(Value = "document_level_discount")]
+                DocumentLevelDiscount,
+            }
+            public enum DiscountTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "fixed_amount")]
+                FixedAmount,
+                [EnumMember(Value = "percentage")]
+                Percentage,
             }
 
-            public string LineItemId {
-                get { return GetValue<string>("line_item_id", false); }
+            public long Amount {
+                get { return GetValue<long>("amount", true); }
             }
 
-            public int StartingUnit {
-                get { return GetValue<int>("starting_unit", true); }
+            public string Description {
+                get { return GetValue<string>("description", false); }
             }
 
-            public int? EndingUnit {
-                get { return GetValue<int?>("ending_unit", false); }
+            public EntityTypeEnum EntityType {
+                get { return GetEnum<EntityTypeEnum>("entity_type", true); }
             }
 
-            public int QuantityUsed {
-                get { return GetValue<int>("quantity_used", true); }
+            public DiscountTypeEnum? DiscountType {
+                get { return GetEnum<DiscountTypeEnum>("discount_type", false); }
             }
 
-            public long UnitAmount {
-                get { return GetValue<long>("unit_amount", true); }
+            public string EntityId {
+                get { return GetValue<string>("entity_id", false); }
             }
 
-            public string StartingUnitInDecimal {
-                get { return GetValue<string>("starting_unit_in_decimal", false); }
+            public string CouponSetCode {
+                get { return GetValue<string>("coupon_set_code", false); }
             }
 
-            public string EndingUnitInDecimal {
-                get { return GetValue<string>("ending_unit_in_decimal", false); }
+        }
+        public class QuoteTax : Resource
+        {
+
+            public string Name {
+                get { return GetValue<string>("name", true); }
             }
 
-            public string QuantityUsedInDecimal {
-                get { return GetValue<string>("quantity_used_in_decimal", false); }
+            public long Amount {
+                get { return GetValue<long>("amount", true); }
             }
 
-            public string UnitAmountInDecimal {
-                get { return GetValue<string>("unit_amount_in_decimal", false); }
-            }
-
-            public PricingTypeEnum? PricingType {
-                get { return GetEnum<PricingTypeEnum>("pricing_type", false); }
-            }
-
-            public int? PackageSize {
-                get { return GetValue<int?>("package_size", false); }
+            public string Description {
+                get { return GetValue<string>("description", false); }
             }
 
         }
@@ -5142,10 +5152,6 @@ namespace ChargeBee.Models
 
             public ValidationStatusEnum? ValidationStatus {
                 get { return GetEnum<ValidationStatusEnum>("validation_status", false); }
-            }
-
-            public int Index {
-                get { return GetValue<int>("index", true); }
             }
 
         }

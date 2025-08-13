@@ -84,21 +84,21 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<QuoteLineGroupLineItem>("line_items"); }
         }
-        public List<QuoteLineGroupDiscount> Discounts 
-        {
-            get { return GetResourceList<QuoteLineGroupDiscount>("discounts"); }
-        }
         public List<QuoteLineGroupLineItemDiscount> LineItemDiscounts 
         {
             get { return GetResourceList<QuoteLineGroupLineItemDiscount>("line_item_discounts"); }
         }
-        public List<QuoteLineGroupTax> Taxes 
-        {
-            get { return GetResourceList<QuoteLineGroupTax>("taxes"); }
-        }
         public List<QuoteLineGroupLineItemTax> LineItemTaxes 
         {
             get { return GetResourceList<QuoteLineGroupLineItemTax>("line_item_taxes"); }
+        }
+        public List<QuoteLineGroupDiscount> Discounts 
+        {
+            get { return GetResourceList<QuoteLineGroupDiscount>("discounts"); }
+        }
+        public List<QuoteLineGroupTax> Taxes 
+        {
+            get { return GetResourceList<QuoteLineGroupTax>("taxes"); }
         }
         
         #endregion
@@ -248,60 +248,6 @@ namespace ChargeBee.Models
             }
 
         }
-        public class QuoteLineGroupDiscount : Resource
-        {
-            public enum EntityTypeEnum
-            {
-                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
-                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [EnumMember(Value = "item_level_coupon")]
-                ItemLevelCoupon,
-                [EnumMember(Value = "document_level_coupon")]
-                DocumentLevelCoupon,
-                [EnumMember(Value = "promotional_credits")]
-                PromotionalCredits,
-                [EnumMember(Value = "prorated_credits")]
-                ProratedCredits,
-                [EnumMember(Value = "item_level_discount")]
-                ItemLevelDiscount,
-                [EnumMember(Value = "document_level_discount")]
-                DocumentLevelDiscount,
-            }
-            public enum DiscountTypeEnum
-            {
-                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
-                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [EnumMember(Value = "fixed_amount")]
-                FixedAmount,
-                [EnumMember(Value = "percentage")]
-                Percentage,
-            }
-
-            public long Amount {
-                get { return GetValue<long>("amount", true); }
-            }
-
-            public string Description {
-                get { return GetValue<string>("description", false); }
-            }
-
-            public EntityTypeEnum EntityType {
-                get { return GetEnum<EntityTypeEnum>("entity_type", true); }
-            }
-
-            public DiscountTypeEnum? DiscountType {
-                get { return GetEnum<DiscountTypeEnum>("discount_type", false); }
-            }
-
-            public string EntityId {
-                get { return GetValue<string>("entity_id", false); }
-            }
-
-            public string CouponSetCode {
-                get { return GetValue<string>("coupon_set_code", false); }
-            }
-
-        }
         public class QuoteLineGroupLineItemDiscount : Resource
         {
             public enum DiscountTypeEnum
@@ -340,22 +286,6 @@ namespace ChargeBee.Models
 
             public long DiscountAmount {
                 get { return GetValue<long>("discount_amount", true); }
-            }
-
-        }
-        public class QuoteLineGroupTax : Resource
-        {
-
-            public string Name {
-                get { return GetValue<string>("name", true); }
-            }
-
-            public long Amount {
-                get { return GetValue<long>("amount", true); }
-            }
-
-            public string Description {
-                get { return GetValue<string>("description", false); }
             }
 
         }
@@ -420,6 +350,76 @@ namespace ChargeBee.Models
 
             public string LocalCurrencyCode {
                 get { return GetValue<string>("local_currency_code", false); }
+            }
+
+        }
+        public class QuoteLineGroupDiscount : Resource
+        {
+            public enum EntityTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "item_level_coupon")]
+                ItemLevelCoupon,
+                [EnumMember(Value = "document_level_coupon")]
+                DocumentLevelCoupon,
+                [EnumMember(Value = "promotional_credits")]
+                PromotionalCredits,
+                [EnumMember(Value = "prorated_credits")]
+                ProratedCredits,
+                [EnumMember(Value = "item_level_discount")]
+                ItemLevelDiscount,
+                [EnumMember(Value = "document_level_discount")]
+                DocumentLevelDiscount,
+            }
+            public enum DiscountTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "fixed_amount")]
+                FixedAmount,
+                [EnumMember(Value = "percentage")]
+                Percentage,
+            }
+
+            public long Amount {
+                get { return GetValue<long>("amount", true); }
+            }
+
+            public string Description {
+                get { return GetValue<string>("description", false); }
+            }
+
+            public EntityTypeEnum EntityType {
+                get { return GetEnum<EntityTypeEnum>("entity_type", true); }
+            }
+
+            public DiscountTypeEnum? DiscountType {
+                get { return GetEnum<DiscountTypeEnum>("discount_type", false); }
+            }
+
+            public string EntityId {
+                get { return GetValue<string>("entity_id", false); }
+            }
+
+            public string CouponSetCode {
+                get { return GetValue<string>("coupon_set_code", false); }
+            }
+
+        }
+        public class QuoteLineGroupTax : Resource
+        {
+
+            public string Name {
+                get { return GetValue<string>("name", true); }
+            }
+
+            public long Amount {
+                get { return GetValue<long>("amount", true); }
+            }
+
+            public string Description {
+                get { return GetValue<string>("description", false); }
             }
 
         }
