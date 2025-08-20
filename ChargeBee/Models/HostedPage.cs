@@ -1456,6 +1456,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("discounts[amount][" + index + "]", discountAmount);
                 return this;
             }
+            public CheckoutOneTimeForItemsRequest DiscountQuantity(int index, int discountQuantity) 
+            {
+                m_params.AddOpt("discounts[quantity][" + index + "]", discountQuantity);
+                return this;
+            }
             public CheckoutOneTimeForItemsRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
             {
                 m_params.Add("discounts[apply_on][" + index + "]", discountApplyOn);
@@ -1925,6 +1930,11 @@ namespace ChargeBee.Models
             public CheckoutNewForItemsRequest DiscountItemPriceId(int index, string discountItemPriceId) 
             {
                 m_params.AddOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+                return this;
+            }
+            public CheckoutNewForItemsRequest DiscountQuantity(int index, int discountQuantity) 
+            {
+                m_params.AddOpt("discounts[quantity][" + index + "]", discountQuantity);
                 return this;
             }
             public CheckoutNewForItemsRequest SubscriptionItemChargeOnOption(int index, ChargeBee.Models.Enums.ChargeOnOptionEnum subscriptionItemChargeOnOption) 
@@ -2562,6 +2572,11 @@ namespace ChargeBee.Models
             public CheckoutExistingForItemsRequest DiscountItemPriceId(int index, string discountItemPriceId) 
             {
                 m_params.AddOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest DiscountQuantity(int index, int discountQuantity) 
+            {
+                m_params.AddOpt("discounts[quantity][" + index + "]", discountQuantity);
                 return this;
             }
             public CheckoutExistingForItemsRequest DiscountOperationType(int index, ChargeBee.Models.Enums.OperationTypeEnum discountOperationType) 
