@@ -92,6 +92,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("entity_id", true); }
         }
+        public string BusinessEntityId 
+        {
+            get { return GetValue<string>("business_entity_id", false); }
+        }
         
         #endregion
         

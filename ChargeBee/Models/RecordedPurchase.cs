@@ -90,6 +90,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<RecordedPurchaseLinkedOmnichannelSubscription>("linked_omnichannel_subscriptions"); }
         }
+        public List<RecordedPurchaseLinkedOmnichannelOneTimeOrder> LinkedOmnichannelOneTimeOrders 
+        {
+            get { return GetResourceList<RecordedPurchaseLinkedOmnichannelOneTimeOrder>("linked_omnichannel_one_time_orders"); }
+        }
         public RecordedPurchaseErrorDetail ErrorDetail 
         {
             get { return GetSubResource<RecordedPurchaseErrorDetail>("error_detail"); }
@@ -135,6 +139,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("google_play_store[purchase_token]", googlePlayStorePurchaseToken);
                 return this;
             }
+            public CreateRequest GooglePlayStoreProductId(string googlePlayStoreProductId) 
+            {
+                m_params.AddOpt("google_play_store[product_id]", googlePlayStoreProductId);
+                return this;
+            }
+            public CreateRequest GooglePlayStoreOrderId(string googlePlayStoreOrderId) 
+            {
+                m_params.AddOpt("google_play_store[order_id]", googlePlayStoreOrderId);
+                return this;
+            }
             public CreateRequest OmnichannelSubscriptionId(string omnichannelSubscriptionId) 
             {
                 m_params.AddOpt("omnichannel_subscription[id]", omnichannelSubscriptionId);
@@ -176,6 +190,14 @@ namespace ChargeBee.Models
 
             public string OmnichannelSubscriptionId {
                 get { return GetValue<string>("omnichannel_subscription_id", false); }
+            }
+
+        }
+        public class RecordedPurchaseLinkedOmnichannelOneTimeOrder : Resource
+        {
+
+            public string OmnichannelOneTimeOrderId {
+                get { return GetValue<string>("omnichannel_one_time_order_id", false); }
             }
 
         }

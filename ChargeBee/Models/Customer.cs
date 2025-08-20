@@ -1663,6 +1663,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("comment", comment);
                 return this;
             }
+            public RecordExcessPaymentRequest TransactionId(string transactionId) 
+            {
+                m_params.AddOpt("transaction[id]", transactionId);
+                return this;
+            }
             public RecordExcessPaymentRequest TransactionAmount(long transactionAmount) 
             {
                 m_params.Add("transaction[amount]", transactionAmount);

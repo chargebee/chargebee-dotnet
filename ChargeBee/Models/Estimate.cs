@@ -859,6 +859,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
                 return this;
             }
+            public CreateSubItemEstimateRequest DiscountQuantity(int index, int discountQuantity) 
+            {
+                m_params.AddOpt("discounts[quantity][" + index + "]", discountQuantity);
+                return this;
+            }
             public CreateSubItemEstimateRequest SubscriptionItemChargeOnOption(int index, ChargeBee.Models.Enums.ChargeOnOptionEnum subscriptionItemChargeOnOption) 
             {
                 m_params.AddOpt("subscription_items[charge_on_option][" + index + "]", subscriptionItemChargeOnOption);
@@ -1461,6 +1466,11 @@ namespace ChargeBee.Models
             public CreateSubItemForCustomerEstimateRequest DiscountItemPriceId(int index, string discountItemPriceId) 
             {
                 m_params.AddOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+                return this;
+            }
+            public CreateSubItemForCustomerEstimateRequest DiscountQuantity(int index, int discountQuantity) 
+            {
+                m_params.AddOpt("discounts[quantity][" + index + "]", discountQuantity);
                 return this;
             }
             public CreateSubItemForCustomerEstimateRequest SubscriptionItemChargeOnOption(int index, ChargeBee.Models.Enums.ChargeOnOptionEnum subscriptionItemChargeOnOption) 
@@ -2238,6 +2248,11 @@ namespace ChargeBee.Models
             public UpdateSubscriptionForItemsRequest DiscountItemPriceId(int index, string discountItemPriceId) 
             {
                 m_params.AddOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+                return this;
+            }
+            public UpdateSubscriptionForItemsRequest DiscountQuantity(int index, int discountQuantity) 
+            {
+                m_params.AddOpt("discounts[quantity][" + index + "]", discountQuantity);
                 return this;
             }
             public UpdateSubscriptionForItemsRequest DiscountOperationType(int index, ChargeBee.Models.Enums.OperationTypeEnum discountOperationType) 
@@ -3663,6 +3678,11 @@ namespace ChargeBee.Models
             public CreateInvoiceForItemsRequest DiscountAmount(int index, long discountAmount) 
             {
                 m_params.AddOpt("discounts[amount][" + index + "]", discountAmount);
+                return this;
+            }
+            public CreateInvoiceForItemsRequest DiscountQuantity(int index, int discountQuantity) 
+            {
+                m_params.AddOpt("discounts[quantity][" + index + "]", discountQuantity);
                 return this;
             }
             public CreateInvoiceForItemsRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
