@@ -351,6 +351,14 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<RecordedPurchase>("recorded_purchase"); }
         }
+        public OmnichannelOneTimeOrder OmnichannelOneTimeOrder
+        {
+            get {  return GetResource<OmnichannelOneTimeOrder>("omnichannel_one_time_order"); }
+        }
+        public OmnichannelOneTimeOrderItem OmnichannelOneTimeOrderItem
+        {
+            get {  return GetResource<OmnichannelOneTimeOrderItem>("omnichannel_one_time_order_item"); }
+        }
         public Rule Rule
         {
             get {  return GetResource<Rule>("rule"); }
@@ -363,9 +371,29 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<OmnichannelSubscriptionItemScheduledChange>("omnichannel_subscription_item_scheduled_change"); }
         }
+        public UsageFile UsageFile
+        {
+            get {  return GetResource<UsageFile>("usage_file"); }
+        }
         public Brand Brand
         {
             get {  return GetResource<Brand>("brand"); }
+        }
+        public WebhookEndpoint WebhookEndpoint
+        {
+            get {  return GetResource<WebhookEndpoint>("webhook_endpoint"); }
+        }
+        public ImpactedCustomer ImpactedCustomer
+        {
+            get {  return GetResource<ImpactedCustomer>("impacted_customer"); }
+        }
+        public SubscriptionEntitlementsUpdatedDetail SubscriptionEntitlementsUpdatedDetail
+        {
+            get {  return GetResource<SubscriptionEntitlementsUpdatedDetail>("subscription_entitlements_updated_detail"); }
+        }
+        public SubscriptionEntitlementsCreatedDetail SubscriptionEntitlementsCreatedDetail
+        {
+            get {  return GetResource<SubscriptionEntitlementsCreatedDetail>("subscription_entitlements_created_detail"); }
         }
 
         public List<AdvanceInvoiceSchedule> AdvanceInvoiceSchedules

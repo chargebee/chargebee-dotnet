@@ -316,6 +316,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
                 return this;
             }
+            public CreateForNewSubscriptionRequest DiscountQuantity(int index, int discountQuantity) 
+            {
+                m_params.AddOpt("discounts[quantity][" + index + "]", discountQuantity);
+                return this;
+            }
             public CreateForNewSubscriptionRequest DiscountLabel(int index, string discountLabel) 
             {
                 m_params.AddOpt("discounts[label][" + index + "]", discountLabel);
@@ -382,6 +387,11 @@ namespace ChargeBee.Models
             public CreateForExistingSubscriptionRequest DiscountItemPriceId(int index, string discountItemPriceId) 
             {
                 m_params.AddOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+                return this;
+            }
+            public CreateForExistingSubscriptionRequest DiscountQuantity(int index, int discountQuantity) 
+            {
+                m_params.AddOpt("discounts[quantity][" + index + "]", discountQuantity);
                 return this;
             }
             public CreateForExistingSubscriptionRequest DiscountLabel(int index, string discountLabel) 

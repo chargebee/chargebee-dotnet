@@ -115,5 +115,14 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "sales_order")]
          SalesOrder,
 
+        [EnumMember(Value = "omnichannel_one_time_order")]
+         OmnichannelOneTimeOrder,
+
+        [EnumMember(Value = "omnichannel_one_time_order_item")]
+         OmnichannelOneTimeOrderItem,
+
+        [EnumMember(Value = "usage_file")]
+         UsageFile,
+
     }
 }

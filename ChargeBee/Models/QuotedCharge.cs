@@ -64,6 +64,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<QuotedChargeCoupon>("coupons"); }
         }
+        public List<QuotedChargeCouponApplicabilityMapping> CouponApplicabilityMappings 
+        {
+            get { return GetResourceList<QuotedChargeCouponApplicabilityMapping>("coupon_applicability_mappings"); }
+        }
         
         #endregion
         
@@ -222,6 +226,18 @@ namespace ChargeBee.Models
 
             public string CouponId {
                 get { return GetValue<string>("coupon_id", true); }
+            }
+
+        }
+        public class QuotedChargeCouponApplicabilityMapping : Resource
+        {
+
+            public string CouponId {
+                get { return GetValue<string>("coupon_id", false); }
+            }
+
+            public List<string> ApplicableItemPriceIds {
+                get { return GetList<string>("applicable_item_price_ids"); }
             }
 
         }

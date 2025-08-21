@@ -41,10 +41,10 @@ namespace ChargeBee.Models
         }
 
         #region Methods
-        public static ListRequest EntitlementsForCustomer(string id)
+        public static CustomerEntitlementEntitlementsForCustomerRequest EntitlementsForCustomer(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "customer_entitlements");
-            return new ListRequest(url);
+            return new CustomerEntitlementEntitlementsForCustomerRequest(url);
         }
         #endregion
         
@@ -76,6 +76,21 @@ namespace ChargeBee.Models
         
         #endregion
         
+        #region Requests
+        public class CustomerEntitlementEntitlementsForCustomerRequest : ListRequestBase<CustomerEntitlementEntitlementsForCustomerRequest> 
+        {
+            public CustomerEntitlementEntitlementsForCustomerRequest(string url) 
+                    : base(url)
+            {
+            }
+
+            public CustomerEntitlementEntitlementsForCustomerRequest ConsolidateEntitlements(bool consolidateEntitlements) 
+            {
+                m_params.AddOpt("consolidate_entitlements", consolidateEntitlements);
+                return this;
+            }
+        }
+        #endregion
 
 
         #region Subclasses

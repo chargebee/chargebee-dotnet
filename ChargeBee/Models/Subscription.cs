@@ -2139,6 +2139,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
                 return this;
             }
+            public CreateWithItemsRequest DiscountQuantity(int index, int discountQuantity) 
+            {
+                m_params.AddOpt("discounts[quantity][" + index + "]", discountQuantity);
+                return this;
+            }
             public CreateWithItemsRequest SubscriptionItemChargeOnOption(int index, ChargeBee.Models.Enums.ChargeOnOptionEnum subscriptionItemChargeOnOption) 
             {
                 m_params.AddOpt("subscription_items[charge_on_option][" + index + "]", subscriptionItemChargeOnOption);
@@ -3683,6 +3688,11 @@ namespace ChargeBee.Models
             public UpdateForItemsRequest DiscountItemPriceId(int index, string discountItemPriceId) 
             {
                 m_params.AddOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
+                return this;
+            }
+            public UpdateForItemsRequest DiscountQuantity(int index, int discountQuantity) 
+            {
+                m_params.AddOpt("discounts[quantity][" + index + "]", discountQuantity);
                 return this;
             }
             public UpdateForItemsRequest DiscountOperationType(int index, ChargeBee.Models.Enums.OperationTypeEnum discountOperationType) 
@@ -5742,6 +5752,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("discounts[item_price_id][" + index + "]", discountItemPriceId);
                 return this;
             }
+            public ImportForItemsRequest DiscountQuantity(int index, int discountQuantity) 
+            {
+                m_params.AddOpt("discounts[quantity][" + index + "]", discountQuantity);
+                return this;
+            }
             public ImportForItemsRequest ChargedItemItemPriceId(int index, string chargedItemItemPriceId) 
             {
                 m_params.AddOpt("charged_items[item_price_id][" + index + "]", chargedItemItemPriceId);
@@ -6733,6 +6748,8 @@ namespace ChargeBee.Models
                 FixedAmount,
                 [EnumMember(Value = "percentage")]
                 Percentage,
+                [EnumMember(Value = "offer_quantity")]
+                OfferQuantity,
             }
             public enum DurationTypeEnum
             {
@@ -6773,6 +6790,10 @@ namespace ChargeBee.Models
 
             public long? Amount {
                 get { return GetValue<long?>("amount", false); }
+            }
+
+            public int? Quantity {
+                get { return GetValue<int?>("quantity", false); }
             }
 
             public string CurrencyCode {

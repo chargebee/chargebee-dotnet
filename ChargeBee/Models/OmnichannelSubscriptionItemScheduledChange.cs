@@ -91,6 +91,8 @@ namespace ChargeBee.Models
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
             [EnumMember(Value = "downgrade")]
             Downgrade,
+            [EnumMember(Value = "pause")]
+            Pause,
 
         }
 

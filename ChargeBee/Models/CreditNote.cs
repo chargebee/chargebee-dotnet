@@ -199,10 +199,6 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<ChannelEnum>("channel", false); }
         }
-        public CreditNoteEinvoice Einvoice 
-        {
-            get { return GetSubResource<CreditNoteEinvoice>("einvoice"); }
-        }
         public long SubTotal 
         {
             get { return GetValue<long>("sub_total", true); }
@@ -231,25 +227,33 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<CreditNoteLineItem>("line_items"); }
         }
-        public List<CreditNoteDiscount> Discounts 
+        public List<CreditNoteLineItemTier> LineItemTiers 
         {
-            get { return GetResourceList<CreditNoteDiscount>("discounts"); }
+            get { return GetResourceList<CreditNoteLineItemTier>("line_item_tiers"); }
         }
         public List<CreditNoteLineItemDiscount> LineItemDiscounts 
         {
             get { return GetResourceList<CreditNoteLineItemDiscount>("line_item_discounts"); }
         }
-        public List<CreditNoteLineItemTier> LineItemTiers 
+        public List<CreditNoteLineItemTax> LineItemTaxes 
         {
-            get { return GetResourceList<CreditNoteLineItemTier>("line_item_tiers"); }
+            get { return GetResourceList<CreditNoteLineItemTax>("line_item_taxes"); }
+        }
+        public List<CreditNoteLineItemAddress> LineItemAddresses 
+        {
+            get { return GetResourceList<CreditNoteLineItemAddress>("line_item_addresses"); }
+        }
+        public List<CreditNoteDiscount> Discounts 
+        {
+            get { return GetResourceList<CreditNoteDiscount>("discounts"); }
         }
         public List<CreditNoteTax> Taxes 
         {
             get { return GetResourceList<CreditNoteTax>("taxes"); }
         }
-        public List<CreditNoteLineItemTax> LineItemTaxes 
+        public CreditNoteTaxOrigin TaxOrigin 
         {
-            get { return GetResourceList<CreditNoteLineItemTax>("line_item_taxes"); }
+            get { return GetSubResource<CreditNoteTaxOrigin>("tax_origin"); }
         }
         public List<CreditNoteLinkedRefund> LinkedRefunds 
         {
@@ -291,17 +295,13 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<CreditNoteBillingAddress>("billing_address"); }
         }
+        public CreditNoteEinvoice Einvoice 
+        {
+            get { return GetSubResource<CreditNoteEinvoice>("einvoice"); }
+        }
         public CreditNoteSiteDetailsAtCreation SiteDetailsAtCreation 
         {
             get { return GetSubResource<CreditNoteSiteDetailsAtCreation>("site_details_at_creation"); }
-        }
-        public CreditNoteTaxOrigin TaxOrigin 
-        {
-            get { return GetSubResource<CreditNoteTaxOrigin>("tax_origin"); }
-        }
-        public List<CreditNoteLineItemAddress> LineItemAddresses 
-        {
-            get { return GetResourceList<CreditNoteLineItemAddress>("line_item_addresses"); }
         }
         
         #endregion
@@ -489,6 +489,11 @@ namespace ChargeBee.Models
             public RecordRefundRequest Comment(string comment) 
             {
                 m_params.AddOpt("comment", comment);
+                return this;
+            }
+            public RecordRefundRequest TransactionId(string transactionId) 
+            {
+                m_params.AddOpt("transaction[id]", transactionId);
                 return this;
             }
             public RecordRefundRequest TransactionAmount(long transactionAmount) 
@@ -1038,6 +1043,11 @@ namespace ChargeBee.Models
                 m_params.Add("allocations[allocated_at][" + index + "]", allocationAllocatedAt);
                 return this;
             }
+            public ImportCreditNoteRequest LinkedRefundId(int index, string linkedRefundId) 
+            {
+                m_params.AddOpt("linked_refunds[id][" + index + "]", linkedRefundId);
+                return this;
+            }
             public ImportCreditNoteRequest LinkedRefundAmount(int index, long linkedRefundAmount) 
             {
                 m_params.Add("linked_refunds[amount][" + index + "]", linkedRefundAmount);
@@ -1122,43 +1132,6 @@ namespace ChargeBee.Models
         }
 
         #region Subclasses
-        public class CreditNoteEinvoice : Resource
-        {
-            public enum StatusEnum
-            {
-                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
-                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [EnumMember(Value = "scheduled")]
-                Scheduled,
-                [EnumMember(Value = "skipped")]
-                Skipped,
-                [EnumMember(Value = "in_progress")]
-                InProgress,
-                [EnumMember(Value = "success")]
-                Success,
-                [EnumMember(Value = "failed")]
-                Failed,
-                [EnumMember(Value = "registered")]
-                Registered,
-            }
-
-            public string Id {
-                get { return GetValue<string>("id", true); }
-            }
-
-            public string ReferenceNumber {
-                get { return GetValue<string>("reference_number", false); }
-            }
-
-            public StatusEnum Status {
-                get { return GetEnum<StatusEnum>("status", true); }
-            }
-
-            public string Message {
-                get { return GetValue<string>("message", false); }
-            }
-
-        }
         public class CreditNoteLineItem : Resource
         {
             public enum EntityTypeEnum
@@ -1282,101 +1255,6 @@ namespace ChargeBee.Models
             }
 
         }
-        public class CreditNoteDiscount : Resource
-        {
-            public enum EntityTypeEnum
-            {
-                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
-                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [EnumMember(Value = "item_level_coupon")]
-                ItemLevelCoupon,
-                [EnumMember(Value = "document_level_coupon")]
-                DocumentLevelCoupon,
-                [EnumMember(Value = "promotional_credits")]
-                PromotionalCredits,
-                [EnumMember(Value = "prorated_credits")]
-                ProratedCredits,
-                [EnumMember(Value = "item_level_discount")]
-                ItemLevelDiscount,
-                [EnumMember(Value = "document_level_discount")]
-                DocumentLevelDiscount,
-            }
-            public enum DiscountTypeEnum
-            {
-                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
-                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [EnumMember(Value = "fixed_amount")]
-                FixedAmount,
-                [EnumMember(Value = "percentage")]
-                Percentage,
-            }
-
-            public long Amount {
-                get { return GetValue<long>("amount", true); }
-            }
-
-            public string Description {
-                get { return GetValue<string>("description", false); }
-            }
-
-            public EntityTypeEnum EntityType {
-                get { return GetEnum<EntityTypeEnum>("entity_type", true); }
-            }
-
-            public DiscountTypeEnum? DiscountType {
-                get { return GetEnum<DiscountTypeEnum>("discount_type", false); }
-            }
-
-            public string EntityId {
-                get { return GetValue<string>("entity_id", false); }
-            }
-
-            public string CouponSetCode {
-                get { return GetValue<string>("coupon_set_code", false); }
-            }
-
-        }
-        public class CreditNoteLineItemDiscount : Resource
-        {
-            public enum DiscountTypeEnum
-            {
-                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
-                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [EnumMember(Value = "item_level_coupon")]
-                ItemLevelCoupon,
-                [EnumMember(Value = "document_level_coupon")]
-                DocumentLevelCoupon,
-                [EnumMember(Value = "promotional_credits")]
-                PromotionalCredits,
-                [EnumMember(Value = "prorated_credits")]
-                ProratedCredits,
-                [EnumMember(Value = "item_level_discount")]
-                ItemLevelDiscount,
-                [EnumMember(Value = "document_level_discount")]
-                DocumentLevelDiscount,
-            }
-
-            public string LineItemId {
-                get { return GetValue<string>("line_item_id", true); }
-            }
-
-            public DiscountTypeEnum DiscountType {
-                get { return GetEnum<DiscountTypeEnum>("discount_type", true); }
-            }
-
-            public string CouponId {
-                get { return GetValue<string>("coupon_id", false); }
-            }
-
-            public string EntityId {
-                get { return GetValue<string>("entity_id", false); }
-            }
-
-            public long DiscountAmount {
-                get { return GetValue<long>("discount_amount", true); }
-            }
-
-        }
         public class CreditNoteLineItemTier : Resource
         {
             public enum PricingTypeEnum
@@ -1436,19 +1314,44 @@ namespace ChargeBee.Models
             }
 
         }
-        public class CreditNoteTax : Resource
+        public class CreditNoteLineItemDiscount : Resource
         {
-
-            public string Name {
-                get { return GetValue<string>("name", true); }
+            public enum DiscountTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "item_level_coupon")]
+                ItemLevelCoupon,
+                [EnumMember(Value = "document_level_coupon")]
+                DocumentLevelCoupon,
+                [EnumMember(Value = "promotional_credits")]
+                PromotionalCredits,
+                [EnumMember(Value = "prorated_credits")]
+                ProratedCredits,
+                [EnumMember(Value = "item_level_discount")]
+                ItemLevelDiscount,
+                [EnumMember(Value = "document_level_discount")]
+                DocumentLevelDiscount,
             }
 
-            public long Amount {
-                get { return GetValue<long>("amount", true); }
+            public string LineItemId {
+                get { return GetValue<string>("line_item_id", true); }
             }
 
-            public string Description {
-                get { return GetValue<string>("description", false); }
+            public DiscountTypeEnum DiscountType {
+                get { return GetEnum<DiscountTypeEnum>("discount_type", true); }
+            }
+
+            public string CouponId {
+                get { return GetValue<string>("coupon_id", false); }
+            }
+
+            public string EntityId {
+                get { return GetValue<string>("entity_id", false); }
+            }
+
+            public long DiscountAmount {
+                get { return GetValue<long>("discount_amount", true); }
             }
 
         }
@@ -1513,6 +1416,152 @@ namespace ChargeBee.Models
 
             public string LocalCurrencyCode {
                 get { return GetValue<string>("local_currency_code", false); }
+            }
+
+        }
+        public class CreditNoteLineItemAddress : Resource
+        {
+
+            public string LineItemId {
+                get { return GetValue<string>("line_item_id", false); }
+            }
+
+            public string FirstName {
+                get { return GetValue<string>("first_name", false); }
+            }
+
+            public string LastName {
+                get { return GetValue<string>("last_name", false); }
+            }
+
+            public string Email {
+                get { return GetValue<string>("email", false); }
+            }
+
+            public string Company {
+                get { return GetValue<string>("company", false); }
+            }
+
+            public string Phone {
+                get { return GetValue<string>("phone", false); }
+            }
+
+            public string Line1 {
+                get { return GetValue<string>("line1", false); }
+            }
+
+            public string Line2 {
+                get { return GetValue<string>("line2", false); }
+            }
+
+            public string Line3 {
+                get { return GetValue<string>("line3", false); }
+            }
+
+            public string City {
+                get { return GetValue<string>("city", false); }
+            }
+
+            public string StateCode {
+                get { return GetValue<string>("state_code", false); }
+            }
+
+            public string State {
+                get { return GetValue<string>("state", false); }
+            }
+
+            public string Country {
+                get { return GetValue<string>("country", false); }
+            }
+
+            public string Zip {
+                get { return GetValue<string>("zip", false); }
+            }
+
+            public ValidationStatusEnum? ValidationStatus {
+                get { return GetEnum<ValidationStatusEnum>("validation_status", false); }
+            }
+
+        }
+        public class CreditNoteDiscount : Resource
+        {
+            public enum EntityTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "item_level_coupon")]
+                ItemLevelCoupon,
+                [EnumMember(Value = "document_level_coupon")]
+                DocumentLevelCoupon,
+                [EnumMember(Value = "promotional_credits")]
+                PromotionalCredits,
+                [EnumMember(Value = "prorated_credits")]
+                ProratedCredits,
+                [EnumMember(Value = "item_level_discount")]
+                ItemLevelDiscount,
+                [EnumMember(Value = "document_level_discount")]
+                DocumentLevelDiscount,
+            }
+            public enum DiscountTypeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "fixed_amount")]
+                FixedAmount,
+                [EnumMember(Value = "percentage")]
+                Percentage,
+            }
+
+            public long Amount {
+                get { return GetValue<long>("amount", true); }
+            }
+
+            public string Description {
+                get { return GetValue<string>("description", false); }
+            }
+
+            public EntityTypeEnum EntityType {
+                get { return GetEnum<EntityTypeEnum>("entity_type", true); }
+            }
+
+            public DiscountTypeEnum? DiscountType {
+                get { return GetEnum<DiscountTypeEnum>("discount_type", false); }
+            }
+
+            public string EntityId {
+                get { return GetValue<string>("entity_id", false); }
+            }
+
+            public string CouponSetCode {
+                get { return GetValue<string>("coupon_set_code", false); }
+            }
+
+        }
+        public class CreditNoteTax : Resource
+        {
+
+            public string Name {
+                get { return GetValue<string>("name", true); }
+            }
+
+            public long Amount {
+                get { return GetValue<long>("amount", true); }
+            }
+
+            public string Description {
+                get { return GetValue<string>("description", false); }
+            }
+
+        }
+        public class CreditNoteTaxOrigin : Resource
+        {
+
+            public string Country {
+                get { return GetValue<string>("country", false); }
+            }
+
+            public string RegistrationNumber {
+                get { return GetValue<string>("registration_number", false); }
             }
 
         }
@@ -1709,6 +1758,43 @@ namespace ChargeBee.Models
             }
 
         }
+        public class CreditNoteEinvoice : Resource
+        {
+            public enum StatusEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "scheduled")]
+                Scheduled,
+                [EnumMember(Value = "skipped")]
+                Skipped,
+                [EnumMember(Value = "in_progress")]
+                InProgress,
+                [EnumMember(Value = "success")]
+                Success,
+                [EnumMember(Value = "failed")]
+                Failed,
+                [EnumMember(Value = "registered")]
+                Registered,
+            }
+
+            public string Id {
+                get { return GetValue<string>("id", true); }
+            }
+
+            public string ReferenceNumber {
+                get { return GetValue<string>("reference_number", false); }
+            }
+
+            public StatusEnum Status {
+                get { return GetEnum<StatusEnum>("status", true); }
+            }
+
+            public string Message {
+                get { return GetValue<string>("message", false); }
+            }
+
+        }
         public class CreditNoteSiteDetailsAtCreation : Resource
         {
 
@@ -1718,82 +1804,6 @@ namespace ChargeBee.Models
 
             public JToken OrganizationAddress {
                 get { return GetJToken("organization_address", false); }
-            }
-
-        }
-        public class CreditNoteTaxOrigin : Resource
-        {
-
-            public string Country {
-                get { return GetValue<string>("country", false); }
-            }
-
-            public string RegistrationNumber {
-                get { return GetValue<string>("registration_number", false); }
-            }
-
-        }
-        public class CreditNoteLineItemAddress : Resource
-        {
-
-            public string LineItemId {
-                get { return GetValue<string>("line_item_id", false); }
-            }
-
-            public string FirstName {
-                get { return GetValue<string>("first_name", false); }
-            }
-
-            public string LastName {
-                get { return GetValue<string>("last_name", false); }
-            }
-
-            public string Email {
-                get { return GetValue<string>("email", false); }
-            }
-
-            public string Company {
-                get { return GetValue<string>("company", false); }
-            }
-
-            public string Phone {
-                get { return GetValue<string>("phone", false); }
-            }
-
-            public string Line1 {
-                get { return GetValue<string>("line1", false); }
-            }
-
-            public string Line2 {
-                get { return GetValue<string>("line2", false); }
-            }
-
-            public string Line3 {
-                get { return GetValue<string>("line3", false); }
-            }
-
-            public string City {
-                get { return GetValue<string>("city", false); }
-            }
-
-            public string StateCode {
-                get { return GetValue<string>("state_code", false); }
-            }
-
-            public string State {
-                get { return GetValue<string>("state", false); }
-            }
-
-            public string Country {
-                get { return GetValue<string>("country", false); }
-            }
-
-            public string Zip {
-                get { return GetValue<string>("zip", false); }
-            }
-
-            public ValidationStatusEnum? ValidationStatus {
-                get { return GetEnum<ValidationStatusEnum>("validation_status", false); }
             }
 
         }

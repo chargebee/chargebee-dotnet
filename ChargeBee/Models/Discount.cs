@@ -64,6 +64,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<long?>("amount", false); }
         }
+        public int? Quantity 
+        {
+            get { return GetValue<int?>("quantity", false); }
+        }
         public string CurrencyCode 
         {
             get { return GetValue<string>("currency_code", false); }
@@ -125,6 +129,8 @@ namespace ChargeBee.Models
             FixedAmount,
             [EnumMember(Value = "percentage")]
             Percentage,
+            [EnumMember(Value = "offer_quantity")]
+            OfferQuantity,
 
         }
 

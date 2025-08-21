@@ -616,6 +616,18 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "omnichannel_subscription_item_resumed")]
          OmnichannelSubscriptionItemResumed,
 
+        [EnumMember(Value = "omnichannel_one_time_order_created")]
+         OmnichannelOneTimeOrderCreated,
+
+        [EnumMember(Value = "omnichannel_one_time_order_item_cancelled")]
+         OmnichannelOneTimeOrderItemCancelled,
+
+        [EnumMember(Value = "usage_file_ingested")]
+         UsageFileIngested,
+
+        [EnumMember(Value = "omnichannel_subscription_item_pause_scheduled")]
+         OmnichannelSubscriptionItemPauseScheduled,
+
         [EnumMember(Value = "plan_created")]
          PlanCreated,
 
