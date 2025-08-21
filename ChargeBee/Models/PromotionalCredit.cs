@@ -117,6 +117,10 @@ namespace ChargeBee.Models
         {
             get { return (DateTime)GetDateTime("created_at", true); }
         }
+        public string BusinessEntityId 
+        {
+            get { return GetValue<string>("business_entity_id", false); }
+        }
         
         #endregion
         
