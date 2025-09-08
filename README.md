@@ -1,4 +1,11 @@
 # .NET Client Library for Chargebee API
+
+> [!NOTE]
+> [![Join Discord](https://img.shields.io/badge/Discord-Early%20Access-blue?logo=discord&logoColor=white)](https://discord.gg/S3SXDzXHAg)
+>
+> We are trialing a Discord server for developers building with Chargebee. Limited spots are open on a first-come basis. Join [here](https://discord.gg/S3SXDzXHAg) if interested.
+
+
 ***
 
 [![NuGet](https://img.shields.io/nuget/v/chargebee.svg?maxAge=3592000)](https://www.nuget.org/packages/ChargeBee/)
