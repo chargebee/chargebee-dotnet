@@ -159,6 +159,7 @@ namespace ChargeBee.Api
         private static void HandleException(HttpResponseMessage response)
         {
             string content = response.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
+            const string UBB_BATCH_INGESTION_INVALID_REQUEST = "ubb_batch_ingestion_invalid_request";
             JObject errorJson = null;
             try
             {
@@ -192,7 +193,7 @@ namespace ChargeBee.Api
             {
                 throw new InvalidRequestException(response.StatusCode, errorJson);
             }
-            else if ("ubb_batch_ingestion_invalid_request".Equals(type))
+            else if (UBB_BATCH_INGESTION_INVALID_REQUEST.Equals(type))
             {
                 throw new UbbBatchIngestionInvalidRequestException(response.StatusCode, errorJson);
             }
