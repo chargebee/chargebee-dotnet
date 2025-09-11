@@ -10,6 +10,7 @@ using ChargeBee.Exceptions;
 using System.Net.Http;
 using System.Threading.Tasks;
 using ChargeBee.Internal;
+using Newtonsoft.Json.Linq;
 
 namespace ChargeBee.Api
 {
@@ -158,23 +159,28 @@ namespace ChargeBee.Api
         private static void HandleException(HttpResponseMessage response)
         {
             string content = response.Content.ReadAsStringAsync().ConfigureAwait(false).GetAwaiter().GetResult();
-            Dictionary<string, string> errorJson = null;
+            const string UBB_BATCH_INGESTION_INVALID_REQUEST = "ubb_batch_ingestion_invalid_request";
+            JObject errorJson = null;
             try
             {
-                errorJson = JsonConvert.DeserializeObject<Dictionary<string, string>>(content);
+                errorJson = JsonConvert.DeserializeObject<JObject>(content);
             }
             catch (JsonException e)
             {
-                if(content.Contains("503")){
-                   throw new ArgumentException("Sorry, the server is currently unable to handle the request due to a temporary overload or scheduled maintenance. Please retry after sometime. \n type: internal_temporary_error, \n http_status_code: 503, \n error_code: internal_temporary_error,\n content: " + content,e);
-                }else if(content.Contains("504")){
-                   throw new ArgumentException("The server did not receive a timely response from an upstream server, request aborted. If this problem persists, contact us at support@chargebee.com. \n type: gateway_timeout, \n http_status_code: 504, \n error_code: gateway_timeout,\n content: " + content, e);
-                }else{
-                   throw new ArgumentException("Sorry, something went wrong when trying to process the request. If this problem persists, contact us at support@chargebee.com. \n type: internal_error, \n http_status_code: 500, \n error_code: internal_error,\n content: " + content,e);
+                if (content.Contains("503"))
+                {
+                    throw new ArgumentException("Sorry, the server is currently unable to handle the request due to a temporary overload or scheduled maintenance. Please retry after sometime. \n type: internal_temporary_error, \n http_status_code: 503, \n error_code: internal_temporary_error,\n content: " + content, e);
+                }
+                else if (content.Contains("504"))
+                {
+                    throw new ArgumentException("The server did not receive a timely response from an upstream server, request aborted. If this problem persists, contact us at support@chargebee.com. \n type: gateway_timeout, \n http_status_code: 504, \n error_code: gateway_timeout,\n content: " + content, e);
+                }
+                else
+                {
+                    throw new ArgumentException("Sorry, something went wrong when trying to process the request. If this problem persists, contact us at support@chargebee.com. \n type: internal_error, \n http_status_code: 500, \n error_code: internal_error,\n content: " + content, e);
                 }
             }
-            string type = "";
-            errorJson.TryGetValue("type", out type);
+            string type = (string)errorJson["type"];
             if ("payment".Equals(type))
             {
                 throw new PaymentException(response.StatusCode, errorJson);
@@ -186,6 +192,10 @@ namespace ChargeBee.Api
             else if ("invalid_request".Equals(type))
             {
                 throw new InvalidRequestException(response.StatusCode, errorJson);
+            }
+            else if (UBB_BATCH_INGESTION_INVALID_REQUEST.Equals(type))
+            {
+                throw new UbbBatchIngestionInvalidRequestException(response.StatusCode, errorJson);
             }
             else
             {

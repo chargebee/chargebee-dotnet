@@ -2,6 +2,7 @@
 using System.Net;
 using System.Runtime.Serialization;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
 namespace ChargeBee.Api
 {
@@ -26,6 +27,23 @@ namespace ChargeBee.Api
 			this.ApiCode = errorResp ["error_code"];
 			this.ApiMessage = errorResp ["error_msg"];
         }
+
+
+		public ApiException(HttpStatusCode httpStatusCode, JObject errorResp) 
+			: base(errorResp["message"]?.ToString())
+		{
+			this.HttpStatusCode = httpStatusCode;
+			
+			ErrorType = errorResp["type"]?.ToString();
+			this.ApiErrorCode = errorResp["api_error_code"]?.ToString();
+			ErrorParam = errorResp["param"]?.ToString();
+			ErrorErrorCauseId = errorResp["error_cause_id"]?.ToString();
+			
+			// Deprecated fields
+			this.ApiCode = errorResp["error_code"]?.ToString();
+			this.ApiMessage = errorResp["error_msg"]?.ToString();
+		}
+
 
         public HttpStatusCode HttpStatusCode { get; set; }
 

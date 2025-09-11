@@ -22,14 +22,27 @@ namespace ChargeBee.Api
             AddOpt(key, value);
         }
 
+        public void Add(String key, object value, bool date, bool isContentTypeJsonObject)
+        {
+	        if (value == null || String.IsNullOrEmpty(value.ToString()))
+		        throw new ArgumentException(String.Format("Value for {0} can't be empty or null!", key));
+	        
+	        AddOpt(key, value, date, isContentTypeJsonObject);
+        }
+
         public void AddOpt(string key, object value)
 		{	
-			m_dict.Add(key, value == null ? String.Empty : ConvertValue(value, false));
+			m_dict.Add(key, value == null ? String.Empty : ConvertValue(value, false, false));
         }
 
 		public void AddOpt(string key, object value, bool isDate)
 		{	
-			m_dict.Add(key, value == null ? String.Empty : ConvertValue(value, isDate));
+			m_dict.Add(key, value == null ? String.Empty : ConvertValue(value, isDate, false));
+		}
+
+		public void AddOpt(String key, object value, bool isDate, bool isContentTypeJsonObject)
+		{
+			m_dict.Add(key, value==null ? String.Empty : ConvertValue(value, isDate, isContentTypeJsonObject));
 		}
 
 		public string GetQuery(bool IsList)
@@ -63,7 +76,7 @@ namespace ChargeBee.Api
             return pairs.ToArray();
         }
 
-		private static object ConvertValue(object value, bool isDate) {
+		private static object ConvertValue(object value, bool isDate, bool isContentTypeJsonObject) {
 			if (value is string || value is int || value is long
 			    || value is double) {
 				return Convert.ToString(value, System.Globalization.CultureInfo.InvariantCulture);
@@ -79,12 +92,12 @@ namespace ChargeBee.Api
 				}
 				return attrs [0].Value;
 			} else if (value is JToken) {	
-				return value.ToString ();
+				return isContentTypeJsonObject ? value : value.ToString (); // if the object is content type json value.ToString() results in double parsing 
 			} else if (value is IList) {
 				IList origList = (IList)value;
 				List<string> l = new List<string> ();
 				foreach (object item in origList) {
-					l.Add ((string)ConvertValue (item, isDate));
+					l.Add ((string)ConvertValue (item, isDate, false));
 				}
 				return l;
 			} else if (value is DateTime) {
