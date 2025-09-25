@@ -375,9 +375,21 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<UsageFile>("usage_file"); }
         }
+        public PersonalizedOffer PersonalizedOffer
+        {
+            get {  return GetResource<PersonalizedOffer>("personalized_offer"); }
+        }
         public Brand Brand
         {
             get {  return GetResource<Brand>("brand"); }
+        }
+        public OfferFulfillment OfferFulfillment
+        {
+            get {  return GetResource<OfferFulfillment>("offer_fulfillment"); }
+        }
+        public OfferEvent OfferEvent
+        {
+            get {  return GetResource<OfferEvent>("offer_event"); }
         }
         public WebhookEndpoint WebhookEndpoint
         {
@@ -439,6 +451,11 @@ namespace ChargeBee.Internal
         public List<InAppSubscription> InAppSubscriptions
         {
             get {  return (List<InAppSubscription>)GetResourceList<InAppSubscription>("in_app_subscriptions", "in_app_subscription"); }
+        }
+
+        public List<PersonalizedOffer> PersonalizedOffers
+        {
+            get {  return (List<PersonalizedOffer>)GetResourceList<PersonalizedOffer>("personalized_offers", "personalized_offer"); }
         }
 
 

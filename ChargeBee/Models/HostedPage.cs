@@ -1630,6 +1630,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription[auto_collection]", subscriptionAutoCollection);
                 return this;
             }
+            public CheckoutNewForItemsRequest SubscriptionOfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum subscriptionOfflinePaymentMethod) 
+            {
+                m_params.AddOpt("subscription[offline_payment_method]", subscriptionOfflinePaymentMethod);
+                return this;
+            }
             public CheckoutNewForItemsRequest SubscriptionInvoiceNotes(string subscriptionInvoiceNotes) 
             {
                 m_params.AddOpt("subscription[invoice_notes]", subscriptionInvoiceNotes);
@@ -3150,6 +3155,8 @@ namespace ChargeBee.Models
             PreCancel,
             [EnumMember(Value = "view_voucher")]
             ViewVoucher,
+            [EnumMember(Value = "accept_quote")]
+            AcceptQuote,
             [EnumMember(Value = "checkout_gift")]
             CheckoutGift,
             [EnumMember(Value = "claim_gift")]

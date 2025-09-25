@@ -1821,6 +1821,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_alignment_mode", billingAlignmentMode);
                 return this;
             }
+            public CreateWithItemsRequest OfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum offlinePaymentMethod) 
+            {
+                m_params.AddOpt("offline_payment_method", offlinePaymentMethod);
+                return this;
+            }
             public CreateWithItemsRequest PoNumber(string poNumber) 
             {
                 m_params.AddOpt("po_number", poNumber);
@@ -6570,10 +6575,6 @@ namespace ChargeBee.Models
 
             public ValidationStatusEnum? ValidationStatus {
                 get { return GetEnum<ValidationStatusEnum>("validation_status", false); }
-            }
-
-            public int Index {
-                get { return GetValue<int>("index", true); }
             }
 
         }

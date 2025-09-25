@@ -2480,6 +2480,10 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("balance_currency_code", true); }
             }
 
+            public string BusinessEntityId {
+                get { return GetValue<string>("business_entity_id", false); }
+            }
+
         }
         public class CustomerEntityIdentifier : Resource
         {

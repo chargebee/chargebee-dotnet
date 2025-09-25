@@ -110,6 +110,14 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("uploaded_at", false); }
         }
+        public string ErrorFilePath 
+        {
+            get { return GetValue<string>("error_file_path", false); }
+        }
+        public string ErrorFileUrl 
+        {
+            get { return GetValue<string>("error_file_url", false); }
+        }
         public UsageFileUploadDetail UploadDetails 
         {
             get { return GetSubResource<UsageFileUploadDetail>("upload_details"); }

@@ -752,6 +752,10 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("error_cause_id", false); }
             }
 
+            public string ProcessorAdviceCode {
+                get { return GetValue<string>("processor_advice_code", false); }
+            }
+
         }
 
         #endregion

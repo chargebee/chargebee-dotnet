@@ -84,6 +84,14 @@ namespace ChargeBee.Models
         {
             get { return GetValue<long?>("resource_version", false); }
         }
+        public List<OmnichannelTransactionLinkedOmnichannelSubscription> LinkedOmnichannelSubscriptions 
+        {
+            get { return GetResourceList<OmnichannelTransactionLinkedOmnichannelSubscription>("linked_omnichannel_subscriptions"); }
+        }
+        public List<OmnichannelTransactionLinkedOmnichannelOneTimeOrder> LinkedOmnichannelOneTimeOrders 
+        {
+            get { return GetResourceList<OmnichannelTransactionLinkedOmnichannelOneTimeOrder>("linked_omnichannel_one_time_orders"); }
+        }
         
         #endregion
         
@@ -101,6 +109,22 @@ namespace ChargeBee.Models
         }
 
         #region Subclasses
+        public class OmnichannelTransactionLinkedOmnichannelSubscription : Resource
+        {
+
+            public string OmnichannelSubscriptionId {
+                get { return GetValue<string>("omnichannel_subscription_id", false); }
+            }
+
+        }
+        public class OmnichannelTransactionLinkedOmnichannelOneTimeOrder : Resource
+        {
+
+            public string OmnichannelOneTimeOrderId {
+                get { return GetValue<string>("omnichannel_one_time_order_id", false); }
+            }
+
+        }
 
         #endregion
     }
