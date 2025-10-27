@@ -5062,6 +5062,10 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("description", false); }
             }
 
+            public string LineItemId {
+                get { return GetValue<string>("line_item_id", false); }
+            }
+
             public EntityTypeEnum EntityType {
                 get { return GetEnum<EntityTypeEnum>("entity_type", true); }
             }

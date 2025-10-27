@@ -562,6 +562,8 @@ namespace ChargeBee.Models
             BlockingFunds,
             [EnumMember(Value = "verification")]
             Verification,
+            [EnumMember(Value = "scheduled_capture")]
+            ScheduledCapture,
 
         }
 

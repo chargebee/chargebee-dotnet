@@ -973,6 +973,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_item_tiers[unit_amount_in_decimal][" + index + "]", lineItemTierUnitAmountInDecimal);
                 return this;
             }
+            public ImportCreditNoteRequest DiscountLineItemId(int index, string discountLineItemId) 
+            {
+                m_params.AddOpt("discounts[line_item_id][" + index + "]", discountLineItemId);
+                return this;
+            }
             public ImportCreditNoteRequest DiscountEntityType(int index, CreditNoteDiscount.EntityTypeEnum discountEntityType) 
             {
                 m_params.Add("discounts[entity_type][" + index + "]", discountEntityType);
@@ -1518,6 +1523,10 @@ namespace ChargeBee.Models
 
             public string Description {
                 get { return GetValue<string>("description", false); }
+            }
+
+            public string LineItemId {
+                get { return GetValue<string>("line_item_id", false); }
             }
 
             public EntityTypeEnum EntityType {

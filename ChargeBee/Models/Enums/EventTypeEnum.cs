@@ -634,6 +634,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "omnichannel_subscription_moved_in")]
          OmnichannelSubscriptionMovedIn,
 
+        [EnumMember(Value = "omnichannel_transaction_created")]
+         OmnichannelTransactionCreated,
+
         [EnumMember(Value = "plan_created")]
          PlanCreated,
 
