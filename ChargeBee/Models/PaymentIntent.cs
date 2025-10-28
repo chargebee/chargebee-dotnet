@@ -127,6 +127,10 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<PaymentIntentPaymentAttempt>("active_payment_attempt"); }
         }
+        public List<PaymentIntentPaymentAttempt> PaymentAttempts 
+        {
+            get { return GetResourceList<PaymentIntentPaymentAttempt>("payment_attempts"); }
+        }
         public string BusinessEntityId 
         {
             get { return GetValue<string>("business_entity_id", false); }
@@ -340,6 +344,10 @@ namespace ChargeBee.Models
 
             public string ErrorText {
                 get { return GetValue<string>("error_text", false); }
+            }
+
+            public string CheckoutDetails {
+                get { return GetValue<string>("checkout_details", false); }
             }
 
             public DateTime CreatedAt {

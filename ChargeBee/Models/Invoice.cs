@@ -451,6 +451,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<InvoiceLinkedPayment>("linked_payments"); }
         }
+        public List<InvoiceReferenceTransaction> ReferenceTransactions 
+        {
+            get { return GetResourceList<InvoiceReferenceTransaction>("reference_transactions"); }
+        }
         public List<InvoiceDunningAttempt> DunningAttempts 
         {
             get { return GetResourceList<InvoiceDunningAttempt>("dunning_attempts"); }
@@ -2548,6 +2552,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_item_tiers[unit_amount_in_decimal][" + index + "]", lineItemTierUnitAmountInDecimal);
                 return this;
             }
+            public ImportInvoiceRequest DiscountLineItemId(int index, string discountLineItemId) 
+            {
+                m_params.AddOpt("discounts[line_item_id][" + index + "]", discountLineItemId);
+                return this;
+            }
             public ImportInvoiceRequest DiscountEntityType(int index, InvoiceDiscount.EntityTypeEnum discountEntityType) 
             {
                 m_params.Add("discounts[entity_type][" + index + "]", discountEntityType);
@@ -4101,6 +4110,10 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("description", false); }
             }
 
+            public string LineItemId {
+                get { return GetValue<string>("line_item_id", false); }
+            }
+
             public EntityTypeEnum EntityType {
                 get { return GetEnum<EntityTypeEnum>("entity_type", true); }
             }
@@ -4171,6 +4184,46 @@ namespace ChargeBee.Models
 
             public long? TxnAmount {
                 get { return GetValue<long?>("txn_amount", false); }
+            }
+
+        }
+        public class InvoiceReferenceTransaction : Resource
+        {
+
+            public long AppliedAmount {
+                get { return GetValue<long>("applied_amount", true); }
+            }
+
+            public DateTime AppliedAt {
+                get { return (DateTime)GetDateTime("applied_at", true); }
+            }
+
+            public string TxnId {
+                get { return GetValue<string>("txn_id", true); }
+            }
+
+            public Transaction.StatusEnum? TxnStatus {
+                get { return GetEnum<Transaction.StatusEnum>("txn_status", false); }
+            }
+
+            public DateTime? TxnDate {
+                get { return GetDateTime("txn_date", false); }
+            }
+
+            public long? TxnAmount {
+                get { return GetValue<long?>("txn_amount", false); }
+            }
+
+            public Transaction.TypeEnum TxnType {
+                get { return GetEnum<Transaction.TypeEnum>("txn_type", true); }
+            }
+
+            public long AmountCapturable {
+                get { return GetValue<long>("amount_capturable", true); }
+            }
+
+            public Transaction.AuthorizationReasonEnum? AuthorizationReason {
+                get { return GetEnum<Transaction.AuthorizationReasonEnum>("authorization_reason", false); }
             }
 
         }
