@@ -124,5 +124,11 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "usage_file")]
          UsageFile,
 
+        [EnumMember(Value = "business_rule")]
+         BusinessRule,
+
+        [EnumMember(Value = "ruleset")]
+         Ruleset,
+
     }
 }

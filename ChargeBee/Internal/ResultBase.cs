@@ -107,6 +107,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<PaymentSchedule>("payment_schedule"); }
         }
+        public Einvoice Einvoice
+        {
+            get {  return GetResource<Einvoice>("einvoice"); }
+        }
         public TaxWithheld TaxWithheld
         {
             get {  return GetResource<TaxWithheld>("tax_withheld"); }
@@ -154,6 +158,10 @@ namespace ChargeBee.Internal
         public QuotedRamp QuotedRamp
         {
             get {  return GetResource<QuotedRamp>("quoted_ramp"); }
+        }
+        public QuotedDeltaRamp QuotedDeltaRamp
+        {
+            get {  return GetResource<QuotedDeltaRamp>("quoted_delta_ramp"); }
         }
         public BillingConfiguration BillingConfiguration
         {
