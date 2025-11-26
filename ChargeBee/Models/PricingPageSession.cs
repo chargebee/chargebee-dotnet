@@ -91,6 +91,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("business_entity_id", businessEntityId);
                 return this;
             }
+            public CreateForNewSubscriptionRequest AutoSelectLocalCurrency(bool autoSelectLocalCurrency) 
+            {
+                m_params.AddOpt("auto_select_local_currency", autoSelectLocalCurrency);
+                return this;
+            }
             public CreateForNewSubscriptionRequest PricingPageId(string pricingPageId) 
             {
                 m_params.Add("pricing_page[id]", pricingPageId);

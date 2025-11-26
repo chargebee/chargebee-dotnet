@@ -368,6 +368,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("coupon_ids", couponIds);
                 return this;
             }
+            public CreateForItemsRequest MetaData(JToken metaData) 
+            {
+                m_params.AddOpt("meta_data", metaData);
+                return this;
+            }
             public CreateForItemsRequest GifterCustomerId(string gifterCustomerId) 
             {
                 m_params.Add("gifter[customer_id]", gifterCustomerId);
@@ -527,6 +532,51 @@ namespace ChargeBee.Models
             public CreateForItemsRequest SubscriptionItemQuantityInDecimal(int index, string subscriptionItemQuantityInDecimal) 
             {
                 m_params.AddOpt("subscription_items[quantity_in_decimal][" + index + "]", subscriptionItemQuantityInDecimal);
+                return this;
+            }
+            public CreateForItemsRequest SubscriptionItemUnitPrice(int index, long subscriptionItemUnitPrice) 
+            {
+                m_params.AddOpt("subscription_items[unit_price][" + index + "]", subscriptionItemUnitPrice);
+                return this;
+            }
+            public CreateForItemsRequest SubscriptionItemUnitPriceInDecimal(int index, string subscriptionItemUnitPriceInDecimal) 
+            {
+                m_params.AddOpt("subscription_items[unit_price_in_decimal][" + index + "]", subscriptionItemUnitPriceInDecimal);
+                return this;
+            }
+            public CreateForItemsRequest ItemTierItemPriceId(int index, string itemTierItemPriceId) 
+            {
+                m_params.AddOpt("item_tiers[item_price_id][" + index + "]", itemTierItemPriceId);
+                return this;
+            }
+            public CreateForItemsRequest ItemTierStartingUnit(int index, int itemTierStartingUnit) 
+            {
+                m_params.AddOpt("item_tiers[starting_unit][" + index + "]", itemTierStartingUnit);
+                return this;
+            }
+            public CreateForItemsRequest ItemTierEndingUnit(int index, int itemTierEndingUnit) 
+            {
+                m_params.AddOpt("item_tiers[ending_unit][" + index + "]", itemTierEndingUnit);
+                return this;
+            }
+            public CreateForItemsRequest ItemTierPrice(int index, long itemTierPrice) 
+            {
+                m_params.AddOpt("item_tiers[price][" + index + "]", itemTierPrice);
+                return this;
+            }
+            public CreateForItemsRequest ItemTierStartingUnitInDecimal(int index, string itemTierStartingUnitInDecimal) 
+            {
+                m_params.AddOpt("item_tiers[starting_unit_in_decimal][" + index + "]", itemTierStartingUnitInDecimal);
+                return this;
+            }
+            public CreateForItemsRequest ItemTierEndingUnitInDecimal(int index, string itemTierEndingUnitInDecimal) 
+            {
+                m_params.AddOpt("item_tiers[ending_unit_in_decimal][" + index + "]", itemTierEndingUnitInDecimal);
+                return this;
+            }
+            public CreateForItemsRequest ItemTierPriceInDecimal(int index, string itemTierPriceInDecimal) 
+            {
+                m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
                 return this;
             }
         }

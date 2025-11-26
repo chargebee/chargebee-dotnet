@@ -375,6 +375,10 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("updated_at", false); }
         }
+        public string LineItemsNextOffset 
+        {
+            get { return GetValue<string>("line_items_next_offset", false); }
+        }
         public bool? FirstInvoice 
         {
             get { return GetValue<bool?>("first_invoice", false); }
@@ -2906,6 +2910,16 @@ namespace ChargeBee.Models
             public StringFilter<RetrieveRequest> LineItemCustomerId() 
             {
                 return new StringFilter<RetrieveRequest>("line_item[customer_id]", this);        
+            }
+            public RetrieveRequest LineItemsLimit(int lineItemsLimit) 
+            {
+                m_params.AddOpt("line_items_limit", lineItemsLimit);
+                return this;
+            }
+            public RetrieveRequest LineItemsOffset(string lineItemsOffset) 
+            {
+                m_params.AddOpt("line_items_offset", lineItemsOffset);
+                return this;
             }
         }
         public class PdfRequest : EntityRequest<PdfRequest> 

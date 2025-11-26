@@ -172,6 +172,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "deutsche_bank")]
          DeutscheBank,
 
+        [EnumMember(Value = "ezidebit")]
+         Ezidebit,
+
         [EnumMember(Value = "gocardless")]
          Gocardless,
 

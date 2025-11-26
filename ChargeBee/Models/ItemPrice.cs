@@ -76,6 +76,12 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("item_prices", CheckNull(id), "applicable_item_prices");
             return new ItemPriceFindApplicableItemPricesRequest(url);
         }
+        [Obsolete]
+        public static MoveItemPriceRequest MoveItemPrice(string id)
+        {
+            string url = ApiUtil.BuildUrl("item_prices", CheckNull(id), "move");
+            return new MoveItemPriceRequest(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -916,6 +922,19 @@ namespace ChargeBee.Models
             }
             public ItemPriceFindApplicableItemPricesRequest SortByUpdatedAt(SortOrderEnum order) {
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","updated_at");
+                return this;
+            }
+        }
+        public class MoveItemPriceRequest : EntityRequest<MoveItemPriceRequest> 
+        {
+            public MoveItemPriceRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public MoveItemPriceRequest DestinationItemId(string destinationItemId) 
+            {
+                m_params.Add("destination_item_id", destinationItemId);
                 return this;
             }
         }
