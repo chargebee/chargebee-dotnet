@@ -4268,6 +4268,10 @@ namespace ChargeBee.Models
                 get { return GetValue<long?>("txn_amount", false); }
             }
 
+            public RetryEngineEnum? RetryEngine {
+                get { return GetEnum<RetryEngineEnum>("retry_engine", false); }
+            }
+
         }
         public class InvoiceAppliedCredit : Resource
         {

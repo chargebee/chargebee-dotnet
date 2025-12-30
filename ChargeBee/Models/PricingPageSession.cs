@@ -96,6 +96,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("auto_select_local_currency", autoSelectLocalCurrency);
                 return this;
             }
+            public CreateForNewSubscriptionRequest Custom(JToken custom) 
+            {
+                m_params.AddOpt("custom", custom);
+                return this;
+            }
             public CreateForNewSubscriptionRequest PricingPageId(string pricingPageId) 
             {
                 m_params.Add("pricing_page[id]", pricingPageId);
@@ -342,6 +347,11 @@ namespace ChargeBee.Models
             public CreateForExistingSubscriptionRequest RedirectUrl(string redirectUrl) 
             {
                 m_params.AddOpt("redirect_url", redirectUrl);
+                return this;
+            }
+            public CreateForExistingSubscriptionRequest Custom(JToken custom) 
+            {
+                m_params.AddOpt("custom", custom);
                 return this;
             }
             public CreateForExistingSubscriptionRequest PricingPageId(string pricingPageId) 
