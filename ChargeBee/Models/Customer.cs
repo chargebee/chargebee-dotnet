@@ -2415,6 +2415,16 @@ namespace ChargeBee.Models
                 OnlineBankingPoland,
                 [EnumMember(Value = "payconiq_by_bancontact")]
                 PayconiqByBancontact,
+                [EnumMember(Value = "electronic_payment_standard")]
+                ElectronicPaymentStandard,
+                [EnumMember(Value = "kbc_payment_button")]
+                KbcPaymentButton,
+                [EnumMember(Value = "pay_by_bank")]
+                PayByBank,
+                [EnumMember(Value = "trustly")]
+                Trustly,
+                [EnumMember(Value = "stablecoin")]
+                Stablecoin,
             }
             public enum StatusEnum
             {

@@ -937,6 +937,11 @@ namespace ChargeBee.Models
                 m_params.Add("destination_item_id", destinationItemId);
                 return this;
             }
+            public MoveItemPriceRequest VariantId(string variantId) 
+            {
+                m_params.AddOpt("variant_id", variantId);
+                return this;
+            }
         }
         #endregion
 

@@ -2353,6 +2353,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("ignore_scheduled_changes", ignoreScheduledChanges);
                 return this;
             }
+            public RenewalEstimateRequest ExcludeTaxType(ChargeBee.Models.Enums.ExcludeTaxTypeEnum excludeTaxType) 
+            {
+                m_params.AddOpt("exclude_tax_type", excludeTaxType);
+                return this;
+            }
         }
         public class AdvanceInvoiceEstimateRequest : EntityRequest<AdvanceInvoiceEstimateRequest> 
         {
