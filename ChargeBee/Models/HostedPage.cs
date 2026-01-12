@@ -2365,6 +2365,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("changes_scheduled_at", changesScheduledAt);
                 return this;
             }
+            public CheckoutExistingForItemsRequest InvoiceUsages(bool invoiceUsages) 
+            {
+                m_params.AddOpt("invoice_usages", invoiceUsages);
+                return this;
+            }
             public CheckoutExistingForItemsRequest RedirectUrl(string redirectUrl) 
             {
                 m_params.AddOpt("redirect_url", redirectUrl);
