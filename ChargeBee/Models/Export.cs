@@ -787,6 +787,10 @@ namespace ChargeBee.Models
             {
                 return new StringFilter<CouponsRequest>("currency_code", this).SupportsMultiOperators(true);        
             }
+            public StringFilter<CouponsRequest> ApplicableItemPriceIds() 
+            {
+                return new StringFilter<CouponsRequest>("applicable_item_price_ids", this).SupportsMultiOperators(true);        
+            }
             public StringFilter<CouponsRequest> CouponId() 
             {
                 return new StringFilter<CouponsRequest>("coupon[id]", this).SupportsMultiOperators(true);        
