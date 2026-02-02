@@ -1,4 +1,4 @@
-.PHONY: update-version increment-major increment-minor increment-patch test build clean restore pack
+.PHONY: update-version increment-major increment-minor increment-patch test build clean restore pack format
 
 VERSION_FILE := VERSION
 CSPROJ_FILE := ChargeBee/ChargeBee.csproj
@@ -51,3 +51,6 @@ clean:
 
 prepack:
 	dotnet pack ChargeBee/ChargeBee.csproj --configuration Release --output nupkg
+
+format:
+	@echo "Formatter not configured."
