@@ -544,6 +544,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("business_entity_id", false); }
         }
+        public bool Decommissioned 
+        {
+            get { return GetValue<bool>("decommissioned", true); }
+        }
         
         #endregion
         
@@ -6019,6 +6023,11 @@ namespace ChargeBee.Models
             public CancelForItemsRequest CancelReasonCode(string cancelReasonCode) 
             {
                 m_params.AddOpt("cancel_reason_code", cancelReasonCode);
+                return this;
+            }
+            public CancelForItemsRequest Decommissioned(bool decommissioned) 
+            {
+                m_params.AddOpt("decommissioned", decommissioned);
                 return this;
             }
             public CancelForItemsRequest SubscriptionItemItemPriceId(int index, string subscriptionItemItemPriceId) 

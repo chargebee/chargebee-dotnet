@@ -178,6 +178,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "twikey")]
          Twikey,
 
+        [EnumMember(Value = "tempus")]
+         Tempus,
+
         [EnumMember(Value = "gocardless")]
          Gocardless,
 

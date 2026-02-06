@@ -58,6 +58,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("id", true); }
         }
+        public string SubscriptionId 
+        {
+            get { return GetValue<string>("subscription_id", false); }
+        }
         public string EntityId 
         {
             get { return GetValue<string>("entity_id", false); }
@@ -90,6 +94,10 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("effective_from", false); }
         }
+        public bool IsEnabled 
+        {
+            get { return GetValue<bool>("is_enabled", true); }
+        }
         [Obsolete]
         public ScheduleStatusEnum? ScheduleStatus 
         {
@@ -116,6 +124,16 @@ namespace ChargeBee.Models
                 m_params.Add("entitlement_overrides[feature_id][" + index + "]", entitlementOverrideFeatureId);
                 return this;
             }
+            public AddEntitlementOverrideForSubscriptionRequest EntitlementOverrideEntityId(int index, string entitlementOverrideEntityId) 
+            {
+                m_params.AddOpt("entitlement_overrides[entity_id][" + index + "]", entitlementOverrideEntityId);
+                return this;
+            }
+            public AddEntitlementOverrideForSubscriptionRequest EntitlementOverrideEntityType(int index, ChargeBee.Models.Enums.EntityTypeEnum entitlementOverrideEntityType) 
+            {
+                m_params.AddOpt("entitlement_overrides[entity_type][" + index + "]", entitlementOverrideEntityType);
+                return this;
+            }
             public AddEntitlementOverrideForSubscriptionRequest EntitlementOverrideValue(int index, string entitlementOverrideValue) 
             {
                 m_params.AddOpt("entitlement_overrides[value][" + index + "]", entitlementOverrideValue);
@@ -129,6 +147,11 @@ namespace ChargeBee.Models
             public AddEntitlementOverrideForSubscriptionRequest EntitlementOverrideEffectiveFrom(int index, long entitlementOverrideEffectiveFrom) 
             {
                 m_params.AddOpt("entitlement_overrides[effective_from][" + index + "]", entitlementOverrideEffectiveFrom);
+                return this;
+            }
+            public AddEntitlementOverrideForSubscriptionRequest EntitlementOverrideIsEnabled(int index, bool entitlementOverrideIsEnabled) 
+            {
+                m_params.AddOpt("entitlement_overrides[is_enabled][" + index + "]", entitlementOverrideIsEnabled);
                 return this;
             }
         }
