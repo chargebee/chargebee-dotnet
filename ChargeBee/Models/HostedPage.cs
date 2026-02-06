@@ -2838,6 +2838,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("currency_code", currencyCode);
                 return this;
             }
+            public CollectNowRequest PaymentMethodSavePolicy(ChargeBee.Models.Enums.PaymentMethodSavePolicyEnum paymentMethodSavePolicy) 
+            {
+                m_params.AddOpt("payment_method_save_policy", paymentMethodSavePolicy);
+                return this;
+            }
             public CollectNowRequest CustomerId(string customerId) 
             {
                 m_params.Add("customer[id]", customerId);

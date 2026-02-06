@@ -2425,6 +2425,14 @@ namespace ChargeBee.Models
                 Trustly,
                 [EnumMember(Value = "stablecoin")]
                 Stablecoin,
+                [EnumMember(Value = "kakao_pay")]
+                KakaoPay,
+                [EnumMember(Value = "naver_pay")]
+                NaverPay,
+                [EnumMember(Value = "revolut_pay")]
+                RevolutPay,
+                [EnumMember(Value = "cash_app_pay")]
+                CashAppPay,
             }
             public enum StatusEnum
             {

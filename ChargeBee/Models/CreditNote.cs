@@ -1795,6 +1795,20 @@ namespace ChargeBee.Models
                 Failed,
                 [EnumMember(Value = "registered")]
                 Registered,
+                [EnumMember(Value = "accepted")]
+                Accepted,
+                [EnumMember(Value = "rejected")]
+                Rejected,
+                [EnumMember(Value = "message_acknowledgement")]
+                MessageAcknowledgement,
+                [EnumMember(Value = "in_process")]
+                InProcess,
+                [EnumMember(Value = "under_query")]
+                UnderQuery,
+                [EnumMember(Value = "conditionally_accepted")]
+                ConditionallyAccepted,
+                [EnumMember(Value = "paid")]
+                Paid,
             }
 
             public string Id {

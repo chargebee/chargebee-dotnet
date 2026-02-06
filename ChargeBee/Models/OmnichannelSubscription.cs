@@ -111,6 +111,14 @@ namespace ChargeBee.Models
             {
             }
 
+            public EnumFilter<OmnichannelSubscriptionItem.StatusEnum, OmnichannelSubscriptionListRequest> OmnichannelSubscriptionItemStatus() 
+            {
+                return new EnumFilter<OmnichannelSubscriptionItem.StatusEnum, OmnichannelSubscriptionListRequest>("omnichannel_subscription_item[status]", this);        
+            }
+            public StringFilter<OmnichannelSubscriptionListRequest> OmnichannelSubscriptionItemItemIdAtSource() 
+            {
+                return new StringFilter<OmnichannelSubscriptionListRequest>("omnichannel_subscription_item[item_id_at_source]", this);        
+            }
             public EnumFilter<OmnichannelSubscription.SourceEnum, OmnichannelSubscriptionListRequest> Source() 
             {
                 return new EnumFilter<OmnichannelSubscription.SourceEnum, OmnichannelSubscriptionListRequest>("source", this);        

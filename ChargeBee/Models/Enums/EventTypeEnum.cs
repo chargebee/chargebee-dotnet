@@ -202,6 +202,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "add_usages_reminder")]
          AddUsagesReminder,
 
+        [EnumMember(Value = "payment_due_reminder")]
+         PaymentDueReminder,
+
         [EnumMember(Value = "transaction_created")]
          TransactionCreated,
 
