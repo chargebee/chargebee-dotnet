@@ -403,6 +403,14 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<WebhookEndpoint>("webhook_endpoint"); }
         }
+        public UsageSummary UsageSummary
+        {
+            get {  return GetResource<UsageSummary>("usage_summary"); }
+        }
+        public UsageCharge UsageCharge
+        {
+            get {  return GetResource<UsageCharge>("usage_charge"); }
+        }
         public ImpactedCustomer ImpactedCustomer
         {
             get {  return GetResource<ImpactedCustomer>("impacted_customer"); }

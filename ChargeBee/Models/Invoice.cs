@@ -1138,6 +1138,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("auto_collection", autoCollection);
                 return this;
             }
+            public CreateForChargeItemsAndChargesRequest NetTermDays(int netTermDays) 
+            {
+                m_params.AddOpt("net_term_days", netTermDays);
+                return this;
+            }
             public CreateForChargeItemsAndChargesRequest InvoiceDate(long invoiceDate) 
             {
                 m_params.AddOpt("invoice_date", invoiceDate);
