@@ -6150,6 +6150,21 @@ namespace ChargeBee.Models
         }
         #endregion
 
+        public enum BillingPeriodUnitEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "day")]
+            Day,
+            [EnumMember(Value = "week")]
+            Week,
+            [EnumMember(Value = "month")]
+            Month,
+            [EnumMember(Value = "year")]
+            Year,
+
+        }
         public enum StatusEnum
         {
 
@@ -6190,21 +6205,6 @@ namespace ChargeBee.Models
             CurrencyIncompatibleWithGateway,
             [EnumMember(Value = "non_compliant_customer")]
             NonCompliantCustomer,
-
-        }
-        public enum BillingPeriodUnitEnum
-        {
-
-            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
-            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [EnumMember(Value = "day")]
-            Day,
-            [EnumMember(Value = "week")]
-            Week,
-            [EnumMember(Value = "month")]
-            Month,
-            [EnumMember(Value = "year")]
-            Year,
 
         }
 

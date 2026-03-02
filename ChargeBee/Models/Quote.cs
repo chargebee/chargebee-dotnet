@@ -2250,6 +2250,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("billing_address[validation_status]", billingAddressValidationStatus);
                 return this;
             }
+            public CreateSubItemsForCustomerQuoteRequest SubscriptionFreePeriod(int subscriptionFreePeriod) 
+            {
+                m_params.AddOpt("subscription[free_period]", subscriptionFreePeriod);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest SubscriptionFreePeriodUnit(ChargeBee.Models.Enums.FreePeriodUnitEnum subscriptionFreePeriodUnit) 
+            {
+                m_params.AddOpt("subscription[free_period_unit]", subscriptionFreePeriodUnit);
+                return this;
+            }
             public CreateSubItemsForCustomerQuoteRequest SubscriptionItemItemPriceId(int index, string subscriptionItemItemPriceId) 
             {
                 m_params.Add("subscription_items[item_price_id][" + index + "]", subscriptionItemItemPriceId);
@@ -2683,6 +2693,16 @@ namespace ChargeBee.Models
             public EditCreateSubCustomerQuoteForItemsRequest BillingAddressValidationStatus(ChargeBee.Models.Enums.ValidationStatusEnum billingAddressValidationStatus) 
             {
                 m_params.AddOpt("billing_address[validation_status]", billingAddressValidationStatus);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest SubscriptionFreePeriod(int subscriptionFreePeriod) 
+            {
+                m_params.AddOpt("subscription[free_period]", subscriptionFreePeriod);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest SubscriptionFreePeriodUnit(ChargeBee.Models.Enums.FreePeriodUnitEnum subscriptionFreePeriodUnit) 
+            {
+                m_params.AddOpt("subscription[free_period_unit]", subscriptionFreePeriodUnit);
                 return this;
             }
             public EditCreateSubCustomerQuoteForItemsRequest SubscriptionItemItemPriceId(int index, string subscriptionItemItemPriceId) 

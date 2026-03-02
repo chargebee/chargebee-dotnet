@@ -108,6 +108,14 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<ChangeOptionEnum>("change_option", false); }
         }
+        public int? FreePeriod 
+        {
+            get { return GetValue<int?>("free_period", false); }
+        }
+        public FreePeriodUnitEnum? FreePeriodUnit 
+        {
+            get { return GetEnum<FreePeriodUnitEnum>("free_period_unit", false); }
+        }
         public int? ContractTermBillingCycleOnRenewal 
         {
             get { return GetValue<int?>("contract_term_billing_cycle_on_renewal", false); }
@@ -140,19 +148,6 @@ namespace ChargeBee.Models
         #endregion
         
 
-        public enum ChangeOptionEnum
-        {
-
-            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
-            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [EnumMember(Value = "end_of_term")]
-            EndOfTerm,
-            [EnumMember(Value = "specific_date")]
-            SpecificDate,
-            [EnumMember(Value = "immediately")]
-            Immediately,
-
-        }
         public enum BillingPeriodUnitEnum
         {
 
@@ -166,6 +161,19 @@ namespace ChargeBee.Models
             Month,
             [EnumMember(Value = "year")]
             Year,
+
+        }
+        public enum ChangeOptionEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "end_of_term")]
+            EndOfTerm,
+            [EnumMember(Value = "specific_date")]
+            SpecificDate,
+            [EnumMember(Value = "immediately")]
+            Immediately,
 
         }
 
