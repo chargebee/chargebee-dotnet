@@ -41,7 +41,6 @@ namespace ChargeBee.Models
         }
 
         #region Methods
-        [Obsolete]
         public static UsageSummaryRetrieveUsageSummaryForSubscriptionRequest RetrieveUsageSummaryForSubscription(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "usage_summary");

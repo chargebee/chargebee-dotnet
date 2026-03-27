@@ -1815,6 +1815,10 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("id", true); }
             }
 
+            public string ReferenceId {
+                get { return GetValue<string>("reference_id", false); }
+            }
+
             public string ReferenceNumber {
                 get { return GetValue<string>("reference_number", false); }
             }
@@ -1825,6 +1829,10 @@ namespace ChargeBee.Models
 
             public string Message {
                 get { return GetValue<string>("message", false); }
+            }
+
+            public JArray ProviderReferences {
+                get { return GetJArray("provider_references", false); }
             }
 
         }

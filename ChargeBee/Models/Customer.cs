@@ -2433,6 +2433,8 @@ namespace ChargeBee.Models
                 RevolutPay,
                 [EnumMember(Value = "cash_app_pay")]
                 CashAppPay,
+                [EnumMember(Value = "pix")]
+                Pix,
             }
             public enum StatusEnum
             {

@@ -130,6 +130,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "ruleset")]
          Ruleset,
 
+        [EnumMember(Value = "alert_status")]
+         AlertStatus,
+
         [EnumMember(Value = "charge")]
          Charge,
 

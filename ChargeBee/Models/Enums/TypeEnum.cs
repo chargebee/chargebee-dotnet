@@ -112,6 +112,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "cash_app_pay")]
          CashAppPay,
 
+        [EnumMember(Value = "pix")]
+         Pix,
+
         [EnumMember(Value = "free_trial")]
          FreeTrial,
 
@@ -120,6 +123,9 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "pay_as_you_go")]
          PayAsYouGo,
+
+        [EnumMember(Value = "usage_exceeded")]
+         UsageExceeded,
 
     }
 }

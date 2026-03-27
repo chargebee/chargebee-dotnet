@@ -41,7 +41,6 @@ namespace ChargeBee.Models
         }
 
         #region Methods
-        [Obsolete]
         public static UsageChargeRetrieveUsageChargesForSubscriptionRequest RetrieveUsageChargesForSubscription(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "usage_charges");

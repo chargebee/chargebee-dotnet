@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 
 namespace ChargeBee.Models.Enums
 {
-    public enum EventTypeEnum
+    public enum EnabledEventsEnum
     {
 
         [EnumMember(Value = "Unknown Enum")]
@@ -231,6 +231,9 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "refund_initiated")]
          RefundInitiated,
+
+        [EnumMember(Value = "netd_payment_due_reminder")]
+         NetdPaymentDueReminder,
 
         [EnumMember(Value = "authorization_succeeded")]
          AuthorizationSucceeded,
@@ -502,6 +505,24 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "voucher_create_failed")]
          VoucherCreateFailed,
 
+        [EnumMember(Value = "product_created")]
+         ProductCreated,
+
+        [EnumMember(Value = "product_updated")]
+         ProductUpdated,
+
+        [EnumMember(Value = "product_deleted")]
+         ProductDeleted,
+
+        [EnumMember(Value = "variant_created")]
+         VariantCreated,
+
+        [EnumMember(Value = "variant_updated")]
+         VariantUpdated,
+
+        [EnumMember(Value = "variant_deleted")]
+         VariantDeleted,
+
         [EnumMember(Value = "item_price_entitlements_updated")]
          ItemPriceEntitlementsUpdated,
 
@@ -549,6 +570,12 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "omnichannel_subscription_item_renewed")]
          OmnichannelSubscriptionItemRenewed,
+
+        [EnumMember(Value = "omnichannel_subscription_item_downgrade_scheduled")]
+         OmnichannelSubscriptionItemDowngradeScheduled,
+
+        [EnumMember(Value = "omnichannel_subscription_item_scheduled_downgrade_removed")]
+         OmnichannelSubscriptionItemScheduledDowngradeRemoved,
 
         [EnumMember(Value = "omnichannel_subscription_item_downgraded")]
          OmnichannelSubscriptionItemDowngraded,

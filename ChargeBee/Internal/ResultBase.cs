@@ -171,6 +171,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<QuoteLineGroup>("quote_line_group"); }
         }
+        public CpqQuoteSignature CpqQuoteSignature
+        {
+            get {  return GetResource<CpqQuoteSignature>("cpq_quote_signature"); }
+        }
         public Plan Plan
         {
             get {  return GetResource<Plan>("plan"); }
@@ -410,6 +414,14 @@ namespace ChargeBee.Internal
         public UsageCharge UsageCharge
         {
             get {  return GetResource<UsageCharge>("usage_charge"); }
+        }
+        public Alert Alert
+        {
+            get {  return GetResource<Alert>("alert"); }
+        }
+        public AlertStatus AlertStatus
+        {
+            get {  return GetResource<AlertStatus>("alert_status"); }
         }
         public ImpactedCustomer ImpactedCustomer
         {
