@@ -112,5 +112,8 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "cash_app_pay")]
          CashAppPay,
 
+        [EnumMember(Value = "pix")]
+         Pix,
+
     }
 }

@@ -150,6 +150,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("amount_in_decimal", false); }
         }
+        public DateTime? CreatedAt 
+        {
+            get { return GetDateTime("created_at", false); }
+        }
         public DateTime UpdatedAt 
         {
             get { return (DateTime)GetDateTime("updated_at", true); }

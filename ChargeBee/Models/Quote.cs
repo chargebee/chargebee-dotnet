@@ -141,6 +141,42 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "pdf");
             return new PdfRequest(url, HttpMethod.POST);
         }
+        [Obsolete]
+        public static EntityRequest<Type> RetrieveSignature(string id)
+        {
+            string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "retrieve_signature");
+            return new EntityRequest<Type>(url, HttpMethod.GET);
+        }
+        [Obsolete]
+        public static EntityRequest<Type> RetrieveSignedPdf(string id)
+        {
+            string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "retrieve_signed_pdf");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
+        [Obsolete]
+        public static EntityRequest<Type> CreateSignature(string id)
+        {
+            string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "create_signature");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
+        [Obsolete]
+        public static EntityRequest<Type> UpdateSignature(string id)
+        {
+            string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "update_signature");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
+        [Obsolete]
+        public static UpdateSignatureStatusRequest UpdateSignatureStatus(string id)
+        {
+            string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "update_signature_status");
+            return new UpdateSignatureStatusRequest(url, HttpMethod.POST);
+        }
+        [Obsolete]
+        public static EntityRequest<Type> RefreshSignatureLink(string id)
+        {
+            string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "refresh_signature_link");
+            return new EntityRequest<Type>(url, HttpMethod.POST);
+        }
         #endregion
         
         #region Properties
@@ -4709,6 +4745,19 @@ namespace ChargeBee.Models
             public PdfRequest DispositionType(ChargeBee.Models.Enums.DispositionTypeEnum dispositionType) 
             {
                 m_params.AddOpt("disposition_type", dispositionType);
+                return this;
+            }
+        }
+        public class UpdateSignatureStatusRequest : EntityRequest<UpdateSignatureStatusRequest> 
+        {
+            public UpdateSignatureStatusRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public UpdateSignatureStatusRequest CpqQuoteSignatureStatus(CpqQuoteSignature.StatusEnum cpqQuoteSignatureStatus) 
+            {
+                m_params.AddOpt("cpq_quote_signature[status]", cpqQuoteSignatureStatus);
                 return this;
             }
         }

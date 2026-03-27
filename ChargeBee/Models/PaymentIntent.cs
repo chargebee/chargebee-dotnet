@@ -318,6 +318,8 @@ namespace ChargeBee.Models
             WechatPay,
             [EnumMember(Value = "alipay")]
             Alipay,
+            [EnumMember(Value = "pix")]
+            Pix,
 
         }
 

@@ -2799,6 +2799,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public ManagePaymentSourcesRequest BusinessEntityId(string businessEntityId) 
+            {
+                m_params.AddOpt("business_entity_id", businessEntityId);
+                return this;
+            }
             public ManagePaymentSourcesRequest RedirectUrl(string redirectUrl) 
             {
                 m_params.AddOpt("redirect_url", redirectUrl);

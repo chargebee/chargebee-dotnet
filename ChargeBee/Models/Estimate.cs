@@ -86,10 +86,10 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "regenerate_invoice_estimate");
             return new RegenerateInvoiceEstimateRequest(url, HttpMethod.POST).SetIdempotent(false);
         }
-        public static EntityRequest<Type> UpcomingInvoicesEstimate(string id)
+        public static UpcomingInvoicesEstimateRequest UpcomingInvoicesEstimate(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "upcoming_invoices_estimate");
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            return new UpcomingInvoicesEstimateRequest(url, HttpMethod.GET);
         }
         public static ChangeTermEndRequest ChangeTermEnd(string id)
         {
@@ -2437,6 +2437,19 @@ namespace ChargeBee.Models
             public RegenerateInvoiceEstimateRequest InvoiceImmediately(bool invoiceImmediately) 
             {
                 m_params.AddOpt("invoice_immediately", invoiceImmediately);
+                return this;
+            }
+        }
+        public class UpcomingInvoicesEstimateRequest : EntityRequest<UpcomingInvoicesEstimateRequest> 
+        {
+            public UpcomingInvoicesEstimateRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public UpcomingInvoicesEstimateRequest IncludeUsageCharges(bool includeUsageCharges) 
+            {
+                m_params.AddOpt("include_usage_charges", includeUsageCharges);
                 return this;
             }
         }
