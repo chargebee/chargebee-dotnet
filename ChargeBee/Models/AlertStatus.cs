@@ -41,6 +41,16 @@ namespace ChargeBee.Models
         }
 
         #region Methods
+        public static AlertStatusAlertStatusesForSubscriptionRequest AlertStatusesForSubscription(string id)
+        {
+            string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "alert_statuses");
+            return new AlertStatusAlertStatusesForSubscriptionRequest(url);
+        }
+        public static AlertStatusAlertStatusesForAlertRequest AlertStatusesForAlert(string id)
+        {
+            string url = ApiUtil.BuildUrl("alerts", CheckNull(id), "alert_statuses");
+            return new AlertStatusAlertStatusesForAlertRequest(url);
+        }
         #endregion
         
         #region Properties
@@ -52,9 +62,9 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("subscription_id", true); }
         }
-        public AlertStatusEnum AlertStatusAlertStatus 
+        public AlarmStatusEnum AlarmStatus 
         {
-            get { return GetEnum<AlertStatusEnum>("alert_status", true); }
+            get { return GetEnum<AlarmStatusEnum>("alarm_status", true); }
         }
         public DateTime? AlarmTriggeredAt 
         {
@@ -63,6 +73,36 @@ namespace ChargeBee.Models
         
         #endregion
         
+        #region Requests
+        public class AlertStatusAlertStatusesForSubscriptionRequest : ListRequestBase<AlertStatusAlertStatusesForSubscriptionRequest> 
+        {
+            public AlertStatusAlertStatusesForSubscriptionRequest(string url) 
+                    : base(url)
+            {
+            }
+
+            public EnumFilter<ChargeBee.Models.Enums.AlarmStatusEnum, AlertStatusAlertStatusesForSubscriptionRequest> AlarmStatus() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.AlarmStatusEnum, AlertStatusAlertStatusesForSubscriptionRequest>("alarm_status", this).SupportsMultiOperators(true);        
+            }
+            public StringFilter<AlertStatusAlertStatusesForSubscriptionRequest> AlertId() 
+            {
+                return new StringFilter<AlertStatusAlertStatusesForSubscriptionRequest>("alert_id", this).SupportsMultiOperators(true);        
+            }
+        }
+        public class AlertStatusAlertStatusesForAlertRequest : ListRequestBase<AlertStatusAlertStatusesForAlertRequest> 
+        {
+            public AlertStatusAlertStatusesForAlertRequest(string url) 
+                    : base(url)
+            {
+            }
+
+            public EnumFilter<ChargeBee.Models.Enums.AlarmStatusEnum, AlertStatusAlertStatusesForAlertRequest> AlarmStatus() 
+            {
+                return new EnumFilter<ChargeBee.Models.Enums.AlarmStatusEnum, AlertStatusAlertStatusesForAlertRequest>("alarm_status", this).SupportsMultiOperators(true);        
+            }
+        }
+        #endregion
 
 
         #region Subclasses

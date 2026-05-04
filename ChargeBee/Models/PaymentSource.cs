@@ -997,6 +997,8 @@ namespace ChargeBee.Models
                 Dankort,
                 [EnumMember(Value = "cartes_bancaires")]
                 CartesBancaires,
+                [EnumMember(Value = "mada")]
+                Mada,
                 [EnumMember(Value = "not_applicable")]
                 NotApplicable,
             }

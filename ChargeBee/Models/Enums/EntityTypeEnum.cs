@@ -28,6 +28,18 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "charge_item_price")]
          ChargeItemPrice,
 
+        [EnumMember(Value = "plan_price")]
+         PlanPrice,
+
+        [EnumMember(Value = "addon_price")]
+         AddonPrice,
+
+        [EnumMember(Value = "charge_price")]
+         ChargePrice,
+
+        [EnumMember(Value = "charge")]
+         Charge,
+
         [EnumMember(Value = "invoice")]
          Invoice,
 
@@ -66,15 +78,6 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "charge_item")]
          ChargeItem,
-
-        [EnumMember(Value = "plan_price")]
-         PlanPrice,
-
-        [EnumMember(Value = "addon_price")]
-         AddonPrice,
-
-        [EnumMember(Value = "charge_price")]
-         ChargePrice,
 
         [EnumMember(Value = "differential_price")]
          DifferentialPrice,
@@ -132,9 +135,6 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "alert_status")]
          AlertStatus,
-
-        [EnumMember(Value = "charge")]
-         Charge,
 
     }
 }

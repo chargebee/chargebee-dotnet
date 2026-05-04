@@ -181,6 +181,12 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "tempus")]
          Tempus,
 
+        [EnumMember(Value = "moyasar")]
+         Moyasar,
+
+        [EnumMember(Value = "payway")]
+         Payway,
+
         [EnumMember(Value = "gocardless")]
          Gocardless,
 

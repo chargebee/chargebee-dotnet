@@ -172,6 +172,8 @@ namespace ChargeBee.Models
             NotApplicable,
             [EnumMember(Value = "disabled")]
             Disabled,
+            [EnumMember(Value = "rate_limited")]
+            RateLimited,
 
         }
 
@@ -198,6 +200,8 @@ namespace ChargeBee.Models
                 NotApplicable,
                 [EnumMember(Value = "disabled")]
                 Disabled,
+                [EnumMember(Value = "rate_limited")]
+                RateLimited,
             }
 
             public string Id {
