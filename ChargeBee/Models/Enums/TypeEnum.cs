@@ -115,6 +115,27 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "pix")]
          Pix,
 
+        [EnumMember(Value = "twint")]
+         Twint,
+
+        [EnumMember(Value = "go_pay")]
+         GoPay,
+
+        [EnumMember(Value = "grab_pay")]
+         GrabPay,
+
+        [EnumMember(Value = "pay_co")]
+         PayCo,
+
+        [EnumMember(Value = "after_pay")]
+         AfterPay,
+
+        [EnumMember(Value = "swish")]
+         Swish,
+
+        [EnumMember(Value = "payme")]
+         Payme,
+
         [EnumMember(Value = "free_trial")]
          FreeTrial,
 

@@ -2898,6 +2898,10 @@ namespace ChargeBee.Models
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","updated_at");
                 return this;
             }
+            public StringFilter<InvoiceListRequest> Exclude() 
+            {
+                return new StringFilter<InvoiceListRequest>("exclude", this).SupportsMultiOperators(true);        
+            }
         }
         public class RetrieveRequest : EntityRequest<RetrieveRequest> 
         {

@@ -155,6 +155,11 @@ namespace ChargeBee.Models
                 m_params.Add("reference_id", referenceId);
                 return this;
             }
+            public CreateUsingPermanentTokenRequest GatewayAccountId(string gatewayAccountId) 
+            {
+                m_params.AddOpt("gateway_account_id", gatewayAccountId);
+                return this;
+            }
             public CreateUsingPermanentTokenRequest Scheme(VirtualBankAccount.SchemeEnum scheme) 
             {
                 m_params.AddOpt("scheme", scheme);
@@ -176,6 +181,11 @@ namespace ChargeBee.Models
             public CreateRequest Email(string email) 
             {
                 m_params.AddOpt("email", email);
+                return this;
+            }
+            public CreateRequest GatewayAccountId(string gatewayAccountId) 
+            {
+                m_params.AddOpt("gateway_account_id", gatewayAccountId);
                 return this;
             }
             public CreateRequest Scheme(VirtualBankAccount.SchemeEnum scheme) 

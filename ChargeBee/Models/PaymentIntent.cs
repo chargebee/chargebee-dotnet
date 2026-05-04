@@ -77,7 +77,7 @@ namespace ChargeBee.Models
         }
         public string GatewayAccountId 
         {
-            get { return GetValue<string>("gateway_account_id", true); }
+            get { return GetValue<string>("gateway_account_id", false); }
         }
         public DateTime ExpiresAt 
         {
@@ -174,6 +174,11 @@ namespace ChargeBee.Models
             public CreateRequest ReferenceId(string referenceId) 
             {
                 m_params.AddOpt("reference_id", referenceId);
+                return this;
+            }
+            public CreateRequest DeferPaymentMethodType(bool deferPaymentMethodType) 
+            {
+                m_params.AddOpt("defer_payment_method_type", deferPaymentMethodType);
                 return this;
             }
             public CreateRequest PaymentMethodType(PaymentIntent.PaymentMethodTypeEnum paymentMethodType) 
@@ -320,6 +325,20 @@ namespace ChargeBee.Models
             Alipay,
             [EnumMember(Value = "pix")]
             Pix,
+            [EnumMember(Value = "twint")]
+            Twint,
+            [EnumMember(Value = "go_pay")]
+            GoPay,
+            [EnumMember(Value = "grab_pay")]
+            GrabPay,
+            [EnumMember(Value = "pay_co")]
+            PayCo,
+            [EnumMember(Value = "after_pay")]
+            AfterPay,
+            [EnumMember(Value = "swish")]
+            Swish,
+            [EnumMember(Value = "payme")]
+            Payme,
 
         }
 

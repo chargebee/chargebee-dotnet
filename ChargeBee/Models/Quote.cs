@@ -3977,6 +3977,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("coupon_ids", couponIds);
                 return this;
             }
+            public CreateForChargeItemsAndChargesRequest NetTermDays(int netTermDays) 
+            {
+                m_params.AddOpt("net_term_days", netTermDays);
+                return this;
+            }
             public CreateForChargeItemsAndChargesRequest BillingAddressFirstName(string billingAddressFirstName) 
             {
                 m_params.AddOpt("billing_address[first_name]", billingAddressFirstName);
@@ -4303,6 +4308,11 @@ namespace ChargeBee.Models
             public EditForChargeItemsAndChargesRequest CouponIds(List<string> couponIds) 
             {
                 m_params.AddOpt("coupon_ids", couponIds);
+                return this;
+            }
+            public EditForChargeItemsAndChargesRequest NetTermDays(int netTermDays) 
+            {
+                m_params.AddOpt("net_term_days", netTermDays);
                 return this;
             }
             public EditForChargeItemsAndChargesRequest BillingAddressFirstName(string billingAddressFirstName) 
