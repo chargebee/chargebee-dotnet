@@ -323,8 +323,6 @@ namespace ChargeBee.Models
             WechatPay,
             [EnumMember(Value = "alipay")]
             Alipay,
-            [EnumMember(Value = "pix")]
-            Pix,
             [EnumMember(Value = "twint")]
             Twint,
             [EnumMember(Value = "go_pay")]
@@ -339,6 +337,18 @@ namespace ChargeBee.Models
             Swish,
             [EnumMember(Value = "payme")]
             Payme,
+            [EnumMember(Value = "pix")]
+            Pix,
+            [EnumMember(Value = "klarna")]
+            Klarna,
+            [EnumMember(Value = "alipay_hk")]
+            AlipayHk,
+            [EnumMember(Value = "paypay")]
+            Paypay,
+            [EnumMember(Value = "gcash")]
+            Gcash,
+            [EnumMember(Value = "south_korean_cards")]
+            SouthKoreanCards,
 
         }
 

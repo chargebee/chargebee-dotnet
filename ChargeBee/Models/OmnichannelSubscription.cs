@@ -88,6 +88,14 @@ namespace ChargeBee.Models
         {
             get { return (DateTime)GetDateTime("created_at", true); }
         }
+        public DateTime? PurchasedAt 
+        {
+            get { return GetDateTime("purchased_at", false); }
+        }
+        public DateTime UpdatedAt 
+        {
+            get { return (DateTime)GetDateTime("updated_at", true); }
+        }
         public long? ResourceVersion 
         {
             get { return GetValue<long?>("resource_version", false); }
@@ -125,7 +133,23 @@ namespace ChargeBee.Models
             }
             public StringFilter<OmnichannelSubscriptionListRequest> CustomerId() 
             {
-                return new StringFilter<OmnichannelSubscriptionListRequest>("customer_id", this);        
+                return new StringFilter<OmnichannelSubscriptionListRequest>("customer_id", this).SupportsMultiOperators(true);        
+            }
+            public StringFilter<OmnichannelSubscriptionListRequest> Id() 
+            {
+                return new StringFilter<OmnichannelSubscriptionListRequest>("id", this).SupportsMultiOperators(true);        
+            }
+            public StringFilter<OmnichannelSubscriptionListRequest> IdAtSource() 
+            {
+                return new StringFilter<OmnichannelSubscriptionListRequest>("id_at_source", this).SupportsMultiOperators(true);        
+            }
+            public TimestampFilter<OmnichannelSubscriptionListRequest> UpdatedAt() 
+            {
+                return new TimestampFilter<OmnichannelSubscriptionListRequest>("updated_at", this);        
+            }
+            public TimestampFilter<OmnichannelSubscriptionListRequest> PurchasedAt() 
+            {
+                return new TimestampFilter<OmnichannelSubscriptionListRequest>("purchased_at", this);        
             }
         }
         public class MoveRequest : EntityRequest<MoveRequest> 

@@ -105,6 +105,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool>("has_scheduled_changes", true); }
         }
+        public DateTime UpdatedAt 
+        {
+            get { return (DateTime)GetDateTime("updated_at", true); }
+        }
         public long? ResourceVersion 
         {
             get { return GetValue<long?>("resource_version", false); }

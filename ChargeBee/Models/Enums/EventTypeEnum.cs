@@ -643,6 +643,12 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "alert_status_changed")]
          AlertStatusChanged,
 
+        [EnumMember(Value = "omnichannel_subscription_item_updated")]
+         OmnichannelSubscriptionItemUpdated,
+
+        [EnumMember(Value = "omnichannel_subscription_item_recovered")]
+         OmnichannelSubscriptionItemRecovered,
+
         [EnumMember(Value = "plan_created")]
          PlanCreated,
 

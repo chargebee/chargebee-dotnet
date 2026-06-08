@@ -171,10 +171,6 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<QuoteLineGroup>("quote_line_group"); }
         }
-        public QuoteEntitlement QuoteEntitlement
-        {
-            get {  return GetResource<QuoteEntitlement>("quote_entitlement"); }
-        }
         public CpqQuoteSignature CpqQuoteSignature
         {
             get {  return GetResource<CpqQuoteSignature>("cpq_quote_signature"); }
@@ -351,6 +347,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<PricingPageSession>("pricing_page_session"); }
         }
+        public OmnichannelSubscriptionItemScheduledChange OmnichannelSubscriptionItemScheduledChange
+        {
+            get {  return GetResource<OmnichannelSubscriptionItemScheduledChange>("omnichannel_subscription_item_scheduled_change"); }
+        }
         public OmnichannelSubscription OmnichannelSubscription
         {
             get {  return GetResource<OmnichannelSubscription>("omnichannel_subscription"); }
@@ -382,10 +382,6 @@ namespace ChargeBee.Internal
         public UsageEvent UsageEvent
         {
             get {  return GetResource<UsageEvent>("usage_event"); }
-        }
-        public OmnichannelSubscriptionItemScheduledChange OmnichannelSubscriptionItemScheduledChange
-        {
-            get {  return GetResource<OmnichannelSubscriptionItemScheduledChange>("omnichannel_subscription_item_scheduled_change"); }
         }
         public UsageFile UsageFile
         {
