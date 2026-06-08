@@ -2977,6 +2977,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public CheckoutGiftForItemsRequest Layout(ChargeBee.Models.Enums.LayoutEnum layout) 
+            {
+                m_params.AddOpt("layout", layout);
+                return this;
+            }
             public CheckoutGiftForItemsRequest BusinessEntityId(string businessEntityId) 
             {
                 m_params.AddOpt("business_entity_id", businessEntityId);

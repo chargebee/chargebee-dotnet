@@ -112,9 +112,6 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "cash_app_pay")]
          CashAppPay,
 
-        [EnumMember(Value = "pix")]
-         Pix,
-
         [EnumMember(Value = "twint")]
          Twint,
 
@@ -135,6 +132,24 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "payme")]
          Payme,
+
+        [EnumMember(Value = "pix")]
+         Pix,
+
+        [EnumMember(Value = "klarna")]
+         Klarna,
+
+        [EnumMember(Value = "alipay_hk")]
+         AlipayHk,
+
+        [EnumMember(Value = "paypay")]
+         Paypay,
+
+        [EnumMember(Value = "gcash")]
+         Gcash,
+
+        [EnumMember(Value = "south_korean_cards")]
+         SouthKoreanCards,
 
         [EnumMember(Value = "free_trial")]
          FreeTrial,

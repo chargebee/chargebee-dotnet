@@ -613,12 +613,27 @@ namespace ChargeBee.Models
 
             public UpdateGiftRequest ScheduledAt(long scheduledAt) 
             {
-                m_params.Add("scheduled_at", scheduledAt);
+                m_params.AddOpt("scheduled_at", scheduledAt);
                 return this;
             }
             public UpdateGiftRequest Comment(string comment) 
             {
                 m_params.AddOpt("comment", comment);
+                return this;
+            }
+            public UpdateGiftRequest GiftReceiverEmail(string giftReceiverEmail) 
+            {
+                m_params.AddOpt("gift_receiver[email]", giftReceiverEmail);
+                return this;
+            }
+            public UpdateGiftRequest GiftReceiverFirstName(string giftReceiverFirstName) 
+            {
+                m_params.AddOpt("gift_receiver[first_name]", giftReceiverFirstName);
+                return this;
+            }
+            public UpdateGiftRequest GiftReceiverLastName(string giftReceiverLastName) 
+            {
+                m_params.AddOpt("gift_receiver[last_name]", giftReceiverLastName);
                 return this;
             }
         }

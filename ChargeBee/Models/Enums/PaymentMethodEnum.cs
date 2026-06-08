@@ -160,5 +160,20 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "payme")]
          Payme,
 
+        [EnumMember(Value = "klarna")]
+         Klarna,
+
+        [EnumMember(Value = "alipay_hk")]
+         AlipayHk,
+
+        [EnumMember(Value = "paypay")]
+         Paypay,
+
+        [EnumMember(Value = "gcash")]
+         Gcash,
+
+        [EnumMember(Value = "south_korean_cards")]
+         SouthKoreanCards,
+
     }
 }
