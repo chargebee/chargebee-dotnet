@@ -427,6 +427,22 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<AlertStatus>("alert_status"); }
         }
+        public LedgerAccountBalance LedgerAccountBalance
+        {
+            get {  return GetResource<LedgerAccountBalance>("ledger_account_balance"); }
+        }
+        public LedgerOperation LedgerOperation
+        {
+            get {  return GetResource<LedgerOperation>("ledger_operation"); }
+        }
+        public GrantBlock GrantBlock
+        {
+            get {  return GetResource<GrantBlock>("grant_block"); }
+        }
+        public PromotionalGrant PromotionalGrant
+        {
+            get {  return GetResource<PromotionalGrant>("promotional_grant"); }
+        }
         public ImpactedCustomer ImpactedCustomer
         {
             get {  return GetResource<ImpactedCustomer>("impacted_customer"); }
@@ -488,6 +504,16 @@ namespace ChargeBee.Internal
         public List<PersonalizedOffer> PersonalizedOffers
         {
             get {  return (List<PersonalizedOffer>)GetResourceList<PersonalizedOffer>("personalized_offers", "personalized_offer"); }
+        }
+
+        public List<LedgerOperation> LedgerOperations
+        {
+            get {  return (List<LedgerOperation>)GetResourceList<LedgerOperation>("ledger_operations", "ledger_operation"); }
+        }
+
+        public List<GrantBlock> GrantBlocks
+        {
+            get {  return (List<GrantBlock>)GetResourceList<GrantBlock>("grant_blocks", "grant_block"); }
         }
 
 

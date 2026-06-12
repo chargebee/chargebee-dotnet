@@ -151,6 +151,15 @@ namespace ChargeBee.Models
             {
                 return new TimestampFilter<OmnichannelSubscriptionListRequest>("purchased_at", this);        
             }
+            
+            public OmnichannelSubscriptionListRequest SortByCreatedAt(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");
+                return this;
+            }
+            public OmnichannelSubscriptionListRequest SortByUpdatedAt(SortOrderEnum order) {
+                m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","updated_at");
+                return this;
+            }
         }
         public class MoveRequest : EntityRequest<MoveRequest> 
         {

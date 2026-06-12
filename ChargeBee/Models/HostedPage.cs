@@ -77,6 +77,7 @@ namespace ChargeBee.Models
             string url = ApiUtil.BuildUrl("hosted_pages", "update_card");
             return new UpdateCardRequest(url, HttpMethod.POST);
         }
+        [Obsolete]
         public static UpdatePaymentMethodRequest UpdatePaymentMethod()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "update_payment_method");
@@ -191,6 +192,10 @@ namespace ChargeBee.Models
         public DateTime? ExpiresAt 
         {
             get { return GetDateTime("expires_at", false); }
+        }
+        public LayoutEnum? Layout 
+        {
+            get { return GetEnum<LayoutEnum>("layout", false); }
         }
         public DateTime? UpdatedAt 
         {
@@ -3207,6 +3212,7 @@ namespace ChargeBee.Models
             [Obsolete]
             UpdateCard,
             [EnumMember(Value = "update_payment_method")]
+            [Obsolete]
             UpdatePaymentMethod,
             [EnumMember(Value = "manage_payment_sources")]
             ManagePaymentSources,
