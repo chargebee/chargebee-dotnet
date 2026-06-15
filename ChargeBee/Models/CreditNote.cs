@@ -227,6 +227,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<long?>("fractional_correction", false); }
         }
+        public List<string> Notes 
+        {
+            get { return GetList<string>("notes"); }
+        }
         public List<CreditNoteLineItem> LineItems 
         {
             get { return GetResourceList<CreditNoteLineItem>("line_items"); }

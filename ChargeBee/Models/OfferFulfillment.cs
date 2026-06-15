@@ -49,7 +49,7 @@ namespace ChargeBee.Models
         public static OfferFulfillmentsGetRequest OfferFulfillmentsGet(string id)
         {
             string url = ApiUtil.BuildUrl("offer_fulfillments", CheckNull(id));
-            return new OfferFulfillmentsGetRequest(url, HttpMethod.GET).SetSubDomain("grow").IsJsonRequest(true);
+            return new OfferFulfillmentsGetRequest(url, HttpMethod.GET).SetSubDomain("grow");
         }
         public static OfferFulfillmentsUpdateRequest OfferFulfillmentsUpdate(string id)
         {
@@ -129,7 +129,6 @@ namespace ChargeBee.Models
             {
             }
 
-        
         }
         public class OfferFulfillmentsUpdateRequest : EntityRequest<OfferFulfillmentsUpdateRequest> 
         {
@@ -217,7 +216,6 @@ namespace ChargeBee.Models
 
         }
 
-        
         
         
         #endregion
