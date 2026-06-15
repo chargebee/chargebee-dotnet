@@ -44,7 +44,7 @@ namespace ChargeBee.Models
         public static LedgerAccountBalanceListLedgerAccountBalancesRequest ListLedgerAccountBalances()
         {
             string url = ApiUtil.BuildUrl("ledger_account_balances");
-            return new LedgerAccountBalanceListLedgerAccountBalancesRequest(url).IsJsonRequest(true);
+            return new LedgerAccountBalanceListLedgerAccountBalancesRequest(url);
         }
         #endregion
         
@@ -92,7 +92,6 @@ namespace ChargeBee.Models
             {
                 return new StringFilter<LedgerAccountBalanceListLedgerAccountBalancesRequest>("unit_id", this);        
             }
-        
         }
         #endregion
 
@@ -152,7 +151,6 @@ namespace ChargeBee.Models
 
         }
 
-        
         #endregion
     }
 }

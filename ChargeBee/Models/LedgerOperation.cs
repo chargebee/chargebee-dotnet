@@ -49,7 +49,7 @@ namespace ChargeBee.Models
         public static LedgerOperationListLedgerOperationsRequest ListLedgerOperations()
         {
             string url = ApiUtil.BuildUrl("ledger_operations");
-            return new LedgerOperationListLedgerOperationsRequest(url).IsJsonRequest(true);
+            return new LedgerOperationListLedgerOperationsRequest(url);
         }
         public static CaptureRequest Capture()
         {
@@ -178,7 +178,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");
                 return this;
             }
-        
         }
         public class CaptureRequest : EntityRequest<CaptureRequest> 
         {
@@ -365,7 +364,6 @@ namespace ChargeBee.Models
 
         #region Subclasses
 
-        
         
         
         

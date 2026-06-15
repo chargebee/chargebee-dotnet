@@ -44,7 +44,7 @@ namespace ChargeBee.Models
         public static GrantBlockListGrantBlocksRequest ListGrantBlocks()
         {
             string url = ApiUtil.BuildUrl("grant_blocks");
-            return new GrantBlockListGrantBlocksRequest(url).IsJsonRequest(true);
+            return new GrantBlockListGrantBlocksRequest(url);
         }
         #endregion
         
@@ -165,7 +165,6 @@ namespace ChargeBee.Models
                 m_params.AddOpt("sort_by["+order.ToString().ToLower()+"]","created_at");
                 return this;
             }
-        
         }
         #endregion
 
@@ -209,7 +208,6 @@ namespace ChargeBee.Models
 
         #region Subclasses
 
-        
         #endregion
     }
 }
