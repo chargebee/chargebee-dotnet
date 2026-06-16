@@ -44,12 +44,34 @@ namespace ChargeBee.Api
 
 		public new ListResult Request(ApiConfig env)
 		{
-			return ApiUtil.GetList(m_url, m_params, headers, env, sub_domain);
+			return TelemetryExecutor.ExecuteListRequest(
+				env,
+				telemetry_resource,
+				telemetry_operation,
+				m_url,
+				sub_domain,
+				headers,
+				telemetryHeaders =>
+				{
+					var requestHeaders = MergeHeaders(telemetryHeaders);
+					return ApiUtil.GetList(m_url, m_params, requestHeaders, env, sub_domain);
+				});
 		}
 
         public new Task<ListResult> RequestAsync(ApiConfig env)
         {
-            return ApiUtil.GetListAsync(m_url, m_params, headers, env, sub_domain);
+            return TelemetryExecutor.ExecuteListRequestAsync(
+                env,
+                telemetry_resource,
+                telemetry_operation,
+                m_url,
+                sub_domain,
+                headers,
+                telemetryHeaders =>
+                {
+                    var requestHeaders = MergeHeaders(telemetryHeaders);
+                    return ApiUtil.GetListAsync(m_url, m_params, requestHeaders, env, sub_domain);
+                });
         }
 
         public new ListResult Request()
@@ -60,6 +82,20 @@ namespace ChargeBee.Api
         public new Task<ListResult> RequestAsync()
         {
             return RequestAsync(ApiConfig.Instance);
+        }
+
+        private Dictionary<string, string> MergeHeaders(Dictionary<string, string> telemetryHeaders)
+        {
+            var merged = new Dictionary<string, string>(headers);
+            if (telemetryHeaders == null)
+            {
+                return merged;
+            }
+            foreach (var header in telemetryHeaders)
+            {
+                merged[header.Key] = header.Value;
+            }
+            return merged;
         }
 
     }
