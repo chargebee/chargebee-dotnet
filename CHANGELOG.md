@@ -1,3 +1,12 @@
+### v3.48.0 (2026-07-01)
+* * *
+
+### New Features
+* Added an optional telemetry adapter hook for tracing Chargebee API calls via OpenTelemetry (or any APM). Configure it once on the client (`ChargeBee.Configure(site, apiKey, telemetryAdapter)` or `ChargeBee.SetTelemetryAdapter(adapter)`). When unconfigured, the SDK skips all telemetry work — no behavior change for existing integrations.
+* Each API call emits one CLIENT span (`chargebee.{resource}.{operation}`) with OpenTelemetry HTTP semantic-convention attributes plus `chargebee.*` attributes. Adapters may inject W3C trace context (`traceparent`) into outbound request headers for distributed tracing.
+* Exposed the `ITelemetryAdapter`, `RequestTelemetryContext`, `RequestTelemetryResult`, `RequestTelemetryError` types, the `TelemetrySupport` helpers, and the `TelemetryAttributeKeys` constants under the `ChargeBee.Telemetry` namespace.
+
+
 ### v3.47.0 (2026-06-12)
 * * *
 ### New Resources:
