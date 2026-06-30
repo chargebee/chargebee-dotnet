@@ -7,10 +7,12 @@ using ChargeBee.Exceptions;
 
 namespace ChargeBee.Tests.Api
 {
+    [Collection(ApiUtilTestCollection.Name)]
     public class ApiUtilRetryTests : IDisposable
     {
         private Mock<HttpMessageHandler> _mockHttpHandler;
         private HttpClient _mockHttpClient;
+        private readonly HttpClient? _originalHttpClient;
         private ApiConfig _testConfig;
 
         public ApiUtilRetryTests()
@@ -21,11 +23,15 @@ namespace ChargeBee.Tests.Api
 
             var httpClientField = typeof(ApiUtil).GetField("httpClient",
                 System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            _originalHttpClient = (HttpClient?)httpClientField?.GetValue(null);
             httpClientField?.SetValue(null, _mockHttpClient);
         }
 
         public void Dispose()
         {
+            var httpClientField = typeof(ApiUtil).GetField("httpClient",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+            httpClientField?.SetValue(null, _originalHttpClient);
             _mockHttpClient?.Dispose();
         }
 

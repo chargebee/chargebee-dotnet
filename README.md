@@ -181,15 +181,18 @@ EntityResult result = Customer.Create()
 
 ### Telemetry (OpenTelemetry)
 
-Optional. Set an `ITelemetryAdapter` when you want Chargebee API calls traced in your observability stack (Datadog, Splunk, Honeycomb, Jaeger, etc.). OpenTelemetry is not bundled with the Chargebee SDK.
+**Optional add-on.** Existing integrations do not need any changes — if you never set a telemetry adapter, API calls behave exactly as before.
 
-The SDK builds standardized span attributes (`StartAttributes`, `EndAttributes`) following stable [OpenTelemetry HTTP semantic conventions](https://opentelemetry.io/docs/specs/semconv/http/http-spans/) (`url.full`, `http.request.method`, `http.response.status_code`, `server.address`, `error.type`) plus Chargebee-specific `chargebee.*` attributes.
+Set an `ITelemetryAdapter` when you want Chargebee API calls traced in your observability stack (Datadog, New Relic, Splunk, Honeycomb, Jaeger, etc.). OpenTelemetry is **not** bundled with the Chargebee SDK; install and configure OTel (or your APM SDK) in your application and wire it through the adapter.
 
-Span names follow `chargebee.{resource}.{operation}`. One span is created per SDK API call; retries reuse the same span.
+The SDK builds standardized span attributes (`StartAttributes`, `EndAttributes`) following stable [OpenTelemetry HTTP semantic conventions](https://opentelemetry.io/docs/specs/semconv/http/http-spans/) (`url.full`, `http.request.method`, `http.response.status_code`, `server.address`, `error.type`) plus Chargebee-specific `chargebee.*` attributes (see `TelemetryAttributeKeys`).
 
-When no adapter is configured, the SDK skips all telemetry work — zero overhead for existing integrations.
+Span names follow `chargebee.{resource}.{operation}`. One span is created per SDK API call; retries reuse the same span. Adapter failures are logged and never affect the underlying API request.
+
+Configure at startup (either form works):
 
 ```cs
+using System.Collections.Generic;
 using ChargeBee.Api;
 using ChargeBee.Telemetry;
 
