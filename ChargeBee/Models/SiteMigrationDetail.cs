@@ -44,7 +44,10 @@ namespace ChargeBee.Models
         public static SiteMigrationDetailListRequest List()
         {
             string url = ApiUtil.BuildUrl("site_migration_details");
-            return new SiteMigrationDetailListRequest(url);
+            var request = new SiteMigrationDetailListRequest(url);
+            request.SetTelemetryResource("siteMigrationDetail");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         #endregion
         

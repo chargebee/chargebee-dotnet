@@ -44,37 +44,58 @@ namespace ChargeBee.Models
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("coupon_sets");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("couponSet");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         public static AddCouponCodesRequest AddCouponCodes(string id)
         {
             string url = ApiUtil.BuildUrl("coupon_sets", CheckNull(id), "add_coupon_codes");
-            return new AddCouponCodesRequest(url, HttpMethod.POST);
+            var request = new AddCouponCodesRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("couponSet");
+            request.SetTelemetryOperation("addCouponCodes");
+            return request;
         }
         public static CouponSetListRequest List()
         {
             string url = ApiUtil.BuildUrl("coupon_sets");
-            return new CouponSetListRequest(url);
+            var request = new CouponSetListRequest(url);
+            request.SetTelemetryResource("couponSet");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("coupon_sets", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("couponSet");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static UpdateRequest Update(string id)
         {
             string url = ApiUtil.BuildUrl("coupon_sets", CheckNull(id), "update");
-            return new UpdateRequest(url, HttpMethod.POST);
+            var request = new UpdateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("couponSet");
+            request.SetTelemetryOperation("update");
+            return request;
         }
         public static EntityRequest<Type> Delete(string id)
         {
             string url = ApiUtil.BuildUrl("coupon_sets", CheckNull(id), "delete");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("couponSet");
+            request.SetTelemetryOperation("delete");
+            return request;
         }
         public static EntityRequest<Type> DeleteUnusedCouponCodes(string id)
         {
             string url = ApiUtil.BuildUrl("coupon_sets", CheckNull(id), "delete_unused_coupon_codes");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("couponSet");
+            request.SetTelemetryOperation("deleteUnusedCouponCodes");
+            return request;
         }
         #endregion
         

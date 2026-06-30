@@ -15,6 +15,10 @@ namespace ChargeBee.Telemetry
         public const string SDK_NAME = "chargebee-dotnet";
         public const string TELEMETRY_SPAN_NAME_PREFIX = "chargebee";
 
+        public const string HTTP_REQUEST_HEADER_ATTRIBUTE_PREFIX = "http.request.header.";
+        public const string CHARGEBEE_TELEMETRY_HEADER_PREFIX = "chargebee-";
+        public const string CHARGEBEE_TELEMETRY_HEADER_EXCLUDE_PREFIX = "chargebee-request-origin-";
+
         public const string URL_FULL = "url.full";
         public const string HTTP_REQUEST_METHOD = "http.request.method";
         public const string HTTP_RESPONSE_STATUS_CODE = "http.response.status_code";

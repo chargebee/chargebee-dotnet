@@ -44,12 +44,18 @@ namespace ChargeBee.Models
         public static SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionRequest SubscriptionEntitlementsForSubscription(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "subscription_entitlements");
-            return new SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionRequest(url);
+            var request = new SubscriptionEntitlementSubscriptionEntitlementsForSubscriptionRequest(url);
+            request.SetTelemetryResource("subscriptionEntitlement");
+            request.SetTelemetryOperation("subscriptionEntitlementsForSubscription");
+            return request;
         }
         public static SetSubscriptionEntitlementAvailabilityRequest SetSubscriptionEntitlementAvailability(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "subscription_entitlements/set_availability");
-            return new SetSubscriptionEntitlementAvailabilityRequest(url, HttpMethod.POST);
+            var request = new SetSubscriptionEntitlementAvailabilityRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscriptionEntitlement");
+            request.SetTelemetryOperation("setSubscriptionEntitlementAvailability");
+            return request;
         }
         #endregion
         

@@ -44,32 +44,50 @@ namespace ChargeBee.Models
         public static CreateUnbilledChargeRequest CreateUnbilledCharge()
         {
             string url = ApiUtil.BuildUrl("unbilled_charges", "create");
-            return new CreateUnbilledChargeRequest(url, HttpMethod.POST);
+            var request = new CreateUnbilledChargeRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("unbilledCharge");
+            request.SetTelemetryOperation("createUnbilledCharge");
+            return request;
         }
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("unbilled_charges");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("unbilledCharge");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         public static InvoiceUnbilledChargesRequest InvoiceUnbilledCharges()
         {
             string url = ApiUtil.BuildUrl("unbilled_charges", "invoice_unbilled_charges");
-            return new InvoiceUnbilledChargesRequest(url, HttpMethod.POST);
+            var request = new InvoiceUnbilledChargesRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("unbilledCharge");
+            request.SetTelemetryOperation("invoiceUnbilledCharges");
+            return request;
         }
         public static EntityRequest<Type> Delete(string id)
         {
             string url = ApiUtil.BuildUrl("unbilled_charges", CheckNull(id), "delete");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("unbilledCharge");
+            request.SetTelemetryOperation("delete");
+            return request;
         }
         public static UnbilledChargeListRequest List()
         {
             string url = ApiUtil.BuildUrl("unbilled_charges");
-            return new UnbilledChargeListRequest(url);
+            var request = new UnbilledChargeListRequest(url);
+            request.SetTelemetryResource("unbilledCharge");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         public static InvoiceNowEstimateRequest InvoiceNowEstimate()
         {
             string url = ApiUtil.BuildUrl("unbilled_charges", "invoice_now_estimate");
-            return new InvoiceNowEstimateRequest(url, HttpMethod.POST).SetIdempotent(false);
+            var request = new InvoiceNowEstimateRequest(url, HttpMethod.POST).SetIdempotent(false);
+            request.SetTelemetryResource("unbilledCharge");
+            request.SetTelemetryOperation("invoiceNowEstimate");
+            return request;
         }
         #endregion
         

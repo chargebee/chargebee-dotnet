@@ -28,7 +28,7 @@ namespace ChargeBee.Api
 
             var stopwatch = Stopwatch.StartNew();
             var telemetryHeaders = new Dictionary<string, string>();
-            object handle = StartTelemetry(env, adapter, telemetryResource, telemetryOperation, method, urlPath, subDomain, telemetryHeaders);
+            object handle = StartTelemetry(env, adapter, telemetryResource, telemetryOperation, method, urlPath, subDomain, headers, telemetryHeaders);
 
             try
             {
@@ -62,7 +62,7 @@ namespace ChargeBee.Api
 
             var stopwatch = Stopwatch.StartNew();
             var telemetryHeaders = new Dictionary<string, string>();
-            object handle = StartTelemetry(env, adapter, telemetryResource, telemetryOperation, method, urlPath, subDomain, telemetryHeaders);
+            object handle = StartTelemetry(env, adapter, telemetryResource, telemetryOperation, method, urlPath, subDomain, headers, telemetryHeaders);
 
             try
             {
@@ -95,7 +95,7 @@ namespace ChargeBee.Api
 
             var stopwatch = Stopwatch.StartNew();
             var telemetryHeaders = new Dictionary<string, string>();
-            object handle = StartTelemetry(env, adapter, telemetryResource, telemetryOperation, HttpMethod.GET, urlPath, subDomain, telemetryHeaders);
+            object handle = StartTelemetry(env, adapter, telemetryResource, telemetryOperation, HttpMethod.GET, urlPath, subDomain, headers, telemetryHeaders);
 
             try
             {
@@ -128,7 +128,7 @@ namespace ChargeBee.Api
 
             var stopwatch = Stopwatch.StartNew();
             var telemetryHeaders = new Dictionary<string, string>();
-            object handle = StartTelemetry(env, adapter, telemetryResource, telemetryOperation, HttpMethod.GET, urlPath, subDomain, telemetryHeaders);
+            object handle = StartTelemetry(env, adapter, telemetryResource, telemetryOperation, HttpMethod.GET, urlPath, subDomain, headers, telemetryHeaders);
 
             try
             {
@@ -151,7 +151,8 @@ namespace ChargeBee.Api
             HttpMethod method,
             string urlPath,
             string subDomain,
-            Dictionary<string, string> headers)
+            Dictionary<string, string> requestHeaders,
+            Dictionary<string, string> telemetryHeaders)
         {
             try
             {
@@ -161,16 +162,17 @@ namespace ChargeBee.Api
                     telemetryResource,
                     telemetryOperation,
                     method.ToString(),
-                    uri.GetLeftPart(UriPartial.Path),
+                    uri.Scheme + "://" + uri.Authority + uri.AbsolutePath,
                     uri.Host,
                     env.SiteName,
                     TelemetrySupport.ResolveChargebeeApiVersion("/api/" + ApiConfig.API_VERSION),
-                    ApiConfig.Version);
-                return adapter.OnRequestStart(context, headers);
+                    ApiConfig.Version,
+                    requestHeaders);
+                return adapter.OnRequestStart(context, telemetryHeaders);
             }
             catch (Exception ex)
             {
-                Console.WriteLine("[Chargebee] Telemetry adapter OnRequestStart failed: " + ex.Message);
+                LogTelemetryWarning("[Chargebee] Telemetry adapter OnRequestStart failed: " + ex.Message);
                 return null;
             }
         }
@@ -183,7 +185,7 @@ namespace ChargeBee.Api
             }
             catch (Exception ex)
             {
-                Console.WriteLine("[Chargebee] Telemetry adapter OnRequestEnd failed: " + ex.Message);
+                LogTelemetryWarning("[Chargebee] Telemetry adapter OnRequestEnd failed: " + ex.Message);
             }
         }
 
@@ -198,8 +200,17 @@ namespace ChargeBee.Api
             }
             catch (Exception telemetryEx)
             {
-                Console.WriteLine("[Chargebee] Telemetry adapter OnRequestEnd failed: " + telemetryEx.Message);
+                LogTelemetryWarning("[Chargebee] Telemetry adapter OnRequestEnd failed: " + telemetryEx.Message);
             }
+        }
+
+        private static void LogTelemetryWarning(string message)
+        {
+#if NETSTANDARD1_2
+            System.Diagnostics.Debug.WriteLine(message);
+#else
+            Console.WriteLine(message);
+#endif
         }
 
         private static string BuildHttpUrl(ApiConfig env, string urlPath, string subDomain)
@@ -207,7 +218,7 @@ namespace ChargeBee.Api
             var relativePath = urlPath.StartsWith("/") ? urlPath : "/" + urlPath;
             var baseUrl = subDomain != null ? env.ApiBaseUrlWithSubDomain(subDomain) : env.ApiBaseUrl;
             var uri = new Uri(baseUrl + relativePath);
-            return uri.GetLeftPart(UriPartial.Path);
+            return uri.Scheme + "://" + uri.Authority + uri.AbsolutePath;
         }
 
         private static void ResolveMetadata(

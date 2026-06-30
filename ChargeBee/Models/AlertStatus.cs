@@ -44,12 +44,18 @@ namespace ChargeBee.Models
         public static AlertStatusAlertStatusesForSubscriptionRequest AlertStatusesForSubscription(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "alert_statuses");
-            return new AlertStatusAlertStatusesForSubscriptionRequest(url);
+            var request = new AlertStatusAlertStatusesForSubscriptionRequest(url);
+            request.SetTelemetryResource("alertStatus");
+            request.SetTelemetryOperation("alertStatusesForSubscription");
+            return request;
         }
         public static AlertStatusAlertStatusesForAlertRequest AlertStatusesForAlert(string id)
         {
             string url = ApiUtil.BuildUrl("alerts", CheckNull(id), "alert_statuses");
-            return new AlertStatusAlertStatusesForAlertRequest(url);
+            var request = new AlertStatusAlertStatusesForAlertRequest(url);
+            request.SetTelemetryResource("alertStatus");
+            request.SetTelemetryOperation("alertStatusesForAlert");
+            return request;
         }
         #endregion
         

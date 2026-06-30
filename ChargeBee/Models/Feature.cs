@@ -44,42 +44,66 @@ namespace ChargeBee.Models
         public static FeatureListRequest List()
         {
             string url = ApiUtil.BuildUrl("features");
-            return new FeatureListRequest(url);
+            var request = new FeatureListRequest(url);
+            request.SetTelemetryResource("feature");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("features");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("feature");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         public static UpdateRequest Update(string id)
         {
             string url = ApiUtil.BuildUrl("features", CheckNull(id));
-            return new UpdateRequest(url, HttpMethod.POST);
+            var request = new UpdateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("feature");
+            request.SetTelemetryOperation("update");
+            return request;
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("features", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("feature");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static EntityRequest<Type> Delete(string id)
         {
             string url = ApiUtil.BuildUrl("features", CheckNull(id), "delete");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("feature");
+            request.SetTelemetryOperation("delete");
+            return request;
         }
         public static EntityRequest<Type> Activate(string id)
         {
             string url = ApiUtil.BuildUrl("features", CheckNull(id), "activate_command");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("feature");
+            request.SetTelemetryOperation("activate");
+            return request;
         }
         public static EntityRequest<Type> Archive(string id)
         {
             string url = ApiUtil.BuildUrl("features", CheckNull(id), "archive_command");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("feature");
+            request.SetTelemetryOperation("archive");
+            return request;
         }
         public static EntityRequest<Type> Reactivate(string id)
         {
             string url = ApiUtil.BuildUrl("features", CheckNull(id), "reactivate_command");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("feature");
+            request.SetTelemetryOperation("reactivate");
+            return request;
         }
         #endregion
         

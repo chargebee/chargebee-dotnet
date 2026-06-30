@@ -44,7 +44,10 @@ namespace ChargeBee.Models
         public static OfferEventsRequest OfferEvents()
         {
             string url = ApiUtil.BuildUrl("offer_events");
-            return new OfferEventsRequest(url, HttpMethod.POST).SetSubDomain("grow").IsJsonRequest(true).SetIdempotent(false);
+            var request = new OfferEventsRequest(url, HttpMethod.POST).SetSubDomain("grow").IsJsonRequest(true).SetIdempotent(false);
+            request.SetTelemetryResource("offerEvent");
+            request.SetTelemetryOperation("offerEvents");
+            return request;
         }
         #endregion
         

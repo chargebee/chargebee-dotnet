@@ -44,22 +44,34 @@ namespace ChargeBee.Models
         public static ProcessReceiptRequest ProcessReceipt(string id)
         {
             string url = ApiUtil.BuildUrl("in_app_subscriptions", CheckNull(id), "process_purchase_command");
-            return new ProcessReceiptRequest(url, HttpMethod.POST);
+            var request = new ProcessReceiptRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("inAppSubscription");
+            request.SetTelemetryOperation("processReceipt");
+            return request;
         }
         public static ImportReceiptRequest ImportReceipt(string id)
         {
             string url = ApiUtil.BuildUrl("in_app_subscriptions", CheckNull(id), "import_receipt");
-            return new ImportReceiptRequest(url, HttpMethod.POST);
+            var request = new ImportReceiptRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("inAppSubscription");
+            request.SetTelemetryOperation("importReceipt");
+            return request;
         }
         public static ImportSubscriptionRequest ImportSubscription(string id)
         {
             string url = ApiUtil.BuildUrl("in_app_subscriptions", CheckNull(id), "import_subscription");
-            return new ImportSubscriptionRequest(url, HttpMethod.POST);
+            var request = new ImportSubscriptionRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("inAppSubscription");
+            request.SetTelemetryOperation("importSubscription");
+            return request;
         }
         public static RetrieveStoreSubsRequest RetrieveStoreSubs(string id)
         {
             string url = ApiUtil.BuildUrl("in_app_subscriptions", CheckNull(id), "retrieve");
-            return new RetrieveStoreSubsRequest(url, HttpMethod.POST);
+            var request = new RetrieveStoreSubsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("inAppSubscription");
+            request.SetTelemetryOperation("retrieveStoreSubs");
+            return request;
         }
         #endregion
         

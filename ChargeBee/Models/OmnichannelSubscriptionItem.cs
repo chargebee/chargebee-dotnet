@@ -44,7 +44,10 @@ namespace ChargeBee.Models
         public static ListRequest ListOmniSubItemScheduleChanges(string id)
         {
             string url = ApiUtil.BuildUrl("omnichannel_subscription_items", CheckNull(id), "scheduled_changes");
-            return new ListRequest(url);
+            var request = new ListRequest(url);
+            request.SetTelemetryResource("omnichannelSubscriptionItem");
+            request.SetTelemetryOperation("listOmniSubItemScheduleChanges");
+            return request;
         }
         #endregion
         

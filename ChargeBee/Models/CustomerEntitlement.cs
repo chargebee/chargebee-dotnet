@@ -44,7 +44,10 @@ namespace ChargeBee.Models
         public static CustomerEntitlementEntitlementsForCustomerRequest EntitlementsForCustomer(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "customer_entitlements");
-            return new CustomerEntitlementEntitlementsForCustomerRequest(url);
+            var request = new CustomerEntitlementEntitlementsForCustomerRequest(url);
+            request.SetTelemetryResource("customerEntitlement");
+            request.SetTelemetryOperation("entitlementsForCustomer");
+            return request;
         }
         #endregion
         

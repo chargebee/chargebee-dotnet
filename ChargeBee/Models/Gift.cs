@@ -44,37 +44,58 @@ namespace ChargeBee.Models
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("gifts");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("gift");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         public static CreateForItemsRequest CreateForItems()
         {
             string url = ApiUtil.BuildUrl("gifts", "create_for_items");
-            return new CreateForItemsRequest(url, HttpMethod.POST);
+            var request = new CreateForItemsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("gift");
+            request.SetTelemetryOperation("createForItems");
+            return request;
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("gifts", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("gift");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static GiftListRequest List()
         {
             string url = ApiUtil.BuildUrl("gifts");
-            return new GiftListRequest(url);
+            var request = new GiftListRequest(url);
+            request.SetTelemetryResource("gift");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         public static EntityRequest<Type> Claim(string id)
         {
             string url = ApiUtil.BuildUrl("gifts", CheckNull(id), "claim");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("gift");
+            request.SetTelemetryOperation("claim");
+            return request;
         }
         public static EntityRequest<Type> Cancel(string id)
         {
             string url = ApiUtil.BuildUrl("gifts", CheckNull(id), "cancel");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("gift");
+            request.SetTelemetryOperation("cancel");
+            return request;
         }
         public static UpdateGiftRequest UpdateGift(string id)
         {
             string url = ApiUtil.BuildUrl("gifts", CheckNull(id), "update_gift");
-            return new UpdateGiftRequest(url, HttpMethod.POST);
+            var request = new UpdateGiftRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("gift");
+            request.SetTelemetryOperation("updateGift");
+            return request;
         }
         #endregion
         

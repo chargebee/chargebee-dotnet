@@ -44,188 +44,299 @@ namespace ChargeBee.Models
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("subscriptions");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         public static CreateForCustomerRequest CreateForCustomer(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "subscriptions");
-            return new CreateForCustomerRequest(url, HttpMethod.POST);
+            var request = new CreateForCustomerRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("createForCustomer");
+            return request;
         }
         public static CreateWithItemsRequest CreateWithItems(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "subscription_for_items");
-            return new CreateWithItemsRequest(url, HttpMethod.POST);
+            var request = new CreateWithItemsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("createWithItems");
+            return request;
         }
         public static SubscriptionListRequest List()
         {
             string url = ApiUtil.BuildUrl("subscriptions");
-            return new SubscriptionListRequest(url);
+            var request = new SubscriptionListRequest(url);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         [Obsolete]
         public static ListRequest SubscriptionsForCustomer(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "subscriptions");
-            return new ListRequest(url);
+            var request = new ListRequest(url);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("subscriptionsForCustomer");
+            return request;
         }
         public static SubscriptionContractTermsForSubscriptionRequest ContractTermsForSubscription(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "contract_terms");
-            return new SubscriptionContractTermsForSubscriptionRequest(url);
+            var request = new SubscriptionContractTermsForSubscriptionRequest(url);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("contractTermsForSubscription");
+            return request;
         }
         public static ListRequest ListDiscounts(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "discounts");
-            return new ListRequest(url);
+            var request = new ListRequest(url);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("listDiscounts");
+            return request;
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static EntityRequest<Type> RetrieveWithScheduledChanges(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "retrieve_with_scheduled_changes");
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("retrieveWithScheduledChanges");
+            return request;
         }
         public static EntityRequest<Type> RemoveScheduledChanges(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "remove_scheduled_changes");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("removeScheduledChanges");
+            return request;
         }
         public static RemoveScheduledCancellationRequest RemoveScheduledCancellation(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "remove_scheduled_cancellation");
-            return new RemoveScheduledCancellationRequest(url, HttpMethod.POST);
+            var request = new RemoveScheduledCancellationRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("removeScheduledCancellation");
+            return request;
         }
         public static RemoveCouponsRequest RemoveCoupons(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "remove_coupons");
-            return new RemoveCouponsRequest(url, HttpMethod.POST);
+            var request = new RemoveCouponsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("removeCoupons");
+            return request;
         }
         public static UpdateRequest Update(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id));
-            return new UpdateRequest(url, HttpMethod.POST);
+            var request = new UpdateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("update");
+            return request;
         }
         public static UpdateForItemsRequest UpdateForItems(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "update_for_items");
-            return new UpdateForItemsRequest(url, HttpMethod.POST);
+            var request = new UpdateForItemsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("updateForItems");
+            return request;
         }
         public static ChangeTermEndRequest ChangeTermEnd(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "change_term_end");
-            return new ChangeTermEndRequest(url, HttpMethod.POST);
+            var request = new ChangeTermEndRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("changeTermEnd");
+            return request;
         }
         public static ReactivateRequest Reactivate(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "reactivate");
-            return new ReactivateRequest(url, HttpMethod.POST);
+            var request = new ReactivateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("reactivate");
+            return request;
         }
         public static AddChargeAtTermEndRequest AddChargeAtTermEnd(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "add_charge_at_term_end");
-            return new AddChargeAtTermEndRequest(url, HttpMethod.POST);
+            var request = new AddChargeAtTermEndRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("addChargeAtTermEnd");
+            return request;
         }
         public static ChargeAddonAtTermEndRequest ChargeAddonAtTermEnd(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "charge_addon_at_term_end");
-            return new ChargeAddonAtTermEndRequest(url, HttpMethod.POST);
+            var request = new ChargeAddonAtTermEndRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("chargeAddonAtTermEnd");
+            return request;
         }
         public static ChargeFutureRenewalsRequest ChargeFutureRenewals(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "charge_future_renewals");
-            return new ChargeFutureRenewalsRequest(url, HttpMethod.POST);
+            var request = new ChargeFutureRenewalsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("chargeFutureRenewals");
+            return request;
         }
         public static EditAdvanceInvoiceScheduleRequest EditAdvanceInvoiceSchedule(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "edit_advance_invoice_schedule");
-            return new EditAdvanceInvoiceScheduleRequest(url, HttpMethod.POST);
+            var request = new EditAdvanceInvoiceScheduleRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("editAdvanceInvoiceSchedule");
+            return request;
         }
         public static EntityRequest<Type> RetrieveAdvanceInvoiceSchedule(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "retrieve_advance_invoice_schedule");
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("retrieveAdvanceInvoiceSchedule");
+            return request;
         }
         public static RemoveAdvanceInvoiceScheduleRequest RemoveAdvanceInvoiceSchedule(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "remove_advance_invoice_schedule");
-            return new RemoveAdvanceInvoiceScheduleRequest(url, HttpMethod.POST);
+            var request = new RemoveAdvanceInvoiceScheduleRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("removeAdvanceInvoiceSchedule");
+            return request;
         }
         public static RegenerateInvoiceRequest RegenerateInvoice(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "regenerate_invoice");
-            return new RegenerateInvoiceRequest(url, HttpMethod.POST);
+            var request = new RegenerateInvoiceRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("regenerateInvoice");
+            return request;
         }
         public static ImportSubscriptionRequest ImportSubscription()
         {
             string url = ApiUtil.BuildUrl("subscriptions", "import_subscription");
-            return new ImportSubscriptionRequest(url, HttpMethod.POST);
+            var request = new ImportSubscriptionRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("importSubscription");
+            return request;
         }
         public static ImportForCustomerRequest ImportForCustomer(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "import_subscription");
-            return new ImportForCustomerRequest(url, HttpMethod.POST);
+            var request = new ImportForCustomerRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("importForCustomer");
+            return request;
         }
         public static ImportContractTermRequest ImportContractTerm(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "import_contract_term");
-            return new ImportContractTermRequest(url, HttpMethod.POST);
+            var request = new ImportContractTermRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("importContractTerm");
+            return request;
         }
         public static ImportUnbilledChargesRequest ImportUnbilledCharges(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "import_unbilled_charges");
-            return new ImportUnbilledChargesRequest(url, HttpMethod.POST);
+            var request = new ImportUnbilledChargesRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("importUnbilledCharges");
+            return request;
         }
         public static ImportForItemsRequest ImportForItems(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "import_for_items");
-            return new ImportForItemsRequest(url, HttpMethod.POST);
+            var request = new ImportForItemsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("importForItems");
+            return request;
         }
         public static OverrideBillingProfileRequest OverrideBillingProfile(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "override_billing_profile");
-            return new OverrideBillingProfileRequest(url, HttpMethod.POST);
+            var request = new OverrideBillingProfileRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("overrideBillingProfile");
+            return request;
         }
         public static EntityRequest<Type> Delete(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "delete");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("delete");
+            return request;
         }
         public static PauseRequest Pause(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "pause");
-            return new PauseRequest(url, HttpMethod.POST);
+            var request = new PauseRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("pause");
+            return request;
         }
         public static CancelRequest Cancel(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "cancel");
-            return new CancelRequest(url, HttpMethod.POST);
+            var request = new CancelRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("cancel");
+            return request;
         }
         public static CancelForItemsRequest CancelForItems(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "cancel_for_items");
-            return new CancelForItemsRequest(url, HttpMethod.POST);
+            var request = new CancelForItemsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("cancelForItems");
+            return request;
         }
         public static ResumeRequest Resume(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "resume");
-            return new ResumeRequest(url, HttpMethod.POST);
+            var request = new ResumeRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("resume");
+            return request;
         }
         public static EntityRequest<Type> RemoveScheduledPause(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "remove_scheduled_pause");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("removeScheduledPause");
+            return request;
         }
         public static EntityRequest<Type> RemoveScheduledResumption(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "remove_scheduled_resumption");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("removeScheduledResumption");
+            return request;
         }
         public static MoveRequest Move(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "move");
-            return new MoveRequest(url, HttpMethod.POST);
+            var request = new MoveRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("subscription");
+            request.SetTelemetryOperation("move");
+            return request;
         }
         #endregion
         

@@ -44,7 +44,10 @@ namespace ChargeBee.Models
         public static UsageSummaryRetrieveUsageSummaryForSubscriptionRequest RetrieveUsageSummaryForSubscription(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "usage_summary");
-            return new UsageSummaryRetrieveUsageSummaryForSubscriptionRequest(url);
+            var request = new UsageSummaryRetrieveUsageSummaryForSubscriptionRequest(url);
+            request.SetTelemetryResource("usageSummary");
+            request.SetTelemetryOperation("retrieveUsageSummaryForSubscription");
+            return request;
         }
         #endregion
         

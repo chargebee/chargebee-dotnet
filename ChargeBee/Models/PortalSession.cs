@@ -44,22 +44,34 @@ namespace ChargeBee.Models
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("portal_sessions");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("portalSession");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("portal_sessions", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("portalSession");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static EntityRequest<Type> Logout(string id)
         {
             string url = ApiUtil.BuildUrl("portal_sessions", CheckNull(id), "logout");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("portalSession");
+            request.SetTelemetryOperation("logout");
+            return request;
         }
         public static ActivateRequest Activate(string id)
         {
             string url = ApiUtil.BuildUrl("portal_sessions", CheckNull(id), "activate");
-            return new ActivateRequest(url, HttpMethod.POST);
+            var request = new ActivateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("portalSession");
+            request.SetTelemetryOperation("activate");
+            return request;
         }
         #endregion
         

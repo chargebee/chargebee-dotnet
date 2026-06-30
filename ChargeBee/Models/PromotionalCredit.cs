@@ -44,27 +44,42 @@ namespace ChargeBee.Models
         public static AddRequest Add()
         {
             string url = ApiUtil.BuildUrl("promotional_credits", "add");
-            return new AddRequest(url, HttpMethod.POST);
+            var request = new AddRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("promotionalCredit");
+            request.SetTelemetryOperation("add");
+            return request;
         }
         public static DeductRequest Deduct()
         {
             string url = ApiUtil.BuildUrl("promotional_credits", "deduct");
-            return new DeductRequest(url, HttpMethod.POST);
+            var request = new DeductRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("promotionalCredit");
+            request.SetTelemetryOperation("deduct");
+            return request;
         }
         public static SetRequest Set()
         {
             string url = ApiUtil.BuildUrl("promotional_credits", "set");
-            return new SetRequest(url, HttpMethod.POST);
+            var request = new SetRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("promotionalCredit");
+            request.SetTelemetryOperation("set");
+            return request;
         }
         public static PromotionalCreditListRequest List()
         {
             string url = ApiUtil.BuildUrl("promotional_credits");
-            return new PromotionalCreditListRequest(url);
+            var request = new PromotionalCreditListRequest(url);
+            request.SetTelemetryResource("promotionalCredit");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("promotional_credits", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("promotionalCredit");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         #endregion
         

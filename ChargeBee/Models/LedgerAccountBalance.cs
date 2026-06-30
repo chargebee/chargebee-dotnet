@@ -44,7 +44,10 @@ namespace ChargeBee.Models
         public static LedgerAccountBalanceListLedgerAccountBalancesRequest ListLedgerAccountBalances()
         {
             string url = ApiUtil.BuildUrl("ledger_account_balances");
-            return new LedgerAccountBalanceListLedgerAccountBalancesRequest(url);
+            var request = new LedgerAccountBalanceListLedgerAccountBalancesRequest(url);
+            request.SetTelemetryResource("ledgerAccountBalance");
+            request.SetTelemetryOperation("listLedgerAccountBalances");
+            return request;
         }
         #endregion
         

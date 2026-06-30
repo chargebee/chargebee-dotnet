@@ -44,22 +44,34 @@ namespace ChargeBee.Models
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("payment_vouchers");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("paymentVoucher");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("payment_vouchers", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("paymentVoucher");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static PaymentVoucherPaymentVouchersForInvoiceRequest PaymentVouchersForInvoice(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "payment_vouchers");
-            return new PaymentVoucherPaymentVouchersForInvoiceRequest(url);
+            var request = new PaymentVoucherPaymentVouchersForInvoiceRequest(url);
+            request.SetTelemetryResource("paymentVoucher");
+            request.SetTelemetryOperation("paymentVouchersForInvoice");
+            return request;
         }
         public static PaymentVoucherPaymentVouchersForCustomerRequest PaymentVouchersForCustomer(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "payment_vouchers");
-            return new PaymentVoucherPaymentVouchersForCustomerRequest(url);
+            var request = new PaymentVoucherPaymentVouchersForCustomerRequest(url);
+            request.SetTelemetryResource("paymentVoucher");
+            request.SetTelemetryOperation("paymentVouchersForCustomer");
+            return request;
         }
         [Obsolete("Use PaymentVouchersForInvoice")]
         public static PaymentVoucherPaymentVouchersForInvoiceRequest Payment_vouchersForInvoice(string id)

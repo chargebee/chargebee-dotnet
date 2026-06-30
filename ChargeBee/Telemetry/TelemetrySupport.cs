@@ -34,9 +34,10 @@ namespace ChargeBee.Telemetry
             string serverAddress,
             string chargebeeSite,
             string chargebeeApiVersion,
-            string sdkVersion)
+            string sdkVersion,
+            Dictionary<string, string> requestHeaders = null)
         {
-            return new Dictionary<string, string>
+            var attributes = new Dictionary<string, string>
             {
                 { TelemetryAttributeKeys.URL_FULL, httpUrl },
                 { TelemetryAttributeKeys.HTTP_REQUEST_METHOD, httpMethod },
@@ -48,6 +49,40 @@ namespace ChargeBee.Telemetry
                 { TelemetryAttributeKeys.CHARGEBEE_SDK_NAME, TelemetryAttributeKeys.SDK_NAME },
                 { TelemetryAttributeKeys.CHARGEBEE_SDK_VERSION, sdkVersion },
             };
+            foreach (var entry in BuildRequestHeaderSpanAttributes(requestHeaders))
+            {
+                attributes[entry.Key] = entry.Value;
+            }
+            return attributes;
+        }
+
+        /// <summary>
+        /// Promotes chargebee-* request headers to http.request.header.* attributes; excludes the chargebee-request-origin-* PII family.
+        /// </summary>
+        public static Dictionary<string, string> BuildRequestHeaderSpanAttributes(Dictionary<string, string> requestHeaders)
+        {
+            var attributes = new Dictionary<string, string>();
+            if (requestHeaders == null)
+            {
+                return attributes;
+            }
+
+            foreach (var entry in requestHeaders)
+            {
+                if (entry.Key == null || entry.Value == null)
+                {
+                    continue;
+                }
+                var lowerName = entry.Key.ToLowerInvariant();
+                if (!lowerName.StartsWith(TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_HEADER_PREFIX)
+                    || lowerName.StartsWith(TelemetryAttributeKeys.CHARGEBEE_TELEMETRY_HEADER_EXCLUDE_PREFIX))
+                {
+                    continue;
+                }
+                attributes[TelemetryAttributeKeys.HTTP_REQUEST_HEADER_ATTRIBUTE_PREFIX + lowerName] = entry.Value;
+            }
+
+            return attributes;
         }
 
         public static Dictionary<string, object> BuildRequestEndSpanAttributes(int httpStatusCode, RequestTelemetryError error)
@@ -84,7 +119,8 @@ namespace ChargeBee.Telemetry
             string serverAddress,
             string chargebeeSite,
             string chargebeeApiVersion,
-            string sdkVersion)
+            string sdkVersion,
+            Dictionary<string, string> requestHeaders = null)
         {
             return new RequestTelemetryContext(
                 BuildSpanName(resource, operation),
@@ -98,7 +134,7 @@ namespace ChargeBee.Telemetry
                 TelemetryAttributeKeys.SDK_NAME,
                 sdkVersion,
                 BuildRequestStartSpanAttributes(
-                    resource, operation, httpMethod, httpUrl, serverAddress, chargebeeSite, chargebeeApiVersion, sdkVersion));
+                    resource, operation, httpMethod, httpUrl, serverAddress, chargebeeSite, chargebeeApiVersion, sdkVersion, requestHeaders));
         }
 
         public static RequestTelemetryResult BuildRequestTelemetryResult(

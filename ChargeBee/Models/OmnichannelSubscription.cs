@@ -44,22 +44,34 @@ namespace ChargeBee.Models
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("omnichannel_subscriptions", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("omnichannelSubscription");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static OmnichannelSubscriptionListRequest List()
         {
             string url = ApiUtil.BuildUrl("omnichannel_subscriptions");
-            return new OmnichannelSubscriptionListRequest(url);
+            var request = new OmnichannelSubscriptionListRequest(url);
+            request.SetTelemetryResource("omnichannelSubscription");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         public static ListRequest OmnichannelTransactionsForOmnichannelSubscription(string id)
         {
             string url = ApiUtil.BuildUrl("omnichannel_subscriptions", CheckNull(id), "omnichannel_transactions");
-            return new ListRequest(url);
+            var request = new ListRequest(url);
+            request.SetTelemetryResource("omnichannelSubscription");
+            request.SetTelemetryOperation("omnichannelTransactionsForOmnichannelSubscription");
+            return request;
         }
         public static MoveRequest Move(string id)
         {
             string url = ApiUtil.BuildUrl("omnichannel_subscriptions", CheckNull(id), "move");
-            return new MoveRequest(url, HttpMethod.POST);
+            var request = new MoveRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("omnichannelSubscription");
+            request.SetTelemetryOperation("move");
+            return request;
         }
         #endregion
         

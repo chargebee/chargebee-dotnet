@@ -44,102 +44,162 @@ namespace ChargeBee.Models
         public static CreateSubscriptionRequest CreateSubscription()
         {
             string url = ApiUtil.BuildUrl("estimates", "create_subscription");
-            return new CreateSubscriptionRequest(url, HttpMethod.POST).SetIdempotent(false);
+            var request = new CreateSubscriptionRequest(url, HttpMethod.POST).SetIdempotent(false);
+            request.SetTelemetryResource("estimate");
+            request.SetTelemetryOperation("createSubscription");
+            return request;
         }
         public static CreateSubItemEstimateRequest CreateSubItemEstimate()
         {
             string url = ApiUtil.BuildUrl("estimates", "create_subscription_for_items");
-            return new CreateSubItemEstimateRequest(url, HttpMethod.POST).SetIdempotent(false);
+            var request = new CreateSubItemEstimateRequest(url, HttpMethod.POST).SetIdempotent(false);
+            request.SetTelemetryResource("estimate");
+            request.SetTelemetryOperation("createSubItemEstimate");
+            return request;
         }
         public static CreateSubForCustomerEstimateRequest CreateSubForCustomerEstimate(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "create_subscription_estimate");
-            return new CreateSubForCustomerEstimateRequest(url, HttpMethod.GET);
+            var request = new CreateSubForCustomerEstimateRequest(url, HttpMethod.GET);
+            request.SetTelemetryResource("estimate");
+            request.SetTelemetryOperation("createSubForCustomerEstimate");
+            return request;
         }
         public static CreateSubItemForCustomerEstimateRequest CreateSubItemForCustomerEstimate(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "create_subscription_for_items_estimate");
-            return new CreateSubItemForCustomerEstimateRequest(url, HttpMethod.POST).SetIdempotent(false);
+            var request = new CreateSubItemForCustomerEstimateRequest(url, HttpMethod.POST).SetIdempotent(false);
+            request.SetTelemetryResource("estimate");
+            request.SetTelemetryOperation("createSubItemForCustomerEstimate");
+            return request;
         }
         public static UpdateSubscriptionRequest UpdateSubscription()
         {
             string url = ApiUtil.BuildUrl("estimates", "update_subscription");
-            return new UpdateSubscriptionRequest(url, HttpMethod.POST).SetIdempotent(false);
+            var request = new UpdateSubscriptionRequest(url, HttpMethod.POST).SetIdempotent(false);
+            request.SetTelemetryResource("estimate");
+            request.SetTelemetryOperation("updateSubscription");
+            return request;
         }
         public static UpdateSubscriptionForItemsRequest UpdateSubscriptionForItems()
         {
             string url = ApiUtil.BuildUrl("estimates", "update_subscription_for_items");
-            return new UpdateSubscriptionForItemsRequest(url, HttpMethod.POST).SetIdempotent(false);
+            var request = new UpdateSubscriptionForItemsRequest(url, HttpMethod.POST).SetIdempotent(false);
+            request.SetTelemetryResource("estimate");
+            request.SetTelemetryOperation("updateSubscriptionForItems");
+            return request;
         }
         public static RenewalEstimateRequest RenewalEstimate(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "renewal_estimate");
-            return new RenewalEstimateRequest(url, HttpMethod.GET);
+            var request = new RenewalEstimateRequest(url, HttpMethod.GET);
+            request.SetTelemetryResource("estimate");
+            request.SetTelemetryOperation("renewalEstimate");
+            return request;
         }
         public static AdvanceInvoiceEstimateRequest AdvanceInvoiceEstimate(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "advance_invoice_estimate");
-            return new AdvanceInvoiceEstimateRequest(url, HttpMethod.POST).SetIdempotent(false);
+            var request = new AdvanceInvoiceEstimateRequest(url, HttpMethod.POST).SetIdempotent(false);
+            request.SetTelemetryResource("estimate");
+            request.SetTelemetryOperation("advanceInvoiceEstimate");
+            return request;
         }
         public static RegenerateInvoiceEstimateRequest RegenerateInvoiceEstimate(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "regenerate_invoice_estimate");
-            return new RegenerateInvoiceEstimateRequest(url, HttpMethod.POST).SetIdempotent(false);
+            var request = new RegenerateInvoiceEstimateRequest(url, HttpMethod.POST).SetIdempotent(false);
+            request.SetTelemetryResource("estimate");
+            request.SetTelemetryOperation("regenerateInvoiceEstimate");
+            return request;
         }
         public static UpcomingInvoicesEstimateRequest UpcomingInvoicesEstimate(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "upcoming_invoices_estimate");
-            return new UpcomingInvoicesEstimateRequest(url, HttpMethod.GET);
+            var request = new UpcomingInvoicesEstimateRequest(url, HttpMethod.GET);
+            request.SetTelemetryResource("estimate");
+            request.SetTelemetryOperation("upcomingInvoicesEstimate");
+            return request;
         }
         public static ChangeTermEndRequest ChangeTermEnd(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "change_term_end_estimate");
-            return new ChangeTermEndRequest(url, HttpMethod.POST).SetIdempotent(false);
+            var request = new ChangeTermEndRequest(url, HttpMethod.POST).SetIdempotent(false);
+            request.SetTelemetryResource("estimate");
+            request.SetTelemetryOperation("changeTermEnd");
+            return request;
         }
         public static CancelSubscriptionRequest CancelSubscription(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "cancel_subscription_estimate");
-            return new CancelSubscriptionRequest(url, HttpMethod.POST).SetIdempotent(false);
+            var request = new CancelSubscriptionRequest(url, HttpMethod.POST).SetIdempotent(false);
+            request.SetTelemetryResource("estimate");
+            request.SetTelemetryOperation("cancelSubscription");
+            return request;
         }
         public static CancelSubscriptionForItemsRequest CancelSubscriptionForItems(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "cancel_subscription_for_items_estimate");
-            return new CancelSubscriptionForItemsRequest(url, HttpMethod.POST).SetIdempotent(false);
+            var request = new CancelSubscriptionForItemsRequest(url, HttpMethod.POST).SetIdempotent(false);
+            request.SetTelemetryResource("estimate");
+            request.SetTelemetryOperation("cancelSubscriptionForItems");
+            return request;
         }
         public static PauseSubscriptionRequest PauseSubscription(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "pause_subscription_estimate");
-            return new PauseSubscriptionRequest(url, HttpMethod.POST).SetIdempotent(false);
+            var request = new PauseSubscriptionRequest(url, HttpMethod.POST).SetIdempotent(false);
+            request.SetTelemetryResource("estimate");
+            request.SetTelemetryOperation("pauseSubscription");
+            return request;
         }
         public static ResumeSubscriptionRequest ResumeSubscription(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "resume_subscription_estimate");
-            return new ResumeSubscriptionRequest(url, HttpMethod.POST).SetIdempotent(false);
+            var request = new ResumeSubscriptionRequest(url, HttpMethod.POST).SetIdempotent(false);
+            request.SetTelemetryResource("estimate");
+            request.SetTelemetryOperation("resumeSubscription");
+            return request;
         }
         public static GiftSubscriptionRequest GiftSubscription()
         {
             string url = ApiUtil.BuildUrl("estimates", "gift_subscription");
-            return new GiftSubscriptionRequest(url, HttpMethod.POST).SetIdempotent(false);
+            var request = new GiftSubscriptionRequest(url, HttpMethod.POST).SetIdempotent(false);
+            request.SetTelemetryResource("estimate");
+            request.SetTelemetryOperation("giftSubscription");
+            return request;
         }
         public static GiftSubscriptionForItemsRequest GiftSubscriptionForItems()
         {
             string url = ApiUtil.BuildUrl("estimates", "gift_subscription_for_items");
-            return new GiftSubscriptionForItemsRequest(url, HttpMethod.POST).SetIdempotent(false);
+            var request = new GiftSubscriptionForItemsRequest(url, HttpMethod.POST).SetIdempotent(false);
+            request.SetTelemetryResource("estimate");
+            request.SetTelemetryOperation("giftSubscriptionForItems");
+            return request;
         }
         public static CreateInvoiceRequest CreateInvoice()
         {
             string url = ApiUtil.BuildUrl("estimates", "create_invoice");
-            return new CreateInvoiceRequest(url, HttpMethod.POST).SetIdempotent(false);
+            var request = new CreateInvoiceRequest(url, HttpMethod.POST).SetIdempotent(false);
+            request.SetTelemetryResource("estimate");
+            request.SetTelemetryOperation("createInvoice");
+            return request;
         }
         public static CreateInvoiceForItemsRequest CreateInvoiceForItems()
         {
             string url = ApiUtil.BuildUrl("estimates", "create_invoice_for_items");
-            return new CreateInvoiceForItemsRequest(url, HttpMethod.POST).SetIdempotent(false);
+            var request = new CreateInvoiceForItemsRequest(url, HttpMethod.POST).SetIdempotent(false);
+            request.SetTelemetryResource("estimate");
+            request.SetTelemetryOperation("createInvoiceForItems");
+            return request;
         }
         public static PaymentSchedulesRequest PaymentSchedules()
         {
             string url = ApiUtil.BuildUrl("estimates", "payment_schedules");
-            return new PaymentSchedulesRequest(url, HttpMethod.POST);
+            var request = new PaymentSchedulesRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("estimate");
+            request.SetTelemetryOperation("paymentSchedules");
+            return request;
         }
         #endregion
         

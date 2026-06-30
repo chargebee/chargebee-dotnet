@@ -44,27 +44,42 @@ namespace ChargeBee.Models
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("webhook_endpoints");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("webhookEndpoint");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         public static UpdateRequest Update(string id)
         {
             string url = ApiUtil.BuildUrl("webhook_endpoints", CheckNull(id));
-            return new UpdateRequest(url, HttpMethod.POST);
+            var request = new UpdateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("webhookEndpoint");
+            request.SetTelemetryOperation("update");
+            return request;
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("webhook_endpoints", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("webhookEndpoint");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static EntityRequest<Type> Delete(string id)
         {
             string url = ApiUtil.BuildUrl("webhook_endpoints", CheckNull(id), "delete");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("webhookEndpoint");
+            request.SetTelemetryOperation("delete");
+            return request;
         }
         public static ListRequest List()
         {
             string url = ApiUtil.BuildUrl("webhook_endpoints");
-            return new ListRequest(url);
+            var request = new ListRequest(url);
+            request.SetTelemetryResource("webhookEndpoint");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         #endregion
         

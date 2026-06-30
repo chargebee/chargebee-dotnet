@@ -44,7 +44,10 @@ namespace ChargeBee.Models
         public static GrantBlockListGrantBlocksRequest ListGrantBlocks()
         {
             string url = ApiUtil.BuildUrl("grant_blocks");
-            return new GrantBlockListGrantBlocksRequest(url);
+            var request = new GrantBlockListGrantBlocksRequest(url);
+            request.SetTelemetryResource("grantBlock");
+            request.SetTelemetryOperation("listGrantBlocks");
+            return request;
         }
         #endregion
         

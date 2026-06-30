@@ -44,32 +44,50 @@ namespace ChargeBee.Models
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("alerts");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("alert");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("alerts", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("alert");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static AlertListRequest List()
         {
             string url = ApiUtil.BuildUrl("alerts");
-            return new AlertListRequest(url);
+            var request = new AlertListRequest(url);
+            request.SetTelemetryResource("alert");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         public static UpdateRequest Update(string id)
         {
             string url = ApiUtil.BuildUrl("alerts", CheckNull(id));
-            return new UpdateRequest(url, HttpMethod.POST);
+            var request = new UpdateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("alert");
+            request.SetTelemetryOperation("update");
+            return request;
         }
         public static EntityRequest<Type> Delete(string id)
         {
             string url = ApiUtil.BuildUrl("alerts", CheckNull(id), "delete");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("alert");
+            request.SetTelemetryOperation("delete");
+            return request;
         }
         public static AlertApplicationAlertsForSubscriptionRequest ApplicationAlertsForSubscription(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "applicable_alerts");
-            return new AlertApplicationAlertsForSubscriptionRequest(url);
+            var request = new AlertApplicationAlertsForSubscriptionRequest(url);
+            request.SetTelemetryResource("alert");
+            request.SetTelemetryOperation("applicationAlertsForSubscription");
+            return request;
         }
         #endregion
         

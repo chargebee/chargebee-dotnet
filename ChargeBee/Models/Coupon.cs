@@ -44,47 +44,74 @@ namespace ChargeBee.Models
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("coupons");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("coupon");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         public static CreateForItemsRequest CreateForItems()
         {
             string url = ApiUtil.BuildUrl("coupons", "create_for_items");
-            return new CreateForItemsRequest(url, HttpMethod.POST);
+            var request = new CreateForItemsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("coupon");
+            request.SetTelemetryOperation("createForItems");
+            return request;
         }
         public static UpdateForItemsRequest UpdateForItems(string id)
         {
             string url = ApiUtil.BuildUrl("coupons", CheckNull(id), "update_for_items");
-            return new UpdateForItemsRequest(url, HttpMethod.POST);
+            var request = new UpdateForItemsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("coupon");
+            request.SetTelemetryOperation("updateForItems");
+            return request;
         }
         public static CouponListRequest List()
         {
             string url = ApiUtil.BuildUrl("coupons");
-            return new CouponListRequest(url);
+            var request = new CouponListRequest(url);
+            request.SetTelemetryResource("coupon");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("coupons", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("coupon");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static UpdateRequest Update(string id)
         {
             string url = ApiUtil.BuildUrl("coupons", CheckNull(id));
-            return new UpdateRequest(url, HttpMethod.POST);
+            var request = new UpdateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("coupon");
+            request.SetTelemetryOperation("update");
+            return request;
         }
         public static EntityRequest<Type> Delete(string id)
         {
             string url = ApiUtil.BuildUrl("coupons", CheckNull(id), "delete");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("coupon");
+            request.SetTelemetryOperation("delete");
+            return request;
         }
         public static CopyRequest Copy()
         {
             string url = ApiUtil.BuildUrl("coupons", "copy");
-            return new CopyRequest(url, HttpMethod.POST);
+            var request = new CopyRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("coupon");
+            request.SetTelemetryOperation("copy");
+            return request;
         }
         public static EntityRequest<Type> Unarchive(string id)
         {
             string url = ApiUtil.BuildUrl("coupons", CheckNull(id), "unarchive");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("coupon");
+            request.SetTelemetryOperation("unarchive");
+            return request;
         }
         #endregion
         

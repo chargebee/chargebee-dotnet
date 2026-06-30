@@ -44,27 +44,42 @@ namespace ChargeBee.Models
         public static CreateForSubscriptionRequest CreateForSubscription(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "create_ramp");
-            return new CreateForSubscriptionRequest(url, HttpMethod.POST);
+            var request = new CreateForSubscriptionRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("ramp");
+            request.SetTelemetryOperation("createForSubscription");
+            return request;
         }
         public static UpdateRequest Update(string id)
         {
             string url = ApiUtil.BuildUrl("ramps", CheckNull(id), "update");
-            return new UpdateRequest(url, HttpMethod.POST);
+            var request = new UpdateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("ramp");
+            request.SetTelemetryOperation("update");
+            return request;
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("ramps", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("ramp");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static EntityRequest<Type> Delete(string id)
         {
             string url = ApiUtil.BuildUrl("ramps", CheckNull(id), "delete");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("ramp");
+            request.SetTelemetryOperation("delete");
+            return request;
         }
         public static RampListRequest List()
         {
             string url = ApiUtil.BuildUrl("ramps");
-            return new RampListRequest(url);
+            var request = new RampListRequest(url);
+            request.SetTelemetryResource("ramp");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         #endregion
         

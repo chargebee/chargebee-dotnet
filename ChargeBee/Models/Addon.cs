@@ -44,37 +44,58 @@ namespace ChargeBee.Models
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("addons");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("addon");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         public static UpdateRequest Update(string id)
         {
             string url = ApiUtil.BuildUrl("addons", CheckNull(id));
-            return new UpdateRequest(url, HttpMethod.POST);
+            var request = new UpdateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("addon");
+            request.SetTelemetryOperation("update");
+            return request;
         }
         public static AddonListRequest List()
         {
             string url = ApiUtil.BuildUrl("addons");
-            return new AddonListRequest(url);
+            var request = new AddonListRequest(url);
+            request.SetTelemetryResource("addon");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("addons", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("addon");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static EntityRequest<Type> Delete(string id)
         {
             string url = ApiUtil.BuildUrl("addons", CheckNull(id), "delete");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("addon");
+            request.SetTelemetryOperation("delete");
+            return request;
         }
         public static CopyRequest Copy()
         {
             string url = ApiUtil.BuildUrl("addons", "copy");
-            return new CopyRequest(url, HttpMethod.POST);
+            var request = new CopyRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("addon");
+            request.SetTelemetryOperation("copy");
+            return request;
         }
         public static EntityRequest<Type> Unarchive(string id)
         {
             string url = ApiUtil.BuildUrl("addons", CheckNull(id), "unarchive");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("addon");
+            request.SetTelemetryOperation("unarchive");
+            return request;
         }
         #endregion
         

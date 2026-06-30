@@ -4,6 +4,7 @@ using System.Net;
 using System.Threading.Tasks;
 using ChargeBee.Api;
 using ChargeBee.Telemetry;
+using HttpMethod = ChargeBee.Api.HttpMethod;
 
 namespace ChargeBee.Tests.Telemetry
 {
@@ -76,6 +77,35 @@ namespace ChargeBee.Tests.Telemetry
             Assert.Equal(new[] { "start", "end" }, adapter.Events);
             Assert.Equal("chargebee.customer.list", adapter.StartContext.SpanName);
             Assert.Equal(200, adapter.EndResult.HttpStatusCode);
+        }
+
+        [Fact]
+        public void ExecuteEntityRequest_CapturesChargebeeRequestHeaders()
+        {
+            var adapter = new RecordingAdapter();
+            var env = new ApiConfig("acme", "test_key") { TelemetryAdapter = adapter };
+            var requestHeaders = new Dictionary<string, string>
+            {
+                { "chargebee-foo", "bar" },
+                { "chargebee-request-origin-ip", "202.170.207.70" },
+                { "Authorization", "Basic super-secret" },
+            };
+
+            var response = TelemetryExecutor.ExecuteEntityRequest(
+                env,
+                "customer",
+                "list",
+                HttpMethod.GET,
+                "/customers",
+                null,
+                requestHeaders,
+                _ => new EntityResult(HttpStatusCode.OK, "{}"));
+
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            var attrs = adapter.StartContext.StartAttributes;
+            Assert.Equal("bar", attrs["http.request.header.chargebee-foo"]);
+            Assert.False(attrs.ContainsKey("http.request.header.chargebee-request-origin-ip"));
+            Assert.False(attrs.ContainsKey("http.request.header.authorization"));
         }
 
         [Fact]

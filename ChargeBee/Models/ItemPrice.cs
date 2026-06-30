@@ -44,37 +44,58 @@ namespace ChargeBee.Models
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("item_prices");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("itemPrice");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("item_prices", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("itemPrice");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static UpdateRequest Update(string id)
         {
             string url = ApiUtil.BuildUrl("item_prices", CheckNull(id));
-            return new UpdateRequest(url, HttpMethod.POST);
+            var request = new UpdateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("itemPrice");
+            request.SetTelemetryOperation("update");
+            return request;
         }
         public static ItemPriceListRequest List()
         {
             string url = ApiUtil.BuildUrl("item_prices");
-            return new ItemPriceListRequest(url);
+            var request = new ItemPriceListRequest(url);
+            request.SetTelemetryResource("itemPrice");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         public static EntityRequest<Type> Delete(string id)
         {
             string url = ApiUtil.BuildUrl("item_prices", CheckNull(id), "delete");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("itemPrice");
+            request.SetTelemetryOperation("delete");
+            return request;
         }
         public static ItemPriceFindApplicableItemsRequest FindApplicableItems(string id)
         {
             string url = ApiUtil.BuildUrl("item_prices", CheckNull(id), "applicable_items");
-            return new ItemPriceFindApplicableItemsRequest(url);
+            var request = new ItemPriceFindApplicableItemsRequest(url);
+            request.SetTelemetryResource("itemPrice");
+            request.SetTelemetryOperation("findApplicableItems");
+            return request;
         }
         public static ItemPriceFindApplicableItemPricesRequest FindApplicableItemPrices(string id)
         {
             string url = ApiUtil.BuildUrl("item_prices", CheckNull(id), "applicable_item_prices");
-            return new ItemPriceFindApplicableItemPricesRequest(url);
+            var request = new ItemPriceFindApplicableItemPricesRequest(url);
+            request.SetTelemetryResource("itemPrice");
+            request.SetTelemetryOperation("findApplicableItemPrices");
+            return request;
         }
         #endregion
         

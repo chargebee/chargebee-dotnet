@@ -44,12 +44,18 @@ namespace ChargeBee.Models
         public static CreateTransfersRequest CreateTransfers()
         {
             string url = ApiUtil.BuildUrl("business_entities", "transfers");
-            return new CreateTransfersRequest(url, HttpMethod.POST);
+            var request = new CreateTransfersRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("businessEntity");
+            request.SetTelemetryOperation("createTransfers");
+            return request;
         }
         public static BusinessEntityGetTransfersRequest GetTransfers()
         {
             string url = ApiUtil.BuildUrl("business_entities", "transfers");
-            return new BusinessEntityGetTransfersRequest(url);
+            var request = new BusinessEntityGetTransfersRequest(url);
+            request.SetTelemetryResource("businessEntity");
+            request.SetTelemetryOperation("getTransfers");
+            return request;
         }
         #endregion
         

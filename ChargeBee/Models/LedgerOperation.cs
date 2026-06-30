@@ -44,32 +44,50 @@ namespace ChargeBee.Models
         public static EntityRequest<Type> RetrieveLedgerOperation(string id)
         {
             string url = ApiUtil.BuildUrl("ledger_operations", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("ledgerOperation");
+            request.SetTelemetryOperation("retrieveLedgerOperation");
+            return request;
         }
         public static LedgerOperationListLedgerOperationsRequest ListLedgerOperations()
         {
             string url = ApiUtil.BuildUrl("ledger_operations");
-            return new LedgerOperationListLedgerOperationsRequest(url);
+            var request = new LedgerOperationListLedgerOperationsRequest(url);
+            request.SetTelemetryResource("ledgerOperation");
+            request.SetTelemetryOperation("listLedgerOperations");
+            return request;
         }
         public static CaptureRequest Capture()
         {
             string url = ApiUtil.BuildUrl("ledger_operations", "capture");
-            return new CaptureRequest(url, HttpMethod.POST).IsJsonRequest(true).SetIdempotent(false);
+            var request = new CaptureRequest(url, HttpMethod.POST).IsJsonRequest(true).SetIdempotent(false);
+            request.SetTelemetryResource("ledgerOperation");
+            request.SetTelemetryOperation("capture");
+            return request;
         }
         public static AuthorizeRequest Authorize()
         {
             string url = ApiUtil.BuildUrl("ledger_operations", "authorize");
-            return new AuthorizeRequest(url, HttpMethod.POST).IsJsonRequest(true).SetIdempotent(false);
+            var request = new AuthorizeRequest(url, HttpMethod.POST).IsJsonRequest(true).SetIdempotent(false);
+            request.SetTelemetryResource("ledgerOperation");
+            request.SetTelemetryOperation("authorize");
+            return request;
         }
         public static CaptureAuthorizationRequest CaptureAuthorization()
         {
             string url = ApiUtil.BuildUrl("ledger_operations", "capture_authorization");
-            return new CaptureAuthorizationRequest(url, HttpMethod.POST).IsJsonRequest(true).SetIdempotent(false);
+            var request = new CaptureAuthorizationRequest(url, HttpMethod.POST).IsJsonRequest(true).SetIdempotent(false);
+            request.SetTelemetryResource("ledgerOperation");
+            request.SetTelemetryOperation("captureAuthorization");
+            return request;
         }
         public static ReleaseAuthorizationRequest ReleaseAuthorization()
         {
             string url = ApiUtil.BuildUrl("ledger_operations", "release_authorization");
-            return new ReleaseAuthorizationRequest(url, HttpMethod.POST).IsJsonRequest(true).SetIdempotent(false);
+            var request = new ReleaseAuthorizationRequest(url, HttpMethod.POST).IsJsonRequest(true).SetIdempotent(false);
+            request.SetTelemetryResource("ledgerOperation");
+            request.SetTelemetryOperation("releaseAuthorization");
+            return request;
         }
         #endregion
         

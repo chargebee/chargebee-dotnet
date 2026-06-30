@@ -44,27 +44,42 @@ namespace ChargeBee.Models
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("item_families");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("itemFamily");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("item_families", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("itemFamily");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static ItemFamilyListRequest List()
         {
             string url = ApiUtil.BuildUrl("item_families");
-            return new ItemFamilyListRequest(url);
+            var request = new ItemFamilyListRequest(url);
+            request.SetTelemetryResource("itemFamily");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         public static UpdateRequest Update(string id)
         {
             string url = ApiUtil.BuildUrl("item_families", CheckNull(id));
-            return new UpdateRequest(url, HttpMethod.POST);
+            var request = new UpdateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("itemFamily");
+            request.SetTelemetryOperation("update");
+            return request;
         }
         public static EntityRequest<Type> Delete(string id)
         {
             string url = ApiUtil.BuildUrl("item_families", CheckNull(id), "delete");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("itemFamily");
+            request.SetTelemetryOperation("delete");
+            return request;
         }
         #endregion
         

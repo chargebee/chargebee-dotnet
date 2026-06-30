@@ -44,12 +44,18 @@ namespace ChargeBee.Models
         public static EventListRequest List()
         {
             string url = ApiUtil.BuildUrl("events");
-            return new EventListRequest(url);
+            var request = new EventListRequest(url);
+            request.SetTelemetryResource("event");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("events", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("event");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         #endregion
         

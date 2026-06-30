@@ -44,22 +44,34 @@ namespace ChargeBee.Models
         public static ItemEntitlementItemEntitlementsForItemRequest ItemEntitlementsForItem(string id)
         {
             string url = ApiUtil.BuildUrl("items", CheckNull(id), "item_entitlements");
-            return new ItemEntitlementItemEntitlementsForItemRequest(url);
+            var request = new ItemEntitlementItemEntitlementsForItemRequest(url);
+            request.SetTelemetryResource("itemEntitlement");
+            request.SetTelemetryOperation("itemEntitlementsForItem");
+            return request;
         }
         public static ItemEntitlementItemEntitlementsForFeatureRequest ItemEntitlementsForFeature(string id)
         {
             string url = ApiUtil.BuildUrl("features", CheckNull(id), "item_entitlements");
-            return new ItemEntitlementItemEntitlementsForFeatureRequest(url);
+            var request = new ItemEntitlementItemEntitlementsForFeatureRequest(url);
+            request.SetTelemetryResource("itemEntitlement");
+            request.SetTelemetryOperation("itemEntitlementsForFeature");
+            return request;
         }
         public static AddItemEntitlementsRequest AddItemEntitlements(string id)
         {
             string url = ApiUtil.BuildUrl("features", CheckNull(id), "item_entitlements");
-            return new AddItemEntitlementsRequest(url, HttpMethod.POST);
+            var request = new AddItemEntitlementsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("itemEntitlement");
+            request.SetTelemetryOperation("addItemEntitlements");
+            return request;
         }
         public static UpsertOrRemoveItemEntitlementsForItemRequest UpsertOrRemoveItemEntitlementsForItem(string id)
         {
             string url = ApiUtil.BuildUrl("items", CheckNull(id), "item_entitlements");
-            return new UpsertOrRemoveItemEntitlementsForItemRequest(url, HttpMethod.POST);
+            var request = new UpsertOrRemoveItemEntitlementsForItemRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("itemEntitlement");
+            request.SetTelemetryOperation("upsertOrRemoveItemEntitlementsForItem");
+            return request;
         }
         #endregion
         

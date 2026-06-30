@@ -44,12 +44,18 @@ namespace ChargeBee.Models
         public static UploadUrlRequest UploadUrl()
         {
             string url = ApiUtil.BuildUrl("usage_files", "upload_url");
-            return new UploadUrlRequest(url, HttpMethod.POST).SetSubDomain("file-ingest").SetIdempotent(false);
+            var request = new UploadUrlRequest(url, HttpMethod.POST).SetSubDomain("file-ingest").SetIdempotent(false);
+            request.SetTelemetryResource("usageFile");
+            request.SetTelemetryOperation("uploadUrl");
+            return request;
         }
         public static ProcessingStatusRequest ProcessingStatus(string id)
         {
             string url = ApiUtil.BuildUrl("usage_files", CheckNull(id), "processing_status");
-            return new ProcessingStatusRequest(url, HttpMethod.GET).SetSubDomain("file-ingest");
+            var request = new ProcessingStatusRequest(url, HttpMethod.GET).SetSubDomain("file-ingest");
+            request.SetTelemetryResource("usageFile");
+            request.SetTelemetryOperation("processingStatus");
+            return request;
         }
         #endregion
         

@@ -44,7 +44,10 @@ namespace ChargeBee.Models
         public static PromotionalGrantsRequest PromotionalGrants()
         {
             string url = ApiUtil.BuildUrl("promotional_grants");
-            return new PromotionalGrantsRequest(url, HttpMethod.POST).IsJsonRequest(true);
+            var request = new PromotionalGrantsRequest(url, HttpMethod.POST).IsJsonRequest(true);
+            request.SetTelemetryResource("promotionalGrant");
+            request.SetTelemetryOperation("promotionalGrants");
+            return request;
         }
         #endregion
         
