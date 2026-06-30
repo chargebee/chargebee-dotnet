@@ -183,7 +183,7 @@ EntityResult result = Customer.Create()
 
 **Optional add-on.** Existing integrations do not need any changes — if you never set a telemetry adapter, API calls behave exactly as before.
 
-Set an `ITelemetryAdapter` when you want Chargebee API calls traced in your observability stack (Datadog, New Relic, Splunk, Honeycomb, Jaeger, etc.). OpenTelemetry is **not** bundled with the Chargebee SDK; install and configure OTel (or your APM SDK) in your application and wire it through the adapter.
+Set an `ITelemetryAdapter` when you want Chargebee API calls traced in your observability stack (Datadog, Splunk, Honeycomb, Jaeger, etc.). OpenTelemetry is **not** bundled with the Chargebee SDK; install and configure OTel (or your APM SDK) in your application and wire it through the adapter.
 
 The SDK builds standardized span attributes (`StartAttributes`, `EndAttributes`) following stable [OpenTelemetry HTTP semantic conventions](https://opentelemetry.io/docs/specs/semconv/http/http-spans/) (`url.full`, `http.request.method`, `http.response.status_code`, `server.address`, `error.type`) plus Chargebee-specific `chargebee.*` attributes (see `TelemetryAttributeKeys`).
 
@@ -191,26 +191,107 @@ Span names follow `chargebee.{resource}.{operation}`. One span is created per SD
 
 Configure at startup (either form works):
 
+Install OTel packages in your app (not included in the Chargebee SDK):
+
+```shell
+dotnet add package OpenTelemetry
+dotnet add package OpenTelemetry.Exporter.OpenTelemetryProtocol
+```
+
 ```cs
 using System.Collections.Generic;
+using System.Diagnostics;
 using ChargeBee.Api;
+using ChargeBee.Models;
 using ChargeBee.Telemetry;
+using OpenTelemetry;
+using OpenTelemetry.Context.Propagation;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 
-public class MyTelemetryAdapter : ITelemetryAdapter
+const string ActivitySourceName = "chargebee-dotnet";
+using var activitySource = new ActivitySource(ActivitySourceName);
+using var tracerProvider = Sdk.CreateTracerProviderBuilder()
+    .ConfigureResource(resource => resource.AddService("my-app"))
+    .AddSource(ActivitySourceName)
+    .AddOtlpExporter(options =>
+    {
+        options.Endpoint = new Uri("http://localhost:4317"); // your OTLP collector
+    })
+    .Build();
+
+// Option 1: pass the adapter when configuring the client
+ApiConfig.Configure("site", "api_key", new OtelTelemetryAdapter(activitySource));
+
+// Option 2: configure first, then attach an adapter later
+// ApiConfig.Configure("site", "api_key");
+// ApiConfig.SetTelemetryAdapter(new OtelTelemetryAdapter(activitySource));
+
+EntityResult result = Customer.List().Limit(1).Request();
+
+sealed class OtelTelemetryAdapter : ITelemetryAdapter
 {
+    private readonly ActivitySource _activitySource;
+
+    public OtelTelemetryAdapter(ActivitySource activitySource)
+    {
+        _activitySource = activitySource;
+    }
+
     public object OnRequestStart(RequestTelemetryContext context, Dictionary<string, string> requestHeaders)
     {
-        // Start a span using context.StartAttributes and inject trace headers into requestHeaders
-        return null;
+        var activity = _activitySource.StartActivity(context.SpanName, ActivityKind.Client);
+        if (activity == null)
+        {
+            return null!;
+        }
+
+        foreach (var kv in context.StartAttributes)
+        {
+            activity.SetTag(kv.Key, kv.Value);
+        }
+
+        // requestHeaders is merged into the outbound HTTP request — inject W3C trace context here
+        Propagators.DefaultTextMapPropagator.Inject(
+            new PropagationContext(activity.Context, baggage: default),
+            requestHeaders,
+            (carrier, key, value) => carrier[key] = value);
+
+        return activity;
     }
 
     public void OnRequestEnd(object handle, RequestTelemetryResult result)
     {
-        // End the span using result.EndAttributes
+        if (handle is not Activity activity)
+        {
+            return;
+        }
+
+        foreach (var kv in result.EndAttributes)
+        {
+            activity.SetTag(kv.Key, kv.Value);
+        }
+
+        if (result.Error != null)
+        {
+            activity.SetStatus(ActivityStatusCode.Error, result.Error.Message);
+        }
+        else
+        {
+            activity.SetStatus(ActivityStatusCode.Ok);
+        }
+
+        activity.Dispose();
     }
 }
+```
 
-ApiConfig.Configure("site", "api_key", new MyTelemetryAdapter());
+To pass custom `chargebee-*` headers (promoted to `http.request.header.chargebee-*` span attributes), chain `.Header(...)` on the request:
+
+```cs
+Customer.List()
+    .Header("chargebee-business-entity-id", "entity-id")
+    .Request();
 ```
 
 ## Contribution
