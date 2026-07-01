@@ -109,6 +109,20 @@ namespace ChargeBee.Tests.Telemetry
         }
 
         [Fact]
+        public void EntityRequestSystemTypeTelemetrySettersDoNotThrow()
+        {
+            var request = new EntityRequest<Type>("/webhook_endpoints/wh_123", HttpMethod.GET);
+
+            var exception = Record.Exception(() =>
+            {
+                request.SetTelemetryResource("webhookEndpoint");
+                request.SetTelemetryOperation("retrieve");
+            });
+
+            Assert.Null(exception);
+        }
+
+        [Fact]
         public async Task ExecuteEntityRequestAsync_RecordsChargebeeError()
         {
             var adapter = new RecordingAdapter();
@@ -139,6 +153,8 @@ namespace ChargeBee.Tests.Telemetry
             Assert.Equal(new[] { "start", "end" }, adapter.Events);
             Assert.Equal(404, adapter.EndResult.HttpStatusCode);
             Assert.Equal("resource_not_found", adapter.EndResult.Error.ChargebeeErrorCode);
+            Assert.Equal("invalid_request", adapter.EndResult.EndAttributes[TelemetryAttributeKeys.ERROR_TYPE]);
+            Assert.Equal("invalid_request", adapter.EndResult.EndAttributes[TelemetryAttributeKeys.CHARGEBEE_ERROR_TYPE]);
         }
     }
 }

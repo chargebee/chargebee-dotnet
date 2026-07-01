@@ -94,14 +94,14 @@ namespace ChargeBee.Telemetry
 
             if (error != null)
             {
-                attributes[TelemetryAttributeKeys.ERROR_TYPE] = httpStatusCode.ToString();
+                if (!string.IsNullOrEmpty(error.ChargebeeApiErrorType))
+                {
+                    attributes[TelemetryAttributeKeys.ERROR_TYPE] = error.ChargebeeApiErrorType;
+                    attributes[TelemetryAttributeKeys.CHARGEBEE_ERROR_TYPE] = error.ChargebeeApiErrorType;
+                }
                 if (!string.IsNullOrEmpty(error.ChargebeeErrorCode))
                 {
                     attributes[TelemetryAttributeKeys.CHARGEBEE_ERROR_CODE] = error.ChargebeeErrorCode;
-                }
-                if (!string.IsNullOrEmpty(error.ChargebeeApiErrorType))
-                {
-                    attributes[TelemetryAttributeKeys.CHARGEBEE_ERROR_TYPE] = error.ChargebeeApiErrorType;
                 }
                 if (!string.IsNullOrEmpty(error.ChargebeeErrorParam))
                 {

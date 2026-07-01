@@ -43,16 +43,14 @@ namespace ChargeBee.Api
 			return (T)Convert.ChangeType (this, typeof(T));
 		}
 
-		public T SetTelemetryResource(string telemetryResource)
+		public void SetTelemetryResource(string telemetryResource)
 		{
 			telemetry_resource = telemetryResource;
-			return (T)Convert.ChangeType(this, typeof(T));
 		}
 
-		public T SetTelemetryOperation(string telemetryOperation)
+		public void SetTelemetryOperation(string telemetryOperation)
 		{
 			telemetry_operation = telemetryOperation;
-			return (T)Convert.ChangeType(this, typeof(T));
 		}
 		
 		public T SetIdempotencyKey(string idempotencyKey){
