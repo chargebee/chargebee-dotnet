@@ -5,7 +5,7 @@ using ChargeBee.Internal;
 
 namespace ChargeBee.Api
 {
-	public class EntityRequest<T>
+	public class EntityRequest<T> where T : class
     {
 		protected string m_url;
         protected HttpMethod m_method;
