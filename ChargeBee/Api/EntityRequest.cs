@@ -5,7 +5,7 @@ using ChargeBee.Internal;
 
 namespace ChargeBee.Api
 {
-	public class EntityRequest<T>
+	public class EntityRequest<T> where T : class
     {
 		protected string m_url;
         protected HttpMethod m_method;
@@ -14,6 +14,8 @@ namespace ChargeBee.Api
 		protected bool m_supportsFilter;
 		protected bool is_json_request = false;
         protected string sub_domain;
+        protected string telemetry_resource;
+        protected string telemetry_operation;
         private readonly Dictionary<string, dynamic> _options = new Dictionary<string, dynamic>();
 
 		public EntityRequest(string url, HttpMethod method, bool supportsFilter = false)
@@ -39,6 +41,18 @@ namespace ChargeBee.Api
 		{
 			_options.Add(EntityRequestConstants.IdempotencyOption, isIdempotent);
 			return (T)Convert.ChangeType (this, typeof(T));
+		}
+
+		public T SetTelemetryResource(string telemetryResource)
+		{
+			telemetry_resource = telemetryResource;
+			return this as T;
+		}
+
+		public T SetTelemetryOperation(string telemetryOperation)
+		{
+			telemetry_operation = telemetryOperation;
+			return this as T;
 		}
 		
 		public T SetIdempotencyKey(string idempotencyKey){
@@ -73,34 +87,70 @@ namespace ChargeBee.Api
 
         public EntityResult Request(ApiConfig env)
         {
-            switch (m_method)
-            {
-                case HttpMethod.GET:
-					return ApiUtil.Get(m_url, m_params, headers, env, m_supportsFilter, sub_domain, is_json_request, _options);
-                case HttpMethod.POST:
-					return ApiUtil.Post(m_url, m_params, headers, env, m_supportsFilter, sub_domain, is_json_request, _options);
-                default:
-                    throw new NotImplementedException(String.Format(
-                        "HTTP method {0} is not implemented",
-                        Enum.GetName(typeof(HttpMethod), m_method)));
-            }
-
+            return TelemetryExecutor.ExecuteEntityRequest(
+                env,
+                telemetry_resource,
+                telemetry_operation,
+                m_method,
+                m_url,
+                sub_domain,
+                headers,
+                telemetryHeaders =>
+                {
+                    var requestHeaders = MergeHeaders(telemetryHeaders);
+                    switch (m_method)
+                    {
+                        case HttpMethod.GET:
+                            return ApiUtil.Get(m_url, m_params, requestHeaders, env, m_supportsFilter, sub_domain, is_json_request, _options);
+                        case HttpMethod.POST:
+                            return ApiUtil.Post(m_url, m_params, requestHeaders, env, m_supportsFilter, sub_domain, is_json_request, _options);
+                        default:
+                            throw new NotImplementedException(String.Format(
+                                "HTTP method {0} is not implemented",
+                                Enum.GetName(typeof(HttpMethod), m_method)));
+                    }
+                });
         }
 
         public Task<EntityResult> RequestAsync(ApiConfig env)
         {
-            switch (m_method)
-            {
-                case HttpMethod.GET:
-                    return ApiUtil.GetAsync(m_url, m_params, headers, env, m_supportsFilter, sub_domain, is_json_request, _options);
-                case HttpMethod.POST:
-                    return ApiUtil.PostAsync(m_url, m_params, headers, env, m_supportsFilter, sub_domain, is_json_request, _options);
-                default:
-                    throw new NotImplementedException(String.Format(
-                        "HTTP method {0} is not implemented",
-                        Enum.GetName(typeof(HttpMethod), m_method)));
-            }
+            return TelemetryExecutor.ExecuteEntityRequestAsync(
+                env,
+                telemetry_resource,
+                telemetry_operation,
+                m_method,
+                m_url,
+                sub_domain,
+                headers,
+                telemetryHeaders =>
+                {
+                    var requestHeaders = MergeHeaders(telemetryHeaders);
+                    switch (m_method)
+                    {
+                        case HttpMethod.GET:
+                            return ApiUtil.GetAsync(m_url, m_params, requestHeaders, env, m_supportsFilter, sub_domain, is_json_request, _options);
+                        case HttpMethod.POST:
+                            return ApiUtil.PostAsync(m_url, m_params, requestHeaders, env, m_supportsFilter, sub_domain, is_json_request, _options);
+                        default:
+                            throw new NotImplementedException(String.Format(
+                                "HTTP method {0} is not implemented",
+                                Enum.GetName(typeof(HttpMethod), m_method)));
+                    }
+                });
+        }
 
+        private Dictionary<string, string> MergeHeaders(Dictionary<string, string> telemetryHeaders)
+        {
+            var merged = new Dictionary<string, string>(headers);
+            if (telemetryHeaders == null)
+            {
+                return merged;
+            }
+            foreach (var header in telemetryHeaders)
+            {
+                merged[header.Key] = header.Value;
+            }
+            return merged;
         }
     }
 }

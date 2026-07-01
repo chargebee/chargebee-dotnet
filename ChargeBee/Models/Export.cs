@@ -46,92 +46,146 @@ namespace ChargeBee.Models
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("exports", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("export");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static RevenueRecognitionRequest RevenueRecognition()
         {
             string url = ApiUtil.BuildUrl("exports", "revenue_recognition");
-            return new RevenueRecognitionRequest(url, HttpMethod.POST, true);
+            var request = new RevenueRecognitionRequest(url, HttpMethod.POST, true);
+            request.SetTelemetryResource("export");
+            request.SetTelemetryOperation("revenueRecognition");
+            return request;
         }
         public static DeferredRevenueRequest DeferredRevenue()
         {
             string url = ApiUtil.BuildUrl("exports", "deferred_revenue");
-            return new DeferredRevenueRequest(url, HttpMethod.POST, true);
+            var request = new DeferredRevenueRequest(url, HttpMethod.POST, true);
+            request.SetTelemetryResource("export");
+            request.SetTelemetryOperation("deferredRevenue");
+            return request;
         }
         public static PlansRequest Plans()
         {
             string url = ApiUtil.BuildUrl("exports", "plans");
-            return new PlansRequest(url, HttpMethod.POST, true);
+            var request = new PlansRequest(url, HttpMethod.POST, true);
+            request.SetTelemetryResource("export");
+            request.SetTelemetryOperation("plans");
+            return request;
         }
         public static AddonsRequest Addons()
         {
             string url = ApiUtil.BuildUrl("exports", "addons");
-            return new AddonsRequest(url, HttpMethod.POST, true);
+            var request = new AddonsRequest(url, HttpMethod.POST, true);
+            request.SetTelemetryResource("export");
+            request.SetTelemetryOperation("addons");
+            return request;
         }
         public static CouponsRequest Coupons()
         {
             string url = ApiUtil.BuildUrl("exports", "coupons");
-            return new CouponsRequest(url, HttpMethod.POST, true);
+            var request = new CouponsRequest(url, HttpMethod.POST, true);
+            request.SetTelemetryResource("export");
+            request.SetTelemetryOperation("coupons");
+            return request;
         }
         public static CustomersRequest Customers()
         {
             string url = ApiUtil.BuildUrl("exports", "customers");
-            return new CustomersRequest(url, HttpMethod.POST, true);
+            var request = new CustomersRequest(url, HttpMethod.POST, true);
+            request.SetTelemetryResource("export");
+            request.SetTelemetryOperation("customers");
+            return request;
         }
         public static SubscriptionsRequest Subscriptions()
         {
             string url = ApiUtil.BuildUrl("exports", "subscriptions");
-            return new SubscriptionsRequest(url, HttpMethod.POST, true);
+            var request = new SubscriptionsRequest(url, HttpMethod.POST, true);
+            request.SetTelemetryResource("export");
+            request.SetTelemetryOperation("subscriptions");
+            return request;
         }
         public static InvoicesRequest Invoices()
         {
             string url = ApiUtil.BuildUrl("exports", "invoices");
-            return new InvoicesRequest(url, HttpMethod.POST, true);
+            var request = new InvoicesRequest(url, HttpMethod.POST, true);
+            request.SetTelemetryResource("export");
+            request.SetTelemetryOperation("invoices");
+            return request;
         }
         public static CreditNotesRequest CreditNotes()
         {
             string url = ApiUtil.BuildUrl("exports", "credit_notes");
-            return new CreditNotesRequest(url, HttpMethod.POST, true);
+            var request = new CreditNotesRequest(url, HttpMethod.POST, true);
+            request.SetTelemetryResource("export");
+            request.SetTelemetryOperation("creditNotes");
+            return request;
         }
         public static TransactionsRequest Transactions()
         {
             string url = ApiUtil.BuildUrl("exports", "transactions");
-            return new TransactionsRequest(url, HttpMethod.POST, true);
+            var request = new TransactionsRequest(url, HttpMethod.POST, true);
+            request.SetTelemetryResource("export");
+            request.SetTelemetryOperation("transactions");
+            return request;
         }
         public static OrdersRequest Orders()
         {
             string url = ApiUtil.BuildUrl("exports", "orders");
-            return new OrdersRequest(url, HttpMethod.POST, true);
+            var request = new OrdersRequest(url, HttpMethod.POST, true);
+            request.SetTelemetryResource("export");
+            request.SetTelemetryOperation("orders");
+            return request;
         }
         public static ItemFamiliesRequest ItemFamilies()
         {
             string url = ApiUtil.BuildUrl("exports", "item_families");
-            return new ItemFamiliesRequest(url, HttpMethod.POST, true);
+            var request = new ItemFamiliesRequest(url, HttpMethod.POST, true);
+            request.SetTelemetryResource("export");
+            request.SetTelemetryOperation("itemFamilies");
+            return request;
         }
         public static ItemsRequest Items()
         {
             string url = ApiUtil.BuildUrl("exports", "items");
-            return new ItemsRequest(url, HttpMethod.POST, true);
+            var request = new ItemsRequest(url, HttpMethod.POST, true);
+            request.SetTelemetryResource("export");
+            request.SetTelemetryOperation("items");
+            return request;
         }
         public static ItemPricesRequest ItemPrices()
         {
             string url = ApiUtil.BuildUrl("exports", "item_prices");
-            return new ItemPricesRequest(url, HttpMethod.POST, true);
+            var request = new ItemPricesRequest(url, HttpMethod.POST, true);
+            request.SetTelemetryResource("export");
+            request.SetTelemetryOperation("itemPrices");
+            return request;
         }
         public static AttachedItemsRequest AttachedItems()
         {
             string url = ApiUtil.BuildUrl("exports", "attached_items");
-            return new AttachedItemsRequest(url, HttpMethod.POST, true);
+            var request = new AttachedItemsRequest(url, HttpMethod.POST, true);
+            request.SetTelemetryResource("export");
+            request.SetTelemetryOperation("attachedItems");
+            return request;
         }
         public static DifferentialPricesRequest DifferentialPrices()
         {
             string url = ApiUtil.BuildUrl("exports", "differential_prices");
-            return new DifferentialPricesRequest(url, HttpMethod.POST, true);
+            var request = new DifferentialPricesRequest(url, HttpMethod.POST, true);
+            request.SetTelemetryResource("export");
+            request.SetTelemetryOperation("differentialPrices");
+            return request;
         }
         public static PriceVariantsRequest PriceVariants()
         {
             string url = ApiUtil.BuildUrl("exports", "price_variants");
-            return new PriceVariantsRequest(url, HttpMethod.POST, true);
+            var request = new PriceVariantsRequest(url, HttpMethod.POST, true);
+            request.SetTelemetryResource("export");
+            request.SetTelemetryOperation("priceVariants");
+            return request;
         }
         #endregion
         

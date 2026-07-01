@@ -44,7 +44,10 @@ namespace ChargeBee.Models
         public static RetrieveLatestRequest RetrieveLatest()
         {
             string url = ApiUtil.BuildUrl("resource_migrations", "retrieve_latest");
-            return new RetrieveLatestRequest(url, HttpMethod.GET);
+            var request = new RetrieveLatestRequest(url, HttpMethod.GET);
+            request.SetTelemetryResource("resourceMigration");
+            request.SetTelemetryOperation("retrieveLatest");
+            return request;
         }
         #endregion
         

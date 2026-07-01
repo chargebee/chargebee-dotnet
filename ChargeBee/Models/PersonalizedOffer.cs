@@ -44,7 +44,10 @@ namespace ChargeBee.Models
         public static PersonalizedOffersRequest PersonalizedOffers()
         {
             string url = ApiUtil.BuildUrl("personalized_offers");
-            return new PersonalizedOffersRequest(url, HttpMethod.POST).SetSubDomain("grow").IsJsonRequest(true).SetIdempotent(false);
+            var request = new PersonalizedOffersRequest(url, HttpMethod.POST).SetSubDomain("grow").IsJsonRequest(true).SetIdempotent(false);
+            request.SetTelemetryResource("personalizedOffer");
+            request.SetTelemetryOperation("personalizedOffers");
+            return request;
         }
         #endregion
         

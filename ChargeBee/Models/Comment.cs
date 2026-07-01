@@ -44,22 +44,34 @@ namespace ChargeBee.Models
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("comments");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("comment");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("comments", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("comment");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static CommentListRequest List()
         {
             string url = ApiUtil.BuildUrl("comments");
-            return new CommentListRequest(url);
+            var request = new CommentListRequest(url);
+            request.SetTelemetryResource("comment");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         public static EntityRequest<Type> Delete(string id)
         {
             string url = ApiUtil.BuildUrl("comments", CheckNull(id), "delete");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("comment");
+            request.SetTelemetryOperation("delete");
+            return request;
         }
         #endregion
         

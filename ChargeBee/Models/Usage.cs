@@ -44,27 +44,42 @@ namespace ChargeBee.Models
         public static CreateRequest Create(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "usages");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("usage");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         public static RetrieveRequest Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "usages");
-            return new RetrieveRequest(url, HttpMethod.GET);
+            var request = new RetrieveRequest(url, HttpMethod.GET);
+            request.SetTelemetryResource("usage");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static DeleteRequest Delete(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "delete_usage");
-            return new DeleteRequest(url, HttpMethod.POST);
+            var request = new DeleteRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("usage");
+            request.SetTelemetryOperation("delete");
+            return request;
         }
         public static UsageListRequest List()
         {
             string url = ApiUtil.BuildUrl("usages");
-            return new UsageListRequest(url);
+            var request = new UsageListRequest(url);
+            request.SetTelemetryResource("usage");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         public static PdfRequest Pdf()
         {
             string url = ApiUtil.BuildUrl("usages", "pdf");
-            return new PdfRequest(url, HttpMethod.POST);
+            var request = new PdfRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("usage");
+            request.SetTelemetryOperation("pdf");
+            return request;
         }
         #endregion
         

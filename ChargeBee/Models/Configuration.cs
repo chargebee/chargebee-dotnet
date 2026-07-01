@@ -44,7 +44,10 @@ namespace ChargeBee.Models
         public static EntityRequest<Type> List()
         {
             string url = ApiUtil.BuildUrl("configurations");
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("configuration");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         #endregion
         

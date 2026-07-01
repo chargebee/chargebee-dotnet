@@ -44,12 +44,18 @@ namespace ChargeBee.Models
         public static AddEntitlementOverrideForSubscriptionRequest AddEntitlementOverrideForSubscription(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "entitlement_overrides");
-            return new AddEntitlementOverrideForSubscriptionRequest(url, HttpMethod.POST);
+            var request = new AddEntitlementOverrideForSubscriptionRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("entitlementOverride");
+            request.SetTelemetryOperation("addEntitlementOverrideForSubscription");
+            return request;
         }
         public static EntitlementOverrideListEntitlementOverrideForSubscriptionRequest ListEntitlementOverrideForSubscription(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "entitlement_overrides");
-            return new EntitlementOverrideListEntitlementOverrideForSubscriptionRequest(url);
+            var request = new EntitlementOverrideListEntitlementOverrideForSubscriptionRequest(url);
+            request.SetTelemetryResource("entitlementOverride");
+            request.SetTelemetryOperation("listEntitlementOverrideForSubscription");
+            return request;
         }
         #endregion
         

@@ -44,12 +44,18 @@ namespace ChargeBee.Models
         public static EntitlementListRequest List()
         {
             string url = ApiUtil.BuildUrl("entitlements");
-            return new EntitlementListRequest(url);
+            var request = new EntitlementListRequest(url);
+            request.SetTelemetryResource("entitlement");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("entitlements");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("entitlement");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         #endregion
         

@@ -44,27 +44,42 @@ namespace ChargeBee.Models
         public static CreateRequest Create(string id)
         {
             string url = ApiUtil.BuildUrl("item_prices", CheckNull(id), "differential_prices");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("differentialPrice");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         public static RetrieveRequest Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("differential_prices", CheckNull(id));
-            return new RetrieveRequest(url, HttpMethod.GET);
+            var request = new RetrieveRequest(url, HttpMethod.GET);
+            request.SetTelemetryResource("differentialPrice");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static UpdateRequest Update(string id)
         {
             string url = ApiUtil.BuildUrl("differential_prices", CheckNull(id));
-            return new UpdateRequest(url, HttpMethod.POST);
+            var request = new UpdateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("differentialPrice");
+            request.SetTelemetryOperation("update");
+            return request;
         }
         public static DeleteRequest Delete(string id)
         {
             string url = ApiUtil.BuildUrl("differential_prices", CheckNull(id), "delete");
-            return new DeleteRequest(url, HttpMethod.POST);
+            var request = new DeleteRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("differentialPrice");
+            request.SetTelemetryOperation("delete");
+            return request;
         }
         public static DifferentialPriceListRequest List()
         {
             string url = ApiUtil.BuildUrl("differential_prices");
-            return new DifferentialPriceListRequest(url);
+            var request = new DifferentialPriceListRequest(url);
+            request.SetTelemetryResource("differentialPrice");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         #endregion
         

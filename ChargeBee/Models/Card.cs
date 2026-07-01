@@ -44,27 +44,42 @@ namespace ChargeBee.Models
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("cards", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("card");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static UpdateCardForCustomerRequest UpdateCardForCustomer(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "credit_card");
-            return new UpdateCardForCustomerRequest(url, HttpMethod.POST);
+            var request = new UpdateCardForCustomerRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("card");
+            request.SetTelemetryOperation("updateCardForCustomer");
+            return request;
         }
         public static SwitchGatewayForCustomerRequest SwitchGatewayForCustomer(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "switch_gateway");
-            return new SwitchGatewayForCustomerRequest(url, HttpMethod.POST);
+            var request = new SwitchGatewayForCustomerRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("card");
+            request.SetTelemetryOperation("switchGatewayForCustomer");
+            return request;
         }
         public static CopyCardForCustomerRequest CopyCardForCustomer(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "copy_card");
-            return new CopyCardForCustomerRequest(url, HttpMethod.POST);
+            var request = new CopyCardForCustomerRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("card");
+            request.SetTelemetryOperation("copyCardForCustomer");
+            return request;
         }
         public static EntityRequest<Type> DeleteCardForCustomer(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "delete_card");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("card");
+            request.SetTelemetryOperation("deleteCardForCustomer");
+            return request;
         }
         #endregion
         

@@ -44,27 +44,42 @@ namespace ChargeBee.Models
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("price_variants");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("priceVariant");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("price_variants", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("priceVariant");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static UpdateRequest Update(string id)
         {
             string url = ApiUtil.BuildUrl("price_variants", CheckNull(id));
-            return new UpdateRequest(url, HttpMethod.POST);
+            var request = new UpdateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("priceVariant");
+            request.SetTelemetryOperation("update");
+            return request;
         }
         public static EntityRequest<Type> Delete(string id)
         {
             string url = ApiUtil.BuildUrl("price_variants", CheckNull(id), "delete");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("priceVariant");
+            request.SetTelemetryOperation("delete");
+            return request;
         }
         public static PriceVariantListRequest List()
         {
             string url = ApiUtil.BuildUrl("price_variants");
-            return new PriceVariantListRequest(url);
+            var request = new PriceVariantListRequest(url);
+            request.SetTelemetryResource("priceVariant");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         #endregion
         

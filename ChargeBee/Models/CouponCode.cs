@@ -45,22 +45,34 @@ namespace ChargeBee.Models
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("coupon_codes");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("couponCode");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("coupon_codes", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("couponCode");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static CouponCodeListRequest List()
         {
             string url = ApiUtil.BuildUrl("coupon_codes");
-            return new CouponCodeListRequest(url);
+            var request = new CouponCodeListRequest(url);
+            request.SetTelemetryResource("couponCode");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         public static EntityRequest<Type> Archive(string id)
         {
             string url = ApiUtil.BuildUrl("coupon_codes", CheckNull(id), "archive");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("couponCode");
+            request.SetTelemetryOperation("archive");
+            return request;
         }
         #endregion
         

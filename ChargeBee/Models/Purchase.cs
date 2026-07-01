@@ -44,12 +44,18 @@ namespace ChargeBee.Models
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("purchases");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("purchase");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         public static EstimateRequest Estimate()
         {
             string url = ApiUtil.BuildUrl("purchases", "estimate");
-            return new EstimateRequest(url, HttpMethod.POST).SetIdempotent(false);
+            var request = new EstimateRequest(url, HttpMethod.POST).SetIdempotent(false);
+            request.SetTelemetryResource("purchase");
+            request.SetTelemetryOperation("estimate");
+            return request;
         }
         #endregion
         

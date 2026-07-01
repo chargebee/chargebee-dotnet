@@ -44,114 +44,180 @@ namespace ChargeBee.Models
         public static CheckoutNewRequest CheckoutNew()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "checkout_new");
-            return new CheckoutNewRequest(url, HttpMethod.POST);
+            var request = new CheckoutNewRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("hostedPage");
+            request.SetTelemetryOperation("checkoutNew");
+            return request;
         }
         public static CheckoutOneTimeRequest CheckoutOneTime()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "checkout_one_time");
-            return new CheckoutOneTimeRequest(url, HttpMethod.POST);
+            var request = new CheckoutOneTimeRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("hostedPage");
+            request.SetTelemetryOperation("checkoutOneTime");
+            return request;
         }
         public static CheckoutOneTimeForItemsRequest CheckoutOneTimeForItems()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "checkout_one_time_for_items");
-            return new CheckoutOneTimeForItemsRequest(url, HttpMethod.POST);
+            var request = new CheckoutOneTimeForItemsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("hostedPage");
+            request.SetTelemetryOperation("checkoutOneTimeForItems");
+            return request;
         }
         public static CheckoutNewForItemsRequest CheckoutNewForItems()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "checkout_new_for_items");
-            return new CheckoutNewForItemsRequest(url, HttpMethod.POST);
+            var request = new CheckoutNewForItemsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("hostedPage");
+            request.SetTelemetryOperation("checkoutNewForItems");
+            return request;
         }
         public static CheckoutExistingRequest CheckoutExisting()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "checkout_existing");
-            return new CheckoutExistingRequest(url, HttpMethod.POST);
+            var request = new CheckoutExistingRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("hostedPage");
+            request.SetTelemetryOperation("checkoutExisting");
+            return request;
         }
         public static CheckoutExistingForItemsRequest CheckoutExistingForItems()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "checkout_existing_for_items");
-            return new CheckoutExistingForItemsRequest(url, HttpMethod.POST);
+            var request = new CheckoutExistingForItemsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("hostedPage");
+            request.SetTelemetryOperation("checkoutExistingForItems");
+            return request;
         }
         [Obsolete]
         public static UpdateCardRequest UpdateCard()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "update_card");
-            return new UpdateCardRequest(url, HttpMethod.POST);
+            var request = new UpdateCardRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("hostedPage");
+            request.SetTelemetryOperation("updateCard");
+            return request;
         }
         [Obsolete]
         public static UpdatePaymentMethodRequest UpdatePaymentMethod()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "update_payment_method");
-            return new UpdatePaymentMethodRequest(url, HttpMethod.POST);
+            var request = new UpdatePaymentMethodRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("hostedPage");
+            request.SetTelemetryOperation("updatePaymentMethod");
+            return request;
         }
         public static ManagePaymentSourcesRequest ManagePaymentSources()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "manage_payment_sources");
-            return new ManagePaymentSourcesRequest(url, HttpMethod.POST);
+            var request = new ManagePaymentSourcesRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("hostedPage");
+            request.SetTelemetryOperation("managePaymentSources");
+            return request;
         }
         public static CollectNowRequest CollectNow()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "collect_now");
-            return new CollectNowRequest(url, HttpMethod.POST);
+            var request = new CollectNowRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("hostedPage");
+            request.SetTelemetryOperation("collectNow");
+            return request;
         }
         public static AcceptQuoteRequest AcceptQuote()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "accept_quote");
-            return new AcceptQuoteRequest(url, HttpMethod.POST);
+            var request = new AcceptQuoteRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("hostedPage");
+            request.SetTelemetryOperation("acceptQuote");
+            return request;
         }
         public static ExtendSubscriptionRequest ExtendSubscription()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "extend_subscription");
-            return new ExtendSubscriptionRequest(url, HttpMethod.POST);
+            var request = new ExtendSubscriptionRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("hostedPage");
+            request.SetTelemetryOperation("extendSubscription");
+            return request;
         }
         public static CheckoutGiftRequest CheckoutGift()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "checkout_gift");
-            return new CheckoutGiftRequest(url, HttpMethod.POST);
+            var request = new CheckoutGiftRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("hostedPage");
+            request.SetTelemetryOperation("checkoutGift");
+            return request;
         }
         public static CheckoutGiftForItemsRequest CheckoutGiftForItems()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "checkout_gift_for_items");
-            return new CheckoutGiftForItemsRequest(url, HttpMethod.POST);
+            var request = new CheckoutGiftForItemsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("hostedPage");
+            request.SetTelemetryOperation("checkoutGiftForItems");
+            return request;
         }
         public static ClaimGiftRequest ClaimGift()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "claim_gift");
-            return new ClaimGiftRequest(url, HttpMethod.POST);
+            var request = new ClaimGiftRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("hostedPage");
+            request.SetTelemetryOperation("claimGift");
+            return request;
         }
         public static RetrieveAgreementPdfRequest RetrieveAgreementPdf()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "retrieve_agreement_pdf");
-            return new RetrieveAgreementPdfRequest(url, HttpMethod.POST);
+            var request = new RetrieveAgreementPdfRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("hostedPage");
+            request.SetTelemetryOperation("retrieveAgreementPdf");
+            return request;
         }
         public static EntityRequest<Type> Acknowledge(string id)
         {
             string url = ApiUtil.BuildUrl("hosted_pages", CheckNull(id), "acknowledge");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("hostedPage");
+            request.SetTelemetryOperation("acknowledge");
+            return request;
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("hosted_pages", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("hostedPage");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static HostedPageListRequest List()
         {
             string url = ApiUtil.BuildUrl("hosted_pages");
-            return new HostedPageListRequest(url);
+            var request = new HostedPageListRequest(url);
+            request.SetTelemetryResource("hostedPage");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         public static PreCancelRequest PreCancel()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "pre_cancel");
-            return new PreCancelRequest(url, HttpMethod.POST);
+            var request = new PreCancelRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("hostedPage");
+            request.SetTelemetryOperation("preCancel");
+            return request;
         }
         public static EventsRequest Events()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "events");
-            return new EventsRequest(url, HttpMethod.POST);
+            var request = new EventsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("hostedPage");
+            request.SetTelemetryOperation("events");
+            return request;
         }
         public static ViewVoucherRequest ViewVoucher()
         {
             string url = ApiUtil.BuildUrl("hosted_pages", "view_voucher");
-            return new ViewVoucherRequest(url, HttpMethod.POST);
+            var request = new ViewVoucherRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("hostedPage");
+            request.SetTelemetryOperation("viewVoucher");
+            return request;
         }
         #endregion
         

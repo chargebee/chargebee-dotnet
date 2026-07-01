@@ -44,32 +44,50 @@ namespace ChargeBee.Models
         public static ListRequest List()
         {
             string url = ApiUtil.BuildUrl("currencies", "list");
-            return new ListRequest(url);
+            var request = new ListRequest(url);
+            request.SetTelemetryResource("currency");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("currencies", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("currency");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("currencies");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("currency");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         public static UpdateRequest Update(string id)
         {
             string url = ApiUtil.BuildUrl("currencies", CheckNull(id));
-            return new UpdateRequest(url, HttpMethod.POST);
+            var request = new UpdateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("currency");
+            request.SetTelemetryOperation("update");
+            return request;
         }
         public static AddScheduleRequest AddSchedule(string id)
         {
             string url = ApiUtil.BuildUrl("currencies", CheckNull(id), "add_schedule");
-            return new AddScheduleRequest(url, HttpMethod.POST);
+            var request = new AddScheduleRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("currency");
+            request.SetTelemetryOperation("addSchedule");
+            return request;
         }
         public static EntityRequest<Type> RemoveSchedule(string id)
         {
             string url = ApiUtil.BuildUrl("currencies", CheckNull(id), "remove_schedule");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("currency");
+            request.SetTelemetryOperation("removeSchedule");
+            return request;
         }
         #endregion
         

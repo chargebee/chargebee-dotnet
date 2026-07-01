@@ -44,12 +44,18 @@ namespace ChargeBee.Models
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("omnichannel_one_time_orders", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("omnichannelOneTimeOrder");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static OmnichannelOneTimeOrderListRequest List()
         {
             string url = ApiUtil.BuildUrl("omnichannel_one_time_orders");
-            return new OmnichannelOneTimeOrderListRequest(url);
+            var request = new OmnichannelOneTimeOrderListRequest(url);
+            request.SetTelemetryResource("omnichannelOneTimeOrder");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         #endregion
         

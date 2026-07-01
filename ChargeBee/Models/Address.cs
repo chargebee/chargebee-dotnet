@@ -44,12 +44,18 @@ namespace ChargeBee.Models
         public static RetrieveRequest Retrieve()
         {
             string url = ApiUtil.BuildUrl("addresses");
-            return new RetrieveRequest(url, HttpMethod.GET);
+            var request = new RetrieveRequest(url, HttpMethod.GET);
+            request.SetTelemetryResource("address");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static UpdateRequest Update()
         {
             string url = ApiUtil.BuildUrl("addresses");
-            return new UpdateRequest(url, HttpMethod.POST);
+            var request = new UpdateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("address");
+            request.SetTelemetryOperation("update");
+            return request;
         }
         #endregion
         

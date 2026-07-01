@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using ChargeBee.Internal;
+using ChargeBee.Telemetry;
 using Newtonsoft.Json.Linq;
 
 namespace ChargeBee.Api
@@ -23,7 +24,7 @@ namespace ChargeBee.Api
     {
 		public static string DomainSuffix = "chargebee.com";
 		public static string Proto = "https";
-		public static string Version = "3.47.0";
+		public static string Version = "3.48.0";
 		public static readonly string API_VERSION = "v2";
         public static int TimeTravelMillis { get; set; }
         public static int ExportSleepMillis { get; set;}
@@ -35,6 +36,7 @@ namespace ChargeBee.Api
         public string BaseUrl { get; set; }
 
         public RetryConfig RetryConfig { get; set; } = new RetryConfig();
+        public ITelemetryAdapter TelemetryAdapter { get; set; }
 
         public string ApiBaseUrl
         {
@@ -97,6 +99,12 @@ namespace ChargeBee.Api
             m_instance = new ApiConfig(siteName, apiKey);
         }
 
+        public static void Configure(string siteName, string apiKey, ITelemetryAdapter telemetryAdapter)
+        {
+            m_instance = new ApiConfig(siteName, apiKey);
+            m_instance.TelemetryAdapter = telemetryAdapter;
+        }
+
         public static void SetBaseUrl(string url)
         {
             m_instance.BaseUrl = url;
@@ -137,6 +145,11 @@ namespace ChargeBee.Api
                 throw new ArgumentNullException(nameof(retryConfig), "Retry configuration cannot be null.");
             }
             Instance.RetryConfig = retryConfig;
+        }
+
+        public static void SetTelemetryAdapter(ITelemetryAdapter telemetryAdapter)
+        {
+            Instance.TelemetryAdapter = telemetryAdapter;
         }
     }
 }

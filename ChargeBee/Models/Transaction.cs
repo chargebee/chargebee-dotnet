@@ -44,59 +44,92 @@ namespace ChargeBee.Models
         public static CreateAuthorizationRequest CreateAuthorization()
         {
             string url = ApiUtil.BuildUrl("transactions", "create_authorization");
-            return new CreateAuthorizationRequest(url, HttpMethod.POST);
+            var request = new CreateAuthorizationRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("transaction");
+            request.SetTelemetryOperation("createAuthorization");
+            return request;
         }
         public static EntityRequest<Type> VoidTransaction(string id)
         {
             string url = ApiUtil.BuildUrl("transactions", CheckNull(id), "void");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("transaction");
+            request.SetTelemetryOperation("voidTransaction");
+            return request;
         }
         public static RecordRefundRequest RecordRefund(string id)
         {
             string url = ApiUtil.BuildUrl("transactions", CheckNull(id), "record_refund");
-            return new RecordRefundRequest(url, HttpMethod.POST);
+            var request = new RecordRefundRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("transaction");
+            request.SetTelemetryOperation("recordRefund");
+            return request;
         }
         public static ReconcileRequest Reconcile(string id)
         {
             string url = ApiUtil.BuildUrl("transactions", CheckNull(id), "reconcile");
-            return new ReconcileRequest(url, HttpMethod.POST);
+            var request = new ReconcileRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("transaction");
+            request.SetTelemetryOperation("reconcile");
+            return request;
         }
         public static RefundRequest Refund(string id)
         {
             string url = ApiUtil.BuildUrl("transactions", CheckNull(id), "refund");
-            return new RefundRequest(url, HttpMethod.POST);
+            var request = new RefundRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("transaction");
+            request.SetTelemetryOperation("refund");
+            return request;
         }
         public static TransactionListRequest List()
         {
             string url = ApiUtil.BuildUrl("transactions");
-            return new TransactionListRequest(url);
+            var request = new TransactionListRequest(url);
+            request.SetTelemetryResource("transaction");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         [Obsolete]
         public static ListRequest TransactionsForCustomer(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "transactions");
-            return new ListRequest(url);
+            var request = new ListRequest(url);
+            request.SetTelemetryResource("transaction");
+            request.SetTelemetryOperation("transactionsForCustomer");
+            return request;
         }
         [Obsolete]
         public static ListRequest TransactionsForSubscription(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "transactions");
-            return new ListRequest(url);
+            var request = new ListRequest(url);
+            request.SetTelemetryResource("transaction");
+            request.SetTelemetryOperation("transactionsForSubscription");
+            return request;
         }
         public static ListRequest PaymentsForInvoice(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "payments");
-            return new ListRequest(url);
+            var request = new ListRequest(url);
+            request.SetTelemetryResource("transaction");
+            request.SetTelemetryOperation("paymentsForInvoice");
+            return request;
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("transactions", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("transaction");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static DeleteOfflineTransactionRequest DeleteOfflineTransaction(string id)
         {
             string url = ApiUtil.BuildUrl("transactions", CheckNull(id), "delete_offline_transaction");
-            return new DeleteOfflineTransactionRequest(url, HttpMethod.POST);
+            var request = new DeleteOfflineTransactionRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("transaction");
+            request.SetTelemetryOperation("deleteOfflineTransaction");
+            return request;
         }
         #endregion
         

@@ -44,27 +44,42 @@ namespace ChargeBee.Models
         public static CreateRequest Create(string id)
         {
             string url = ApiUtil.BuildUrl("items", CheckNull(id), "attached_items");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("attachedItem");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         public static UpdateRequest Update(string id)
         {
             string url = ApiUtil.BuildUrl("attached_items", CheckNull(id));
-            return new UpdateRequest(url, HttpMethod.POST);
+            var request = new UpdateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("attachedItem");
+            request.SetTelemetryOperation("update");
+            return request;
         }
         public static RetrieveRequest Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("attached_items", CheckNull(id));
-            return new RetrieveRequest(url, HttpMethod.GET);
+            var request = new RetrieveRequest(url, HttpMethod.GET);
+            request.SetTelemetryResource("attachedItem");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static DeleteRequest Delete(string id)
         {
             string url = ApiUtil.BuildUrl("attached_items", CheckNull(id), "delete");
-            return new DeleteRequest(url, HttpMethod.POST);
+            var request = new DeleteRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("attachedItem");
+            request.SetTelemetryOperation("delete");
+            return request;
         }
         public static AttachedItemListRequest List(string id)
         {
             string url = ApiUtil.BuildUrl("items", CheckNull(id), "attached_items");
-            return new AttachedItemListRequest(url);
+            var request = new AttachedItemListRequest(url);
+            request.SetTelemetryResource("attachedItem");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         #endregion
         

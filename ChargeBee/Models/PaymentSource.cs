@@ -44,82 +44,130 @@ namespace ChargeBee.Models
         public static CreateUsingTempTokenRequest CreateUsingTempToken()
         {
             string url = ApiUtil.BuildUrl("payment_sources", "create_using_temp_token");
-            return new CreateUsingTempTokenRequest(url, HttpMethod.POST);
+            var request = new CreateUsingTempTokenRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("paymentSource");
+            request.SetTelemetryOperation("createUsingTempToken");
+            return request;
         }
         public static CreateUsingPermanentTokenRequest CreateUsingPermanentToken()
         {
             string url = ApiUtil.BuildUrl("payment_sources", "create_using_permanent_token");
-            return new CreateUsingPermanentTokenRequest(url, HttpMethod.POST);
+            var request = new CreateUsingPermanentTokenRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("paymentSource");
+            request.SetTelemetryOperation("createUsingPermanentToken");
+            return request;
         }
         public static CreateUsingTokenRequest CreateUsingToken()
         {
             string url = ApiUtil.BuildUrl("payment_sources", "create_using_token");
-            return new CreateUsingTokenRequest(url, HttpMethod.POST);
+            var request = new CreateUsingTokenRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("paymentSource");
+            request.SetTelemetryOperation("createUsingToken");
+            return request;
         }
         public static CreateUsingPaymentIntentRequest CreateUsingPaymentIntent()
         {
             string url = ApiUtil.BuildUrl("payment_sources", "create_using_payment_intent");
-            return new CreateUsingPaymentIntentRequest(url, HttpMethod.POST);
+            var request = new CreateUsingPaymentIntentRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("paymentSource");
+            request.SetTelemetryOperation("createUsingPaymentIntent");
+            return request;
         }
         public static CreateVoucherPaymentSourceRequest CreateVoucherPaymentSource()
         {
             string url = ApiUtil.BuildUrl("payment_sources", "create_voucher_payment_source");
-            return new CreateVoucherPaymentSourceRequest(url, HttpMethod.POST);
+            var request = new CreateVoucherPaymentSourceRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("paymentSource");
+            request.SetTelemetryOperation("createVoucherPaymentSource");
+            return request;
         }
         public static CreateCardRequest CreateCard()
         {
             string url = ApiUtil.BuildUrl("payment_sources", "create_card");
-            return new CreateCardRequest(url, HttpMethod.POST);
+            var request = new CreateCardRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("paymentSource");
+            request.SetTelemetryOperation("createCard");
+            return request;
         }
         public static CreateBankAccountRequest CreateBankAccount()
         {
             string url = ApiUtil.BuildUrl("payment_sources", "create_bank_account");
-            return new CreateBankAccountRequest(url, HttpMethod.POST);
+            var request = new CreateBankAccountRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("paymentSource");
+            request.SetTelemetryOperation("createBankAccount");
+            return request;
         }
         public static UpdateCardRequest UpdateCard(string id)
         {
             string url = ApiUtil.BuildUrl("payment_sources", CheckNull(id), "update_card");
-            return new UpdateCardRequest(url, HttpMethod.POST);
+            var request = new UpdateCardRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("paymentSource");
+            request.SetTelemetryOperation("updateCard");
+            return request;
         }
         public static UpdateBankAccountRequest UpdateBankAccount(string id)
         {
             string url = ApiUtil.BuildUrl("payment_sources", CheckNull(id), "update_bank_account");
-            return new UpdateBankAccountRequest(url, HttpMethod.POST);
+            var request = new UpdateBankAccountRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("paymentSource");
+            request.SetTelemetryOperation("updateBankAccount");
+            return request;
         }
         public static VerifyBankAccountRequest VerifyBankAccount(string id)
         {
             string url = ApiUtil.BuildUrl("payment_sources", CheckNull(id), "verify_bank_account");
-            return new VerifyBankAccountRequest(url, HttpMethod.POST);
+            var request = new VerifyBankAccountRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("paymentSource");
+            request.SetTelemetryOperation("verifyBankAccount");
+            return request;
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("payment_sources", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("paymentSource");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static PaymentSourceListRequest List()
         {
             string url = ApiUtil.BuildUrl("payment_sources");
-            return new PaymentSourceListRequest(url);
+            var request = new PaymentSourceListRequest(url);
+            request.SetTelemetryResource("paymentSource");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         public static SwitchGatewayAccountRequest SwitchGatewayAccount(string id)
         {
             string url = ApiUtil.BuildUrl("payment_sources", CheckNull(id), "switch_gateway_account");
-            return new SwitchGatewayAccountRequest(url, HttpMethod.POST);
+            var request = new SwitchGatewayAccountRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("paymentSource");
+            request.SetTelemetryOperation("switchGatewayAccount");
+            return request;
         }
         public static ExportPaymentSourceRequest ExportPaymentSource(string id)
         {
             string url = ApiUtil.BuildUrl("payment_sources", CheckNull(id), "export_payment_source");
-            return new ExportPaymentSourceRequest(url, HttpMethod.POST);
+            var request = new ExportPaymentSourceRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("paymentSource");
+            request.SetTelemetryOperation("exportPaymentSource");
+            return request;
         }
         public static EntityRequest<Type> Delete(string id)
         {
             string url = ApiUtil.BuildUrl("payment_sources", CheckNull(id), "delete");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("paymentSource");
+            request.SetTelemetryOperation("delete");
+            return request;
         }
         public static EntityRequest<Type> DeleteLocal(string id)
         {
             string url = ApiUtil.BuildUrl("payment_sources", CheckNull(id), "delete_local");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("paymentSource");
+            request.SetTelemetryOperation("deleteLocal");
+            return request;
         }
         #endregion
         

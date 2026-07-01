@@ -46,17 +46,26 @@ namespace ChargeBee.Models
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("time_machines", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("timeMachine");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static StartAfreshRequest StartAfresh(string id)
         {
             string url = ApiUtil.BuildUrl("time_machines", CheckNull(id), "start_afresh");
-            return new StartAfreshRequest(url, HttpMethod.POST);
+            var request = new StartAfreshRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("timeMachine");
+            request.SetTelemetryOperation("startAfresh");
+            return request;
         }
         public static TravelForwardRequest TravelForward(string id)
         {
             string url = ApiUtil.BuildUrl("time_machines", CheckNull(id), "travel_forward");
-            return new TravelForwardRequest(url, HttpMethod.POST);
+            var request = new TravelForwardRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("timeMachine");
+            request.SetTelemetryOperation("travelForward");
+            return request;
         }
         #endregion
         

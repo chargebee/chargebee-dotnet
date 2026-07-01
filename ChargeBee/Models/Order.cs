@@ -44,63 +44,99 @@ namespace ChargeBee.Models
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("orders");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("order");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         public static UpdateRequest Update(string id)
         {
             string url = ApiUtil.BuildUrl("orders", CheckNull(id));
-            return new UpdateRequest(url, HttpMethod.POST);
+            var request = new UpdateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("order");
+            request.SetTelemetryOperation("update");
+            return request;
         }
         public static ImportOrderRequest ImportOrder()
         {
             string url = ApiUtil.BuildUrl("orders", "import_order");
-            return new ImportOrderRequest(url, HttpMethod.POST);
+            var request = new ImportOrderRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("order");
+            request.SetTelemetryOperation("importOrder");
+            return request;
         }
         public static EntityRequest<Type> AssignOrderNumber(string id)
         {
             string url = ApiUtil.BuildUrl("orders", CheckNull(id), "assign_order_number");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("order");
+            request.SetTelemetryOperation("assignOrderNumber");
+            return request;
         }
         public static CancelRequest Cancel(string id)
         {
             string url = ApiUtil.BuildUrl("orders", CheckNull(id), "cancel");
-            return new CancelRequest(url, HttpMethod.POST);
+            var request = new CancelRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("order");
+            request.SetTelemetryOperation("cancel");
+            return request;
         }
         public static CreateRefundableCreditNoteRequest CreateRefundableCreditNote(string id)
         {
             string url = ApiUtil.BuildUrl("orders", CheckNull(id), "create_refundable_credit_note");
-            return new CreateRefundableCreditNoteRequest(url, HttpMethod.POST);
+            var request = new CreateRefundableCreditNoteRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("order");
+            request.SetTelemetryOperation("createRefundableCreditNote");
+            return request;
         }
         public static ReopenRequest Reopen(string id)
         {
             string url = ApiUtil.BuildUrl("orders", CheckNull(id), "reopen");
-            return new ReopenRequest(url, HttpMethod.POST);
+            var request = new ReopenRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("order");
+            request.SetTelemetryOperation("reopen");
+            return request;
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("orders", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("order");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static EntityRequest<Type> Delete(string id)
         {
             string url = ApiUtil.BuildUrl("orders", CheckNull(id), "delete");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("order");
+            request.SetTelemetryOperation("delete");
+            return request;
         }
         public static OrderListRequest List()
         {
             string url = ApiUtil.BuildUrl("orders");
-            return new OrderListRequest(url);
+            var request = new OrderListRequest(url);
+            request.SetTelemetryResource("order");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         [Obsolete]
         public static ListRequest OrdersForInvoice(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "orders");
-            return new ListRequest(url);
+            var request = new ListRequest(url);
+            request.SetTelemetryResource("order");
+            request.SetTelemetryOperation("ordersForInvoice");
+            return request;
         }
         public static ResendRequest Resend(string id)
         {
             string url = ApiUtil.BuildUrl("orders", CheckNull(id), "resend");
-            return new ResendRequest(url, HttpMethod.POST);
+            var request = new ResendRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("order");
+            request.SetTelemetryOperation("resend");
+            return request;
         }
         #endregion
         

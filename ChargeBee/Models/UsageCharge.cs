@@ -44,7 +44,10 @@ namespace ChargeBee.Models
         public static UsageChargeRetrieveUsageChargesForSubscriptionRequest RetrieveUsageChargesForSubscription(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "usage_charges");
-            return new UsageChargeRetrieveUsageChargesForSubscriptionRequest(url);
+            var request = new UsageChargeRetrieveUsageChargesForSubscriptionRequest(url);
+            request.SetTelemetryResource("usageCharge");
+            request.SetTelemetryOperation("retrieveUsageChargesForSubscription");
+            return request;
         }
         #endregion
         

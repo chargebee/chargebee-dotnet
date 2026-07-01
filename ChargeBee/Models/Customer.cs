@@ -44,135 +44,213 @@ namespace ChargeBee.Models
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("customers");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         public static CustomerListRequest List()
         {
             string url = ApiUtil.BuildUrl("customers");
-            return new CustomerListRequest(url);
+            var request = new CustomerListRequest(url);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static UpdateRequest Update(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id));
-            return new UpdateRequest(url, HttpMethod.POST);
+            var request = new UpdateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("update");
+            return request;
         }
         public static UpdatePaymentMethodRequest UpdatePaymentMethod(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "update_payment_method");
-            return new UpdatePaymentMethodRequest(url, HttpMethod.POST);
+            var request = new UpdatePaymentMethodRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("updatePaymentMethod");
+            return request;
         }
         public static UpdateBillingInfoRequest UpdateBillingInfo(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "update_billing_info");
-            return new UpdateBillingInfoRequest(url, HttpMethod.POST);
+            var request = new UpdateBillingInfoRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("updateBillingInfo");
+            return request;
         }
         public static ListRequest ContactsForCustomer(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "contacts");
-            return new ListRequest(url);
+            var request = new ListRequest(url);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("contactsForCustomer");
+            return request;
         }
         public static AssignPaymentRoleRequest AssignPaymentRole(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "assign_payment_role");
-            return new AssignPaymentRoleRequest(url, HttpMethod.POST);
+            var request = new AssignPaymentRoleRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("assignPaymentRole");
+            return request;
         }
         public static AddContactRequest AddContact(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "add_contact");
-            return new AddContactRequest(url, HttpMethod.POST);
+            var request = new AddContactRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("addContact");
+            return request;
         }
         public static UpdateContactRequest UpdateContact(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "update_contact");
-            return new UpdateContactRequest(url, HttpMethod.POST);
+            var request = new UpdateContactRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("updateContact");
+            return request;
         }
         public static DeleteContactRequest DeleteContact(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "delete_contact");
-            return new DeleteContactRequest(url, HttpMethod.POST);
+            var request = new DeleteContactRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("deleteContact");
+            return request;
         }
         [Obsolete]
         public static AddPromotionalCreditsRequest AddPromotionalCredits(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "add_promotional_credits");
-            return new AddPromotionalCreditsRequest(url, HttpMethod.POST);
+            var request = new AddPromotionalCreditsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("addPromotionalCredits");
+            return request;
         }
         [Obsolete]
         public static DeductPromotionalCreditsRequest DeductPromotionalCredits(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "deduct_promotional_credits");
-            return new DeductPromotionalCreditsRequest(url, HttpMethod.POST);
+            var request = new DeductPromotionalCreditsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("deductPromotionalCredits");
+            return request;
         }
         [Obsolete]
         public static SetPromotionalCreditsRequest SetPromotionalCredits(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "set_promotional_credits");
-            return new SetPromotionalCreditsRequest(url, HttpMethod.POST);
+            var request = new SetPromotionalCreditsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("setPromotionalCredits");
+            return request;
         }
         public static RecordExcessPaymentRequest RecordExcessPayment(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "record_excess_payment");
-            return new RecordExcessPaymentRequest(url, HttpMethod.POST);
+            var request = new RecordExcessPaymentRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("recordExcessPayment");
+            return request;
         }
         public static CollectPaymentRequest CollectPayment(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "collect_payment");
-            return new CollectPaymentRequest(url, HttpMethod.POST);
+            var request = new CollectPaymentRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("collectPayment");
+            return request;
         }
         public static DeleteRequest Delete(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "delete");
-            return new DeleteRequest(url, HttpMethod.POST);
+            var request = new DeleteRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("delete");
+            return request;
         }
         public static MoveRequest Move()
         {
             string url = ApiUtil.BuildUrl("customers", "move");
-            return new MoveRequest(url, HttpMethod.POST);
+            var request = new MoveRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("move");
+            return request;
         }
         public static ChangeBillingDateRequest ChangeBillingDate(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "change_billing_date");
-            return new ChangeBillingDateRequest(url, HttpMethod.POST);
+            var request = new ChangeBillingDateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("changeBillingDate");
+            return request;
         }
         public static MergeRequest Merge()
         {
             string url = ApiUtil.BuildUrl("customers", "merge");
-            return new MergeRequest(url, HttpMethod.POST);
+            var request = new MergeRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("merge");
+            return request;
         }
         public static EntityRequest<Type> ClearPersonalData(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "clear_personal_data");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("clearPersonalData");
+            return request;
         }
         public static RelationshipsRequest Relationships(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "relationships");
-            return new RelationshipsRequest(url, HttpMethod.POST);
+            var request = new RelationshipsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("relationships");
+            return request;
         }
         public static EntityRequest<Type> DeleteRelationship(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "delete_relationship");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("deleteRelationship");
+            return request;
         }
         public static HierarchyRequest Hierarchy(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "hierarchy");
-            return new HierarchyRequest(url, HttpMethod.GET);
+            var request = new HierarchyRequest(url, HttpMethod.GET);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("hierarchy");
+            return request;
         }
         public static CustomerListHierarchyDetailRequest ListHierarchyDetail(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "hierarchy_detail");
-            return new CustomerListHierarchyDetailRequest(url);
+            var request = new CustomerListHierarchyDetailRequest(url);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("listHierarchyDetail");
+            return request;
         }
         public static UpdateHierarchySettingsRequest UpdateHierarchySettings(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "update_hierarchy_settings");
-            return new UpdateHierarchySettingsRequest(url, HttpMethod.POST);
+            var request = new UpdateHierarchySettingsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("updateHierarchySettings");
+            return request;
         }
         #endregion
         

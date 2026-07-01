@@ -44,32 +44,50 @@ namespace ChargeBee.Models
         public static CreateUsingPermanentTokenRequest CreateUsingPermanentToken()
         {
             string url = ApiUtil.BuildUrl("virtual_bank_accounts", "create_using_permanent_token");
-            return new CreateUsingPermanentTokenRequest(url, HttpMethod.POST);
+            var request = new CreateUsingPermanentTokenRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("virtualBankAccount");
+            request.SetTelemetryOperation("createUsingPermanentToken");
+            return request;
         }
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("virtual_bank_accounts");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("virtualBankAccount");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("virtual_bank_accounts", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("virtualBankAccount");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static VirtualBankAccountListRequest List()
         {
             string url = ApiUtil.BuildUrl("virtual_bank_accounts");
-            return new VirtualBankAccountListRequest(url);
+            var request = new VirtualBankAccountListRequest(url);
+            request.SetTelemetryResource("virtualBankAccount");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         public static EntityRequest<Type> Delete(string id)
         {
             string url = ApiUtil.BuildUrl("virtual_bank_accounts", CheckNull(id), "delete");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("virtualBankAccount");
+            request.SetTelemetryOperation("delete");
+            return request;
         }
         public static EntityRequest<Type> DeleteLocal(string id)
         {
             string url = ApiUtil.BuildUrl("virtual_bank_accounts", CheckNull(id), "delete_local");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("virtualBankAccount");
+            request.SetTelemetryOperation("deleteLocal");
+            return request;
         }
         #endregion
         

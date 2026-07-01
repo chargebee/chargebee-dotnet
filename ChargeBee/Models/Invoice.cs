@@ -44,205 +44,325 @@ namespace ChargeBee.Models
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("invoices");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         public static CreateForChargeItemsAndChargesRequest CreateForChargeItemsAndCharges()
         {
             string url = ApiUtil.BuildUrl("invoices", "create_for_charge_items_and_charges");
-            return new CreateForChargeItemsAndChargesRequest(url, HttpMethod.POST);
+            var request = new CreateForChargeItemsAndChargesRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("createForChargeItemsAndCharges");
+            return request;
         }
         public static ChargeRequest Charge()
         {
             string url = ApiUtil.BuildUrl("invoices", "charge");
-            return new ChargeRequest(url, HttpMethod.POST);
+            var request = new ChargeRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("charge");
+            return request;
         }
         public static ChargeAddonRequest ChargeAddon()
         {
             string url = ApiUtil.BuildUrl("invoices", "charge_addon");
-            return new ChargeAddonRequest(url, HttpMethod.POST);
+            var request = new ChargeAddonRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("chargeAddon");
+            return request;
         }
         [Obsolete]
         public static CreateForChargeItemRequest CreateForChargeItem()
         {
             string url = ApiUtil.BuildUrl("invoices", "create_for_charge_item");
-            return new CreateForChargeItemRequest(url, HttpMethod.POST);
+            var request = new CreateForChargeItemRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("createForChargeItem");
+            return request;
         }
         public static StopDunningRequest StopDunning(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "stop_dunning");
-            return new StopDunningRequest(url, HttpMethod.POST);
+            var request = new StopDunningRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("stopDunning");
+            return request;
         }
         public static PauseDunningRequest PauseDunning(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "pause_dunning");
-            return new PauseDunningRequest(url, HttpMethod.POST);
+            var request = new PauseDunningRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("pauseDunning");
+            return request;
         }
         public static ResumeDunningRequest ResumeDunning(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "resume_dunning");
-            return new ResumeDunningRequest(url, HttpMethod.POST);
+            var request = new ResumeDunningRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("resumeDunning");
+            return request;
         }
         public static ImportInvoiceRequest ImportInvoice()
         {
             string url = ApiUtil.BuildUrl("invoices", "import_invoice");
-            return new ImportInvoiceRequest(url, HttpMethod.POST);
+            var request = new ImportInvoiceRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("importInvoice");
+            return request;
         }
         public static ApplyPaymentsRequest ApplyPayments(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "apply_payments");
-            return new ApplyPaymentsRequest(url, HttpMethod.POST);
+            var request = new ApplyPaymentsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("applyPayments");
+            return request;
         }
         public static EntityRequest<Type> SyncUsages(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "sync_usages");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("syncUsages");
+            return request;
         }
         public static DeleteLineItemsRequest DeleteLineItems(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "delete_line_items");
-            return new DeleteLineItemsRequest(url, HttpMethod.POST);
+            var request = new DeleteLineItemsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("deleteLineItems");
+            return request;
         }
         public static ApplyCreditsRequest ApplyCredits(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "apply_credits");
-            return new ApplyCreditsRequest(url, HttpMethod.POST);
+            var request = new ApplyCreditsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("applyCredits");
+            return request;
         }
         public static InvoiceListRequest List()
         {
             string url = ApiUtil.BuildUrl("invoices");
-            return new InvoiceListRequest(url);
+            var request = new InvoiceListRequest(url);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         [Obsolete]
         public static ListRequest InvoicesForCustomer(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "invoices");
-            return new ListRequest(url);
+            var request = new ListRequest(url);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("invoicesForCustomer");
+            return request;
         }
         [Obsolete]
         public static ListRequest InvoicesForSubscription(string id)
         {
             string url = ApiUtil.BuildUrl("subscriptions", CheckNull(id), "invoices");
-            return new ListRequest(url);
+            var request = new ListRequest(url);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("invoicesForSubscription");
+            return request;
         }
         public static RetrieveRequest Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id));
-            return new RetrieveRequest(url, HttpMethod.GET);
+            var request = new RetrieveRequest(url, HttpMethod.GET);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static PdfRequest Pdf(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "pdf");
-            return new PdfRequest(url, HttpMethod.POST);
+            var request = new PdfRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("pdf");
+            return request;
         }
         public static EntityRequest<Type> DownloadEinvoice(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "download_einvoice");
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("downloadEinvoice");
+            return request;
         }
         public static InvoiceListPaymentReferenceNumbersRequest ListPaymentReferenceNumbers()
         {
             string url = ApiUtil.BuildUrl("invoices", "payment_reference_numbers");
-            return new InvoiceListPaymentReferenceNumbersRequest(url);
+            var request = new InvoiceListPaymentReferenceNumbersRequest(url);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("listPaymentReferenceNumbers");
+            return request;
         }
         public static AddChargeRequest AddCharge(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "add_charge");
-            return new AddChargeRequest(url, HttpMethod.POST);
+            var request = new AddChargeRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("addCharge");
+            return request;
         }
         public static AddAddonChargeRequest AddAddonCharge(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "add_addon_charge");
-            return new AddAddonChargeRequest(url, HttpMethod.POST);
+            var request = new AddAddonChargeRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("addAddonCharge");
+            return request;
         }
         public static AddChargeItemRequest AddChargeItem(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "add_charge_item");
-            return new AddChargeItemRequest(url, HttpMethod.POST);
+            var request = new AddChargeItemRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("addChargeItem");
+            return request;
         }
         public static CloseRequest Close(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "close");
-            return new CloseRequest(url, HttpMethod.POST);
+            var request = new CloseRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("close");
+            return request;
         }
         public static CollectPaymentRequest CollectPayment(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "collect_payment");
-            return new CollectPaymentRequest(url, HttpMethod.POST);
+            var request = new CollectPaymentRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("collectPayment");
+            return request;
         }
         public static RecordPaymentRequest RecordPayment(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "record_payment");
-            return new RecordPaymentRequest(url, HttpMethod.POST);
+            var request = new RecordPaymentRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("recordPayment");
+            return request;
         }
         public static RecordTaxWithheldRequest RecordTaxWithheld(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "record_tax_withheld");
-            return new RecordTaxWithheldRequest(url, HttpMethod.POST);
+            var request = new RecordTaxWithheldRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("recordTaxWithheld");
+            return request;
         }
         public static RemoveTaxWithheldRequest RemoveTaxWithheld(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "remove_tax_withheld");
-            return new RemoveTaxWithheldRequest(url, HttpMethod.POST);
+            var request = new RemoveTaxWithheldRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("removeTaxWithheld");
+            return request;
         }
         public static RefundRequest Refund(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "refund");
-            return new RefundRequest(url, HttpMethod.POST);
+            var request = new RefundRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("refund");
+            return request;
         }
         public static RecordRefundRequest RecordRefund(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "record_refund");
-            return new RecordRefundRequest(url, HttpMethod.POST);
+            var request = new RecordRefundRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("recordRefund");
+            return request;
         }
         public static RemovePaymentRequest RemovePayment(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "remove_payment");
-            return new RemovePaymentRequest(url, HttpMethod.POST);
+            var request = new RemovePaymentRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("removePayment");
+            return request;
         }
         public static RemoveCreditNoteRequest RemoveCreditNote(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "remove_credit_note");
-            return new RemoveCreditNoteRequest(url, HttpMethod.POST);
+            var request = new RemoveCreditNoteRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("removeCreditNote");
+            return request;
         }
         public static VoidInvoiceRequest VoidInvoice(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "void");
-            return new VoidInvoiceRequest(url, HttpMethod.POST);
+            var request = new VoidInvoiceRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("voidInvoice");
+            return request;
         }
         public static WriteOffRequest WriteOff(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "write_off");
-            return new WriteOffRequest(url, HttpMethod.POST);
+            var request = new WriteOffRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("writeOff");
+            return request;
         }
         public static DeleteRequest Delete(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "delete");
-            return new DeleteRequest(url, HttpMethod.POST);
+            var request = new DeleteRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("delete");
+            return request;
         }
         public static UpdateDetailsRequest UpdateDetails(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "update_details");
-            return new UpdateDetailsRequest(url, HttpMethod.POST);
+            var request = new UpdateDetailsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("updateDetails");
+            return request;
         }
         public static ApplyPaymentScheduleSchemeRequest ApplyPaymentScheduleScheme(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "apply_payment_schedule_scheme");
-            return new ApplyPaymentScheduleSchemeRequest(url, HttpMethod.POST);
+            var request = new ApplyPaymentScheduleSchemeRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("applyPaymentScheduleScheme");
+            return request;
         }
         public static EntityRequest<Type> PaymentSchedules(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "payment_schedules");
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("paymentSchedules");
+            return request;
         }
         public static EntityRequest<Type> ResendEinvoice(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "resend_einvoice");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("resendEinvoice");
+            return request;
         }
         public static EntityRequest<Type> SendEinvoice(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "send_einvoice");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("sendEinvoice");
+            return request;
         }
         #endregion
         

@@ -44,17 +44,26 @@ namespace ChargeBee.Models
         public static OfferFulfillmentsRequest OfferFulfillments()
         {
             string url = ApiUtil.BuildUrl("offer_fulfillments");
-            return new OfferFulfillmentsRequest(url, HttpMethod.POST).SetSubDomain("grow").IsJsonRequest(true).SetIdempotent(false);
+            var request = new OfferFulfillmentsRequest(url, HttpMethod.POST).SetSubDomain("grow").IsJsonRequest(true).SetIdempotent(false);
+            request.SetTelemetryResource("offerFulfillment");
+            request.SetTelemetryOperation("offerFulfillments");
+            return request;
         }
         public static OfferFulfillmentsGetRequest OfferFulfillmentsGet(string id)
         {
             string url = ApiUtil.BuildUrl("offer_fulfillments", CheckNull(id));
-            return new OfferFulfillmentsGetRequest(url, HttpMethod.GET).SetSubDomain("grow");
+            var request = new OfferFulfillmentsGetRequest(url, HttpMethod.GET).SetSubDomain("grow");
+            request.SetTelemetryResource("offerFulfillment");
+            request.SetTelemetryOperation("offerFulfillmentsGet");
+            return request;
         }
         public static OfferFulfillmentsUpdateRequest OfferFulfillmentsUpdate(string id)
         {
             string url = ApiUtil.BuildUrl("offer_fulfillments", CheckNull(id));
-            return new OfferFulfillmentsUpdateRequest(url, HttpMethod.POST).SetSubDomain("grow").IsJsonRequest(true).SetIdempotent(false);
+            var request = new OfferFulfillmentsUpdateRequest(url, HttpMethod.POST).SetSubDomain("grow").IsJsonRequest(true).SetIdempotent(false);
+            request.SetTelemetryResource("offerFulfillment");
+            request.SetTelemetryOperation("offerFulfillmentsUpdate");
+            return request;
         }
         #endregion
         

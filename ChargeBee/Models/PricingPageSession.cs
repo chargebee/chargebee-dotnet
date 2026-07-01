@@ -44,12 +44,18 @@ namespace ChargeBee.Models
         public static CreateForNewSubscriptionRequest CreateForNewSubscription()
         {
             string url = ApiUtil.BuildUrl("pricing_page_sessions", "create_for_new_subscription");
-            return new CreateForNewSubscriptionRequest(url, HttpMethod.POST);
+            var request = new CreateForNewSubscriptionRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("pricingPageSession");
+            request.SetTelemetryOperation("createForNewSubscription");
+            return request;
         }
         public static CreateForExistingSubscriptionRequest CreateForExistingSubscription()
         {
             string url = ApiUtil.BuildUrl("pricing_page_sessions", "create_for_existing_subscription");
-            return new CreateForExistingSubscriptionRequest(url, HttpMethod.POST);
+            var request = new CreateForExistingSubscriptionRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("pricingPageSession");
+            request.SetTelemetryOperation("createForExistingSubscription");
+            return request;
         }
         #endregion
         

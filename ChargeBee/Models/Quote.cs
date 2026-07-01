@@ -44,138 +44,216 @@ namespace ChargeBee.Models
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("quotes", CheckNull(id));
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("quote");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static CreateSubForCustomerQuoteRequest CreateSubForCustomerQuote(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "create_subscription_quote");
-            return new CreateSubForCustomerQuoteRequest(url, HttpMethod.POST);
+            var request = new CreateSubForCustomerQuoteRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("quote");
+            request.SetTelemetryOperation("createSubForCustomerQuote");
+            return request;
         }
         public static EditCreateSubForCustomerQuoteRequest EditCreateSubForCustomerQuote(string id)
         {
             string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "edit_create_subscription_quote");
-            return new EditCreateSubForCustomerQuoteRequest(url, HttpMethod.POST);
+            var request = new EditCreateSubForCustomerQuoteRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("quote");
+            request.SetTelemetryOperation("editCreateSubForCustomerQuote");
+            return request;
         }
         public static UpdateSubscriptionQuoteRequest UpdateSubscriptionQuote()
         {
             string url = ApiUtil.BuildUrl("quotes", "update_subscription_quote");
-            return new UpdateSubscriptionQuoteRequest(url, HttpMethod.POST);
+            var request = new UpdateSubscriptionQuoteRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("quote");
+            request.SetTelemetryOperation("updateSubscriptionQuote");
+            return request;
         }
         public static EditUpdateSubscriptionQuoteRequest EditUpdateSubscriptionQuote(string id)
         {
             string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "edit_update_subscription_quote");
-            return new EditUpdateSubscriptionQuoteRequest(url, HttpMethod.POST);
+            var request = new EditUpdateSubscriptionQuoteRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("quote");
+            request.SetTelemetryOperation("editUpdateSubscriptionQuote");
+            return request;
         }
         public static CreateForOnetimeChargesRequest CreateForOnetimeCharges()
         {
             string url = ApiUtil.BuildUrl("quotes", "create_for_onetime_charges");
-            return new CreateForOnetimeChargesRequest(url, HttpMethod.POST);
+            var request = new CreateForOnetimeChargesRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("quote");
+            request.SetTelemetryOperation("createForOnetimeCharges");
+            return request;
         }
         public static EditOneTimeQuoteRequest EditOneTimeQuote(string id)
         {
             string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "edit_one_time_quote");
-            return new EditOneTimeQuoteRequest(url, HttpMethod.POST);
+            var request = new EditOneTimeQuoteRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("quote");
+            request.SetTelemetryOperation("editOneTimeQuote");
+            return request;
         }
         public static CreateSubItemsForCustomerQuoteRequest CreateSubItemsForCustomerQuote(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "create_subscription_quote_for_items");
-            return new CreateSubItemsForCustomerQuoteRequest(url, HttpMethod.POST);
+            var request = new CreateSubItemsForCustomerQuoteRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("quote");
+            request.SetTelemetryOperation("createSubItemsForCustomerQuote");
+            return request;
         }
         public static EditCreateSubCustomerQuoteForItemsRequest EditCreateSubCustomerQuoteForItems(string id)
         {
             string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "edit_create_subscription_quote_for_items");
-            return new EditCreateSubCustomerQuoteForItemsRequest(url, HttpMethod.POST);
+            var request = new EditCreateSubCustomerQuoteForItemsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("quote");
+            request.SetTelemetryOperation("editCreateSubCustomerQuoteForItems");
+            return request;
         }
         public static UpdateSubscriptionQuoteForItemsRequest UpdateSubscriptionQuoteForItems()
         {
             string url = ApiUtil.BuildUrl("quotes", "update_subscription_quote_for_items");
-            return new UpdateSubscriptionQuoteForItemsRequest(url, HttpMethod.POST);
+            var request = new UpdateSubscriptionQuoteForItemsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("quote");
+            request.SetTelemetryOperation("updateSubscriptionQuoteForItems");
+            return request;
         }
         public static EditUpdateSubscriptionQuoteForItemsRequest EditUpdateSubscriptionQuoteForItems(string id)
         {
             string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "edit_update_subscription_quote_for_items");
-            return new EditUpdateSubscriptionQuoteForItemsRequest(url, HttpMethod.POST);
+            var request = new EditUpdateSubscriptionQuoteForItemsRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("quote");
+            request.SetTelemetryOperation("editUpdateSubscriptionQuoteForItems");
+            return request;
         }
         public static CreateForChargeItemsAndChargesRequest CreateForChargeItemsAndCharges()
         {
             string url = ApiUtil.BuildUrl("quotes", "create_for_charge_items_and_charges");
-            return new CreateForChargeItemsAndChargesRequest(url, HttpMethod.POST);
+            var request = new CreateForChargeItemsAndChargesRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("quote");
+            request.SetTelemetryOperation("createForChargeItemsAndCharges");
+            return request;
         }
         public static EditForChargeItemsAndChargesRequest EditForChargeItemsAndCharges(string id)
         {
             string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "edit_for_charge_items_and_charges");
-            return new EditForChargeItemsAndChargesRequest(url, HttpMethod.POST);
+            var request = new EditForChargeItemsAndChargesRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("quote");
+            request.SetTelemetryOperation("editForChargeItemsAndCharges");
+            return request;
         }
         public static QuoteListRequest List()
         {
             string url = ApiUtil.BuildUrl("quotes");
-            return new QuoteListRequest(url);
+            var request = new QuoteListRequest(url);
+            request.SetTelemetryResource("quote");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         public static ListRequest QuoteLineGroupsForQuote(string id)
         {
             string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "quote_line_groups");
-            return new ListRequest(url);
+            var request = new ListRequest(url);
+            request.SetTelemetryResource("quote");
+            request.SetTelemetryOperation("quoteLineGroupsForQuote");
+            return request;
         }
         public static ConvertRequest Convert(string id)
         {
             string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "convert");
-            return new ConvertRequest(url, HttpMethod.POST);
+            var request = new ConvertRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("quote");
+            request.SetTelemetryOperation("convert");
+            return request;
         }
         public static UpdateStatusRequest UpdateStatus(string id)
         {
             string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "update_status");
-            return new UpdateStatusRequest(url, HttpMethod.POST);
+            var request = new UpdateStatusRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("quote");
+            request.SetTelemetryOperation("updateStatus");
+            return request;
         }
         public static ExtendExpiryDateRequest ExtendExpiryDate(string id)
         {
             string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "extend_expiry_date");
-            return new ExtendExpiryDateRequest(url, HttpMethod.POST);
+            var request = new ExtendExpiryDateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("quote");
+            request.SetTelemetryOperation("extendExpiryDate");
+            return request;
         }
         public static DeleteRequest Delete(string id)
         {
             string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "delete");
-            return new DeleteRequest(url, HttpMethod.POST);
+            var request = new DeleteRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("quote");
+            request.SetTelemetryOperation("delete");
+            return request;
         }
         public static PdfRequest Pdf(string id)
         {
             string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "pdf");
-            return new PdfRequest(url, HttpMethod.POST);
+            var request = new PdfRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("quote");
+            request.SetTelemetryOperation("pdf");
+            return request;
         }
         [Obsolete]
         public static EntityRequest<Type> RetrieveSignature(string id)
         {
             string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "retrieve_signature");
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("quote");
+            request.SetTelemetryOperation("retrieveSignature");
+            return request;
         }
         [Obsolete]
         public static EntityRequest<Type> RetrieveSignedPdf(string id)
         {
             string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "retrieve_signed_pdf");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("quote");
+            request.SetTelemetryOperation("retrieveSignedPdf");
+            return request;
         }
         [Obsolete]
         public static EntityRequest<Type> CreateSignature(string id)
         {
             string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "create_signature");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("quote");
+            request.SetTelemetryOperation("createSignature");
+            return request;
         }
         [Obsolete]
         public static EntityRequest<Type> UpdateSignature(string id)
         {
             string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "update_signature");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("quote");
+            request.SetTelemetryOperation("updateSignature");
+            return request;
         }
         [Obsolete]
         public static UpdateSignatureStatusRequest UpdateSignatureStatus(string id)
         {
             string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "update_signature_status");
-            return new UpdateSignatureStatusRequest(url, HttpMethod.POST);
+            var request = new UpdateSignatureStatusRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("quote");
+            request.SetTelemetryOperation("updateSignatureStatus");
+            return request;
         }
         [Obsolete]
         public static EntityRequest<Type> RefreshSignatureLink(string id)
         {
             string url = ApiUtil.BuildUrl("quotes", CheckNull(id), "refresh_signature_link");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("quote");
+            request.SetTelemetryOperation("refreshSignatureLink");
+            return request;
         }
         #endregion
         

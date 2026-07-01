@@ -44,73 +44,115 @@ namespace ChargeBee.Models
         public static CreateRequest Create()
         {
             string url = ApiUtil.BuildUrl("credit_notes");
-            return new CreateRequest(url, HttpMethod.POST);
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("creditNote");
+            request.SetTelemetryOperation("create");
+            return request;
         }
         public static RetrieveRequest Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id));
-            return new RetrieveRequest(url, HttpMethod.GET);
+            var request = new RetrieveRequest(url, HttpMethod.GET);
+            request.SetTelemetryResource("creditNote");
+            request.SetTelemetryOperation("retrieve");
+            return request;
         }
         public static PdfRequest Pdf(string id)
         {
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "pdf");
-            return new PdfRequest(url, HttpMethod.POST);
+            var request = new PdfRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("creditNote");
+            request.SetTelemetryOperation("pdf");
+            return request;
         }
         public static EntityRequest<Type> DownloadEinvoice(string id)
         {
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "download_einvoice");
-            return new EntityRequest<Type>(url, HttpMethod.GET);
+            var request = new EntityRequest<Type>(url, HttpMethod.GET);
+            request.SetTelemetryResource("creditNote");
+            request.SetTelemetryOperation("downloadEinvoice");
+            return request;
         }
         public static RefundRequest Refund(string id)
         {
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "refund");
-            return new RefundRequest(url, HttpMethod.POST);
+            var request = new RefundRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("creditNote");
+            request.SetTelemetryOperation("refund");
+            return request;
         }
         public static RecordRefundRequest RecordRefund(string id)
         {
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "record_refund");
-            return new RecordRefundRequest(url, HttpMethod.POST);
+            var request = new RecordRefundRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("creditNote");
+            request.SetTelemetryOperation("recordRefund");
+            return request;
         }
         public static VoidCreditNoteRequest VoidCreditNote(string id)
         {
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "void");
-            return new VoidCreditNoteRequest(url, HttpMethod.POST);
+            var request = new VoidCreditNoteRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("creditNote");
+            request.SetTelemetryOperation("voidCreditNote");
+            return request;
         }
         public static CreditNoteListRequest List()
         {
             string url = ApiUtil.BuildUrl("credit_notes");
-            return new CreditNoteListRequest(url);
+            var request = new CreditNoteListRequest(url);
+            request.SetTelemetryResource("creditNote");
+            request.SetTelemetryOperation("list");
+            return request;
         }
         [Obsolete]
         public static ListRequest CreditNotesForCustomer(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "credit_notes");
-            return new ListRequest(url);
+            var request = new ListRequest(url);
+            request.SetTelemetryResource("creditNote");
+            request.SetTelemetryOperation("creditNotesForCustomer");
+            return request;
         }
         public static DeleteRequest Delete(string id)
         {
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "delete");
-            return new DeleteRequest(url, HttpMethod.POST);
+            var request = new DeleteRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("creditNote");
+            request.SetTelemetryOperation("delete");
+            return request;
         }
         public static RemoveTaxWithheldRefundRequest RemoveTaxWithheldRefund(string id)
         {
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "remove_tax_withheld_refund");
-            return new RemoveTaxWithheldRefundRequest(url, HttpMethod.POST);
+            var request = new RemoveTaxWithheldRefundRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("creditNote");
+            request.SetTelemetryOperation("removeTaxWithheldRefund");
+            return request;
         }
         public static EntityRequest<Type> ResendEinvoice(string id)
         {
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "resend_einvoice");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("creditNote");
+            request.SetTelemetryOperation("resendEinvoice");
+            return request;
         }
         public static EntityRequest<Type> SendEinvoice(string id)
         {
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "send_einvoice");
-            return new EntityRequest<Type>(url, HttpMethod.POST);
+            var request = new EntityRequest<Type>(url, HttpMethod.POST);
+            request.SetTelemetryResource("creditNote");
+            request.SetTelemetryOperation("sendEinvoice");
+            return request;
         }
         public static ImportCreditNoteRequest ImportCreditNote()
         {
             string url = ApiUtil.BuildUrl("credit_notes", "import_credit_note");
-            return new ImportCreditNoteRequest(url, HttpMethod.POST);
+            var request = new ImportCreditNoteRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("creditNote");
+            request.SetTelemetryOperation("importCreditNote");
+            return request;
         }
         #endregion
         
