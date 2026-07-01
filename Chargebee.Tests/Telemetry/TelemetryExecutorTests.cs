@@ -123,6 +123,16 @@ namespace ChargeBee.Tests.Telemetry
         }
 
         [Fact]
+        public void TypedRequestTelemetrySettersSupportChaining()
+        {
+            var request = new ChargeBee.Models.WebhookEndpoint.CreateRequest("/webhook_endpoints", HttpMethod.POST)
+                .SetTelemetryResource("webhookEndpoint")
+                .SetTelemetryOperation("create");
+
+            Assert.NotNull(request);
+        }
+
+        [Fact]
         public async Task ExecuteEntityRequestAsync_RecordsChargebeeError()
         {
             var adapter = new RecordingAdapter();
