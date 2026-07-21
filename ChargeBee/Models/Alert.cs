@@ -110,7 +110,11 @@ namespace ChargeBee.Models
         }
         public string MeteredFeatureId 
         {
-            get { return GetValue<string>("metered_feature_id", true); }
+            get { return GetValue<string>("metered_feature_id", false); }
+        }
+        public string CurrencyCode 
+        {
+            get { return GetValue<string>("currency_code", false); }
         }
         public string SubscriptionId 
         {
@@ -131,6 +135,14 @@ namespace ChargeBee.Models
         public DateTime UpdatedAt 
         {
             get { return (DateTime)GetDateTime("updated_at", true); }
+        }
+        public List<AlertThreshold> Threshold 
+        {
+            get { return GetResourceList<AlertThreshold>("threshold"); }
+        }
+        public List<AlertFilterCondition> FilterConditions 
+        {
+            get { return GetResourceList<AlertFilterCondition>("filter_conditions"); }
         }
         
         #endregion
@@ -160,7 +172,12 @@ namespace ChargeBee.Models
             }
             public CreateRequest MeteredFeatureId(string meteredFeatureId) 
             {
-                m_params.Add("metered_feature_id", meteredFeatureId);
+                m_params.AddOpt("metered_feature_id", meteredFeatureId);
+                return this;
+            }
+            public CreateRequest CurrencyCode(string currencyCode) 
+            {
+                m_params.AddOpt("currency_code", currencyCode);
                 return this;
             }
             public CreateRequest SubscriptionId(string subscriptionId) 
@@ -175,7 +192,7 @@ namespace ChargeBee.Models
             }
             public CreateRequest ThresholdMode(ChargeBee.Models.Enums.ModeEnum thresholdMode) 
             {
-                m_params.Add("threshold[mode]", thresholdMode);
+                m_params.AddOpt("threshold[mode]", thresholdMode);
                 return this;
             }
             public CreateRequest ThresholdValue(double thresholdValue) 
@@ -277,6 +294,50 @@ namespace ChargeBee.Models
         }
 
         #region Subclasses
+        public class AlertThreshold : Resource
+        {
+
+            public ModeEnum Mode {
+                get { return GetEnum<ModeEnum>("mode", true); }
+            }
+
+            public double Value {
+                get { return GetValue<double>("value", true); }
+            }
+
+        }
+        public class AlertFilterCondition : Resource
+        {
+            public enum FieldEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "plan_price_id")]
+                PlanPriceId,
+            }
+            public enum OperatorEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "equals")]
+                Equals,
+                [EnumMember(Value = "not_equals")]
+                NotEquals,
+            }
+
+            public FieldEnum Field {
+                get { return GetEnum<FieldEnum>("field", true); }
+            }
+
+            public OperatorEnum Operator {
+                get { return GetEnum<OperatorEnum>("operator", true); }
+            }
+
+            public string Value {
+                get { return GetValue<string>("value", true); }
+            }
+
+        }
 
         #endregion
     }

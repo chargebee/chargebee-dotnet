@@ -2537,6 +2537,12 @@ namespace ChargeBee.Models
                 Gcash,
                 [EnumMember(Value = "south_korean_cards")]
                 SouthKoreanCards,
+                [EnumMember(Value = "paynow")]
+                Paynow,
+                [EnumMember(Value = "bizum")]
+                Bizum,
+                [EnumMember(Value = "promptpay")]
+                Promptpay,
             }
             public enum StatusEnum
             {

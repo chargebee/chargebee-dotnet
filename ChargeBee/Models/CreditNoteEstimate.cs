@@ -148,6 +148,19 @@ namespace ChargeBee.Models
                 [EnumMember(Value = "addon")]
                 Addon,
             }
+            public enum ProrationModeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "reset")]
+                Reset,
+                [EnumMember(Value = "delta")]
+                Delta,
+                [EnumMember(Value = "service_period_revision")]
+                ServicePeriodRevision,
+                [EnumMember(Value = "adjusted_term")]
+                AdjustedTerm,
+            }
 
             public string Id {
                 get { return GetValue<string>("id", false); }
@@ -247,6 +260,10 @@ namespace ChargeBee.Models
 
             public string CustomerId {
                 get { return GetValue<string>("customer_id", false); }
+            }
+
+            public ProrationModeEnum? ProrationMode {
+                get { return GetEnum<ProrationModeEnum>("proration_mode", false); }
             }
 
         }

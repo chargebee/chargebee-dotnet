@@ -68,9 +68,9 @@ namespace ChargeBee.Models
         {
             get { return (DateTime)GetDateTime("expires_at", true); }
         }
-        public string Metadata 
+        public Dictionary<String, Object> Metadata 
         {
-            get { return GetValue<string>("metadata", false); }
+            get { return GetMap("metadata", false); }
         }
         
         #endregion

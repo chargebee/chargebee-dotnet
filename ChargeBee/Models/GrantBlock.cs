@@ -100,10 +100,6 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<StatusEnum>("status", true); }
         }
-        public string Metadata 
-        {
-            get { return GetValue<string>("metadata", false); }
-        }
         public GrantSourceEnum GrantSource 
         {
             get { return GetEnum<GrantSourceEnum>("grant_source", true); }
@@ -123,6 +119,10 @@ namespace ChargeBee.Models
         public UnitTypeEnum? UnitType 
         {
             get { return GetEnum<UnitTypeEnum>("unit_type", false); }
+        }
+        public JToken Metadata 
+        {
+            get { return GetJToken("metadata", false); }
         }
         
         #endregion

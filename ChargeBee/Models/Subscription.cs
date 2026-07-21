@@ -2433,6 +2433,10 @@ namespace ChargeBee.Models
             {
                 return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, SubscriptionListRequest>("channel", this);        
             }
+            public BooleanFilter<SubscriptionListRequest> Decommissioned() 
+            {
+                return new BooleanFilter<SubscriptionListRequest>("decommissioned", this);        
+            }
         }
         public class SubscriptionContractTermsForSubscriptionRequest : ListRequestBase<SubscriptionContractTermsForSubscriptionRequest> 
         {

@@ -325,6 +325,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<decimal?>("local_currency_exchange_rate", false); }
         }
+        public List<CreditNoteExchangeRate> ExchangeRates 
+        {
+            get { return GetResourceList<CreditNoteExchangeRate>("exchange_rates"); }
+        }
         public string CreateReasonCode 
         {
             get { return GetValue<string>("create_reason_code", false); }
@@ -988,6 +992,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_items[tax10_amount][" + index + "]", lineItemTax10Amount);
                 return this;
             }
+            public ImportCreditNoteRequest LineItemProrationMode(int index, Invoice.InvoiceLineItem.ProrationModeEnum lineItemProrationMode) 
+            {
+                m_params.AddOpt("line_items[proration_mode][" + index + "]", lineItemProrationMode);
+                return this;
+            }
             public ImportCreditNoteRequest LineItemTierLineItemId(int index, string lineItemTierLineItemId) 
             {
                 m_params.Add("line_item_tiers[line_item_id][" + index + "]", lineItemTierLineItemId);
@@ -1218,6 +1227,19 @@ namespace ChargeBee.Models
                 [EnumMember(Value = "addon")]
                 Addon,
             }
+            public enum ProrationModeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "reset")]
+                Reset,
+                [EnumMember(Value = "delta")]
+                Delta,
+                [EnumMember(Value = "service_period_revision")]
+                ServicePeriodRevision,
+                [EnumMember(Value = "adjusted_term")]
+                AdjustedTerm,
+            }
 
             public string Id {
                 get { return GetValue<string>("id", false); }
@@ -1317,6 +1339,10 @@ namespace ChargeBee.Models
 
             public string CustomerId {
                 get { return GetValue<string>("customer_id", false); }
+            }
+
+            public ProrationModeEnum? ProrationMode {
+                get { return GetEnum<ProrationModeEnum>("proration_mode", false); }
             }
 
         }
@@ -1700,6 +1726,18 @@ namespace ChargeBee.Models
 
             public TaxApplicationEnum? TaxApplication {
                 get { return GetEnum<TaxApplicationEnum>("tax_application", false); }
+            }
+
+        }
+        public class CreditNoteExchangeRate : Resource
+        {
+
+            public string CurrencyCode {
+                get { return GetValue<string>("currency_code", true); }
+            }
+
+            public decimal Rate {
+                get { return GetValue<decimal>("rate", true); }
             }
 
         }

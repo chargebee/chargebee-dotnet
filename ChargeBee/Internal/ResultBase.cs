@@ -39,6 +39,14 @@ namespace ChargeBee.Internal
         }
 
 
+        public AsyncResponseList AsyncResponseList
+        {
+            get {  return GetResource<AsyncResponseList>("async_response_list"); }
+        }
+        public AsyncResponse AsyncResponse
+        {
+            get {  return GetResource<AsyncResponse>("async_response"); }
+        }
         public Subscription Subscription
         {
             get {  return GetResource<Subscription>("subscription"); }
@@ -379,9 +387,17 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<Rule>("rule"); }
         }
+        public Meter Meter
+        {
+            get {  return GetResource<Meter>("meter"); }
+        }
         public UsageEvent UsageEvent
         {
             get {  return GetResource<UsageEvent>("usage_event"); }
+        }
+        public MeteredFeature MeteredFeature
+        {
+            get {  return GetResource<MeteredFeature>("metered_feature"); }
         }
         public UsageFile UsageFile
         {

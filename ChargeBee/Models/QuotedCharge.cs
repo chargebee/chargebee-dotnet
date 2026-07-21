@@ -89,6 +89,10 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("description", false); }
             }
 
+            public string EntityDescription {
+                get { return GetValue<string>("entity_description", false); }
+            }
+
             public int? ServicePeriodInDays {
                 get { return GetValue<int?>("service_period_in_days", false); }
             }
@@ -159,6 +163,14 @@ namespace ChargeBee.Models
 
             public string UnitPriceInDecimal {
                 get { return GetValue<string>("unit_price_in_decimal", false); }
+            }
+
+            public string Description {
+                get { return GetValue<string>("description", false); }
+            }
+
+            public string EntityDescription {
+                get { return GetValue<string>("entity_description", false); }
             }
 
             public int? ServicePeriodDays {

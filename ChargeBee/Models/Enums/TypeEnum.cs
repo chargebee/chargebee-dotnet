@@ -151,6 +151,15 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "south_korean_cards")]
          SouthKoreanCards,
 
+        [EnumMember(Value = "paynow")]
+         Paynow,
+
+        [EnumMember(Value = "bizum")]
+         Bizum,
+
+        [EnumMember(Value = "promptpay")]
+         Promptpay,
+
         [EnumMember(Value = "free_trial")]
          FreeTrial,
 
@@ -160,8 +169,17 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "pay_as_you_go")]
          PayAsYouGo,
 
+        [EnumMember(Value = "simple")]
+         Simple,
+
+        [EnumMember(Value = "compound")]
+         Compound,
+
         [EnumMember(Value = "usage_exceeded")]
          UsageExceeded,
+
+        [EnumMember(Value = "spend_exceeded")]
+         SpendExceeded,
 
     }
 }

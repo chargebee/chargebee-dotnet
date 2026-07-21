@@ -386,6 +386,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("discounts_to_add[amount][" + index + "]", discountsToAddAmount);
                 return this;
             }
+            public CreateForSubscriptionRequest DiscountsToAddQuantity(int index, int discountsToAddQuantity) 
+            {
+                m_params.AddOpt("discounts_to_add[quantity][" + index + "]", discountsToAddQuantity);
+                return this;
+            }
             public CreateForSubscriptionRequest DiscountsToAddPeriod(int index, int discountsToAddPeriod) 
             {
                 m_params.AddOpt("discounts_to_add[period][" + index + "]", discountsToAddPeriod);
@@ -627,6 +632,11 @@ namespace ChargeBee.Models
             public UpdateRequest DiscountsToAddAmount(int index, long discountsToAddAmount) 
             {
                 m_params.AddOpt("discounts_to_add[amount][" + index + "]", discountsToAddAmount);
+                return this;
+            }
+            public UpdateRequest DiscountsToAddQuantity(int index, int discountsToAddQuantity) 
+            {
+                m_params.AddOpt("discounts_to_add[quantity][" + index + "]", discountsToAddQuantity);
                 return this;
             }
             public UpdateRequest DiscountsToAddPeriod(int index, int discountsToAddPeriod) 
@@ -905,6 +915,8 @@ namespace ChargeBee.Models
                 FixedAmount,
                 [EnumMember(Value = "percentage")]
                 Percentage,
+                [EnumMember(Value = "offer_quantity")]
+                OfferQuantity,
             }
             public enum DurationTypeEnum
             {
@@ -945,6 +957,10 @@ namespace ChargeBee.Models
 
             public long? Amount {
                 get { return GetValue<long?>("amount", false); }
+            }
+
+            public int? Quantity {
+                get { return GetValue<int?>("quantity", false); }
             }
 
             public DurationTypeEnum DurationType {

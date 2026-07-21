@@ -104,14 +104,6 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("amount", true); }
         }
-        public string StartBalance 
-        {
-            get { return GetValue<string>("start_balance", true); }
-        }
-        public string EndBalance 
-        {
-            get { return GetValue<string>("end_balance", true); }
-        }
         public string ProvisionedStartBalance 
         {
             get { return GetValue<string>("provisioned_start_balance", true); }
@@ -140,10 +132,6 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("auto_release_timestamp", false); }
         }
-        public string Metadata 
-        {
-            get { return GetValue<string>("metadata", false); }
-        }
         public DateTime? CreatedAt 
         {
             get { return GetDateTime("created_at", false); }
@@ -163,6 +151,10 @@ namespace ChargeBee.Models
         public UnitTypeEnum? UnitType 
         {
             get { return GetEnum<UnitTypeEnum>("unit_type", false); }
+        }
+        public Dictionary<String, Object> Metadata 
+        {
+            get { return GetMap("metadata", false); }
         }
         
         #endregion
