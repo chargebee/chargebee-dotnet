@@ -140,6 +140,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<PaymentIntentPaymentAttempt>("payment_attempts"); }
         }
+        public PaymentIntentPaymentIntentMetadata PaymentIntentMetadata 
+        {
+            get { return GetSubResource<PaymentIntentPaymentIntentMetadata>("payment_intent_metadata"); }
+        }
         public string BusinessEntityId 
         {
             get { return GetValue<string>("business_entity_id", false); }
@@ -358,6 +362,12 @@ namespace ChargeBee.Models
             Gcash,
             [EnumMember(Value = "south_korean_cards")]
             SouthKoreanCards,
+            [EnumMember(Value = "paynow")]
+            Paynow,
+            [EnumMember(Value = "bizum")]
+            Bizum,
+            [EnumMember(Value = "promptpay")]
+            Promptpay,
 
         }
 
@@ -422,6 +432,51 @@ namespace ChargeBee.Models
 
             public GatewayErrorDetail ErrorDetail {
                 get { return GetSubResource<GatewayErrorDetail>("error_detail"); }
+            }
+
+        }
+        public class PaymentIntentPaymentIntentMetadata : Resource
+        {
+            public enum SourceEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "cb_js")]
+                CbJs,
+                [EnumMember(Value = "components_fields")]
+                ComponentsFields,
+                [EnumMember(Value = "checkout_v3")]
+                CheckoutV3,
+                [EnumMember(Value = "paynow_v3")]
+                PaynowV3,
+                [EnumMember(Value = "portal_v3")]
+                PortalV3,
+                [EnumMember(Value = "gift_v3")]
+                GiftV3,
+                [EnumMember(Value = "checkout_v4")]
+                CheckoutV4,
+                [EnumMember(Value = "payment_component")]
+                PaymentComponent,
+                [EnumMember(Value = "pc_inapp_v4")]
+                PcInappV4,
+                [EnumMember(Value = "pc_fpc_v4")]
+                PcFpcV4,
+            }
+
+            public SourceEnum Source {
+                get { return GetEnum<SourceEnum>("source", true); }
+            }
+
+            public string ClientIpAddress {
+                get { return GetValue<string>("client_ip_address", false); }
+            }
+
+            public string UserAgent {
+                get { return GetValue<string>("user_agent", false); }
+            }
+
+            public DateTime? CreatedAt {
+                get { return GetDateTime("created_at", false); }
             }
 
         }

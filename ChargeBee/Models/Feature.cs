@@ -144,6 +144,10 @@ namespace ChargeBee.Models
         {
             get { return (DateTime)GetDateTime("created_at", true); }
         }
+        public bool Metered 
+        {
+            get { return GetValue<bool>("metered", true); }
+        }
         public List<FeatureLevel> Levels 
         {
             get { return GetResourceList<FeatureLevel>("levels"); }
@@ -174,6 +178,10 @@ namespace ChargeBee.Models
             public EnumFilter<Feature.TypeEnum, FeatureListRequest> Type() 
             {
                 return new EnumFilter<Feature.TypeEnum, FeatureListRequest>("type", this);        
+            }
+            public BooleanFilter<FeatureListRequest> Metered() 
+            {
+                return new BooleanFilter<FeatureListRequest>("metered", this);        
             }
         }
         public class CreateRequest : EntityRequest<CreateRequest> 

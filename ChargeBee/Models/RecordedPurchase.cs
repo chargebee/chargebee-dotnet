@@ -125,6 +125,21 @@ namespace ChargeBee.Models
                 m_params.Add("customer[id]", customerId);
                 return this;
             }
+            public CreateRequest CustomerEmail(string customerEmail) 
+            {
+                m_params.AddOpt("customer[email]", customerEmail);
+                return this;
+            }
+            public CreateRequest CustomerFirstName(string customerFirstName) 
+            {
+                m_params.AddOpt("customer[first_name]", customerFirstName);
+                return this;
+            }
+            public CreateRequest CustomerLastName(string customerLastName) 
+            {
+                m_params.AddOpt("customer[last_name]", customerLastName);
+                return this;
+            }
             public CreateRequest AppleAppStoreTransactionId(string appleAppStoreTransactionId) 
             {
                 m_params.AddOpt("apple_app_store[transaction_id]", appleAppStoreTransactionId);

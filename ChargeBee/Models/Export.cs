@@ -1043,6 +1043,10 @@ namespace ChargeBee.Models
             {
                 return new EnumFilter<ChargeBee.Models.Enums.ChannelEnum, SubscriptionsRequest>("subscription[channel]", this);        
             }
+            public BooleanFilter<SubscriptionsRequest> SubscriptionDecommissioned() 
+            {
+                return new BooleanFilter<SubscriptionsRequest>("subscription[decommissioned]", this);        
+            }
         }
         public class InvoicesRequest : EntityRequest<InvoicesRequest> 
         {

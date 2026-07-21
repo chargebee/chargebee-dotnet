@@ -19,5 +19,8 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "direct_debit")]
          DirectDebit,
 
+        [EnumMember(Value = "real_time_payments")]
+         RealTimePayments,
+
     }
 }

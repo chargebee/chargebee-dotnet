@@ -499,6 +499,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("line_items_next_offset", false); }
         }
+        public List<InvoiceExchangeRate> ExchangeRates 
+        {
+            get { return GetResourceList<InvoiceExchangeRate>("exchange_rates"); }
+        }
         public bool? FirstInvoice 
         {
             get { return GetValue<bool?>("first_invoice", false); }
@@ -1268,6 +1272,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("invoice_date", invoiceDate);
                 return this;
             }
+            public CreateForChargeItemsAndChargesRequest CreatePendingInvoice(bool createPendingInvoice) 
+            {
+                m_params.AddOpt("create_pending_invoice", createPendingInvoice);
+                return this;
+            }
             public CreateForChargeItemsAndChargesRequest TokenId(string tokenId) 
             {
                 m_params.AddOpt("token_id", tokenId);
@@ -1696,6 +1705,21 @@ namespace ChargeBee.Models
             public CreateForChargeItemsAndChargesRequest ItemTierPackageSize(int index, int itemTierPackageSize) 
             {
                 m_params.AddOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest ItemPriceDescription(int index, string itemPriceDescription) 
+            {
+                m_params.AddOpt("item_prices[description][" + index + "]", itemPriceDescription);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest ItemPriceEntityDescription(int index, string itemPriceEntityDescription) 
+            {
+                m_params.AddOpt("item_prices[entity_description][" + index + "]", itemPriceEntityDescription);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest ChargeEntityDescription(int index, string chargeEntityDescription) 
+            {
+                m_params.AddOpt("charges[entity_description][" + index + "]", chargeEntityDescription);
                 return this;
             }
             public CreateForChargeItemsAndChargesRequest ChargeAmount(int index, long chargeAmount) 
@@ -2286,6 +2310,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("use_for_proration", useForProration);
                 return this;
             }
+            public ImportInvoiceRequest PaidAt(long paidAt) 
+            {
+                m_params.AddOpt("paid_at", paidAt);
+                return this;
+            }
             public ImportInvoiceRequest CreditNoteId(string creditNoteId) 
             {
                 m_params.AddOpt("credit_note[id]", creditNoteId);
@@ -2614,6 +2643,11 @@ namespace ChargeBee.Models
             public ImportInvoiceRequest LineItemTax10Amount(int index, long lineItemTax10Amount) 
             {
                 m_params.AddOpt("line_items[tax10_amount][" + index + "]", lineItemTax10Amount);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemProrationMode(int index, Invoice.InvoiceLineItem.ProrationModeEnum lineItemProrationMode) 
+            {
+                m_params.AddOpt("line_items[proration_mode][" + index + "]", lineItemProrationMode);
                 return this;
             }
             public ImportInvoiceRequest LineItemCreatedAt(int index, long lineItemCreatedAt) 
@@ -3845,6 +3879,18 @@ namespace ChargeBee.Models
         }
 
         #region Subclasses
+        public class InvoiceExchangeRate : Resource
+        {
+
+            public string CurrencyCode {
+                get { return GetValue<string>("currency_code", true); }
+            }
+
+            public decimal Rate {
+                get { return GetValue<decimal>("rate", true); }
+            }
+
+        }
         public class InvoiceLineItem : Resource
         {
             public enum EntityTypeEnum
@@ -3865,6 +3911,19 @@ namespace ChargeBee.Models
                 Plan,
                 [EnumMember(Value = "addon")]
                 Addon,
+            }
+            public enum ProrationModeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "reset")]
+                Reset,
+                [EnumMember(Value = "delta")]
+                Delta,
+                [EnumMember(Value = "service_period_revision")]
+                ServicePeriodRevision,
+                [EnumMember(Value = "adjusted_term")]
+                AdjustedTerm,
             }
 
             public string Id {
@@ -3965,6 +4024,10 @@ namespace ChargeBee.Models
 
             public string CustomerId {
                 get { return GetValue<string>("customer_id", false); }
+            }
+
+            public ProrationModeEnum? ProrationMode {
+                get { return GetEnum<ProrationModeEnum>("proration_mode", false); }
             }
 
         }

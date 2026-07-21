@@ -175,5 +175,14 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "south_korean_cards")]
          SouthKoreanCards,
 
+        [EnumMember(Value = "paynow")]
+         Paynow,
+
+        [EnumMember(Value = "bizum")]
+         Bizum,
+
+        [EnumMember(Value = "promptpay")]
+         Promptpay,
+
     }
 }

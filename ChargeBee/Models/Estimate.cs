@@ -3793,6 +3793,21 @@ namespace ChargeBee.Models
                 m_params.AddOpt("charges[date_to][" + index + "]", chargeDateTo);
                 return this;
             }
+            public CreateInvoiceForItemsRequest ItemPriceDescription(int index, string itemPriceDescription) 
+            {
+                m_params.AddOpt("item_prices[description][" + index + "]", itemPriceDescription);
+                return this;
+            }
+            public CreateInvoiceForItemsRequest ItemPriceEntityDescription(int index, string itemPriceEntityDescription) 
+            {
+                m_params.AddOpt("item_prices[entity_description][" + index + "]", itemPriceEntityDescription);
+                return this;
+            }
+            public CreateInvoiceForItemsRequest ChargeEntityDescription(int index, string chargeEntityDescription) 
+            {
+                m_params.AddOpt("charges[entity_description][" + index + "]", chargeEntityDescription);
+                return this;
+            }
             public CreateInvoiceForItemsRequest NotesToRemoveEntityType(int index, ChargeBee.Models.Enums.EntityTypeEnum notesToRemoveEntityType) 
             {
                 m_params.AddOpt("notes_to_remove[entity_type][" + index + "]", notesToRemoveEntityType);
