@@ -160,6 +160,18 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "promptpay")]
          Promptpay,
 
+        [EnumMember(Value = "dana")]
+         Dana,
+
+        [EnumMember(Value = "touch_n_go")]
+         TouchNGo,
+
+        [EnumMember(Value = "tamara")]
+         Tamara,
+
+        [EnumMember(Value = "qpay")]
+         Qpay,
+
         [EnumMember(Value = "free_trial")]
          FreeTrial,
 
@@ -180,6 +192,21 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "spend_exceeded")]
          SpendExceeded,
+
+        [EnumMember(Value = "credit_balance_dropped")]
+         CreditBalanceDropped,
+
+        [EnumMember(Value = "credit")]
+         Credit,
+
+        [EnumMember(Value = "debit")]
+         Debit,
+
+        [EnumMember(Value = "hold")]
+         Hold,
+
+        [EnumMember(Value = "unhold")]
+         Unhold,
 
     }
 }

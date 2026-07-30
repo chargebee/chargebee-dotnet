@@ -116,6 +116,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("currency_code", false); }
         }
+        public string UnitId 
+        {
+            get { return GetValue<string>("unit_id", false); }
+        }
         public string SubscriptionId 
         {
             get { return GetValue<string>("subscription_id", false); }
@@ -136,9 +140,9 @@ namespace ChargeBee.Models
         {
             get { return (DateTime)GetDateTime("updated_at", true); }
         }
-        public List<AlertThreshold> Threshold 
+        public AlertThreshold Threshold 
         {
-            get { return GetResourceList<AlertThreshold>("threshold"); }
+            get { return GetSubResource<AlertThreshold>("threshold"); }
         }
         public List<AlertFilterCondition> FilterConditions 
         {
@@ -178,6 +182,11 @@ namespace ChargeBee.Models
             public CreateRequest CurrencyCode(string currencyCode) 
             {
                 m_params.AddOpt("currency_code", currencyCode);
+                return this;
+            }
+            public CreateRequest UnitId(string unitId) 
+            {
+                m_params.AddOpt("unit_id", unitId);
                 return this;
             }
             public CreateRequest SubscriptionId(string subscriptionId) 

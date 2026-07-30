@@ -652,6 +652,18 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "omnichannel_subscription_item_recovered")]
          OmnichannelSubscriptionItemRecovered,
 
+        [EnumMember(Value = "ledger_account_balance_updated")]
+         LedgerAccountBalanceUpdated,
+
+        [EnumMember(Value = "grant_blocks_created")]
+         GrantBlocksCreated,
+
+        [EnumMember(Value = "grant_blocks_updated")]
+         GrantBlocksUpdated,
+
+        [EnumMember(Value = "ledger_updated")]
+         LedgerUpdated,
+
         [EnumMember(Value = "plan_created")]
          PlanCreated,
 

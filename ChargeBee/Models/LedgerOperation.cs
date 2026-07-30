@@ -89,12 +89,32 @@ namespace ChargeBee.Models
             request.SetTelemetryOperation("releaseAuthorization");
             return request;
         }
+        public static AllocateRequest Allocate()
+        {
+            string url = ApiUtil.BuildUrl("ledger_operations", "allocate");
+            var request = new AllocateRequest(url, HttpMethod.POST).IsJsonRequest(true).SetIdempotent(false);
+            request.SetTelemetryResource("ledgerOperation");
+            request.SetTelemetryOperation("allocate");
+            return request;
+        }
         #endregion
         
         #region Properties
         public string Id 
         {
             get { return GetValue<string>("id", true); }
+        }
+        public string SubscriptionId 
+        {
+            get { return GetValue<string>("subscription_id", false); }
+        }
+        public string UnitId 
+        {
+            get { return GetValue<string>("unit_id", false); }
+        }
+        public UnitTypeEnum? UnitType 
+        {
+            get { return GetEnum<UnitTypeEnum>("unit_type", false); }
         }
         public TypeEnum LedgerOperationType 
         {
@@ -124,33 +144,21 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("parent_ledger_operation_id", false); }
         }
-        public DateTime? LedgerOperationTimestamp 
+        public DateTime LedgerOperationTimestamp 
         {
-            get { return GetDateTime("ledger_operation_timestamp", false); }
+            get { return (DateTime)GetDateTime("ledger_operation_timestamp", true); }
         }
         public DateTime? AutoReleaseTimestamp 
         {
             get { return GetDateTime("auto_release_timestamp", false); }
         }
-        public DateTime? CreatedAt 
+        public DateTime CreatedAt 
         {
-            get { return GetDateTime("created_at", false); }
+            get { return (DateTime)GetDateTime("created_at", true); }
         }
-        public DateTime? ModifiedAt 
+        public DateTime ModifiedAt 
         {
-            get { return GetDateTime("modified_at", false); }
-        }
-        public string SubscriptionId 
-        {
-            get { return GetValue<string>("subscription_id", false); }
-        }
-        public string UnitId 
-        {
-            get { return GetValue<string>("unit_id", false); }
-        }
-        public UnitTypeEnum? UnitType 
-        {
-            get { return GetEnum<UnitTypeEnum>("unit_type", false); }
+            get { return (DateTime)GetDateTime("modified_at", true); }
         }
         public Dictionary<String, Object> Metadata 
         {
@@ -335,8 +343,51 @@ namespace ChargeBee.Models
             }
         
         }
+        public class AllocateRequest : EntityRequest<AllocateRequest> 
+        {
+            public AllocateRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public AllocateRequest SubscriptionId(string subscriptionId) 
+            {
+                m_params.Add("subscription_id", subscriptionId);
+                return this;
+            }
+            public AllocateRequest UnitId(string unitId) 
+            {
+                m_params.Add("unit_id", unitId);
+                return this;
+            }
+            public AllocateRequest Amount(string amount) 
+            {
+                m_params.Add("amount", amount);
+                return this;
+            }
+            public AllocateRequest ExpiresAt(long expiresAt) 
+            {
+                m_params.Add("expires_at", expiresAt);
+                return this;
+            }
+            public AllocateRequest Metadata(Dictionary<String, Object> metadata) 
+            {
+                m_params.AddOpt("metadata", metadata);
+                return this;
+            }
+        
+        }
         #endregion
 
+        public enum UnitTypeEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "credit_unit")]
+            CreditUnit,
+
+        }
         public enum TypeEnum
         {
 
@@ -362,18 +413,10 @@ namespace ChargeBee.Models
             Adjustment,
 
         }
-        public enum UnitTypeEnum
-        {
-
-            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
-            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [EnumMember(Value = "credit_unit")]
-            CreditUnit,
-
-        }
 
         #region Subclasses
 
+        
         
         
         

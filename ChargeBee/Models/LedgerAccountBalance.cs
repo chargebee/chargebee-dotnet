@@ -64,9 +64,17 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<UnitTypeEnum>("unit_type", true); }
         }
-        public DateTime? ModifiedAt 
+        public DateTime CreatedAt 
         {
-            get { return GetDateTime("modified_at", false); }
+            get { return (DateTime)GetDateTime("created_at", true); }
+        }
+        public DateTime ModifiedAt 
+        {
+            get { return (DateTime)GetDateTime("modified_at", true); }
+        }
+        public long? ResourceVersion 
+        {
+            get { return GetValue<long?>("resource_version", false); }
         }
         public LedgerAccountBalanceProvisionedBalance ProvisionedBalance 
         {

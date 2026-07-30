@@ -2543,6 +2543,14 @@ namespace ChargeBee.Models
                 Bizum,
                 [EnumMember(Value = "promptpay")]
                 Promptpay,
+                [EnumMember(Value = "dana")]
+                Dana,
+                [EnumMember(Value = "touch_n_go")]
+                TouchNGo,
+                [EnumMember(Value = "tamara")]
+                Tamara,
+                [EnumMember(Value = "qpay")]
+                Qpay,
             }
             public enum StatusEnum
             {

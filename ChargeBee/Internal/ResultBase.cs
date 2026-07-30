@@ -303,6 +303,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<Metadata>("metadata"); }
         }
+        public CreditUnit CreditUnit
+        {
+            get {  return GetResource<CreditUnit>("credit_unit"); }
+        }
         public SubscriptionEntitlement SubscriptionEntitlement
         {
             get {  return GetResource<SubscriptionEntitlement>("subscription_entitlement"); }
@@ -455,6 +459,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<GrantBlock>("grant_block"); }
         }
+        public LedgerEntry LedgerEntry
+        {
+            get {  return GetResource<LedgerEntry>("ledger_entry"); }
+        }
         public PromotionalGrant PromotionalGrant
         {
             get {  return GetResource<PromotionalGrant>("promotional_grant"); }
@@ -530,6 +538,11 @@ namespace ChargeBee.Internal
         public List<GrantBlock> GrantBlocks
         {
             get {  return (List<GrantBlock>)GetResourceList<GrantBlock>("grant_blocks", "grant_block"); }
+        }
+
+        public List<LedgerEntry> LedgerEntries
+        {
+            get {  return (List<LedgerEntry>)GetResourceList<LedgerEntry>("ledger_entries", "ledger_entry"); }
         }
 
 

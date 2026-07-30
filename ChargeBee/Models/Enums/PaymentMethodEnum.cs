@@ -25,6 +25,18 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "custom")]
          Custom,
 
+        [EnumMember(Value = "dana")]
+         Dana,
+
+        [EnumMember(Value = "touch_n_go")]
+         TouchNGo,
+
+        [EnumMember(Value = "tamara")]
+         Tamara,
+
+        [EnumMember(Value = "qpay")]
+         Qpay,
+
         [EnumMember(Value = "chargeback")]
          Chargeback,
 
