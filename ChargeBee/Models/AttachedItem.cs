@@ -116,13 +116,13 @@ namespace ChargeBee.Models
         {
             get { return GetValue<int?>("billing_cycles", false); }
         }
-        public ChargeOnEventEnum ChargeOnEvent 
+        public ChargeOnEventEnum? ChargeOnEvent 
         {
-            get { return GetEnum<ChargeOnEventEnum>("charge_on_event", true); }
+            get { return GetEnum<ChargeOnEventEnum>("charge_on_event", false); }
         }
-        public bool ChargeOnce 
+        public bool? ChargeOnce 
         {
-            get { return GetValue<bool>("charge_once", true); }
+            get { return GetValue<bool?>("charge_once", false); }
         }
         public DateTime CreatedAt 
         {

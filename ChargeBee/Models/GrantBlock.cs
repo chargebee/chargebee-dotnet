@@ -56,6 +56,22 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("id", true); }
         }
+        public string SubscriptionId 
+        {
+            get { return GetValue<string>("subscription_id", false); }
+        }
+        public AccountTypeEnum? AccountType 
+        {
+            get { return GetEnum<AccountTypeEnum>("account_type", false); }
+        }
+        public string UnitId 
+        {
+            get { return GetValue<string>("unit_id", false); }
+        }
+        public UnitTypeEnum? UnitType 
+        {
+            get { return GetEnum<UnitTypeEnum>("unit_type", false); }
+        }
         public string GrantedAmount 
         {
             get { return GetValue<string>("granted_amount", true); }
@@ -104,21 +120,17 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<GrantSourceEnum>("grant_source", true); }
         }
-        public DateTime? CreatedAt 
+        public DateTime CreatedAt 
         {
-            get { return GetDateTime("created_at", false); }
+            get { return (DateTime)GetDateTime("created_at", true); }
         }
-        public AccountTypeEnum? AccountType 
+        public DateTime ModifiedAt 
         {
-            get { return GetEnum<AccountTypeEnum>("account_type", false); }
+            get { return (DateTime)GetDateTime("modified_at", true); }
         }
-        public string UnitId 
+        public long? ResourceVersion 
         {
-            get { return GetValue<string>("unit_id", false); }
-        }
-        public UnitTypeEnum? UnitType 
-        {
-            get { return GetEnum<UnitTypeEnum>("unit_type", false); }
+            get { return GetValue<long?>("resource_version", false); }
         }
         public JToken Metadata 
         {
@@ -142,6 +154,10 @@ namespace ChargeBee.Models
             public StringFilter<GrantBlockListGrantBlocksRequest> UnitId() 
             {
                 return new StringFilter<GrantBlockListGrantBlocksRequest>("unit_id", this);        
+            }
+            public EnumFilter<AccountTypeEnum, GrantBlockListGrantBlocksRequest> AccountType() 
+            {
+                return new EnumFilter<AccountTypeEnum, GrantBlockListGrantBlocksRequest>("account_type", this);        
             }
             public TimestampFilter<GrantBlockListGrantBlocksRequest> EffectiveFrom() 
             {
@@ -171,23 +187,6 @@ namespace ChargeBee.Models
         }
         #endregion
 
-        public enum GrantSourceEnum
-        {
-
-            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
-            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [EnumMember(Value = "subscription_created")]
-            SubscriptionCreated,
-            [EnumMember(Value = "subscription_changed")]
-            SubscriptionChanged,
-            [EnumMember(Value = "top_up")]
-            TopUp,
-            [EnumMember(Value = "promotional_grants")]
-            PromotionalGrants,
-            [EnumMember(Value = "rollover")]
-            Rollover,
-
-        }
         public enum AccountTypeEnum
         {
 
@@ -206,6 +205,27 @@ namespace ChargeBee.Models
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
             [EnumMember(Value = "credit_unit")]
             CreditUnit,
+
+        }
+        public enum GrantSourceEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "subscription_created")]
+            SubscriptionCreated,
+            [EnumMember(Value = "subscription_changed")]
+            SubscriptionChanged,
+            [EnumMember(Value = "top_up")]
+            TopUp,
+            [EnumMember(Value = "promotional_grants")]
+            PromotionalGrants,
+            [EnumMember(Value = "rollover")]
+            Rollover,
+            [EnumMember(Value = "grant_renewal")]
+            GrantRenewal,
+            [EnumMember(Value = "subscription_renewed")]
+            SubscriptionRenewed,
 
         }
 

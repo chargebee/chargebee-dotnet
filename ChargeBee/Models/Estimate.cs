@@ -2666,6 +2666,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("invoice_date", invoiceDate);
                 return this;
             }
+            public CancelSubscriptionForItemsRequest IncludeCancellationDayInBilling(bool includeCancellationDayInBilling) 
+            {
+                m_params.AddOpt("include_cancellation_day_in_billing", includeCancellationDayInBilling);
+                return this;
+            }
             public CancelSubscriptionForItemsRequest CancelReasonCode(string cancelReasonCode) 
             {
                 m_params.AddOpt("cancel_reason_code", cancelReasonCode);
