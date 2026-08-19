@@ -124,9 +124,13 @@ namespace ChargeBee.Models
         {
             get { return GetDateTime("updated_at", false); }
         }
+        public JToken PaymentMethodOptions 
+        {
+            get { return GetJToken("payment_method_options", false); }
+        }
         public string CustomerId 
         {
-            get { return GetValue<string>("customer_id", true); }
+            get { return GetValue<string>("customer_id", false); }
         }
         public string Gateway 
         {
@@ -209,6 +213,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("failure_url", failureUrl);
                 return this;
             }
+            public CreateRequest PaymentMethodOptions(JToken paymentMethodOptions) 
+            {
+                m_params.AddOpt("payment_method_options", paymentMethodOptions);
+                return this;
+            }
         }
         public class UpdateRequest : EntityRequest<UpdateRequest> 
         {
@@ -245,6 +254,11 @@ namespace ChargeBee.Models
             public UpdateRequest FailureUrl(string failureUrl) 
             {
                 m_params.AddOpt("failure_url", failureUrl);
+                return this;
+            }
+            public UpdateRequest PaymentMethodOptions(JToken paymentMethodOptions) 
+            {
+                m_params.AddOpt("payment_method_options", paymentMethodOptions);
                 return this;
             }
         }
@@ -442,6 +456,14 @@ namespace ChargeBee.Models
                 get { return GetSubResource<GatewayErrorDetail>("error_detail"); }
             }
 
+            public string RoutingRuleId {
+                get { return GetValue<string>("routing_rule_id", false); }
+            }
+
+            public string PaymentMethodDisplayRuleId {
+                get { return GetValue<string>("payment_method_display_rule_id", false); }
+            }
+
         }
         public class PaymentIntentPaymentIntentMetadata : Resource
         {
@@ -449,26 +471,18 @@ namespace ChargeBee.Models
             {
                 UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
                 dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-                [EnumMember(Value = "cb_js")]
-                CbJs,
-                [EnumMember(Value = "components_fields")]
-                ComponentsFields,
-                [EnumMember(Value = "checkout_v3")]
-                CheckoutV3,
-                [EnumMember(Value = "paynow_v3")]
-                PaynowV3,
-                [EnumMember(Value = "portal_v3")]
-                PortalV3,
-                [EnumMember(Value = "gift_v3")]
-                GiftV3,
-                [EnumMember(Value = "checkout_v4")]
-                CheckoutV4,
-                [EnumMember(Value = "payment_component")]
-                PaymentComponent,
-                [EnumMember(Value = "pc_inapp_v4")]
-                PcInappV4,
-                [EnumMember(Value = "pc_fpc_v4")]
-                PcFpcV4,
+                [EnumMember(Value = "payment_method_helper")]
+                PaymentMethodHelper,
+                [EnumMember(Value = "card_components")]
+                CardComponents,
+                [EnumMember(Value = "checkout")]
+                Checkout,
+                [EnumMember(Value = "collect_now")]
+                CollectNow,
+                [EnumMember(Value = "portal")]
+                Portal,
+                [EnumMember(Value = "payment_components")]
+                PaymentComponents,
             }
 
             public SourceEnum Source {

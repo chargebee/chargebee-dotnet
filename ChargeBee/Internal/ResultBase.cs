@@ -87,9 +87,17 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<PaymentSource>("payment_source"); }
         }
+        public GatewayPaymentMethodToken GatewayPaymentMethodToken
+        {
+            get {  return GetResource<GatewayPaymentMethodToken>("gateway_payment_method_token"); }
+        }
         public ThirdPartyPaymentMethod ThirdPartyPaymentMethod
         {
             get {  return GetResource<ThirdPartyPaymentMethod>("third_party_payment_method"); }
+        }
+        public VaultedPaymentMethod VaultedPaymentMethod
+        {
+            get {  return GetResource<VaultedPaymentMethod>("vaulted_payment_method"); }
         }
         public VirtualBankAccount VirtualBankAccount
         {
@@ -178,6 +186,10 @@ namespace ChargeBee.Internal
         public QuoteLineGroup QuoteLineGroup
         {
             get {  return GetResource<QuoteLineGroup>("quote_line_group"); }
+        }
+        public QuoteEntitlement QuoteEntitlement
+        {
+            get {  return GetResource<QuoteEntitlement>("quote_entitlement"); }
         }
         public CpqQuoteSignature CpqQuoteSignature
         {
@@ -362,6 +374,10 @@ namespace ChargeBee.Internal
         public OmnichannelSubscriptionItemScheduledChange OmnichannelSubscriptionItemScheduledChange
         {
             get {  return GetResource<OmnichannelSubscriptionItemScheduledChange>("omnichannel_subscription_item_scheduled_change"); }
+        }
+        public OmnichannelSubscriptionItemMetric OmnichannelSubscriptionItemMetric
+        {
+            get {  return GetResource<OmnichannelSubscriptionItemMetric>("omnichannel_subscription_item_metric"); }
         }
         public OmnichannelSubscription OmnichannelSubscription
         {

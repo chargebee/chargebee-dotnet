@@ -3216,6 +3216,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("redirect_url", redirectUrl);
                 return this;
             }
+            public PreCancelRequest Locale(string locale) 
+            {
+                m_params.AddOpt("locale", locale);
+                return this;
+            }
             public PreCancelRequest SubscriptionId(string subscriptionId) 
             {
                 m_params.Add("subscription[id]", subscriptionId);

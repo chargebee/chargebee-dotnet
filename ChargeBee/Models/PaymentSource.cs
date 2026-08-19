@@ -121,6 +121,14 @@ namespace ChargeBee.Models
             request.SetTelemetryOperation("verifyBankAccount");
             return request;
         }
+        public static PaymentSourceListGatewayTokensForPaymentSourceRequest ListGatewayTokensForPaymentSource(string id)
+        {
+            string url = ApiUtil.BuildUrl("payment_sources", CheckNull(id), "gateway_payment_method_tokens");
+            var request = new PaymentSourceListGatewayTokensForPaymentSourceRequest(url);
+            request.SetTelemetryResource("paymentSource");
+            request.SetTelemetryOperation("listGatewayTokensForPaymentSource");
+            return request;
+        }
         public static EntityRequest<Type> Retrieve(string id)
         {
             string url = ApiUtil.BuildUrl("payment_sources", CheckNull(id));
@@ -259,6 +267,10 @@ namespace ChargeBee.Models
         public List<PaymentSourceMandate> Mandates 
         {
             get { return GetResourceList<PaymentSourceMandate>("mandates"); }
+        }
+        public JToken VaultToken 
+        {
+            get { return GetJToken("vault_token", false); }
         }
         public bool Deleted 
         {
@@ -900,6 +912,19 @@ namespace ChargeBee.Models
             public VerifyBankAccountRequest Amount2(long amount2) 
             {
                 m_params.Add("amount2", amount2);
+                return this;
+            }
+        }
+        public class PaymentSourceListGatewayTokensForPaymentSourceRequest : ListRequestBase<PaymentSourceListGatewayTokensForPaymentSourceRequest> 
+        {
+            public PaymentSourceListGatewayTokensForPaymentSourceRequest(string url) 
+                    : base(url)
+            {
+            }
+
+            public PaymentSourceListGatewayTokensForPaymentSourceRequest IncludeDeleted(bool includeDeleted) 
+            {
+                m_params.AddOpt("include_deleted", includeDeleted);
                 return this;
             }
         }
