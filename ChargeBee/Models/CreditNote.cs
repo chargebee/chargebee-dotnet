@@ -122,6 +122,14 @@ namespace ChargeBee.Models
             request.SetTelemetryOperation("delete");
             return request;
         }
+        public static UpdateRequest Update(string id)
+        {
+            string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "update");
+            var request = new UpdateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("creditNote");
+            request.SetTelemetryOperation("update");
+            return request;
+        }
         public static RemoveTaxWithheldRefundRequest RemoveTaxWithheldRefund(string id)
         {
             string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "remove_tax_withheld_refund");
@@ -697,6 +705,19 @@ namespace ChargeBee.Models
             }
 
             public DeleteRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
+                return this;
+            }
+        }
+        public class UpdateRequest : EntityRequest<UpdateRequest> 
+        {
+            public UpdateRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public UpdateRequest Comment(string comment) 
             {
                 m_params.AddOpt("comment", comment);
                 return this;

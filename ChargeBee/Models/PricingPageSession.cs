@@ -109,7 +109,7 @@ namespace ChargeBee.Models
             }
             public CreateForNewSubscriptionRequest PricingPageId(string pricingPageId) 
             {
-                m_params.Add("pricing_page[id]", pricingPageId);
+                m_params.AddOpt("pricing_page[id]", pricingPageId);
                 return this;
             }
             public CreateForNewSubscriptionRequest SubscriptionId(string subscriptionId) 

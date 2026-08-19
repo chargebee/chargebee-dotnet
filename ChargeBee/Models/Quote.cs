@@ -422,6 +422,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<long?>("total_discount", false); }
         }
+        public bool? HasEntitlements 
+        {
+            get { return GetValue<bool?>("has_entitlements", false); }
+        }
         
         #endregion
         
@@ -2535,6 +2539,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_items[end_date][" + index + "]", subscriptionItemEndDate);
                 return this;
             }
+            public CreateSubItemsForCustomerQuoteRequest SubscriptionItemDescription(int index, string subscriptionItemDescription) 
+            {
+                m_params.AddOpt("subscription_items[description][" + index + "]", subscriptionItemDescription);
+                return this;
+            }
             public CreateSubItemsForCustomerQuoteRequest SubscriptionItemRampTierId(int index, string subscriptionItemRampTierId) 
             {
                 m_params.AddOpt("subscription_items[ramp_tier_id][" + index + "]", subscriptionItemRampTierId);
@@ -2568,6 +2577,41 @@ namespace ChargeBee.Models
             public CreateSubItemsForCustomerQuoteRequest CouponEndDate(int index, long couponEndDate) 
             {
                 m_params.AddOpt("coupons[end_date][" + index + "]", couponEndDate);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest EntitlementOverrideFeatureId(int index, string entitlementOverrideFeatureId) 
+            {
+                m_params.AddOpt("entitlement_overrides[feature_id][" + index + "]", entitlementOverrideFeatureId);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest EntitlementOverrideEntityId(int index, string entitlementOverrideEntityId) 
+            {
+                m_params.AddOpt("entitlement_overrides[entity_id][" + index + "]", entitlementOverrideEntityId);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest EntitlementOverrideEntityType(int index, ChargeBee.Models.Enums.EntityTypeEnum entitlementOverrideEntityType) 
+            {
+                m_params.AddOpt("entitlement_overrides[entity_type][" + index + "]", entitlementOverrideEntityType);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest EntitlementOverrideValue(int index, string entitlementOverrideValue) 
+            {
+                m_params.AddOpt("entitlement_overrides[value][" + index + "]", entitlementOverrideValue);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest EntitlementOverrideIsEnabled(int index, bool entitlementOverrideIsEnabled) 
+            {
+                m_params.AddOpt("entitlement_overrides[is_enabled][" + index + "]", entitlementOverrideIsEnabled);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest EntitlementOverrideStartDate(int index, long entitlementOverrideStartDate) 
+            {
+                m_params.AddOpt("entitlement_overrides[start_date][" + index + "]", entitlementOverrideStartDate);
+                return this;
+            }
+            public CreateSubItemsForCustomerQuoteRequest EntitlementOverrideEndDate(int index, long entitlementOverrideEndDate) 
+            {
+                m_params.AddOpt("entitlement_overrides[end_date][" + index + "]", entitlementOverrideEndDate);
                 return this;
             }
         }
@@ -2980,6 +3024,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_items[end_date][" + index + "]", subscriptionItemEndDate);
                 return this;
             }
+            public EditCreateSubCustomerQuoteForItemsRequest SubscriptionItemDescription(int index, string subscriptionItemDescription) 
+            {
+                m_params.AddOpt("subscription_items[description][" + index + "]", subscriptionItemDescription);
+                return this;
+            }
             public EditCreateSubCustomerQuoteForItemsRequest SubscriptionItemRampTierId(int index, string subscriptionItemRampTierId) 
             {
                 m_params.AddOpt("subscription_items[ramp_tier_id][" + index + "]", subscriptionItemRampTierId);
@@ -3013,6 +3062,41 @@ namespace ChargeBee.Models
             public EditCreateSubCustomerQuoteForItemsRequest CouponEndDate(int index, long couponEndDate) 
             {
                 m_params.AddOpt("coupons[end_date][" + index + "]", couponEndDate);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest EntitlementOverrideFeatureId(int index, string entitlementOverrideFeatureId) 
+            {
+                m_params.AddOpt("entitlement_overrides[feature_id][" + index + "]", entitlementOverrideFeatureId);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest EntitlementOverrideEntityId(int index, string entitlementOverrideEntityId) 
+            {
+                m_params.AddOpt("entitlement_overrides[entity_id][" + index + "]", entitlementOverrideEntityId);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest EntitlementOverrideEntityType(int index, ChargeBee.Models.Enums.EntityTypeEnum entitlementOverrideEntityType) 
+            {
+                m_params.AddOpt("entitlement_overrides[entity_type][" + index + "]", entitlementOverrideEntityType);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest EntitlementOverrideValue(int index, string entitlementOverrideValue) 
+            {
+                m_params.AddOpt("entitlement_overrides[value][" + index + "]", entitlementOverrideValue);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest EntitlementOverrideIsEnabled(int index, bool entitlementOverrideIsEnabled) 
+            {
+                m_params.AddOpt("entitlement_overrides[is_enabled][" + index + "]", entitlementOverrideIsEnabled);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest EntitlementOverrideStartDate(int index, long entitlementOverrideStartDate) 
+            {
+                m_params.AddOpt("entitlement_overrides[start_date][" + index + "]", entitlementOverrideStartDate);
+                return this;
+            }
+            public EditCreateSubCustomerQuoteForItemsRequest EntitlementOverrideEndDate(int index, long entitlementOverrideEndDate) 
+            {
+                m_params.AddOpt("entitlement_overrides[end_date][" + index + "]", entitlementOverrideEndDate);
                 return this;
             }
         }
@@ -3481,6 +3565,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_items[end_date][" + index + "]", subscriptionItemEndDate);
                 return this;
             }
+            public UpdateSubscriptionQuoteForItemsRequest SubscriptionItemDescription(int index, string subscriptionItemDescription) 
+            {
+                m_params.AddOpt("subscription_items[description][" + index + "]", subscriptionItemDescription);
+                return this;
+            }
             public UpdateSubscriptionQuoteForItemsRequest SubscriptionItemRampTierId(int index, string subscriptionItemRampTierId) 
             {
                 m_params.AddOpt("subscription_items[ramp_tier_id][" + index + "]", subscriptionItemRampTierId);
@@ -3514,6 +3603,41 @@ namespace ChargeBee.Models
             public UpdateSubscriptionQuoteForItemsRequest CouponEndDate(int index, long couponEndDate) 
             {
                 m_params.AddOpt("coupons[end_date][" + index + "]", couponEndDate);
+                return this;
+            }
+            public UpdateSubscriptionQuoteForItemsRequest EntitlementOverrideFeatureId(int index, string entitlementOverrideFeatureId) 
+            {
+                m_params.AddOpt("entitlement_overrides[feature_id][" + index + "]", entitlementOverrideFeatureId);
+                return this;
+            }
+            public UpdateSubscriptionQuoteForItemsRequest EntitlementOverrideEntityId(int index, string entitlementOverrideEntityId) 
+            {
+                m_params.AddOpt("entitlement_overrides[entity_id][" + index + "]", entitlementOverrideEntityId);
+                return this;
+            }
+            public UpdateSubscriptionQuoteForItemsRequest EntitlementOverrideEntityType(int index, ChargeBee.Models.Enums.EntityTypeEnum entitlementOverrideEntityType) 
+            {
+                m_params.AddOpt("entitlement_overrides[entity_type][" + index + "]", entitlementOverrideEntityType);
+                return this;
+            }
+            public UpdateSubscriptionQuoteForItemsRequest EntitlementOverrideValue(int index, string entitlementOverrideValue) 
+            {
+                m_params.AddOpt("entitlement_overrides[value][" + index + "]", entitlementOverrideValue);
+                return this;
+            }
+            public UpdateSubscriptionQuoteForItemsRequest EntitlementOverrideIsEnabled(int index, bool entitlementOverrideIsEnabled) 
+            {
+                m_params.AddOpt("entitlement_overrides[is_enabled][" + index + "]", entitlementOverrideIsEnabled);
+                return this;
+            }
+            public UpdateSubscriptionQuoteForItemsRequest EntitlementOverrideStartDate(int index, long entitlementOverrideStartDate) 
+            {
+                m_params.AddOpt("entitlement_overrides[start_date][" + index + "]", entitlementOverrideStartDate);
+                return this;
+            }
+            public UpdateSubscriptionQuoteForItemsRequest EntitlementOverrideEndDate(int index, long entitlementOverrideEndDate) 
+            {
+                m_params.AddOpt("entitlement_overrides[end_date][" + index + "]", entitlementOverrideEndDate);
                 return this;
             }
         }
@@ -3972,6 +4096,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_items[end_date][" + index + "]", subscriptionItemEndDate);
                 return this;
             }
+            public EditUpdateSubscriptionQuoteForItemsRequest SubscriptionItemDescription(int index, string subscriptionItemDescription) 
+            {
+                m_params.AddOpt("subscription_items[description][" + index + "]", subscriptionItemDescription);
+                return this;
+            }
             public EditUpdateSubscriptionQuoteForItemsRequest SubscriptionItemRampTierId(int index, string subscriptionItemRampTierId) 
             {
                 m_params.AddOpt("subscription_items[ramp_tier_id][" + index + "]", subscriptionItemRampTierId);
@@ -4005,6 +4134,41 @@ namespace ChargeBee.Models
             public EditUpdateSubscriptionQuoteForItemsRequest CouponEndDate(int index, long couponEndDate) 
             {
                 m_params.AddOpt("coupons[end_date][" + index + "]", couponEndDate);
+                return this;
+            }
+            public EditUpdateSubscriptionQuoteForItemsRequest EntitlementOverrideFeatureId(int index, string entitlementOverrideFeatureId) 
+            {
+                m_params.AddOpt("entitlement_overrides[feature_id][" + index + "]", entitlementOverrideFeatureId);
+                return this;
+            }
+            public EditUpdateSubscriptionQuoteForItemsRequest EntitlementOverrideEntityId(int index, string entitlementOverrideEntityId) 
+            {
+                m_params.AddOpt("entitlement_overrides[entity_id][" + index + "]", entitlementOverrideEntityId);
+                return this;
+            }
+            public EditUpdateSubscriptionQuoteForItemsRequest EntitlementOverrideEntityType(int index, ChargeBee.Models.Enums.EntityTypeEnum entitlementOverrideEntityType) 
+            {
+                m_params.AddOpt("entitlement_overrides[entity_type][" + index + "]", entitlementOverrideEntityType);
+                return this;
+            }
+            public EditUpdateSubscriptionQuoteForItemsRequest EntitlementOverrideValue(int index, string entitlementOverrideValue) 
+            {
+                m_params.AddOpt("entitlement_overrides[value][" + index + "]", entitlementOverrideValue);
+                return this;
+            }
+            public EditUpdateSubscriptionQuoteForItemsRequest EntitlementOverrideIsEnabled(int index, bool entitlementOverrideIsEnabled) 
+            {
+                m_params.AddOpt("entitlement_overrides[is_enabled][" + index + "]", entitlementOverrideIsEnabled);
+                return this;
+            }
+            public EditUpdateSubscriptionQuoteForItemsRequest EntitlementOverrideStartDate(int index, long entitlementOverrideStartDate) 
+            {
+                m_params.AddOpt("entitlement_overrides[start_date][" + index + "]", entitlementOverrideStartDate);
+                return this;
+            }
+            public EditUpdateSubscriptionQuoteForItemsRequest EntitlementOverrideEndDate(int index, long entitlementOverrideEndDate) 
+            {
+                m_params.AddOpt("entitlement_overrides[end_date][" + index + "]", entitlementOverrideEndDate);
                 return this;
             }
         }

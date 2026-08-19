@@ -209,6 +209,10 @@ namespace ChargeBee.Models
                 get { return GetValue<string>("net_amount_per_billing_cycle_in_decimal", false); }
             }
 
+            public string Description {
+                get { return GetValue<string>("description", false); }
+            }
+
         }
         public class QuotedRampDiscount : Resource
         {

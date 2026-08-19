@@ -316,6 +316,14 @@ namespace ChargeBee.Models
             request.SetTelemetryOperation("writeOff");
             return request;
         }
+        public static VoidBeforeCaptureRequest VoidBeforeCapture(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "void_before_capture");
+            var request = new VoidBeforeCaptureRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("voidBeforeCapture");
+            return request;
+        }
         public static DeleteRequest Delete(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "delete");
@@ -3637,6 +3645,29 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class VoidBeforeCaptureRequest : EntityRequest<VoidBeforeCaptureRequest> 
+        {
+            public VoidBeforeCaptureRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public VoidBeforeCaptureRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
+                return this;
+            }
+            public VoidBeforeCaptureRequest VoidReasonCode(string voidReasonCode) 
+            {
+                m_params.AddOpt("void_reason_code", voidReasonCode);
+                return this;
+            }
+            public VoidBeforeCaptureRequest InvoiceAction(ChargeBee.Models.Enums.InvoiceActionEnum invoiceAction) 
+            {
+                m_params.AddOpt("invoice_action", invoiceAction);
+                return this;
+            }
+        }
         public class DeleteRequest : EntityRequest<DeleteRequest> 
         {
             public DeleteRequest(string url, HttpMethod method) 
@@ -4420,8 +4451,8 @@ namespace ChargeBee.Models
                 get { return GetEnum<Transaction.TypeEnum>("txn_type", true); }
             }
 
-            public long AmountCapturable {
-                get { return GetValue<long>("amount_capturable", true); }
+            public long? AmountCapturable {
+                get { return GetValue<long?>("amount_capturable", false); }
             }
 
             public Transaction.AuthorizationReasonEnum? AuthorizationReason {

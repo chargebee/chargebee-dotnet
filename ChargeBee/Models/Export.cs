@@ -187,6 +187,14 @@ namespace ChargeBee.Models
             request.SetTelemetryOperation("priceVariants");
             return request;
         }
+        public static RampsRequest Ramps()
+        {
+            string url = ApiUtil.BuildUrl("exports", "ramps");
+            var request = new RampsRequest(url, HttpMethod.POST, true);
+            request.SetTelemetryResource("export");
+            request.SetTelemetryOperation("ramps");
+            return request;
+        }
         #endregion
         
         #region Properties
@@ -1614,6 +1622,35 @@ namespace ChargeBee.Models
             public TimestampFilter<PriceVariantsRequest> PriceVariantCreatedAt() 
             {
                 return new TimestampFilter<PriceVariantsRequest>("price_variant[created_at]", this);        
+            }
+        }
+        public class RampsRequest : EntityRequest<RampsRequest> 
+        {
+            public RampsRequest(string url, HttpMethod method, bool supportsFilter=false) 
+                    : base(url, method, supportsFilter)
+            {
+            }
+
+            public RampsRequest ExportType(ChargeBee.Models.Enums.ExportTypeEnum exportType) 
+            {
+                m_params.AddOpt("export_type", exportType);
+                return this;
+            }
+            public EnumFilter<Ramp.StatusEnum, RampsRequest> RampStatus() 
+            {
+                return new EnumFilter<Ramp.StatusEnum, RampsRequest>("ramp[status]", this);        
+            }
+            public StringFilter<RampsRequest> RampSubscriptionId() 
+            {
+                return new StringFilter<RampsRequest>("ramp[subscription_id]", this).SupportsMultiOperators(true);        
+            }
+            public TimestampFilter<RampsRequest> RampEffectiveFrom() 
+            {
+                return new TimestampFilter<RampsRequest>("ramp[effective_from]", this);        
+            }
+            public TimestampFilter<RampsRequest> RampUpdatedAt() 
+            {
+                return new TimestampFilter<RampsRequest>("ramp[updated_at]", this);        
             }
         }
         #endregion

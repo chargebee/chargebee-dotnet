@@ -37,9 +37,6 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "charge_price")]
          ChargePrice,
 
-        [EnumMember(Value = "charge")]
-         Charge,
-
         [EnumMember(Value = "invoice")]
          Invoice,
 
@@ -135,6 +132,9 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "alert_status")]
          AlertStatus,
+
+        [EnumMember(Value = "omnichannel_subscription_item_metric")]
+         OmnichannelSubscriptionItemMetric,
 
     }
 }

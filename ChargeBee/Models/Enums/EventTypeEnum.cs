@@ -652,6 +652,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "omnichannel_subscription_item_recovered")]
          OmnichannelSubscriptionItemRecovered,
 
+        [EnumMember(Value = "omnichannel_subscription_item_mrr_updated")]
+         OmnichannelSubscriptionItemMrrUpdated,
+
         [EnumMember(Value = "ledger_account_balance_updated")]
          LedgerAccountBalanceUpdated,
 
@@ -663,6 +666,15 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "ledger_updated")]
          LedgerUpdated,
+
+        [EnumMember(Value = "vault_token_created")]
+         VaultTokenCreated,
+
+        [EnumMember(Value = "vault_token_updated")]
+         VaultTokenUpdated,
+
+        [EnumMember(Value = "vault_token_deleted")]
+         VaultTokenDeleted,
 
         [EnumMember(Value = "plan_created")]
          PlanCreated,
