@@ -1,3 +1,9 @@
+### v3.51.1 (2026-08-26)
+* * *
+### Bug Fixes:
+* Fixed `InvalidCastException` ("Object must implement IConvertible") thrown by `Header`, `Param`, `SetIdempotencyKey`, `SetSubDomain`, `IsJsonRequest`, and `SetIdempotent` on requests returning `EntityRequest<Type>` (such as `Retrieve` and `Delete`).
+
+
 ### v3.51.0 (2026-08-19)
 * * *
 ### New Resources:
