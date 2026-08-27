@@ -28,36 +28,36 @@ namespace ChargeBee.Api
 		public T SetSubDomain(string subDomain)
 		{
 			sub_domain = subDomain;
-			return (T)Convert.ChangeType (this, typeof(T));
+			return This();
 		}
 
 		public T IsJsonRequest(bool isJsonRequest)
 		{
 			is_json_request = true;
-			return (T)Convert.ChangeType (this, typeof(T));
+			return This();
 		}
 
 		public T SetIdempotent(bool isIdempotent)
 		{
 			_options.Add(EntityRequestConstants.IdempotencyOption, isIdempotent);
-			return (T)Convert.ChangeType (this, typeof(T));
+			return This();
 		}
 
 		public T SetTelemetryResource(string telemetryResource)
 		{
 			telemetry_resource = telemetryResource;
-			return this as T;
+			return This();
 		}
 
 		public T SetTelemetryOperation(string telemetryOperation)
 		{
 			telemetry_operation = telemetryOperation;
-			return this as T;
+			return This();
 		}
 		
 		public T SetIdempotencyKey(string idempotencyKey){
 			headers.Add (IdempotencyConstants.IDEMPOTENCY_HEADER, idempotencyKey);
-			return (T)Convert.ChangeType (this, typeof(T));
+			return This();
 		}
 
 		public Params Params() {
@@ -66,12 +66,17 @@ namespace ChargeBee.Api
 
 		public T Param(String paramName, Object value){
 			m_params.AddOpt(paramName, value);
-			return (T)Convert.ChangeType (this, typeof(T));
+			return This();
 		}
 
 		public T Header(string headerName, string headerValue){
 			headers.Add (headerName, headerValue);
-			return (T)Convert.ChangeType (this, typeof(T));
+			return This();
+		}
+		
+		private T This()
+		{
+			return this as T;
 		}
 		
 
