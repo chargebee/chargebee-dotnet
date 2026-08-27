@@ -1,3 +1,9 @@
+### v3.51.1 (2026-08-27)
+* * *
+### Bug Fixes:
+- Fixed `InvalidCastException` ("Object must implement IConvertible") thrown when calling fluent methods (`Header`, `Param`, `SetIdempotencyKey`, `SetIdempotent`, `SetSubDomain`, `IsJsonRequest`) on requests that return `EntityRequest<Type>` (for example `PaymentSource.Delete`, `Customer.Retrieve`). These methods now use a safe reference cast instead of `Convert.ChangeType`, so headers, idempotency keys and params can be set on such requests.
+
+
 ### v3.51.0 (2026-08-19)
 * * *
 ### New Resources:
