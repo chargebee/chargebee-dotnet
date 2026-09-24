@@ -57,6 +57,14 @@ namespace ChargeBee.Models
             request.SetTelemetryOperation("retrieve");
             return request;
         }
+        public static PaymentScheduleSchemeListRequest List()
+        {
+            string url = ApiUtil.BuildUrl("payment_schedule_schemes");
+            var request = new PaymentScheduleSchemeListRequest(url);
+            request.SetTelemetryResource("paymentScheduleScheme");
+            request.SetTelemetryOperation("list");
+            return request;
+        }
         public static EntityRequest<Type> Delete(string id)
         {
             string url = ApiUtil.BuildUrl("payment_schedule_schemes", CheckNull(id), "delete");
@@ -149,6 +157,22 @@ namespace ChargeBee.Models
             {
                 m_params.AddOpt("flexible_schedules[amount_percentage][" + index + "]", flexibleScheduleAmountPercentage);
                 return this;
+            }
+        }
+        public class PaymentScheduleSchemeListRequest : ListRequestBase<PaymentScheduleSchemeListRequest> 
+        {
+            public PaymentScheduleSchemeListRequest(string url) 
+                    : base(url)
+            {
+            }
+
+            public StringFilter<PaymentScheduleSchemeListRequest> Id() 
+            {
+                return new StringFilter<PaymentScheduleSchemeListRequest>("id", this).SupportsMultiOperators(true);        
+            }
+            public TimestampFilter<PaymentScheduleSchemeListRequest> UpdatedAt() 
+            {
+                return new TimestampFilter<PaymentScheduleSchemeListRequest>("updated_at", this);        
             }
         }
         #endregion

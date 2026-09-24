@@ -25,17 +25,23 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "custom")]
          Custom,
 
-        [EnumMember(Value = "dana")]
-         Dana,
-
-        [EnumMember(Value = "touch_n_go")]
-         TouchNGo,
-
         [EnumMember(Value = "tamara")]
          Tamara,
 
         [EnumMember(Value = "qpay")]
          Qpay,
+
+        [EnumMember(Value = "blik")]
+         Blik,
+
+        [EnumMember(Value = "fpx")]
+         Fpx,
+
+        [EnumMember(Value = "wero")]
+         Wero,
+
+        [EnumMember(Value = "p24")]
+         P24,
 
         [EnumMember(Value = "chargeback")]
          Chargeback,
@@ -195,6 +201,39 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "promptpay")]
          Promptpay,
+
+        [EnumMember(Value = "dana")]
+         Dana,
+
+        [EnumMember(Value = "touch_n_go")]
+         TouchNGo,
+
+        [EnumMember(Value = "ovo")]
+         Ovo,
+
+        [EnumMember(Value = "momo")]
+         Momo,
+
+        [EnumMember(Value = "mercado_pago")]
+         MercadoPago,
+
+        [EnumMember(Value = "nequi")]
+         Nequi,
+
+        [EnumMember(Value = "nupay")]
+         Nupay,
+
+        [EnumMember(Value = "picpay")]
+         Picpay,
+
+        [EnumMember(Value = "thai_qr")]
+         ThaiQr,
+
+        [EnumMember(Value = "affirm_pay")]
+         AffirmPay,
+
+        [EnumMember(Value = "rakuten_pay")]
+         RakutenPay,
 
     }
 }

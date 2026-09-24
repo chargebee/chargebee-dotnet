@@ -404,6 +404,10 @@ namespace ChargeBee.Models
                 get { return GetEnum<UsageAccumulationResetFrequencyEnum>("usage_accumulation_reset_frequency", false); }
             }
 
+            public string Description {
+                get { return GetValue<string>("description", false); }
+            }
+
         }
         public class QuotedSubscriptionItemTier : Resource
         {

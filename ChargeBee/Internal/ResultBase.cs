@@ -111,6 +111,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<PromotionalCredit>("promotional_credit"); }
         }
+        public EmailLog EmailLog
+        {
+            get {  return GetResource<EmailLog>("email_log"); }
+        }
         public Invoice Invoice
         {
             get {  return GetResource<Invoice>("invoice"); }
@@ -122,10 +126,6 @@ namespace ChargeBee.Internal
         public PaymentSchedule PaymentSchedule
         {
             get {  return GetResource<PaymentSchedule>("payment_schedule"); }
-        }
-        public Einvoice Einvoice
-        {
-            get {  return GetResource<Einvoice>("einvoice"); }
         }
         public TaxWithheld TaxWithheld
         {
@@ -150,6 +150,10 @@ namespace ChargeBee.Internal
         public Transaction Transaction
         {
             get {  return GetResource<Transaction>("transaction"); }
+        }
+        public Dispute Dispute
+        {
+            get {  return GetResource<Dispute>("dispute"); }
         }
         public HostedPage HostedPage
         {
@@ -419,9 +423,17 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<MeteredFeature>("metered_feature"); }
         }
+        public CustomDataSchema CustomDataSchema
+        {
+            get {  return GetResource<CustomDataSchema>("custom_data_schema"); }
+        }
         public UsageFile UsageFile
         {
             get {  return GetResource<UsageFile>("usage_file"); }
+        }
+        public Einvoice Einvoice
+        {
+            get {  return GetResource<Einvoice>("einvoice"); }
         }
         public PersonalizedOffer PersonalizedOffer
         {
@@ -442,6 +454,30 @@ namespace ChargeBee.Internal
         public WebhookEndpoint WebhookEndpoint
         {
             get {  return GetResource<WebhookEndpoint>("webhook_endpoint"); }
+        }
+        public BusinessRule BusinessRule
+        {
+            get {  return GetResource<BusinessRule>("business_rule"); }
+        }
+        public ApplyRule ApplyRule
+        {
+            get {  return GetResource<ApplyRule>("apply_rule"); }
+        }
+        public AppliedRule AppliedRule
+        {
+            get {  return GetResource<AppliedRule>("applied_rule"); }
+        }
+        public AppliedBusinessRule AppliedBusinessRule
+        {
+            get {  return GetResource<AppliedBusinessRule>("applied_business_rule"); }
+        }
+        public BusinessRuleset BusinessRuleset
+        {
+            get {  return GetResource<BusinessRuleset>("business_ruleset"); }
+        }
+        public BusinessRulesetRule BusinessRulesetRule
+        {
+            get {  return GetResource<BusinessRulesetRule>("business_ruleset_rule"); }
         }
         public UsageSummary UsageSummary
         {
@@ -504,6 +540,11 @@ namespace ChargeBee.Internal
         public List<Hierarchy> Hierarchies
         {
             get {  return (List<Hierarchy>)GetResourceList<Hierarchy>("hierarchies", "hierarchy"); }
+        }
+
+        public List<EmailLog> EmailLogs
+        {
+            get {  return (List<EmailLog>)GetResourceList<EmailLog>("email_logs", "email_log"); }
         }
 
         public List<Invoice> Invoices

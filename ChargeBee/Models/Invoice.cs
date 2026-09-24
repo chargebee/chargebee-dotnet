@@ -324,6 +324,14 @@ namespace ChargeBee.Models
             request.SetTelemetryOperation("voidBeforeCapture");
             return request;
         }
+        public static SendEmailRequest SendEmail(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "send_email");
+            var request = new SendEmailRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("sendEmail");
+            return request;
+        }
         public static DeleteRequest Delete(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "delete");
@@ -654,6 +662,10 @@ namespace ChargeBee.Models
         public string BusinessEntityId 
         {
             get { return GetValue<string>("business_entity_id", false); }
+        }
+        public string BrandId 
+        {
+            get { return GetValue<string>("brand_id", false); }
         }
         public InvoiceSiteDetailsAtCreation SiteDetailsAtCreation 
         {
@@ -2653,6 +2665,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_items[tax10_amount][" + index + "]", lineItemTax10Amount);
                 return this;
             }
+            public ImportInvoiceRequest LineItemIsPartialTaxApplied(int index, bool lineItemIsPartialTaxApplied) 
+            {
+                m_params.AddOpt("line_items[is_partial_tax_applied][" + index + "]", lineItemIsPartialTaxApplied);
+                return this;
+            }
+            public ImportInvoiceRequest LineItemTaxableAmount(int index, long lineItemTaxableAmount) 
+            {
+                m_params.AddOpt("line_items[taxable_amount][" + index + "]", lineItemTaxableAmount);
+                return this;
+            }
             public ImportInvoiceRequest LineItemProrationMode(int index, Invoice.InvoiceLineItem.ProrationModeEnum lineItemProrationMode) 
             {
                 m_params.AddOpt("line_items[proration_mode][" + index + "]", lineItemProrationMode);
@@ -3667,6 +3689,14 @@ namespace ChargeBee.Models
                 m_params.AddOpt("invoice_action", invoiceAction);
                 return this;
             }
+        }
+        public class SendEmailRequest : EntityRequest<SendEmailRequest> 
+        {
+            public SendEmailRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
         }
         public class DeleteRequest : EntityRequest<DeleteRequest> 
         {

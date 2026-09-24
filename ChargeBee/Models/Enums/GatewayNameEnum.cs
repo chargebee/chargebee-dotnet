@@ -190,6 +190,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "payway")]
          Payway,
 
+        [EnumMember(Value = "payu")]
+         Payu,
+
         [EnumMember(Value = "not_applicable")]
          NotApplicable,
 

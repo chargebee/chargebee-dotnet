@@ -97,6 +97,14 @@ namespace ChargeBee.Models
             request.SetTelemetryOperation("voidCreditNote");
             return request;
         }
+        public static SendEmailRequest SendEmail(string id)
+        {
+            string url = ApiUtil.BuildUrl("credit_notes", CheckNull(id), "send_email");
+            var request = new SendEmailRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("creditNote");
+            request.SetTelemetryOperation("sendEmail");
+            return request;
+        }
         public static CreditNoteListRequest List()
         {
             string url = ApiUtil.BuildUrl("credit_notes");
@@ -348,6 +356,10 @@ namespace ChargeBee.Models
         public string BusinessEntityId 
         {
             get { return GetValue<string>("business_entity_id", false); }
+        }
+        public string BrandId 
+        {
+            get { return GetValue<string>("brand_id", false); }
         }
         public CreditNoteShippingAddress ShippingAddress 
         {
@@ -606,6 +618,14 @@ namespace ChargeBee.Models
                 m_params.AddOpt("comment", comment);
                 return this;
             }
+        }
+        public class SendEmailRequest : EntityRequest<SendEmailRequest> 
+        {
+            public SendEmailRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
         }
         public class CreditNoteListRequest : ListRequestBase<CreditNoteListRequest> 
         {
@@ -1011,6 +1031,16 @@ namespace ChargeBee.Models
             public ImportCreditNoteRequest LineItemTax10Amount(int index, long lineItemTax10Amount) 
             {
                 m_params.AddOpt("line_items[tax10_amount][" + index + "]", lineItemTax10Amount);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemIsPartialTaxApplied(int index, bool lineItemIsPartialTaxApplied) 
+            {
+                m_params.AddOpt("line_items[is_partial_tax_applied][" + index + "]", lineItemIsPartialTaxApplied);
+                return this;
+            }
+            public ImportCreditNoteRequest LineItemTaxableAmount(int index, long lineItemTaxableAmount) 
+            {
+                m_params.AddOpt("line_items[taxable_amount][" + index + "]", lineItemTaxableAmount);
                 return this;
             }
             public ImportCreditNoteRequest LineItemProrationMode(int index, Invoice.InvoiceLineItem.ProrationModeEnum lineItemProrationMode) 

@@ -113,6 +113,10 @@ namespace ChargeBee.Models
                 get { return GetValue<long>("amount", true); }
             }
 
+            public long ScheduledAmount {
+                get { return GetValue<long>("scheduled_amount", true); }
+            }
+
             public StatusEnum Status {
                 get { return GetEnum<StatusEnum>("status", true); }
             }

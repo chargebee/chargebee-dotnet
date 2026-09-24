@@ -16,5 +16,8 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "exempt")]
          Exempt,
 
+        [EnumMember(Value = "zero_rated")]
+         ZeroRated,
+
     }
 }

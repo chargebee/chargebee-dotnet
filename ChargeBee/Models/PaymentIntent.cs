@@ -152,6 +152,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("business_entity_id", false); }
         }
+        public string BrandId 
+        {
+            get { return GetValue<string>("brand_id", false); }
+        }
         
         #endregion
         
@@ -166,6 +170,11 @@ namespace ChargeBee.Models
             public CreateRequest BusinessEntityId(string businessEntityId) 
             {
                 m_params.AddOpt("business_entity_id", businessEntityId);
+                return this;
+            }
+            public CreateRequest BrandId(string brandId) 
+            {
+                m_params.AddOpt("brand_id", brandId);
                 return this;
             }
             public CreateRequest CustomerId(string customerId) 
@@ -390,6 +399,32 @@ namespace ChargeBee.Models
             Tamara,
             [EnumMember(Value = "qpay")]
             Qpay,
+            [EnumMember(Value = "ovo")]
+            Ovo,
+            [EnumMember(Value = "momo")]
+            Momo,
+            [EnumMember(Value = "mercado_pago")]
+            MercadoPago,
+            [EnumMember(Value = "nequi")]
+            Nequi,
+            [EnumMember(Value = "nupay")]
+            Nupay,
+            [EnumMember(Value = "picpay")]
+            Picpay,
+            [EnumMember(Value = "thai_qr")]
+            ThaiQr,
+            [EnumMember(Value = "blik")]
+            Blik,
+            [EnumMember(Value = "fpx")]
+            Fpx,
+            [EnumMember(Value = "wero")]
+            Wero,
+            [EnumMember(Value = "p24")]
+            P24,
+            [EnumMember(Value = "affirm_pay")]
+            AffirmPay,
+            [EnumMember(Value = "rakuten_pay")]
+            RakutenPay,
 
         }
 

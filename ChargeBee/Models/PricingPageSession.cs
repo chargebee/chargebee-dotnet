@@ -97,6 +97,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("business_entity_id", businessEntityId);
                 return this;
             }
+            public CreateForNewSubscriptionRequest BrandId(string brandId) 
+            {
+                m_params.AddOpt("brand_id", brandId);
+                return this;
+            }
             public CreateForNewSubscriptionRequest AutoSelectLocalCurrency(bool autoSelectLocalCurrency) 
             {
                 m_params.AddOpt("auto_select_local_currency", autoSelectLocalCurrency);

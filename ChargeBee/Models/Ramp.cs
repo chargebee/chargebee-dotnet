@@ -152,6 +152,10 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<RampContractTerm>("contract_term"); }
         }
+        public RampBillingConfiguration BillingConfiguration 
+        {
+            get { return GetSubResource<RampBillingConfiguration>("billing_configuration"); }
+        }
         public bool Deleted 
         {
             get { return GetValue<bool>("deleted", true); }
@@ -194,6 +198,11 @@ namespace ChargeBee.Models
             public CreateForSubscriptionRequest ItemsToRemove(List<string> itemsToRemove) 
             {
                 m_params.AddOpt("items_to_remove", itemsToRemove);
+                return this;
+            }
+            public CreateForSubscriptionRequest BillingConfigurationPoNumber(string billingConfigurationPoNumber) 
+            {
+                m_params.AddOpt("billing_configuration[po_number]", billingConfigurationPoNumber);
                 return this;
             }
             public CreateForSubscriptionRequest ContractTermActionAtTermEnd(RampContractTerm.ActionAtTermEndEnum contractTermActionAtTermEnd) 
@@ -442,6 +451,11 @@ namespace ChargeBee.Models
             public UpdateRequest ItemsToRemove(List<string> itemsToRemove) 
             {
                 m_params.AddOpt("items_to_remove", itemsToRemove);
+                return this;
+            }
+            public UpdateRequest BillingConfigurationPoNumber(string billingConfigurationPoNumber) 
+            {
+                m_params.AddOpt("billing_configuration[po_number]", billingConfigurationPoNumber);
                 return this;
             }
             public UpdateRequest ContractTermActionAtTermEnd(RampContractTerm.ActionAtTermEndEnum contractTermActionAtTermEnd) 
@@ -1073,6 +1087,14 @@ namespace ChargeBee.Models
 
             public ActionAtTermEndEnum ActionAtTermEnd {
                 get { return GetEnum<ActionAtTermEndEnum>("action_at_term_end", true); }
+            }
+
+        }
+        public class RampBillingConfiguration : Resource
+        {
+
+            public string PoNumber {
+                get { return GetValue<string>("po_number", false); }
             }
 
         }

@@ -172,6 +172,14 @@ namespace ChargeBee.Models
             request.SetTelemetryOperation("collectPayment");
             return request;
         }
+        public static SendPaymentRequestRequest SendPaymentRequest(string id)
+        {
+            string url = ApiUtil.BuildUrl("customers", CheckNull(id), "send_payment_request");
+            var request = new SendPaymentRequestRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("customer");
+            request.SetTelemetryOperation("sendPaymentRequest");
+            return request;
+        }
         public static DeleteRequest Delete(string id)
         {
             string url = ApiUtil.BuildUrl("customers", CheckNull(id), "delete");
@@ -520,6 +528,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("entity_identifier_standard", false); }
         }
+        public string BrandId 
+        {
+            get { return GetValue<string>("brand_id", false); }
+        }
         
         #endregion
         
@@ -689,6 +701,11 @@ namespace ChargeBee.Models
             public CreateRequest BusinessEntityId(string businessEntityId) 
             {
                 m_params.AddOpt("business_entity_id", businessEntityId);
+                return this;
+            }
+            public CreateRequest BrandId(string brandId) 
+            {
+                m_params.AddOpt("brand_id", brandId);
                 return this;
             }
             [Obsolete]
@@ -1966,6 +1983,14 @@ namespace ChargeBee.Models
                 return this;
             }
         }
+        public class SendPaymentRequestRequest : EntityRequest<SendPaymentRequestRequest> 
+        {
+            public SendPaymentRequestRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+        }
         public class DeleteRequest : EntityRequest<DeleteRequest> 
         {
             public DeleteRequest(string url, HttpMethod method) 
@@ -2551,6 +2576,32 @@ namespace ChargeBee.Models
                 Tamara,
                 [EnumMember(Value = "qpay")]
                 Qpay,
+                [EnumMember(Value = "ovo")]
+                Ovo,
+                [EnumMember(Value = "momo")]
+                Momo,
+                [EnumMember(Value = "mercado_pago")]
+                MercadoPago,
+                [EnumMember(Value = "nequi")]
+                Nequi,
+                [EnumMember(Value = "nupay")]
+                Nupay,
+                [EnumMember(Value = "picpay")]
+                Picpay,
+                [EnumMember(Value = "thai_qr")]
+                ThaiQr,
+                [EnumMember(Value = "blik")]
+                Blik,
+                [EnumMember(Value = "fpx")]
+                Fpx,
+                [EnumMember(Value = "wero")]
+                Wero,
+                [EnumMember(Value = "p24")]
+                P24,
+                [EnumMember(Value = "affirm_pay")]
+                AffirmPay,
+                [EnumMember(Value = "rakuten_pay")]
+                RakutenPay,
             }
             public enum StatusEnum
             {

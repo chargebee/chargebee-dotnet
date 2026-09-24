@@ -318,6 +318,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("custom_payment_method_name", false); }
         }
+        public TransactionNetworkTransactionDetail NetworkTransactionDetails 
+        {
+            get { return GetSubResource<TransactionNetworkTransactionDetail>("network_transaction_details"); }
+        }
         
         #endregion
         
@@ -789,6 +793,18 @@ namespace ChargeBee.Models
 
             public string ProcessorAdviceCode {
                 get { return GetValue<string>("processor_advice_code", false); }
+            }
+
+        }
+        public class TransactionNetworkTransactionDetail : Resource
+        {
+
+            public string NetworkTransactionId {
+                get { return GetValue<string>("network_transaction_id", false); }
+            }
+
+            public string OriginalNetworkTransactionId {
+                get { return GetValue<string>("original_network_transaction_id", false); }
             }
 
         }
