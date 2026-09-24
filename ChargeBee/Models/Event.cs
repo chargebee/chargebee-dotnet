@@ -94,6 +94,10 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<EventTypeEnum>("event_type", false); }
         }
+        public string SiteId 
+        {
+            get { return GetValue<string>("site_id", false); }
+        }
         public ApiVersionEnum? ApiVersion 
         {
             get { return GetEnum<ApiVersionEnum>("api_version", false); }

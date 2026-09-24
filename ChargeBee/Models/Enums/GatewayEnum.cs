@@ -187,6 +187,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "payway")]
          Payway,
 
+        [EnumMember(Value = "payu")]
+         Payu,
+
         [EnumMember(Value = "gocardless")]
          Gocardless,
 

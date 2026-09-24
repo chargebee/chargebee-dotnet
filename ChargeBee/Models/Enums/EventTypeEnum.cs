@@ -184,6 +184,12 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "credit_note_deleted")]
          CreditNoteDeleted,
 
+        [EnumMember(Value = "einvoice_created")]
+         EinvoiceCreated,
+
+        [EnumMember(Value = "einvoice_updated")]
+         EinvoiceUpdated,
+
         [EnumMember(Value = "payment_schedules_created")]
          PaymentSchedulesCreated,
 
@@ -667,6 +673,24 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "ledger_updated")]
          LedgerUpdated,
 
+        [EnumMember(Value = "business_rule_created")]
+         BusinessRuleCreated,
+
+        [EnumMember(Value = "business_rule_updated")]
+         BusinessRuleUpdated,
+
+        [EnumMember(Value = "business_rule_activated")]
+         BusinessRuleActivated,
+
+        [EnumMember(Value = "business_rule_deactivated")]
+         BusinessRuleDeactivated,
+
+        [EnumMember(Value = "business_rule_deleted")]
+         BusinessRuleDeleted,
+
+        [EnumMember(Value = "business_rule_released")]
+         BusinessRuleReleased,
+
         [EnumMember(Value = "vault_token_created")]
          VaultTokenCreated,
 
@@ -675,6 +699,24 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "vault_token_deleted")]
          VaultTokenDeleted,
+
+        [EnumMember(Value = "business_rules_applied")]
+         BusinessRulesApplied,
+
+        [EnumMember(Value = "business_ruleset_created")]
+         BusinessRulesetCreated,
+
+        [EnumMember(Value = "business_ruleset_updated")]
+         BusinessRulesetUpdated,
+
+        [EnumMember(Value = "business_ruleset_activated")]
+         BusinessRulesetActivated,
+
+        [EnumMember(Value = "business_ruleset_deactivated")]
+         BusinessRulesetDeactivated,
+
+        [EnumMember(Value = "business_ruleset_deleted")]
+         BusinessRulesetDeleted,
 
         [EnumMember(Value = "plan_created")]
          PlanCreated,

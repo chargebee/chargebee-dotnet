@@ -50,19 +50,19 @@ namespace ChargeBee.Models
         }
         public string SubscriptionId 
         {
-            get { return GetValue<string>("subscription_id", false); }
-        }
-        public AccountTypeEnum? AccountType 
-        {
-            get { return GetEnum<AccountTypeEnum>("account_type", false); }
+            get { return GetValue<string>("subscription_id", true); }
         }
         public string UnitId 
         {
-            get { return GetValue<string>("unit_id", false); }
+            get { return GetValue<string>("unit_id", true); }
         }
-        public UnitTypeEnum? UnitType 
+        public UnitTypeEnum UnitType 
         {
-            get { return GetEnum<UnitTypeEnum>("unit_type", false); }
+            get { return GetEnum<UnitTypeEnum>("unit_type", true); }
+        }
+        public AccountTypeEnum AccountType 
+        {
+            get { return GetEnum<AccountTypeEnum>("account_type", true); }
         }
         public string Amount 
         {
@@ -108,6 +108,15 @@ namespace ChargeBee.Models
         #endregion
         
 
+        public enum UnitTypeEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "credit_unit")]
+            CreditUnit,
+
+        }
         public enum AccountTypeEnum
         {
 
@@ -117,15 +126,6 @@ namespace ChargeBee.Models
             Provisioned,
             [EnumMember(Value = "overdraft")]
             Overdraft,
-
-        }
-        public enum UnitTypeEnum
-        {
-
-            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
-            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [EnumMember(Value = "credit_unit")]
-            CreditUnit,
 
         }
 

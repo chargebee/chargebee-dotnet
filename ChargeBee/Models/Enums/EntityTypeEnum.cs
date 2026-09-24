@@ -127,14 +127,17 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "business_rule")]
          BusinessRule,
 
-        [EnumMember(Value = "ruleset")]
-         Ruleset,
+        [EnumMember(Value = "business_ruleset")]
+         BusinessRuleset,
 
         [EnumMember(Value = "alert_status")]
          AlertStatus,
 
         [EnumMember(Value = "omnichannel_subscription_item_metric")]
          OmnichannelSubscriptionItemMetric,
+
+        [EnumMember(Value = "price_ramp")]
+         PriceRamp,
 
     }
 }

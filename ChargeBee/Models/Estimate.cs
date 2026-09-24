@@ -884,6 +884,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_items[item_type][" + index + "]", subscriptionItemItemType);
                 return this;
             }
+            public CreateSubItemEstimateRequest SubscriptionItemDescription(int index, string subscriptionItemDescription) 
+            {
+                m_params.AddOpt("subscription_items[description][" + index + "]", subscriptionItemDescription);
+                return this;
+            }
             public CreateSubItemEstimateRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
             {
                 m_params.AddOpt("discounts[apply_on][" + index + "]", discountApplyOn);
@@ -1496,6 +1501,11 @@ namespace ChargeBee.Models
             public CreateSubItemForCustomerEstimateRequest SubscriptionItemItemType(int index, ChargeBee.Models.Enums.ItemTypeEnum subscriptionItemItemType) 
             {
                 m_params.AddOpt("subscription_items[item_type][" + index + "]", subscriptionItemItemType);
+                return this;
+            }
+            public CreateSubItemForCustomerEstimateRequest SubscriptionItemDescription(int index, string subscriptionItemDescription) 
+            {
+                m_params.AddOpt("subscription_items[description][" + index + "]", subscriptionItemDescription);
                 return this;
             }
             public CreateSubItemForCustomerEstimateRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
@@ -2278,6 +2288,11 @@ namespace ChargeBee.Models
             public UpdateSubscriptionForItemsRequest SubscriptionItemItemType(int index, ChargeBee.Models.Enums.ItemTypeEnum subscriptionItemItemType) 
             {
                 m_params.AddOpt("subscription_items[item_type][" + index + "]", subscriptionItemItemType);
+                return this;
+            }
+            public UpdateSubscriptionForItemsRequest SubscriptionItemDescription(int index, string subscriptionItemDescription) 
+            {
+                m_params.AddOpt("subscription_items[description][" + index + "]", subscriptionItemDescription);
                 return this;
             }
             public UpdateSubscriptionForItemsRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 

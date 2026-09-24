@@ -106,15 +106,15 @@ namespace ChargeBee.Models
         }
         public string SubscriptionId 
         {
-            get { return GetValue<string>("subscription_id", false); }
+            get { return GetValue<string>("subscription_id", true); }
         }
         public string UnitId 
         {
-            get { return GetValue<string>("unit_id", false); }
+            get { return GetValue<string>("unit_id", true); }
         }
-        public UnitTypeEnum? UnitType 
+        public UnitTypeEnum UnitType 
         {
-            get { return GetEnum<UnitTypeEnum>("unit_type", false); }
+            get { return GetEnum<UnitTypeEnum>("unit_type", true); }
         }
         public TypeEnum LedgerOperationType 
         {
@@ -360,9 +360,19 @@ namespace ChargeBee.Models
                 m_params.Add("unit_id", unitId);
                 return this;
             }
+            public AllocateRequest Id(string id) 
+            {
+                m_params.AddOpt("id", id);
+                return this;
+            }
             public AllocateRequest Amount(string amount) 
             {
                 m_params.Add("amount", amount);
+                return this;
+            }
+            public AllocateRequest EffectiveFrom(long effectiveFrom) 
+            {
+                m_params.AddOpt("effective_from", effectiveFrom);
                 return this;
             }
             public AllocateRequest ExpiresAt(long expiresAt) 
@@ -411,6 +421,8 @@ namespace ChargeBee.Models
             Rollover,
             [EnumMember(Value = "adjustment")]
             Adjustment,
+            [EnumMember(Value = "overdraft_settlement")]
+            OverdraftSettlement,
 
         }
 

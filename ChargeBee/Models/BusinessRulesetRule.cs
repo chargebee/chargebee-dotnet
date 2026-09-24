@@ -14,12 +14,12 @@ using ChargeBee.Filters.Enums;
 namespace ChargeBee.Models
 {
 
-    public class ThirdPartyPaymentMethod : Resource 
+    public class BusinessRulesetRule : Resource 
     {
     
-        public ThirdPartyPaymentMethod() { }
+        public BusinessRulesetRule() { }
 
-        public ThirdPartyPaymentMethod(Stream stream)
+        public BusinessRulesetRule(Stream stream)
         {
             using (StreamReader reader = new StreamReader(stream))
             {
@@ -28,13 +28,13 @@ namespace ChargeBee.Models
             }
         }
 
-        public ThirdPartyPaymentMethod(TextReader reader)
+        public BusinessRulesetRule(TextReader reader)
         {
             JObj = JToken.Parse(reader.ReadToEnd());
             apiVersionCheck (JObj);    
         }
 
-        public ThirdPartyPaymentMethod(String jsonString)
+        public BusinessRulesetRule(String jsonString)
         {
             JObj = JToken.Parse(jsonString);
             apiVersionCheck (JObj);
@@ -44,25 +44,13 @@ namespace ChargeBee.Models
         #endregion
         
         #region Properties
-        public TypeEnum ThirdPartyPaymentMethodType 
+        public string RuleId 
         {
-            get { return GetEnum<TypeEnum>("type", true); }
+            get { return GetValue<string>("rule_id", true); }
         }
-        public GatewayEnum Gateway 
+        public int Priority 
         {
-            get { return GetEnum<GatewayEnum>("gateway", true); }
-        }
-        public string GatewayAccountId 
-        {
-            get { return GetValue<string>("gateway_account_id", false); }
-        }
-        public string ReferenceId 
-        {
-            get { return GetValue<string>("reference_id", true); }
-        }
-        public JToken NetworkTransactionReference 
-        {
-            get { return GetJToken("network_transaction_reference", false); }
+            get { return GetValue<int>("priority", true); }
         }
         
         #endregion

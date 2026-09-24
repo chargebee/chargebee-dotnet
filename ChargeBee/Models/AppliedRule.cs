@@ -14,12 +14,12 @@ using ChargeBee.Filters.Enums;
 namespace ChargeBee.Models
 {
 
-    public class ThirdPartyPaymentMethod : Resource 
+    public class AppliedRule : Resource 
     {
     
-        public ThirdPartyPaymentMethod() { }
+        public AppliedRule() { }
 
-        public ThirdPartyPaymentMethod(Stream stream)
+        public AppliedRule(Stream stream)
         {
             using (StreamReader reader = new StreamReader(stream))
             {
@@ -28,13 +28,13 @@ namespace ChargeBee.Models
             }
         }
 
-        public ThirdPartyPaymentMethod(TextReader reader)
+        public AppliedRule(TextReader reader)
         {
             JObj = JToken.Parse(reader.ReadToEnd());
             apiVersionCheck (JObj);    
         }
 
-        public ThirdPartyPaymentMethod(String jsonString)
+        public AppliedRule(String jsonString)
         {
             JObj = JToken.Parse(jsonString);
             apiVersionCheck (JObj);
@@ -44,25 +44,33 @@ namespace ChargeBee.Models
         #endregion
         
         #region Properties
-        public TypeEnum ThirdPartyPaymentMethodType 
+        public string Id 
         {
-            get { return GetEnum<TypeEnum>("type", true); }
+            get { return GetValue<string>("id", true); }
         }
-        public GatewayEnum Gateway 
+        public int? Version 
         {
-            get { return GetEnum<GatewayEnum>("gateway", true); }
+            get { return GetValue<int?>("version", false); }
         }
-        public string GatewayAccountId 
+        public string Name 
         {
-            get { return GetValue<string>("gateway_account_id", false); }
+            get { return GetValue<string>("name", false); }
         }
-        public string ReferenceId 
+        public string Description 
         {
-            get { return GetValue<string>("reference_id", true); }
+            get { return GetValue<string>("description", false); }
         }
-        public JToken NetworkTransactionReference 
+        public bool? EvaluationResult 
         {
-            get { return GetJToken("network_transaction_reference", false); }
+            get { return GetValue<bool?>("evaluation_result", false); }
+        }
+        public string ErrorMessage 
+        {
+            get { return GetValue<string>("error_message", false); }
+        }
+        public JArray Actions 
+        {
+            get { return GetJArray("actions", false); }
         }
         
         #endregion

@@ -456,6 +456,8 @@ namespace ChargeBee.Models
             Mastercard,
             [EnumMember(Value = "visa")]
             Visa,
+            [EnumMember(Value = "dankort")]
+            Dankort,
         }
 
         #region Subclasses

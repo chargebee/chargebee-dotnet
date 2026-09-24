@@ -659,6 +659,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool>("decommissioned", true); }
         }
+        public string BrandId 
+        {
+            get { return GetValue<string>("brand_id", false); }
+        }
         
         #endregion
         
@@ -673,6 +677,11 @@ namespace ChargeBee.Models
             public CreateRequest Id(string id) 
             {
                 m_params.AddOpt("id", id);
+                return this;
+            }
+            public CreateRequest BrandId(string brandId) 
+            {
+                m_params.AddOpt("brand_id", brandId);
                 return this;
             }
             public CreateRequest PlanId(string planId) 
@@ -1507,6 +1516,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("id", id);
                 return this;
             }
+            public CreateForCustomerRequest BrandId(string brandId) 
+            {
+                m_params.AddOpt("brand_id", brandId);
+                return this;
+            }
             public CreateForCustomerRequest PlanId(string planId) 
             {
                 m_params.Add("plan_id", planId);
@@ -1884,6 +1898,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("business_entity_id", businessEntityId);
                 return this;
             }
+            public CreateWithItemsRequest BrandId(string brandId) 
+            {
+                m_params.AddOpt("brand_id", brandId);
+                return this;
+            }
             public CreateWithItemsRequest TrialEnd(long trialEnd) 
             {
                 m_params.AddOpt("trial_end", trialEnd);
@@ -2217,6 +2236,11 @@ namespace ChargeBee.Models
             public CreateWithItemsRequest SubscriptionItemItemType(int index, ChargeBee.Models.Enums.ItemTypeEnum subscriptionItemItemType) 
             {
                 m_params.AddOpt("subscription_items[item_type][" + index + "]", subscriptionItemItemType);
+                return this;
+            }
+            public CreateWithItemsRequest SubscriptionItemDescription(int index, string subscriptionItemDescription) 
+            {
+                m_params.AddOpt("subscription_items[description][" + index + "]", subscriptionItemDescription);
                 return this;
             }
             public CreateWithItemsRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
@@ -3772,6 +3796,11 @@ namespace ChargeBee.Models
             public UpdateForItemsRequest SubscriptionItemItemType(int index, ChargeBee.Models.Enums.ItemTypeEnum subscriptionItemItemType) 
             {
                 m_params.AddOpt("subscription_items[item_type][" + index + "]", subscriptionItemItemType);
+                return this;
+            }
+            public UpdateForItemsRequest SubscriptionItemDescription(int index, string subscriptionItemDescription) 
+            {
+                m_params.AddOpt("subscription_items[description][" + index + "]", subscriptionItemDescription);
                 return this;
             }
             public UpdateForItemsRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
@@ -5836,6 +5865,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_items[item_type][" + index + "]", subscriptionItemItemType);
                 return this;
             }
+            public ImportForItemsRequest SubscriptionItemDescription(int index, string subscriptionItemDescription) 
+            {
+                m_params.AddOpt("subscription_items[description][" + index + "]", subscriptionItemDescription);
+                return this;
+            }
             public ImportForItemsRequest DiscountApplyOn(int index, ChargeBee.Models.Enums.ApplyOnEnum discountApplyOn) 
             {
                 m_params.AddOpt("discounts[apply_on][" + index + "]", discountApplyOn);
@@ -6450,6 +6484,10 @@ namespace ChargeBee.Models
 
             public UsageAccumulationResetFrequencyEnum? UsageAccumulationResetFrequency {
                 get { return GetEnum<UsageAccumulationResetFrequencyEnum>("usage_accumulation_reset_frequency", false); }
+            }
+
+            public string Description {
+                get { return GetValue<string>("description", false); }
             }
 
         }

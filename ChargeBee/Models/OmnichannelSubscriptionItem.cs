@@ -173,6 +173,8 @@ namespace ChargeBee.Models
             ProductNotAvailable,
             [EnumMember(Value = "other")]
             Other,
+            [EnumMember(Value = "subscription_not_found_in_source")]
+            SubscriptionNotFoundInSource,
 
         }
         public enum CancellationReasonEnum

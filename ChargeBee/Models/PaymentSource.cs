@@ -272,6 +272,10 @@ namespace ChargeBee.Models
         {
             get { return GetJToken("vault_token", false); }
         }
+        public PaymentSourceNetworkTransactionReference NetworkTransactionReference 
+        {
+            get { return GetSubResource<PaymentSourceNetworkTransactionReference>("network_transaction_reference"); }
+        }
         public bool Deleted 
         {
             get { return GetValue<bool>("deleted", true); }
@@ -279,6 +283,10 @@ namespace ChargeBee.Models
         public string BusinessEntityId 
         {
             get { return GetValue<string>("business_entity_id", false); }
+        }
+        public string BrandId 
+        {
+            get { return GetValue<string>("brand_id", false); }
         }
         
         #endregion
@@ -316,6 +324,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("issuing_country", issuingCountry);
                 return this;
             }
+            public CreateUsingTempTokenRequest BrandId(string brandId) 
+            {
+                m_params.AddOpt("brand_id", brandId);
+                return this;
+            }
             public CreateUsingTempTokenRequest ReplacePrimaryPaymentSource(bool replacePrimaryPaymentSource) 
             {
                 m_params.AddOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
@@ -337,6 +350,11 @@ namespace ChargeBee.Models
             public CreateUsingPermanentTokenRequest CustomerId(string customerId) 
             {
                 m_params.Add("customer_id", customerId);
+                return this;
+            }
+            public CreateUsingPermanentTokenRequest BrandId(string brandId) 
+            {
+                m_params.AddOpt("brand_id", brandId);
                 return this;
             }
             public CreateUsingPermanentTokenRequest Type(ChargeBee.Models.Enums.TypeEnum type) 
@@ -492,6 +510,11 @@ namespace ChargeBee.Models
                 m_params.Add("customer_id", customerId);
                 return this;
             }
+            public CreateUsingTokenRequest BrandId(string brandId) 
+            {
+                m_params.AddOpt("brand_id", brandId);
+                return this;
+            }
             public CreateUsingTokenRequest ReplacePrimaryPaymentSource(bool replacePrimaryPaymentSource) 
             {
                 m_params.AddOpt("replace_primary_payment_source", replacePrimaryPaymentSource);
@@ -513,6 +536,11 @@ namespace ChargeBee.Models
             public CreateUsingPaymentIntentRequest CustomerId(string customerId) 
             {
                 m_params.Add("customer_id", customerId);
+                return this;
+            }
+            public CreateUsingPaymentIntentRequest BrandId(string brandId) 
+            {
+                m_params.AddOpt("brand_id", brandId);
                 return this;
             }
             public CreateUsingPaymentIntentRequest ReplacePrimaryPaymentSource(bool replacePrimaryPaymentSource) 
@@ -574,6 +602,11 @@ namespace ChargeBee.Models
                 m_params.Add("customer_id", customerId);
                 return this;
             }
+            public CreateVoucherPaymentSourceRequest BrandId(string brandId) 
+            {
+                m_params.AddOpt("brand_id", brandId);
+                return this;
+            }
             public CreateVoucherPaymentSourceRequest VoucherPaymentSourceVoucherType(ChargeBee.Models.Enums.VoucherTypeEnum voucherPaymentSourceVoucherType) 
             {
                 m_params.Add("voucher_payment_source[voucher_type]", voucherPaymentSourceVoucherType);
@@ -605,6 +638,11 @@ namespace ChargeBee.Models
             public CreateCardRequest CustomerId(string customerId) 
             {
                 m_params.Add("customer_id", customerId);
+                return this;
+            }
+            public CreateCardRequest BrandId(string brandId) 
+            {
+                m_params.AddOpt("brand_id", brandId);
                 return this;
             }
             public CreateCardRequest ReplacePrimaryPaymentSource(bool replacePrimaryPaymentSource) 
@@ -703,6 +741,11 @@ namespace ChargeBee.Models
             public CreateBankAccountRequest CustomerId(string customerId) 
             {
                 m_params.Add("customer_id", customerId);
+                return this;
+            }
+            public CreateBankAccountRequest BrandId(string brandId) 
+            {
+                m_params.AddOpt("brand_id", brandId);
                 return this;
             }
             public CreateBankAccountRequest IssuingCountry(string issuingCountry) 
@@ -871,6 +914,11 @@ namespace ChargeBee.Models
             public UpdateCardRequest CardAdditionalInformation(JToken cardAdditionalInformation) 
             {
                 m_params.AddOpt("card[additional_information]", cardAdditionalInformation);
+                return this;
+            }
+            public UpdateCardRequest NetworkTransactionReferenceOriginalNetworkTransactionId(string networkTransactionReferenceOriginalNetworkTransactionId) 
+            {
+                m_params.AddOpt("network_transaction_reference[original_network_transaction_id]", networkTransactionReferenceOriginalNetworkTransactionId);
                 return this;
             }
         }
@@ -1100,6 +1148,8 @@ namespace ChargeBee.Models
                 Mastercard,
                 [EnumMember(Value = "visa")]
                 Visa,
+                [EnumMember(Value = "dankort")]
+                Dankort,
             }
 
             public string FirstName {
@@ -1389,6 +1439,14 @@ namespace ChargeBee.Models
 
             public DateTime CreatedAt {
                 get { return (DateTime)GetDateTime("created_at", true); }
+            }
+
+        }
+        public class PaymentSourceNetworkTransactionReference : Resource
+        {
+
+            public string OriginalNetworkTransactionId {
+                get { return GetValue<string>("original_network_transaction_id", false); }
             }
 
         }

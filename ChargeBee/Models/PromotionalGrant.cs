@@ -93,9 +93,19 @@ namespace ChargeBee.Models
                 m_params.Add("unit_id", unitId);
                 return this;
             }
+            public PromotionalGrantsRequest Id(string id) 
+            {
+                m_params.AddOpt("id", id);
+                return this;
+            }
             public PromotionalGrantsRequest Amount(string amount) 
             {
                 m_params.Add("amount", amount);
+                return this;
+            }
+            public PromotionalGrantsRequest EffectiveFrom(long effectiveFrom) 
+            {
+                m_params.AddOpt("effective_from", effectiveFrom);
                 return this;
             }
             public PromotionalGrantsRequest ExpiresAt(long expiresAt) 

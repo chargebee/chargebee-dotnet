@@ -279,6 +279,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("business_entity_id", false); }
         }
+        public string BrandId 
+        {
+            get { return GetValue<string>("brand_id", false); }
+        }
         public HostedPageContent Content
         {
             get
@@ -1100,6 +1104,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("business_entity_id", businessEntityId);
                 return this;
             }
+            public CheckoutOneTimeForItemsRequest BrandId(string brandId) 
+            {
+                m_params.AddOpt("brand_id", brandId);
+                return this;
+            }
             public CheckoutOneTimeForItemsRequest Layout(ChargeBee.Models.Enums.LayoutEnum layout) 
             {
                 m_params.AddOpt("layout", layout);
@@ -1583,6 +1592,11 @@ namespace ChargeBee.Models
             public CheckoutNewForItemsRequest BusinessEntityId(string businessEntityId) 
             {
                 m_params.AddOpt("business_entity_id", businessEntityId);
+                return this;
+            }
+            public CheckoutNewForItemsRequest BrandId(string brandId) 
+            {
+                m_params.AddOpt("brand_id", brandId);
                 return this;
             }
             public CheckoutNewForItemsRequest BillingCycles(int billingCycles) 
@@ -2371,6 +2385,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("layout", layout);
                 return this;
             }
+            public CheckoutExistingForItemsRequest BrandId(string brandId) 
+            {
+                m_params.AddOpt("brand_id", brandId);
+                return this;
+            }
             public CheckoutExistingForItemsRequest MandatoryItemsToRemove(List<string> mandatoryItemsToRemove) 
             {
                 m_params.AddOpt("mandatory_items_to_remove", mandatoryItemsToRemove);
@@ -2875,6 +2894,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("business_entity_id", businessEntityId);
                 return this;
             }
+            public ManagePaymentSourcesRequest BrandId(string brandId) 
+            {
+                m_params.AddOpt("brand_id", brandId);
+                return this;
+            }
             public ManagePaymentSourcesRequest RedirectUrl(string redirectUrl) 
             {
                 m_params.AddOpt("redirect_url", redirectUrl);
@@ -2904,6 +2928,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public CollectNowRequest BrandId(string brandId) 
+            {
+                m_params.AddOpt("brand_id", brandId);
+                return this;
+            }
             public CollectNowRequest RedirectUrl(string redirectUrl) 
             {
                 m_params.AddOpt("redirect_url", redirectUrl);
@@ -2943,6 +2972,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public AcceptQuoteRequest BrandId(string brandId) 
+            {
+                m_params.AddOpt("brand_id", brandId);
+                return this;
+            }
             public AcceptQuoteRequest RedirectUrl(string redirectUrl) 
             {
                 m_params.AddOpt("redirect_url", redirectUrl);
@@ -2966,6 +3000,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public ExtendSubscriptionRequest BrandId(string brandId) 
+            {
+                m_params.AddOpt("brand_id", brandId);
+                return this;
+            }
             public ExtendSubscriptionRequest Expiry(int expiry) 
             {
                 m_params.AddOpt("expiry", expiry);
@@ -3058,6 +3097,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("business_entity_id", businessEntityId);
                 return this;
             }
+            public CheckoutGiftForItemsRequest BrandId(string brandId) 
+            {
+                m_params.AddOpt("brand_id", brandId);
+                return this;
+            }
             public CheckoutGiftForItemsRequest RedirectUrl(string redirectUrl) 
             {
                 m_params.AddOpt("redirect_url", redirectUrl);
@@ -3141,6 +3185,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public ClaimGiftRequest BrandId(string brandId) 
+            {
+                m_params.AddOpt("brand_id", brandId);
+                return this;
+            }
             public ClaimGiftRequest RedirectUrl(string redirectUrl) 
             {
                 m_params.AddOpt("redirect_url", redirectUrl);
@@ -3201,6 +3250,11 @@ namespace ChargeBee.Models
             {
             }
 
+            public PreCancelRequest BrandId(string brandId) 
+            {
+                m_params.AddOpt("brand_id", brandId);
+                return this;
+            }
             public PreCancelRequest PassThruContent(string passThruContent) 
             {
                 m_params.AddOpt("pass_thru_content", passThruContent);
