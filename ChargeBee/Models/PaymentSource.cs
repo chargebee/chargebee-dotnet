@@ -442,6 +442,46 @@ namespace ChargeBee.Models
                 m_params.AddOpt("card[funding_type]", cardFundingType);
                 return this;
             }
+            public CreateUsingPermanentTokenRequest BankAccountAccountType(ChargeBee.Models.Enums.AccountTypeEnum bankAccountAccountType) 
+            {
+                m_params.AddOpt("bank_account[account_type]", bankAccountAccountType);
+                return this;
+            }
+            public CreateUsingPermanentTokenRequest BankAccountAccountHolderType(ChargeBee.Models.Enums.AccountHolderTypeEnum bankAccountAccountHolderType) 
+            {
+                m_params.AddOpt("bank_account[account_holder_type]", bankAccountAccountHolderType);
+                return this;
+            }
+            public CreateUsingPermanentTokenRequest BankAccountFirstName(string bankAccountFirstName) 
+            {
+                m_params.AddOpt("bank_account[first_name]", bankAccountFirstName);
+                return this;
+            }
+            public CreateUsingPermanentTokenRequest BankAccountLastName(string bankAccountLastName) 
+            {
+                m_params.AddOpt("bank_account[last_name]", bankAccountLastName);
+                return this;
+            }
+            public CreateUsingPermanentTokenRequest BankAccountCompany(string bankAccountCompany) 
+            {
+                m_params.AddOpt("bank_account[company]", bankAccountCompany);
+                return this;
+            }
+            public CreateUsingPermanentTokenRequest BankAccountScheme(PaymentSourceBankAccount.SchemeEnum bankAccountScheme) 
+            {
+                m_params.AddOpt("bank_account[scheme]", bankAccountScheme);
+                return this;
+            }
+            public CreateUsingPermanentTokenRequest BankAccountLast4(string bankAccountLast4) 
+            {
+                m_params.AddOpt("bank_account[last4]", bankAccountLast4);
+                return this;
+            }
+            public CreateUsingPermanentTokenRequest BankAccountEcheckType(ChargeBee.Models.Enums.EcheckTypeEnum bankAccountEcheckType) 
+            {
+                m_params.AddOpt("bank_account[echeck_type]", bankAccountEcheckType);
+                return this;
+            }
             public CreateUsingPermanentTokenRequest BillingAddressFirstName(string billingAddressFirstName) 
             {
                 m_params.AddOpt("billing_address[first_name]", billingAddressFirstName);
@@ -1251,6 +1291,25 @@ namespace ChargeBee.Models
                 Individual,
                 [EnumMember(Value = "company")]
                 Company,
+            }
+            public enum SchemeEnum
+            {
+                UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+                dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+                [EnumMember(Value = "ach")]
+                Ach,
+                [EnumMember(Value = "bacs")]
+                Bacs,
+                [EnumMember(Value = "sepa_core")]
+                SepaCore,
+                [EnumMember(Value = "autogiro")]
+                Autogiro,
+                [EnumMember(Value = "becs")]
+                Becs,
+                [EnumMember(Value = "becs_nz")]
+                BecsNz,
+                [EnumMember(Value = "pad")]
+                Pad,
             }
 
             public string Last4 {

@@ -84,6 +84,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("customer_id", false); }
         }
+        public string EmailConversationId 
+        {
+            get { return GetValue<string>("email_conversation_id", false); }
+        }
         public string SiteId 
         {
             get { return GetValue<string>("site_id", false); }

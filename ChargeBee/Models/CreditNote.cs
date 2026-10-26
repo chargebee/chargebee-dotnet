@@ -803,6 +803,11 @@ namespace ChargeBee.Models
                 m_params.Add("date", date);
                 return this;
             }
+            public ImportCreditNoteRequest CustomerNotes(string customerNotes) 
+            {
+                m_params.AddOpt("customer_notes", customerNotes);
+                return this;
+            }
             public ImportCreditNoteRequest Status(CreditNote.StatusEnum status) 
             {
                 m_params.AddOpt("status", status);

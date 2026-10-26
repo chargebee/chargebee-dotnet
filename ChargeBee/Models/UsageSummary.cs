@@ -72,6 +72,10 @@ namespace ChargeBee.Models
         {
             get { return (DateTime)GetDateTime("aggregated_to", true); }
         }
+        public JArray Attributes 
+        {
+            get { return GetJArray("attributes", false); }
+        }
         
         #endregion
         
@@ -101,6 +105,11 @@ namespace ChargeBee.Models
             public UsageSummaryRetrieveUsageSummaryForSubscriptionRequest TimeframeEnd(long timeframeEnd) 
             {
                 m_params.AddOpt("timeframe_end", timeframeEnd);
+                return this;
+            }
+            public UsageSummaryRetrieveUsageSummaryForSubscriptionRequest GroupBy(List<string> groupBy) 
+            {
+                m_params.AddOpt("group_by", groupBy);
                 return this;
             }
         }

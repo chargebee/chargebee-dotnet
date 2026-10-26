@@ -295,6 +295,14 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<DifferentialPrice>("differential_price"); }
         }
+        public PriceRamp PriceRamp
+        {
+            get {  return GetResource<PriceRamp>("price_ramp"); }
+        }
+        public RampInterval RampInterval
+        {
+            get {  return GetResource<RampInterval>("ramp_interval"); }
+        }
         public Configuration Configuration
         {
             get {  return GetResource<Configuration>("configuration"); }
@@ -411,9 +419,21 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<Rule>("rule"); }
         }
+        public RetrySegment RetrySegment
+        {
+            get {  return GetResource<RetrySegment>("retry_segment"); }
+        }
         public Meter Meter
         {
             get {  return GetResource<Meter>("meter"); }
+        }
+        public GroupByAttribute GroupByAttribute
+        {
+            get {  return GetResource<GroupByAttribute>("group_by_attribute"); }
+        }
+        public GroupByRecommendation GroupByRecommendation
+        {
+            get {  return GetResource<GroupByRecommendation>("group_by_recommendation"); }
         }
         public UsageEvent UsageEvent
         {
@@ -426,6 +446,10 @@ namespace ChargeBee.Internal
         public CustomDataSchema CustomDataSchema
         {
             get {  return GetResource<CustomDataSchema>("custom_data_schema"); }
+        }
+        public CustomData CustomData
+        {
+            get {  return GetResource<CustomData>("custom_data"); }
         }
         public UsageFile UsageFile
         {
@@ -467,10 +491,6 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<AppliedRule>("applied_rule"); }
         }
-        public AppliedBusinessRule AppliedBusinessRule
-        {
-            get {  return GetResource<AppliedBusinessRule>("applied_business_rule"); }
-        }
         public BusinessRuleset BusinessRuleset
         {
             get {  return GetResource<BusinessRuleset>("business_ruleset"); }
@@ -478,6 +498,22 @@ namespace ChargeBee.Internal
         public BusinessRulesetRule BusinessRulesetRule
         {
             get {  return GetResource<BusinessRulesetRule>("business_ruleset_rule"); }
+        }
+        public DraftRequest DraftRequest
+        {
+            get {  return GetResource<DraftRequest>("draft_request"); }
+        }
+        public Citation Citation
+        {
+            get {  return GetResource<Citation>("citation"); }
+        }
+        public Execution Execution
+        {
+            get {  return GetResource<Execution>("execution"); }
+        }
+        public DraftEstimate DraftEstimate
+        {
+            get {  return GetResource<DraftEstimate>("draft_estimate"); }
         }
         public UsageSummary UsageSummary
         {
@@ -498,6 +534,34 @@ namespace ChargeBee.Internal
         public AlertStatus AlertStatus
         {
             get {  return GetResource<AlertStatus>("alert_status"); }
+        }
+        public CollectionsPaymentPromise CollectionsPaymentPromise
+        {
+            get {  return GetResource<CollectionsPaymentPromise>("collections_payment_promise"); }
+        }
+        public CollectionsDispute CollectionsDispute
+        {
+            get {  return GetResource<CollectionsDispute>("collections_dispute"); }
+        }
+        public CollectionsReminderSequence CollectionsReminderSequence
+        {
+            get {  return GetResource<CollectionsReminderSequence>("collections_reminder_sequence"); }
+        }
+        public EmailConversation EmailConversation
+        {
+            get {  return GetResource<EmailConversation>("email_conversation"); }
+        }
+        public EmailMessage EmailMessage
+        {
+            get {  return GetResource<EmailMessage>("email_message"); }
+        }
+        public PrivateNote PrivateNote
+        {
+            get {  return GetResource<PrivateNote>("private_note"); }
+        }
+        public EmailAttachment EmailAttachment
+        {
+            get {  return GetResource<EmailAttachment>("email_attachment"); }
         }
         public LedgerAccountBalance LedgerAccountBalance
         {

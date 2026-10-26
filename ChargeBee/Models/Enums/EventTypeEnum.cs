@@ -202,6 +202,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "payment_schedule_scheme_deleted")]
          PaymentScheduleSchemeDeleted,
 
+        [EnumMember(Value = "payment_schedules_cancelled")]
+         PaymentSchedulesCancelled,
+
         [EnumMember(Value = "subscription_renewal_reminder")]
          SubscriptionRenewalReminder,
 
@@ -658,6 +661,15 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "omnichannel_subscription_item_recovered")]
          OmnichannelSubscriptionItemRecovered,
 
+        [EnumMember(Value = "price_ramp_created")]
+         PriceRampCreated,
+
+        [EnumMember(Value = "price_ramp_updated")]
+         PriceRampUpdated,
+
+        [EnumMember(Value = "price_ramp_deleted")]
+         PriceRampDeleted,
+
         [EnumMember(Value = "omnichannel_subscription_item_mrr_updated")]
          OmnichannelSubscriptionItemMrrUpdated,
 
@@ -700,9 +712,6 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "vault_token_deleted")]
          VaultTokenDeleted,
 
-        [EnumMember(Value = "business_rules_applied")]
-         BusinessRulesApplied,
-
         [EnumMember(Value = "business_ruleset_created")]
          BusinessRulesetCreated,
 
@@ -717,6 +726,51 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "business_ruleset_deleted")]
          BusinessRulesetDeleted,
+
+        [EnumMember(Value = "collections_reminder_sequence_created")]
+         CollectionsReminderSequenceCreated,
+
+        [EnumMember(Value = "collections_reminder_sequence_paused")]
+         CollectionsReminderSequencePaused,
+
+        [EnumMember(Value = "collections_reminder_sequence_resumed")]
+         CollectionsReminderSequenceResumed,
+
+        [EnumMember(Value = "collections_reminder_sequence_completed")]
+         CollectionsReminderSequenceCompleted,
+
+        [EnumMember(Value = "collections_payment_promise_created")]
+         CollectionsPaymentPromiseCreated,
+
+        [EnumMember(Value = "collections_payment_promise_updated")]
+         CollectionsPaymentPromiseUpdated,
+
+        [EnumMember(Value = "collections_payment_promise_fulfilled")]
+         CollectionsPaymentPromiseFulfilled,
+
+        [EnumMember(Value = "collections_payment_promise_cancelled")]
+         CollectionsPaymentPromiseCancelled,
+
+        [EnumMember(Value = "collections_payment_promise_broken")]
+         CollectionsPaymentPromiseBroken,
+
+        [EnumMember(Value = "collections_dispute_created")]
+         CollectionsDisputeCreated,
+
+        [EnumMember(Value = "collections_dispute_updated")]
+         CollectionsDisputeUpdated,
+
+        [EnumMember(Value = "collections_dispute_resolved")]
+         CollectionsDisputeResolved,
+
+        [EnumMember(Value = "collections_dispute_withdrawn")]
+         CollectionsDisputeWithdrawn,
+
+        [EnumMember(Value = "email_message_received")]
+         EmailMessageReceived,
+
+        [EnumMember(Value = "private_note_added")]
+         PrivateNoteAdded,
 
         [EnumMember(Value = "plan_created")]
          PlanCreated,

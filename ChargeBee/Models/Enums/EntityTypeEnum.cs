@@ -139,5 +139,8 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "price_ramp")]
          PriceRamp,
 
+        [EnumMember(Value = "task")]
+         Task,
+
     }
 }

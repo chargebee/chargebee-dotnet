@@ -88,6 +88,10 @@ namespace ChargeBee.Models
         {
             get { return GetEnum<ExpirationReasonEnum>("expiration_reason", false); }
         }
+        public string ExpirationReasonAtSource 
+        {
+            get { return GetValue<string>("expiration_reason_at_source", false); }
+        }
         public DateTime? CancelledAt 
         {
             get { return GetDateTime("cancelled_at", false); }
@@ -95,6 +99,10 @@ namespace ChargeBee.Models
         public CancellationReasonEnum? CancellationReason 
         {
             get { return GetEnum<CancellationReasonEnum>("cancellation_reason", false); }
+        }
+        public string CancellationReasonAtSource 
+        {
+            get { return GetValue<string>("cancellation_reason_at_source", false); }
         }
         public DateTime? GracePeriodExpiresAt 
         {
@@ -192,6 +200,8 @@ namespace ChargeBee.Models
             RefundedForOtherReason,
             [EnumMember(Value = "merchant_revoked")]
             MerchantRevoked,
+            [EnumMember(Value = "other")]
+            Other,
 
         }
 

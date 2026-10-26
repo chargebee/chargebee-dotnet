@@ -49,6 +49,14 @@ namespace ChargeBee.Models
             request.SetTelemetryOperation("listLedgerAccountBalances");
             return request;
         }
+        public static UpdateOverdraftLimitRequest UpdateOverdraftLimit()
+        {
+            string url = ApiUtil.BuildUrl("ledger_account_balances", "update_overdraft_limit");
+            var request = new UpdateOverdraftLimitRequest(url, HttpMethod.POST).SetIdempotent(false);
+            request.SetTelemetryResource("ledgerAccountBalance");
+            request.SetTelemetryOperation("updateOverdraftLimit");
+            return request;
+        }
         #endregion
         
         #region Properties
@@ -102,6 +110,39 @@ namespace ChargeBee.Models
             public StringFilter<LedgerAccountBalanceListLedgerAccountBalancesRequest> UnitId() 
             {
                 return new StringFilter<LedgerAccountBalanceListLedgerAccountBalancesRequest>("unit_id", this);        
+            }
+        }
+        public class UpdateOverdraftLimitRequest : EntityRequest<UpdateOverdraftLimitRequest> 
+        {
+            public UpdateOverdraftLimitRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public UpdateOverdraftLimitRequest SubscriptionId(string subscriptionId) 
+            {
+                m_params.Add("subscription_id", subscriptionId);
+                return this;
+            }
+            public UpdateOverdraftLimitRequest UnitId(string unitId) 
+            {
+                m_params.Add("unit_id", unitId);
+                return this;
+            }
+            public UpdateOverdraftLimitRequest IsUnlimited(bool isUnlimited) 
+            {
+                m_params.Add("is_unlimited", isUnlimited);
+                return this;
+            }
+            public UpdateOverdraftLimitRequest Limit(string limit) 
+            {
+                m_params.AddOpt("limit", limit);
+                return this;
+            }
+            public UpdateOverdraftLimitRequest ChangeReason(string changeReason) 
+            {
+                m_params.AddOpt("change_reason", changeReason);
+                return this;
             }
         }
         #endregion
