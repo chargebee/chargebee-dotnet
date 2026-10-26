@@ -80,7 +80,7 @@ namespace ChargeBee.Models
         #endregion
         
 
-        public enum WarningReasonsEnum
+        public enum WarningReasonEnum
         {
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
