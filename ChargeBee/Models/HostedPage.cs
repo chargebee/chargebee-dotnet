@@ -247,9 +247,9 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("pass_thru_content", false); }
         }
-        public bool Embed 
+        public bool? Embed 
         {
-            get { return GetValue<bool>("embed", false); }
+            get { return GetValue<bool?>("embed", false); }
         }
         public DateTime? CreatedAt 
         {

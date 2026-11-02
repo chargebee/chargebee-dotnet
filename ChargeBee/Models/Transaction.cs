@@ -310,6 +310,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("payment_method_details", false); }
         }
+        public TransactionGatewayMetadata GatewayMetadata 
+        {
+            get { return GetSubResource<TransactionGatewayMetadata>("gateway_metadata"); }
+        }
         public TransactionGatewayErrorDetail ErrorDetail 
         {
             get { return GetSubResource<TransactionGatewayErrorDetail>("error_detail"); }
@@ -729,6 +733,14 @@ namespace ChargeBee.Models
 
             public DateTime? Date {
                 get { return GetDateTime("date", false); }
+            }
+
+        }
+        public class TransactionGatewayMetadata : Resource
+        {
+
+            public string AcquirerReferenceId {
+                get { return GetValue<string>("acquirer_reference_id", false); }
             }
 
         }

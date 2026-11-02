@@ -43,5 +43,14 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "external_service")]
          ExternalService,
 
+        [EnumMember(Value = "mcp")]
+         Mcp,
+
+        [EnumMember(Value = "copilot")]
+         Copilot,
+
+        [EnumMember(Value = "agent")]
+         Agent,
+
     }
 }

@@ -131,6 +131,10 @@ namespace ChargeBee.Models
             AppleAppStore,
             [EnumMember(Value = "google_play_store")]
             GooglePlayStore,
+            [EnumMember(Value = "roku")]
+            Roku,
+            [EnumMember(Value = "amazon_app_store")]
+            AmazonAppStore,
 
         }
 

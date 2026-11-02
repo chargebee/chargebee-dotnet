@@ -96,6 +96,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("customer_id", false); }
         }
+        public string Origin 
+        {
+            get { return GetValue<string>("origin", false); }
+        }
         public DateTime CreatedAt 
         {
             get { return (DateTime)GetDateTime("created_at", true); }
@@ -197,6 +201,10 @@ namespace ChargeBee.Models
             AppleAppStore,
             [EnumMember(Value = "google_play_store")]
             GooglePlayStore,
+            [EnumMember(Value = "roku")]
+            Roku,
+            [EnumMember(Value = "amazon_app_store")]
+            AmazonAppStore,
 
         }
 

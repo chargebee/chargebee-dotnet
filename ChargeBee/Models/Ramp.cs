@@ -270,6 +270,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("items_to_add[charge_on_option][" + index + "]", itemsToAddChargeOnOption);
                 return this;
             }
+            public CreateForSubscriptionRequest ItemsToAddDescription(int index, string itemsToAddDescription) 
+            {
+                m_params.AddOpt("items_to_add[description][" + index + "]", itemsToAddDescription);
+                return this;
+            }
             public CreateForSubscriptionRequest ItemsToUpdateItemPriceId(int index, string itemsToUpdateItemPriceId) 
             {
                 m_params.Add("items_to_update[item_price_id][" + index + "]", itemsToUpdateItemPriceId);
@@ -318,6 +323,11 @@ namespace ChargeBee.Models
             public CreateForSubscriptionRequest ItemsToUpdateChargeOnOption(int index, ChargeBee.Models.Enums.ChargeOnOptionEnum itemsToUpdateChargeOnOption) 
             {
                 m_params.AddOpt("items_to_update[charge_on_option][" + index + "]", itemsToUpdateChargeOnOption);
+                return this;
+            }
+            public CreateForSubscriptionRequest ItemsToUpdateDescription(int index, string itemsToUpdateDescription) 
+            {
+                m_params.AddOpt("items_to_update[description][" + index + "]", itemsToUpdateDescription);
                 return this;
             }
             public CreateForSubscriptionRequest ItemTierItemPriceId(int index, string itemTierItemPriceId) 
@@ -523,6 +533,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("items_to_add[charge_on_option][" + index + "]", itemsToAddChargeOnOption);
                 return this;
             }
+            public UpdateRequest ItemsToAddDescription(int index, string itemsToAddDescription) 
+            {
+                m_params.AddOpt("items_to_add[description][" + index + "]", itemsToAddDescription);
+                return this;
+            }
             public UpdateRequest ItemsToUpdateItemPriceId(int index, string itemsToUpdateItemPriceId) 
             {
                 m_params.Add("items_to_update[item_price_id][" + index + "]", itemsToUpdateItemPriceId);
@@ -571,6 +586,11 @@ namespace ChargeBee.Models
             public UpdateRequest ItemsToUpdateChargeOnOption(int index, ChargeBee.Models.Enums.ChargeOnOptionEnum itemsToUpdateChargeOnOption) 
             {
                 m_params.AddOpt("items_to_update[charge_on_option][" + index + "]", itemsToUpdateChargeOnOption);
+                return this;
+            }
+            public UpdateRequest ItemsToUpdateDescription(int index, string itemsToUpdateDescription) 
+            {
+                m_params.AddOpt("items_to_update[description][" + index + "]", itemsToUpdateDescription);
                 return this;
             }
             public UpdateRequest ItemTierItemPriceId(int index, string itemTierItemPriceId) 
@@ -814,6 +834,10 @@ namespace ChargeBee.Models
                 get { return GetEnum<ChargeOnOptionEnum>("charge_on_option", false); }
             }
 
+            public string Description {
+                get { return GetValue<string>("description", false); }
+            }
+
             public ChargeOnEventEnum? ChargeOnEvent {
                 get { return GetEnum<ChargeOnEventEnum>("charge_on_event", false); }
             }
@@ -900,6 +924,10 @@ namespace ChargeBee.Models
 
             public ChargeOnOptionEnum? ChargeOnOption {
                 get { return GetEnum<ChargeOnOptionEnum>("charge_on_option", false); }
+            }
+
+            public string Description {
+                get { return GetValue<string>("description", false); }
             }
 
             public ChargeOnEventEnum? ChargeOnEvent {

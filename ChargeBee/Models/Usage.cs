@@ -263,6 +263,16 @@ namespace ChargeBee.Models
                 m_params.Add("invoice[id]", invoiceId);
                 return this;
             }
+            public PdfRequest GroupByFeatureId(int index, string groupByFeatureId) 
+            {
+                m_params.AddOpt("group_by[feature_id][" + index + "]", groupByFeatureId);
+                return this;
+            }
+            public PdfRequest GroupByAttributes(int index, JArray groupByAttributes) 
+            {
+                m_params.AddOpt("group_by[attributes][" + index + "]", groupByAttributes);
+                return this;
+            }
         }
         #endregion
 

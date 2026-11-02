@@ -92,6 +92,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<Feature>("features"); }
         }
+        public List<string> GroupBy 
+        {
+            get { return GetList<string>("group_by"); }
+        }
         
         #endregion
         
