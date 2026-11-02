@@ -21,8 +21,8 @@ namespace ChargeBee.Api
 			return (U)this;
 		}
 
-		public StringFilter<U> StringFilterParam(string paranName){
-			return new StringFilter<U>(paranName, (U)this).SupportsMultiOperators(true).SupportsPresenceOperator(true);
+		public StringFilter<U> StringFilterParam(string paramName){
+			return new StringFilter<U>(paramName, (U)this).SupportsMultiOperators(true).SupportsPresenceOperator(true);
 		}
 
 		public BooleanFilter<U> BooleanFilterParam(string paramName){
