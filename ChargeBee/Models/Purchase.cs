@@ -201,6 +201,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("purchase_items[quantity_in_decimal][" + index + "]", purchaseItemQuantityInDecimal);
                 return this;
             }
+            public CreateRequest PurchaseItemTrialEnd(int index, long purchaseItemTrialEnd) 
+            {
+                m_params.AddOpt("purchase_items[trial_end][" + index + "]", purchaseItemTrialEnd);
+                return this;
+            }
             public CreateRequest ItemTierIndex(int index, int itemTierIndex) 
             {
                 m_params.Add("item_tiers[index][" + index + "]", itemTierIndex);
@@ -361,6 +366,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("subscription_info[contract_term_billing_cycle_on_renewal][" + index + "]", subscriptionInfoContractTermBillingCycleOnRenewal);
                 return this;
             }
+            public CreateRequest SubscriptionInfoTrialEnd(int index, long subscriptionInfoTrialEnd) 
+            {
+                m_params.AddOpt("subscription_info[trial_end][" + index + "]", subscriptionInfoTrialEnd);
+                return this;
+            }
+            public CreateRequest SubscriptionInfoStartDate(int index, long subscriptionInfoStartDate) 
+            {
+                m_params.AddOpt("subscription_info[start_date][" + index + "]", subscriptionInfoStartDate);
+                return this;
+            }
             public CreateRequest ContractTermIndex(int index, int contractTermIndex) 
             {
                 m_params.Add("contract_terms[index][" + index + "]", contractTermIndex);
@@ -507,6 +522,11 @@ namespace ChargeBee.Models
             public EstimateRequest PurchaseItemQuantityInDecimal(int index, string purchaseItemQuantityInDecimal) 
             {
                 m_params.AddOpt("purchase_items[quantity_in_decimal][" + index + "]", purchaseItemQuantityInDecimal);
+                return this;
+            }
+            public EstimateRequest PurchaseItemTrialEnd(int index, long purchaseItemTrialEnd) 
+            {
+                m_params.AddOpt("purchase_items[trial_end][" + index + "]", purchaseItemTrialEnd);
                 return this;
             }
             public EstimateRequest ItemTierIndex(int index, int itemTierIndex) 
@@ -667,6 +687,16 @@ namespace ChargeBee.Models
             public EstimateRequest SubscriptionInfoContractTermBillingCycleOnRenewal(int index, int subscriptionInfoContractTermBillingCycleOnRenewal) 
             {
                 m_params.AddOpt("subscription_info[contract_term_billing_cycle_on_renewal][" + index + "]", subscriptionInfoContractTermBillingCycleOnRenewal);
+                return this;
+            }
+            public EstimateRequest SubscriptionInfoTrialEnd(int index, long subscriptionInfoTrialEnd) 
+            {
+                m_params.AddOpt("subscription_info[trial_end][" + index + "]", subscriptionInfoTrialEnd);
+                return this;
+            }
+            public EstimateRequest SubscriptionInfoStartDate(int index, long subscriptionInfoStartDate) 
+            {
+                m_params.AddOpt("subscription_info[start_date][" + index + "]", subscriptionInfoStartDate);
                 return this;
             }
             public EstimateRequest ContractTermIndex(int index, int contractTermIndex) 

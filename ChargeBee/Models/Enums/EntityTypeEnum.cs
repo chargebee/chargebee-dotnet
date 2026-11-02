@@ -37,6 +37,9 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "charge_price")]
          ChargePrice,
 
+        [EnumMember(Value = "addon")]
+         Addon,
+
         [EnumMember(Value = "invoice")]
          Invoice,
 
@@ -51,9 +54,6 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "plan")]
          Plan,
-
-        [EnumMember(Value = "addon")]
-         Addon,
 
         [EnumMember(Value = "order")]
          Order,
@@ -138,6 +138,9 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "price_ramp")]
          PriceRamp,
+
+        [EnumMember(Value = "task")]
+         Task,
 
     }
 }

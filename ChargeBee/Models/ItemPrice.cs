@@ -132,6 +132,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("price_variant_id", false); }
         }
+        public string PriceRampId 
+        {
+            get { return GetValue<string>("price_ramp_id", false); }
+        }
         public ProrationTypeEnum? ProrationType 
         {
             get { return GetEnum<ProrationTypeEnum>("proration_type", false); }

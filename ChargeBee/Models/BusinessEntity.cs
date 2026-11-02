@@ -41,6 +41,38 @@ namespace ChargeBee.Models
         }
 
         #region Methods
+        public static CreateRequest Create()
+        {
+            string url = ApiUtil.BuildUrl("business_entities");
+            var request = new CreateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("businessEntity");
+            request.SetTelemetryOperation("create");
+            return request;
+        }
+        public static BusinessEntityListRequest List()
+        {
+            string url = ApiUtil.BuildUrl("business_entities");
+            var request = new BusinessEntityListRequest(url);
+            request.SetTelemetryResource("businessEntity");
+            request.SetTelemetryOperation("list");
+            return request;
+        }
+        public static RetrieveRequest Retrieve(string id)
+        {
+            string url = ApiUtil.BuildUrl("business_entities", CheckNull(id));
+            var request = new RetrieveRequest(url, HttpMethod.GET);
+            request.SetTelemetryResource("businessEntity");
+            request.SetTelemetryOperation("retrieve");
+            return request;
+        }
+        public static UpdateRequest Update(string id)
+        {
+            string url = ApiUtil.BuildUrl("business_entities", CheckNull(id));
+            var request = new UpdateRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("businessEntity");
+            request.SetTelemetryOperation("update");
+            return request;
+        }
         public static CreateTransfersRequest CreateTransfers()
         {
             string url = ApiUtil.BuildUrl("business_entities", "transfers");
@@ -92,6 +124,67 @@ namespace ChargeBee.Models
         #endregion
         
         #region Requests
+        public class CreateRequest : EntityRequest<CreateRequest> 
+        {
+            public CreateRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public CreateRequest Name(string name) 
+            {
+                m_params.Add("name", name);
+                return this;
+            }
+            public CreateRequest Status(BusinessEntity.StatusEnum status) 
+            {
+                m_params.Add("status", status);
+                return this;
+            }
+        }
+        public class BusinessEntityListRequest : ListRequestBase<BusinessEntityListRequest> 
+        {
+            public BusinessEntityListRequest(string url) 
+                    : base(url)
+            {
+            }
+
+            public BusinessEntityListRequest IncludeDeleted(bool includeDeleted) 
+            {
+                m_params.AddOpt("include_deleted", includeDeleted);
+                return this;
+            }
+            public StringFilter<BusinessEntityListRequest> Name() 
+            {
+                return new StringFilter<BusinessEntityListRequest>("name", this).SupportsPresenceOperator(true);        
+            }
+        }
+        public class RetrieveRequest : EntityRequest<RetrieveRequest> 
+        {
+            public RetrieveRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+        }
+        public class UpdateRequest : EntityRequest<UpdateRequest> 
+        {
+            public UpdateRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public UpdateRequest Name(string name) 
+            {
+                m_params.AddOpt("name", name);
+                return this;
+            }
+            public UpdateRequest Status(BusinessEntity.StatusEnum status) 
+            {
+                m_params.AddOpt("status", status);
+                return this;
+            }
+        }
         public class CreateTransfersRequest : EntityRequest<CreateTransfersRequest> 
         {
             public CreateTransfersRequest(string url, HttpMethod method) 

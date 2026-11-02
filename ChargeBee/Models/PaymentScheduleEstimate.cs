@@ -99,6 +99,8 @@ namespace ChargeBee.Models
                 PaymentDue,
                 [EnumMember(Value = "paid")]
                 Paid,
+                [EnumMember(Value = "voided")]
+                Voided,
             }
 
             public string Id {

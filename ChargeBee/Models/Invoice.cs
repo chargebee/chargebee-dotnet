@@ -356,6 +356,14 @@ namespace ChargeBee.Models
             request.SetTelemetryOperation("applyPaymentScheduleScheme");
             return request;
         }
+        public static RemovePaymentScheduleSchemeRequest RemovePaymentScheduleScheme(string id)
+        {
+            string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "remove_payment_schedule_scheme");
+            var request = new RemovePaymentScheduleSchemeRequest(url, HttpMethod.POST);
+            request.SetTelemetryResource("invoice");
+            request.SetTelemetryOperation("removePaymentScheduleScheme");
+            return request;
+        }
         public static EntityRequest<Type> PaymentSchedules(string id)
         {
             string url = ApiUtil.BuildUrl("invoices", CheckNull(id), "payment_schedules");
@@ -598,6 +606,10 @@ namespace ChargeBee.Models
         public List<InvoiceReferenceTransaction> ReferenceTransactions 
         {
             get { return GetResourceList<InvoiceReferenceTransaction>("reference_transactions"); }
+        }
+        public string RetrySegmentId 
+        {
+            get { return GetValue<string>("retry_segment_id", false); }
         }
         public List<InvoiceDunningAttempt> DunningAttempts 
         {
@@ -2675,6 +2687,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("line_items[taxable_amount][" + index + "]", lineItemTaxableAmount);
                 return this;
             }
+            public ImportInvoiceRequest LineItemTaxExemptReason(int index, ChargeBee.Models.Enums.TaxExemptReasonEnum lineItemTaxExemptReason) 
+            {
+                m_params.AddOpt("line_items[tax_exempt_reason][" + index + "]", lineItemTaxExemptReason);
+                return this;
+            }
             public ImportInvoiceRequest LineItemProrationMode(int index, Invoice.InvoiceLineItem.ProrationModeEnum lineItemProrationMode) 
             {
                 m_params.AddOpt("line_items[proration_mode][" + index + "]", lineItemProrationMode);
@@ -3899,6 +3916,19 @@ namespace ChargeBee.Models
             public ApplyPaymentScheduleSchemeRequest Amount(long amount) 
             {
                 m_params.AddOpt("amount", amount);
+                return this;
+            }
+        }
+        public class RemovePaymentScheduleSchemeRequest : EntityRequest<RemovePaymentScheduleSchemeRequest> 
+        {
+            public RemovePaymentScheduleSchemeRequest(string url, HttpMethod method) 
+                    : base(url, method)
+            {
+            }
+
+            public RemovePaymentScheduleSchemeRequest Comment(string comment) 
+            {
+                m_params.AddOpt("comment", comment);
                 return this;
             }
         }

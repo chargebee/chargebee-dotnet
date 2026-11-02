@@ -52,9 +52,9 @@ namespace ChargeBee.Models
         {
             get { return GetValue<string>("gateway_account_id", true); }
         }
-        public GatewayNameEnum GatewayName 
+        public GatewayEnum Gateway 
         {
-            get { return GetEnum<GatewayNameEnum>("gateway_name", true); }
+            get { return GetEnum<GatewayEnum>("gateway", true); }
         }
         public string GatewayCustomerId 
         {
@@ -85,10 +85,10 @@ namespace ChargeBee.Models
 
             UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
             dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
-            [EnumMember(Value = "active")]
-            Active,
-            [EnumMember(Value = "inactive")]
-            Inactive,
+            [EnumMember(Value = "valid")]
+            Valid,
+            [EnumMember(Value = "invalid")]
+            Invalid,
             [EnumMember(Value = "pending_verification")]
             PendingVerification,
 

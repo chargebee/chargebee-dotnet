@@ -104,6 +104,10 @@ namespace ChargeBee.Models
         {
             get { return GetResourceList<ColumnDefinition>("column_definitions"); }
         }
+        public List<string> GroupBy 
+        {
+            get { return GetList<string>("group_by"); }
+        }
         public List<Feature> Features 
         {
             get { return GetResourceList<Feature>("features"); }
