@@ -273,6 +273,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("group_by[attributes][" + index + "]", groupByAttributes);
                 return this;
             }
+            public PdfRequest GroupByWindowSize(int index, ChargeBee.Models.Enums.WindowSizeEnum groupByWindowSize) 
+            {
+                m_params.AddOpt("group_by[window_size][" + index + "]", groupByWindowSize);
+                return this;
+            }
         }
         #endregion
 
