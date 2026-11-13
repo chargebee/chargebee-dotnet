@@ -505,6 +505,12 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "payment_source_business_entity_changed")]
          PaymentSourceBusinessEntityChanged,
 
+        [EnumMember(Value = "organization_details_created")]
+         OrganizationDetailsCreated,
+
+        [EnumMember(Value = "organization_details_updated")]
+         OrganizationDetailsUpdated,
+
         [EnumMember(Value = "purchase_created")]
          PurchaseCreated,
 

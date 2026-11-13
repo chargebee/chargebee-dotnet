@@ -1639,6 +1639,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("pass_thru_content", passThruContent);
                 return this;
             }
+            public CheckoutNewForItemsRequest ShowBillingFrequencySelector(bool showBillingFrequencySelector) 
+            {
+                m_params.AddOpt("show_billing_frequency_selector", showBillingFrequencySelector);
+                return this;
+            }
             public CheckoutNewForItemsRequest AllowOfflinePaymentMethods(bool allowOfflinePaymentMethods) 
             {
                 m_params.AddOpt("allow_offline_payment_methods", allowOfflinePaymentMethods);
@@ -2102,6 +2107,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("entity_identifiers[standard][" + index + "]", entityIdentifierStandard);
                 return this;
             }
+            public CheckoutNewForItemsRequest AllowedBillingFrequencyPeriod(int index, int allowedBillingFrequencyPeriod) 
+            {
+                m_params.AddOpt("allowed_billing_frequencies[period][" + index + "]", allowedBillingFrequencyPeriod);
+                return this;
+            }
+            public CheckoutNewForItemsRequest AllowedBillingFrequencyPeriodUnit(int index, ChargeBee.Models.Enums.PeriodUnitEnum allowedBillingFrequencyPeriodUnit) 
+            {
+                m_params.AddOpt("allowed_billing_frequencies[period_unit][" + index + "]", allowedBillingFrequencyPeriodUnit);
+                return this;
+            }
         }
         public class CheckoutExistingRequest : EntityRequest<CheckoutExistingRequest> 
         {
@@ -2475,6 +2490,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("pass_thru_content", passThruContent);
                 return this;
             }
+            public CheckoutExistingForItemsRequest ShowBillingFrequencySelector(bool showBillingFrequencySelector) 
+            {
+                m_params.AddOpt("show_billing_frequency_selector", showBillingFrequencySelector);
+                return this;
+            }
             public CheckoutExistingForItemsRequest AllowOfflinePaymentMethods(bool allowOfflinePaymentMethods) 
             {
                 m_params.AddOpt("allow_offline_payment_methods", allowOfflinePaymentMethods);
@@ -2757,6 +2777,16 @@ namespace ChargeBee.Models
             public CheckoutExistingForItemsRequest EntityIdentifierStandard(int index, string entityIdentifierStandard) 
             {
                 m_params.AddOpt("entity_identifiers[standard][" + index + "]", entityIdentifierStandard);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest AllowedBillingFrequencyPeriod(int index, int allowedBillingFrequencyPeriod) 
+            {
+                m_params.AddOpt("allowed_billing_frequencies[period][" + index + "]", allowedBillingFrequencyPeriod);
+                return this;
+            }
+            public CheckoutExistingForItemsRequest AllowedBillingFrequencyPeriodUnit(int index, ChargeBee.Models.Enums.PeriodUnitEnum allowedBillingFrequencyPeriodUnit) 
+            {
+                m_params.AddOpt("allowed_billing_frequencies[period_unit][" + index + "]", allowedBillingFrequencyPeriodUnit);
                 return this;
             }
         }
@@ -3112,6 +3142,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("coupon_ids", couponIds);
                 return this;
             }
+            public CheckoutGiftForItemsRequest ShowBillingFrequencySelector(bool showBillingFrequencySelector) 
+            {
+                m_params.AddOpt("show_billing_frequency_selector", showBillingFrequencySelector);
+                return this;
+            }
             public CheckoutGiftForItemsRequest GifterCustomerId(string gifterCustomerId) 
             {
                 m_params.AddOpt("gifter[customer_id]", gifterCustomerId);
@@ -3175,6 +3210,16 @@ namespace ChargeBee.Models
             public CheckoutGiftForItemsRequest ItemTierPriceInDecimal(int index, string itemTierPriceInDecimal) 
             {
                 m_params.AddOpt("item_tiers[price_in_decimal][" + index + "]", itemTierPriceInDecimal);
+                return this;
+            }
+            public CheckoutGiftForItemsRequest AllowedBillingFrequencyPeriod(int index, int allowedBillingFrequencyPeriod) 
+            {
+                m_params.AddOpt("allowed_billing_frequencies[period][" + index + "]", allowedBillingFrequencyPeriod);
+                return this;
+            }
+            public CheckoutGiftForItemsRequest AllowedBillingFrequencyPeriodUnit(int index, ChargeBee.Models.Enums.PeriodUnitEnum allowedBillingFrequencyPeriodUnit) 
+            {
+                m_params.AddOpt("allowed_billing_frequencies[period_unit][" + index + "]", allowedBillingFrequencyPeriodUnit);
                 return this;
             }
         }

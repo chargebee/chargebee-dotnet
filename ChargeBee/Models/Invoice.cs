@@ -539,6 +539,10 @@ namespace ChargeBee.Models
         {
             get { return GetValue<bool?>("has_advance_charges", false); }
         }
+        public OfflinePaymentMethodEnum? OfflinePaymentMethod 
+        {
+            get { return GetEnum<OfflinePaymentMethodEnum>("offline_payment_method", false); }
+        }
         public bool TermFinalized 
         {
             get { return GetValue<bool>("term_finalized", true); }
@@ -1297,6 +1301,11 @@ namespace ChargeBee.Models
             public CreateForChargeItemsAndChargesRequest NetTermDays(int netTermDays) 
             {
                 m_params.AddOpt("net_term_days", netTermDays);
+                return this;
+            }
+            public CreateForChargeItemsAndChargesRequest OfflinePaymentMethod(ChargeBee.Models.Enums.OfflinePaymentMethodEnum offlinePaymentMethod) 
+            {
+                m_params.AddOpt("offline_payment_method", offlinePaymentMethod);
                 return this;
             }
             public CreateForChargeItemsAndChargesRequest InvoiceDate(long invoiceDate) 
@@ -2991,6 +3000,16 @@ namespace ChargeBee.Models
                 m_params.AddOpt("credit_notes[id][" + index + "]", creditNoteId);
                 return this;
             }
+            public ApplyCreditsRequest CreditNoteAmount(int index, long creditNoteAmount) 
+            {
+                m_params.AddOpt("credit_notes[amount][" + index + "]", creditNoteAmount);
+                return this;
+            }
+            public ApplyCreditsRequest CreditNoteAppliedAt(int index, long creditNoteAppliedAt) 
+            {
+                m_params.AddOpt("credit_notes[applied_at][" + index + "]", creditNoteAppliedAt);
+                return this;
+            }
         }
         public class InvoiceListRequest : ListRequestBase<InvoiceListRequest> 
         {
@@ -3966,6 +3985,23 @@ namespace ChargeBee.Models
             Stopped,
             [EnumMember(Value = "success")]
             Success,
+
+        }
+        public enum TypeEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "kid")]
+            Kid,
+            [EnumMember(Value = "ocr")]
+            Ocr,
+            [EnumMember(Value = "frn")]
+            Frn,
+            [EnumMember(Value = "fik")]
+            Fik,
+            [EnumMember(Value = "swiss_reference")]
+            SwissReference,
 
         }
 

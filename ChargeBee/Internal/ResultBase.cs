@@ -115,6 +115,14 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<EmailLog>("email_log"); }
         }
+        public GatewayRequestLog GatewayRequestLog
+        {
+            get {  return GetResource<GatewayRequestLog>("gateway_request_log"); }
+        }
+        public GatewayWebhookLog GatewayWebhookLog
+        {
+            get {  return GetResource<GatewayWebhookLog>("gateway_webhook_log"); }
+        }
         public Invoice Invoice
         {
             get {  return GetResource<Invoice>("invoice"); }
@@ -367,6 +375,10 @@ namespace ChargeBee.Internal
         {
             get {  return GetResource<PaymentVoucher>("payment_voucher"); }
         }
+        public OrganizationDetail OrganizationDetail
+        {
+            get {  return GetResource<OrganizationDetail>("organization_detail"); }
+        }
         public Currency Currency
         {
             get {  return GetResource<Currency>("currency"); }
@@ -570,6 +582,10 @@ namespace ChargeBee.Internal
         public LedgerOperation LedgerOperation
         {
             get {  return GetResource<LedgerOperation>("ledger_operation"); }
+        }
+        public BillingMetadata BillingMetadata
+        {
+            get {  return GetResource<BillingMetadata>("billing_metadata"); }
         }
         public GrantBlock GrantBlock
         {

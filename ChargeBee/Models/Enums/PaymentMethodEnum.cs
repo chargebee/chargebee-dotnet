@@ -25,24 +25,6 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "custom")]
          Custom,
 
-        [EnumMember(Value = "tamara")]
-         Tamara,
-
-        [EnumMember(Value = "qpay")]
-         Qpay,
-
-        [EnumMember(Value = "blik")]
-         Blik,
-
-        [EnumMember(Value = "fpx")]
-         Fpx,
-
-        [EnumMember(Value = "wero")]
-         Wero,
-
-        [EnumMember(Value = "p24")]
-         P24,
-
         [EnumMember(Value = "chargeback")]
          Chargeback,
 
@@ -208,6 +190,12 @@ namespace ChargeBee.Models.Enums
         [EnumMember(Value = "touch_n_go")]
          TouchNGo,
 
+        [EnumMember(Value = "tamara")]
+         Tamara,
+
+        [EnumMember(Value = "qpay")]
+         Qpay,
+
         [EnumMember(Value = "ovo")]
          Ovo,
 
@@ -228,6 +216,18 @@ namespace ChargeBee.Models.Enums
 
         [EnumMember(Value = "thai_qr")]
          ThaiQr,
+
+        [EnumMember(Value = "blik")]
+         Blik,
+
+        [EnumMember(Value = "fpx")]
+         Fpx,
+
+        [EnumMember(Value = "wero")]
+         Wero,
+
+        [EnumMember(Value = "p24")]
+         P24,
 
         [EnumMember(Value = "affirm_pay")]
          AffirmPay,

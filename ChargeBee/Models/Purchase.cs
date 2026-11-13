@@ -717,6 +717,21 @@ namespace ChargeBee.Models
         }
         #endregion
 
+        public enum ActionAtTermEndEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "renew")]
+            Renew,
+            [EnumMember(Value = "evergreen")]
+            Evergreen,
+            [EnumMember(Value = "cancel")]
+            Cancel,
+            [EnumMember(Value = "renew_once")]
+            RenewOnce,
+
+        }
 
         #region Subclasses
 

@@ -147,6 +147,10 @@ namespace ChargeBee.Models
         {
             get { return GetSubResource<GrantBlockOverdraftBlockBalance>("overdraft_block_balance"); }
         }
+        public GrantBlockBillingMetadata BillingMetadata 
+        {
+            get { return GetSubResource<GrantBlockBillingMetadata>("billing_metadata"); }
+        }
         public JToken Metadata 
         {
             get { return GetJToken("metadata", false); }
@@ -302,6 +306,18 @@ namespace ChargeBee.Models
 
             public string UsedAmount {
                 get { return GetValue<string>("used_amount", false); }
+            }
+
+        }
+        public class GrantBlockBillingMetadata : Resource
+        {
+
+            public string ItemPriceId {
+                get { return GetValue<string>("item_price_id", false); }
+            }
+
+            public List<BillingLineItem> LineItems {
+                get { return GetResourceList<BillingLineItem>("line_items"); }
             }
 
         }
