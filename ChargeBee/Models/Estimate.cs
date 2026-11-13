@@ -984,6 +984,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
                 return this;
             }
+            public CreateSubItemEstimateRequest DiscountDescription(int index, string discountDescription) 
+            {
+                m_params.AddOpt("discounts[description][" + index + "]", discountDescription);
+                return this;
+            }
             public CreateSubItemEstimateRequest TaxProvidersFieldProviderName(int index, string taxProvidersFieldProviderName) 
             {
                 m_params.AddOpt("tax_providers_fields[provider_name][" + index + "]", taxProvidersFieldProviderName);
@@ -1601,6 +1606,11 @@ namespace ChargeBee.Models
             public CreateSubItemForCustomerEstimateRequest ItemTierPackageSize(int index, int itemTierPackageSize) 
             {
                 m_params.AddOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
+                return this;
+            }
+            public CreateSubItemForCustomerEstimateRequest DiscountDescription(int index, string discountDescription) 
+            {
+                m_params.AddOpt("discounts[description][" + index + "]", discountDescription);
                 return this;
             }
         }
@@ -2393,6 +2403,11 @@ namespace ChargeBee.Models
             public UpdateSubscriptionForItemsRequest ItemTierPackageSize(int index, int itemTierPackageSize) 
             {
                 m_params.AddOpt("item_tiers[package_size][" + index + "]", itemTierPackageSize);
+                return this;
+            }
+            public UpdateSubscriptionForItemsRequest DiscountDescription(int index, string discountDescription) 
+            {
+                m_params.AddOpt("discounts[description][" + index + "]", discountDescription);
                 return this;
             }
             public UpdateSubscriptionForItemsRequest SubscriptionItemProrationType(int index, ChargeBee.Models.Enums.ProrationTypeEnum subscriptionItemProrationType) 

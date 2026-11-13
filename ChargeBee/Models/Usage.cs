@@ -273,9 +273,25 @@ namespace ChargeBee.Models
                 m_params.AddOpt("group_by[attributes][" + index + "]", groupByAttributes);
                 return this;
             }
+            public PdfRequest GroupByWindowSize(int index, Usage.WindowSizeEnum groupByWindowSize) 
+            {
+                m_params.AddOpt("group_by[window_size][" + index + "]", groupByWindowSize);
+                return this;
+            }
         }
         #endregion
 
+        public enum WindowSizeEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "day")]
+            Day,
+            [EnumMember(Value = "none")]
+            None,
+
+        }
 
         #region Subclasses
 

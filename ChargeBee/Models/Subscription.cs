@@ -2350,6 +2350,11 @@ namespace ChargeBee.Models
                 m_params.AddOpt("coupons[apply_till][" + index + "]", couponApplyTill);
                 return this;
             }
+            public CreateWithItemsRequest DiscountDescription(int index, string discountDescription) 
+            {
+                m_params.AddOpt("discounts[description][" + index + "]", discountDescription);
+                return this;
+            }
             public CreateWithItemsRequest SubscriptionItemUsageAccumulationResetFrequency(int index, ChargeBee.Models.Enums.UsageAccumulationResetFrequencyEnum subscriptionItemUsageAccumulationResetFrequency) 
             {
                 m_params.AddOpt("subscription_items[usage_accumulation_reset_frequency][" + index + "]", subscriptionItemUsageAccumulationResetFrequency);
@@ -3918,6 +3923,11 @@ namespace ChargeBee.Models
             public UpdateForItemsRequest CouponApplyTill(int index, long couponApplyTill) 
             {
                 m_params.AddOpt("coupons[apply_till][" + index + "]", couponApplyTill);
+                return this;
+            }
+            public UpdateForItemsRequest DiscountDescription(int index, string discountDescription) 
+            {
+                m_params.AddOpt("discounts[description][" + index + "]", discountDescription);
                 return this;
             }
             public UpdateForItemsRequest SubscriptionItemUsageAccumulationResetFrequency(int index, ChargeBee.Models.Enums.UsageAccumulationResetFrequencyEnum subscriptionItemUsageAccumulationResetFrequency) 
@@ -6361,6 +6371,27 @@ namespace ChargeBee.Models
             NonCompliantCustomer,
 
         }
+        public enum EntityTypeEnum
+        {
+
+            UnKnown, /*Indicates unexpected value for this enum. You can get this when there is a
+            dotnet-client version incompatibility. We suggest you to upgrade to the latest version */
+            [EnumMember(Value = "adhoc")]
+            Adhoc,
+            [EnumMember(Value = "plan_item_price")]
+            PlanItemPrice,
+            [EnumMember(Value = "addon_item_price")]
+            AddonItemPrice,
+            [EnumMember(Value = "charge_item_price")]
+            ChargeItemPrice,
+            [EnumMember(Value = "plan_setup")]
+            PlanSetup,
+            [EnumMember(Value = "plan")]
+            Plan,
+            [EnumMember(Value = "addon")]
+            Addon,
+
+        }
 
         #region Subclasses
         public class SubscriptionSubscriptionItem : Resource
@@ -6946,6 +6977,10 @@ namespace ChargeBee.Models
 
             public string InvoiceName {
                 get { return GetValue<string>("invoice_name", false); }
+            }
+
+            public string Description {
+                get { return GetValue<string>("description", false); }
             }
 
             public TypeEnum DiscountType {
