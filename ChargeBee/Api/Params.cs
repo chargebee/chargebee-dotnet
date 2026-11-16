@@ -78,7 +78,7 @@ namespace ChargeBee.Api
 
 		private static object ConvertValue(object value, bool isDate, bool isContentTypeJsonObject) {
 			if (value is string || value is int || value is long
-			    || value is double) {
+			    || value is double || value is decimal) {
 				return Convert.ToString(value, System.Globalization.CultureInfo.InvariantCulture);
             } else if (value is bool) {
 				return value.ToString ().ToLower ();
