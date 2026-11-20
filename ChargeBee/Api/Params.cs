@@ -57,7 +57,10 @@ namespace ChargeBee.Api
             foreach (var pair in m_dict)
             {
 				if (pair.Value is IList) {
-					if (IsList) {
+					// List endpoints JSON-encode every list. Filter operators [in] and
+					// [not_in] are a JSON array on the wire even for a non-list GET,
+					// which otherwise indexes them as key[0], key[1].
+					if (IsList || IsFilterMultiValue(pair.Key)) {
 						pairs.Add (String.Format ("{0}={1}", WebUtility.UrlEncode (pair.Key), WebUtility.UrlEncode (JsonConvert.SerializeObject(pair.Value))));
 						continue;
 					}
@@ -75,6 +78,12 @@ namespace ChargeBee.Api
             }
             return pairs.ToArray();
         }
+
+		private static bool IsFilterMultiValue(string key)
+		{
+			return key.EndsWith("[in]", StringComparison.Ordinal)
+				|| key.EndsWith("[not_in]", StringComparison.Ordinal);
+		}
 
 		private static object ConvertValue(object value, bool isDate, bool isContentTypeJsonObject) {
 			if (value is string || value is int || value is long
